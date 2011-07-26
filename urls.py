@@ -17,13 +17,22 @@ from commitments import admin as commitments_admin
 
 # Unregister some models within some apps from the admin
 from django.contrib import admin
+from django.contrib.admin.sites import NotRegistered
 from basic.blog.models import Category, BlogRoll
 from tagging.models import TaggedItem
-admin.site.unregister(Category)
-admin.site.unregister(BlogRoll)
-admin.site.unregister(TaggedItem)
 
-admin.site.disable_action('delete_selected')
+def unregister(model):
+    try:
+        admin.site.unregister(model)
+    except NotRegistered:
+        pass
+unregister(Category)
+unregister(BlogRoll)
+unregister(TaggedItem)
+try:
+    admin.site.disable_action('delete_selected')
+except KeyError:
+    pass
 
 # Sitemaps
 from basic.blog.sitemap import BlogSitemap
