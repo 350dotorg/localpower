@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'brabeion',
     'badges',
     'challenges',
+    'actionkit_usersync',
 )
 
 FIXTURE_DIR = ('fixtures',)
