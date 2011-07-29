@@ -8,6 +8,23 @@ class null_location(object):
     def __getattr__(self, *args, **kw):
         return ''
 
+def actionkit_push(user, profile):
+    location = profile.location or null_location()
+    # EGJ TODO: what if profile.location is None?
+    # i think the localpower system allows that
+    # currently just setting empty strings (per line above)
+    ak_user = actionkit.User.save_or_create(dict(
+            email=user.email,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            zip=location.zipcode,
+            region=location.county,
+            state=location.st,
+            state_name=location.state,
+            city=location.name
+            ))
+    return ak_user
+
 def user_post_save(sender, instance, created, **kwargs):
     user = instance
     actionkit = get_client()
@@ -22,39 +39,15 @@ def user_post_save(sender, instance, created, **kwargs):
                 ))
     else:
         profile = user.get_profile()
-        location = profile.location or null_location()
-        # EGJ TODO: what if profile.location is None?
-        # i think the localpower system allows that
-        ak_user = actionkit.User.save_or_create(dict(
-                email=user.email,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                zip=location.zipcode,
-                region=location.county,
-                state=location.st,
-                state_name=location.state,
-                city=location.name
-                ))
+        ak_user = actionkit_push(user, profile)
+
 models.signals.post_save.connect(user_post_save, sender=User)
 
 def profile_post_save(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
-    # EGJ TODO: refactor with user_post_save else block
+    ak_user = actionkit_push(user, profile)
 
-    location = profile.location or null_location()
-    # EGJ TODO: what if profile.location is None?
-    # i think the localpower system allows that
-    ak_user = actionkit.User.save_or_create(dict(
-            email=user.email,
-            first_name=user.first_name,
-            last_name=user.last_name,
-            zip=location.zipcode,
-            region=location.county,
-            state=location.st,
-            state_name=location.state,
-            city=location.name
-            ))
 models.signals.post_save.connect(profile_post_save, sender=Profile)
 
 # EGJ TODO: test profile post-save signal
