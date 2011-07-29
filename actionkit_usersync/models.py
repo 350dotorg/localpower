@@ -26,14 +26,21 @@ def actionkit_push(user, profile):
             city=location.name
             ))
 
-    # EGJ TODO: would prefer not to have city/country required;
-    # we don't have that info yet
-    #result = actionkit.act(dict(
-    #        page=settings.ACTIONKIT_PAGE_NAME,
-    #        email=user.email,
-    #        city="test",
-    #        country="United states",
-    #        ))
+    history = actionkit.User.subscription_history({'id': ak_user['id']})
+    ever_been_subscribed = False
+    for entry in history:
+        if entry.get("page_name") == settings.ACTIONKIT_PAGE_NAME:
+            ever_been_subscribed = True
+            break
+    if not ever_been_subscribed:
+        # EGJ TODO: would prefer not to have city/country required;
+        # we don't necessarily have that info yet
+        result = actionkit.act(dict(
+                page=settings.ACTIONKIT_PAGE_NAME,
+                email=user.email,
+                city=location.name,
+                country="United states",
+                ))
 
     return ak_user
 
