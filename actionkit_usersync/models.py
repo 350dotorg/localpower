@@ -13,6 +13,8 @@ def actionkit_push(user, profile):
     # EGJ TODO: what if profile.location is None?
     # i think the localpower system allows that
     # currently just setting empty strings (per line above)
+
+    actionkit = get_client()
     ak_user = actionkit.User.save_or_create(dict(
             email=user.email,
             first_name=user.first_name,
