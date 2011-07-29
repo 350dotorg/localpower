@@ -25,31 +25,28 @@ def actionkit_push(user, profile):
             state_name=location.state,
             city=location.name
             ))
+
+    # EGJ TODO: would prefer not to have city/country required;
+    # we don't have that info yet
+    #result = actionkit.act(dict(
+    #        page=settings.ACTIONKIT_PAGE_NAME,
+    #        email=user.email,
+    #        city="test",
+    #        country="United states",
+    #        ))
+
     return ak_user
 
 def user_post_save(sender, instance, created, **kwargs):
     user = instance
-    actionkit = get_client()
-    if created:
-        # EGJ TODO: would prefer not to have city/country required;
-        # we don't have that info yet
-        result = actionkit.act(dict(
-                page=settings.ACTIONKIT_PAGE_NAME,
-                email=user.email,
-                city="test",
-                country="United states",
-                ))
-    else:
-        profile = user.get_profile()
-        ak_user = actionkit_push(user, profile)
-
+    profile = user.get_profile()
+    ak_user = actionkit_push(user, profile)
 models.signals.post_save.connect(user_post_save, sender=User)
 
 def profile_post_save(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
     ak_user = actionkit_push(user, profile)
-
 models.signals.post_save.connect(profile_post_save, sender=Profile)
 
 # EGJ TODO: test profile post-save signal
