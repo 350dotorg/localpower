@@ -56,6 +56,18 @@ def profile_post_save(sender, instance, created, **kwargs):
     ak_user = actionkit_push(user, profile)
 models.signals.post_save.connect(profile_post_save, sender=Profile)
 
+from groups.models import GroupUsers
+def user_added_to_group(sender, instance, created, **kwargs):
+    usergroup = instance
+    group = usergroup.group
+    profile = usergroup.user.get_profile()
+    if profile.location:
+        return
+    location = group.headquarters
+    profile.location = location
+    profile.save()
+models.signals.post_save.connect(user_added_to_group, sender=GroupUsers)
+
 # EGJ TODO: test profile post-save signal
 
 # Verify that the ActionKit API settings are correct 
