@@ -15,7 +15,7 @@ class AppEngineEmailBackend(BaseEmailBackend):
                 recipients="ejucovy@gmail.com",
                 subject=msg.subject,
                 text=base64.encodestring("Text message"),
-                html=base64.encodestring(msg.body)
+                html=base64.encodestring(msg.body.encode("utf8"))
                 )
             resp = POST("http://localpower-dev.appspot.com/_send_mail/", params=data, 
                         async=False, resp=True)

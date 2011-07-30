@@ -1,4 +1,12 @@
+from utils import hash_val, forbidden
+from forms import GroupForm, MembershipForm, DiscussionSettingsForm, DiscussionCreateForm, DiscussionApproveForm, DiscussionRemoveForm
+from models import Discussion
+from django.shortcuts import render_to_response, redirect, get_object_or_404
+from django.shortcuts import render_to_response, redirect, get_object_or_404
+from django.template import Context, loader, RequestContext
+
 def create_discussion(user, group, data):
+    request = None
     if not group.is_poster(user):
         return forbidden(request)
 
@@ -13,7 +21,6 @@ def create_discussion(user, group, data):
             is_public=not group.moderate_disc(user),
             reply_count=None if disc_form.cleaned_data['parent_id'] else 0
             )
-        return_to = disc_form.cleaned_data['parent_id'] if disc_form.cleaned_data['parent_id'] else disc.id
-        return redirect("group_disc_detail", group_slug=group.slug, disc_id=return_to)
+        return disc
 
     return render_to_response("groups/group_disc_create.html", locals(), context_instance=RequestContext(request)) 

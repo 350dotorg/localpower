@@ -110,6 +110,7 @@ urlpatterns += patterns('',
     url(r'^badges/', include('badges.urls')),
     url(r'^challenges/', include('challenges.urls')),
     url(r'^admin/', include(admin.site.urls), name='admin_root'),
+    url(r'^_inbound_mail/$', 'gae_mail.reply_disc.process', name='inbound_mail'),
     #url(r'^icalfeed/', CombinedICSFeed(), name='ical_feed'),
     url(r'comments/(?P<content_type_id>\d+)/(?P<object_pk>\d+)/feed/$', CommentsFeed(), name='comments_feed'),
 )
