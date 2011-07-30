@@ -1,3 +1,7 @@
+import json
+import base64
+import zlib
+
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
@@ -15,6 +19,7 @@ from invite.models import Invitation, Rsvp
 from thumbnails.fields import ImageAndThumbsField
 from messaging.models import Stream
 from events.models import GroupAssociationRequest
+from utils import hash_val
 
 class GroupManager(models.Manager):
     def groups_with_memberships(self, user, limit=None):
@@ -315,6 +320,15 @@ class Discussion(models.Model):
     reply_count = models.IntegerField(null=True)
     objects = DiscussionManager()
 
+    def email_from_address(self, recipient):
+        reply_id = self.parent and self.parent_id or self.pk
+        reply_id_sig = hash_val(reply_id)
+        value = json.dumps(dict(parent_id=reply_id,
+                                user=recipient.email))
+        value = base64.b64encode(value)
+        return "%s+%s@localpower-dev.appspotmail.com" % (
+            self.group.slug.encode("ascii"), value)
+
     @models.permalink
     def get_absolute_url(self):
         return ("group_disc_detail", [self.group.slug, self.parent.id if self.parent.id else self.id])
@@ -360,7 +374,8 @@ def update_group_member_count(sender, instance, **kwargs):
 
 def alert_users_of_discussion(sender, instance, **kwargs):
     if instance.is_public and not instance.is_removed and not instance.reply_count:
-        Stream.objects.get(slug="community-discussion").enqueue(content_object=instance, start=instance.created)
+        Stream.objects.get(slug="community-discussion").enqueue(
+            content_object=instance, start=instance.created)
     return True
 
 models.signals.post_save.connect(associate_with_geo_groups, sender=Profile)
