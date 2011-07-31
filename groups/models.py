@@ -363,12 +363,23 @@ def alert_users_of_discussion(sender, instance, **kwargs):
         Stream.objects.get(slug="community-discussion").enqueue(content_object=instance, start=instance.created)
     return True
 
+def infer_user_location_from_group(sender, instance, created, **kwargs):
+    usergroup = instance
+    group = usergroup.group
+    profile = usergroup.user.get_profile()
+    if profile.location:
+        return
+    location = group.headquarters
+    profile.location = location
+    profile.save()
+
 models.signals.post_save.connect(associate_with_geo_groups, sender=Profile)
 models.signals.post_save.connect(add_invited_user_to_group, sender=Rsvp)
 models.signals.post_save.connect(update_discussion_reply_count, sender=Discussion)
 models.signals.post_save.connect(update_group_member_count, sender=GroupUsers)
 models.signals.post_delete.connect(update_group_member_count, sender=GroupUsers)
 models.signals.post_save.connect(alert_users_of_discussion, sender=Discussion)
+models.signals.post_save.connect(infer_user_location_from_group, sender=GroupUsers)
 
 def remove_community_create_stream(sender, instance, **kwargs):
     Stream.objects.get(slug="community-create").dequeue(content_object=instance)
