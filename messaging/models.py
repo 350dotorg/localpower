@@ -197,6 +197,11 @@ class Message(models.Model):
             user_object if user_object else email }
         if extra_params:
             params.update(extra_params)
+
+        extra_headers = None
+        if hasattr(content_object, 'messaging_email_extra_headers'):
+            extra_headers = content_object.messaging_email_extra_headers(user_object)
+
         context = template.Context(params)
         # render the body and subject template with the given, template
         subject = template.Template(self.subject).render(context)
@@ -207,7 +212,8 @@ class Message(models.Model):
             args=[recipient_message.token]))
         # insert an open tracking image into the body
         body += open_link
-        msg = EmailMessage(subject, body, None, [email])
+        msg = EmailMessage(subject, body, from_email=None, to=[email],
+                           headers=extra_headers)
         msg.content_subtype = "html"
         return msg
 
