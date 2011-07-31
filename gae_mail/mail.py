@@ -9,10 +9,8 @@ class AppEngineEmailBackend(BaseEmailBackend):
 
         for msg in email_messages:
             data = dict(
-                #from_email=msg.from_email,
                 from_email=msg.from_email,
-                #recipients=','.join(msg.recipients()),
-                recipients="ejucovy@gmail.com",
+                recipients=','.join(msg.recipients()),
                 reply_to=msg.extra_headers.get('Reply-To', ''),
                 subject=msg.subject,
                 text=base64.encodestring("Text message"),
