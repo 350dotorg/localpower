@@ -13,6 +13,7 @@ class AppEngineEmailBackend(BaseEmailBackend):
                 from_email=msg.from_email,
                 #recipients=','.join(msg.recipients()),
                 recipients="ejucovy@gmail.com",
+                reply_to=msg.extra_headers.get('Reply-To', ''),
                 subject=msg.subject,
                 text=base64.encodestring("Text message"),
                 html=base64.encodestring(msg.body.encode("utf8"))
