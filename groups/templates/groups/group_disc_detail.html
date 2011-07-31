@@ -1,4 +1,4 @@
-{% extends "groups/base.html" %}
+{% extends "base/nav_form.html" %}
 {% block title %}{{ disc.subject }}{% endblock %}
 {% block breadcrumbs %}
     <a href="{% url index %}">Home</a> &rsaquo;
@@ -7,7 +7,7 @@
     <a href="{% url group_disc_list group.slug %}">Discussions</a> &rsaquo;
     {{ disc.subject }}
 {% endblock %}
-{% block right_content %}
+{% block content %}
     <div class="grid_9 alpha">
         {% with disc as first_comment %}
             {% include "groups/_group_disc_nugget.html" %}

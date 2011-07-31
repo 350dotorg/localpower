@@ -1,4 +1,4 @@
-{% extends "groups/base.html" %}
+{% extends "base/nav_form.html" %}
 {% block title %}Create Discussion{% endblock %}
 {% block breadcrumbs %}
 <a href="{% url index %}">Home</a> &rsaquo;
@@ -6,7 +6,7 @@
 <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
 Create Discussion
 {% endblock %}
-{% block right_content %}
+{% block content %}
 <div class="grid_6 alpha">
     <div class="box_two_top"></div>
     <div class="box_two_middle">
