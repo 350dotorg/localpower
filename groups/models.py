@@ -320,14 +320,27 @@ class Discussion(models.Model):
     reply_count = models.IntegerField(null=True)
     objects = DiscussionManager()
 
-    def email_from_address(self, recipient):
+    def messaging_email_extra_headers(self, recipient):
+        """
+        The Messaging system will look for this method to call
+        while constructing emails to send; we build a custom
+        Reply-To header that encodes the discussion's group
+        and thread ID, and the email address of the recipient 
+        we're sending to, so that email replies can use the
+        address to find what discussion to try to append to.
+        We encode the recipient's email address so that we can
+        allow users to send email replies from an address other
+        than the one that received it -- e.g. if I have multiple
+        addresses going to the same email account and prefer to
+        send with a specific one.
+        """
         reply_id = self.parent and self.parent_id or self.pk
         reply_id_sig = hash_val(reply_id)
         value = json.dumps(dict(parent_id=reply_id,
                                 user=recipient.email))
         value = base64.b64encode(value)
-        return "%s+%s@localpower-dev.appspotmail.com" % (
-            self.group.slug.encode("ascii"), value)
+        return {"Reply-To": "%s+%s@localpower-dev.appspotmail.com" % (
+                self.group.slug.encode("ascii"), value)}
 
     @models.permalink
     def get_absolute_url(self):
