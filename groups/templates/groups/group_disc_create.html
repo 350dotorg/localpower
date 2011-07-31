@@ -1,4 +1,4 @@
-{% extends "base/nav_6c3c_b.html" %}
+{% extends "base/nav_form.html" %}
 {% block title %}Create Discussion{% endblock %}
 {% block breadcrumbs %}
 <a href="{% url index %}">Home</a> &rsaquo;
@@ -14,6 +14,7 @@ Create Discussion
         {% include "groups/_group_disc_create_form.html" %}
     </div>
     <div class="box_two_bottom"></div>
+</div>
 {% endblock %}
 
 {% block js %}{% endblock %}
