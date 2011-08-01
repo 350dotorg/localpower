@@ -319,6 +319,9 @@ class Discussion(models.Model):
     def get_absolute_url(self):
         return ("group_disc_detail", [self.group.slug, self.parent.id if self.parent.id else self.id])
 
+    def email_extra_headers(self, user_object):
+        return None
+
 """
 Signals!
 """
