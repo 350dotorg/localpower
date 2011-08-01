@@ -58,6 +58,11 @@ class Message(models.Model):
         of the content object that defines a recipient or list of recipeients.  Note: recipients\
         can be classified as email addresses or objects that contain an 'email' attribute (e.g.\
         auth.User or events.Guest)")
+    extra_headers_function = models.CharField(max_length=300, blank=True, help_text="This is an attribute or function\
+        of the content object that defines any additional extra headers for the email.\
+        It should be either a lambda function that takes two arguments (content_object, recipient)\
+        -- or a method on the content object with signature (self, recipient) that returns\
+        a dict of headers; or an attribute on the content object that contains a dict of headers.")                                             
     send_as_batch = models.BooleanField(default=False, help_text="If multiple messages of the\
         same type are scheduled to be sent out at the same time, then just send one. Note: if you\
         check this box, your messages must be written to reference multiple objects.  Be very\
@@ -189,6 +194,20 @@ class Message(models.Model):
             recipients = [recipients]
         return [(r.email, r) if hasattr(r, "email") else (r, None) for r in recipients]
 
+    def extra_headers(self, content_object, user_object):
+        if not self.extra_headers_function:
+            return None
+        if not hasattr(content_object, self.extra_headers_function):
+            if not self.extra_headers_function.lower().startswith("lambda"):
+                raise NotImplementedError("%s does not exist for %s" % (
+                        self.extra_headers_function, content_object))
+            extra_headers = eval(self.extra_headers_function)(content_object, user_object)
+        else:
+            func_or_attr = getattr(content_object, self.extra_headers_function)
+            extra_headers = func_or_attr(user_object) if inspect.ismethod(func_or_attr) \
+                else func_or_attr
+        return extra_headers
+
     def render_message(self, content_object, email, user_object, extra_params=None):
         recipient_message = RecipientMessage.objects.create(message=self, recipient=email,
             token=hash_val([email, datetime.datetime.now()]))
@@ -198,9 +217,7 @@ class Message(models.Model):
         if extra_params:
             params.update(extra_params)
 
-        extra_headers = None
-        if hasattr(content_object, 'messaging_email_extra_headers'):
-            extra_headers = content_object.messaging_email_extra_headers(user_object)
+        extra_headers = self.extra_headers(content_object, user_object)
 
         context = template.Context(params)
         # render the body and subject template with the given, template

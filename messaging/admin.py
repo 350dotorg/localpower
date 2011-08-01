@@ -25,9 +25,9 @@ preview_stream.short_description = "Preview Stream"
 
 class MessageAdmin(admin.ModelAdmin):
     list_display = ("__unicode__", "sends", "unique_opens", "click_thrus")
-    readonly_fields = ("sends", "recipient_function")
+    readonly_fields = ("sends", "recipient_function", "extra_headers_function")
     fieldsets = (
-        (None, {"fields": ("name", "subject", "body", "sends", "recipient_function",)}),
+        (None, {"fields": ("name", "subject", "body", "sends", "recipient_function", "extra_headers_function")}),
         ("Send Time", {"fields": ("message_timing", "x_value",)}),
         ("Advanced Options", {"fields": ("send_as_batch", "batch_window", "time_snap",
             "minimum_duration", "content_types", "generic_relation_content_type"),
