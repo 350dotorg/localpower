@@ -26,15 +26,20 @@ def actionkit_push(user, profile):
             city=location.name
             ))
 
+    try:
+        page_name = settings.ACTIONKIT_PAGE_NAME
+    except AttributeError:
+        return ak_user
+
     history = actionkit.User.subscription_history({'id': ak_user['id']})
     ever_been_subscribed = False
     for entry in history:
-        if entry.get("page_name") == settings.ACTIONKIT_PAGE_NAME:
+        if entry.get("page_name") == page_name:
             ever_been_subscribed = True
             break
     if not ever_been_subscribed:
         result = actionkit.act(dict(
-                page=settings.ACTIONKIT_PAGE_NAME,
+                page=page_name,
                 email=user.email))
 
     return ak_user
