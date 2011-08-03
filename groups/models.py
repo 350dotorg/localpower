@@ -1,3 +1,6 @@
+import base64
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
@@ -6,6 +9,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.db import models, transaction, IntegrityError
 from django.template import loader
 from django.template.defaultfilters import slugify
+from django.utils import simplejson as json
 
 from geo.models import Location
 from records.models import Record
@@ -15,6 +19,7 @@ from invite.models import Invitation, Rsvp
 from thumbnails.fields import ImageAndThumbsField
 from messaging.models import Stream
 from events.models import GroupAssociationRequest
+from utils import hash_val
 
 class GroupManager(models.Manager):
     def groups_with_memberships(self, user, limit=None):
@@ -315,13 +320,46 @@ class Discussion(models.Model):
     reply_count = models.IntegerField(null=True)
     objects = DiscussionManager()
 
+    @property
+    def thread_id(self):
+        if self.parent:
+            return self.parent.id
+        return self.id
+
     @models.permalink
     def get_absolute_url(self):
-        return ("group_disc_detail", [self.group.slug, self.parent.id if self.parent.id else self.id])
+        return ("group_disc_detail", [self.group.slug, self.thread_id])
 
     def email_extra_headers(self, user_object):
-        return None
+        """
+        The Messaging system will look for this method to call
+        while constructing emails to send; we build a custom
+        Reply-To header that encodes the discussion's group
+        and thread ID, and the email address of the recipient 
+        we're sending to, so that email replies can use the
+        address to find what discussion to try to append to.
+        We encode the recipient's email address so that we can
+        allow users to send email replies from an address other
+        than the one that received it -- e.g. if I have multiple
+        addresses going to the same email account and prefer to
+        send with a specific one.
 
+        A secret-key-hash of the JSONified data is joined to the
+        data itself, and the resulting string (base64-encoded)
+        is used as the Reply-To value.  This way, when receiving
+        email responses, we can use the hashed value to confirm
+        that the user did not tamper with or manually construct
+        the address to send to.  This is important because we
+        will need to trust the inbound email as coming from the
+        user it claims to be coming from.
+        """
+        value = json.dumps(dict(parent_id=self.thread_id,
+                                user=recipient.email,
+                                group=self.group.slug))
+        value = "%s\0%s" % (value, hash_val(value))
+        value = base64.b64encode(value)
+        return {"Reply-To": "%s@%s" % (
+                (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
 """
 Signals!
 """
