@@ -2,6 +2,7 @@ import json
 import base64
 import zlib
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
@@ -335,12 +336,13 @@ class Discussion(models.Model):
         send with a specific one.
         """
         reply_id = self.parent and self.parent_id or self.pk
-        reply_id_sig = hash_val(reply_id)
         value = json.dumps(dict(parent_id=reply_id,
-                                user=recipient.email))
+                                user=recipient.email,
+                                group=self.group.slug))
+        value = "%s\0%s" % (value, hash_val(value))
         value = base64.b64encode(value)
-        return {"Reply-To": "%s+%s@localpower-dev.appspotmail.com" % (
-                self.group.slug.encode("ascii"), value)}
+        return {"Reply-To": "%s@%s" % (
+                (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
 
     @models.permalink
     def get_absolute_url(self):
