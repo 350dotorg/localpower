@@ -15,9 +15,21 @@ from groups.disc_utils import create_discussion
 from utils import hash_val
 import zlib
 from django.http import HttpResponse as Response
+import email
 
 @csrf_exempt
 def process(req):
+    msg = email.message_from_string(req.raw_post_body)
+    addr = msg.get("To")
+    values, tamper_check = base64.b64decode(addr).split("\0")
+    assert hash_val(values) == tamper_check
+    values = json.loads(values)
+    values['parent_id_sig'] = hash_val(values['parent_id'])
+    user = values.pop("user")
+    user = User.objects.get(email=user)
+    group = Group.objects.get(slug=values.pop("group"))
+
+    
     values = dict(
         subject=req.POST['subject'],
         body=req.POST['body'])
