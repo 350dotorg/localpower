@@ -255,7 +255,7 @@ def receive_mail(request):
         if part.get_content_type() == 'text/plain':
             best_choice = part
             break
-        if part.get_content_type() == 'text/html':
+        if best_choice is None and part.get_content_type() == 'text/html':
             best_choice = part
     if best_choice is None:
         # No text/plain or text/html message was found in the email
