@@ -82,7 +82,8 @@ urlpatterns += patterns('django.views.generic.simple',
     url(r'^vampire/$', 'redirect_to', {'url': '/actions/eliminate-standby-vampire-power/'}),
 )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^password_change/$', 'django.contrib.auth.views.password_change', { 'post_change_redirect': '/password_change_done/', 'password_change_form': PasswordChangeForm }, name='password_change'),
     url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', { 'post_reset_redirect': '/password_reset_done/' }, name='password_reset'),
@@ -112,6 +113,7 @@ urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls), name='admin_root'),
     #url(r'^icalfeed/', CombinedICSFeed(), name='ical_feed'),
     url(r'comments/(?P<content_type_id>\d+)/(?P<object_pk>\d+)/feed/$', CommentsFeed(), name='comments_feed'),
+    url('^_inbound_mail/$', 'groups.views.receive_mail'),
 )
 
 if settings.DEBUG:

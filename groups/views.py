@@ -1,4 +1,6 @@
+import base64
 from datetime import datetime
+import email
 from smtplib import SMTPException
 
 from brabeion import badges as badge_cache
@@ -12,7 +14,8 @@ from django.core.mail import send_mail, EmailMessage
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import Context, loader, RequestContext
-from django.views.decorators.csrf import csrf_protect
+from django.utils import simplejson as json
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.decorators.http import require_POST
 
 from records.models import Record
@@ -213,6 +216,76 @@ def group_edit(request, group_slug):
     site = Site.objects.get_current()
     requesters = group.requesters_to_grant_or_deny(request.user)
     return render_to_response("groups/group_edit.html", locals(), context_instance=RequestContext(request))
+
+@csrf_exempt
+def receive_mail(request):
+    msg = email.message_from_string(request.raw_post_body)
+    addr = msg.get("To")
+    if not addr:
+        return forbidden(request)
+
+    try:
+        values, tamper_check = base64.b64decode(addr).split("\0")
+    except TypeError:
+        return forbidden(request)
+
+    if hash_val(values) != tamper_check:
+        return forbidden(request)
+    try:
+        values = json.loads(values)
+    except ValueError:
+        return forbidden(request)
+
+    # The Discussion Form wants this hashed value as a tamper-proof check
+    values['parent_id_sig'] = hash_val(values['parent_id'])
+
+    try:
+        user = User.objects.get(email=values.pop("user"))
+        group = Group.objects.get(slug=values.pop("group"))
+        parent_disc = Discussion.objects.get(group=group, id=parent_id)
+    except (User.DoesNotExist, Group.DoesNotExist, Discussion.DoesNotExist), e:
+        return forbidden(request)
+
+    values['subject'] = "Re: %s" % parent_disc.subject
+
+    best_choice = None
+    for part in msg.walk():
+        if part.get_content_maintype() == 'multipart':
+            continue
+        if part.get_content_type() == 'text/plain':
+            best_choice = part
+            break
+        if part.get_content_type() == 'text/html':
+            best_choice = part
+    if best_choice is None:
+        # No text/plain or text/html message was found in the email
+        # so we'll just reject it for now.
+        # TODO: figure out a sane approach to email content-type handling
+        return forbidden(request)
+    # TODO: process text/html message differently
+    values['body'] = best_choice.get_payload(decode=True)
+
+    disc_form = DiscussionCreateForm(values)
+    if not disc_form.is_valid():
+        return forbidden(request)
+
+    new_disc = Discussion.objects.create(
+        subject=disc_form.cleaned_data['subject'],
+        body=disc_form.cleaned_data['body'],
+        parent_id=disc_form.cleaned_data['parent_id'],
+        user=request.user,
+        group=group,
+        is_public=not group.moderate_disc(request.user),
+        reply_count=None if disc_form.cleaned_data['parent_id'] else 0
+        )
+    new_disc.save()
+    return_to = (disc_form.cleaned_data['parent_id'] 
+                 if disc_form.cleaned_data['parent_id']
+                 else disc.id)
+
+    # TODO: would be better to return a unique URL for the newly created object
+    # for debugging/logging purposes
+    return redirect("group_disc_detail", group_slug=group.slug, disc_id=return_to)
 
 @login_required
 @csrf_protect
