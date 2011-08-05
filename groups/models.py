@@ -358,7 +358,7 @@ class Discussion(models.Model):
                                 group=self.group.slug))
         value = "%s\0%s" % (value, hash_val(value))
         value = base64.b64encode(value)
-        return {"Reply-To": "%s@%s" % (
+        return {"Reply-To": "%s@%s" %
                 (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
 """
 Signals!
