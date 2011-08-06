@@ -268,7 +268,10 @@ def receive_mail(request):
         # TODO: figure out a sane approach to email content-type handling
         return forbidden(request)
     # TODO: process text/html message differently
-    values['body'] = best_choice.get_payload(decode=True)
+    charset = (best_choice.get_content_charset() or best_choice.get_charset()
+               or msg.get_content_charset() or msg.get_charset()
+               or 'utf-8')
+    values['body'] = best_choice.get_payload(decode=True).decode(charset)
 
     disc_form = DiscussionCreateForm(values)
     if not disc_form.is_valid():
