@@ -219,7 +219,12 @@ def group_edit(request, group_slug):
 
 @csrf_exempt
 def receive_mail(request):
-    msg = email.message_from_string(request.raw_post_body)
+    try:
+        msg = base64.b64decode(request.raw_post_data)
+    except TypeError:
+        return forbidden(request)
+
+    msg = email.message_from_string(msg)
     addr = msg.get("To")
     if not addr:
         return forbidden(request)
@@ -242,7 +247,7 @@ def receive_mail(request):
     try:
         user = User.objects.get(email=values.pop("user"))
         group = Group.objects.get(slug=values.pop("group"))
-        parent_disc = Discussion.objects.get(group=group, id=parent_id)
+        parent_disc = Discussion.objects.get(group=group, id=values['parent_id'])
     except (User.DoesNotExist, Group.DoesNotExist, Discussion.DoesNotExist), e:
         return forbidden(request)
 
@@ -269,16 +274,18 @@ def receive_mail(request):
     if not disc_form.is_valid():
         return forbidden(request)
 
-    new_disc = Discussion.objects.create(
+    values = dict(
         subject=disc_form.cleaned_data['subject'],
         body=disc_form.cleaned_data['body'],
         parent_id=disc_form.cleaned_data['parent_id'],
-        user=request.user,
+        user=user,
         group=group,
-        is_public=not group.moderate_disc(request.user),
+        is_public=not group.moderate_disc(user),
         reply_count=None if disc_form.cleaned_data['parent_id'] else 0
         )
-    new_disc.save()
+
+    new_disc = Discussion.objects.create(**values)
+
     return_to = (disc_form.cleaned_data['parent_id'] 
                  if disc_form.cleaned_data['parent_id']
                  else disc.id)
