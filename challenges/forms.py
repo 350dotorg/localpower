@@ -3,11 +3,11 @@ from django.contrib.contenttypes.models import ContentType
 
 from commitments.models import Contributor
 from commitments.forms import ContributorForm
-from groups.models import GroupAssociationRequest
+from groups.forms import GroupAssociationRequestRelatedForm
 
 from models import Challenge, Support
 
-class ChallengeForm(forms.ModelForm):
+class ChallengeForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
     goal = forms.IntegerField(min_value=1, help_text="How many petitions do you want to collect?")
 
     class Meta:
@@ -20,34 +20,11 @@ class ChallengeForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(ChallengeForm, self).__init__(*args, **kwargs)
         self.user = user
-        groups = self.fields["groups"]
-        groups.queryset = groups.queryset.filter(groupusers__user=user)
-        if not groups.queryset:
-            groups.help_text = "You need to be a member of a community first"
-        else:
-            groups.help_text = None
-
-    def clean_groups(self):
-        data = self.cleaned_data["groups"]
-        approved_groups, self.requested_groups = [], []
-        content_type = ContentType.objects.get_for_model(self.instance)
-        for g in data:
-            if g.is_user_manager(self.user) or GroupAssociationRequest.objects.filter(
-                content_type=content_type, object_id=self.instance.pk,
-                group=g, approved=True).exists():
-                approved_groups.append(g)
-            else:
-                self.requested_groups.append(g)
-        return approved_groups
+        self.init_groups(user)
 
     def save(self, *args, **kwargs):
         challenge = super(ChallengeForm, self).save(*args, **kwargs)
-        content_type = ContentType.objects.get_for_model(challenge)
-        for g in self.requested_groups:
-            request, created = GroupAssociationRequest.objects.get_or_create(
-                content_type=content_type, object_id=challenge.pk,
-                group=g)
-            # TODO: notify user of groups requested
+        self.save_groups(challenge)
         return challenge
 
 class PetitionForm(ContributorForm):

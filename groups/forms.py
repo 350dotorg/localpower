@@ -5,6 +5,7 @@ from django import forms
 from django.core.files.storage import default_storage
 from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.flatpages.models import FlatPage
 
 from PIL.Image import open as pil_open
@@ -13,7 +14,7 @@ from utils import hash_val
 from geo.models import Location
 from geo.fields import GoogleLocationField
 
-from models import Group, GroupUsers, Discussion
+from models import Group, GroupUsers, Discussion, GroupAssociationRequest
 
 class GroupForm(forms.ModelForm):
     IMAGE_FORMATS = {"PNG": "png", "JPEG": "jpeg", "GIF": "gif"}
@@ -173,3 +174,54 @@ class DiscussionRemoveForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DiscussionRemoveForm, self).__init__(*args, **kwargs)
         self.fields['is_removed'].initial = True
+
+class GroupAssociationRequestRelatedForm(object):
+    """
+    Use as a mixin base class for other model-backed forms that provide group
+    associations for their content objects and want to hook in to the machinery
+    for associating with groups directly for each requested group for which the
+    requesting user is an admin, and issuing a Group Association Request for each
+    requested group for which the requesting user is not an admin.  The form's 
+    related model must have a `ManyToManyField("groups.Group")` named `groups`.
+
+    To use this form, your ModelForm subclass must:
+    * also subclass this base
+    * require a `user` argument to its `__init__`, and stash it as an attribute
+    * call `self.init_groups(user)` at some point in its `__init__()`
+    * specify "groups" in `fields` on its `Meta` class
+    * specify a `forms.CheckboxSelectMultiple()` for "groups" in `widgets` on
+      its `Meta` class
+    * not implement a method `clean_groups`
+    * call `self.save_groups(content_object)` at some point in its `save()`
+
+    For examples, look at `events.forms.EventForm` and `challenges.forms.ChallengeForm`.
+    """
+
+    def init_groups(self, user):
+        groups = self.fields["groups"]
+        groups.queryset = groups.queryset.filter(groupusers__user=user)
+        if not groups.queryset:
+            groups.help_text = "You need to be a member of a community first"
+        else:
+            groups.help_text = None
+
+    def clean_groups(self):
+        data = self.cleaned_data["groups"]
+        approved_groups, self.requested_groups = [], []
+        content_type = ContentType.objects.get_for_model(self.instance)
+        for g in data:
+            if g.is_user_manager(self.user) or GroupAssociationRequest.objects.filter(
+                content_type=content_type, object_id=self.instance.pk,
+                group=g, approved=True).exists():
+                approved_groups.append(g)
+            else:
+                self.requested_groups.append(g)
+        return approved_groups
+
+    def save_groups(self, content_object):
+        content_type = ContentType.objects.get_for_model(content_object)
+        for g in self.requested_groups:
+            request, created = GroupAssociationRequest.objects.get_or_create(
+                content_type=content_type, object_id=content_object.pk,
+                group=g)
+            # TODO: notify user of groups requested
