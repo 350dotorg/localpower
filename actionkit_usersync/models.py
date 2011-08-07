@@ -67,3 +67,4 @@ try:
 except xmlrpclib.ProtocolError:
     print ("Your ActionKit API settings are incorrect; please double-check them "
            "and try again.")
+    raise
