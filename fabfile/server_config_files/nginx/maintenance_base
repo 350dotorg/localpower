@@ -1,0 +1,6 @@
+root /home/ubuntu/webapp/;
+
+location / {
+    proxy_pass http://_s3_domain/;
+    rewrite ^(.*)$ /maintenance.html break;
+}

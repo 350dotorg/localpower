@@ -1,0 +1,5 @@
+include sites-available/rah_base;
+listen 80;
+if ($request_uri ~* (/login|/password_change|/admin|/register|/user/edit|/validate)){
+    rewrite (.*) https://$server_name$1 permanent;
+}
