@@ -1,0 +1,13 @@
+upstream app_servers {
+    server 127.0.0.1:3031;
+}
+
+# ec2 public dns name
+server {
+    server_name _public_dns_name;
+    include sites-available/rah_base_http;
+}
+server {
+    server_name _public_dns_name;
+    include sites-available/rah_base_https;
+}

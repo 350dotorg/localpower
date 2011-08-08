@@ -1,0 +1,27 @@
+gzip on;
+gzip_comp_level 2;
+gzip_proxied any;
+gzip_types text/css application/x-javascript application/json;
+
+location / {
+    uwsgi_pass app_servers;
+    include uwsgi_params;
+}
+
+location ^~ /media/ {
+    rewrite ^/media(.*)$ http://s3.amazonaws.com/django_admin_media.localpower.350.org$1 permanent;
+}
+
+location /robots.txt {
+    rewrite ^(.*)$ http://_s3_domain$1;
+}
+
+location /favicon.ico {
+    rewrite ^(.*)$ http://_s3_domain/images/theme/favicon.ico$1;
+}
+
+if ($request_uri ~* /youtube){
+    rewrite ^.*/youtube/(.*)$ http://www.youtube.com/$1 permanent;
+}
+
+client_max_body_size 10M;
