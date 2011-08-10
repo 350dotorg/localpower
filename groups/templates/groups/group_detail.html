@@ -1,4 +1,5 @@
 {% extends "base/nav_6c3c_b.html" %}
+{% load humanize %}
 {% load record %}
 {% load invites %}
 {% load dated_static %}
@@ -88,6 +89,45 @@
             {% render_record record %}
         {% endfor %}
     {% endif %}
+
+	<div>
+	<h2>Events</h2>
+	<ul class="plain_list nugget_9c_list">
+	{% for event in group.event_set.all %}
+            {% include 'base/_nugget_9c_list.html' %}	
+	{% endfor %}
+	</ul>
+	</div>
+
+	<div>
+	<h2>Challenges</h2>
+	  <ul class='plain_list nugget_3c'>
+	{% for challenge in group.challenge_set.all %}
+        <li class="nugget_3c_tall {% if challenge.status %}nugget_3c_completed{% endif %}">
+            <div class="nugget_3c_status">
+                {% if challenge.status %}
+                    <span class="sprite_check_white_small"></span>
+                    COMPLETED
+                {% else %}
+                    Petition Challenge
+                {% endif %}
+            </div>
+
+            <h2>
+                <a href="{% url challenges_detail challenge.id %}">{{ challenge.title }} </a>
+            </h2>
+            <p>
+            Created by: 
+            <a href="{% url profile challenge.creator.id %}">{{challenge.creator.get_full_name}}</a><br/>
+            Goal: {{ challenge.goal|intcomma }} supporters
+
+            </p>
+            
+            {% include "challenges/_progress_bar.html" %}
+        </li>
+	{% endfor %}
+	</ul>
+	</div>
 
         <p>
             Community points: {{ group.total_points }}<br />
