@@ -34,3 +34,5 @@ CREATE TABLE `actions_action_groups` (
 ;
 ALTER TABLE `actions_action_groups` ADD CONSTRAINT `group_id_refs_id_5f8dd9a7` FOREIGN KEY (`group_id`) REFERENCES `groups_group` (`id`);
 ALTER TABLE `actions_action_groups` ADD CONSTRAINT `action_id_refs_id_749fd18d` FOREIGN KEY (`action_id`) REFERENCES `actions_action` (`id`);
+
+DROP TABLE `events_groupassociationrequest`;
