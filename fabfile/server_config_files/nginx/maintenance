@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name _public_dns_name;
+    include sites-available/maintenance_base;
+}
+
+server {
+    listen 443;
+    server_name _public_dns_name;
+    include sites-available/maintenance_base;
+    include sites-available/maintenance_ssl;
+}

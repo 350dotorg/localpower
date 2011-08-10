@@ -1,0 +1,9 @@
+ssl                  on;
+ssl_certificate      /etc/ssl/certs/lp.crt;
+ssl_certificate_key  /etc/ssl/private/lp.key;
+
+ssl_session_timeout  15m;
+
+ssl_protocols  SSLv2 SSLv3 TLSv1;
+ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+ssl_prefer_server_ciphers   on;

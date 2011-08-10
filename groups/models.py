@@ -361,7 +361,7 @@ class Discussion(models.Model):
         user it claims to be coming from.
         """
         value = json.dumps(dict(parent_id=self.thread_id,
-                                user=recipient.email,
+                                user=user_object.email,
                                 group=self.group.slug))
         value = "%s\0%s" % (value, hash_val(value))
         value = base64.b64encode(value)
