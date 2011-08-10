@@ -166,11 +166,27 @@
         <ul>
             {% for er in event_requests %}
                 <li class="membership_request">
-                    {% safe_user_link er.event.creator %} has requested to link this community to
-                    <a href="{{ er.event.get_absolute_url }}">{{ er.event }}</a>
+                    {% safe_user_link er.content_object.creator %} has requested to link this community to
+                    <a href="{{ er.content_object.get_absolute_url }}">{{ er.content_object }}</a>
                     <div class="membership_tools">
-                        <a href="{% url group_event_approve er.group.id er.event.id %}">Approve</a> or
-                        <a href="{% url group_event_deny er.group.id er.event.id %}">Deny</a>
+                        <a href="{% url group_event_approve er.group.id er.object_id %}">Approve</a> or
+                        <a href="{% url group_event_deny er.group.id er.object_id %}">Deny</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if challenge_requests %}
+        <h3>Challenge Link Requests</h3>
+        <ul>
+            {% for cr in challenge_requests %}
+                <li class="membership_request">
+                    {% safe_user_link cr.content_object.creator %} has requested to link this community to
+                    <a href="{{ cr.content_object.get_absolute_url }}">{{ cr.content_object }}</a>
+                    <div class="membership_tools">
+                        <a href="{% url group_challenge_approve cr.group.id cr.object_id %}">Approve</a> or
+                        <a href="{% url group_challenge_deny cr.group.id cr.object_id %}">Deny</a>
                     </div>
                 </li>
             {% endfor %}

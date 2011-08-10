@@ -401,6 +401,7 @@ def _group_detail(request, group):
     membership_pending = group.has_pending_membership(request.user)
     requesters = group.requesters_to_grant_or_deny(request.user)
     event_requests = group.events_waiting_approval(request.user)
+    challenge_requests = group.challenges_waiting_approval(request.user)
     has_other_managers = group.has_other_managers(request.user)
     discs = Discussion.objects.filter(parent=None, group=group).order_by("-created")[:5]
     return render_to_response("groups/group_detail.html", locals(), context_instance=RequestContext(request))
