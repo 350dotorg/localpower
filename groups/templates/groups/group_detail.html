@@ -1,4 +1,5 @@
 {% extends "base/nav_6c3c_b.html" %}
+{% load humanize %}
 {% load record %}
 {% load invites %}
 {% load dated_static %}
@@ -89,6 +90,45 @@
         {% endfor %}
     {% endif %}
 
+	<div>
+	<h2>Events</h2>
+	<ul class="plain_list nugget_9c_list">
+	{% for event in group.event_set.all %}
+            {% include 'base/_nugget_9c_list.html' %}	
+	{% endfor %}
+	</ul>
+	</div>
+
+	<div>
+	<h2>Challenges</h2>
+	  <ul class='plain_list nugget_3c'>
+	{% for challenge in group.challenge_set.all %}
+        <li class="nugget_3c_tall {% if challenge.status %}nugget_3c_completed{% endif %}">
+            <div class="nugget_3c_status">
+                {% if challenge.status %}
+                    <span class="sprite_check_white_small"></span>
+                    COMPLETED
+                {% else %}
+                    Petition Challenge
+                {% endif %}
+            </div>
+
+            <h2>
+                <a href="{% url challenges_detail challenge.id %}">{{ challenge.title }} </a>
+            </h2>
+            <p>
+            Created by: 
+            <a href="{% url profile challenge.creator.id %}">{{challenge.creator.get_full_name}}</a><br/>
+            Goal: {{ challenge.goal|intcomma }} supporters
+
+            </p>
+            
+            {% include "challenges/_progress_bar.html" %}
+        </li>
+	{% endfor %}
+	</ul>
+	</div>
+
         <p>
             Community points: {{ group.total_points }}<br />
             Total members: {{ group.total_members }}<br />
@@ -126,11 +166,27 @@
         <ul>
             {% for er in event_requests %}
                 <li class="membership_request">
-                    {% safe_user_link er.event.creator %} has requested to link this community to
-                    <a href="{{ er.event.get_absolute_url }}">{{ er.event }}</a>
+                    {% safe_user_link er.content_object.creator %} has requested to link this community to
+                    <a href="{{ er.content_object.get_absolute_url }}">{{ er.content_object }}</a>
                     <div class="membership_tools">
-                        <a href="{% url group_event_approve er.group.id er.event.id %}">Approve</a> or
-                        <a href="{% url group_event_deny er.group.id er.event.id %}">Deny</a>
+                        <a href="{% url group_event_approve er.group.id er.object_id %}">Approve</a> or
+                        <a href="{% url group_event_deny er.group.id er.object_id %}">Deny</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if challenge_requests %}
+        <h3>Challenge Link Requests</h3>
+        <ul>
+            {% for cr in challenge_requests %}
+                <li class="membership_request">
+                    {% safe_user_link cr.content_object.creator %} has requested to link this community to
+                    <a href="{{ cr.content_object.get_absolute_url }}">{{ cr.content_object }}</a>
+                    <div class="membership_tools">
+                        <a href="{% url group_challenge_approve cr.group.id cr.object_id %}">Approve</a> or
+                        <a href="{% url group_challenge_deny cr.group.id cr.object_id %}">Deny</a>
                     </div>
                 </li>
             {% endfor %}

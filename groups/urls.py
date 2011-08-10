@@ -13,7 +13,9 @@ group_search_info = {
     'object_rendering_template': 'groups/_group_search_result.html',
 }
 
-urlpatterns = patterns('groups.views',
+urlpatterns = patterns(
+    'groups.views',
+
     url(r'^$', 'group_list', name='group_list'),
     url(r'^create/$', 'group_create', name='group_create'),
     url(r'^(?P<group_id>\d+)/leave/$', 'group_leave', name='group_leave'),
@@ -32,6 +34,22 @@ urlpatterns = patterns('groups.views',
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/$', 'group_disc_detail', name='group_disc_detail'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/remove/$', 'group_disc_remove', name='group_disc_remove'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/approve/$', 'group_disc_approve', name='group_disc_approve'),
-    url(r'^(?P<group_id>\d+)/event_approve/(?P<event_id>\d+)/$', 'group_event_request', {'action': 'approve'}, name='group_event_approve'),
-    url(r'^(?P<group_id>\d+)/event_deny/(?P<event_id>\d+)/$', 'group_event_request', {'action': 'deny'}, name='group_event_deny'),
+
+    url(r'^(?P<group_id>\d+)/event_approve/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'approve', 'content_type': 'events.event'}, 
+        name='group_event_approve'),
+    url(r'^(?P<group_id>\d+)/event_deny/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'deny', 'content_type': 'events.event'}, 
+        name='group_event_deny'),
+    
+    url(r'^(?P<group_id>\d+)/challenge_approve/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'approve', 'content_type': 'challenges.challenge'}, 
+        name='group_challenge_approve'),
+    url(r'^(?P<group_id>\d+)/challenge_deny/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'deny', 'content_type': 'challenges.challenge'}, 
+        name='group_challenge_deny'),
 )

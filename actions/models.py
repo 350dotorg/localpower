@@ -83,6 +83,12 @@ class Action(models.Model):
     updated = models.DateTimeField(auto_now=True)
     objects = ActionManager()
 
+    groups = models.ManyToManyField("groups.Group", blank=True,
+        limit_choices_to = {'is_geo_group': False}, verbose_name="Communities")
+
+    def creator(self):
+        return ""
+
     def image_paths(self):
         images = {}
         images['small'] = timestamp_file("images/badges/%s-action-badge-0-small.png" % self.slug)

@@ -12,6 +12,5 @@ def get_client():
             settings.ACTIONKIT_API_USER,
             settings.ACTIONKIT_API_PASSWORD,
             host.netloc)
-    print url
     actionkit = xmlrpclib.Server(url)
     return actionkit

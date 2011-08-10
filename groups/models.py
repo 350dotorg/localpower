@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail, EmailMessage
 from django.db import models, transaction, IntegrityError
@@ -18,7 +19,6 @@ from actions.models import Action
 from invite.models import Invitation, Rsvp
 from thumbnails.fields import ImageAndThumbsField
 from messaging.models import Stream
-from events.models import GroupAssociationRequest
 from utils import hash_val
 
 class GroupManager(models.Manager):
@@ -200,8 +200,19 @@ class Group(models.Model):
         return []
 
     def events_waiting_approval(self, user):
+        return self.association_requests_waiting_approval(
+            user, content_type=ContentType.objects.get(app_label="events", model="event"))
+
+    def challenges_waiting_approval(self, user):
+        return self.association_requests_waiting_approval(
+            user, content_type=ContentType.objects.get(app_label="challenges", model="challenge"))
+
+    def association_requests_waiting_approval(self, user, content_type=None):
         if user.is_authenticated() and self.is_user_manager(user):
-            return GroupAssociationRequest.objects.filter(group=self, approved=False)
+            requests = GroupAssociationRequest.objects.filter(group=self, approved=False)
+            if content_type is not None:
+                requests = requests.filter(content_type=content_type)
+            return requests
         return []
 
     def is_user_manager(self, user):
@@ -360,6 +371,24 @@ class Discussion(models.Model):
         value = base64.b64encode(value)
         return {"Reply-To": "%s@%s" %
                 (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
+
+class GroupAssociationRequest(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+
+    group = models.ForeignKey('groups.Group')
+    approved = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('content_type', 'object_id', 'group',)
+
+    def __unicode__(self):
+        return u'%s would like to link %s to %s' % (
+            self.content_object.creator, self.content_object, self.group)
+
 """
 Signals!
 """
@@ -425,3 +454,9 @@ models.signals.post_save.connect(infer_user_location_from_group, sender=GroupUse
 def remove_community_create_stream(sender, instance, **kwargs):
     Stream.objects.get(slug="community-create").dequeue(content_object=instance)
 models.signals.post_delete.connect(remove_community_create_stream, sender=Group)
+
+def notification_on_group_association_request(sender, instance, created, **kwargs):
+    if created:
+        Stream.objects.get(slug="event-group-association-request").enqueue(
+            content_object=instance, start=instance.created)
+models.signals.post_save.connect(notification_on_group_association_request, sender=GroupAssociationRequest)
