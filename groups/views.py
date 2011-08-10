@@ -9,8 +9,10 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail, EmailMessage
+from django.db.models import get_model
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import Context, loader, RequestContext
@@ -23,9 +25,9 @@ from invite.models import Invitation
 from invite.forms import InviteForm
 from utils import hash_val, forbidden
 from messaging.models import Stream
-from events.models import Event, GroupAssociationRequest
+from events.models import Event
 
-from models import Group, GroupUsers, MembershipRequests, Discussion
+from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
 from forms import GroupForm, MembershipForm, DiscussionSettingsForm, DiscussionCreateForm, DiscussionApproveForm, DiscussionRemoveForm
 
 @login_required
@@ -114,28 +116,33 @@ def group_membership_request(request, group_id, user_id, action):
     return redirect("group_detail", group_slug=group.slug)
 
 @login_required
-def group_event_request(request, group_id, event_id, action):
+def group_association_request(request, group_id, object_id, action, content_type):
     group = get_object_or_404(Group, id=group_id, is_geo_group=False)
-    event = get_object_or_404(Event, id=event_id)
+    model_type = get_model(*content_type.split("."))
+    content_type = ContentType.objects.get_for_model(model_type)
+    content_object = get_object_or_404(model_type, id=object_id)
     if not group.is_user_manager(request.user):
         return forbidden(request)
     try:
-        event_request = GroupAssociationRequest.objects.get(event=event, group=group)
+        association_request = GroupAssociationRequest.objects.get(
+            content_type=content_type, object_id=object_id, group=group)
     except GroupAssociationRequest.DoesNotExist:
-        event_request = None
-    if event_request:
+        association_request = None
+    if association_request:
         if action == "approve":
-            event.groups.add(group)
-            event_request.approved = True
-            event_request.save()
-            messages.success(request, "Your community has been linked with %s" % event)
+            content_object.groups.add(group)
+            association_request.approved = True
+            association_request.save()
+            messages.success(request, "Your community has been linked with %s" % content_object)
         elif action == "deny":
-            event_request.delete()
-            messages.success(request, "Your community will not be linked with %s" % event)
-    elif group.event_set.filter(event=event).exists():
-        messages.info(request, "%s has already been linked with your community" % event)
+            association_request.delete()
+            messages.success(request, "Your community will not be linked with %s" % content_object)
+    elif content_object.groups.filter(id=group_id).exists():
+        print "Already"
+        messages.info(request, "%s has already been linked with your community" % content_object)
     else:
-        messages.info(request, "%s has not been linked with your community" % event)
+        print "Never"
+        messages.info(request, "%s has not been linked with your community" % content_object)
     return redirect("group_detail", group_slug=group.slug)
 
 def group_detail(request, group_slug):
@@ -394,6 +401,7 @@ def _group_detail(request, group):
     membership_pending = group.has_pending_membership(request.user)
     requesters = group.requesters_to_grant_or_deny(request.user)
     event_requests = group.events_waiting_approval(request.user)
+    challenge_requests = group.challenges_waiting_approval(request.user)
     has_other_managers = group.has_other_managers(request.user)
     discs = Discussion.objects.filter(parent=None, group=group).order_by("-created")[:5]
     return render_to_response("groups/group_detail.html", locals(), context_instance=RequestContext(request))

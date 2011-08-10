@@ -9,19 +9,21 @@ from django.forms import formsets
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.template import Context, loader
 from django.utils.dateformat import format
 
 from geo.models import Location
+from groups.forms import GroupAssociationRequestRelatedForm
 from invite.models import Invitation
 from invite.forms import InviteForm
 from invite.fields import MultiEmailField
 from messaging.models import Stream
 from commitments.models import Survey, Commitment, Contributor
 
-from models import Event, Guest, rsvp_recieved, GroupAssociationRequest
+from models import Event, Guest, rsvp_recieved
 from widgets import SelectTimeWidget
 
 def _durations():
@@ -35,7 +37,7 @@ def _durations():
     return durations
 DURATIONS = _durations()
 
-class EventForm(forms.ModelForm):
+class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
     class Meta:
         model = Event
         fields = ("title", "where", "details", "when", "start", "duration", "is_private", "lat", "lon", "groups")
@@ -52,23 +54,7 @@ class EventForm(forms.ModelForm):
         super(EventForm, self).__init__(*args, **kwargs)
         self.fields["start"].initial = datetime.time(18,0)
         self.user = user
-        groups = self.fields["groups"]
-        groups.queryset = groups.queryset.filter(groupusers__user=user)
-        if not groups.queryset:
-            groups.help_text = "You need to be a member of a community first"
-        else:
-            groups.help_text = None
-
-    def clean_groups(self):
-        data = self.cleaned_data["groups"]
-        approved_groups, self.requested_groups = [], []
-        for g in data:
-            if g.is_user_manager(self.user) or GroupAssociationRequest.objects.filter(
-                event=self.instance, group=g, approved=True).exists():
-                approved_groups.append(g)
-            else:
-                self.requested_groups.append(g)
-        return approved_groups
+        self.init_groups(user)
 
     def clean(self):
         if "where" in self.cleaned_data:
@@ -108,10 +94,7 @@ class EventForm(forms.ModelForm):
         self.instance.creator = self.user
         self.instance.location = self.cleaned_data["location"]
         event = super(EventForm, self).save(*args, **kwargs)
-        for g in self.requested_groups:
-            request, created = GroupAssociationRequest.objects.get_or_create(
-                event=event, group=g)
-            # TODO: notify user of groups requested
+        self.save_groups(event)
         return event
 
 class GuestInviteForm(InviteForm):
