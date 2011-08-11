@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml" lang="en" xml:lang="en">
     <head>
         {% load dated_static %}
-        <title>{% block title %}Save energy at home and organize your community{% endblock %} | {{ SITE_NAME }}</title>
+        <title>{% block title %}{% blocktrans %}Save energy at home and organize your community{% endblocktrans %}{% endblock %} | {{ SITE_NAME }}</title>
         <meta name="google-site-verification" content="LKUJZqwKMnEGjg_dQNKL-2eLLK3yvftU0RKv7SuymGQ" />
         <meta name="msvalidate.01" content="DC928E84A1569AF4933A7DB431C08DB4" />
         <meta name="y_key" content="9d9c6c76735e5a92"/>
@@ -15,15 +16,15 @@
         <meta name="ICBM" content="38.896231, -77.024158"/>
         <meta name="og:site_name" content="{{ SITE_NAME }}"/>
         <meta name="fb:app_id" content="132085630163980"/>
-        <meta name="keywords" content="{% block meta_keywords %}energy efficiency, home energy, climate change, {{ SITE_NAME }}{% endblock %}" />
-        <meta name="description" content="{% block meta_desc %}We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned.{% endblock %}" />
+        <meta name="keywords" content="{% block meta_keywords %}{% blocktrans %}energy efficiency, home energy, climate change, {{ SITE_NAME }}{% endblocktrans %}{% endblock %}" />
+        <meta name="description" content="{% block meta_desc %}{% blocktrans %}We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned.{% endblocktrans %}{% endblock %}" />
         <meta name="DC.title" content="{{ SITE_NAME }}" /> 
         <meta name="DC.creator" content="{{ SITE_NAME }}" /> 
-        <meta name="DC.subject" content="energy efficiency; home energy; climate change;" /> 
-        <meta name="DC.description" content="We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned." /> 
+        <meta name="DC.subject" content="{% blocktrans %}energy efficiency; home energy; climate change;{% endblocktrans %}" /> 
+        <meta name="DC.description" content="{% blocktrans %}We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned.{% endblocktrans %}" /> 
         <meta name="DC.format" content="text/html; charset=utf-8" />
         <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" /> 
-        <link rel="alternate" type="application/atom+xml"  href="{% url blog_feed %}" title="Blog" />
+        <link rel="alternate" type="application/atom+xml"  href="{% url blog_feed %}" title="{% blocktrans %}Blog{% endblocktrans %}" />
         <link rel="shortcut icon" href="{% dated_static 'images/theme/favicon.ico' %}"/>
         <link rel="stylesheet" href="{% dated_static 'css/style.css' %}" type="text/css" media="screen" charset="utf-8"/>
         {% block extrahead %}{% endblock %}
@@ -49,19 +50,19 @@
                             <input type="hidden" name="cx" value="018322562804099680750:4l5wfmovb4q" />
                             <input type="hidden" name="cof" value="FORID:11" />
                             <input type="hidden" name="ie" value="UTF-8" />
-                            <input type="text" name="q" size="31" id="cse_search_box" placeholder="Search the site..."/>
+                            <input type="text" name="q" size="31" id="cse_search_box" placeholder="{% blocktrans %}Search the site...{% endblocktrans %}"/>
                             <button type="submit" id="cse_search_box_submit" class="search_button">
                                 <span class="sprite_search_mag"></span>
                             </button>
                         </div>
                     </form>
                     <div id="header_links">
-                        <a href="/about/" id="header_about">About Us</a>
-                        <a href="{% url blog_index %}">Blog</a>
+                        <a href="/about/" id="header_about">{% blocktrans %}About Us{% endblocktrans %}</a>
+                        <a href="{% url blog_index %}">{% blocktrans %}Blog{% endblocktrans %}</a>
                          {% if request.user.is_authenticated %}
-                            <a href="{% url logout %}" class="button button_small button_blue">Log Out</a>
+                            <a href="{% url logout %}" class="button button_small button_blue">{% blocktrans %}Log Out{% endblocktrans %}</a>
                          {% else %}
-                            <a href="{% url login %}" class="button button_small">Log In</a>
+                            <a href="{% url login %}" class="button button_small">{% blocktrans %}Log In{% endblocktrans %}</a>
                          {% endif %}
                     </div>
                 </div>
@@ -84,33 +85,38 @@
                     </a>
                 </div>
                 <div class="grid_4">
-                    <h2>Who are we? Listen up.</h2>
+                    <h2>{% blocktrans %}Who are we? Listen up.{% endblocktrans %}</h2>
                     <p>
+		      {% blocktrans %}
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                        ad minim veniam, quis nostrud exercitation ullamco. <a href="/about/">Learn More</a>.
+                        ad minim veniam, quis nostrud exercitation ullamco.
+		      {% endblocktrans %}
+		      <a href="/about/">{% blocktrans %}Learn More{% endblocktrans %}</a>.
                     </p>
                 </div>
                 <div class="grid_4 omega">
-                    <h2>Follow Us</h2>
+                    <h2>{% blocktrans %}Follow Us{% endblocktrans %}</h2>
                     <div id="footer_social_icons">
-                        <a href="" class="sprite_social_fb" title="Find us on Facebook" >
+                        <a href="" class="sprite_social_fb" title="{% blocktrans %}Find us on Facebook{% endblocktrans %}" >
                         </a>
-                        <a href="" class="sprite_social_twitter" title="Follow us on Twitter">
+                        <a href="" class="sprite_social_twitter" title="{% blocktrans %}Follow us on Twitter{% endblocktrans %}">
                         </a>
-                        <a href="" class="sprite_social_yt" title="Watch us on YouTube">
+                        <a href="" class="sprite_social_yt" title="{% blocktrans %}Watch us on YouTube{% endblocktrans %}">
                         </a>
-                        <a href="{% url blog_feed %}" class="sprite_social_rss" title="Subscribe to our blog">
+                        <a href="{% url blog_feed %}" class="sprite_social_rss" title="{% blocktrans %}Subscribe to our blog{% endblocktrans %}">
                         </a>
                     </div>
                 </div>
                 <div class="grid_12 alpha omega">
-                    <a href="{% url rah.views.feedback %}" class="feedback_link" rel="nofollow">Feedback</a> | 
-                    <a href="/terms/" rel="nofollow">Terms of Use</a> | 
-                    <a href="/privacy/" rel="nofollow">Privacy Policy</a> |
-                    <a href="/about/">About Us</a> | 
-                    Text is available under a <a href="http://creativecommons.org/licenses/by/3.0/">
+                    <a href="{% url rah.views.feedback %}" class="feedback_link" rel="nofollow">{% blocktrans %}Feedback{% endblocktrans %}</a> | 
+                    <a href="/terms/" rel="nofollow">{% blocktrans %}Terms of Use{% endblocktrans %}</a> | 
+                    <a href="/privacy/" rel="nofollow">{% blocktrans %}Privacy Policy{% endblocktrans %}</a> |
+                    <a href="/about/">{% blocktrans %}About Us{% endblocktrans %}</a> | 
+                    {% blocktrans %}
+		    Text is available under a <a href="http://creativecommons.org/licenses/by/3.0/">
                     Creative Commons Attribution 3.0 Unported License</a>.
+		    {% endblocktrans %}
                 </div>
             </div>
         </div>

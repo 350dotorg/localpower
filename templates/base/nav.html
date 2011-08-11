@@ -1,13 +1,14 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 {% block 12c_content %}
 <div class="grid_3 alpha omega">
     <div id="nav">
         {% if request.user.is_authenticated %}
-            <a href="{% url profile request.user.id %}" title="View your profile">
-                <img id="nav_profile_picture" src="{{ request.user.get_profile.profile_picture_large }}" alt="Your profile picture" width="186" height="186"/>
+            <a href="{% url profile request.user.id %}" title="{% blocktrans %}View your profile{% endblocktrans %}">
+                <img id="nav_profile_picture" src="{{ request.user.get_profile.profile_picture_large }}" alt="{% blocktrans %}Your profile picture{% endblocktrans %}" width="186" height="186"/>
             </a>
             <h3>
-                <a href="{% url profile request.user.id %}" title="View your profile">
+                <a href="{% url profile request.user.id %}" title="{% blocktrans %}View your profile{% endblocktrans %}">
                    {{request.user.get_full_name }}
                 </a>
             </h3>
@@ -15,20 +16,20 @@
                 <div id="nav_profile_location">{{ request.user.get_profile.location }}</div>
             {% endif %}
             <div id="nav_profile_stats">
-                <a href="{% url profile request.user.id %}">{{ request.user.get_profile.total_points }} points</a> | 
-                <a href="{% url profile request.user.id %}#badges">8 badges</a>
+                <a href="{% url profile request.user.id %}">{% blocktrans with request.user.get_profile.total_points as total_points %}{{total_points}} points{% endblocktrans %}</a> | 
+                <a href="{% url profile request.user.id %}#badges">{% blocktrans %}8 badges{% endblocktrans %}</a>
             </div>
         {% else %}
         <div id="nav_logged_out">
-            <h2>Join Us Today</h2>
-            <p>Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut dictum velit nec est.</p>
+            <h2>{% blocktrans %}Join Us Today{% endblocktrans %}</h2>
+            <p>{% blocktrans %}Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut dictum velit nec est.{% endblocktrans %}</p>
             <div id="nav_logged_out_register" class="center">
-                <a href="{% url register %}" class="button">Create an Account</a>
+                <a href="{% url register %}" class="button">{% blocktrans %}Create an Account{% endblocktrans %}</a>
             </div>
             <div id="nav_logged_out_fb" class="center">
                 <div class="fb_button" id="fb-login">
                     <a href="#" class="fb_button fb_button_medium">
-                        <span id="fb_login_text" class="fb_button_text">Join with with Facebook</span>
+                        <span id="fb_login_text" class="fb_button_text">{% blocktrans %}Join with with Facebook{% endblocktrans %}</span>
                     </a>
                 </div>
             </div>
@@ -36,42 +37,42 @@
         {% endif %}
         <ul id="nav_primary" class="plain_list">
             <li class="{% ifequal nav_selected "actions" %}nav_selected{% endifequal %}">
-                <a href="{% url action_show %}"><span class="sprite_nav_actions"></span> Actions</a>
+                <a href="{% url action_show %}"><span class="sprite_nav_actions"></span> {% blocktrans %}Actions{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
             <li class="{% ifequal nav_selected "communities" %}nav_selected{% endifequal %}">
-                <a href="{% url group_list %}"><span class="sprite_nav_communities"></span> Communities</a>
+                <a href="{% url group_list %}"><span class="sprite_nav_communities"></span> {% blocktrans %}Communities{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
             <li class="{% ifequal nav_selected "challenges" %}nav_selected{% endifequal %}">
-                <a href="{% url challenges_list %}"><span class="sprite_nav_challenges"></span> Challenges</a>
+                <a href="{% url challenges_list %}"><span class="sprite_nav_challenges"></span> {% blocktrans %}Challenges{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
             <li class="{% ifequal nav_selected "events" %}nav_selected{% endifequal %}">
-                <a href="{% url event-show %}"><span class="sprite_nav_events"></span> Events</a>
+                <a href="{% url event-show %}"><span class="sprite_nav_events"></span> {% blocktrans %}Events{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
             <li class="{% ifequal nav_selected "badges" %}nav_selected{% endifequal %}">
-                <a href="{% url badge_list %}"><span class="sprite_nav_badges"></span> Badges</a>
+                <a href="{% url badge_list %}"><span class="sprite_nav_badges"></span> {% blocktrans %}Badges{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
         </ul>
         {% if request.user.is_authenticated %}        
             <ul id="nav_secondary" class="plain_list">
                 <li>
-                    <a href=""><span class="sprite_nav_calendar"></span>My Calendar</a>
+                    <a href=""><span class="sprite_nav_calendar"></span>{% blocktrans %}My Calendar{% endblocktrans %}</a>
                 </li>
                 <li>
-                    <a href=""><span class="sprite_nav_settings"></span>My Profile / Settings</a>
+                    <a href=""><span class="sprite_nav_settings"></span>{% blocktrans %}My Profile / Settings{% endblocktrans %}</a>
                 </li>
                 <li>
-                    <a href=""><span class="sprite_nav_invite"></span>Invite Friends</a>
+                    <a href=""><span class="sprite_nav_invite"></span>{% blocktrans %}Invite Friends{% endblocktrans %}</a>
                 </li>
                 <li>
-                    <a href=""><span class="sprite_nav_cards"></span>Enter Commitment Cards</a>
+                    <a href=""><span class="sprite_nav_cards"></span>{% blocktrans %}Enter Commitment Cards{% endblocktrans %}</a>
                 </li>
                 <li id="nav_logout_link">
-                    <a href="{% url logout %}"><span class="sprite_nav_logout"></span>Log Out</a>
+                    <a href="{% url logout %}"><span class="sprite_nav_logout"></span>{% blocktrans %}Log Out{% endblocktrans %}</a>
                 </li>
             </ul>
         {% endif %}

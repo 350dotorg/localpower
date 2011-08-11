@@ -1,8 +1,9 @@
+{% load i18n %}
 {% load humanize %}
 <li>
     <img src="{{ user.profile_picture }}" width="40" height="40"/>
     <div>
         {% safe_user_link user.user %}<br/>
-        {{ user.total_points|intcomma }} points
+        {% blocktrans with user.total_points|intcomma as total_points %}{{total_points}} points{% endblocktrans %}
     </div>
 </li>

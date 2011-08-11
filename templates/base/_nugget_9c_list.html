@@ -1,19 +1,20 @@
+{% load i18n %}
 <li>
     <a href="{% url event-detail event.id %}">
         <img src="http://maps.google.com/maps/api/staticmap?center={{event.lat}},{{event.lon}}&amp;zoom=10&amp;size=80x80&amp;markers=size:small%7C{{event.lat}},{{event.lon}}&amp;sensor=false" 
-            alt="Map of the event" width="80" height="80"/>
+            alt="{% blocktrans %}Map of the event{% endblocktrans %}" width="80" height="80"/>
     </a>
     <div class="nugget_9c_list_name">
         <a href="{% url event-detail event.id %}">{{ event }}</a>
         <div>
-            <span>When:</span> {{ event.when|date }}<br/>
-            <span>Where:</span> {{ event.location }}
+            <span>{% blocktrans %}When:{% endblocktrans %}</span> {{ event.when|date }}<br/>
+            <span>{% blocktrans %}Where:{% endblocktrans %}</span> {{ event.location }}
         </div>
     </div>
     <div class="nugget_9c_list_desc">
         {{ event.details|truncatewords_html:16 }}
         <div>
-            <a href="{% url event-detail event.id %}">View Event Page</a>
+            <a href="{% url event-detail event.id %}">{% blocktrans %}View Event Page{% endblocktrans %}</a>
         </div>
     </div>
 </li>

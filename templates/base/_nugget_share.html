@@ -1,9 +1,10 @@
+{% load i18n %}
 <ul class="plain_list nugget_3c_grid_3 nugget_3c_grid_3_share">
     <li>
         <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{SITE_DOMAIN}}{{ object.get_absolute_url|urlencode }}&amp;layout=box_count&amp;show_faces=false&amp;width=47&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=60" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:47px; height:60px;" allowTransparency="true"></iframe>
     </li>
     <li>
-    <a href="http://twitter.com/share" class="twitter-share-button" data-text="{% if object.name %}{{ object.name }}{% else %}{{ object.title }}{% endif %}" data-url="http://{{SITE_DOMAIN}}{{ object.get_absolute_url }}" data-count="vertical" data-via="{{SITE_NAME}}">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-text="{% if object.name %}{{ object.name }}{% else %}{{ object.title }}{% endif %}" data-url="http://{{SITE_DOMAIN}}{{ object.get_absolute_url }}" data-count="vertical" data-via="{{SITE_NAME}}">{% blocktrans %}Tweet{% endblocktrans %}</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     </li>
     <li>
         <a class="addthis_counter"></a>
