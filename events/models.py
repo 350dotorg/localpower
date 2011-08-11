@@ -173,19 +173,6 @@ class Event(models.Model):
         if self._guest_key in request.session:
             del request.session[self._guest_key()]
 
-class GroupAssociationRequest(models.Model):
-    event = models.ForeignKey(Event)
-    group = models.ForeignKey('groups.Group')
-    approved = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        unique_together = ('event', 'group',)
-
-    def __unicode__(self):
-        return u'%s would like to link %s to %s' % (self.event.creator, self.event, self.group)
-
 class GuestManager(models.Manager):
     def rsvped_with_order(self):
         return self.exclude(rsvp_status=" ").order_by("rsvp_status", "created")
@@ -353,9 +340,3 @@ def notification_on_rsvp(sender, guest, **kwargs):
     if guest.rsvp_status and guest.notify_on_rsvp:
         Stream.objects.get(slug="event-rsvp-notification").enqueue(content_object=guest, start=guest.updated)
 rsvp_recieved.connect(notification_on_rsvp)
-
-def notification_on_group_association_request(sender, instance, created, **kwargs):
-    if created:
-        Stream.objects.get(slug="event-group-association-request").enqueue(
-            content_object=instance, start=instance.created)
-models.signals.post_save.connect(notification_on_group_association_request, sender=GroupAssociationRequest)

@@ -12,7 +12,7 @@ from forms import ChallengeForm, PetitionForm
 
 def _edit(request, challenge):
     nav_selected = "challenges"
-    form = ChallengeForm(instance=challenge, data=(request.POST or None))
+    form = ChallengeForm(request.user, instance=challenge, data=(request.POST or None))
     if form.is_valid():
         form.save()
         return redirect(challenge)

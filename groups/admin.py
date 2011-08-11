@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Group, GroupUsers
+from models import Group, GroupUsers, GroupAssociationRequest
 
 class GroupAdmin(admin.ModelAdmin):
     list_display = ("name", "managers", "total_members", "committed_actions", "completed_actions", "total_points", "created",)
@@ -21,3 +21,4 @@ class GroupAdmin(admin.ModelAdmin):
 
 admin.site.register(Group, GroupAdmin)
 admin.site.register(GroupUsers)
+admin.site.register(GroupAssociationRequest)
