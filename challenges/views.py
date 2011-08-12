@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
+from django.utils.translation import ugettext as _
 from django.views.decorators.http import require_POST
 
 from utils import forbidden
@@ -16,7 +17,7 @@ def _edit(request, challenge):
     if form.is_valid():
         form.save()
         return redirect(challenge)
-    type_label = challenge.id and 'Edit' or 'Create'
+    type_label = challenge.id and _('Edit') or _('Create')
     return render_to_response('challenges/edit.html', locals(), context_instance=RequestContext(request))
 
 def list(request):
@@ -45,7 +46,7 @@ def detail(request, challenge_id):
     form = PetitionForm(challenge=challenge, data=(request.POST or None), initial=initial)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Thanks for your support')
+        messages.success(request, _('Thanks for your support'))
         return redirect('challenges_detail', challenge_id=challenge_id)
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")[:12]
     return render_to_response('challenges/detail.html', locals(), context_instance=RequestContext(request))
@@ -54,5 +55,6 @@ def detail(request, challenge_id):
 def edit(request, challenge_id=None):
     challenge = get_object_or_404(Challenge, id=challenge_id)
     if request.user != challenge.creator:
-        return forbidden(request, 'You do not have permissions to edit %s' % challenge)
+        return forbidden(request, _('You do not have permissions to edit %(challenge)s'
+                                    ) % {'challenge': challenge})
     return _edit(request, challenge)

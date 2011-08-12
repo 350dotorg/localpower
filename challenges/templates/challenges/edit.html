@@ -1,26 +1,27 @@
 {% extends "base/nav_form.html" %}
+{% load i18n %}
 {% load dated_static %}
-{% block title %}{{ type_label }} a Challenge{% endblock %}
+{% block title %}{% blocktrans %}{{ type_label }} a Challenge{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url challenges_list %}">Challenges</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url challenges_list %}">{% blocktrans %}Challenges{% endblocktrans %}</a> &rsaquo;
     {% if challenge.id %}
         <a href="{% url challenges_detail challenge.id %}">{{challenge.title|truncatewords:6}}</a> &rsaquo;
     {% endif %}
-    {{ type_label }} challenge
+    {% blocktrans %}{{ type_label }} challenge{% endblocktrans %}
     {% endblock %}
 {% block content %}
     <form id="challenge_form" action="" method="post" class="form_6c">
-        <h1>{{ type_label }} Challenge</h1>
+        <h1>{% blocktrans %}{{ type_label }} Challenge{% endblocktrans %}</h1>
         {% include "base/_form.html" %}
         {% csrf_token %}
         <div class="form_buttons">
             {% if challenge.id %}
-            <a href="{% url challenges_detail challenge.id %}" class="form_cancel">Cancel</a>
-            <button class="button_mega" type="submit">Save Challenge</button>
+            <a href="{% url challenges_detail challenge.id %}" class="form_cancel">{% blocktrans %}Cancel{% endblocktrans %}</a>
+            <button class="button_mega" type="submit">{% blocktrans %}Save Challenge{% endblocktrans %}</button>
             {% else %}
-            <a href="{% url challenges_list %}" class="form_cancel">Cancel</a>
-            <button class="button_mega" type="submit">Create Challenge</button>
+            <a href="{% url challenges_list %}" class="form_cancel">{% blocktrans %}Cancel{% endblocktrans %}</a>
+            <button class="button_mega" type="submit">{% blocktrans %}Create Challenge{% endblocktrans %}</button>
             {% endif %}
             
         </div>
@@ -31,6 +32,6 @@
     </script>
 {% endblock %}
 {% block form_info %}
-    Use this form to create or edit a challenge
+    {% blocktrans %}Use this form to create or edit a challenge{% endblocktrans %}
 {% endblock %}
 

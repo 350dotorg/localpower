@@ -1,19 +1,22 @@
 {% extends "base/nav_6c3c.html" %}
+{% load i18n %}
 {% load comments %}
 {% load humanize %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &raquo;
-    <a href="{% url challenges_list %}">Challenges</a> &raquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &raquo;
+    <a href="{% url challenges_list %}">{% blocktrans %}Challenges{% endblocktrans %}</a> &raquo;
     {{ challenge.title }}
 {% endblock %}
-{% block title_bar_sub %}Petition Challenge{% endblock %}
+{% block title_bar_sub %}{% blocktrans %}Petition Challenge{% endblocktrans %}{% endblock %}
 {% block title_bar %}<div class="title_bar_full_width_title">{{ challenge.title }}</div>{% endblock %}
 {% block tab_nav %}
-    <li class="tab_nav_selected">Overview</li>
-    <li><a href="#supporters">Supporters</a></li>
-    <li><a href="#discussions">Discussions</a></li>
+    <li class="tab_nav_selected">{% blocktrans %}Overview{% endblocktrans %}</li>
+    <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
+    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% ifequal challenge.creator.id request.user.id %}
-        <li class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">Edit this Challenge</a></li>
+        <li class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
+	    {% blocktrans %}Edit this Challenge{% endblocktrans %}
+	</a></li>
     {% endifequal %}
 {% endblock %}
 {% block content %}
@@ -24,12 +27,12 @@
         {% include "base/_form.html" %}
         {% csrf_token %}
         <div class="form_buttons">
-            <button class="button button_mega" type="submit">Sign the Petition</button>
+            <button class="button button_mega" type="submit">{% blocktrans %}Sign the Petition{% endblocktrans %}</button>
         </div>
     </form>
     <br/>
     {% if supporters %}
-        <h2>Latest Supporters</h2>
+        <h2>{% blocktrans %}Latest Supporters{% endblocktrans %}</h2>
         <ul class="plain_list nugget_2c_list">
             {% for supporter in supporters %}
                 {% include "base/_nugget_2c_list_supporter.html" %}
@@ -37,7 +40,11 @@
         </ul>
         {% if challenge.number_of_supporters > 12 %}
         <p class="right">
-            <a href="">View all {{challenge.number_of_supporters|intcomma}} supporters</a>
+            <a href="">
+	      {% blocktrans with challenge.number_of_supporters|intcomma as number_of_supporters %}
+	      View all {{number_of_supporters}} supporters
+	      {% endblocktrans %}
+	    </a>
         </p>
         {% endif %}
     {% endif %}
@@ -45,9 +52,9 @@
         <h2 id="comments_form_heading">
             {% get_content_type_id for challenge as content_type_id %}
             <a class="button button_small button_feed" href="{% url comments_feed content_type_id,challenge.id %}">
-                <span class="sprite_feed"></span> Feed
+                <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}
             </a>
-            Discussions
+            {% blocktrans %}Discussions{% endblocktrans %}
         </h2>
         {% with challenge as object %}
             {% render_comment_form for object %}
@@ -57,14 +64,14 @@
 {% endblock %}
 {% block sidebar %}
     <div class="ribbon_small ribbon_small_dark">
-        Share
+        {% blocktrans %}Share{% endblocktrans %}
         <div class="ribbon_small_wrap ribbon_small_wrap_dark"></div>
     </div>
     {% with challenge as object %}
         {% include "base/_nugget_share.html" %}
     {% endwith %}
     <div class="ribbon_small">
-        Petitions signed
+        {% blocktrans %}Petitions signed{% endblocktrans %}
         <div class="ribbon_small_wrap"></div>
     </div>
     {% include "challenges/_progress_bar.html" %}

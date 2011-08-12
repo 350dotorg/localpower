@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 class ChallengeManager(models.Manager):
     def all_challenges(self, user=None):
@@ -14,17 +15,26 @@ class ChallengeManager(models.Manager):
         return challenges
 
 class Challenge(models.Model):
-    title = models.CharField(max_length=70)
-    description = models.TextField(blank=False, help_text="Tell people what this challenge is about, why you're involved, and what you want to accomplish.")
-    goal = models.PositiveIntegerField()
-    creator = models.ForeignKey('auth.user')
-    supporters = models.ManyToManyField('commitments.contributor', through='Support')
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _('challenge')
+        verbose_name_plural = _('challenges')
+
+    title = models.CharField(_('title'), max_length=70)
+    description = models.TextField(_('description'), blank=False, help_text=_(
+            "Tell people what this challenge is about, "
+            "why you're involved, and what you want to accomplish."))
+    goal = models.PositiveIntegerField(_('goal'))
+    creator = models.ForeignKey('auth.user', verbose_name=_('creator'))
+    supporters = models.ManyToManyField('commitments.contributor', 
+                                        through='Support',
+                                        verbose_name=_('supporters'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
     objects = ChallengeManager()
 
     groups = models.ManyToManyField("groups.Group", blank=True,
-        limit_choices_to = {'is_geo_group': False}, verbose_name="Communities")
+        limit_choices_to = {'is_geo_group': False}, verbose_name=_("communities"))
 
     def number_of_supporters(self):
         return self.supporters.all().count()
@@ -45,10 +55,12 @@ class Challenge(models.Model):
         return self.title
 
 class Support(models.Model):
-    challenge = models.ForeignKey(Challenge)
-    contributor = models.ForeignKey('commitments.contributor')
-    send_updates = models.BooleanField(default=False)
-    pledged_at = models.DateTimeField(auto_now_add=True)
+    challenge = models.ForeignKey(Challenge, verbose_name=_('challenge'))
+    contributor = models.ForeignKey('commitments.contributor', verbose_name=_('contributor'))
+    send_updates = models.BooleanField(_('send updates'), default=False)
+    pledged_at = models.DateTimeField(_('pledged at'), auto_now_add=True)
 
     class Meta:
         unique_together = ('challenge', 'contributor',)
+        verbose_name = _('support')
+        verbose_name_plural = _('supports')

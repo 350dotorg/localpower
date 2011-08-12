@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext as _
 
 from commitments.models import Contributor
 from commitments.forms import ContributorForm
@@ -8,7 +9,7 @@ from groups.forms import GroupAssociationRequestRelatedForm
 from models import Challenge, Support
 
 class ChallengeForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
-    goal = forms.IntegerField(min_value=1, help_text="How many petitions do you want to collect?")
+    goal = forms.IntegerField(min_value=1, help_text=_("How many petitions do you want to collect?"))
 
     class Meta:
         model = Challenge

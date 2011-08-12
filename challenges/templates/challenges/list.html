@@ -1,18 +1,25 @@
 {% extends "base/nav_9c.html" %}
+{% load i18n %}
 {% load humanize %}
-{% block title %}Challenges{% endblock %}
+{% block title %}{% blocktrans %}Challenges{% endblocktrans %}{% endblock %}
 {% block title_bar_image %}sprite_section_challenges_large{% endblock %}
-{% block title_bar_title %}Challenges{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Challenges{% endblocktrans %}{% endblock %}
 {% block title_bar_copy %}
+{% blocktrans %}
 Together we can achieve big things. Join a challenge to help your community
 reach a new goal and take the world one step closer to a clean energy
 transformation.
+{% endblocktrans %}
 <br/><br/>
 <a href="{% url challenges_create %}" class="button">
-    <b>+</b> Create a Challenge
+    {% blocktrans %}<b>+</b> Create a Challenge{% endblocktrans %}
 </a>
 {% endblock %}
-{% block ribbon_bar %}Showing {{challenges|length}} challenges{% endblock %}
+{% block ribbon_bar %}
+{% blocktrans with challenges|length as num_challenges %}
+Showing {{num_challenges}} challenges
+{% endblocktrans %}
+{% endblock %}
 {% block content %}
 <ul class='plain_list nugget_3c'>
     {% for challenge in challenges %}
@@ -20,9 +27,9 @@ transformation.
             <div class="nugget_3c_status">
                 {% if challenge.status %}
                     <span class="sprite_check_white_small"></span>
-                    COMPLETED
+                    {% blocktrans %}COMPLETED{% endblocktrans %}
                 {% else %}
-                    Petition Challenge
+                    {% blocktrans %}Petition Challenge{% endblocktrans %}
                 {% endif %}
             </div>
 
@@ -30,9 +37,11 @@ transformation.
                 <a href="{% url challenges_detail challenge.id %}">{{ challenge.title }} </a>
             </h2>
             <p>
-            Created by: 
+              {% blocktrans %}Created by:{% endblocktrans %}
             <a href="{% url profile challenge.creator.id %}">{{challenge.creator.get_full_name}}</a><br/>
-            Goal: {{ challenge.goal|intcomma }} supporters
+            {% blocktrans with challenge.goal|intcomma as challenge_goal %}
+	    Goal: {{ challenge_goal }} supporters
+	    {% endblocktrans %}
 
             </p>
             

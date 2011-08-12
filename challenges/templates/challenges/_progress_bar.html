@@ -1,11 +1,14 @@
+{% load i18n %}
 {% load humanize %}
 <div class="progress_nugget">
-    <div class="progress_label">Petitions signed:</div>
+    <div class="progress_label">{% blocktrans %}Petitions signed:{% endblocktrans %}</div>
     <div class="progress_wrapper">
         <div class="progress_bar" style="width:{{challenge.percent_complete}}%;"></div>
         <div class="progress_text">
-            {{challenge.number_of_supporters|intcomma}}
-            <div>of {{challenge.goal|intcomma}}</div>
+	  {% blocktrans with challenge.number_of_supporters|intcomma as number_of_supporters
+             and challenge.goal|intcomma as challenge_goal %}
+	  {{number_of_supporters}} of <div>{{challenge_goal}}</div>
+	  {% endblocktrans %}
         </div>
     </div>
 </div>
