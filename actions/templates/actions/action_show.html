@@ -1,15 +1,22 @@
 {% extends "base/nav_9c.html" %}
 {% load dated_static %}
 {% load humanize %}
-{% block title %}Actions{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Actions{% endblocktrans %}{% endblock %}
 {% block title_bar_image %}sprite_section_action_large{% endblock %}
-{% block title_bar_title %}Actions{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Actions{% endblocktrans %}{% endblock %}
 {% block title_bar_copy %}
+  {% blocktrans %}
     The actions you’ll find here will cut energy waste, lower your monthly bills
     and put your home on the leading edge of the energy efficiency revolution.
+  {% endblocktrans %}
 {% endblock %}
 {% block ribbon_bar %}
-    Showing {{ actions|length }} actions
+  {% blocktrans count num_actions=actions|length %}
+    Showing {{ num_actions }} action
+  {% plural %}
+    Showing {{ num_actions }} actions
+  {% endblocktrans %}
 {% endblock %}
 {% block content %}
 <ul class="plain_list nugget_3c">
@@ -18,13 +25,17 @@
     <div class="nugget_3c_status">
     {% if action.completed %}
         <span class="sprite_check_white_small"></span>
-        COMPLETED   
+        {% blocktrans %}COMPLETED{% endblocktrans %}
     {% else %}
         {% if action.committed %}
             <span class="sprite_star_white_small"></span>
-            COMMITTED: {{action.committed|date:"N jS"}}
+            {% blocktrans with action.committed|date:"N jS" as commitment_date %}
+	    COMMITTED: {{commitment_date}}
+	    {% endblocktrans %}
         {% else %}
-            {{ action.points|intcomma }} Points
+	    {% blocktrans with action.points|intcomma as action_points %}
+            {{ action_points }} Points
+	    {% endblocktrans %}
         {% endif %}
     {% endif %}
     </div>
@@ -32,7 +43,8 @@
         <a href="{% url action_detail action.slug %}">{{ action.name }}</a>
     </h2>
     <a href="{% url action_detail action.slug %}">
-        <img src="{{ action.image_paths.small }}" width="60" height="60" alt="Image for {{action.name}}"/>
+        <img src="{{ action.image_paths.small }}" width="60" height="60" 
+	     alt="{% blocktrans with action.name as action_name %}Image for {{action_name}}{% endblocktrans %}"/>
     </a>
     <p>{{ action.teaser|safe }}</p>
     </li>

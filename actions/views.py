@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext, loader
+from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_protect
 
 from tagging.models import Tag
@@ -57,7 +58,9 @@ def action_complete(request, action_slug):
     uap, record = action.complete_for_user(request.user)
     if record:
         record_created.send(sender=None, request=request, record=record)
-    messages.success(request, "Nice work! We've updated your profile, so all your friends can see your progress (<a href='#' class='undo_trigger'>Undo</a>)")
+    messages.success(request, _("Nice work! We've updated your profile, "
+                                "so all your friends can see your progress "
+                                "(<a href='#' class='undo_trigger'>Undo</a>)"))
     messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/complete')
     messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/complete/%s' % action_slug)
     return redirect("action_detail", action_slug=action.slug)
@@ -69,7 +72,9 @@ def action_undo(request, action_slug):
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
     if action.undo_for_user(request.user):
-        messages.success(request, "No worries. We've updated the record. Let us know when you're finished with this action.")
+        messages.success(request, _("No worries. We've updated the record. "
+                                    "Let us know when you're finished with "
+                                    "this action."))
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/undo')
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/undo/%s' % action_slug)
     return redirect("action_detail", action_slug=action.slug)
@@ -87,7 +92,7 @@ def action_commit(request, action_slug):
         uap, record = action_commit_form.save()
         if record:
             record_created.send(sender=None, request=request, record=record)
-        messages.success(request, "Thanks for making a commitment.")
+        messages.success(request, _("Thanks for making a commitment."))
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/commit')
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/commit/%s' % action_slug)
         return redirect("action_detail", action_slug=action.slug)
@@ -101,7 +106,10 @@ def action_cancel(request, action_slug):
     action = get_object_or_404(Action, slug=action_slug)
     if request.method == "POST":
         if action.cancel_for_user(request.user):
-            messages.success(request, "We cancelled your commitment. If you're having trouble completing an action, try asking a question. Other members will be happy to help!")
+            messages.success(request, _("We cancelled your commitment. If "
+                                        "you're having trouble completing an "
+                                        "action, try asking a question. "
+                                        "Other members will be happy to help!"))
             messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/cancel')
             messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/cancel/%s' % action_slug)
         return redirect("action_detail", action_slug=action.slug)

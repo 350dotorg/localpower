@@ -1,11 +1,12 @@
 from django import forms
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 
 VAMPIRE_OPTIONS = (
-    ('y', 'Yes',),
-    ('n', 'No',),
-    ('u', 'Not sure',),
+    ('y', _('Yes'),),
+    ('n', _('No'),),
+    ('u', _('Not sure'),),
 )
 
 class VampireSlayerWidget(forms.RadioSelect):
@@ -27,12 +28,12 @@ class VampireField(forms.ChoiceField):
 
 class VampirePowerWorksheetForm2(forms.Form):
     computers = VampireField(required=False)
-    monitor = VampireField(required=False, label="Computer Monitor")
+    monitor = VampireField(required=False, label=_("Computer Monitor"))
     computer_speakers = VampireField(required=False)
     televisions = VampireField(required=False)
-    dvd_players = VampireField(required=False, label="DVD/VCR Players")
-    cable_box = VampireField(required=False, label="Cable Box/DVR")
-    game_systems = VampireField(required=False, label="Video game Systems")
+    dvd_players = VampireField(required=False, label=_("DVD/VCR Players"))
+    cable_box = VampireField(required=False, label=_("Cable Box/DVR"))
+    game_systems = VampireField(required=False, label=_("Video game Systems"))
 
     def home_office_fields(self):
         return [self['computers'], self['monitor'], self['computer_speakers']]

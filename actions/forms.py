@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from records.models import Record
 from tagging.models import Tag
@@ -12,11 +13,13 @@ class BaseActionForm(forms.Form):
         self.action = action
 
 class ActionCommitForm(BaseActionForm):
-    date_committed = forms.DateField(label="Commit date",
+    date_committed = forms.DateField(
+        label=_("Commit date"),
         widget=forms.DateInput(attrs={"class": "date_commit_field"}))
 
     def save(self):
-        return self.action.commit_for_user(self.user, self.cleaned_data["date_committed"])
+        return self.action.commit_for_user(
+            self.user, self.cleaned_data["date_committed"])
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),

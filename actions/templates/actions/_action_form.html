@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="action_forms">
     {% if not progress.is_completed %}
         {% if not progress.date_committed %}
@@ -7,7 +8,7 @@
                 {% endwith %}
                 <p>
                     <input type="submit" class="commit_trigger tooltip" value="{{ commit_title }}"
-                        title="Make a commitment to do this action in the future." />
+                        title="{% blocktrans %}Make a commitment to do this action in the future.{% endblocktrans %}" />
                 </p>
                 {% csrf_token %}
             </form>
@@ -17,12 +18,24 @@
                     {% include "base/_form.html" %}
                 {% endwith %}
                 {% csrf_token %}
-                <h4>{{ days_till_commitment }} day{{ days_till_commitment|pluralize }} remaining</h4>
+                <h4>
+		  {% blocktrans count days_till_commitment %}
+		  {{ days_till_commitment }} day remaining
+		  {% plural %}
+		  {{ days_till_commitment }} days remaining
+		  {% endblocktrans %}
+		</h4>
                 <p class="action_committment">
+		  {% blocktrans with progress.date_committed|date as date_committed %}
                     You committed to complete<br />
-                    this plan by {{ progress.date_committed|date }}<br />
-                    (<a href="#" class="commit_trigger">change date</a> |
-                    <a href="{% url action_cancel action.slug %}" class="commit_cancel">cancel</a>)
+                    this plan by {{ date_committed }}<br />
+		  {% endblocktrans %}
+                    (<a href="#" class="commit_trigger">
+		    {% blocktrans %}change date{% endblocktrans %}
+		  </a> |
+                  <a href="{% url action_cancel action.slug %}" class="commit_cancel">
+		    {% blocktrans %}cancel{% endblocktrans %}
+		  </a>)
                 </p>
             </form>
             <form class="action_cancel_form" method="post"
@@ -31,16 +44,16 @@
         <form class="action_complete_form" method="post" action="{% url action_complete action.slug %}">
             <p>
                 <input type="submit" class="tooltip" value="{{ complete_title }}" 
-                    title="Claim your points if you’re already doing, or just completed, this action"/>
+                    title="{% blocktrans %}Claim your points if you’re already doing, or just completed, this action{% endblocktrans %}"/>
             </p>
             {% csrf_token %}
         </form>
     {% else %}
         <form class="action_undo_form" method="post" action="{% url action_undo action.slug %}">
-            <h4>You've done this action!</h4>
-            <h5><a href="{% url action_show %}">Find more actions</a></h5>
+            <h4>{% blocktrans %}You've done this action!{% endblocktrans %}</h4>
+            <h5><a href="{% url action_show %}">{% blocktrans %}Find more actions{% endblocktrans %}</a></h5>
             <p class="action_undo">
-                If this was a mistake, <a href="#" class="undo_trigger">click to undo</a>.
+              {% blocktrans %}If this was a mistake, <a href="#" class="undo_trigger">click to undo</a>.{% endblocktrans %}
             </p>
             {% csrf_token %}
         </form>

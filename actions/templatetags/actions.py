@@ -3,21 +3,22 @@ import re
 from django import template
 from django.template import Context, Template
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext as _
 
 from utils import strip_quotes
 
 register = template.Library()
 
 class ActionFormNode(template.Node):
-    def __init__(self, complete_title="I did this!",
-        commit_title="Make a commitment", undo_title="Wait - I'm still working on this action."):
-        self.complete_title = complete_title
-        self.commit_title = commit_title
-        self.undo_title = undo_title
+    def __init__(self, complete_title=None, commit_title=None, undo_title=None):
+        self.complete_title = complete_title or _("I did this!")
+        self.commit_title = commit_title or _("Make a commitment")
+        self.undo_title = undo_title or _("Wait - I'm still working on this action.")
 
     def render(self, context):
-        values = {"complete_title": self.complete_title, "commit_title": self.commit_title,
-            "undo_title": self.undo_title}
+        values = {"complete_title": self.complete_title,
+                  "commit_title": self.commit_title,
+                  "undo_title": self.undo_title}
         context.push()
         value = render_to_string("actions/_action_form.html", values, context)
         context.pop()

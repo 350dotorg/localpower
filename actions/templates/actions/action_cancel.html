@@ -1,10 +1,11 @@
 {% extends "actions/base.html" %}
+{% load i18n %}
 
 {% block right_content %}
     <form action="" method="post">
-        <p>Are you sure you want to cancel your commitment?</p>
-        <input type="submit" value="Yes"> |
-        <a href="{% url action_detail action.slug %}">No</a>
+        <p>{% blocktrans %}Are you sure you want to cancel your commitment?{% endblocktrans %}</p>
+        <input type="submit" value="{% blocktrans %}Yes{% endblocktrans %}"> |
+        <a href="{% url action_detail action.slug %}">{% blocktrans %}No{% endblocktrans %}</a>
         {% csrf_token %}
     </form>
 {% endblock %}

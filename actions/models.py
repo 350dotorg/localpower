@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction, IntegrityError
+from django.utils.translation import ugettext_lazy as _
 
 import tagging
 
@@ -71,20 +72,23 @@ class ActionManager(models.Manager):
         return changes
 
 class Action(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(unique=True)
-    teaser = models.TextField()
-    content = models.TextField()
-    points = models.IntegerField(default=0)
-    users_completed = models.IntegerField(default=0)
-    users_committed = models.IntegerField(default=0)
-    users = models.ManyToManyField(User, through="UserActionProgress")
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    name = models.CharField(_('name'), max_length=255, unique=True)
+    slug = models.SlugField(_('slug'), unique=True)
+    teaser = models.TextField(_('teaser'))
+    content = models.TextField(_('content'))
+    points = models.IntegerField(_('points'), default=0)
+    users_completed = models.IntegerField(_('users completed'), default=0)
+    users_committed = models.IntegerField(_('users committed'), default=0)
+    users = models.ManyToManyField(User, through="UserActionProgress",
+                                   verbose_name=_('users'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
     objects = ActionManager()
 
-    groups = models.ManyToManyField("groups.Group", blank=True,
-        limit_choices_to = {'is_geo_group': False}, verbose_name="Communities")
+    groups = models.ManyToManyField(
+        "groups.Group", blank=True,
+        limit_choices_to = {'is_geo_group': False},
+        verbose_name=_("Communities"))
 
     def creator(self):
         return ""
@@ -203,12 +207,12 @@ class UserActionProgressManager(models.Manager):
         return queryset if not user else queryset.filter(user=user)
 
 class UserActionProgress(models.Model):
-    user = models.ForeignKey(User)
-    action = models.ForeignKey(Action)
-    is_completed = models.BooleanField(default=False)
-    date_committed = models.DateField(null=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    action = models.ForeignKey(Action, verbose_name=_('action'))
+    is_completed = models.BooleanField(_('is completed'), default=False)
+    date_committed = models.DateField(_('date completed'), null=True)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
     objects = UserActionProgressManager()
 
     class Meta:
@@ -222,7 +226,7 @@ class UserActionProgress(models.Model):
         return self.user.email
 
     def __unicode__(self):
-        return u"%s is working on %s" % (self.user, self.action)
+        return _("%(user)s is working on %(action)s") % (self.user, self.action)
 
 class ActionForm(models.Model):
     """
@@ -230,17 +234,18 @@ class ActionForm(models.Model):
     introspection to create an instance of the form, it is imparitive that the form_name
     field match the action class name of the django form.
     """
-    action = models.ForeignKey(Action)
-    form_name = models.CharField(max_length=100)
-    var_name = models.CharField(max_length=100)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    action = models.ForeignKey(Action, verbose_name=_('action'))
+    form_name = models.CharField(_('form name'), max_length=100)
+    var_name = models.CharField(_('var name'), max_length=100)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
     class Meta:
         unique_together = ("action", "form_name",)
 
     def __unicode__(self):
-        return u"%s is using form %s" % (self.action, self.form_name)
+        return _("%(action)s is using form %(form_name)s") % (
+            self.action, self.form_name)
 
 class ActionFormData(models.Model):
     """
@@ -248,18 +253,19 @@ class ActionFormData(models.Model):
     data field will contain serialized data that can be reformed into a request.POST
     dict and initialized with the corresponding ActionForm.
     """
-    action_form = models.ForeignKey(ActionForm)
-    user = models.ForeignKey(User)
-    data = models.TextField()
+    action_form = models.ForeignKey(ActionForm, verbose_name=_('action form'))
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    data = models.TextField(_('data'))
     # TODO: make ActionFormData.data a serialized field
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
     class Meta:
         unique_together = ("action_form", "user",)
 
     def __unicode__(self):
-        return u"%s is working on %s" % (self.user, self.action_form)
+        return _("%(user)s is working on %(action_form)s") % (
+            self.user, self.action_form)
 
 """
 SIGNALS!
@@ -272,7 +278,10 @@ models.signals.post_save.connect(update_action_aggregates, sender=UserActionProg
 
 def apply_changes_from_commitment_cards(sender, request, user, is_new_user, **kwargs):
     changes = Action.objects.process_commitment_card(user, new_user=is_new_user)
-    if changes:
-        messages.success(request, "%s actions were applied to your account from a commitment card" % len(changes),
-            extra_tags="sticky")
+    if not changes:
+        return
+    messages.success(request,
+                     _("%(num_actions)s actions were applied to "
+                       "your account from a commitment card") % len(changes),
+                     extra_tags="sticky")
 logged_in.connect(apply_changes_from_commitment_cards)
