@@ -564,11 +564,11 @@ msgstr ""
 
 #: challenges/models.py:20 challenges/models.py:58
 msgid "challenge"
-msgstr ""
+msgstr "campaign"
 
 #: challenges/models.py:21
 msgid "challenges"
-msgstr ""
+msgstr "campaigns"
 
 #: challenges/models.py:24
 msgid "description"
@@ -579,6 +579,8 @@ msgid ""
 "Tell people what this challenge is about, why you're involved, and what you "
 "want to accomplish."
 msgstr ""
+"Tell people what this campaign is about, why you're involved, and what you "
+"want to accomplish."
 
 #: challenges/models.py:27
 msgid "goal"
@@ -642,12 +644,12 @@ msgstr ""
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
 msgid "Challenges"
-msgstr ""
+msgstr "Campaigns"
 
 #: challenges/templates/challenges/detail.html:10
 #: challenges/templates/challenges/list.html:32
 msgid "Petition Challenge"
-msgstr ""
+msgstr "Petition Campaigns"
 
 #: challenges/templates/challenges/detail.html:13
 msgid "Overview"
@@ -664,7 +666,7 @@ msgstr ""
 
 #: challenges/templates/challenges/detail.html:18
 msgid "Edit this Challenge"
-msgstr ""
+msgstr "Edit this Campaign"
 
 #: challenges/templates/challenges/detail.html:30
 msgid "Sign the Petition"
@@ -693,17 +695,17 @@ msgstr ""
 #: challenges/templates/challenges/edit.html:4
 #, python-format
 msgid "%(type_label)s a Challenge"
-msgstr ""
+msgstr "%(type_label)s a Campaign"
 
 #: challenges/templates/challenges/edit.html:11
 #, python-format
 msgid "%(type_label)s challenge"
-msgstr ""
+msgstr "%(type_label)s campaign"
 
 #: challenges/templates/challenges/edit.html:15
 #, python-format
 msgid "%(type_label)s Challenge"
-msgstr ""
+msgstr "%(type_label)s campaign"
 
 #: challenges/templates/challenges/edit.html:20
 #: challenges/templates/challenges/edit.html:23
@@ -712,15 +714,15 @@ msgstr ""
 
 #: challenges/templates/challenges/edit.html:21
 msgid "Save Challenge"
-msgstr ""
+msgstr "Save Campaign"
 
 #: challenges/templates/challenges/edit.html:24
 msgid "Create Challenge"
-msgstr ""
+msgstr "Create Campaign"
 
 #: challenges/templates/challenges/edit.html:35
 msgid "Use this form to create or edit a challenge"
-msgstr ""
+msgstr "Use this form to create or edit a campaign"
 
 #: challenges/templates/challenges/list.html:8
 msgid ""
@@ -729,10 +731,13 @@ msgid ""
 "reach a new goal and take the world one step closer to a clean energy\n"
 "transformation.\n"
 msgstr ""
+"Together we can achieve big things. Join a campaign to help your community\n"
+"reach a new goal and take the world one step closer to a clean energy\n"
+"transformation.\n"
 
 #: challenges/templates/challenges/list.html:15
 msgid "<b>+</b> Create a Challenge"
-msgstr ""
+msgstr "<b>+</b> Create a Campaign"
 
 #: challenges/templates/challenges/list.html:19
 #, python-format
@@ -740,6 +745,8 @@ msgid ""
 "\n"
 "Showing %(num_challenges)s challenges\n"
 msgstr ""
+"\n"
+"Showing %(num_challenges)s campaigns\n"
 
 #: challenges/templates/challenges/list.html:40
 msgid "Created by:"
