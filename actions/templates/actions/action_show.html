@@ -12,7 +12,7 @@
   {% endblocktrans %}
 {% endblock %}
 {% block ribbon_bar %}
-  {% blocktrans count num_actions=actions|length %}
+  {% blocktrans count actions|length as num_actions %}
     Showing {{ num_actions }} action
   {% plural %}
     Showing {{ num_actions }} actions

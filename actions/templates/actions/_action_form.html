@@ -19,7 +19,7 @@
                 {% endwith %}
                 {% csrf_token %}
                 <h4>
-		  {% blocktrans count days_till_commitment %}
+		  {% blocktrans count days_till_commitment as days_till_commitment %}
 		  {{ days_till_commitment }} day remaining
 		  {% plural %}
 		  {{ days_till_commitment }} days remaining
