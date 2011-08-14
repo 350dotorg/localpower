@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.net
+
+[localpower.djangopot]
+file_filter = locale/<lang>/LC_MESSAGES/django.po
+source_file = locale/django.pot
+source_lang = en_IE
+

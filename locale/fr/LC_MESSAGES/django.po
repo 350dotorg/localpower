@@ -2,20 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # 
-#   <ethan.jucovy@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-14 10:10-0400\n"
-"PO-Revision-Date: 2011-08-14 14:24+0000\n"
-"Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
+"PO-Revision-Date: 2011-08-14 14:25+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
 #: events/filterspec.py:14
@@ -560,11 +559,11 @@ msgstr ""
 
 #: challenges/models.py:20 challenges/models.py:58
 msgid "challenge"
-msgstr "campaign"
+msgstr ""
 
 #: challenges/models.py:21
 msgid "challenges"
-msgstr "campaigns"
+msgstr ""
 
 #: challenges/models.py:24
 msgid "description"
@@ -575,8 +574,6 @@ msgid ""
 "Tell people what this challenge is about, why you're involved, and what you "
 "want to accomplish."
 msgstr ""
-"Tell people what this campaign is about, why you're involved, and what you "
-"want to accomplish."
 
 #: challenges/models.py:27
 msgid "goal"
@@ -624,7 +621,7 @@ msgstr ""
 
 #: challenges/views.py:49
 msgid "Thanks for your support"
-msgstr "Thanks for your support!"
+msgstr ""
 
 #: challenges/views.py:58
 #, python-format
@@ -640,12 +637,12 @@ msgstr ""
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
 msgid "Challenges"
-msgstr "Campaigns"
+msgstr ""
 
 #: challenges/templates/challenges/detail.html:10
 #: challenges/templates/challenges/list.html:32
 msgid "Petition Challenge"
-msgstr "Petition Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/detail.html:13
 msgid "Overview"
@@ -662,7 +659,7 @@ msgstr ""
 
 #: challenges/templates/challenges/detail.html:18
 msgid "Edit this Challenge"
-msgstr "Edit this Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/detail.html:30
 msgid "Sign the Petition"
@@ -691,17 +688,17 @@ msgstr ""
 #: challenges/templates/challenges/edit.html:4
 #, python-format
 msgid "%(type_label)s a Challenge"
-msgstr "%(type_label)s a Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/edit.html:11
 #, python-format
 msgid "%(type_label)s challenge"
-msgstr "%(type_label)s campaign"
+msgstr ""
 
 #: challenges/templates/challenges/edit.html:15
 #, python-format
 msgid "%(type_label)s Challenge"
-msgstr "%(type_label)s campaign"
+msgstr ""
 
 #: challenges/templates/challenges/edit.html:20
 #: challenges/templates/challenges/edit.html:23
@@ -710,15 +707,15 @@ msgstr ""
 
 #: challenges/templates/challenges/edit.html:21
 msgid "Save Challenge"
-msgstr "Save Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/edit.html:24
 msgid "Create Challenge"
-msgstr "Create Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/edit.html:35
 msgid "Use this form to create or edit a challenge"
-msgstr "Use this form to create or edit a campaign"
+msgstr ""
 
 #: challenges/templates/challenges/list.html:8
 msgid ""
@@ -727,14 +724,10 @@ msgid ""
 "reach a new goal and take the world one step closer to a clean energy\n"
 "transformation.\n"
 msgstr ""
-"\n"
-"Together we can achieve big things. Join a campaign to help your community\n"
-"reach a new goal and take the world one step closer to a clean energy\n"
-"transformation.\n"
 
 #: challenges/templates/challenges/list.html:15
 msgid "<b>+</b> Create a Challenge"
-msgstr "<b>+</b> Create a Campaign"
+msgstr ""
 
 #: challenges/templates/challenges/list.html:19
 #, python-format
@@ -742,8 +735,6 @@ msgid ""
 "\n"
 "Showing %(num_challenges)s challenges\n"
 msgstr ""
-"\n"
-"Showing %(num_challenges)s campaigns\n"
 
 #: challenges/templates/challenges/list.html:40
 msgid "Created by:"
@@ -796,7 +787,7 @@ msgstr ""
 
 #: templates/404.html:7
 msgid "Sorry, but the requested page could not be found."
-msgstr "We're sorry, but the requested page could not be found."
+msgstr ""
 
 #: templates/admin/index.html:18
 #, python-format
