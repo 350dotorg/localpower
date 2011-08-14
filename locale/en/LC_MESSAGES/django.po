@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <ethan.jucovy@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-14 10:10-0400\n"
+"POT-Creation-Date: 2011-08-14 12:06-0400\n"
 "PO-Revision-Date: 2011-08-14 14:24+0000\n"
 "Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
@@ -51,100 +51,112 @@ msgstr ""
 msgid "Commit date"
 msgstr ""
 
-#: actions/models.py:75 rateable/models.py:37
-msgid "name"
-msgstr ""
-
-#: actions/models.py:76 basic/blog/models.py:17 basic/blog/models.py:40
-msgid "slug"
-msgstr ""
-
-#: actions/models.py:77
-msgid "teaser"
-msgstr ""
-
-#: actions/models.py:78
-msgid "content"
-msgstr ""
-
-#: actions/models.py:79
-msgid "points"
-msgstr ""
-
-#: actions/models.py:80
-msgid "users completed"
-msgstr ""
-
-#: actions/models.py:81
-msgid "users committed"
-msgstr ""
-
-#: actions/models.py:83
-msgid "users"
-msgstr ""
-
-#: actions/models.py:84 actions/models.py:214 actions/models.py:240
-#: actions/models.py:260 basic/blog/models.py:47 challenges/models.py:32
-msgid "created"
-msgstr ""
-
-#: actions/models.py:85 actions/models.py:215 actions/models.py:241
-#: actions/models.py:261 challenges/models.py:33
-msgid "updated"
-msgstr ""
-
-#: actions/models.py:91 templates/base/nav.html:44
-msgid "Communities"
-msgstr ""
-
-#: actions/models.py:210 actions/models.py:257
-msgid "user"
-msgstr ""
-
-#: actions/models.py:211 actions/models.py:237
+#: actions/models.py:76 actions/models.py:215 actions/models.py:243
 msgid "action"
 msgstr ""
 
-#: actions/models.py:212
+#: actions/models.py:77
+msgid "actions"
+msgstr ""
+
+#: actions/models.py:79 rateable/models.py:37
+msgid "name"
+msgstr ""
+
+#: actions/models.py:80 basic/blog/models.py:17 basic/blog/models.py:40
+msgid "slug"
+msgstr ""
+
+#: actions/models.py:81
+msgid "teaser"
+msgstr ""
+
+#: actions/models.py:82
+msgid "content"
+msgstr ""
+
+#: actions/models.py:83
+msgid "points"
+msgstr ""
+
+#: actions/models.py:84
+msgid "users completed"
+msgstr ""
+
+#: actions/models.py:85
+msgid "users committed"
+msgstr ""
+
+#: actions/models.py:87
+msgid "users"
+msgstr ""
+
+#: actions/models.py:88 actions/models.py:218 actions/models.py:246
+#: actions/models.py:268 basic/blog/models.py:47 challenges/models.py:32
+msgid "created"
+msgstr ""
+
+#: actions/models.py:89 actions/models.py:219 actions/models.py:247
+#: actions/models.py:269 challenges/models.py:33
+msgid "updated"
+msgstr ""
+
+#: actions/models.py:95 templates/base/nav.html:44
+msgid "Communities"
+msgstr ""
+
+#: actions/models.py:214 actions/models.py:265
+msgid "user"
+msgstr ""
+
+#: actions/models.py:216
 msgid "is completed"
 msgstr ""
 
-#: actions/models.py:213
+#: actions/models.py:217
 msgid "date completed"
 msgstr ""
 
-#: actions/models.py:229
+#: actions/models.py:224 actions/models.py:225
+msgid "user action progress"
+msgstr ""
+
+#: actions/models.py:235
 #, python-format
 msgid "%(user)s is working on %(action)s"
 msgstr ""
 
-#: actions/models.py:238
+#: actions/models.py:244
 msgid "form name"
 msgstr ""
 
-#: actions/models.py:239
+#: actions/models.py:245
 msgid "var name"
 msgstr ""
 
-#: actions/models.py:247
+#: actions/models.py:251 actions/models.py:264
+msgid "action form"
+msgstr ""
+
+#: actions/models.py:252
+msgid "action forms"
+msgstr ""
+
+#: actions/models.py:255
 #, python-format
 msgid "%(action)s is using form %(form_name)s"
 msgstr ""
 
-#: actions/models.py:256
-msgid "action form"
-msgstr ""
-
-#: actions/models.py:258
+#: actions/models.py:266
 msgid "data"
 msgstr ""
 
-#: actions/models.py:267
+#: actions/models.py:277
 #, python-format
 msgid "%(user)s is working on %(action_form)s"
 msgstr ""
 
-#: actions/models.py:284
+#: actions/models.py:294
 #, python-format
 msgid ""
 "%(num_actions)s actions were applied to your account from a commitment card"
@@ -168,8 +180,8 @@ msgstr ""
 
 #: actions/views.py:109
 msgid ""
-"We cancelled your commitment. If you're having trouble completing an action,"
-" try asking a question. Other members will be happy to help!"
+"We cancelled your commitment. If you're having trouble completing an action, "
+"try asking a question. Other members will be happy to help!"
 msgstr ""
 
 #: actions/templates/actions/_action_form.html:11
@@ -222,7 +234,9 @@ msgid "Find more actions"
 msgstr ""
 
 #: actions/templates/actions/_action_form.html:56
-msgid "If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</a>."
+msgid ""
+"If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</"
+"a>."
 msgstr ""
 
 #: actions/templates/actions/action_cancel.html:6
@@ -298,8 +312,10 @@ msgstr ""
 #: actions/templates/actions/action_show.html:9
 msgid ""
 "\n"
-"    The actions you’ll find here will cut energy waste, lower your monthly bills\n"
-"    and put your home on the leading edge of the energy efficiency revolution.\n"
+"    The actions you’ll find here will cut energy waste, lower your monthly "
+"bills\n"
+"    and put your home on the leading edge of the energy efficiency "
+"revolution.\n"
 "  "
 msgstr ""
 
@@ -635,6 +651,14 @@ msgstr ""
 msgid "Petitions signed:"
 msgstr ""
 
+#: challenges/templates/challenges/_progress_bar.html:8
+#, python-format
+msgid ""
+"\n"
+"\t  %(number_of_supporters)s of <div>%(challenge_goal)s</div>\n"
+"\t  "
+msgstr ""
+
 #: challenges/templates/challenges/detail.html:7
 #: challenges/templates/challenges/edit.html:7
 #: challenges/templates/challenges/list.html:4
@@ -913,8 +937,10 @@ msgstr ""
 #: templates/base/base.html:90
 msgid ""
 "\n"
-"                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\n"
-"                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim \n"
+"                        Lorem ipsum dolor sit amet, consectetur adipisicing "
+"elit, sed do\n"
+"                        eiusmod tempor incididunt ut labore et dolore magna "
+"aliqua. Ut enim \n"
 "                        ad minim veniam, quis nostrud exercitation ullamco.\n"
 "\t\t      "
 msgstr ""
@@ -958,7 +984,8 @@ msgstr ""
 #: templates/base/base.html:116
 msgid ""
 "\n"
-"\t\t    Text is available under a <a href=\"http://creativecommons.org/licenses/by/3.0/\">\n"
+"\t\t    Text is available under a <a href=\"http://creativecommons.org/"
+"licenses/by/3.0/\">\n"
 "                    Creative Commons Attribution 3.0 Unported License</a>.\n"
 "\t\t    "
 msgstr ""
@@ -1020,5 +1047,3 @@ msgstr ""
 #: templates/base/nav_6c3c.html:6
 msgid "breadcrumbs"
 msgstr ""
-
-
