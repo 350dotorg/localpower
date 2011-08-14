@@ -72,6 +72,10 @@ class ActionManager(models.Manager):
         return changes
 
 class Action(models.Model):
+    class Meta:
+        verbose_name = _('action')
+        verbose_name_plural = _('actions')
+
     name = models.CharField(_('name'), max_length=255, unique=True)
     slug = models.SlugField(_('slug'), unique=True)
     teaser = models.TextField(_('teaser'))
@@ -217,6 +221,8 @@ class UserActionProgress(models.Model):
 
     class Meta:
         unique_together = ("user", "action",)
+        verbose_name = _("user action progress")
+        verbose_name_plural = _("user action progress")
 
     def other_commitments(self):
         return UserActionProgress.objects.filter(user=self.user, date_committed__isnull=False,
@@ -242,6 +248,8 @@ class ActionForm(models.Model):
 
     class Meta:
         unique_together = ("action", "form_name",)
+        verbose_name = _("action form")
+        verbose_name_plural = _("action forms")
 
     def __unicode__(self):
         return _("%(action)s is using form %(form_name)s") % (
@@ -262,6 +270,8 @@ class ActionFormData(models.Model):
 
     class Meta:
         unique_together = ("action_form", "user",)
+        verbose_name = ("action form data")
+        verbose_name_plural = ("action form data")
 
     def __unicode__(self):
         return _("%(user)s is working on %(action_form)s") % (
