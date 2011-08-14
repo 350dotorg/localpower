@@ -5,8 +5,7 @@
     <div class="progress_wrapper">
         <div class="progress_bar" style="width:{{challenge.percent_complete}}%;"></div>
         <div class="progress_text">
-	  {% blocktrans with challenge.number_of_supporters|intcomma as number_of_supporters
-             and challenge.goal|intcomma as challenge_goal %}
+	  {% blocktrans with challenge.number_of_supporters|intcomma as number_of_supporters and challenge.goal|intcomma as challenge_goal %}
 	  {{number_of_supporters}} of <div>{{challenge_goal}}</div>
 	  {% endblocktrans %}
         </div>
