@@ -8,11 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-15 08:56-0400\n"
+"POT-Creation-Date: 2011-08-15 13:52-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -249,7 +248,7 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:18
 #: challenges/templates/challenges/detail.html:6
-#: challenges/templates/challenges/edit.html:6 templates/rah/feedback.html:6
+#: challenges/templates/challenges/edit.html:11 templates/rah/feedback.html:6
 #: templates/rah/ga_opt_out.html:5
 msgid "Home"
 msgstr ""
@@ -635,14 +634,6 @@ msgstr ""
 msgid "supports"
 msgstr ""
 
-#: challenges/views.py:20
-msgid "Edit"
-msgstr ""
-
-#: challenges/views.py:20
-msgid "Create"
-msgstr ""
-
 #: challenges/views.py:49
 msgid "Thanks for your support"
 msgstr ""
@@ -665,7 +656,7 @@ msgid ""
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:7
-#: challenges/templates/challenges/edit.html:7
+#: challenges/templates/challenges/edit.html:12
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
 #: templates/rah/profile.html:29
@@ -719,35 +710,41 @@ msgstr ""
 msgid "Petitions signed"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:4
-#, python-format
-msgid "%(type_label)s a Challenge"
+#: challenges/templates/challenges/edit.html:6
+msgid "Create a Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:11
-#, python-format
-msgid "%(type_label)s challenge"
+#: challenges/templates/challenges/edit.html:8
+msgid "Edit a Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:15
-#, python-format
-msgid "%(type_label)s Challenge"
+#: challenges/templates/challenges/edit.html:18
+msgid "Create challenge"
 msgstr ""
 
 #: challenges/templates/challenges/edit.html:20
-#: challenges/templates/challenges/edit.html:23
-msgid "Cancel"
+msgid "Edit challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:21
-msgid "Save Challenge"
-msgstr ""
-
-#: challenges/templates/challenges/edit.html:24
+#: challenges/templates/challenges/edit.html:26
+#: challenges/templates/challenges/edit.html:39
 msgid "Create Challenge"
 msgstr ""
 
+#: challenges/templates/challenges/edit.html:28
+msgid "Edit Challenge"
+msgstr ""
+
 #: challenges/templates/challenges/edit.html:35
+#: challenges/templates/challenges/edit.html:38
+msgid "Cancel"
+msgstr ""
+
+#: challenges/templates/challenges/edit.html:36
+msgid "Save Challenge"
+msgstr ""
+
+#: challenges/templates/challenges/edit.html:50
 msgid "Use this form to create or edit a challenge"
 msgstr ""
 

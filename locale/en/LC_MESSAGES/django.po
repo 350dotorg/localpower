@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-15 08:56-0400\n"
+"POT-Creation-Date: 2011-08-15 13:48-0400\n"
 "PO-Revision-Date: 2011-08-14 14:24+0000\n"
 "Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
@@ -255,7 +255,7 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:18
 #: challenges/templates/challenges/detail.html:6
-#: challenges/templates/challenges/edit.html:6 templates/rah/feedback.html:6
+#: challenges/templates/challenges/edit.html:11 templates/rah/feedback.html:6
 #: templates/rah/ga_opt_out.html:5
 msgid "Home"
 msgstr ""
@@ -658,14 +658,6 @@ msgstr ""
 msgid "supports"
 msgstr ""
 
-#: challenges/views.py:20
-msgid "Edit"
-msgstr ""
-
-#: challenges/views.py:20
-msgid "Create"
-msgstr ""
-
 #: challenges/views.py:49
 msgid "Thanks for your support"
 msgstr "Thanks for your support!"
@@ -688,7 +680,7 @@ msgid ""
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:7
-#: challenges/templates/challenges/edit.html:7
+#: challenges/templates/challenges/edit.html:12
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
 #: templates/rah/profile.html:29
@@ -742,35 +734,41 @@ msgstr ""
 msgid "Petitions signed"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:4
-#, python-format
-msgid "%(type_label)s a Challenge"
-msgstr "%(type_label)s a Campaign"
+#: challenges/templates/challenges/edit.html:6
+msgid "Create a Challenge"
+msgstr "Create a Campaign"
 
-#: challenges/templates/challenges/edit.html:11
-#, python-format
-msgid "%(type_label)s challenge"
-msgstr "%(type_label)s campaign"
+#: challenges/templates/challenges/edit.html:8
+msgid "Edit a Challenge"
+msgstr "Edit a Campaign"
 
-#: challenges/templates/challenges/edit.html:15
-#, python-format
-msgid "%(type_label)s Challenge"
-msgstr "%(type_label)s campaign"
+#: challenges/templates/challenges/edit.html:18
+msgid "Create challenge"
+msgstr "Create campaign"
 
 #: challenges/templates/challenges/edit.html:20
-#: challenges/templates/challenges/edit.html:23
-msgid "Cancel"
-msgstr ""
+msgid "Edit challenge"
+msgstr "Edit campaign"
 
-#: challenges/templates/challenges/edit.html:21
-msgid "Save Challenge"
-msgstr "Save Campaign"
-
-#: challenges/templates/challenges/edit.html:24
+#: challenges/templates/challenges/edit.html:26
+#: challenges/templates/challenges/edit.html:39
 msgid "Create Challenge"
 msgstr "Create Campaign"
 
+#: challenges/templates/challenges/edit.html:28
+msgid "Edit Challenge"
+msgstr "Edit Campaign"
+
 #: challenges/templates/challenges/edit.html:35
+#: challenges/templates/challenges/edit.html:38
+msgid "Cancel"
+msgstr ""
+
+#: challenges/templates/challenges/edit.html:36
+msgid "Save Challenge"
+msgstr "Save Campaign"
+
+#: challenges/templates/challenges/edit.html:50
 msgid "Use this form to create or edit a challenge"
 msgstr "Use this form to create or edit a campaign"
 
@@ -825,9 +823,8 @@ msgid "%(field_name)s"
 msgstr ""
 
 #: rah/admin.py:20
-#, fuzzy
 msgid "Location"
-msgstr "project"
+msgstr ""
 
 #: rah/admin.py:39
 msgid "Parent"
@@ -894,9 +891,8 @@ msgid "Other"
 msgstr ""
 
 #: rah/models.py:139
-#, fuzzy
 msgid "location"
-msgstr "project"
+msgstr ""
 
 #: rah/models.py:140
 msgid "building type"
@@ -1024,18 +1020,16 @@ msgid "Thank you for the feedback."
 msgstr ""
 
 #: rah/views.py:350
-#, fuzzy
 msgid "Thanks for the comment."
-msgstr "Thanks for your support!"
+msgstr ""
 
 #: rah/views.py:354
 msgid "You do not have permissions."
 msgstr ""
 
 #: rah/views.py:360
-#, fuzzy
 msgid "Thanks for registering."
-msgstr "Thanks for your support!"
+msgstr ""
 
 #: rah/templatetags/rah_tags.py:25
 msgid "You"
@@ -1391,9 +1385,8 @@ msgid ""
 msgstr ""
 
 #: templates/rah/home_page.html:51
-#, fuzzy
 msgid "See All Actions"
-msgstr "Recent Projects"
+msgstr ""
 
 #: templates/rah/home_page.html:63
 msgid "Support energy efficiency in your community"
@@ -1436,9 +1429,9 @@ msgid "Total %(SITE_NAME)s Trendsetters"
 msgstr ""
 
 #: templates/rah/home_page.html:105
-#, fuzzy, python-format
+#, python-format
 msgid "Total %(SITE_NAME)s Communities"
-msgstr "%(SITE_NAME)s Project"
+msgstr ""
 
 #: templates/rah/home_page.html:111
 #, python-format
@@ -1471,15 +1464,12 @@ msgid ""
 msgstr ""
 
 #: templates/rah/home_page.html:152
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "\t\t    %(num_points)s points\n"
 "\t\t    "
 msgstr ""
-"\n"
-"    Showing %(num_actions)s project\n"
-"  "
 
 #: templates/rah/home_page.html:161
 msgid "Browse Communities"
@@ -1495,9 +1485,9 @@ msgid "%(user_full_name)s's profile"
 msgstr ""
 
 #: templates/rah/profile.html:8
-#, fuzzy, python-format
+#, python-format
 msgid "%(SITE_NAME)s User Activity"
-msgstr "%(SITE_NAME)s Project"
+msgstr ""
 
 #: templates/rah/profile.html:12
 msgid "Profile image"
@@ -1541,14 +1531,12 @@ msgid ""
 msgstr ""
 
 #: templates/rah/profile.html:86
-#, fuzzy
 msgid "Completed Actions"
-msgstr "Recent Projects"
+msgstr ""
 
 #: templates/rah/profile.html:97
-#, fuzzy
 msgid "Recent Activity"
-msgstr "Recent Projects"
+msgstr ""
 
 #: templates/rah/profile.html:99
 msgid "atom feed"
@@ -1571,9 +1559,8 @@ msgid "Points Earned"
 msgstr ""
 
 #: templates/rah/profile.html:120
-#, fuzzy
 msgid "Challenges Completed"
-msgstr "Campaigns"
+msgstr "Campaigns Completed"
 
 #: templates/rah/profile.html:151
 #, python-format
@@ -1589,9 +1576,8 @@ msgid "Account"
 msgstr ""
 
 #: templates/rah/profile_edit.html:10
-#, fuzzy
 msgid "Notifications"
-msgstr "projects"
+msgstr ""
 
 #: templates/rah/profile_edit.html:11
 msgid "Social Networks"
@@ -1685,9 +1671,9 @@ msgid "Results for '%(search_query)s'"
 msgstr ""
 
 #: templates/rah/search.html:5
-#, fuzzy, python-format
+#, python-format
 msgid "Search %(SITE_NAME)s"
-msgstr "%(SITE_NAME)s Project"
+msgstr ""
 
 #: templates/rah/user_list.html:7
 msgid "User List"
