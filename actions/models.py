@@ -232,7 +232,8 @@ class UserActionProgress(models.Model):
         return self.user.email
 
     def __unicode__(self):
-        return _("%(user)s is working on %(action)s") % (self.user, self.action)
+        return _("%(user)s is working on %(action)s") % {'user': self.user,
+                                                         'action': self.action}
 
 class ActionForm(models.Model):
     """
@@ -252,8 +253,8 @@ class ActionForm(models.Model):
         verbose_name_plural = _("action forms")
 
     def __unicode__(self):
-        return _("%(action)s is using form %(form_name)s") % (
-            self.action, self.form_name)
+        return _("%(action)s is using form %(form_name)s") % {
+            'action': self.action, 'form_name': self.form_name}
 
 class ActionFormData(models.Model):
     """
@@ -274,8 +275,8 @@ class ActionFormData(models.Model):
         verbose_name_plural = ("action form data")
 
     def __unicode__(self):
-        return _("%(user)s is working on %(action_form)s") % (
-            self.user, self.action_form)
+        return _("%(user)s is working on %(action_form)s") % {
+            'user': self.user, 'action_form': self.action_form}
 
 """
 SIGNALS!
@@ -292,6 +293,6 @@ def apply_changes_from_commitment_cards(sender, request, user, is_new_user, **kw
         return
     messages.success(request,
                      _("%(num_actions)s actions were applied to "
-                       "your account from a commitment card") % len(changes),
+                       "your account from a commitment card") % {'num_actions': len(changes)},
                      extra_tags="sticky")
 logged_in.connect(apply_changes_from_commitment_cards)
