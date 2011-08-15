@@ -17,7 +17,7 @@ def _edit(request, challenge):
     if form.is_valid():
         form.save()
         return redirect(challenge)
-    type_label = challenge.id and _('Edit') or _('Create')
+    type_label = challenge.id and 'Edit' or 'Create'
     return render_to_response('challenges/edit.html', locals(), context_instance=RequestContext(request))
 
 def list(request):

@@ -1,18 +1,33 @@
 {% extends "base/nav_form.html" %}
 {% load i18n %}
 {% load dated_static %}
-{% block title %}{% blocktrans %}{{ type_label }} a Challenge{% endblocktrans %}{% endblock %}
+{% block title %}
+{% if type_label == "Create" %}
+{% blocktrans %}Create a Challenge{% endblocktrans %}
+{% else %}
+{% blocktrans %}Edit a Challenge{% endblocktrans %}
+{% endblock %}
 {% block breadcrumbs %}
     <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
     <a href="{% url challenges_list %}">{% blocktrans %}Challenges{% endblocktrans %}</a> &rsaquo;
     {% if challenge.id %}
         <a href="{% url challenges_detail challenge.id %}">{{challenge.title|truncatewords:6}}</a> &rsaquo;
     {% endif %}
-    {% blocktrans %}{{ type_label }} challenge{% endblocktrans %}
+
+    {% if type_label == "Create" %}
+    {% blocktrans %}Create challenge{% endblocktrans %}
+    {% else %}
+    {% blocktrans %}Edit challenge{% endblocktrans %}
+    {% endif %}
     {% endblock %}
 {% block content %}
     <form id="challenge_form" action="" method="post" class="form_6c">
-        <h1>{% blocktrans %}{{ type_label }} Challenge{% endblocktrans %}</h1>
+        {% if type_label == "Create" %}
+        <h1>{% blocktrans %}Create Challenge{% endblocktrans %}</h1>
+	{% else %}
+        <h1>{% blocktrans %}Edit Challenge{% endblocktrans %}</h1>
+	{% endif %}
+
         {% include "base/_form.html" %}
         {% csrf_token %}
         <div class="form_buttons">
