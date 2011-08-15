@@ -1,22 +1,22 @@
 {% extends "base/nav_form.html" %}
-
+{% load i18n %}
 {% load dated_static %}
 
 {% block content %}
-    <h1>Edit your Profile</h1>
+    <h1>{% blocktrans %}Edit your Profile{% endblocktrans %}</h1>
     <div id="profile_edit_tabs" class="tabs">
         <ul>
-            <li><a href="#account_tab">Account</a></li>
-            <li><a href="#notifications_tab">Notifications</a></li>
-            <li><a href="#social_networks_tab">Social Networks</a></li>
+            <li><a href="#account_tab">{% blocktrans %}Account{% endblocktrans %}</a></li>
+            <li><a href="#notifications_tab">{% blocktrans %}Notifications{% endblocktrans %}</a></li>
+            <li><a href="#social_networks_tab">{% blocktrans %}Social Networks{% endblocktrans %}</a></li>
         </ul>
         <div id="account_tab">
             <p>
                 {% if "www.gravatar.com" in profile.profile_picture %}
-                    <a href="http://en.gravatar.com/" target="_blank">Change your avatar on gravatar.com</a><br/>
+                    <a href="http://en.gravatar.com/" target="_blank">{% blocktrans %}Change your avatar on gravatar.com{% endblocktrans %}</a><br/>
                 {% endif %}
                 {% if not profile.facebook_connect_only %}
-                    <a href="{% url password_change %}">Change your password</a><br/>
+                    <a href="{% url password_change %}">{% blocktrans %}Change your password{% endblocktrans %}</a><br/>
                 {% endif %}
             </p>
             <form id="profile_edit_form" action="" method="post" autocomplete="false">
@@ -26,7 +26,7 @@
                 {% with profile_form as form %}
                     {% include "base/_form.html" %}
                 {% endwith %}
-                <p><input type="submit" name="edit_account" value="Save profile" /></p>
+                <p><input type="submit" name="edit_account" value="{% blocktrans %}Save profile{% endblocktrans %}" /></p>
                 {% csrf_token %}
             </form>
         </div>
@@ -36,8 +36,8 @@
                     <div id="community_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
                         <div class="notification_selectors" class="hidden">
-                            <a class="selector select_all" href="">Select All</a> |
-                            <a class="selector deselect_all" href="">Deselect All</a>
+                            <a class="selector select_all" href="">{% blocktrans %}Select All{% endblocktrans %}</a> |
+                            <a class="selector deselect_all" href="">{% blocktrans %}Deselect All{% endblocktrans %}</a>
                         </div>
                         {{ field }}
                         {% if field.help_text %}
@@ -57,8 +57,8 @@
                     <div id="stream_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
                         <div class="notification_selectors" class="hidden">
-                            <a class="selector select_all" href="">Select All</a> |
-                            <a class="selector deselect_all" href="">Deselect All</a>
+                            <a class="selector select_all" href="">{% blocktrans %}Select All{% endblocktrans %}</a> |
+                            <a class="selector deselect_all" href="">{% blocktrans %}Deselect All{% endblocktrans %}</a>
                         </div>
                         {{ field }}
                         {% if field.help_text %}
@@ -73,48 +73,55 @@
                         {% endif %}
                     </div>
                 {% endwith %}
-                <p><input type="submit" name="edit_notifications" value="Save notifications" /></p>
+                <p><input type="submit" name="edit_notifications" value="{% blocktrans %}Save notifications{% endblocktrans %}" /></p>
                 {% csrf_token %}
             </form>
         </div>
         <div id="social_networks_tab">
             <p>
-                Share the good times by linking to your online networks. After you link up, you can publish your
-                {{ SITE_NAME }} activity to your Facebook or Twitter steams.
+	      {% blocktrans %}
+              Share the good times by linking to your online networks. 
+	      After you link up, you can publish your
+              {{ SITE_NAME }} activity to your Facebook or Twitter steams.
+	      {% endblocktrans %}
             </p>
             <ul class="plain_list">
                 <li>
-                    <img src="{% dated_static 'images/theme/social_icons/48/facebook.png' %}" alt="Facebook icon" 
-                         title="Facebook" width="48" height="48" class="floater"/>
+                    <img src="{% dated_static 'images/theme/social_icons/48/facebook.png' %}" alt="{% blocktrans %}Facebook icon{% endblocktrans %}" 
+                         title="{% blocktrans %}Facebook{% endblocktrans %}"
+			 width="48" height="48" class="floater"/>
                     <p class="floater" style="margin-right:48px">
-                        <b>Facebook</b><br/>
-                        {% if profile.facebook_access_token %}
-                            {% if profile.facebook_share %}
-                                <a href="{% url facebook_disable_sharing %}">Disable automatic sharing</a>
-                            {% else %}
-                                <a href="{% url facebook_enable_sharing %}">Enable automatic sharing</a>
-                            {% endif %}
-                        {% endif %}
-                        {% if profile.facebook_connect_only %}
-                            You cannot unlink your facebook account, since you are currently logged in with facebook
-                        {% else %}
-                            {% if profile.facebook_access_token %}
-                                <br/><a class="" href="{% url facebook_unauthorize %}">Unlink your Facebook account</a>
-                            {% else %}
-                                <a id="link_with_facebook" class="" href="{% url facebook_authorize %}">Link your Facebook account</a>
-                            {% endif %}
-                        {% endif %}
+                      <b>{% blocktrans %}Facebook{% endblocktrans %}</b><br/>
+                      {% if profile.facebook_access_token %}
+                      {% if profile.facebook_share %}
+                      <a href="{% url facebook_disable_sharing %}">{% blocktrans %}Disable automatic sharing{% endblocktrans %}</a>
+                      {% else %}
+                      <a href="{% url facebook_enable_sharing %}">{% blocktrans %}Enable automatic sharing{% endblocktrans %}</a>
+                      {% endif %}
+                      {% endif %}
+                      {% if profile.facebook_connect_only %}
+		      {% blocktrans %}
+                      You cannot unlink your facebook account, since you are currently logged in with facebook
+		      {% endblocktrans %}
+                      {% else %}
+                      {% if profile.facebook_access_token %}
+                      <br/><a class="" href="{% url facebook_unauthorize %}">{% blocktrans %}Unlink your Facebook account{% endblocktrans %}</a>
+                      {% else %}
+                      <a id="link_with_facebook" class="" href="{% url facebook_authorize %}">{% blocktrans %}Link your Facebook account{% endblocktrans %}</a>
+                      {% endif %}
+                      {% endif %}
                     </p>
                 </li>
                 <li>
-                    <img src="{% dated_static 'images/theme/social_icons/48/twitter.png' %}" alt="Twitter icon" 
-                         title="Twitter" width="48" height="48" class="floater"/>
+                    <img src="{% dated_static 'images/theme/social_icons/48/twitter.png' %}" alt="{% blocktrans %}Twitter icon{% endblocktrans %}" 
+                         title="{% blocktrans %}Twitter{% endblocktrans %}"
+			 width="48" height="48" class="floater"/>
                     <p class="floater">
-                        <b>Twitter</b><br/>
+                        <b>{% blocktrans %}Twitter{% endblocktrans %}</b><br/>
                         {% if profile.twitter_access_token %}
-                            <a class="" href="{% url twitter_oauth_unauth %}">Unlink your Twitter account</a>
+                            <a class="" href="{% url twitter_oauth_unauth %}">{% blocktrans %}Unlink your Twitter account{% endblocktrans %}</a>
                         {% else %}
-                            <a id="link_with_twitter" class="" href="{% url twitter_oauth_auth %}">Link your Twitter account</a>
+                            <a id="link_with_twitter" class="" href="{% url twitter_oauth_auth %}">{% blocktrans %}Link your Twitter account{% endblocktrans %}</a>
                         {% endif %}
                     </p>
                 </li>

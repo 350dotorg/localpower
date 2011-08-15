@@ -1,14 +1,15 @@
 {% extends "base/nav_6c3c_b.html" %}
+{% load i18n %}
 {% load record %}
 {% load dated_static %}
 {% load humanize %}
-{% block title %}{{user.get_full_name}}'s profile{% endblock %}
+{% block title %}{% blocktrans with user.get_full_name as user_full_name %}{{user_full_name}}'s profile{% endblocktrans %}{% endblock %}
 {% block extrahead %}
-    <link rel="alternate" type="application/atom+xml"  href="{% url user_activity_feed user.id %}" title="{{ SITE_NAME }} User Activity" />
+    <link rel="alternate" type="application/atom+xml"  href="{% url user_activity_feed user.id %}" title="{% blocktrans %}{{ SITE_NAME }} User Activity{% endblocktrans %}" />
     {# TODO: Add a noindex meta tag here if profile is private #}
 {% endblock %}
 {% block title_bar_image %}
-    <img src="{{user.get_profile.profile_picture_large}}" alt="Profile image" width="80" height="80"/>
+    <img src="{{user.get_profile.profile_picture_large}}" alt="{% blocktrans %}Profile image{% endblocktrans %}" width="80" height="80"/>
 {% endblock %}
 {% block title_bar_title %}{{user.get_full_name}}{% endblock %}
 {% block title_bar_copy %}
@@ -16,25 +17,25 @@
         {% if user.get_profile.location %}
             {{ user.get_profile.location }} | 
         {% endif %}
-        <span>Joined {{ user.date_joined|date:"M Y" }}</span>
+        <span>{% blocktrans with user.date_joined|date:"M Y" as date_joined %}Joined {{ date_joined }}{% endblocktrans %}</span>
     </p>
     {{ profile.about|linebreaksbr }}
     
 {% endblock %}
 {% block tab_nav %}
-    <li class="tab_nav_selected">Overview</li>
-    <li><a href="#actions">Actions</a></li>
-    <li><a href="#communities">Communities</a></li>
-    <li><a href="#challenges">Challenges</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#badges">Badges</a></li>
+    <li class="tab_nav_selected">{% blocktrans %}Overview{% endblocktrans %}</li>
+    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
+    <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
+    <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
+    <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
+    <li><a href="#badges">{% blocktrans %}Badges{% endblocktrans %}</a></li>
     {% if not is_others_profile %}
-        <li class="tab_nav_link"><a href="#actions">Edit your profile</a></li>
+        <li class="tab_nav_link"><a href="#actions">{% blocktrans %}Edit your profile{% endblocktrans %}</a></li>
     {% endif %}
 {% endblock %}
 {% block content %}
         {% if communities %}
-            <h2>Communities</h2>
+            <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_6c_list">
             {% for group in communities %}
             <li {% if forloop.last %}class="nugget_6c_list_last"{% endif %}>
@@ -46,11 +47,11 @@
                     <span>{{ group.headquarters }}</span>
                 </div>
                 <div class="nugget_6c_list_stat">
-                    Members
+                    {% blocktrans %}Members{% endblocktrans %}
                     <div class="{% with group.member_count as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ group.member_count|intcomma }}</div>
                 </div>
                 <div class="nugget_6c_list_stat">
-                    Points
+                    {% blocktrans %}Points{% endblocktrans %}
                     <div class="{% with group.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ group.total_points|intcomma }}</div>
                 </div>
             </li>
@@ -58,33 +59,44 @@
             </ul>
         {% endif %}
         {% if commitment_list %}
-            <h2>Commitments</h2>
+            <h2>{% blocktrans %}Commitments{% endblocktrans %}</h2>
             <p>
             {% for row in commitment_list %}
-                <a href="{% url action_detail row.action.slug %}">{{row.action.name}}</a> by {{row.date_committed|date}}<br/>
+                <a href="{% url action_detail row.action.slug %}">{{row.action.name}}</a> 
+		{% blocktrans with row.date_committed|date as action_date_committed %}
+		by {{action_date_committed}}
+		{% endblocktrans %}
+		<br/>
             {% endfor %}
             </p>
         {% endif %}
         {% if committed %}
-            <h2>Committed Actions</h2>
+            <h2>{% blocktrans %}Committed Actions{% endblocktrans %}</h2>
             <p>
             {% for action in recommended %}
-                <a href="{% url action_detail action.slug %}">{{action.name}}</a> (+{{action.points}} points)<br/>
+                <a href="{% url action_detail action.slug %}">{{action.name}}</a>
+		{% blocktrans with action.points as action_points %}
+		(+{{action_points}} points)
+		{% endblocktrans %}
+		<br/>
             {% endfor %}
             </p>
         {% endif %}
         {% if completed %}
-            <h2>Completed Actions</h2>
+            <h2>{% blocktrans %}Completed Actions{% endblocktrans %}</h2>
             <p>
             {% for action in completed %}
-                <a href="{% url action_detail action.slug %}">{{action.name}}</a> (+{{action.points}} points)<br/>
+                <a href="{% url action_detail action.slug %}">{{action.name}}</a>
+		{% blocktrans with action.points as action_points %}
+		(+{{action_points}} points)
+		{% endblocktrans %}
             {% endfor %}
             </p>
         {% endif %}
         {% if records %}
-            <h2>Recent Activity
+            <h2>{% blocktrans %}Recent Activity{% endblocktrans %}
                 <a class="atom_link" href="{% url user_activity_feed user.id %}">
-                    <img src="{% dated_static 'images/theme/social_icons/16/feed.png' %}" alt="atom feed" width="16" height="16"/>
+                    <img src="{% dated_static 'images/theme/social_icons/16/feed.png' %}" alt="{% blocktrans %}atom feed{% endblocktrans %}" width="16" height="16"/>
                 </a>
             </h2>
             {% for rec in records %}
@@ -95,18 +107,22 @@
 
 {% block sidebar %}
     <div class="ribbon_small ribbon_small_dark">
-        Vital Stats
+        {% blocktrans %}Vital Stats{% endblocktrans %}
         <div class="ribbon_small_wrap ribbon_small_wrap_dark"></div>
     </div>
     <ul class="plain_list nugget_3c_grid_2">
-        <li>Actions Completed <div>{{ completed|length }}</div></li>
-        <li>Actions Committed <div>{{ committed|length }}</div></li>
-        <li>Points Earned <div class="{% with user.get_profile.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ user.get_profile.total_points|intcomma }}</div></li>
-        <li>Challenges Completed <div>0</div></li>
+        <li>{% blocktrans %}Actions Completed{% endblocktrans %}
+	  <div>{{ completed|length }}</div></li>
+        <li>{% blocktrans %}Actions Committed{% endblocktrans %}
+	  <div>{{ committed|length }}</div></li>
+        <li>{% blocktrans %}Points Earned{% endblocktrans %}
+	  <div class="{% with user.get_profile.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ user.get_profile.total_points|intcomma }}</div></li>
+        <li>{% blocktrans %}Challenges Completed{% endblocktrans %}
+	  <div>0</div></li>
     </ul>
 
     <div class="ribbon_small">
-        Events ({{events|length}})
+        {% blocktrans %}Events{% endblocktrans %} ({{events|length}})
         <div class="ribbon_small_wrap"></div>
     </div>
     <ul class="plain_list nugget_3c_list">
@@ -124,7 +140,7 @@
         {% endfor %}
     </ul>
     <div class="ribbon_small">
-        Badges ({{badges|length}})
+      {% blocktrans %}Badges{% endblocktrans %} ({{badges|length}})
         <div class="ribbon_small_wrap"></div>
     </div>
     <ul class="plain_list nugget_3c_grid_3 nugget_3c_grid_badges">
@@ -132,13 +148,13 @@
         <li>
         <a href="{% url badge_detail badge.slug %}">
             <img src="{{ badge.img_small }}" width="60" height="60" 
-                alt="Badge for {{ badge.name }}" title="{{ badge.description }}"/>
+                alt="{% blocktrans with badge.name as badge_name %}Badge for {{ badge_name }}{% endblocktrans %}" title="{{ badge.description }}"/>
             </a>
         </li>
         {% endfor %}
     </ul>
     <div class="ribbon_small">
-        Committed Actions
+        {% blocktrans %}Committed Actions{% endblocktrans %}
         <div class="ribbon_small_wrap"></div>
     </div>
 {% endblock %}

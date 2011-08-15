@@ -1,7 +1,8 @@
 {% extends "base/nav_9c.html" %}
-{% block title %}Results for '{{request.GET.q}}'{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans with request.GET.q as search_query %}Results for '{{search_query}}'{% endblocktrans %}{% endblock %}
 {% block content %}
-    <h1>Search {{ SITE_NAME }}</h1>
+    <h1>{% blocktrans %}Search {{ SITE_NAME }}{% endblocktrans %}</h1>
     <div id="cse_search_results"></div>
     <script type="text/javascript">
         var googleSearchIframeName = "cse_search_results";

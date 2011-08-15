@@ -1,25 +1,30 @@
 {% extends "base/nav_form.html" %}
-{% block title %}Google Analytics Opt Out{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Google Analytics Opt Out{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    Google Analytics Opt Out
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    {% blocktrans %}Google Analytics Opt Out{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
+    {% blocktrans %}
     Click the button below to opt out of our Google Analytics tracking. A cookie will be set for this browser
     only. You need to opt out with every browser you don't want tracked. If you delete your cookies, tracking
     will resume.
+    {% endblocktrans %}
 {% endblock %}
 {% block content %}
     <form class="form_6c">
-        <h1>Opt out of Google Analytics</h1>
-        <button id="opt_out_button" class="button_mega">Opt Out</button>
+        <h1>{% blocktrans %}Opt out of Google Analytics{% endblocktrans %}</h1>
+        <button id="opt_out_button" class="button_mega">
+	  {% blocktrans %}Opt Out{% endblocktrans %}
+	</button>
     </form>
 {% endblock %}
 {% block extrajs %}
     <script type="text/javascript" charset="utf-8">
         $("#opt_out_button").click(function(){
             _gaq.push(['_setVar', 'ga_opt_out']);
-            alert("Opt out successful!");
+            alert("{% blocktrans %}Opt out successful!{% endblocktrans %}");
         });
     </script>
 {% endblock %}

@@ -1,21 +1,26 @@
 {% extends "base/nav_form.html" %}
-{% block title %}Feedback{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Feedback{% endblocktrans %}{% endblock %}
 
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    Feedback
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    {% blocktrans %}Feedback{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
+    {% blocktrans %}
     Your feedback is extremely valuable to us. Use this form to let us 
     know what you think about this page or the site in general. Thanks!
+    {% endblocktrans %}
 {% endblock %}
 {% block content %}
 <form action="" method="post" class="form_6c">
-    <h1>Give us Feedback</h1>
+    <h1>{% blocktrans %}Give us Feedback{% endblocktrans %}</h1>
     {% include "base/_form.html" %}
     {% csrf_token %}
     <div class="form_buttons">
-        <button class="button_mega" type="submit">Submit feedback</button>
+        <button class="button_mega" type="submit">
+	  {% blocktrans %}Submit feedback{% endblocktrans %}
+	</button>
     </div>
 </form>
 {% endblock %}

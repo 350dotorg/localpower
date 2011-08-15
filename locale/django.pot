@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-14 12:06-0400\n"
+"POT-Creation-Date: 2011-08-15 08:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Commit date"
 msgstr ""
 
-#: actions/models.py:76 actions/models.py:215 actions/models.py:243
+#: actions/models.py:76 actions/models.py:215 actions/models.py:244
 msgid "action"
 msgstr ""
 
@@ -91,21 +91,25 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: actions/models.py:88 actions/models.py:218 actions/models.py:246
-#: actions/models.py:268 basic/blog/models.py:47 challenges/models.py:32
+#: actions/models.py:88 actions/models.py:218 actions/models.py:247
+#: actions/models.py:269 basic/blog/models.py:47 challenges/models.py:32
+#: rah/models.py:27 rah/models.py:234
 msgid "created"
 msgstr ""
 
-#: actions/models.py:89 actions/models.py:219 actions/models.py:247
-#: actions/models.py:269 challenges/models.py:33
+#: actions/models.py:89 actions/models.py:219 actions/models.py:248
+#: actions/models.py:270 challenges/models.py:33 rah/models.py:28
+#: rah/models.py:235
 msgid "updated"
 msgstr ""
 
 #: actions/models.py:95 templates/base/nav.html:44
+#: templates/rah/profile.html:28 templates/rah/profile.html.py:38
 msgid "Communities"
 msgstr ""
 
-#: actions/models.py:214 actions/models.py:265
+#: actions/models.py:214 actions/models.py:266 rah/models.py:23
+#: rah/models.py:138 rah/models.py:233
 msgid "user"
 msgstr ""
 
@@ -126,37 +130,37 @@ msgstr ""
 msgid "%(user)s is working on %(action)s"
 msgstr ""
 
-#: actions/models.py:244
+#: actions/models.py:245
 msgid "form name"
 msgstr ""
 
-#: actions/models.py:245
+#: actions/models.py:246
 msgid "var name"
 msgstr ""
 
-#: actions/models.py:251 actions/models.py:264
+#: actions/models.py:252 actions/models.py:265
 msgid "action form"
 msgstr ""
 
-#: actions/models.py:252
+#: actions/models.py:253
 msgid "action forms"
 msgstr ""
 
-#: actions/models.py:255
+#: actions/models.py:256
 #, python-format
 msgid "%(action)s is using form %(form_name)s"
 msgstr ""
 
-#: actions/models.py:266
+#: actions/models.py:267
 msgid "data"
 msgstr ""
 
-#: actions/models.py:277
+#: actions/models.py:278
 #, python-format
 msgid "%(user)s is working on %(action_form)s"
 msgstr ""
 
-#: actions/models.py:294
+#: actions/models.py:295
 #, python-format
 msgid ""
 "%(num_actions)s actions were applied to your account from a commitment card"
@@ -245,13 +249,15 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:18
 #: challenges/templates/challenges/detail.html:6
-#: challenges/templates/challenges/edit.html:6
+#: challenges/templates/challenges/edit.html:6 templates/rah/feedback.html:6
+#: templates/rah/ga_opt_out.html:5
 msgid "Home"
 msgstr ""
 
 #: actions/templates/actions/action_detail.html:19
 #: actions/templates/actions/action_show.html:5
 #: actions/templates/actions/action_show.html:7 templates/base/nav.html:40
+#: templates/rah/profile.html:27
 msgid "Actions"
 msgstr ""
 
@@ -261,6 +267,7 @@ msgid "%(SITE_NAME)s Action"
 msgstr ""
 
 #: actions/templates/actions/action_detail.html:31
+#: templates/rah/profile.html:54
 msgid "Points"
 msgstr ""
 
@@ -494,7 +501,7 @@ msgstr ""
 msgid "%(user_name)s's"
 msgstr ""
 
-#: basic/blog/templates/blog/post_detail.html:50
+#: basic/blog/templates/blog/post_detail.html:50 rah/models.py:25
 msgid "comment"
 msgstr ""
 
@@ -661,6 +668,7 @@ msgstr ""
 #: challenges/templates/challenges/edit.html:7
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
+#: templates/rah/profile.html:29
 msgid "Challenges"
 msgstr ""
 
@@ -670,6 +678,7 @@ msgid "Petition Challenge"
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:13
+#: templates/rah/profile.html:26
 msgid "Overview"
 msgstr ""
 
@@ -784,6 +793,219 @@ msgstr ""
 #: geo/filterspecs.py:24
 #, python-format
 msgid "%(field_name)s"
+msgstr ""
+
+#: rah/admin.py:20
+msgid "Location"
+msgstr ""
+
+#: rah/admin.py:39
+msgid "Parent"
+msgstr ""
+
+#: rah/admin.py:44
+msgid "Likes"
+msgstr ""
+
+#: rah/admin.py:49
+msgid "Dislikes"
+msgstr ""
+
+#: rah/feeds.py:19
+#, python-format
+msgid "%(user)s Activity Stream"
+msgstr ""
+
+#: rah/feeds.py:28
+#, python-format
+msgid "%(user)s's recent activity"
+msgstr ""
+
+#: rah/feeds.py:53
+#, python-format
+msgid "%(content_object)s Comment Stream"
+msgstr ""
+
+#: rah/feeds.py:66
+#, python-format
+msgid "%(content_object)s comment"
+msgstr ""
+
+#: rah/models.py:24
+msgid "url"
+msgstr ""
+
+#: rah/models.py:26
+msgid "beta group"
+msgstr ""
+
+#: rah/models.py:31
+msgid "feedback"
+msgstr ""
+
+#: rah/models.py:32
+msgid "feedbacks"
+msgstr ""
+
+#: rah/models.py:132
+msgid "House"
+msgstr ""
+
+#: rah/models.py:133
+msgid "Apartment"
+msgstr ""
+
+#: rah/models.py:134
+msgid "Condo"
+msgstr ""
+
+#: rah/models.py:135
+msgid "Other"
+msgstr ""
+
+#: rah/models.py:139
+msgid "location"
+msgstr ""
+
+#: rah/models.py:140
+msgid "building type"
+msgstr ""
+
+#: rah/models.py:141
+msgid "about"
+msgstr ""
+
+#: rah/models.py:142
+msgid "is profile private"
+msgstr ""
+
+#: rah/models.py:143
+msgid "twitter access token"
+msgstr ""
+
+#: rah/models.py:145
+msgid "twitter share"
+msgstr ""
+
+#: rah/models.py:146
+msgid "facebook access token"
+msgstr ""
+
+#: rah/models.py:148
+msgid "facebook connect only"
+msgstr ""
+
+#: rah/models.py:149
+msgid "facebook share"
+msgstr ""
+
+#: rah/models.py:150
+msgid "ask to share"
+msgstr ""
+
+#: rah/models.py:151
+msgid "total points"
+msgstr ""
+
+#: rah/models.py:155
+msgid "profile"
+msgstr ""
+
+#: rah/models.py:156
+msgid "profiles"
+msgstr ""
+
+#: rah/models.py:225
+msgid "first name"
+msgstr ""
+
+#: rah/models.py:226
+msgid "last name"
+msgstr ""
+
+#: rah/models.py:227
+msgid "email"
+msgstr ""
+
+#: rah/models.py:228
+msgid "address"
+msgstr ""
+
+#: rah/models.py:229
+msgid "city"
+msgstr ""
+
+#: rah/models.py:230
+msgid "state"
+msgstr ""
+
+#: rah/models.py:231
+msgid "zipcode"
+msgstr ""
+
+#: rah/models.py:238
+msgid "sticker recipient"
+msgstr ""
+
+#: rah/models.py:239
+msgid "sticker recipients"
+msgstr ""
+
+#: rah/views.py:111
+msgid "You have successfully logged out."
+msgstr ""
+
+#: rah/views.py:115
+msgid "Your password was changed successfully."
+msgstr ""
+
+#: rah/views.py:119
+msgid ""
+"We just sent you an email with instructions for resetting your password."
+msgstr ""
+
+#: rah/views.py:123
+msgid "Password reset successfully!"
+msgstr ""
+
+#: rah/views.py:220
+msgid "Sorry, but you do not have permissions to view this profile."
+msgstr ""
+
+#: rah/views.py:259
+msgid "Sorry, but you do not have permissions to edit this profile."
+msgstr ""
+
+#: rah/views.py:275
+msgid "Your profile has been updated."
+msgstr ""
+
+#: rah/views.py:284
+msgid "Your notifications have been updated."
+msgstr ""
+
+#: rah/views.py:287
+msgid "No action specified."
+msgstr ""
+
+#: rah/views.py:311
+msgid "Thank you for the feedback."
+msgstr ""
+
+#: rah/views.py:350
+msgid "Thanks for the comment."
+msgstr ""
+
+#: rah/views.py:354
+msgid "You do not have permissions."
+msgstr ""
+
+#: rah/views.py:360
+msgid "Thanks for registering."
+msgstr ""
+
+#: rah/templatetags/rah_tags.py:25
+msgid "You"
 msgstr ""
 
 #: rateable/models.py:34
@@ -961,7 +1183,8 @@ msgstr ""
 msgid "Subscribe to our blog"
 msgstr ""
 
-#: templates/base/base.html:112
+#: templates/base/base.html:112 templates/rah/feedback.html:3
+#: templates/rah/feedback.html.py:7
 msgid "Feedback"
 msgstr ""
 
@@ -1004,7 +1227,8 @@ msgid ""
 "dictum velit nec est."
 msgstr ""
 
-#: templates/base/nav.html:27
+#: templates/base/nav.html:27 templates/rah/home_page.html:12
+#: templates/rah/home_page.html.py:34
 msgid "Create an Account"
 msgstr ""
 
@@ -1012,11 +1236,13 @@ msgstr ""
 msgid "Join with with Facebook"
 msgstr ""
 
-#: templates/base/nav.html:52
+#: templates/base/nav.html:52 templates/rah/profile.html:30
+#: templates/rah/profile.html.py:125
 msgid "Events"
 msgstr ""
 
-#: templates/base/nav.html:56
+#: templates/base/nav.html:56 templates/rah/profile.html:31
+#: templates/rah/profile.html.py:143
 msgid "Badges"
 msgstr ""
 
@@ -1038,4 +1264,390 @@ msgstr ""
 
 #: templates/base/nav_6c3c.html:6
 msgid "breadcrumbs"
+msgstr ""
+
+#: templates/rah/feedback.html:10
+msgid ""
+"\n"
+"    Your feedback is extremely valuable to us. Use this form to let us \n"
+"    know what you think about this page or the site in general. Thanks!\n"
+"    "
+msgstr ""
+
+#: templates/rah/feedback.html:17
+msgid "Give us Feedback"
+msgstr ""
+
+#: templates/rah/feedback.html:22
+msgid "Submit feedback"
+msgstr ""
+
+#: templates/rah/ga_opt_out.html:3 templates/rah/ga_opt_out.html.py:6
+msgid "Google Analytics Opt Out"
+msgstr ""
+
+#: templates/rah/ga_opt_out.html:9
+msgid ""
+"\n"
+"    Click the button below to opt out of our Google Analytics tracking. A "
+"cookie will be set for this browser\n"
+"    only. You need to opt out with every browser you don't want tracked. If "
+"you delete your cookies, tracking\n"
+"    will resume.\n"
+"    "
+msgstr ""
+
+#: templates/rah/ga_opt_out.html:17
+msgid "Opt out of Google Analytics"
+msgstr ""
+
+#: templates/rah/ga_opt_out.html:19
+msgid "Opt Out"
+msgstr ""
+
+#: templates/rah/ga_opt_out.html:27
+msgid "Opt out successful!"
+msgstr ""
+
+#: templates/rah/home_page.html:9
+msgid "Welcome"
+msgstr ""
+
+#: templates/rah/home_page.html:10
+msgid "Empower your Home"
+msgstr ""
+
+#: templates/rah/home_page.html:11
+msgid "Empower your Community"
+msgstr ""
+
+#: templates/rah/home_page.html:25
+msgid "Be an Energy Trendsetter!"
+msgstr ""
+
+#: templates/rah/home_page.html:27
+#, python-format
+msgid ""
+"\n"
+"                            %(SITE_NAME)s makes energy efficiency easy, fun "
+"and\n"
+"                            social. Across the country, our members are "
+"working to\n"
+"                            transform the way their homes and communities "
+"use energy.\n"
+"\t\t\t  "
+msgstr ""
+
+#: templates/rah/home_page.html:40
+msgid "You have the power <br/>to save energy"
+msgstr ""
+
+#: templates/rah/home_page.html:42
+msgid ""
+"\n"
+"                            Our energy actions give you the necessary know-"
+"how to save\n"
+"                            energy, lower your bills and improve our "
+"environment by\n"
+"                            reducing greenhouse gas pollution. The more "
+"actions you\n"
+"                            complete, the more badges and points you earn "
+"for your\n"
+"                            progress. \n"
+"\t\t\t  "
+msgstr ""
+
+#: templates/rah/home_page.html:51
+msgid "See All Actions"
+msgstr ""
+
+#: templates/rah/home_page.html:63
+msgid "Support energy efficiency in your community"
+msgstr ""
+
+#: templates/rah/home_page.html:65
+#, python-format
+msgid ""
+"\n"
+"                            Stay up-to-date on energy efficiency efforts in "
+"your\n"
+"                            neighborhood, school, workplace or other group "
+"by joining a\n"
+"                            %(SITE_NAME)s community. Communities make it "
+"easy to\n"
+"                            share tips and stories with Trendsetters like "
+"you.\n"
+"\t\t\t  "
+msgstr ""
+
+#: templates/rah/home_page.html:73
+msgid "Find Communities"
+msgstr ""
+
+#: templates/rah/home_page.html:79
+msgid "Pledge to save energy at home and set the trend in your community"
+msgstr ""
+
+#: templates/rah/home_page.html:81
+msgid ""
+"\n"
+"                            Sign the pledge by the filling out the form on "
+"the right.\n"
+"\t\t\t  "
+msgstr ""
+
+#: templates/rah/home_page.html:99
+#, python-format
+msgid "Total %(SITE_NAME)s Trendsetters"
+msgstr ""
+
+#: templates/rah/home_page.html:105
+#, python-format
+msgid "Total %(SITE_NAME)s Communities"
+msgstr ""
+
+#: templates/rah/home_page.html:111
+#, python-format
+msgid "Pounds of Coal Saved by %(SITE_NAME)s"
+msgstr ""
+
+#: templates/rah/home_page.html:117
+#, python-format
+msgid "Actions Taken by %(SITE_NAME)s"
+msgstr ""
+
+#: templates/rah/home_page.html:125
+msgid "Featured Users"
+msgstr ""
+
+#: templates/rah/home_page.html:133
+msgid "Browse Users"
+msgstr ""
+
+#: templates/rah/home_page.html:138
+msgid "Featured Communities"
+msgstr ""
+
+#: templates/rah/home_page.html:148
+#, python-format
+msgid ""
+"\n"
+"\t\t    %(num_members)s members \n"
+"\t\t    "
+msgstr ""
+
+#: templates/rah/home_page.html:152
+#, python-format
+msgid ""
+"\n"
+"\t\t    %(num_points)s points\n"
+"\t\t    "
+msgstr ""
+
+#: templates/rah/home_page.html:161
+msgid "Browse Communities"
+msgstr ""
+
+#: templates/rah/home_page.html:166
+msgid "Recent Badges Earned"
+msgstr ""
+
+#: templates/rah/profile.html:6
+#, python-format
+msgid "%(user_full_name)s's profile"
+msgstr ""
+
+#: templates/rah/profile.html:8
+#, python-format
+msgid "%(SITE_NAME)s User Activity"
+msgstr ""
+
+#: templates/rah/profile.html:12
+msgid "Profile image"
+msgstr ""
+
+#: templates/rah/profile.html:20
+#, python-format
+msgid "Joined %(date_joined)s"
+msgstr ""
+
+#: templates/rah/profile.html:33
+msgid "Edit your profile"
+msgstr ""
+
+#: templates/rah/profile.html:50
+msgid "Members"
+msgstr ""
+
+#: templates/rah/profile.html:62
+msgid "Commitments"
+msgstr ""
+
+#: templates/rah/profile.html:66
+#, python-format
+msgid ""
+"\n"
+"\t\tby %(action_date_committed)s\n"
+"\t\t"
+msgstr ""
+
+#: templates/rah/profile.html:74 templates/rah/profile.html.py:157
+msgid "Committed Actions"
+msgstr ""
+
+#: templates/rah/profile.html:78 templates/rah/profile.html.py:90
+#, python-format
+msgid ""
+"\n"
+"\t\t(+%(action_points)s points)\n"
+"\t\t"
+msgstr ""
+
+#: templates/rah/profile.html:86
+msgid "Completed Actions"
+msgstr ""
+
+#: templates/rah/profile.html:97
+msgid "Recent Activity"
+msgstr ""
+
+#: templates/rah/profile.html:99
+msgid "atom feed"
+msgstr ""
+
+#: templates/rah/profile.html:110
+msgid "Vital Stats"
+msgstr ""
+
+#: templates/rah/profile.html:114
+msgid "Actions Completed"
+msgstr ""
+
+#: templates/rah/profile.html:116
+msgid "Actions Committed"
+msgstr ""
+
+#: templates/rah/profile.html:118
+msgid "Points Earned"
+msgstr ""
+
+#: templates/rah/profile.html:120
+msgid "Challenges Completed"
+msgstr ""
+
+#: templates/rah/profile.html:151
+#, python-format
+msgid "Badge for %(badge_name)s"
+msgstr ""
+
+#: templates/rah/profile_edit.html:6
+msgid "Edit your Profile"
+msgstr ""
+
+#: templates/rah/profile_edit.html:9
+msgid "Account"
+msgstr ""
+
+#: templates/rah/profile_edit.html:10
+msgid "Notifications"
+msgstr ""
+
+#: templates/rah/profile_edit.html:11
+msgid "Social Networks"
+msgstr ""
+
+#: templates/rah/profile_edit.html:16
+msgid "Change your avatar on gravatar.com"
+msgstr ""
+
+#: templates/rah/profile_edit.html:19
+msgid "Change your password"
+msgstr ""
+
+#: templates/rah/profile_edit.html:29
+msgid "Save profile"
+msgstr ""
+
+#: templates/rah/profile_edit.html:39 templates/rah/profile_edit.html.py:60
+msgid "Select All"
+msgstr ""
+
+#: templates/rah/profile_edit.html:40 templates/rah/profile_edit.html.py:61
+msgid "Deselect All"
+msgstr ""
+
+#: templates/rah/profile_edit.html:76
+msgid "Save notifications"
+msgstr ""
+
+#: templates/rah/profile_edit.html:82
+#, python-format
+msgid ""
+"\n"
+"              Share the good times by linking to your online networks. \n"
+"\t      After you link up, you can publish your\n"
+"              %(SITE_NAME)s activity to your Facebook or Twitter steams.\n"
+"\t      "
+msgstr ""
+
+#: templates/rah/profile_edit.html:90
+msgid "Facebook icon"
+msgstr ""
+
+#: templates/rah/profile_edit.html:91 templates/rah/profile_edit.html.py:94
+msgid "Facebook"
+msgstr ""
+
+#: templates/rah/profile_edit.html:97
+msgid "Disable automatic sharing"
+msgstr ""
+
+#: templates/rah/profile_edit.html:99
+msgid "Enable automatic sharing"
+msgstr ""
+
+#: templates/rah/profile_edit.html:103
+msgid ""
+"\n"
+"                      You cannot unlink your facebook account, since you are "
+"currently logged in with facebook\n"
+"\t\t      "
+msgstr ""
+
+#: templates/rah/profile_edit.html:108
+msgid "Unlink your Facebook account"
+msgstr ""
+
+#: templates/rah/profile_edit.html:110
+msgid "Link your Facebook account"
+msgstr ""
+
+#: templates/rah/profile_edit.html:116
+msgid "Twitter icon"
+msgstr ""
+
+#: templates/rah/profile_edit.html:117 templates/rah/profile_edit.html:120
+msgid "Twitter"
+msgstr ""
+
+#: templates/rah/profile_edit.html:122
+msgid "Unlink your Twitter account"
+msgstr ""
+
+#: templates/rah/profile_edit.html:124
+msgid "Link your Twitter account"
+msgstr ""
+
+#: templates/rah/search.html:3
+#, python-format
+msgid "Results for '%(search_query)s'"
+msgstr ""
+
+#: templates/rah/search.html:5
+#, python-format
+msgid "Search %(SITE_NAME)s"
+msgstr ""
+
+#: templates/rah/user_list.html:7
+msgid "User List"
 msgstr ""

@@ -1,9 +1,10 @@
+{% load i18n %}
 {% load dated_static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
     <head>
         <link rel="shortcut icon" href="{% dated_static 'images/theme/favicon.ico' %}"/>
-        <title>User List</title>
+        <title>{% blocktrans %}User List{% endblocktrans %}</title>
     </head>
     <body>
         <ul>

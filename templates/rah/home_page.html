@@ -1,14 +1,15 @@
 {% extends "base/base.html" %}
 {% load dated_static %}
+{% load i18n %}
 {% load humanize %}
 {% block rah_nav_select %}nav_home{% endblock %}
 {% block 12c_content %}
 
     <div class="grid_12 alpha omega" id="home_slide_nav">
-        <a href="#1" id="home_slide_nav_1" class="home_slide_nav_selected">Welcome</a>
-        <a href="#2" id="home_slide_nav_2">Empower your Home</a>
-        <a href="#3" id="home_slide_nav_3">Empower your Community</a>
-        <a href="#4" id="home_slide_nav_4">Create an Account</a>
+        <a href="#1" id="home_slide_nav_1" class="home_slide_nav_selected">{% blocktrans %}Welcome{% endblocktrans %}</a>
+        <a href="#2" id="home_slide_nav_2">{% blocktrans %}Empower your Home{% endblocktrans %}</a>
+        <a href="#3" id="home_slide_nav_3">{% blocktrans %}Empower your Community{% endblocktrans %}</a>
+        <a href="#4" id="home_slide_nav_4">{% blocktrans %}Create an Account{% endblocktrans %}</a>
     </div>
     <div class="grid_1 alpha center">
         <a href="#" id="home_slide_nav_prev" class="sprite_slide_nav_prev"></a>
@@ -21,29 +22,33 @@
                         <img src="{% dated_static 'images/theme/home_slide_1.png' %}" alt="" width="420" height="298"/>
                     </div>
                     <div class="home_slide_right">
-                        <h1>Be an Energy Trendsetter!</h1>
+                        <h1>{% blocktrans %}Be an Energy Trendsetter!{% endblocktrans %}</h1>
                         <p>
+			  {% blocktrans %}
                             {{ SITE_NAME }} makes energy efficiency easy, fun and
                             social. Across the country, our members are working to
                             transform the way their homes and communities use energy.
+			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url action_show %}" class="button button_mega button_shadow" id="home_account_link">Create an Account &rsaquo;</a>
+                            <a href="{% url action_show %}" class="button button_mega button_shadow" id="home_account_link">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
                         </p>
                     </div>
                 </div>
                 <div id="home_slide_2" class="home_slide">
                     <div class="home_slide_left">
-                        <h1>You have the power <br/>to save energy</h1>
+                        <h1>{% blocktrans %}You have the power <br/>to save energy{% endblocktrans %}</h1>
                         <p>
+			  {% blocktrans %}
                             Our energy actions give you the necessary know-how to save
                             energy, lower your bills and improve our environment by
                             reducing greenhouse gas pollution. The more actions you
                             complete, the more badges and points you earn for your
                             progress. 
+			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url action_show %}" class="button button_mega button_shadow">See All Actions &rsaquo;</a>
+                            <a href="{% url action_show %}" class="button button_mega button_shadow">{% blocktrans %}See All Actions{% endblocktrans %} &rsaquo;</a>
                         </p>
                     </div>
                     <div class="home_slide_right">
@@ -55,23 +60,27 @@
                          <img src="{% dated_static 'images/theme/home_slide_3.png' %}" alt="" width="411" height="297"/>
                     </div>
                     <div class="home_slide_right">
-                        <h1>Support energy efficiency in your community</h1>
+                        <h1>{% blocktrans %}Support energy efficiency in your community{% endblocktrans %}</h1>
                         <p>
+			  {% blocktrans %}
                             Stay up-to-date on energy efficiency efforts in your
                             neighborhood, school, workplace or other group by joining a
                             {{ SITE_NAME }} community. Communities make it easy to
                             share tips and stories with Trendsetters like you.
+			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url group_list %}" class="button button_mega button_shadow">Find Communities &rsaquo;</a>
+                            <a href="{% url group_list %}" class="button button_mega button_shadow">{% blocktrans %}Find Communities{% endblocktrans %} &rsaquo;</a>
                         </p>
                     </div>
                 </div>
                 <div id="home_slide_4" class="home_slide">
                     <div class="home_slide_left">
-                        <h1>Pledge to save energy at home and set the trend in your community</h1>
+                        <h1>{% blocktrans %}Pledge to save energy at home and set the trend in your community{% endblocktrans %}</h1>
                         <p>
+			  {% blocktrans %}
                             Sign the pledge by the filling out the form on the right.
+			  {% endblocktrans %}
                         </p>
                     </div>
                     <div class="home_slide_right">
@@ -87,25 +96,25 @@
     <div class="grid_12 alpha omega" id="home_stat_bar">
         <div class="home_stat_wrap">
             <div class="home_stat">
-                Total {{ SITE_NAME }} Trendsetters
+              {% blocktrans %}Total {{ SITE_NAME }} Trendsetters{% endblocktrans %}
             </div>
             <div class="home_stat_num home_stat_1">{{ total_trendsetters|intcomma }}</div>
         </div>
         <div class="home_stat_wrap">
             <div class="home_stat">
-                Total {{ SITE_NAME }} Communities
+              {% blocktrans %}Total {{ SITE_NAME }} Communities{% endblocktrans %}
             </div>
             <div class="home_stat_num home_stat_2">{{ total_communities|intcomma }}</div>
         </div>
         <div class="home_stat_wrap">
             <div class="home_stat">
-                Pounds of Coal Saved by {{ SITE_NAME }}
+              {% blocktrans %}Pounds of Coal Saved by {{ SITE_NAME }}{% endblocktrans %}
             </div>
             <div class="home_stat_num home_stat_3">{{ total_points|intcomma }}</div>
         </div>
         <div class="home_stat_wrap home_stat_wrap_last">
             <div class="home_stat">
-                Actions Taken by {{ SITE_NAME }} 
+              {% blocktrans %}Actions Taken by {{ SITE_NAME }}{% endblocktrans %}
             </div>
             <div class="home_stat_num home_stat_4">{{ total_actions|intcomma }}</div> 
         </div>
@@ -113,7 +122,7 @@
     <div class="grid_12 alpha omega">
         <div class="grid_4 alpha">
             <div id="home_featured_users">
-                <h2 class="home_feature_heading">Featured Users</h2>
+                <h2 class="home_feature_heading">{% blocktrans %}Featured Users{% endblocktrans %}</h2>
                 <ul class="plain_list nugget_2c_list">
                     {% for user in top_users %}
                         {% include "base/_nugget_2c_list.html" %}
@@ -121,12 +130,12 @@
                 </ul>
                 <br/>
                 <div class="center">
-                    <a href="#" class="button button_blue button_189">Browse Users</a>
+                    <a href="#" class="button button_blue button_189">{% blocktrans %}Browse Users{% endblocktrans %}</a>
                 </div>
             </div>
         </div>
         <div class="grid_4">
-            <h2 class="home_feature_heading">Featured Communities</h2>
+            <h2 class="home_feature_heading">{% blocktrans %}Featured Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_4c_list">
                 {% for group in top_communities %}
                 <li>
@@ -136,19 +145,25 @@
                 <div>
                     <a href="{{ group.get_absolute_url }}">{{ group.name }}</a><br/>
                     <span>{{ group.headquarters }}</span><br/>
-                    {{ group.member_count|intcomma }} members <span>|</span> {{ group.total_points|intcomma }} points
+                    {% blocktrans with group.member_count|intcomma as num_members %}
+		    {{num_members}} members 
+		    {% endblocktrans %}
+		    <span>|</span>
+		    {% blocktrans with group.total_points|intcomma as num_points %}
+		    {{num_points}} points
+		    {% endblocktrans %}
                 </div>
                 </li>
                 {% endfor %}
             </ul>
 
             <div class="center">
-                <a href="{% url group_list %}" class="button button_blue button_189">Browse Communities</a>
+                <a href="{% url group_list %}" class="button button_blue button_189">{% blocktrans %}Browse Communities{% endblocktrans %}</a>
             </div>
 
         </div>
         <div class="grid_4 omega">
-            <h2 class="home_feature_heading">Recent Badges Earned</h2>
+            <h2 class="home_feature_heading">{% blocktrans %}Recent Badges Earned{% endblocktrans %}</h2>
         </div>
     </div>
     <script>
