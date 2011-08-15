@@ -106,7 +106,7 @@ msgstr ""
 #: actions/models.py:95 templates/base/nav.html:44
 #: templates/rah/profile.html:28 templates/rah/profile.html.py:38
 msgid "Communities"
-msgstr ""
+msgstr "Groups"
 
 #: actions/models.py:214 actions/models.py:266 rah/models.py:23
 #: rah/models.py:138 rah/models.py:233
@@ -636,7 +636,7 @@ msgstr ""
 
 #: challenges/models.py:37
 msgid "communities"
-msgstr ""
+msgstr "groups"
 
 #: challenges/models.py:59
 msgid "contributor"
@@ -1383,10 +1383,21 @@ msgid ""
 "                            progress. \n"
 "\t\t\t  "
 msgstr ""
+"\n"
+"                            Our energy projects give you the necessary know-"
+"how to save\n"
+"                            energy, lower your bills and improve our "
+"environment by\n"
+"                            reducing greenhouse gas pollution. The more "
+"projects you\n"
+"                            complete, the more badges and points you earn "
+"for your\n"
+"                            progress. \n"
+"\t\t\t  "
 
 #: templates/rah/home_page.html:51
 msgid "See All Actions"
-msgstr ""
+msgstr "See All Projects"
 
 #: templates/rah/home_page.html:63
 msgid "Support energy efficiency in your community"
@@ -1406,10 +1417,20 @@ msgid ""
 "you.\n"
 "\t\t\t  "
 msgstr ""
+"\n"
+"                            Stay up-to-date on energy efficiency efforts in "
+"your\n"
+"                            neighborhood, school, workplace or other group "
+"by joining a\n"
+"                            %(SITE_NAME)s group. Groups make it "
+"easy to\n"
+"                            share tips and stories with Trendsetters like "
+"you.\n"
+"\t\t\t  "
 
 #: templates/rah/home_page.html:73
 msgid "Find Communities"
-msgstr ""
+msgstr "Find Groups"
 
 #: templates/rah/home_page.html:79
 msgid "Pledge to save energy at home and set the trend in your community"
@@ -1431,7 +1452,7 @@ msgstr ""
 #: templates/rah/home_page.html:105
 #, python-format
 msgid "Total %(SITE_NAME)s Communities"
-msgstr ""
+msgstr "Total %(SITE_NAME)s Groups"
 
 #: templates/rah/home_page.html:111
 #, python-format
@@ -1441,7 +1462,7 @@ msgstr ""
 #: templates/rah/home_page.html:117
 #, python-format
 msgid "Actions Taken by %(SITE_NAME)s"
-msgstr ""
+msgstr "Projects Completed on %(SITE_NAME)s"
 
 #: templates/rah/home_page.html:125
 msgid "Featured Users"
@@ -1453,7 +1474,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:138
 msgid "Featured Communities"
-msgstr ""
+msgstr "Featured Groups"
 
 #: templates/rah/home_page.html:148
 #, python-format
@@ -1473,7 +1494,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:161
 msgid "Browse Communities"
-msgstr ""
+msgstr "Browse Groups"
 
 #: templates/rah/home_page.html:166
 msgid "Recent Badges Earned"
@@ -1520,7 +1541,7 @@ msgstr ""
 
 #: templates/rah/profile.html:74 templates/rah/profile.html.py:157
 msgid "Committed Actions"
-msgstr ""
+msgstr "Committed Projects"
 
 #: templates/rah/profile.html:78 templates/rah/profile.html.py:90
 #, python-format
@@ -1532,7 +1553,7 @@ msgstr ""
 
 #: templates/rah/profile.html:86
 msgid "Completed Actions"
-msgstr ""
+msgstr "Completed Projects"
 
 #: templates/rah/profile.html:97
 msgid "Recent Activity"
@@ -1548,11 +1569,11 @@ msgstr ""
 
 #: templates/rah/profile.html:114
 msgid "Actions Completed"
-msgstr ""
+msgstr "Projects Completed"
 
 #: templates/rah/profile.html:116
 msgid "Actions Committed"
-msgstr ""
+msgstr "Projects Committed"
 
 #: templates/rah/profile.html:118
 msgid "Points Earned"
