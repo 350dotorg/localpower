@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.comments.models import Comment
 from django.shortcuts import get_object_or_404
 from django.utils.feedgenerator import Atom1Feed
+from django.utils.translation import ugettext as _
 
 from records.models import Record
 
@@ -15,7 +16,7 @@ class UserActivityFeed(Feed):
         return get_object_or_404(User, id=user_id)
 
     def title(self, user):
-        return "%s Activity Stream" % user.get_full_name()
+        return _("%(user)s Activity Stream") % {'user': user.get_full_name()}
 
     def link(self, user):
         return user.get_absolute_url()
@@ -24,7 +25,7 @@ class UserActivityFeed(Feed):
         return self.link(user)
 
     def subtitle(self, user):
-        return "%s's recent activity" % user.get_full_name()
+        return _("%(user)s's recent activity") % {'user': user.get_full_name()}
 
     def items(self, user):
         records = Record.objects.filter(user=user)
@@ -49,7 +50,7 @@ class CommentsFeed(Feed):
         return get_object_or_404(comment_type.model_class(), pk=object_pk)
 
     def title(self, content_object):
-        return "%s Comment Stream" % content_object
+        return _("%(content_object)s Comment Stream") % {'content_object': content_object}
 
     def link(self, content_object):
         return content_object.get_absolute_url()
@@ -62,7 +63,7 @@ class CommentsFeed(Feed):
         return comments.order_by("-submit_date")[:30]
 
     def item_title(self, comment):
-        return "%s comment" % comment.content_object
+        return _("%(content_object)s comment") % {'content_object': comment.content_object}
 
     def item_description(self, comment):
         return comment.comment

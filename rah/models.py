@@ -8,6 +8,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.localflavor.us.models import USStateField
 from django.core.cache import cache
+from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
 from records.models import Record
@@ -19,12 +20,16 @@ def yestarday():
     return datetime.datetime.today() - datetime.timedelta(days=1)
 
 class Feedback(models.Model):
-    user = models.ForeignKey(User, null=True)
-    url = models.CharField(max_length=255, default='')
-    comment = models.TextField(default='')
-    beta_group = models.BooleanField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, null=True, verbose_name=_('user'))
+    url = models.CharField(_('url'), max_length=255, default='')
+    comment = models.TextField(_('comment'), default='')
+    beta_group = models.BooleanField(_('beta group'), default=0)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
+
+    class Meta:
+        verbose_name = _('feedback')
+        verbose_name_plural = _('feedbacks')
 
     def __unicode__(self):
         return u'%s...' % (self.comment[:15])
@@ -124,26 +129,32 @@ class ProfileManager(models.Manager):
 class Profile(models.Model):
     """Profile"""
     BUILDING_CHOICES = (
-        ('S', 'House'),
-        ('A', 'Apartment'),
-        ('C', 'Condo'),
-        ('O', 'Other'),
+        ('S', _('House')),
+        ('A', _('Apartment')),
+        ('C', _('Condo')),
+        ('O', _('Other')),
     )
 
-    user = models.ForeignKey(User, unique=True)
-    location = models.ForeignKey(Location, null=True, blank=True)
-    building_type = models.CharField(null=True, max_length=1, choices=BUILDING_CHOICES, blank=True)
-    about = models.CharField(null=True, blank=True, max_length=255)
-    is_profile_private = models.BooleanField(default=0)
-    twitter_access_token = models.CharField(null=True, max_length=255, blank=True)
-    twitter_share = models.BooleanField(default=False)
-    facebook_access_token = models.CharField(null=True, max_length=255, blank=True)
-    facebook_connect_only = models.BooleanField(default=False)
-    facebook_share = models.BooleanField(default=False)
-    ask_to_share = models.BooleanField(default=True)
-    total_points = models.IntegerField(default=0)
+    user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_('location'))
+    building_type = models.CharField(_('building type'), null=True, max_length=1, choices=BUILDING_CHOICES, blank=True)
+    about = models.CharField(_('about'), null=True, blank=True, max_length=255)
+    is_profile_private = models.BooleanField(_('is profile private'), default=0)
+    twitter_access_token = models.CharField(_('twitter access token'), 
+                                            null=True, max_length=255, blank=True)
+    twitter_share = models.BooleanField(_('twitter share'), default=False)
+    facebook_access_token = models.CharField(_('facebook access token'),
+                                             null=True, max_length=255, blank=True)
+    facebook_connect_only = models.BooleanField(_('facebook connect only'), default=False)
+    facebook_share = models.BooleanField(_('facebook share'), default=False)
+    ask_to_share = models.BooleanField(_('ask to share'), default=True)
+    total_points = models.IntegerField(_('total points'), default=0)
     objects = ProfileManager()
 
+    class Meta:
+        verbose_name = _('profile')
+        verbose_name_plural = _('profiles')
+    
     def __unicode__(self):
         return u'%s' % (self.user.email)
 
@@ -211,17 +222,21 @@ class Profile(models.Model):
             date_committed=due_date).order_by("-date_committed")
 
 class StickerRecipient(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=50)
-    state = USStateField()
-    zipcode = models.CharField(max_length=10)
-    user = models.ForeignKey("auth.user", blank=True, null=True, db_index=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    first_name = models.CharField(_('first name'), max_length=50)
+    last_name = models.CharField(_('last name'), max_length=50)
+    email = models.EmailField(_('email'))
+    address = models.CharField(_('address'), max_length=100)
+    city = models.CharField(_('city'), max_length=50)
+    state = USStateField(_('state'))
+    zipcode = models.CharField(_('zipcode'), max_length=10)
+    user = models.ForeignKey("auth.user", blank=True, null=True, db_index=True, 
+                             verbose_name=_('user'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
+    class Meta:
+        verbose_name = _('sticker recipient')
+        verbose_name_plural = _('sticker recipients')
 
 """
 SIGNALS!

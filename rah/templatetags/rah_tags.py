@@ -1,6 +1,7 @@
 from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 
 register = template.Library()
 
@@ -21,7 +22,7 @@ class UserNode(template.Node):
         if user.id != current_user.id and user.get_profile().is_profile_private:
             return str(user.get_full_name())
         else:
-            name = "You" if user.id == current_user.id else user.get_full_name()
+            name = _("You") if user.id == current_user.id else user.get_full_name()
             return "<a href='%s'>%s</a>" % (reverse("profile", args=[user.id]), name)
 
 @register.tag

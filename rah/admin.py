@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
+from django.utils.translation import ugettext_lazy as _
 
 from models import Profile
 from forms import ProfileEditForm
@@ -16,7 +17,7 @@ class UserAdmin(admin.ModelAdmin):
 
     def location(self, obj):
         return obj.get_profile().location
-    location.short_description = "Location"
+    location.short_description = _("Location")
 
 class ProfileAdmin(admin.ModelAdmin):
     form = ProfileEditForm
@@ -35,16 +36,16 @@ class CommentAdmin(admin.ModelAdmin):
 
     def parent(self, obj):
         return str(obj.content_object)
-    parent.short_description = "Parent"
+    parent.short_description = _("Parent")
 
     def likes(self, obj):
         return Rating.objects.filter(content_type=self.content_type, object_pk=obj.id,
             score=1).count()
-    likes.short_description = "Likes"
+    likes.short_description = _("Likes")
 
     def dislikes(self, obj):
         return Rating.objects.filter(content_type=self.content_type, object_pk=obj.id,
             score=0).count()
-    dislikes.short_description = "Dislikes"
+    dislikes.short_description = _("Dislikes")
 
 admin.site.register(Comment, CommentAdmin)

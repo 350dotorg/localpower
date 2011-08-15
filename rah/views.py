@@ -18,6 +18,7 @@ from django.db.models import Sum, Count
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext, loader, Context
+from django.utils.translation import ugettext as _
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.decorators.cache import cache_page
@@ -107,19 +108,19 @@ def user_list(request):
 
 def logout(request):
     auth.logout(request)
-    messages.success(request, "You have successfully logged out.", extra_tags="sticky")
+    messages.success(request, _("You have successfully logged out."), extra_tags="sticky")
     return redirect("index")
 
 def password_change_done(request):
-    messages.success(request, "Your password was changed successfully.", extra_tags="sticky")
+    messages.success(request, _("Your password was changed successfully."), extra_tags="sticky")
     return redirect("profile_edit", user_id=request.user.id)
 
 def password_reset_done(request):
-    messages.success(request, "We just sent you an email with instructions for resetting your password.", extra_tags="sticky")
+    messages.success(request, _("We just sent you an email with instructions for resetting your password."), extra_tags="sticky")
     return redirect("index")
 
 def password_reset_complete(request):
-    messages.success(request, "Password reset successfully!", extra_tags="sticky")
+    messages.success(request, _("Password reset successfully!"), extra_tags="sticky")
     return redirect("index")
 
 @csrf_protect
@@ -215,7 +216,8 @@ def profile(request, user_id):
 
     profile = user.get_profile()
     if request.user <> user and user.get_profile().is_profile_private:
-        return forbidden(request, "Sorry, but you do not have permissions to view this profile.")
+        return forbidden(request,
+                         _("Sorry, but you do not have permissions to view this profile."))
 
     actions = Action.objects.actions_by_status(user)
     commitment_list = UserActionProgress.objects.commitments_for_user(user)
@@ -253,7 +255,8 @@ def profile(request, user_id):
 @csrf_protect
 def profile_edit(request, user_id):
     if request.user.id <> int(user_id):
-        return forbidden(request, "Sorry, but you do not have permissions to edit this profile.")
+        return forbidden(request, 
+                         _("Sorry, but you do not have permissions to edit this profile."))
 
     profile = request.user.get_profile()
     account_form = AccountForm(instance=request.user)
@@ -268,7 +271,8 @@ def profile_edit(request, user_id):
             if profile_form.is_valid() and account_form.is_valid():
                 profile_form.save()
                 account_form.save()
-                messages.add_message(request, messages.SUCCESS, 'Your profile has been updated.')
+                messages.add_message(request, messages.SUCCESS, 
+                                     _('Your profile has been updated.'))
                 return redirect("profile_edit", user_id=request.user.id)
         elif "edit_notifications" in request.POST:
             group_notifications_form = GroupNotificationsForm(user=request.user, data=request.POST)
@@ -276,10 +280,11 @@ def profile_edit(request, user_id):
             if group_notifications_form.is_valid() and stream_notifications_form.is_valid():
                 group_notifications_form.save()
                 stream_notifications_form.save()
-                messages.add_message(request, messages.SUCCESS, 'Your notifications have been updated.')
+                messages.add_message(request, messages.SUCCESS, 
+                                     _('Your notifications have been updated.'))
                 return redirect("profile_edit", user_id=request.user.id)
         else:
-            messages.error(request, 'No action specified.')
+            messages.error(request, _('No action specified.'))
 
     return render_to_response('rah/profile_edit.html', {
         'profile_form': profile_form,
@@ -303,7 +308,7 @@ def feedback(request):
                 feedback.user = request.user
                 feedback.save()
 
-            messages.success(request, 'Thank you for the feedback.')
+            messages.success(request, _('Thank you for the feedback.'))
     else:
         form = FeedbackForm(initial={ 'url': request.META.get('HTTP_REFERER'), })
 
@@ -342,16 +347,17 @@ def ga_opt_out(request):
     return render_to_response('rah/ga_opt_out.html', {}, context_instance=RequestContext(request))
 
 def comment_message(sender, comment, request, **kwargs):
-    messages.add_message(request, messages.SUCCESS, 'Thanks for the comment.')
+    messages.add_message(request, messages.SUCCESS, _('Thanks for the comment.'))
 comments.signals.comment_was_posted.connect(comment_message)
 
-def forbidden(request, message="You do not have permissions."):
+def forbidden(request, message=None):
+    message = message or _("You do not have permissions.")
     from django.http import HttpResponseForbidden
     return HttpResponseForbidden(loader.render_to_string('403.html', { 'message':message, }, RequestContext(request)))
 
 def track_registration(sender, request, user, is_new_user, **kwargs):
     if is_new_user:
-        messages.success(request, 'Thanks for registering.')
+        messages.success(request, _('Thanks for registering.'))
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/register/complete')
         messages.add_message(request, GA_TRACK_CONVERSION, True)
 logged_in.connect(track_registration)
