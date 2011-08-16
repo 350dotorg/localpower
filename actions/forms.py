@@ -23,7 +23,8 @@ class ActionCommitForm(BaseActionForm):
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
-        widget=forms.CheckboxSelectMultiple)
+                                          widget=forms.CheckboxSelectMultiple,
+                                          required=False)
 
     def __init__(self, *args, **kwargs):
         super(ActionAdminForm, self).__init__(*args, **kwargs)
@@ -34,5 +35,5 @@ class ActionAdminForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         tags = self.cleaned_data["tags"]
-        self.instance.tags = " ".join([t.name for t in tags]) if tags else ""
+        self.instance.tags = " ".join([t.name for t in tags]) if tags and self.instance.pk else ""
         return super(ActionAdminForm, self).save(*args, **kwargs)
