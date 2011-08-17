@@ -11,6 +11,7 @@ from django.db import models, transaction, IntegrityError
 from django.template import loader
 from django.template.defaultfilters import slugify
 from django.utils import simplejson as json
+from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
 from records.models import Record
@@ -66,21 +67,21 @@ class GroupManager(models.Manager):
 
 class Group(models.Model):
     DISC_MODERATION = (
-        (1, 'Yes, a manager must approve all discussions',),
-        (0, 'No, members can post discussions directly',),
+        (1, _('Yes, a manager must approve all discussions'),),
+        (0, _('No, members can post discussions directly'),),
     )
     DISC_POST_PERM = (
-        (0, 'Members and managers',),
-        (1, 'Only managers',),
+        (0, _('Members and managers'),),
+        (1, _('Only managers'),),
     )
     MEMBERSHIP_CHOICES = (
-        ('O', 'Open membership'),
-        ('C', 'Closed membership'),
+        ('O', _('Open membership')),
+        ('C', _('Closed membership')),
     )
     LOCATION_TYPE = (
-        ('S', 'State'),
-        ('C', 'County'),
-        ('P', 'Place'),
+        ('S', _('State')),
+        ('C', _('County')),
+        ('P', _('Place')),
     )
     LOCATION_PARENT = {
         'S': None,
@@ -108,32 +109,45 @@ class Group(models.Model):
         'P': lambda l: Location.objects.filter(state=l.state,county=l.county,name=l.name).aggregate(size=models.Count('name'))
     }
 
-    name = models.CharField(max_length=255, blank=True)
-    slug = models.CharField(max_length=255, unique=True, db_index=True)
-    description = models.TextField(blank=True)
-    image = ImageAndThumbsField(upload_to="group_images", null=True, default="images/theme/default_group.png")
-    is_featured = models.BooleanField(default=False)
-    headquarters = models.ForeignKey(Location)
-    lon = models.FloatField(null=True, blank=True)
-    lat = models.FloatField(null=True, blank=True)
-    membership_type = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default="O", null=True)
-    is_geo_group = models.BooleanField(default=False)
-    location_type = models.CharField(max_length=1, choices=LOCATION_TYPE, blank=True)
-    sample_location = models.ForeignKey(Location, null=True, blank=True, related_name="sample_group_set")
-    parent = models.ForeignKey("self", null=True, blank=True, related_name="children")
-    users = models.ManyToManyField(User, through="GroupUsers")
-    requesters = models.ManyToManyField(User, through="MembershipRequests", related_name="requested_group_set")
-    email_blacklisted = models.ManyToManyField(User, through="DiscussionBlacklist", related_name="email_blacklisted_group_set")
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    name = models.CharField(_('name'), max_length=255, blank=True)
+    slug = models.CharField(_('slug'), max_length=255, unique=True, db_index=True)
+    description = models.TextField(_('description'), blank=True)
+    image = ImageAndThumbsField(_('image'), upload_to="group_images", null=True, 
+                                default="images/theme/default_group.png")
+    is_featured = models.BooleanField(_('is featured'), default=False)
+    headquarters = models.ForeignKey(Location, verbose_name=_('headquarters'))
+    lon = models.FloatField(_('longitude'), null=True, blank=True)
+    lat = models.FloatField(_('latitute'), null=True, blank=True)
+    membership_type = models.CharField(_('membership type'), max_length=1, 
+                                       choices=MEMBERSHIP_CHOICES, default="O", null=True)
+    is_geo_group = models.BooleanField(_('is geo group'), default=False)
+    location_type = models.CharField(_('location type'), max_length=1,
+                                     choices=LOCATION_TYPE, blank=True)
+    sample_location = models.ForeignKey(Location, null=True, blank=True, 
+                                        related_name="sample_group_set",
+                                        verbose_name=_('sample location'))
+    parent = models.ForeignKey("self", null=True, blank=True, 
+                               verbose_name=_('parent'),
+                               related_name="children")
+    users = models.ManyToManyField(User, through="GroupUsers", verbose_name=_('users'))
+    requesters = models.ManyToManyField(User, through="MembershipRequests", 
+                                        related_name="requested_group_set",
+                                        verbose_name=_('requesters'))
+    email_blacklisted = models.ManyToManyField(User, through="DiscussionBlacklist", 
+                                               related_name="email_blacklisted_group_set",
+                                               verbose_name=_('email blacklisted'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
     objects = GroupManager()
-    disc_moderation = models.IntegerField(choices=DISC_MODERATION, default=0, null=True, verbose_name="Moderate discussions?")
-    disc_post_perm = models.IntegerField(choices=DISC_POST_PERM, default=0, null=True,  verbose_name="Who can post discussions?")
+    disc_moderation = models.IntegerField(choices=DISC_MODERATION, default=0, null=True, 
+                                          verbose_name=_("Moderate discussions?"))
+    disc_post_perm = models.IntegerField(choices=DISC_POST_PERM, default=0, null=True,
+                                         verbose_name=_("Who can post discussions?"))
     member_count = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name = "community"
-        verbose_name_plural = "communities"
+        verbose_name = _("community")
+        verbose_name_plural = _("communities")
 
     def is_joinable(self):
         return not self.is_geo_group
@@ -274,62 +288,73 @@ class Group(models.Model):
         return u'%s' % self.name
 
 class GroupUsers(models.Model):
-    user = models.ForeignKey(User)
-    group = models.ForeignKey(Group)
-    is_manager = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    group = models.ForeignKey(Group, verbose_name=_('group'))
+    is_manager = models.BooleanField(_('is manager'), default=False)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
     class Meta:
         unique_together = ("user", "group",)
-        verbose_name = "member"
-        verbose_name_plural = "members"
+        verbose_name = _("member")
+        verbose_name_plural = _("members")
 
     def __unicode__(self):
-        return u'%s belongs to community %s' % (self.user.get_full_name(), self.group)
+        return _('%(user)s belongs to community %(group)s') % {
+            'user': self.user.get_full_name(), 'group': self.group}
 
 class MembershipRequests(models.Model):
-    user = models.ForeignKey(User)
-    group = models.ForeignKey(Group)
-    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    group = models.ForeignKey(Group, verbose_name=_('group'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
 
     class Meta:
         unique_together = ("user", "group",)
+        verbose_name = _('group membership request')
+        verbose_name_plural = _('group membership requests')
 
     def __unicode__(self):
-        return u'%s request to join %s on %s' % (self.user, self.group, self.created)
+        return _('%(user)s request to join %(group)s on %(date)s') % {
+                'user': self.user, 'group': self.group, 'date': self.created}
 
 class DiscussionBlacklist(models.Model):
     """
     Any user listed in this table will not recieve discussion emails for the group
     they are linked to.
     """
-    user = models.ForeignKey(User)
-    group = models.ForeignKey(Group)
-    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    group = models.ForeignKey(Group, verbose_name=_('group'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
 
     class Meta:
         unique_together = ("user", "group",)
+        verbose_name = _('group discussion blacklist entry')
+        verbose_name_plural = _('group discussion blacklist entries')
 
     def __unicode__(self):
-        return u"%s will not recieve emails for %s discussions" % (self.user, self.group)
+        return _("%(user)s will not recieve emails for %(group)s discussions") % {
+            'user': self.user, 'group': self.group}
 
 class DiscussionManager(models.Manager):
     def get_query_set(self):
         return super(DiscussionManager, self).get_query_set().filter(is_removed=False)
 
 class Discussion(models.Model):
-    subject = models.CharField(max_length=255)
-    body = models.TextField()
-    user = models.ForeignKey(User)
-    group = models.ForeignKey(Group)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    parent = models.ForeignKey("Discussion", null=True)
-    is_public = models.BooleanField(default=False)
-    is_removed = models.BooleanField(default=False)
-    reply_count = models.IntegerField(null=True)
+    subject = models.CharField(_('subject'), max_length=255)
+    body = models.TextField(_('body'))
+    user = models.ForeignKey(User, verbose_name=_('user'))
+    group = models.ForeignKey(Group, verbose_name=_('group'))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
+    parent = models.ForeignKey("Discussion", null=True, verbose_name=_('parent'))
+    is_public = models.BooleanField(_('is public'), default=False)
+    is_removed = models.BooleanField(_('is removed'), default=False)
+    reply_count = models.IntegerField(_('reply count'), null=True)
     objects = DiscussionManager()
+
+    class Meta:
+        verbose_name = _('Discussion')
+        verbose_name = _('Discussions')
 
     @property
     def thread_id(self):
@@ -373,21 +398,25 @@ class Discussion(models.Model):
                 (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
 
 class GroupAssociationRequest(models.Model):
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, verbose_name=_('content type'))
+    object_id = models.PositiveIntegerField(_('object id'))
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    group = models.ForeignKey('groups.Group')
-    approved = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    group = models.ForeignKey('groups.Group', verbose_name=_('group'))
+    approved = models.BooleanField(_('approved'), default=False)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'group',)
+        verbose_name = _('group association request')
+        verbose_name = _('group association requests')
 
     def __unicode__(self):
-        return u'%s would like to link %s to %s' % (
-            self.content_object.creator, self.content_object, self.group)
+        return _('%(user)s would like to link %(object)s to %(group)s') % {
+            'user': self.content_object.creator, 
+            'object': self.content_object, 
+            'group': self.group}
 
 """
 Signals!
@@ -459,4 +488,5 @@ def notification_on_group_association_request(sender, instance, created, **kwarg
     if created:
         Stream.objects.get(slug="event-group-association-request").enqueue(
             content_object=instance, start=instance.created)
-models.signals.post_save.connect(notification_on_group_association_request, sender=GroupAssociationRequest)
+models.signals.post_save.connect(notification_on_group_association_request,
+                                 sender=GroupAssociationRequest)

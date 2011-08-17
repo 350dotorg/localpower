@@ -7,6 +7,7 @@ from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.flatpages.models import FlatPage
+from django.utils.translation import ugettext_lazy as _
 
 from PIL.Image import open as pil_open
 from utils import hash_val
@@ -19,12 +20,17 @@ from models import Group, GroupUsers, Discussion, GroupAssociationRequest
 class GroupForm(forms.ModelForm):
     IMAGE_FORMATS = {"PNG": "png", "JPEG": "jpeg", "GIF": "gif"}
 
-    name = forms.CharField(label="Community name", help_text="Enter a name for your new community")
-    slug = forms.SlugField(label="Community address", help_text="This will be your community's web address")
-    description = forms.CharField(label="Community description", help_text="What is the community all about?",
+    name = forms.CharField(label=_("Community name"), 
+                           help_text=_("Enter a name for your new community"))
+    slug = forms.SlugField(label=_("Community address"),
+                           help_text=_("This will be your community's web address"))
+    description = forms.CharField(label=_("Community description"),
+                                  help_text=_("What is the community all about?"),
         widget=forms.Textarea(attrs={"rows": 5}))
-    headquarters = GoogleLocationField(label="Headquarters")
-    image = forms.FileField(label="Upload a community image", help_text="You can upload png, jpg or gif files upto 512K", required=False)
+    headquarters = GoogleLocationField(label=_("Headquarters"))
+    image = forms.FileField(label=_("Upload a community image"),
+                            help_text=_("You can upload png, jpg or gif files upto 512K"),
+                            required=False)
 
     states = ["ak", "al", "ar", "az", "ca", "co", "ct", "dc", "de", "fl", "ga", "hi", "ia", "id", "il",
         "in", "ks", "ky", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nc", "nd", "ne",
@@ -44,27 +50,28 @@ class GroupForm(forms.ModelForm):
         data = self.cleaned_data["image"]
         if data:
             if data.size > 4194304:
-                raise forms.ValidationError("Community images cannot be larger than 512K")
+                raise forms.ValidationError(_("Community images cannot be larger than 512K"))
             self.image_format = pil_open(data.file).format
             if not self.image_format in GroupForm.IMAGE_FORMATS:
-                raise forms.ValidationError("Images cannot be of type %s" % data.content_type)
+                raise forms.ValidationError(_("Images cannot be of type %(type)s") % {
+                        'type': data.content_type})
         return data
 
     def clean_slug(self):
         data = self.cleaned_data["slug"]
         if data in GroupForm.states or any([data.startswith("%s-" % state) for state in GroupForm.states]):
-            raise forms.ValidationError("Community addresses cannot begin with a state name.")
+            raise forms.ValidationError(_("Community addresses cannot begin with a state name."))
 
         # Make sure the name is not in the blacklist or a resolvable URL
         try:
             if data in GroupForm.group_name_blacklist or resolve(reverse("group_detail", args=[data]))[0].__name__ != "group_detail":
-                raise forms.ValidationError("This community address is not available.")
+                raise forms.ValidationError(_("This community address is not available."))
         except:
-            raise forms.ValidationError("This community address is not available.")
+            raise forms.ValidationError(_("This community address is not available."))
 
         # Make sure there isn't a flatpage with this slug
         if FlatPage.objects.filter(url="/%s/" % data):
-            raise forms.ValidationError("This community address is not available.")
+            raise forms.ValidationError(_("This community address is not available."))
         return data
 
     def save(self):
@@ -85,14 +92,18 @@ class GroupForm(forms.ModelForm):
 
 class MembershipForm(forms.Form):
     MEMBERSHIP_ROLES = (
-        ('', '--Set Membership Role--'),
-        ('M', 'Manager',),
-        ('N', 'Regular Member',),
-        ('D', 'Remove from Community',),
+        ('', _('--Set Membership Role--')),
+        ('M', _('Manager'),),
+        ('N', _('Regular Member'),),
+        ('D', _('Remove from Community'),),
     )
-    role = forms.ChoiceField(label="", choices=MEMBERSHIP_ROLES, error_messages={"required": "You must select a membership action."})
-    memberships = forms.ModelMultipleChoiceField(queryset=GroupUsers.objects.all(), widget=forms.CheckboxSelectMultiple,
-        error_messages={"required": "You must select at least one member from the community."})
+    role = forms.ChoiceField(label="", choices=MEMBERSHIP_ROLES, 
+                             error_messages={
+            "required": _("You must select a membership action.")})
+    memberships = forms.ModelMultipleChoiceField(queryset=GroupUsers.objects.all(), 
+                                                 widget=forms.CheckboxSelectMultiple,
+                                                 error_messages={
+            "required": _("You must select at least one member from the community.")})
 
     def __init__(self, group, *args, **kwargs):
         super(MembershipForm, self).__init__(*args, **kwargs)
@@ -104,7 +115,8 @@ class MembershipForm(forms.Form):
         role = data["role"] if "role" in data else ""
         memberships = data["memberships"] if "memberships" in data else []
         if (role == "N" or role == "D") and self.group.number_of_managers() == len(memberships):
-            self._errors["memberships"] = forms.util.ErrorList(["You must leave at least one manager in the community."])
+            self._errors["memberships"] = forms.util.ErrorList([
+                    _("You must leave at least one manager in the community.")])
             del self.cleaned_data["memberships"]
         return self.cleaned_data
 
@@ -118,7 +130,7 @@ class MembershipForm(forms.Form):
         elif role == "D":
             memberships.delete()
         else:
-            raise NameError("Role option %s does not exist" % role)
+            raise NameError(_("Role option %(role)s does not exist") % {'role': role})
 
 class DiscussionSettingsForm(forms.ModelForm):
     class Meta:
@@ -131,7 +143,7 @@ class DiscussionSettingsForm(forms.ModelForm):
 
 class DiscussionCreateForm(forms.Form):
     subject = forms.CharField()
-    body = forms.CharField(widget=forms.Textarea, label="Comment")
+    body = forms.CharField(widget=forms.Textarea, label=_("Comment"))
     parent_id = forms.IntegerField(widget=forms.HiddenInput, required=False)
     parent_id_sig = forms.CharField(widget=forms.HiddenInput, required=False)
 
@@ -148,7 +160,7 @@ class DiscussionCreateForm(forms.Form):
         if parent_id:
             sig_check = hash_val(parent_id)
             if parent_id and sig_check <> self.data['parent_id_sig']:
-                raise forms.ValidationError('Parent ID is currupted')
+                raise forms.ValidationError(_('Parent ID is currupted'))
         return parent_id
 
 class DiscussionApproveForm(forms.ModelForm):
@@ -201,7 +213,7 @@ class GroupAssociationRequestRelatedForm(object):
         groups = self.fields["groups"]
         groups.queryset = groups.queryset.filter(groupusers__user=user)
         if not groups.queryset:
-            groups.help_text = "You need to be a member of a community first"
+            groups.help_text = _("You need to be a member of a community first")
         else:
             groups.help_text = None
 

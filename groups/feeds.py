@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed, FeedDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.utils.feedgenerator import Atom1Feed
+from django.utils.translation import ugettext_lazy as _
 
 from models import Group
 
@@ -14,7 +15,7 @@ class GroupActivityFeed(Feed):
         return get_object_or_404(Group, slug=group_slug)
 
     def title(self, group):
-        return "%s Activity Stream" % group.name
+        return _("%(group)s Activity Stream") % {'group': group.name}
 
     def link(self, group):
         return group.get_absolute_url()
@@ -23,7 +24,7 @@ class GroupActivityFeed(Feed):
         return self.link(group)
 
     def subtitle(self, group):
-        return "All of the activity going on for %s" % group.name
+        return _("All of the activity going on for %(group)s") % {'group': group.name}
 
     def items(self, group):
         return group.group_records(30)
