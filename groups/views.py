@@ -232,7 +232,7 @@ def group_edit(request, group_slug):
                                               context_instance=RequestContext(request))
                 else:
                     messages.success(request,
-                                     _("You no longer have permissions to edit %(group)s" % {
+                                     _("You no longer have permissions to edit %(group)s") % {
                                 'group': group})
                     return redirect("group_detail", group_slug=group.slug)
             else:
