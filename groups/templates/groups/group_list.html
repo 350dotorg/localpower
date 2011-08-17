@@ -1,26 +1,35 @@
 {% extends "base/nav_9c.html" %}
-
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Communities{% endblock %}
+{% block title %}{% blocktrans %}Communities{% endblocktrans %}{% endblock %}
 {% block title_bar_image %}sprite_section_communities_large{% endblock %}
-{% block title_bar_title %}Community{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Community{% endblocktrans %}{% endblock %}
 {% block title_bar_copy %}
+{% blocktrans %}
 Starting a community is a great way to help your neighborhood, church, school,
 or local group become more energy savvy. As a community leader, you can use
 your community to organize meetings, encourage action, and track progress
 towards your community's goals.
+{% endblocktrans %}
 <br/><br/>
-<a class="button" href="{% url group_create %}"><b>+</b> Start a Community</a>
+<a class="button" href="{% url group_create %}"><b>+</b>
+  {% blocktrans %}Start a Community{% endblocktrans %}</a>
 {% endblock %}
-{% block ribbon_bar %}Showing {{groups|length}} communities{% endblock %}
+{% block ribbon_bar %}
+{% blocktrans with groups|length as num_groups %}
+Showing {{num_groups}} communities
+{% endblocktrans %}
+{% endblock %}
 
 {% block content %}
         {% if groups %}
-            <h1>Join a Community</h1>
+            <h1>{% blocktrans %}Join a Community{% endblocktrans %}</h1>
             <p>
-                People across the country are working together to make their homes and their communities better than ever before. As
-                part of a community, you can brainstorm ideas for improving your community, share local tips about energy efficiency, and
-                meet people who are interested in building a cleaner tomorrow.
+	      {% blocktrans %}
+              People across the country are working together to make their homes and their communities better than ever before. As
+              part of a community, you can brainstorm ideas for improving your community, share local tips about energy efficiency, and
+              meet people who are interested in building a cleaner tomorrow.
+	      {% endblocktrans %}
             </p>
             {% include "groups/_group_nugget_list.html" %}
         {% endif %}
@@ -28,13 +37,13 @@ towards your community's goals.
         {% search_widget group_search %}
 
     {% if user.is_authenticated %}
-            <h3>Your Communities</h3>
+            <h3>{% blocktrans %}Your Communities{% endblocktrans %}</h3>
             {% if my_groups %}
                 {% with my_groups as groups%}
                     {% include "groups/_group_nugget_list.html" %}
                 {% endwith %}
             {% else %}
-                <em>You're not a member of any communities yet!</em>
+                <em>{% blocktrans %}You're not a member of any communities yet!{% endblocktrans %}</em>
             {% endif %}
     {% endif %}
 

@@ -1,31 +1,38 @@
 {% extends "base/nav_form.html" %}
-
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Edit {{ group.name }} settings{% endblock %}
+{% block title %}{% blocktrans %}Edit {{ group }} settings{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url group_list %}">Communities</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
     <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
-    Edit Community
+    {% blocktrans %}Edit Community{% endblocktrans %}
 {% endblock %}
 {% block content %}
                 <ul>
-                    <li><a href="#group_tab">Community</a></li>
-                    <li><a href="#members_tab">Members</a></li>
-                    <li><a href="#discussions_tab">Discussions</a></li>
+                    <li><a href="#group_tab">{% blocktrans %}Community{% endblocktrans %}</a></li>
+                    <li><a href="#members_tab">{% blocktrans %}Members{% endblocktrans %}</a></li>
+                    <li><a href="#discussions_tab">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
                 </ul>
                 <div id="group_tab">
                     <form id="group_form" action="" method="post" enctype="multipart/form-data" class="form_6c">
                         {% with group_form as form %}
                             {% include "groups/_group_form.html" %}
                         {% endwith %}
-                            <p><input type="submit" name="change_group" value="Save Settings"></input></p>
+                            <p>
+			      <input type="submit" name="change_group" 
+				      value="{% blocktrans %}Save Settings{% endblocktrans %}" />
+			    </p>
                         {% csrf_token %}
                     </form>
                     <form id="delete_group_form" action="" method="post" class="form_6c">
-                        <h3>Delete Community</h3>
-                        <p>Deleting a community will immediately remove it from our system.<br/>Communities cannot be undeleted.</p>
-                        <p><input type="submit" name="delete_group" value="Delete Community"></input></p>
+                        <h3>{% blocktrans %}Delete Community{% endblocktrans %}</h3>
+                        <p>
+			  {% blocktrans %}
+			  Deleting a community will immediately remove it from our system.<br/>Communities cannot be undeleted.
+			  {% endblocktrans %}
+			</p>
+                        <p><input type="submit" name="delete_group" value="{% blocktrans %}Delete Community{% endblocktrans %}" /></p>
                         {% csrf_token %}
                     </form>
                 </div>
@@ -40,19 +47,25 @@
                 <div id="discussions_tab">
                     <form action="" method="post" class="form_6c">
                         {{discussions_form.as_p}}
-                        <p><input type="submit" name="discussion_settings" value="Save Discussion Settings"></input></p>
+                        <p><input type="submit" name="discussion_settings" value="{% blocktrans %}Save Discussion Settings{% endblocktrans %}" /></p>
                         {% csrf_token %}
                     </form>
                 </div>
         {% if requesters %}
-                <h4>Membership Requests</h4>
+                <h4>{% blocktrans %}Membership Requests{% endblocktrans %}</h4>
                 <ul>
                     {% for requester in requesters %}
                         <li class="membership_request">
-                            {% safe_user_link requester %} would like to join
+			  {% safe_user_link requester as user_link %}
+			  {% blocktrans %}
+                            {% user_link %} would like to join
+			  {% endblocktrans %}
                             <div class="membership_tools">
-                                <a href="{% url group_approve group.id requester.id %}">Approve</a> or 
-                                <a href="{% url group_deny group.id requester.id %}">Deny</a>
+                              <a href="{% url group_approve group.id requester.id %}">
+				{% blocktrans %}Approve{% endblocktrans %}</a> 
+			      {% blocktrans %}or{% endblocktrans %} 
+                                <a href="{% url group_deny group.id requester.id %}">
+				  {% blocktrans %}Deny{% endblocktrans %}</a>
                             </div>
                         </li>
                     {% endfor %}
