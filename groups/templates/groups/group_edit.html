@@ -58,7 +58,7 @@
                         <li class="membership_request">
 			  {% safe_user_link requester as user_link %}
 			  {% blocktrans %}
-                            {% user_link %} would like to join
+                            {{ user_link }} would like to join
 			  {% endblocktrans %}
                             <div class="membership_tools">
                               <a href="{% url group_approve group.id requester.id %}">
