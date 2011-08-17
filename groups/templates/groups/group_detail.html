@@ -137,89 +137,129 @@
 	</div>
 
         <p>
-            Community points: {{ group.total_points }}<br />
-            Total members: {{ group.total_members }}<br />
+	  {% blocktrans with group.total_points as total_points and group.total_members as num_members %}
+            Community points: {{ total_points }}<br />
+            Total members: {{ num_members }}<br />
+	  {% endblocktrans %}
         </p>
         <p>
-
-            {% if group.is_joinable and is_member %}
-                <a href="{% url group_leave group.id %}">Leave Community</a>
-            {% endif %}
-            {% if group.is_joinable and not is_member and not membership_pending %}
-                <a class="button" href="{% url group_join group.id %}">Join Community</a>
-            {% endif %}
-            {% if membership_pending %}
-                <p>Your membership status is currently <b>pending</b>.</p>
-            {% endif %}
-        </p>
+          {% if group.is_joinable and is_member %}
+          <a href="{% url group_leave group.id %}">
+	    {% blocktrans %}Leave Community{% endblocktrans %}
+	  </a>
+          {% endif %}
+          {% if group.is_joinable and not is_member and not membership_pending %}
+          <a class="button" href="{% url group_join group.id %}">
+	    {% blocktrans %}Join Community{% endblocktrans %}
+	  </a>
+          {% endif %}
+	</p>
+        {% if membership_pending %}
+        <p>
+	  {% blocktrans %}Your membership status is currently <b>pending</b>.{% endblocktrans %}
+	</p>
+        {% endif %}
     
-    {% if requesters %}
-        <h3>Membership Requests</h3>
+	{% if requesters %}
+        <h3>{% blocktrans %}Membership Requests{% endblocktrans %}</h3>
         <ul>
             {% for requester in requesters %}
                 <li class="membership_request">
-                    {% safe_user_link requester %} would like to join
-                    <div class="membership_tools">
-                        <a href="{% url group_approve group.id requester.id %}">Approve</a> or 
-                        <a href="{% url group_deny group.id requester.id %}">Deny</a>
-                    </div>
+		  {% safe_user_link requester as user_link %}
+		  {% blocktrans %}
+                  {{ user_link }} would like to join
+		  {% endblocktrans %}
+
+                  <div class="membership_tools">
+                    <a href="{% url group_approve group.id requester.id %}">
+		      {% blocktrans %}Approve{% endblocktrans %}</a>
+		    {% blocktrans %}or{% endblocktrans %}
+                    <a href="{% url group_deny group.id requester.id %}">
+		      {% blocktrans %}Deny{% endblocktrans %}</a>
+                  </div>
                 </li>
             {% endfor %}
         </ul>
     {% endif %}
 
     {% if event_requests %}
-        <h3>Event Link Requests</h3>
+        <h3>{% blocktrans %}Event Link Requests{% endblocktrans %}</h3>
         <ul>
-            {% for er in event_requests %}
-                <li class="membership_request">
-                    {% safe_user_link er.content_object.creator %} has requested to link this community to
-                    <a href="{{ er.content_object.get_absolute_url }}">{{ er.content_object }}</a>
-                    <div class="membership_tools">
-                        <a href="{% url group_event_approve er.group.id er.object_id %}">Approve</a> or
-                        <a href="{% url group_event_deny er.group.id er.object_id %}">Deny</a>
-                    </div>
-                </li>
-            {% endfor %}
+          {% for er in event_requests %}
+          <li class="membership_request">
+	    {% with er.content_object as content_object %}
+	    {% safe_user_link content_object.creator as user_link %}
+	    {% linkify content_object as object_link %}
+	    {% blocktrans %}
+            {{ user_link }} has requested to link this community to {{ object_link }}
+	    {% endblocktrans %}
+            <div class="membership_tools">
+              <a href="{% url group_event_approve er.group.id er.object_id %}">
+		{% blocktrans %}Approve{% endblocktrans %}</a>
+	      {% blocktrans %}or{% endblocktrans %}
+              <a href="{% url group_event_deny er.group.id er.object_id %}">
+		{% blocktrans %}Deny{% endblocktrans %}</a>
+            </div>
+	    {% endwith %}
+          </li>
+          {% endfor %}
         </ul>
     {% endif %}
 
     {% if challenge_requests %}
-        <h3>Challenge Link Requests</h3>
+        <h3>{% blocktrans %}Challenge Link Requests{% endblocktrans %}</h3>
         <ul>
-            {% for cr in challenge_requests %}
-                <li class="membership_request">
-                    {% safe_user_link cr.content_object.creator %} has requested to link this community to
-                    <a href="{{ cr.content_object.get_absolute_url }}">{{ cr.content_object }}</a>
-                    <div class="membership_tools">
-                        <a href="{% url group_challenge_approve cr.group.id cr.object_id %}">Approve</a> or
-                        <a href="{% url group_challenge_deny cr.group.id cr.object_id %}">Deny</a>
-                    </div>
-                </li>
-            {% endfor %}
+          {% for cr in challenge_requests %}
+          <li class="membership_request">
+	    {% with cr.content_object as content_object %}
+	    {% safe_user_link content_object.creator as user_link %}
+	    {% linkify content_object as object_link %}
+	    {% blocktrans %}
+            {{ user_link }} has requested to link this community to {{ object_link }}
+	    {% endblocktrans %}
+            <div class="membership_tools">
+              <a href="{% url group_challenge_approve cr.group.id cr.object_id %}">
+		{% blocktrans %}Approve{% endblocktrans %}</a>
+	      {% blocktrans %}or{% endblocktrans %}
+              <a href="{% url group_challenge_deny cr.group.id cr.object_id %}">
+		{% blocktrans %}Deny{% endblocktrans %}</a>
+            </div>
+	    {% endwith %}
+          </li>
+          {% endfor %}
         </ul>
     {% endif %}
     
     {% if is_member %}
-        <h3>Community Invitations</h3>
+        <h3>{% blocktrans %}Community Invitations{% endblocktrans %}</h3>
         <p>
-            Invites sent: {{ group.invites_sent }}
-            <a class="button invite_friend_link" href="{% url invite-invite %}">Send Invite</a>
+          {% blocktrans with group.invites_sent as num_invites %}
+	  Invites sent: {{ num_invites }}
+	  {% endblocktrans %}
+          <a class="button invite_friend_link" href="{% url invite-invite %}">
+	    {% blocktrans %}Send Invite{% endblocktrans %}</a>
         </p>
-        <div id='invite_friend_dialog'>
-            {% get_invite_form for group %}
+        <div id="invite_friend_dialog">
+          {% get_invite_form for group %}
         </div>
     {% endif %}
     
     {% if popular_actions %}
-        <h3>Popular Actions</h3>
+        <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
         {% for action in popular_actions %}
         <p>
-            <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
-            <span class="smaller">{{ action.completes_in_group }} member{{ action.completes_in_group|pluralize }}</span>
+          <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
+          <span class="smaller">
+	    {% blocktrans count action.completes_in_group as num_completions %}
+	    {{ num_completions }} member
+	    {% plural %}
+	    {{ num_completions }} members
+	    {% endblocktrans %}
+	  </span>
         </p>
         {% endfor %}
     {% endif %}
+
 <script>
     var RAH = RAH || {};
     RAH.pagescripts = RAH.pagescripts || [];
