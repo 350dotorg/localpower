@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-17 09:53-0400\n"
+"POT-Creation-Date: 2011-08-17 12:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,14 @@ msgstr ""
 msgid "updated"
 msgstr ""
 
-#: actions/models.py:95 templates/base/nav.html:44
+#: actions/models.py:95 groups/templates/groups/_search_listing.html:4
+#: groups/templates/groups/_search_listing.html:7
+#: groups/templates/groups/group_detail.html:35
+#: groups/templates/groups/group_disc_create.html:6
+#: groups/templates/groups/group_disc_detail.html:6
+#: groups/templates/groups/group_disc_list.html:6
+#: groups/templates/groups/group_edit.html:7
+#: groups/templates/groups/group_list.html:4 templates/base/nav.html:44
 #: templates/rah/profile.html:28 templates/rah/profile.html.py:38
 msgid "Communities"
 msgstr ""
@@ -254,14 +261,21 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:18
 #: challenges/templates/challenges/detail.html:6
-#: challenges/templates/challenges/edit.html:11 templates/rah/feedback.html:6
+#: challenges/templates/challenges/edit.html:11
+#: groups/templates/groups/_search_listing.html:6
+#: groups/templates/groups/group_create.html:6
+#: groups/templates/groups/group_disc_create.html:5
+#: groups/templates/groups/group_disc_detail.html:5
+#: groups/templates/groups/group_disc_list.html:5
+#: groups/templates/groups/group_edit.html:6 templates/rah/feedback.html:6
 #: templates/rah/ga_opt_out.html:5
 msgid "Home"
 msgstr ""
 
 #: actions/templates/actions/action_detail.html:19
 #: actions/templates/actions/action_show.html:5
-#: actions/templates/actions/action_show.html:7 templates/base/nav.html:40
+#: actions/templates/actions/action_show.html:7
+#: groups/templates/groups/group_detail.html:34 templates/base/nav.html:40
 #: templates/rah/profile.html:27
 msgid "Actions"
 msgstr ""
@@ -282,6 +296,7 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:51
 #: challenges/templates/challenges/detail.html:55
+#: groups/templates/groups/group_detail.html:90
 msgid "Feed"
 msgstr ""
 
@@ -302,6 +317,10 @@ msgid ""
 msgstr ""
 
 #: actions/templates/actions/action_detail.html:81
+#: groups/templates/groups/group_detail.html:176
+#: groups/templates/groups/group_detail.html:199
+#: groups/templates/groups/group_detail.html:223
+#: groups/templates/groups/group_edit.html:66
 msgid "or"
 msgstr ""
 
@@ -346,6 +365,7 @@ msgstr[1] ""
 
 #: actions/templates/actions/action_show.html:28
 #: challenges/templates/challenges/list.html:30
+#: groups/templates/groups/group_detail.html:115
 msgid "COMPLETED"
 msgstr ""
 
@@ -664,18 +684,21 @@ msgstr ""
 #: challenges/templates/challenges/detail.html:7
 #: challenges/templates/challenges/edit.html:12
 #: challenges/templates/challenges/list.html:4
-#: challenges/templates/challenges/list.html:6 templates/base/nav.html:48
+#: challenges/templates/challenges/list.html:6
+#: groups/templates/groups/group_detail.html:36
+#: groups/templates/groups/group_detail.html:108 templates/base/nav.html:48
 #: templates/rah/profile.html:29
 msgid "Challenges"
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:10
 #: challenges/templates/challenges/list.html:32
+#: groups/templates/groups/group_detail.html:117
 msgid "Petition Challenge"
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:13
-#: templates/rah/profile.html:26
+#: groups/templates/groups/group_detail.html:33 templates/rah/profile.html:26
 msgid "Overview"
 msgstr ""
 
@@ -685,6 +708,11 @@ msgstr ""
 
 #: challenges/templates/challenges/detail.html:15
 #: challenges/templates/challenges/detail.html:57 groups/models.py:357
+#: groups/templates/groups/group_detail.html:68
+#: groups/templates/groups/group_disc_detail.html:8
+#: groups/templates/groups/group_disc_list.html:8
+#: groups/templates/groups/group_disc_list.html:14
+#: groups/templates/groups/group_edit.html:15
 msgid "Discussions"
 msgstr ""
 
@@ -743,6 +771,7 @@ msgstr ""
 
 #: challenges/templates/challenges/edit.html:35
 #: challenges/templates/challenges/edit.html:38
+#: groups/templates/groups/group_create.html:18
 msgid "Cancel"
 msgstr ""
 
@@ -869,11 +898,11 @@ msgstr ""
 msgid "--Set Membership Role--"
 msgstr ""
 
-#: groups/forms.py:96
+#: groups/forms.py:96 groups/templates/groups/_membership_form.html:28
 msgid "Manager"
 msgstr ""
 
-#: groups/forms.py:97
+#: groups/forms.py:97 groups/templates/groups/_membership_form.html:28
 msgid "Regular Member"
 msgstr ""
 
@@ -1215,6 +1244,386 @@ msgstr ""
 msgid "Discussion removed"
 msgstr ""
 
+#: groups/templates/groups/_group_disc_create_form.html:18
+#: groups/templates/groups/_membership_form.html:7
+msgid "Submit"
+msgstr ""
+
+#: groups/templates/groups/_group_disc_list.html:8
+#, python-format
+msgid ""
+"\n"
+"\t      %(num_replies)s reply\n"
+"\t      "
+msgid_plural ""
+"\n"
+"\t      %(num_replies)s replies\n"
+"\t      "
+msgstr[0] ""
+msgstr[1] ""
+
+#: groups/templates/groups/_group_disc_list.html:18
+#, python-format
+msgid ""
+"\n"
+"\t  Posted by %(user_link)s at %(post_time)s on %(post_date)s\n"
+"\t  "
+msgstr ""
+
+#: groups/templates/groups/_group_disc_nugget.html:21
+#: groups/templates/groups/group_detail.html:175
+#: groups/templates/groups/group_detail.html:198
+#: groups/templates/groups/group_detail.html:222
+#: groups/templates/groups/group_edit.html:65
+msgid "Approve"
+msgstr ""
+
+#: groups/templates/groups/_group_disc_nugget.html:28
+msgid "Remove"
+msgstr ""
+
+#: groups/templates/groups/_group_disc_nugget.html:36
+msgid "user gravatar"
+msgstr ""
+
+#: groups/templates/groups/_group_nugget_list.html:6
+#: groups/templates/groups/_group_search_result.html:2
+#: groups/templates/groups/group_detail.html:15
+msgid "group image"
+msgstr ""
+
+#: groups/templates/groups/_group_nugget_list.html:11
+#, python-format
+msgid ""
+"\n"
+"                  %(num_members)s member\n"
+"\t\t  "
+msgid_plural ""
+"\n"
+"\t\t  %(num_members)s members\n"
+"\t\t  "
+msgstr[0] ""
+msgstr[1] ""
+
+#: groups/templates/groups/_membership_form.html:17
+msgid "Member"
+msgstr ""
+
+#: groups/templates/groups/_membership_form.html:18
+msgid "Date Joined"
+msgstr ""
+
+#: groups/templates/groups/_membership_form.html:19
+msgid "Role"
+msgstr ""
+
+#: groups/templates/groups/_search_listing.html:8
+#: groups/templates/groups/_search_listing.html:14
+msgid "Search Results"
+msgstr ""
+
+#: groups/templates/groups/_search_listing.html:19
+msgid "more"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:4
+#: groups/templates/groups/group_create.html:15
+msgid "Create a Community"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:7
+#: groups/templates/groups/group_edit.html:13
+#: groups/templates/groups/group_list.html:6
+msgid "Community"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:8
+#: groups/templates/groups/group_create.html:19
+msgid "Create Community"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:11
+msgid "info!"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:11
+#, python-format
+msgid "%(SITE_NAME)s Community Activity"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:24
+#, python-format
+msgid ""
+"\n"
+"\t  Created %(date_created)s\n"
+"\t  "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:37
+#: groups/templates/groups/group_detail.html:99 templates/base/nav.html:52
+#: templates/rah/profile.html:30 templates/rah/profile.html.py:125
+msgid "Events"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:38 templates/base/nav.html:56
+#: templates/rah/profile.html:31 templates/rah/profile.html.py:143
+msgid "Badges"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:40
+msgid "Edit community"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:48
+#: groups/templates/groups/group_edit.html:14 templates/rah/profile.html:50
+msgid "Members"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:49 templates/rah/profile.html:74
+#: templates/rah/profile.html.py:157
+msgid "Committed Actions"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:50 templates/rah/profile.html:114
+msgid "Actions Completed"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:51 templates/rah/profile.html:118
+msgid "Points Earned"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:52
+msgid "Last Active"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:71
+#: groups/templates/groups/group_disc_list.html:29
+msgid "New discussion"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:77
+msgid "Archive"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:83
+msgid "No discussions yet."
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:88
+msgid "Community Activity"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:126
+#, python-format
+msgid ""
+"\n"
+"            Created by: %(user_link)s\n"
+"\t    <br/>\n"
+"            Goal: %(num_supporters)s supporters\n"
+"\t    "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:140
+#, python-format
+msgid ""
+"\n"
+"            Community points: %(total_points)s<br />\n"
+"            Total members: %(num_members)s<br />\n"
+"\t  "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:148
+msgid "Leave Community"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:153
+#: groups/templates/groups/group_disc_list.html:36
+msgid "Join Community"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:159
+msgid "Your membership status is currently <b>pending</b>."
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:164
+#: groups/templates/groups/group_edit.html:55
+msgid "Membership Requests"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:169
+#, python-format
+msgid ""
+"\n"
+"                  %(user_link)s would like to join\n"
+"\t\t  "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:178
+#: groups/templates/groups/group_detail.html:201
+#: groups/templates/groups/group_detail.html:225
+#: groups/templates/groups/group_edit.html:68
+msgid "Deny"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:186
+msgid "Event Link Requests"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:193
+#: groups/templates/groups/group_detail.html:217
+#, python-format
+msgid ""
+"\n"
+"            %(user_link)s has requested to link this community to "
+"%(object_link)s\n"
+"\t    "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:210
+msgid "Challenge Link Requests"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:234
+msgid "Community Invitations"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:236
+#, python-format
+msgid ""
+"\n"
+"\t  Invites sent: %(num_invites)s\n"
+"\t  "
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:240
+msgid "Send Invite"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:248
+msgid "Popular Actions"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:253
+#, python-format
+msgid ""
+"\n"
+"\t    %(num_completions)s member\n"
+"\t    "
+msgid_plural ""
+"\n"
+"\t    %(num_completions)s members\n"
+"\t    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: groups/templates/groups/group_disc_create.html:3
+#: groups/templates/groups/group_disc_create.html:8
+msgid "Create Discussion"
+msgstr ""
+
+#: groups/templates/groups/group_disc_create.html:14
+msgid "New Discussion"
+msgstr ""
+
+#: groups/templates/groups/group_disc_detail.html:20
+msgid "Post a new response"
+msgstr ""
+
+#: groups/templates/groups/group_disc_list.html:3
+#, python-format
+msgid "%(group)s discussions"
+msgstr ""
+
+#: groups/templates/groups/group_disc_list.html:32
+msgid ""
+"\n"
+"\t    You must be a member of this community to post discussions.\n"
+"\t    "
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:4
+#, python-format
+msgid "Edit %(group)s settings"
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:9
+msgid "Edit Community"
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:24
+msgid "Save Settings"
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:29
+#: groups/templates/groups/group_edit.html:35
+msgid "Delete Community"
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:31
+msgid ""
+"\n"
+"\t\t\t  Deleting a community will immediately remove it from our system.<br/"
+">Communities cannot be undeleted.\n"
+"\t\t\t  "
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:50
+msgid "Save Discussion Settings"
+msgstr ""
+
+#: groups/templates/groups/group_edit.html:60
+#, python-format
+msgid ""
+"\n"
+"                            %(user_link)s would like to join\n"
+"\t\t\t  "
+msgstr ""
+
+#: groups/templates/groups/group_list.html:8
+msgid ""
+"\n"
+"Starting a community is a great way to help your neighborhood, church, "
+"school,\n"
+"or local group become more energy savvy. As a community leader, you can use\n"
+"your community to organize meetings, encourage action, and track progress\n"
+"towards your community's goals.\n"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:16
+msgid "Start a Community"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:19
+#, python-format
+msgid ""
+"\n"
+"Showing %(num_groups)s communities\n"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:26
+msgid "Join a Community"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:28
+msgid ""
+"\n"
+"              People across the country are working together to make their "
+"homes and their communities better than ever before. As\n"
+"              part of a community, you can brainstorm ideas for improving "
+"your community, share local tips about energy efficiency, and\n"
+"              meet people who are interested in building a cleaner "
+"tomorrow.\n"
+"\t      "
+msgstr ""
+
+#: groups/templates/groups/group_list.html:40
+msgid "Your Communities"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:46
+msgid "You're not a member of any communities yet!"
+msgstr ""
+
 #: rah/admin.py:20
 msgid "Location"
 msgstr ""
@@ -1420,7 +1829,7 @@ msgstr ""
 msgid "Thanks for registering."
 msgstr ""
 
-#: rah/templatetags/rah_tags.py:25
+#: rah/templatetags/rah_tags.py:31
 msgid "You"
 msgstr ""
 
@@ -1646,16 +2055,6 @@ msgstr ""
 
 #: templates/base/nav.html:32
 msgid "Join with with Facebook"
-msgstr ""
-
-#: templates/base/nav.html:52 templates/rah/profile.html:30
-#: templates/rah/profile.html.py:125
-msgid "Events"
-msgstr ""
-
-#: templates/base/nav.html:56 templates/rah/profile.html:31
-#: templates/rah/profile.html.py:143
-msgid "Badges"
 msgstr ""
 
 #: templates/base/nav.html:63
@@ -1887,10 +2286,6 @@ msgstr ""
 msgid "Edit your profile"
 msgstr ""
 
-#: templates/rah/profile.html:50
-msgid "Members"
-msgstr ""
-
 #: templates/rah/profile.html:62
 msgid "Commitments"
 msgstr ""
@@ -1901,10 +2296,6 @@ msgid ""
 "\n"
 "\t\tby %(action_date_committed)s\n"
 "\t\t"
-msgstr ""
-
-#: templates/rah/profile.html:74 templates/rah/profile.html.py:157
-msgid "Committed Actions"
 msgstr ""
 
 #: templates/rah/profile.html:78 templates/rah/profile.html.py:90
@@ -1931,16 +2322,8 @@ msgstr ""
 msgid "Vital Stats"
 msgstr ""
 
-#: templates/rah/profile.html:114
-msgid "Actions Completed"
-msgstr ""
-
 #: templates/rah/profile.html:116
 msgid "Actions Committed"
-msgstr ""
-
-#: templates/rah/profile.html:118
-msgid "Points Earned"
 msgstr ""
 
 #: templates/rah/profile.html:120
