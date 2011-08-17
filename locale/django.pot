@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-15 13:52-0400\n"
+"POT-Creation-Date: 2011-08-17 09:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -58,11 +59,12 @@ msgstr ""
 msgid "actions"
 msgstr ""
 
-#: actions/models.py:79 rateable/models.py:37
+#: actions/models.py:79 groups/models.py:112 rateable/models.py:37
 msgid "name"
 msgstr ""
 
 #: actions/models.py:80 basic/blog/models.py:17 basic/blog/models.py:40
+#: groups/models.py:113
 msgid "slug"
 msgstr ""
 
@@ -86,19 +88,22 @@ msgstr ""
 msgid "users committed"
 msgstr ""
 
-#: actions/models.py:87
+#: actions/models.py:87 groups/models.py:132
 msgid "users"
 msgstr ""
 
 #: actions/models.py:88 actions/models.py:218 actions/models.py:247
 #: actions/models.py:269 basic/blog/models.py:47 challenges/models.py:32
+#: groups/models.py:139 groups/models.py:294 groups/models.py:309
+#: groups/models.py:327 groups/models.py:347 groups/models.py:407
 #: rah/models.py:27 rah/models.py:234
 msgid "created"
 msgstr ""
 
 #: actions/models.py:89 actions/models.py:219 actions/models.py:248
-#: actions/models.py:270 challenges/models.py:33 rah/models.py:28
-#: rah/models.py:235
+#: actions/models.py:270 challenges/models.py:33 groups/models.py:140
+#: groups/models.py:295 groups/models.py:348 groups/models.py:408
+#: rah/models.py:28 rah/models.py:235
 msgid "updated"
 msgstr ""
 
@@ -107,8 +112,9 @@ msgstr ""
 msgid "Communities"
 msgstr ""
 
-#: actions/models.py:214 actions/models.py:266 rah/models.py:23
-#: rah/models.py:138 rah/models.py:233
+#: actions/models.py:214 actions/models.py:266 groups/models.py:291
+#: groups/models.py:307 groups/models.py:325 groups/models.py:345
+#: rah/models.py:23 rah/models.py:138 rah/models.py:233
 msgid "user"
 msgstr ""
 
@@ -396,7 +402,7 @@ msgstr ""
 msgid "Public"
 msgstr ""
 
-#: basic/blog/models.py:42
+#: basic/blog/models.py:42 groups/models.py:344
 msgid "body"
 msgstr ""
 
@@ -588,7 +594,7 @@ msgstr ""
 msgid "challenges"
 msgstr ""
 
-#: challenges/models.py:24
+#: challenges/models.py:24 groups/models.py:114
 msgid "description"
 msgstr ""
 
@@ -610,7 +616,7 @@ msgstr ""
 msgid "supporters"
 msgstr ""
 
-#: challenges/models.py:37
+#: challenges/models.py:37 groups/models.py:150
 msgid "communities"
 msgstr ""
 
@@ -678,7 +684,7 @@ msgid "Supporters"
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:15
-#: challenges/templates/challenges/detail.html:57
+#: challenges/templates/challenges/detail.html:57 groups/models.py:357
 msgid "Discussions"
 msgstr ""
 
@@ -790,6 +796,423 @@ msgstr ""
 #: geo/filterspecs.py:24
 #, python-format
 msgid "%(field_name)s"
+msgstr ""
+
+#: groups/admin.py:15
+msgid "Managers"
+msgstr ""
+
+#: groups/feeds.py:18
+#, python-format
+msgid "%(group)s Activity Stream"
+msgstr ""
+
+#: groups/feeds.py:27
+#, python-format
+msgid "All of the activity going on for %(group)s"
+msgstr ""
+
+#: groups/forms.py:23
+msgid "Community name"
+msgstr ""
+
+#: groups/forms.py:24
+msgid "Enter a name for your new community"
+msgstr ""
+
+#: groups/forms.py:25
+msgid "Community address"
+msgstr ""
+
+#: groups/forms.py:26
+msgid "This will be your community's web address"
+msgstr ""
+
+#: groups/forms.py:27
+msgid "Community description"
+msgstr ""
+
+#: groups/forms.py:28
+msgid "What is the community all about?"
+msgstr ""
+
+#: groups/forms.py:30
+msgid "Headquarters"
+msgstr ""
+
+#: groups/forms.py:31
+msgid "Upload a community image"
+msgstr ""
+
+#: groups/forms.py:32
+msgid "You can upload png, jpg or gif files upto 512K"
+msgstr ""
+
+#: groups/forms.py:53
+msgid "Community images cannot be larger than 512K"
+msgstr ""
+
+#: groups/forms.py:56
+#, python-format
+msgid "Images cannot be of type %(type)s"
+msgstr ""
+
+#: groups/forms.py:63
+msgid "Community addresses cannot begin with a state name."
+msgstr ""
+
+#: groups/forms.py:68 groups/forms.py:70 groups/forms.py:74
+msgid "This community address is not available."
+msgstr ""
+
+#: groups/forms.py:95
+msgid "--Set Membership Role--"
+msgstr ""
+
+#: groups/forms.py:96
+msgid "Manager"
+msgstr ""
+
+#: groups/forms.py:97
+msgid "Regular Member"
+msgstr ""
+
+#: groups/forms.py:98
+msgid "Remove from Community"
+msgstr ""
+
+#: groups/forms.py:102
+msgid "You must select a membership action."
+msgstr ""
+
+#: groups/forms.py:106
+msgid "You must select at least one member from the community."
+msgstr ""
+
+#: groups/forms.py:119
+msgid "You must leave at least one manager in the community."
+msgstr ""
+
+#: groups/forms.py:133
+#, python-format
+msgid "Role option %(role)s does not exist"
+msgstr ""
+
+#: groups/forms.py:146
+msgid "Comment"
+msgstr ""
+
+#: groups/forms.py:163
+msgid "Parent ID is currupted"
+msgstr ""
+
+#: groups/forms.py:216
+msgid "You need to be a member of a community first"
+msgstr ""
+
+#: groups/models.py:70
+msgid "Yes, a manager must approve all discussions"
+msgstr ""
+
+#: groups/models.py:71
+msgid "No, members can post discussions directly"
+msgstr ""
+
+#: groups/models.py:74
+msgid "Members and managers"
+msgstr ""
+
+#: groups/models.py:75
+msgid "Only managers"
+msgstr ""
+
+#: groups/models.py:78
+msgid "Open membership"
+msgstr ""
+
+#: groups/models.py:79
+msgid "Closed membership"
+msgstr ""
+
+#: groups/models.py:82
+msgid "State"
+msgstr ""
+
+#: groups/models.py:83
+msgid "County"
+msgstr ""
+
+#: groups/models.py:84
+msgid "Place"
+msgstr ""
+
+#: groups/models.py:115
+msgid "image"
+msgstr ""
+
+#: groups/models.py:117
+msgid "is featured"
+msgstr ""
+
+#: groups/models.py:118
+msgid "headquarters"
+msgstr ""
+
+#: groups/models.py:119
+msgid "longitude"
+msgstr ""
+
+#: groups/models.py:120
+msgid "latitute"
+msgstr ""
+
+#: groups/models.py:121
+msgid "membership type"
+msgstr ""
+
+#: groups/models.py:123
+msgid "is geo group"
+msgstr ""
+
+#: groups/models.py:124
+msgid "location type"
+msgstr ""
+
+#: groups/models.py:128
+msgid "sample location"
+msgstr ""
+
+#: groups/models.py:130 groups/models.py:349
+msgid "parent"
+msgstr ""
+
+#: groups/models.py:135
+msgid "requesters"
+msgstr ""
+
+#: groups/models.py:138
+msgid "email blacklisted"
+msgstr ""
+
+#: groups/models.py:143
+msgid "Moderate discussions?"
+msgstr ""
+
+#: groups/models.py:145
+msgid "Who can post discussions?"
+msgstr ""
+
+#: groups/models.py:149
+msgid "community"
+msgstr ""
+
+#: groups/models.py:292 groups/models.py:308 groups/models.py:326
+#: groups/models.py:346 groups/models.py:405
+msgid "group"
+msgstr ""
+
+#: groups/models.py:293
+msgid "is manager"
+msgstr ""
+
+#: groups/models.py:299
+msgid "member"
+msgstr ""
+
+#: groups/models.py:300
+msgid "members"
+msgstr ""
+
+#: groups/models.py:303
+#, python-format
+msgid "%(user)s belongs to community %(group)s"
+msgstr ""
+
+#: groups/models.py:313
+msgid "group membership request"
+msgstr ""
+
+#: groups/models.py:314
+msgid "group membership requests"
+msgstr ""
+
+#: groups/models.py:317
+#, python-format
+msgid "%(user)s request to join %(group)s on %(date)s"
+msgstr ""
+
+#: groups/models.py:331
+msgid "group discussion blacklist entry"
+msgstr ""
+
+#: groups/models.py:332
+msgid "group discussion blacklist entries"
+msgstr ""
+
+#: groups/models.py:335
+#, python-format
+msgid "%(user)s will not recieve emails for %(group)s discussions"
+msgstr ""
+
+#: groups/models.py:343
+msgid "subject"
+msgstr ""
+
+#: groups/models.py:350
+msgid "is public"
+msgstr ""
+
+#: groups/models.py:351
+msgid "is removed"
+msgstr ""
+
+#: groups/models.py:352
+msgid "reply count"
+msgstr ""
+
+#: groups/models.py:356
+msgid "Discussion"
+msgstr ""
+
+#: groups/models.py:401 rateable/models.py:34
+msgid "content type"
+msgstr ""
+
+#: groups/models.py:402
+msgid "object id"
+msgstr ""
+
+#: groups/models.py:406
+msgid "approved"
+msgstr ""
+
+#: groups/models.py:412
+msgid "group association request"
+msgstr ""
+
+#: groups/models.py:413
+msgid "group association requests"
+msgstr ""
+
+#: groups/models.py:416
+#, python-format
+msgid "%(user)s would like to link %(object)s to %(group)s"
+msgstr ""
+
+#: groups/views.py:50
+#, python-format
+msgid "%(group)s has been created."
+msgstr ""
+
+#: groups/views.py:67
+#, python-format
+msgid "You have been removed from community %(group)s"
+msgstr ""
+
+#: groups/views.py:71
+msgid ""
+"You cannot leave the community, until you've assigned someone else to be "
+"manager."
+msgstr ""
+
+#: groups/views.py:75
+msgid "You cannot leave a community your not a member of"
+msgstr ""
+
+#: groups/views.py:82
+msgid "You are already a member"
+msgstr ""
+
+#: groups/views.py:85
+msgid "Your membership is currently pending"
+msgstr ""
+
+#: groups/views.py:89
+#, python-format
+msgid "You have successfully joined community %(group)s"
+msgstr ""
+
+#: groups/views.py:96
+#, python-format
+msgid ""
+"You have made a request to join %(group)s, a managershould grant or deny "
+"your membership shortly."
+msgstr ""
+
+#: groups/views.py:117
+#, python-format
+msgid "%(user)s has been added to the community"
+msgstr ""
+
+#: groups/views.py:123
+#, python-format
+msgid "%(user)s has been denied access to the community"
+msgstr ""
+
+#: groups/views.py:126
+#, python-format
+msgid "%(user)s has already been added to this community"
+msgstr ""
+
+#: groups/views.py:129
+#, python-format
+msgid "%(user)s has already been denied access to this community"
+msgstr ""
+
+#: groups/views.py:151
+#, python-format
+msgid "Your community has been linked with %(object)s"
+msgstr ""
+
+#: groups/views.py:155
+#, python-format
+msgid "Your community will not be linked with %(object)s"
+msgstr ""
+
+#: groups/views.py:159
+#, python-format
+msgid "%(object)s has already been linked with your community"
+msgstr ""
+
+#: groups/views.py:163
+#, python-format
+msgid "%(object)s has not been linked with your community"
+msgstr ""
+
+#: groups/views.py:206 groups/views.py:215
+#, python-format
+msgid "%(group)s has been updated."
+msgstr ""
+
+#: groups/views.py:222
+#, python-format
+msgid "%(group)s has been deleted."
+msgstr ""
+
+#: groups/views.py:229
+#, python-format
+msgid "%(group)s's memberships have been updated."
+msgstr ""
+
+#: groups/views.py:235
+#, python-format
+msgid "You no longer have permissions to edit %(group)s"
+msgstr ""
+
+#: groups/views.py:242 rah/views.py:287
+msgid "No action specified."
+msgstr ""
+
+#: groups/views.py:351
+msgid "Discussion posted"
+msgstr ""
+
+#: groups/views.py:381
+msgid "Discussion approved"
+msgstr ""
+
+#: groups/views.py:395
+msgid "Discussion removed"
 msgstr ""
 
 #: rah/admin.py:20
@@ -981,10 +1404,6 @@ msgstr ""
 msgid "Your notifications have been updated."
 msgstr ""
 
-#: rah/views.py:287
-msgid "No action specified."
-msgstr ""
-
 #: rah/views.py:311
 msgid "Thank you for the feedback."
 msgstr ""
@@ -1003,10 +1422,6 @@ msgstr ""
 
 #: rah/templatetags/rah_tags.py:25
 msgid "You"
-msgstr ""
-
-#: rateable/models.py:34
-msgid "content type"
 msgstr ""
 
 #: rateable/models.py:35
