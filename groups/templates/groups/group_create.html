@@ -1,22 +1,22 @@
 {% extends "base/nav_form.html" %}
-
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Create a Community{% endblock %}
+{% block title %}{% blocktrans %}Create a Community{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-<a href="{% url index %}">Home</a> &rsaquo;
-<a href="{% url group_list %}">Community</a> &rsaquo;
-Create Community
+<a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+<a href="{% url group_list %}">{% blocktrans %}Community{% endblocktrans %}</a> &rsaquo;
+{% blocktrans %}Create Community{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
-    info!
+    {% blocktrans %}info!{% endblocktrans %}
 {% endblock %}
 {% block content %}
     <form id="group_form" action="" method="post" enctype="multipart/form-data" class="form_6c">
-        <h1>Create a Community</h1>
+        <h1>{% blocktrans %}Create a Community{% endblocktrans %}</h1>
         {% include "base/_form.html" %}
         <div class="form_buttons">
-            <a href="{% url group_list %}" class="form_cancel">Cancel</a>
-            <button class="button_mega" type="submit">Create Community</button>
+            <a href="{% url group_list %}" class="form_cancel">{% blocktrans %}Cancel{% endblocktrans %}</a>
+            <button class="button_mega" type="submit">{% blocktrans %}Create Community{% endblocktrans %}</button>
         </div>
         {% csrf_token %}
     </form>

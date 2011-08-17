@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="{% if not disc.is_public %}unapproved{% endif %}">
     {% if disc.is_public or is_manager or disc.user.id == user.id %}
         <div class="grid_6 alpha comment_wrapper">
@@ -17,14 +18,14 @@
                 {% if not disc.is_public and is_manager %}
                     <form action="{% url group_disc_approve group_slug=group.slug,disc_id=disc.id %}" method="post" accept-charset="utf-8">
                         {{approve_form.as_p}}
-                        <p><input type="submit" value="Approve"/></p>
+                        <p><input type="submit" value="{% blocktrans %}Approve{% endblocktrans %}"/></p>
                         {% csrf_token %}
                     </form>
                 {% endif %}
                 {% if is_manager %}
                     <form action="{% url group_disc_remove group_slug=group.slug,disc_id=disc.id %}" method="post" accept-charset="utf-8">
                         {{remove_form.as_p}}
-                        <p><input class="as_link" type="submit" value="Remove"/></p>
+                        <p><input class="as_link" type="submit" value="{% blocktrans %}Remove{% endblocktrans %}"/></p>
                         {% csrf_token %}
                     </form>
                 {% endif %}
@@ -32,7 +33,7 @@
         </div>
         <div class="grid_3 omega">
             <div class="comment_author">
-                <img class="gravatar" src="{{ disc.user.get_profile.profile_picture }}" alt="user gravatar" width="52" height="52"/>
+                <img class="gravatar" src="{{ disc.user.get_profile.profile_picture }}" alt="{% blocktrans %}user gravatar{% endblocktrans %}" width="52" height="52"/>
                 <br class="clear" />
                 {% safe_user_link disc.user %}
             </div>

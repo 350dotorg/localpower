@@ -1,4 +1,5 @@
 {% extends "base/nav_6c3c_b.html" %}
+{% load i18n %}
 {% load humanize %}
 {% load record %}
 {% load invites %}
@@ -7,11 +8,11 @@
 {% block title %}{{group.name}}{% endblock %}
 {% block extrahead %}
     {% if group.slug %}
-        <link rel="alternate" type="application/atom+xml"  href="{% url group_activity_feed group.slug %}" title="{{ SITE_NAME }} Community Activity" />
+        <link rel="alternate" type="application/atom+xml"  href="{% url group_activity_feed group.slug %}" title="{% blocktrans %}{{ SITE_NAME }} Community Activity{% endblocktrans %}" />
     {% endif %}
 {% endblock %}
 {% block title_bar_image %}
-        <img src="{{ MEDIA_URL }}{{ group.image.thumbnail_colorspace_80x80smartcrop }}" alt="group image" height="80" width="80" />
+        <img src="{{ MEDIA_URL }}{{ group.image.thumbnail_colorspace_80x80smartcrop }}" alt="{% blocktrans %}group image{% endblocktrans %}" height="80" width="80" />
 {% endblock %}
 {% block title_bar_title %}{{group.name}}{% endblock %}
 {% block title_bar_copy %}
@@ -19,20 +20,24 @@
         {% if group.location %}
             {{ group.location }} | 
         {% endif %}
-        <span>Created {{ group.created|date:"M Y" }}</span>
+        <span>
+	  {% blocktrans with group.created|date:"M Y" as date_created %}
+	  Created {{ date_created }}
+	  {% endblocktrans %}
+	</span>
     </p>
     {{ group.description|linebreaksbr }}
     
 {% endblock %}
 {% block tab_nav %}
-    <li class="tab_nav_selected">Overview</li>
-    <li><a href="#actions">Actions</a></li>
-    <li><a href="#communities">Communities</a></li>
-    <li><a href="#challenges">Challenges</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#badges">Badges</a></li>
+    <li class="tab_nav_selected">{% blocktrans %}Overview{% endblocktrans %}</li>
+    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
+    <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
+    <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
+    <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
+    <li><a href="#badges">{% blocktrans %}Badges{% endblocktrans %}</a></li>
     {% if is_manager %}
-    <li class="tab_nav_link"><a href="{% url group_edit group.slug %}">Edit community</a></li>
+    <li class="tab_nav_link"><a href="{% url group_edit group.slug %}">{% blocktrans %}Edit community{% endblocktrans %}</a></li>
     {% endif %}
 {% endblock %}
 
@@ -40,11 +45,11 @@
         <table class="tablesorter">
             <thead>
                 <tr>
-                    <th class="header">Members</th>
-                    <th class="header">Committed Actions</th>
-                    <th class="header">Actions Completed</th>
-                    <th class="header">Points Earned</th>
-                    <th class="header">Last Active</th>
+                    <th class="header">{% blocktrans %}Members{% endblocktrans %}</th>
+                    <th class="header">{% blocktrans %}Committed Actions{% endblocktrans %}</th>
+                    <th class="header">{% blocktrans %}Actions Completed{% endblocktrans %}</th>
+                    <th class="header">{% blocktrans %}Points Earned{% endblocktrans %}</th>
+                    <th class="header">{% blocktrans %}Last Active{% endblocktrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,29 +65,29 @@
             </tbody>
         </table>
         {% if not group.is_geo_group %}
-            <h2>Discussions</h2>
+            <h2>{% blocktrans %}Discussions{% endblocktrans %}</h2>
             <div class="group_disc_box_links">
                 {% if is_poster %}
-                    <a href="{% url group_disc_create group.slug %}">New discussion</a> 
+                    <a href="{% url group_disc_create group.slug %}">{% blocktrans %}New discussion{% endblocktrans %}</a> 
                 {% endif %}
                 {% if is_poster and discs %}
                     |
                 {% endif %}
                 {% if discs %}
-                    <a href="{% url group_disc_list group.slug %}">Archive</a>
+                    <a href="{% url group_disc_list group.slug %}">{% blocktrans %}Archive{% endblocktrans %}</a>
                 {% endif %}
             </div>            
             {% if discs %}
                 {% include "groups/_group_disc_list.html" %}
             {% else %}
-                <em>No discussions yet.</em>
+                <em>{% blocktrans %}No discussions yet.{% endblocktrans %}</em>
             {% endif %}
         {% endif %}
     
     {% if group_records %}
-        <h2>Community Activity
+        <h2>{% blocktrans %}Community Activity{% endblocktrans %}
             {% if group.slug %}
-                <a class="feed_link" href="{% url group_activity_feed group.slug %}">Feed</a>
+                <a class="feed_link" href="{% url group_activity_feed group.slug %}">{% blocktrans %}Feed{% endblocktrans %}</a>
             {% endif %}
         </h2>
         {% for record in group_records %}
@@ -91,7 +96,7 @@
     {% endif %}
 
 	<div>
-	<h2>Events</h2>
+	<h2>{% blocktrans %}Events{% endblocktrans %}</h2>
 	<ul class="plain_list nugget_9c_list">
 	{% for event in group.event_set.all %}
             {% include 'base/_nugget_9c_list.html' %}	
@@ -100,16 +105,16 @@
 	</div>
 
 	<div>
-	<h2>Challenges</h2>
+	<h2>{% blocktrans %}Challenges{% endblocktrans %}</h2>
 	  <ul class='plain_list nugget_3c'>
 	{% for challenge in group.challenge_set.all %}
         <li class="nugget_3c_tall {% if challenge.status %}nugget_3c_completed{% endif %}">
             <div class="nugget_3c_status">
                 {% if challenge.status %}
                     <span class="sprite_check_white_small"></span>
-                    COMPLETED
+                    {% blocktrans %}COMPLETED{% endblocktrans %}
                 {% else %}
-                    Petition Challenge
+                    {% blocktrans %}Petition Challenge{% endblocktrans %}
                 {% endif %}
             </div>
 
@@ -117,10 +122,12 @@
                 <a href="{% url challenges_detail challenge.id %}">{{ challenge.title }} </a>
             </h2>
             <p>
-            Created by: 
-            <a href="{% url profile challenge.creator.id %}">{{challenge.creator.get_full_name}}</a><br/>
-            Goal: {{ challenge.goal|intcomma }} supporters
-
+            {% safe_user_link challenge.creator as user_link %}
+	    {% blocktrans with challenge.goal|intcomma as num_supporters %}
+            Created by: {{user_link}}
+	    <br/>
+            Goal: {{ num_supporters }} supporters
+	    {% endblocktrans %}
             </p>
             
             {% include "challenges/_progress_bar.html" %}

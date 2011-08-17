@@ -1,14 +1,18 @@
-
+{% load i18n %}
 <ul class="group_list plain_list">
     {% for group in groups %}
         <li>
             <a href="{{ group.get_absolute_url }}" class="group_list_thumb">
-                <img src="{{ MEDIA_URL }}{{ group.image.thumbnail_colorspace_45x38smartcrop }}" alt="group image" height="38" width="45" />
+                <img src="{{ MEDIA_URL }}{{ group.image.thumbnail_colorspace_45x38smartcrop }}" alt="{% blocktrans %}group image{% endblocktrans %}" height="38" width="45" />
             </a>
             <div>
                 <a href="{{ group.get_absolute_url }}">{{ group.name }}</a>
                 <div class="smaller">
-                    {{ group.member_count }} members
+		  {% blocktrans count group.member_count as num_members %}
+                  {{ num_members }} member
+		  {% plural %}
+		  {{ num_members }} members
+		  {% endblocktrans %}
                 </div>
             </div>
         </li>

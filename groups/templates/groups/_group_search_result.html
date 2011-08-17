@@ -1,4 +1,5 @@
-<img class="group_image" src="{% thumbnail object.image.thumbnail_30x30smartcrop %}" alt="group image" height="30" width="30" />
+{% load i18n %}
+<img class="group_image" src="{% thumbnail object.image.thumbnail_30x30smartcrop %}" alt="{% blocktrans %}group image{% endblocktrans %}" height="30" width="30" />
 <div class="group_details">
     <h6><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h6>
     {% for parent in object.parents %}

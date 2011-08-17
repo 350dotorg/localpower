@@ -1,9 +1,10 @@
+{% load i18n %}
 <p>
     {% for error in form.role.errors %}
         <span class="error">{{ error|escape }}</span>
     {% endfor %}
     {{ form.role }}
-    <input type="submit" name="change_membership" value="Submit"></input>
+    <input type="submit" name="change_membership" value="{% blocktrans %}Submit{% endblocktrans %}"></input>
 </p>
 <div>
     {% for error in form.memberships.errors %}
@@ -13,9 +14,9 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Member</th>
-                <th>Date Joined</th>
-                <th>Role</th>
+                <th>{% blocktrans %}Member{% endblocktrans %}</th>
+                <th>{% blocktrans %}Date Joined{% endblocktrans %}</th>
+                <th>{% blocktrans %}Role{% endblocktrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +25,7 @@
                     <td><input name="memberships" value="{{ membership.pk }}" type="checkbox"></input></td>
                     <td>{% safe_user_link membership.user %}</td>
                     <td>{{ membership.created|date }}</td>
-                    <td>{% if membership.is_manager %}Manager{% else %}Regular Member{% endif %}</td>
+                    <td>{% if membership.is_manager %}{% blocktrans %}Manager{% endblocktrans %}{% else %}{% blocktrans %}Regular Member{% endblocktrans %}{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>
