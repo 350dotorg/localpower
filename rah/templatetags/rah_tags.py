@@ -1,6 +1,7 @@
 from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 register = template.Library()
@@ -9,21 +10,30 @@ class UserNode(template.Node):
     @classmethod
     def parse(cls, parser, token):
         tokens = token.contents.split()
-        if len(tokens) != 2:
-            raise template.TemplateSyntaxError("Only 2 arguments needed for %s, the second should be a user" % tokens[0])
-        return parser.compile_filter(tokens[1])
+        varname = None
+        if len(tokens) == 4 and tokens[2] == 'as':
+            varname = tokens[3]
+        elif len(tokens) != 2:
+            raise template.TemplateSyntaxError("Only 2 arguments needed for %s, "
+                                               "the second should be a user" % tokens[0])
+        return parser.compile_filter(tokens[1]), varname
 
-    def __init__(self, user_expr):
+    def __init__(self, user_expr, varname=None):
         self.user_expr = user_expr
+        self.varname = varname
 
     def render(self, context):
         user = self.user_expr.resolve(context)
         current_user = context["request"].user
         if user.id != current_user.id and user.get_profile().is_profile_private:
-            return str(user.get_full_name())
+            result = str(user.get_full_name())
         else:
             name = _("You") if user.id == current_user.id else user.get_full_name()
-            return "<a href='%s'>%s</a>" % (reverse("profile", args=[user.id]), name)
+            result = "<a href='%s'>%s</a>" % (reverse("profile", args=[user.id]), name)
+        if self.varname is not None:
+            context[self.varname] = mark_safe(result)
+            return ''
+        return result
 
 @register.tag
 def safe_user_link(parser, token):
@@ -39,9 +49,15 @@ def safe_user_link(parser, token):
     Example usage::
 
         {% safe_user_link request.user %}
+
+    You can also stash the result in a context variable instead of rendering it
+    immediately, with this alternate syntax::
+
+        {% safe_user_link [user] as [varname] %}
+
     """
-    user_expr = UserNode.parse(parser, token)
-    return UserNode(user_expr)
+    user_expr, varname = UserNode.parse(parser, token)
+    return UserNode(user_expr, varname)
 
 @register.filter
 @template.defaultfilters.stringfilter
