@@ -1,12 +1,24 @@
+{% load i18n %}
 {% for disc in discs %}
 {% if disc.is_public or is_manager or disc.user.id == user.id %}
     <p>
         <b>
-            <a href="{% url group_disc_detail group.slug,disc.id %}">{{disc.subject}}</a>
-            <span class="group_disc_reply_count">{{disc.reply_count}} repl{{disc.reply_count|pluralize:"y,ies"}}</span>
+            <a href="{% url group_disc_detail group.slug disc.id %}">{{disc.subject}}</a>
+            <span class="group_disc_reply_count">
+	      {% blocktrans count disc.reply_count as num_replies %}
+	      {{num_replies}} reply
+	      {% plural %}
+	      {{num_replies}} replies
+	      {% endblocktrans %}
+	    </span>
         </b>
         <br/>
-        <span class="smaller">Posted by {% safe_user_link disc.user %} at {{disc.created|date:"TIME_FORMAT"}} on {{disc.created|date:"DATE_FORMAT"}}</span>
+        <span class="smaller">
+	  {% safe_user_link disc.user as user_link %}
+	  {% blocktrans with disc.created|date:"TIME_FORMAT" as post_time and disc.created|date:"DATE_FORMAT" as post_date %}
+	  Posted by {{user_link}} at {{post_time}} on {{post_date}}
+	  {% endblocktrans %}
+	</span>
     </p>
 {% endif %}
 {% endfor %}
