@@ -120,3 +120,43 @@ class ContentObjectNode(template.Node):
 def get_content_type_id(parser, token):
     object_expr, varname = ContentObjectNode.parse(parser, token)
     return ContentObjectNode(object_expr, varname=varname)
+
+
+class LinkifyNode(template.Node):
+    @classmethod
+    def parse(cls, parser, token):
+        tokens = token.contents.split()
+        varname = None
+        if len(tokens) == 4 and tokens[2] == 'as':
+            varname = tokens[3]
+        elif len(tokens) != 2:
+            raise template.TemplateSyntaxError("Only 2 arguments needed for %s" % tokens[0])
+        return parser.compile_filter(tokens[1]), varname
+
+    def __init__(self, expr, varname=None):
+        self.expr = expr
+        self.varname = varname
+
+    def render(self, context):
+        content_object = self.expr.resolve(context)
+        result = u"<a href='%s'>%s</a>" % (content_object.get_absolute_url(), content_object)
+        if self.varname is not None:
+            context[self.varname] = mark_safe(result)
+            return ''
+        return result
+
+@register.tag
+def linkify(parser, token):
+    """
+    Wraps the given object in a hyperlink.
+
+    Assumes the object has a get_absolute_url method wired up properly,
+    and a __unicode__ method which will be used to generate the text of the link.
+
+    Syntax::
+
+        {% linkify [content_object] as [varname] %}
+
+    """
+    expr, varname = LinkifyNode.parse(parser, token)
+    return LinkifyNode(expr, varname)
