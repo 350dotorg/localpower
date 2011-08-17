@@ -17,6 +17,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import Context, loader, RequestContext
 from django.utils import simplejson as json
+from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -46,7 +47,8 @@ def group_create(request):
             Stream.objects.get(slug="community-create").enqueue(content_object=group, start=group.created)
             Record.objects.create_record(request.user, 'group_create', group)
             badge_cache.possibly_award_badge('created_a_community', user=request.user)
-            messages.success(request, "%s has been created." % group)
+            messages.success(request, _("%(group)s has been created.") % {
+                    'group': group})
             return redirect("group_detail", group_slug=group.slug)
     else:
         form = GroupForm()
@@ -62,29 +64,38 @@ def group_leave(request, group_id):
     if request.user.id in group.users.all().values_list("id", flat=True):
         if group.has_other_managers(request.user):
             GroupUsers.objects.filter(group=group, user=request.user).delete()
-            messages.success(request, "You have been removed from community %s" % group)
+            messages.success(request, _("You have been removed from community %(group)s") % {
+                    'group': group})
         else:
-            messages.error(request, "You cannot leave the community, until you've assigned someone else to be manager.", extra_tags="sticky")
+            messages.error(request, 
+                           _("You cannot leave the community, "
+                             "until you've assigned someone else to be manager."),
+                           extra_tags="sticky")
     else:
-        messages.error(request, "You cannot leave a community your not a member of")
+        messages.error(request, _("You cannot leave a community your not a member of"))
     return redirect("group_detail", group_slug=group.slug)
 
 @login_required
 def group_join(request, group_id):
     group = get_object_or_404(Group, id=group_id, is_geo_group=False)
     if GroupUsers.objects.filter(group=group, user=request.user).exists():
-        messages.error(request, "You are already a member")
+        messages.error(request, _("You are already a member"))
         return redirect("group_detail", group_slug=group.slug)
     if MembershipRequests.objects.filter(group=group, user=request.user).exists():
-        messages.error(request, "Your membership is currently pending")
+        messages.error(request, _("Your membership is currently pending"))
         return redirect("group_detail", group_slug=group.slug)
     if group.is_public():
         GroupUsers.objects.create(group=group, user=request.user, is_manager=False)
-        messages.success(request, "You have successfully joined community %s" % group, extra_tags="sticky")
+        messages.success(request, _("You have successfully joined community %(group)s") % {
+                'group': group}, extra_tags="sticky")
     else:
         membership_request = MembershipRequests.objects.create(group=group, user=request.user)
-        Stream.objects.get(slug="community-join-request").enqueue(content_object=membership_request, start=datetime.now())
-        messages.success(request, "You have made a request to join %s, a manager should grant or deny your membership shortly." % group, extra_tags="sticky")
+        Stream.objects.get(slug="community-join-request").enqueue(
+            content_object=membership_request, start=datetime.now())
+        messages.success(request, 
+                         _("You have made a request to join %(group)s, a manager"
+                           "should grant or deny your membership shortly.") % {
+                'group': group}, extra_tags="sticky")
     return redirect("group_detail", group_slug=group.slug)
 
 @login_required
@@ -100,19 +111,23 @@ def group_membership_request(request, group_id, user_id, action):
     if membership_request:
         if action == "approve":
             GroupUsers.objects.create(group=group, user=user, is_manager=False)
-            Stream.objects.get(slug="community-membership-approved").enqueue(content_object=membership_request,
-                start=datetime.now())
+            Stream.objects.get(slug="community-membership-approved").enqueue(
+                content_object=membership_request, start=datetime.now())
             membership_request.delete()
-            messages.success(request, "%s has been added to the community" % user.get_full_name())
+            messages.success(request, _("%(user)s has been added to the community") % {
+                    'user': user.get_full_name()})
         elif action == "deny":
-            Stream.objects.get(slug="community-membership-denied").enqueue(content_object=membership_request,
-                start=datetime.now())
+            Stream.objects.get(slug="community-membership-denied").enqueue(
+                content_object=membership_request, start=datetime.now())
             membership_request.delete()
-            messages.success(request, "%s has been denied access to the community" % user.get_full_name())
+            messages.success(request, _("%(user)s has been denied access to the community") % {
+                    'user': user.get_full_name()})
     elif GroupUsers.objects.filter(group=group, user=user).exists():
-        messages.info(request, "%s has already been added to this community" % user.get_full_name())
+        messages.info(request, _("%(user)s has already been added to this community") % {
+                'user': user.get_full_name()})
     else:
-        messages.info(request, "%s has already been denied access to this community" % user.get_full_name())
+        messages.info(request, _("%(user)s has already been denied access to this community") % {
+                'user': user.get_full_name()})
     return redirect("group_detail", group_slug=group.slug)
 
 @login_required
@@ -133,16 +148,20 @@ def group_association_request(request, group_id, object_id, action, content_type
             content_object.groups.add(group)
             association_request.approved = True
             association_request.save()
-            messages.success(request, "Your community has been linked with %s" % content_object)
+            messages.success(request, _("Your community has been linked with %(object)s") % {
+                    'object': content_object})
         elif action == "deny":
             association_request.delete()
-            messages.success(request, "Your community will not be linked with %s" % content_object)
+            messages.success(request, _("Your community will not be linked with %(object)s") % {
+                    'object': content_object})
     elif content_object.groups.filter(id=group_id).exists():
         print "Already"
-        messages.info(request, "%s has already been linked with your community" % content_object)
+        messages.info(request, _("%(object)s has already been linked with your community") % {
+                'object': content_object})
     else:
         print "Never"
-        messages.info(request, "%s has not been linked with your community" % content_object)
+        messages.info(request, _("%(object)s has not been linked with your community") % {
+                'object': content_object})
     return redirect("group_detail", group_slug=group.slug)
 
 def group_detail(request, group_slug):
@@ -169,7 +188,8 @@ def group_list(request):
     groups = Group.objects.groups_with_memberships(request.user)
     if request.user.is_authenticated():
         my_groups = Group.objects.filter(users=request.user, is_geo_group=False)
-    return render_to_response("groups/group_list.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("groups/group_list.html", locals(), 
+                              context_instance=RequestContext(request))
 
 @login_required
 @csrf_protect
@@ -183,7 +203,7 @@ def group_edit(request, group_slug):
             group_form = GroupForm(request.POST, request.FILES, instance=group)
             if group_form.is_valid():
                 group = group_form.save()
-                messages.success(request, "%s has been updated." % group)
+                messages.success(request, _("%(group)s has been updated.") % {'group': group})
                 return redirect("group_edit", group_slug=group.slug)
             else:
                 membership_form = MembershipForm(group=group)
@@ -192,37 +212,42 @@ def group_edit(request, group_slug):
             discussions_form = DiscussionSettingsForm(request.POST, instance=group)
             if discussions_form.is_valid():
                 group = discussions_form.save()
-                messages.success(request, "%s has been updated." % group)
+                messages.success(request, _("%(group)s has been updated.") % {'group': group})
                 return redirect("group_edit", group_slug=group.slug)
             else:
                 membership_form = MembershipForm(group=group)
                 group_form = GroupForm(instance=group)
         elif "delete_group" in request.POST:
             group.delete()
-            messages.success(request, "%s has been deleted." % group)
+            messages.success(request, _("%(group)s has been deleted.") % {'group': group})
             return redirect("group_list")
         elif "change_membership" in request.POST:
             membership_form = MembershipForm(group=group, data=request.POST)
             if membership_form.is_valid():
                 membership_form.save()
                 if group.is_user_manager(request.user):
-                    messages.success(request, "%s's memberships have been updated." % group)
-                    return render_to_response("groups/group_edit.html", locals(), context_instance=RequestContext(request))
+                    messages.success(request, _("%(group)s's memberships have been updated.") % {
+                            'group': group})
+                    return render_to_response("groups/group_edit.html", locals(), 
+                                              context_instance=RequestContext(request))
                 else:
-                    messages.success(request, "You no longer have permissions to edit %s" % group)
+                    messages.success(request,
+                                     _("You no longer have permissions to edit %(group)s" % {
+                                'group': group})
                     return redirect("group_detail", group_slug=group.slug)
             else:
                 group_form = GroupForm(instance=group)
                 discussions_form = DiscussionSettingsForm(instance=group)
         else:
-            messages.error(request, "No action specified.")
+            messages.error(request, _("No action specified."))
     else:
         group_form = GroupForm(instance=group)
         membership_form = MembershipForm(group=group)
         discussions_form = DiscussionSettingsForm(instance=group)
     site = Site.objects.get_current()
     requesters = group.requesters_to_grant_or_deny(request.user)
-    return render_to_response("groups/group_edit.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("groups/group_edit.html", locals(), 
+                              context_instance=RequestContext(request))
 
 @csrf_exempt
 def receive_mail(request):
@@ -323,12 +348,15 @@ def group_disc_create(request, group_slug):
                 is_public=not group.moderate_disc(request.user),
                 reply_count=None if disc_form.cleaned_data['parent_id'] else 0
             )
-            messages.success(request, "Discussion posted")
-            return_to = disc_form.cleaned_data['parent_id'] if disc_form.cleaned_data['parent_id'] else disc.id
+            messages.success(request, _("Discussion posted"))
+            return_to = (disc_form.cleaned_data['parent_id'] 
+                         if disc_form.cleaned_data['parent_id'] 
+                         else disc.id)
             return redirect("group_disc_detail", group_slug=group.slug, disc_id=return_to)
     else:
         disc_form = DiscussionCreateForm()
-    return render_to_response("groups/group_disc_create.html", locals(), context_instance=RequestContext(request)) 
+    return render_to_response("groups/group_disc_create.html", locals(), 
+                              context_instance=RequestContext(request)) 
 
 def group_disc_detail(request, group_slug, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id, parent=None)
@@ -339,7 +367,8 @@ def group_disc_detail(request, group_slug, disc_id):
     remove_form = DiscussionRemoveForm()
     discs = Discussion.objects.filter(parent=disc).order_by("created")
     disc_form = DiscussionCreateForm(initial={'parent_id':disc.id, 'subject':"Re: %s" % disc.subject})
-    return render_to_response("groups/group_disc_detail.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("groups/group_disc_detail.html", locals(), 
+                              context_instance=RequestContext(request))
 
 @login_required
 @csrf_protect
@@ -349,7 +378,7 @@ def group_disc_approve(request, group_slug, disc_id):
     form = DiscussionApproveForm(request.POST, instance=disc)
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
         form.save()
-        messages.success(request, "Discussion approved")
+        messages.success(request, _("Discussion approved"))
 
     return_to = disc.parent_id if disc.parent_id else disc.id
     return redirect("group_disc_detail", group_slug=group_slug, disc_id=return_to)
@@ -363,7 +392,7 @@ def group_disc_remove(request, group_slug, disc_id):
 
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
         form.save()
-        messages.success(request, "Discussion removed")
+        messages.success(request, _("Discussion removed"))
         if disc.parent_id:
             return redirect("group_disc_detail", group_slug=group_slug, disc_id=disc.parent_id)
         else:
@@ -388,7 +417,8 @@ def group_disc_list(request, group_slug):
     except (EmptyPage, InvalidPage):
         discs = paginator.page(paginator.num_pages)
 
-    return render_to_response("groups/group_disc_list.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("groups/group_disc_list.html", locals(), 
+                              context_instance=RequestContext(request))
 
 def _group_detail(request, group):
     nav_selected = "communities"
@@ -404,4 +434,5 @@ def _group_detail(request, group):
     challenge_requests = group.challenges_waiting_approval(request.user)
     has_other_managers = group.has_other_managers(request.user)
     discs = Discussion.objects.filter(parent=None, group=group).order_by("-created")[:5]
-    return render_to_response("groups/group_detail.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("groups/group_detail.html", locals(), 
+                              context_instance=RequestContext(request))
