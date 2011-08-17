@@ -1,10 +1,11 @@
 {% extends "base/nav_form.html" %}
+{% load i18n %}
 {% block title %}{{ disc.subject }}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url group_list %}">Communities</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
     <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
-    <a href="{% url group_disc_list group.slug %}">Discussions</a> &rsaquo;
+    <a href="{% url group_disc_list group.slug %}">{% blocktrans %}Discussions{% endblocktrans %}</a> &rsaquo;
     {{ disc.subject }}
 {% endblock %}
 {% block content %}
@@ -16,7 +17,7 @@
             {% include "groups/_group_disc_nugget.html" %}
         {% endfor %}
         {% if is_poster %}
-            <h2>Post a new response</h2>
+            <h2>{% blocktrans %}Post a new response{% endblocktrans %}</h2>
             {% include "groups/_group_disc_create_form.html" %}
         {% else %}
             {% if group.is_joinable %}

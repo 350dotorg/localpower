@@ -1,17 +1,18 @@
 {% extends "base/nav_form.html" %}
-{% block title %}Create Discussion{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Create Discussion{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-<a href="{% url index %}">Home</a> &rsaquo;
-<a href="{% url group_list %}">Communities</a> &rsaquo;
+<a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+<a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
 <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
-Create Discussion
+{% blocktrans %}Create Discussion{% endblocktrans %}
 {% endblock %}
 {% block content %}
 <div class="grid_6 alpha">
     <div class="box_two_top"></div>
     <div class="box_two_middle">
-        <h1>New Discussion</h1>
-        {% include "groups/_group_disc_create_form.html" %}
+      <h1>{% blocktrans %}New Discussion{% endblocktrans %}</h1>
+      {% include "groups/_group_disc_create_form.html" %}
     </div>
     <div class="box_two_bottom"></div>
 </div>

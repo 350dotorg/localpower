@@ -1,16 +1,17 @@
 {% extends "base/nav_6c3c.html" %}
-{% block title %}{{group.is_joinable}} discussions{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}{{group}} discussions{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url group_list %}">Communities</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
     <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
-    Discussions
+    {% blocktrans %}Discussions{% endblocktrans %}
 {% endblock %}
 {% block content %}
 <div class="grid_6 alpha">
     <div class="box_two_top"></div>
     <div class="box_two_middle">
-        <h1>Discussions</h1>
+        <h1>{% blocktrans %}Discussions{% endblocktrans %}</h1>
         {% with discs.object_list as discs %}
             {% include "groups/_group_disc_list.html" %}
         {% endwith %}
@@ -24,11 +25,15 @@
     <div class="box_one_top"></div>
     <div class="box_one_middle">
         {% if is_poster %}
-            <a href="{% url group_disc_create group.slug %}" class="button">New discussion</a>
+            <a href="{% url group_disc_create group.slug %}" class="button">
+	      {% blocktrans %}New discussion{% endblocktrans %}</a>
         {% else %}
             {% if group.is_joinable %}
-                You must be a member of this community to post discussions. 
-                <a class="button" href="{% url group_join group.id %}">Join Community</a>
+            {% blocktrans %}
+	    You must be a member of this community to post discussions.
+	    {% endblocktrans %}
+            <a class="button" href="{% url group_join group.id %}">
+	      {% blocktrans %}Join Community{% endblocktrans %}</a>
             {% endif %}
         {% endif %}
     </div>
