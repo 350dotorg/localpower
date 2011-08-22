@@ -6,9 +6,12 @@ import re
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.localflavor.us.models import USStateField
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
+
+from django.contrib.gis.db.models import PointField
 
 from geo.models import Location
 from records.models import Record
@@ -34,7 +37,7 @@ class Feedback(models.Model):
     def __unicode__(self):
         return u'%s...' % (self.comment[:15])
 
-class ProfileManager(models.Manager):
+class ProfileManager(GeoManager):
     def user_engagement(self, users=None, date_start=None, date_end=None):
         from django.db import connection, transaction
 
@@ -150,6 +153,8 @@ class Profile(models.Model):
     ask_to_share = models.BooleanField(_('ask to share'), default=True)
     total_points = models.IntegerField(_('total points'), default=0)
     objects = ProfileManager()
+
+    geom = models.ForeignKey('geo.Point', blank=True, null=True)
 
     class Meta:
         verbose_name = _('profile')

@@ -7,12 +7,14 @@ from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.flatpages.models import FlatPage
+from django.contrib.gis import geos
 from django.utils.translation import ugettext_lazy as _
 
 from PIL.Image import open as pil_open
 from utils import hash_val
 
 from geo.models import Location
+from geo.models import Point
 from geo.fields import GoogleLocationField
 
 from models import Group, GroupUsers, Discussion, GroupAssociationRequest
@@ -31,6 +33,8 @@ class GroupForm(forms.ModelForm):
     image = forms.FileField(label=_("Upload a community image"),
                             help_text=_("You can upload png, jpg or gif files upto 512K"),
                             required=False)
+    address = GoogleLocationField(required=False,
+                                  help_text="Be as specific or nonspecific as you feel like")
 
     states = ["ak", "al", "ar", "az", "ca", "co", "ct", "dc", "de", "fl", "ga", "hi", "ia", "id", "il",
         "in", "ks", "ky", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nc", "nd", "ne",
@@ -45,6 +49,10 @@ class GroupForm(forms.ModelForm):
         widgets = {
             "membership_type": forms.RadioSelect
         }
+
+    def __init__(self, *args, **kw):
+        forms.ModelForm.__init__(self, *args, **kw)
+        self.fields["address"].initial = self.instance.geom.address if self.instance.geom else ""
 
     def clean_image(self):
         data = self.cleaned_data["image"]
@@ -79,6 +87,14 @@ class GroupForm(forms.ModelForm):
             field = self.fields["headquarters"]
             self.instance.lat = field.raw_data["latitude"]
             self.instance.lon = field.raw_data["longitude"]
+        if self.cleaned_data['address']:
+            field = self.fields['address']
+            point = geos.Point((field.raw_data['latitude'], field.raw_data['longitude']))
+            geom = Point.objects.create(latlon=point, 
+                                        address=field.raw_data['user_input'])
+            geom.save()
+            self.instance.geom = geom
+
         group = super(GroupForm, self).save()
         current_image = self.cleaned_data["image"]
         if current_image and current_image != group.image.field.default:

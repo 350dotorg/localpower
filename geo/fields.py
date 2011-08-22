@@ -17,6 +17,7 @@ class ZipCodeField(USZipCodeField):
         return value
 
 class GoogleGeoField(forms.CharField):
+
     @classmethod
     def _google_geocode(cls, url, data=None):
         if not data:
@@ -52,9 +53,12 @@ class GoogleGeoField(forms.CharField):
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
             data = GoogleLocationField._google_geocode(url)
             if 'location' in data:
+                data['user_input'] = value
                 return data
             url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, data['latitude'], data['longitude'])
-            return GoogleLocationField._google_geocode(url, data)
+            result = GoogleLocationField._google_geocode(url, data)
+            result['user_input'] = value
+            return result
         return value
 
 class GoogleLocationField(GoogleGeoField):

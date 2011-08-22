@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail, EmailMessage
 from django.db import models, transaction, IntegrityError
@@ -22,7 +23,7 @@ from thumbnails.fields import ImageAndThumbsField
 from messaging.models import Stream
 from utils import hash_val
 
-class GroupManager(models.Manager):
+class GroupManager(GeoManager):
     def groups_with_memberships(self, user, limit=None):
         groups = self.filter(is_geo_group=False).order_by("name")
         groups = groups.extra(
@@ -144,6 +145,9 @@ class Group(models.Model):
     disc_post_perm = models.IntegerField(choices=DISC_POST_PERM, default=0, null=True,
                                          verbose_name=_("Who can post discussions?"))
     member_count = models.IntegerField(default=0)
+
+    geom = models.ForeignKey('geo.Point', blank=True, null=True,
+                             verbose_name=_('location'))
 
     class Meta:
         verbose_name = _("community")

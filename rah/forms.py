@@ -6,15 +6,18 @@ from django import forms
 from django.contrib import auth
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth.models import User
-from django.forms import ValidationError
+from django.contrib.gis import geos
 from django.core.mail import send_mail, EmailMessage
 from django.core.urlresolvers import resolve, Resolver404
+from django.forms import ValidationError
 from django.forms.widgets import CheckboxSelectMultiple
 from django.template import Context, loader
 
 from settings import SITE_FEEDBACK_EMAIL
 from rah.models import Profile, Feedback, StickerRecipient
+from geo.fields import GoogleLocationField
 from geo.models import Location
+from geo.models import Point
 
 from fields import Honeypot
 
@@ -48,18 +51,19 @@ class RegistrationForm(forms.ModelForm):
         raise forms.ValidationError('This email address has already been registered in our system. If you have forgotten your password, please use the password reset link.')
 
 class RegistrationProfileForm(forms.Form):
-    zipcode = forms.CharField(max_length=5, required=False, help_text="Leave blank if you don't have a US zipcode", widget=forms.TextInput())
+    address = GoogleLocationField(required=False,
+                                  help_text="Be as specific or nonspecific as you feel like")
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
-        if data:
-            if len(data) <> 5:
-                raise forms.ValidationError("Please enter a 5 digit zipcode")
-            try:
-                self.location = Location.objects.get(zipcode=data)
-            except Location.DoesNotExist, e:
-                raise forms.ValidationError("Zipcode is invalid")
-        return data
+    def save(self):
+        if self.cleaned_data['address']:
+            field = self.fields['address']
+            point = geos.Point((field.raw_data['latitude'], field.raw_data['longitude']))
+            geom = Point.objects.create(latlon=point, 
+                                        address=field.raw_data['user_input'])
+            geom.save()
+            self.instance.geom = geom
+        profile = forms.ModelForm.save(self)
+        return profile
 
 class AuthenticationForm(forms.Form):
    """
@@ -124,28 +128,28 @@ class FeedbackForm(forms.ModelForm):
 
 class ProfileEditForm(forms.ModelForm):
     about = forms.CharField(max_length=255, required=False, label="About you", widget=forms.Textarea)
-    zipcode = forms.CharField(max_length=5, required=False)
+    address = GoogleLocationField(required=False,
+                                  help_text="Be as specific or nonspecific as you feel like")
     is_profile_private = forms.BooleanField(label="Make Profile Private", required=False)
 
     class Meta:
         model = Profile
-        fields = ("zipcode", "building_type", "about", "is_profile_private")
+        fields = ("address", "building_type", "about", "is_profile_private")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
-        self.fields["zipcode"].initial = self.instance.location.zipcode if self.instance.location else ""
+        self.fields["address"].initial = self.instance.geom.address if self.instance.geom else ""
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
-        if not len(data):
-            self.instance.location = None
-            return
-        if len(data) <> 5:
-            raise forms.ValidationError("Please enter a 5 digit zipcode")
-        try:
-            self.instance.location = Location.objects.get(zipcode=data)
-        except Location.DoesNotExist, e:
-            raise forms.ValidationError("Zipcode is invalid")
+    def save(self):
+        if self.cleaned_data['address']:
+            field = self.fields['address']
+            point = geos.Point((field.raw_data['latitude'], field.raw_data['longitude']))
+            geom, _ = Point.objects.get_or_create(latlon=point,
+                                                  address=field.raw_data['user_input'])
+            geom.save()
+            self.instance.geom = geom
+        profile = forms.ModelForm.save(self)
+        return profile
 
 class AccountForm(forms.ModelForm):
     class Meta:

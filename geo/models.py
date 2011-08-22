@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.gis.db.models import PointField
+from django.contrib.gis.db.models import GeoManager
 
 class Location(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -12,3 +14,9 @@ class Location(models.Model):
 
     def __unicode__(self):
         return u'%s, %s' % (self.name, self.st)
+
+class Point(models.Model):
+    latlon = PointField()
+    address = models.TextField()
+
+    objects = GeoManager()
