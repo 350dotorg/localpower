@@ -19,6 +19,7 @@ from rah.signals import logged_in
 from invite.models import Invitation, make_token
 from records.models import Record
 
+from geo.models import Point
 from models import Event, Guest
 from forms import EventForm, GuestInviteForm, GuestAddForm, GuestListForm, GuestEditForm, \
     RsvpForm, RsvpConfirmForm, RsvpAccountForm, MessageForm, HostForm
@@ -26,7 +27,7 @@ from decorators import user_is_event_manager, user_is_guest, user_is_guest_or_ha
 
 def show(request):
     nav_selected = "events"
-    map_events = Event.objects.filter(is_private=False, lat__isnull=False, lon__isnull=False)
+    map_events = Event.objects.filter(is_private=False, geom__isnull=False)
     events = Event.objects.filter(is_private=False).order_by("-when", "-start")[:4]
     return render_to_response("events/show.html", locals(), context_instance=RequestContext(request))
 

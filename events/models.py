@@ -1,12 +1,14 @@
 import datetime
 
 from django.contrib.auth.models import User
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.db import models
 from django.dispatch import Signal
 from django.template import Context, loader
 from django.utils.dateformat import DateFormat
+from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
 from invite.models import Invitation
@@ -21,8 +23,6 @@ class Event(models.Model):
     title = models.CharField(max_length=100, help_text="What do you want to call this shindig?")
     where = models.CharField(max_length=100, verbose_name="Street address",
         help_text="Include the city and state")
-    lon = models.FloatField(null=True, blank=True)
-    lat = models.FloatField(null=True, blank=True)
     location = models.ForeignKey("geo.Location", null=True)
     when = models.DateField()
     when.has_happened = True
@@ -39,6 +39,10 @@ class Event(models.Model):
         will need to contact you first.")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    geom = models.ForeignKey('geo.Point', blank=True, null=True,
+                             verbose_name=_('location'))
+    objects = GeoManager()
 
     class Meta:
         permissions = (

@@ -59,11 +59,11 @@ host your own.
     // Add locations for plotting on the map
     RAH.event_locations = [];
     {% for event in map_events %}
-        var info = "<b>{{ event.title|escape|escapejs }}</b><br/> {{ event.where|escape|escapejs }}<br/>";
+        var info = "<b>{{ event.title|escape|escapejs }}</b><br/> {{ event.geom.address|escape|escapejs }}<br/>";
             info += "<a href='{% url event-detail event.id %}'>View event</a>";
         RAH.event_locations.push({
-            lat: "{{ event.lat }}",
-            lon: "{{ event.lon }}",
+            lat: "{{ event.geom.y }}",
+            lon: "{{ event.geom.x }}",
             "info": info
         });
     {% endfor %}
