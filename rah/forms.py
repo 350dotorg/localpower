@@ -59,7 +59,8 @@ class RegistrationProfileForm(forms.Form):
             field = self.fields['address']
             point = geos.Point((field.raw_data['latitude'], field.raw_data['longitude']))
             geom = Point.objects.create(latlon=point, 
-                                        address=field.raw_data['user_input'])
+                                        address=field.raw_data['user_input'],
+                                        formatted_address=field.raw_data['address'])
             geom.save()
             self.instance.geom = geom
         profile = forms.ModelForm.save(self)
@@ -145,7 +146,8 @@ class ProfileEditForm(forms.ModelForm):
             field = self.fields['address']
             point = geos.Point((field.raw_data['latitude'], field.raw_data['longitude']))
             geom, _ = Point.objects.get_or_create(latlon=point,
-                                                  address=field.raw_data['user_input'])
+                                                  address=field.raw_data['user_input'],
+                                                  formatted_address=field.raw_data['address'])
             geom.save()
             self.instance.geom = geom
         profile = forms.ModelForm.save(self)

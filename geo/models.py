@@ -17,6 +17,8 @@ class Location(models.Model):
 
 class Point(models.Model):
     latlon = PointField()
+
     address = models.TextField()
+    formatted_address = models.TextField()
 
     objects = GeoManager()
