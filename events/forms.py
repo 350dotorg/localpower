@@ -70,10 +70,11 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
                                         address=field.raw_data['user_input'],
                                         formatted_address=field.raw_data['address'])
             geom.save()
+            self.instance.location = field.raw_data["location"]
             self.instance.geom = geom
 
         self.instance.creator = self.user
-        self.instance.location = self.cleaned_data["location"]
+        
         event = super(EventForm, self).save(*args, **kwargs)
         self.save_groups(event)
         return event

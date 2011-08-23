@@ -11,11 +11,11 @@
 <div>
     <h3>Where</h3>
     <p>
-        <span id="event_address">{{ event.where }}</span><br />
+        <span id="event_address">{{ event.geom.formatted_address }}</span><br />
     </p>
-    <a href="http://maps.google.com/maps?q={{event.where|urlencode}}" 
+    <a href="http://maps.google.com/maps?q={{event.geom.formatted_address|urlencode}}" 
         title="Click to view a larger map"
         target="_blank">
-        <img src="http://maps.google.com/maps/api/staticmap?center={{event.lat}},{{event.lon}}&zoom=16&size=431x200&markers={{event.lat}},{{event.lon}}&sensor=false" alt="Map of the event"/>
+        <img src="http://maps.google.com/maps/api/staticmap?center={{event.geom.latlon.y}},{{event.geom.latlon.x}}&zoom=16&size=431x200&markers={{event.geom.latlon.y}},{{event.geom.latlon.x}}&sensor=false" alt="Map of the event"/>
     </a>
 </div>
