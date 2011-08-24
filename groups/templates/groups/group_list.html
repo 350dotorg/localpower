@@ -22,6 +22,14 @@ Showing {{num_groups}} communities
 {% endblock %}
 
 {% block content %}
+<div id="events_map_container">
+    <div id="events_map"></div>
+    <div id="events_map_shadow_top"></div>
+    <div id="events_map_shadow_right"></div>
+    <div id="events_map_shadow_bottom"></div>
+    <div id="events_map_shadow_left"></div>
+</div>
+
         {% if groups %}
             <h1>{% blocktrans %}Join a Community{% endblocktrans %}</h1>
             <p>
@@ -48,8 +56,26 @@ Showing {{num_groups}} communities
     {% endif %}
 
 <script type="text/javascript" charset="utf-8">
+    //<![CDATA[
     var RAH = RAH || {};
     RAH.pagescripts = RAH.pagescripts || [];
     RAH.pagescripts.push("{% dated_static 'js/pages/group.list.js' %}");
+    RAH.sprite_url = "{% dated_static 'images/theme/sprite.png' %}";
+    // Add locations for plotting on the map
+    RAH.event_locations = [];
+    {% for event in map_events %}
+        var info = "<b>{{ event.name|escape|escapejs }}</b><br/> {{ event.geom.address|escape|escapejs }}<br/>";
+            info += "<a href='{% url group_detail event.slug %}'>View group</a>";
+        RAH.event_locations.push({
+            lat: "{{ event.geom.latlon.x }}",
+            lon: "{{ event.geom.latlon.y }}",
+            "info": info
+        });
+    {% endfor %}
+    //]]>
 </script>
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 {% endblock %}
