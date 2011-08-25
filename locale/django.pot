@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-17 12:40-0400\n"
+"POT-Creation-Date: 2011-08-24 22:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Video game Systems"
 msgstr ""
 
-#: actions/forms.py:17
+#: actions/forms.py:18
 msgid "Commit date"
 msgstr ""
 
@@ -1208,39 +1208,39 @@ msgstr ""
 msgid "%(object)s has not been linked with your community"
 msgstr ""
 
-#: groups/views.py:206 groups/views.py:215
+#: groups/views.py:208 groups/views.py:217
 #, python-format
 msgid "%(group)s has been updated."
 msgstr ""
 
-#: groups/views.py:222
+#: groups/views.py:224
 #, python-format
 msgid "%(group)s has been deleted."
 msgstr ""
 
-#: groups/views.py:229
+#: groups/views.py:231
 #, python-format
 msgid "%(group)s's memberships have been updated."
 msgstr ""
 
-#: groups/views.py:235
+#: groups/views.py:237
 #, python-format
 msgid "You no longer have permissions to edit %(group)s"
 msgstr ""
 
-#: groups/views.py:242 rah/views.py:287
+#: groups/views.py:244 rah/views.py:287
 msgid "No action specified."
 msgstr ""
 
-#: groups/views.py:351
+#: groups/views.py:353
 msgid "Discussion posted"
 msgstr ""
 
-#: groups/views.py:381
+#: groups/views.py:383
 msgid "Discussion approved"
 msgstr ""
 
-#: groups/views.py:395
+#: groups/views.py:397
 msgid "Discussion removed"
 msgstr ""
 
@@ -1600,11 +1600,11 @@ msgid ""
 "Showing %(num_groups)s communities\n"
 msgstr ""
 
-#: groups/templates/groups/group_list.html:26
+#: groups/templates/groups/group_list.html:34
 msgid "Join a Community"
 msgstr ""
 
-#: groups/templates/groups/group_list.html:28
+#: groups/templates/groups/group_list.html:36
 msgid ""
 "\n"
 "              People across the country are working together to make their "
@@ -1616,12 +1616,16 @@ msgid ""
 "\t      "
 msgstr ""
 
-#: groups/templates/groups/group_list.html:40
+#: groups/templates/groups/group_list.html:48
 msgid "Your Communities"
 msgstr ""
 
-#: groups/templates/groups/group_list.html:46
+#: groups/templates/groups/group_list.html:54
 msgid "You're not a member of any communities yet!"
+msgstr ""
+
+#: groups/templates/groups/group_list.html:68
+msgid "View group"
 msgstr ""
 
 #: rah/admin.py:20
