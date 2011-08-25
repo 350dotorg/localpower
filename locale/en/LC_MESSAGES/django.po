@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-17 12:40-0400\n"
+"POT-Creation-Date: 2011-08-24 22:48-0400\n"
 "PO-Revision-Date: 2011-08-14 14:24+0000\n"
 "Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Video game Systems"
 msgstr ""
 
-#: actions/forms.py:17
+#: actions/forms.py:18
 msgid "Commit date"
 msgstr ""
 
@@ -871,31 +871,28 @@ msgid "All of the activity going on for %(group)s"
 msgstr ""
 
 #: groups/forms.py:23
-#, fuzzy
 msgid "Community name"
-msgstr "Groups"
+msgstr "Group name"
 
 #: groups/forms.py:24
 msgid "Enter a name for your new community"
-msgstr ""
+msgstr "Enter a name for your new group"
 
 #: groups/forms.py:25
-#, fuzzy
 msgid "Community address"
-msgstr "Groups"
+msgstr "Group address"
 
 #: groups/forms.py:26
 msgid "This will be your community's web address"
-msgstr ""
+msgstr "This will be your group's web address"
 
 #: groups/forms.py:27
-#, fuzzy
 msgid "Community description"
-msgstr "Committed Projects"
+msgstr "Group description"
 
 #: groups/forms.py:28
 msgid "What is the community all about?"
-msgstr ""
+msgstr "What is the group all about?"
 
 #: groups/forms.py:30
 msgid "Headquarters"
@@ -903,7 +900,7 @@ msgstr ""
 
 #: groups/forms.py:31
 msgid "Upload a community image"
-msgstr ""
+msgstr "Upload a group image"
 
 #: groups/forms.py:32
 msgid "You can upload png, jpg or gif files upto 512K"
@@ -911,7 +908,7 @@ msgstr ""
 
 #: groups/forms.py:53
 msgid "Community images cannot be larger than 512K"
-msgstr ""
+msgstr "Group images cannot be larger than 512K"
 
 #: groups/forms.py:56
 #, python-format
@@ -920,11 +917,11 @@ msgstr ""
 
 #: groups/forms.py:63
 msgid "Community addresses cannot begin with a state name."
-msgstr ""
+msgstr "Group addresses cannot begin with a state name."
 
 #: groups/forms.py:68 groups/forms.py:70 groups/forms.py:74
 msgid "This community address is not available."
-msgstr ""
+msgstr "This group address is not available."
 
 #: groups/forms.py:95
 msgid "--Set Membership Role--"
@@ -940,7 +937,7 @@ msgstr ""
 
 #: groups/forms.py:98
 msgid "Remove from Community"
-msgstr ""
+msgstr "Remove from Group"
 
 #: groups/forms.py:102
 msgid "You must select a membership action."
@@ -948,11 +945,11 @@ msgstr ""
 
 #: groups/forms.py:106
 msgid "You must select at least one member from the community."
-msgstr ""
+msgstr "You must select at least one member from the group."
 
 #: groups/forms.py:119
 msgid "You must leave at least one manager in the community."
-msgstr ""
+msgstr "You must leave at least one manager in the group."
 
 #: groups/forms.py:133
 #, python-format
@@ -960,17 +957,16 @@ msgid "Role option %(role)s does not exist"
 msgstr ""
 
 #: groups/forms.py:146
-#, fuzzy
 msgid "Comment"
-msgstr "Groups"
+msgstr ""
 
 #: groups/forms.py:163
 msgid "Parent ID is currupted"
-msgstr ""
+msgstr "Parent ID is corrupted"
 
 #: groups/forms.py:216
 msgid "You need to be a member of a community first"
-msgstr ""
+msgstr "You need to be a member of a group first"
 
 #: groups/models.py:70
 msgid "Yes, a manager must approve all discussions"
@@ -1041,9 +1037,8 @@ msgid "location type"
 msgstr ""
 
 #: groups/models.py:128
-#, fuzzy
 msgid "sample location"
-msgstr "Completed Projects"
+msgstr ""
 
 #: groups/models.py:130 groups/models.py:349
 msgid "parent"
@@ -1066,9 +1061,8 @@ msgid "Who can post discussions?"
 msgstr ""
 
 #: groups/models.py:149
-#, fuzzy
 msgid "community"
-msgstr "groups"
+msgstr "group"
 
 #: groups/models.py:292 groups/models.py:308 groups/models.py:326
 #: groups/models.py:346 groups/models.py:405
@@ -1090,7 +1084,7 @@ msgstr ""
 #: groups/models.py:303
 #, python-format
 msgid "%(user)s belongs to community %(group)s"
-msgstr ""
+msgstr "%(user)s belongs to group %(group)s"
 
 #: groups/models.py:313
 msgid "group membership request"
@@ -1171,17 +1165,19 @@ msgstr ""
 #: groups/views.py:67
 #, python-format
 msgid "You have been removed from community %(group)s"
-msgstr ""
+msgstr "You have been removed from group %(group)s"
 
 #: groups/views.py:71
 msgid ""
 "You cannot leave the community, until you've assigned someone else to be "
 "manager."
 msgstr ""
+"You cannot leave the group, until you've assigned someone else to be "
+"manager."
 
 #: groups/views.py:75
 msgid "You cannot leave a community your not a member of"
-msgstr ""
+msgstr "You cannot leave a group you're not a member of"
 
 #: groups/views.py:82
 msgid "You are already a member"
@@ -1194,7 +1190,7 @@ msgstr ""
 #: groups/views.py:89
 #, python-format
 msgid "You have successfully joined community %(group)s"
-msgstr ""
+msgstr "You have successfully joined group %(group)s"
 
 #: groups/views.py:96
 #, python-format
@@ -1202,80 +1198,82 @@ msgid ""
 "You have made a request to join %(group)s, a managershould grant or deny "
 "your membership shortly."
 msgstr ""
+"You have made a request to join %(group)s, a manager should grant or deny "
+"your membership shortly."
 
 #: groups/views.py:117
 #, python-format
 msgid "%(user)s has been added to the community"
-msgstr ""
+msgstr "%(user)s has been added to the group"
 
 #: groups/views.py:123
 #, python-format
 msgid "%(user)s has been denied access to the community"
-msgstr ""
+msgstr "%(user)s has been denied access to the group"
 
 #: groups/views.py:126
 #, python-format
 msgid "%(user)s has already been added to this community"
-msgstr ""
+msgstr "%(user)s has already been added to this group"
 
 #: groups/views.py:129
 #, python-format
 msgid "%(user)s has already been denied access to this community"
-msgstr ""
+msgstr "%(user)s has already been denied access to this group"
 
 #: groups/views.py:151
 #, python-format
 msgid "Your community has been linked with %(object)s"
-msgstr ""
+msgstr "Your group has been linked with %(object)s"
 
 #: groups/views.py:155
 #, python-format
 msgid "Your community will not be linked with %(object)s"
-msgstr ""
+msgstr "Your group will not be linked with %(object)s"
 
 #: groups/views.py:159
 #, python-format
 msgid "%(object)s has already been linked with your community"
-msgstr ""
+msgstr "%(object)s has already been linked with your group"
 
 #: groups/views.py:163
 #, python-format
 msgid "%(object)s has not been linked with your community"
-msgstr ""
+msgstr "%(object)s has not been linked with your group"
 
-#: groups/views.py:206 groups/views.py:215
+#: groups/views.py:208 groups/views.py:217
 #, python-format
 msgid "%(group)s has been updated."
 msgstr ""
 
-#: groups/views.py:222
+#: groups/views.py:224
 #, python-format
 msgid "%(group)s has been deleted."
 msgstr ""
 
-#: groups/views.py:229
+#: groups/views.py:231
 #, python-format
 msgid "%(group)s's memberships have been updated."
 msgstr ""
 
-#: groups/views.py:235
+#: groups/views.py:237
 #, python-format
 msgid "You no longer have permissions to edit %(group)s"
 msgstr ""
 
-#: groups/views.py:242 rah/views.py:287
+#: groups/views.py:244 rah/views.py:287
 msgid "No action specified."
 msgstr ""
 
-#: groups/views.py:351
+#: groups/views.py:353
 msgid "Discussion posted"
 msgstr ""
 
-#: groups/views.py:381
+#: groups/views.py:383
 msgid "Discussion approved"
 msgstr ""
 
-#: groups/views.py:395
+#: groups/views.py:397
 msgid "Discussion removed"
 msgstr ""
 
@@ -1363,31 +1361,28 @@ msgstr ""
 
 #: groups/templates/groups/group_create.html:4
 #: groups/templates/groups/group_create.html:15
-#, fuzzy
 msgid "Create a Community"
-msgstr "Featured Groups"
+msgstr "Create a Group"
 
 #: groups/templates/groups/group_create.html:7
 #: groups/templates/groups/group_edit.html:13
 #: groups/templates/groups/group_list.html:6
-#, fuzzy
 msgid "Community"
-msgstr "groups"
+msgstr "Group"
 
 #: groups/templates/groups/group_create.html:8
 #: groups/templates/groups/group_create.html:19
-#, fuzzy
 msgid "Create Community"
-msgstr "Featured Groups"
+msgstr "Create Group"
 
 #: groups/templates/groups/group_create.html:11
 msgid "info!"
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:11
-#, fuzzy, python-format
+#, python-format
 msgid "%(SITE_NAME)s Community Activity"
-msgstr "Total %(SITE_NAME)s Groups"
+msgstr "%(SITE_NAME)s Group Activity"
 
 #: groups/templates/groups/group_detail.html:24
 #, python-format
@@ -1409,9 +1404,8 @@ msgid "Badges"
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:40
-#, fuzzy
 msgid "Edit community"
-msgstr "groups"
+msgstr "Edit Group"
 
 #: groups/templates/groups/group_detail.html:48
 #: groups/templates/groups/group_edit.html:14 templates/rah/profile.html:50
@@ -1449,9 +1443,8 @@ msgid "No discussions yet."
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:88
-#, fuzzy
 msgid "Community Activity"
-msgstr "Committed Projects"
+msgstr "Group Activity"
 
 #: groups/templates/groups/group_detail.html:126
 #, python-format
@@ -1471,17 +1464,19 @@ msgid ""
 "            Total members: %(num_members)s<br />\n"
 "\t  "
 msgstr ""
+"\n"
+"            Group points: %(total_points)s<br />\n"
+"            Total members: %(num_members)s<br />\n"
+"\t  "
 
 #: groups/templates/groups/group_detail.html:148
-#, fuzzy
 msgid "Leave Community"
-msgstr "Featured Groups"
+msgstr "Leave Group"
 
 #: groups/templates/groups/group_detail.html:153
 #: groups/templates/groups/group_disc_list.html:36
-#, fuzzy
 msgid "Join Community"
-msgstr "Find Groups"
+msgstr "Join Group"
 
 #: groups/templates/groups/group_detail.html:159
 msgid "Your membership status is currently <b>pending</b>."
@@ -1520,16 +1515,18 @@ msgid ""
 "%(object_link)s\n"
 "\t    "
 msgstr ""
+"\n"
+"            %(user_link)s has requested to link this group to "
+"%(object_link)s\n"
+"\t    "
 
 #: groups/templates/groups/group_detail.html:210
-#, fuzzy
 msgid "Challenge Link Requests"
-msgstr "Campaigns"
+msgstr "Campaign Link Requests"
 
 #: groups/templates/groups/group_detail.html:234
-#, fuzzy
 msgid "Community Invitations"
-msgstr "Committed Projects"
+msgstr "Group Invitations"
 
 #: groups/templates/groups/group_detail.html:236
 #, python-format
@@ -1544,12 +1541,11 @@ msgid "Send Invite"
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:248
-#, fuzzy
 msgid "Popular Actions"
-msgstr "Completed Projects"
+msgstr "Popular Projects"
 
 #: groups/templates/groups/group_detail.html:253
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "\t    %(num_completions)s member\n"
@@ -1559,13 +1555,7 @@ msgid_plural ""
 "\t    %(num_completions)s members\n"
 "\t    "
 msgstr[0] ""
-"\n"
-"    Showing %(num_actions)s project\n"
-"  "
 msgstr[1] ""
-"\n"
-"    Showing %(num_actions)s projects\n"
-"  "
 
 #: groups/templates/groups/group_disc_create.html:3
 #: groups/templates/groups/group_disc_create.html:8
@@ -1591,6 +1581,9 @@ msgid ""
 "\t    You must be a member of this community to post discussions.\n"
 "\t    "
 msgstr ""
+"\n"
+"\t    You must be a member of this group to post discussions.\n"
+"\t    "
 
 #: groups/templates/groups/group_edit.html:4
 #, python-format
@@ -1598,9 +1591,8 @@ msgid "Edit %(group)s settings"
 msgstr ""
 
 #: groups/templates/groups/group_edit.html:9
-#, fuzzy
 msgid "Edit Community"
-msgstr "groups"
+msgstr "Edit Group"
 
 #: groups/templates/groups/group_edit.html:24
 msgid "Save Settings"
@@ -1608,9 +1600,8 @@ msgstr ""
 
 #: groups/templates/groups/group_edit.html:29
 #: groups/templates/groups/group_edit.html:35
-#, fuzzy
 msgid "Delete Community"
-msgstr "Featured Groups"
+msgstr "Delete Group"
 
 #: groups/templates/groups/group_edit.html:31
 msgid ""
@@ -1619,6 +1610,10 @@ msgid ""
 ">Communities cannot be undeleted.\n"
 "\t\t\t  "
 msgstr ""
+"\n"
+"\t\t\t  Deleting a group will immediately remove it from our system.<br/"
+">Groups cannot be undeleted.\n"
+"\t\t\t  "
 
 #: groups/templates/groups/group_edit.html:50
 msgid "Save Discussion Settings"
@@ -1641,27 +1636,31 @@ msgid ""
 "your community to organize meetings, encourage action, and track progress\n"
 "towards your community's goals.\n"
 msgstr ""
+"\n"
+"Starting a group is a great way to help your neighborhood, church, "
+"school,\n"
+"or local group become more energy savvy. As a group leader, you can use\n"
+"your group to organize meetings, encourage action, and track progress\n"
+"towards your community's goals.\n"
 
 #: groups/templates/groups/group_list.html:16
-#, fuzzy
 msgid "Start a Community"
-msgstr "groups"
+msgstr "Start a Group"
 
 #: groups/templates/groups/group_list.html:19
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "Showing %(num_groups)s communities\n"
 msgstr ""
 "\n"
-"Showing %(num_challenges)s campaigns\n"
+"Showing %(num_groups)s groups\n"
 
-#: groups/templates/groups/group_list.html:26
-#, fuzzy
+#: groups/templates/groups/group_list.html:34
 msgid "Join a Community"
-msgstr "Find Groups"
+msgstr "Join a Group"
 
-#: groups/templates/groups/group_list.html:28
+#: groups/templates/groups/group_list.html:36
 msgid ""
 "\n"
 "              People across the country are working together to make their "
@@ -1672,14 +1671,25 @@ msgid ""
 "tomorrow.\n"
 "\t      "
 msgstr ""
+"\n"
+"              People around the world are working together to make their "
+"homes and their communities better than ever before. As\n"
+"              part of a group, you can brainstorm ideas for improving "
+"your community, share local tips about energy efficiency, and\n"
+"              meet people who are interested in building a cleaner "
+"tomorrow.\n"
+"\t      "
 
-#: groups/templates/groups/group_list.html:40
-#, fuzzy
+#: groups/templates/groups/group_list.html:48
 msgid "Your Communities"
-msgstr "Groups"
+msgstr "Your Groups"
 
-#: groups/templates/groups/group_list.html:46
+#: groups/templates/groups/group_list.html:54
 msgid "You're not a member of any communities yet!"
+msgstr "You're not a member of any groups yet!"
+
+#: groups/templates/groups/group_list.html:68
+msgid "View group"
 msgstr ""
 
 #: rah/admin.py:20
