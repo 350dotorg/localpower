@@ -188,6 +188,8 @@ def group_list(request):
     groups = Group.objects.groups_with_memberships(request.user)
     if request.user.is_authenticated():
         my_groups = Group.objects.filter(users=request.user, is_geo_group=False)
+    map_groups = Group.objects.filter(lat__isnull=False, lon__isnull=False,
+                                      is_geo_group=False)
     return render_to_response("groups/group_list.html", locals(), 
                               context_instance=RequestContext(request))
 
