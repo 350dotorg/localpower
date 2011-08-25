@@ -84,6 +84,7 @@ urlpatterns += patterns('django.views.generic.simple',
 
 urlpatterns += patterns(
     '',
+    (r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^password_change/$', 'django.contrib.auth.views.password_change', { 'post_change_redirect': '/password_change_done/', 'password_change_form': PasswordChangeForm }, name='password_change'),
     url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', { 'post_reset_redirect': '/password_reset_done/' }, name='password_reset'),

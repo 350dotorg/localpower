@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from records.models import Record
 from tagging.models import Tag
+from tinymce.widgets import TinyMCE
 
 from models import Action, UserActionProgress
 
@@ -25,6 +26,7 @@ class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
                                           widget=forms.CheckboxSelectMultiple,
                                           required=False)
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
 
     def __init__(self, *args, **kwargs):
         super(ActionAdminForm, self).__init__(*args, **kwargs)

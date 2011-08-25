@@ -105,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.markup',
     'django.contrib.humanize',
+    'tinymce',
     'rah',
     'rateable',
     'records',
@@ -197,6 +198,15 @@ LONG_DATE_FORMAT = "l F j, Y"
 
 # Should be set to something that's listed in `locale -a`
 LOCALE = 'en_US'
+ 
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_buttons1': "link,unlink,separator,bold,italic,underline,separator,bullist,numlist,separator,outdent,indent,separator,code,separator,undo,redo",
+    'theme_advanced_buttons2': "",
+    'theme_advanced_buttons3': "",
+#    'content_css': MEDIA_URL + 'css/style.css',
+}
 
 try:
     from local_settings import *

@@ -22,3 +22,4 @@ reportlab==2.4
 wsgiref==0.1.2
 yolk==0.4.1
 vobject==0.8.1c
+-e git+https://github.com/aljosa/django-tinymce.git#egg=django-tinymce
