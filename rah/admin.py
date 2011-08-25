@@ -2,8 +2,13 @@ from django.contrib import admin
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from django import forms
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
+
+from tinymce.widgets import TinyMCE
 
 from models import Profile
 from forms import ProfileEditForm
@@ -49,3 +54,11 @@ class CommentAdmin(admin.ModelAdmin):
     dislikes.short_description = _("Dislikes")
 
 admin.site.register(Comment, CommentAdmin)
+
+class TinyMCEFlatPageAdmin(FlatPageAdmin):
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'content':
+            return forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+        return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
