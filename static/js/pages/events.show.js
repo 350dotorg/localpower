@@ -31,7 +31,7 @@ require(["libs/jquery.validation", "libs/jquery.ui", "mods/search", "libs/marker
         var gmap = new google.maps.Map(document.getElementById("events_map"), myOptions);
         var infowindow = new google.maps.InfoWindow({ content: "" });
         var markers = [];
-        for (var i = RAH.event_locations.length - 1; i > 0; i = i - 1) {
+        for (var i = RAH.event_locations.length - 1; i >= 0; i = i - 1) {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(RAH.event_locations[i].lat, RAH.event_locations[i].lon),
                 map: gmap,
