@@ -2,17 +2,20 @@
 
 {% load dated_static %}
 {% load search_widget %}
+{% load i18n %}
 
-{% block title %}Events{% endblock %}
+{% block title %}{% blocktrans %}Events{% endblocktrans %}{% endblock %}
 {% block title_bar_image %}sprite_section_events_large{% endblock %}
-{% block title_bar_title %}Events{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Events{% endblocktrans %}{% endblock %}
 {% block title_bar_copy %}
+{% blocktrans %}
 Come together with friends and neighbors to share tips and tricks for saving
 energy at home. Meet ups are also a great place to share information about
 energy efforts in the community and how to get involved. Find one near you or
 host your own.
+{% endblocktrans %}
 {% endblock %}
-{% block ribbon_bar %}Showing {{map_events|length}} events{% endblock %}
+{% block ribbon_bar %}{% blocktrans with map_events|length as num_events %}Showing {{num_events}} events{% endblocktrans %}{% endblock %}
 {% block content %}
 <div id="events_map_container">
     <div id="events_map"></div>
@@ -23,26 +26,30 @@ host your own.
 </div>
 
 <div id="events_hosting">
-    <img src="{% dated_static 'images/theme/event_example.jpg' %}" width="216" height="162" alt="People attending an event"/>
+    <img src="{% dated_static 'images/theme/event_example.jpg' %}" width="216" height="162" 
+	 alt="{% blocktrans %}People attending an event{% endblocktrans %}"/>
     <div>
-        <h2>Hosting a Meetup is fun and easy</h2>
+        <h2>{% blocktrans %}Hosting a Meetup is fun and easy{% endblocktrans %}</h2>
         <p>
+	  {% blocktrans %}
             We have all the <a href="/hosting/">materials</a> you need to host an energy meet up. 
+	  {% endblocktrans %}
         </p>
-        <a href="{% url event-create %}" class="button"><b>+</b> Create an Event</a>
+        <a href="{% url event-create %}" class="button"><b>+</b> {% blocktrans %}Create an Event{% endblocktrans %}</a>
     </div>
 </div>
 <div id="events_search">
-    <h2>Search Events</h2>
+    <h2>{% blocktrans %}Search Events{% endblocktrans %}</h2>
     {% search_widget event_search %}
     <p class="smaller">
-        Can't find what you're looking for?<br/>
-        <a href="{% url event-archive %}">Browse past events</a>
+      {% blocktrans %}Can't find what you're looking for?{% endblocktrans %}
+      <br/>
+      <a href="{% url event-archive %}">{% blocktrans %}Browse past events{% endblocktrans %}</a>
     </p>
 </div>
 <br class="clear"/>
 {% if events %}
-<h2>Recent Events</h2>
+<h2>{% blocktrans %}Recent Events{% endblocktrans %}</h2>
 <ul class="plain_list nugget_9c_list">
     {% for event in events %}
         {% include 'base/_nugget_9c_list.html' %}

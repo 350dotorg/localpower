@@ -1,18 +1,34 @@
+{% load i18n %}
 <div>
-    <h3>Invitations</h3>
+    <h3>{% blocktrans %}Invitations{% endblocktrans %}</h3>
     <p>
         {% if event.confirmed_guests.count %}
-            {{ event.confirmed_guests.count }} confirmed<br />
+	{% blocktrans with event.confirmed_guests.count as num_confirmed %}
+            {{ num_confirmed }} confirmed
+	{% endblocktrans %}
+	<br />
         {% endif %}
         {% if event.maybe_attending.count %}
-            {{ event.maybe_attending.count }} maybe{{ event.maybe_attending.count|pluralize }}<br />
+	{% blocktrans count event.maybe_attending.count as num_maybes %}
+            {{ num_maybes }} maybe
+	{% plural %}
+            {{ num_maybes }} maybes
+	{% endblocktrans %}
+	<br />
         {% endif %}
         {% if event.not_attending.count %}
-            {{ event.not_attending.count }} can't attend <br />
+	{% blocktrans with event.not_attending.count as num_not_attending %}
+            {{ num_not_attending }} can't attend
+	{% endblocktrans %}
+	<br />
         {% endif %}
         {% if event.outstanding_invitations %}
-            {{ event.outstanding_invitations }} outstanding invitation{{ event.outstanding_invitations|pluralize }}
-        {% endif %}
+	{% blocktrans count event.outstanding_invitations as num_invitations %}
+            {{ num_invitations }} outstanding invitation
+	{% plural %}
+            {{ num_invitations }} outstanding invitations
+	{% endblocktrans %}
+	{% endif %}
     </p>
-    <a class="guests_add_link button" href="{% url event-guests-invite event.id %}">Send Invites</a>
+    <a class="guests_add_link button" href="{% url event-guests-invite event.id %}">{% blocktrans %}Send Invites{% endblocktrans %}</a>
 </div>

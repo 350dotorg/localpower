@@ -1,14 +1,15 @@
 {% extends "base/nav_9c.html" %}
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Event Search{% endblock %}
+{% block title %}{% blocktrans %}Event Search{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
-    Search Results
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
+    {% blocktrans %}Search Results{% endblocktrans %}
 {% endblock %}
-{% block title_bar_title %}Event Search Results{% endblock %}
-{% block title_bar_copy %}The results of your search are below{% endblock %}
-{% block ribbon_bar %}Showing {{object_list|length}} results{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Event Search Results{% endblocktrans %}{% endblock %}
+{% block title_bar_copy %}{% blocktrans %}The results of your search are below{% endblocktrans %}{% endblock %}
+{% block ribbon_bar %}{% blocktrans with object_list|length as num_results %}Showing {{num_results}} results{% endblocktrans %}{% endblock %}
 {% block content %}
     {% with object_list as events %}
         <ul class="plain_list nugget_9c_list">
@@ -18,7 +19,7 @@
         </ul>
     {% endwith %}
     {% if page_obj.has_next %}
-        <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">More results</a>
+        <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">{% blocktrans %}More results{% endblocktrans %}</a>
     {% endif %}
 {% endblock %}
 

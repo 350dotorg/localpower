@@ -1,6 +1,7 @@
+{% load i18n %}
 <form action="{% url event-guests-add event.id %}" method="post">
-    <h1>Add Guest</h1>
+    <h1>{% blocktrans %}Add Guest{% endblocktrans %}</h1>
     {% include "events/_form.html" %}
     {% csrf_token %}
-    <input type="submit" value="Add" /> | <a href="{{ event.get_absolute_url }}">cancel</a>
+    <input type="submit" value="{% blocktrans %}Add{% endblocktrans %}" /> | <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
 </form>

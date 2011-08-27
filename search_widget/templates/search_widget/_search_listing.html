@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for object in object_list %}
     <li class="search_result_object">
         {% if object_rendering_template %}
@@ -8,5 +9,7 @@
     </li>
 {% endfor %}
 {% if page_obj.has_next %}
-    <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">more</a>
+    <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">
+      {% blocktrans %}more{% endblocktrans %}
+    </a>
 {% endif %}

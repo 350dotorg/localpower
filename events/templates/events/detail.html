@@ -1,16 +1,17 @@
 {% extends "base/nav_6c3c.html" %}
+{% load i18n %}
 {% load dated_static %}
 {% load comments %}
 {% block title %}{{ event }}{% endblock %}
 {% block extrahead %}
     {% get_content_type_id for event as content_type_id %}
     <link rel="alternate" type="application/atom+xml" href="{% url comments_feed content_type_id,event.id %}" 
-        title="{{ event }} comments feed" />
+        title="{% blocktrans %}{{ event }} comments feed{% endblocktrans %}" />
 {% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url action_community_show %}">Community</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url action_community_show %}">{% blocktrans %}Community{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     {{ event }}
 {% endblock %}
 {% block content %}
@@ -25,7 +26,7 @@
         {% if has_manager_privileges %}
             <div class="box_two_top"></div>
             <div class="box_two_middle">
-                <h1>Guest List</h1>
+                <h1>{% blocktrans %}Guest List{% endblocktrans %}</h1>
                 {% include "events/_guest_list.html" %}
             </div>
             <div class="box_two_bottom"></div>
@@ -35,26 +36,28 @@
         <div class="box_one_top"></div>
         <div class="box_one_middle">
             {% if has_manager_privileges %}
-                <h3>Host Tools</h3>
+                <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
                 <ul class="plain_list">
-                    <li><a href="{% url event-edit event.id %}">Edit Event Details</a></li>
-                    <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">Add Guest</a></li>
-                    <li><a id="event_hosts_link" href="{% url event-hosts event.id %}">Select Hosts</a></li>
+                    <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
+                    <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">{% blocktrans %}Add Guest{% endblocktrans %}</a></li>
+                    <li><a id="event_hosts_link" href="{% url event-hosts event.id %}">{% blocktrans %}Select Hosts{% endblocktrans %}</a></li>
                     <li>
-                        <a href="{% url event-print event.id %}">Sign In Sheet</a>
-                        <span class="file_icon pdf_icon" title="PDF sign in sheet download"></span>
+                        <a href="{% url event-print event.id %}">{% blocktrans %}Sign In Sheet{% endblocktrans %}</a>
+                        <span class="file_icon pdf_icon" title="{% blocktrans %}PDF sign in sheet download{% endblocktrans %}"></span>
                     </li>
                     <li>
-                        <a href="{% url event-spreadsheet event.id %}">Guest List</a>
-                        <span class="file_icon excel_icon" title="Excel guest list download"></span>
+                        <a href="{% url event-spreadsheet event.id %}">{% blocktrans %}Guest List{% endblocktrans %}</a>
+                        <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
                     </li>
                 </ul>
             {% else %}
-                <h3>RSVP</h3>
+                <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
                 {% if guest.rsvp_status and not request.GET.reset %}
                     <p>
-                        You are: <span>{{ guest.get_rsvp_status_display }}</span><br />
-                        (<a href="{{ event.get_absolute_url }}?reset=true">change</a>)
+		      {% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
+                      You are: <span>{{ rsvp_status }}</span><br />
+		      {% endblocktrans %}
+                      (<a href="{{ event.get_absolute_url }}?reset=true">{% blocktrans %}change{% endblocktrans %}</a>)
                     </p>
                 {% else %}
                     {% include "events/_rsvp_form.html" %}
@@ -75,7 +78,7 @@
     <br class="clear"/>
     <div id="comments">
         {% get_content_type_id for event as content_type_id %}
-        <a class="feed_link" href="{% url comments_feed content_type_id,event.id %}">Feed</a>
+        <a class="feed_link" href="{% url comments_feed content_type_id,event.id %}">{% blocktrans %}Feed{% endblocktrans %}</a>
         {% with event as object %}
             {% render_comment_list for object %}
             {% render_comment_form for object %}

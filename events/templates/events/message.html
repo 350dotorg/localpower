@@ -1,27 +1,27 @@
 {% extends "base/nav_6c3c.html" %}
 
-
-{% block title %}{{ event }} Message{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}{{ event }} Message{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     <a href="{{ event.get_absolute_url }}">{{ event }}</a> &rsaquo;
-    Message
+    {% blocktrans %}Message{% endblocktrans %}
 {% endblock %}
 {% block content %}
     <div class="grid_6 alpha">
         <div class="box_two_top"></div>
         <div class="box_two_middle">
-            <h1>Message</h1>
+            <h1>{% blocktrans %}Message{% endblocktrans %}</h1>
             <div class="form_row">
-                <label>Subject</label>
+                <label>{% blocktrans %}Subject{% endblocktrans %}</label>
                 <h6>{{ form.subject }}</h6>
             </div>
             <form id="event_message_form" action="" method="post">
                 {% include "events/_form.html" %}
                 {% csrf_token %}
-                <input type="submit" value="Send" /> |
-                <a href="{{ event.get_absolute_url }}">cancel</a>
+                <input type="submit" value="{% blocktrans %}Send{% endblocktrans %}" /> |
+                <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
             </form>
         </div>
         <div class="box_two_bottom"></div>

@@ -1,10 +1,11 @@
 {% extends "base/nav_9c.html" %}
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Events Archive{% endblock %}
+{% block title %}{% blocktrans %}Events Archive{% endblocktrans %}{% endblock %}
 {% block title_bar_image %}{% endblock %}
-{% block title_bar_title %}Event Archive{% endblock %}
-{% block title_bar_copy %}This is an archive of all events past and future.{% endblock %}
-{% block ribbon_bar %}Showing {{events|length}} events{% endblock %}
+{% block title_bar_title %}{% blocktrans %}Event Archive{% endblocktrans %}{% endblock %}
+{% block title_bar_copy %}{% blocktrans %}This is an archive of all events past and future.{% endblocktrans %}{% endblock %}
+{% block ribbon_bar %}{% blocktrans with events|length as num_events %}Showing {{num_events}} events{% endblocktrans %}{% endblock %}
 {% block content %}
     <ul class="plain_list nugget_9c_list">
     {% for event in events %}

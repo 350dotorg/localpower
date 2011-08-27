@@ -1,15 +1,16 @@
-<h4>Name: <span class="attendee_label">{{ guest.contributor.name }}</span></h4>
-<h4>Email: <span class="attendee_label">{{ guest.contributor.email }}</span></h4>
-<h4>Phone: <span class="attendee_label">{{ guest.contributor.phone }}</span></h4>
+{% load i18n %}
+<h4>{% blocktrans %}Name:{% endblocktrans %} <span class="attendee_label">{{ guest.contributor.name }}</span></h4>
+<h4>{% blocktrans %}Email:{% endblocktrans %} <span class="attendee_label">{{ guest.contributor.email }}</span></h4>
+<h4>{% blocktrans %}Phone:{% endblocktrans %} <span class="attendee_label">{{ guest.contributor.phone }}</span></h4>
 <br />
 <form action="" method="post">
-    <h2>Empower Your Home</h2>
+    <h2>{% blocktrans %}Empower Your Home{% endblocktrans %}</h2>
     <table class="commitment_table">
         <thead>
             <tr>
                 <th></th>
-                <th>I've Done this</th>
-                <th>I pledge to do this</th>
+                <th>{% blocktrans %}I've Done this{% endblocktrans %}</th>
+                <th>{% blocktrans %}I pledge to do this{% endblocktrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,12 +24,12 @@
             {% endfor %}
         </tbody>
     </table>
-    <h2>Magnify Your Impact</h2>
+    <h2>{% blocktrans %}Magnify Your Impact{% endblocktrans %}</h2>
     <table class="commitment_table">
         <thead>
             <tr>
                 <th></th>
-                <th>Commit to Do</th>
+                <th>{% blocktrans %}Commit to Do{% endblocktrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -43,5 +44,5 @@
         </tbody>
     </table>
     {% csrf_token %}
-    <div><input type="submit" value="Save" /></div>
+    <div><input type="submit" value="{% blocktrans %}Save{% endblocktrans %}" /></div>
 </form>

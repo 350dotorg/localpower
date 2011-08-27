@@ -1,11 +1,11 @@
 {% extends "base/nav_6c3c.html" %}
 
-
+{% load i18n %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     <a href="{{ event.get_absolute_url }}">{{ event }}</a> &rsaquo;
-    Invite Guests
+    {% blocktrans %}Invite Guests{% endblocktrans %}
 {% endblock %}
 
 {% block content %}

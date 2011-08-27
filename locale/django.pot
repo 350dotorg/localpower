@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-24 23:10-0400\n"
+"POT-Creation-Date: 2011-08-27 17:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,20 +94,23 @@ msgstr ""
 
 #: actions/models.py:88 actions/models.py:218 actions/models.py:247
 #: actions/models.py:269 basic/blog/models.py:47 challenges/models.py:32
-#: groups/models.py:139 groups/models.py:294 groups/models.py:309
-#: groups/models.py:327 groups/models.py:347 groups/models.py:407
-#: rah/models.py:27 rah/models.py:234
+#: events/models.py:60 events/models.py:306 groups/models.py:139
+#: groups/models.py:294 groups/models.py:309 groups/models.py:327
+#: groups/models.py:347 groups/models.py:407 rah/models.py:27
+#: rah/models.py:234
 msgid "created"
 msgstr ""
 
 #: actions/models.py:89 actions/models.py:219 actions/models.py:248
-#: actions/models.py:270 challenges/models.py:33 groups/models.py:140
-#: groups/models.py:295 groups/models.py:348 groups/models.py:408
-#: rah/models.py:28 rah/models.py:235
+#: actions/models.py:270 challenges/models.py:33 events/models.py:61
+#: events/models.py:307 groups/models.py:140 groups/models.py:295
+#: groups/models.py:348 groups/models.py:408 rah/models.py:28
+#: rah/models.py:235
 msgid "updated"
 msgstr ""
 
-#: actions/models.py:95 groups/templates/groups/_search_listing.html:4
+#: actions/models.py:95 events/models.py:48
+#: groups/templates/groups/_search_listing.html:4
 #: groups/templates/groups/_search_listing.html:7
 #: groups/templates/groups/group_detail.html:35
 #: groups/templates/groups/group_disc_create.html:6
@@ -234,6 +237,11 @@ msgstr ""
 
 #: actions/templates/actions/_action_form.html:37
 #: actions/templates/actions/action_detail.html:83
+#: events/templates/events/_guests_add.html:6
+#: events/templates/events/_guests_invite.html:6
+#: events/templates/events/_hosts.html:8 events/templates/events/edit.html:21
+#: events/templates/events/message.html:24
+#: events/templates/events/rsvp_confirm.html:17
 msgid "cancel"
 msgstr ""
 
@@ -262,7 +270,13 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:18
 #: challenges/templates/challenges/detail.html:6
-#: challenges/templates/challenges/edit.html:11
+#: challenges/templates/challenges/edit.html:12
+#: events/templates/events/_search_listing.html:6
+#: events/templates/events/create.html:6
+#: events/templates/events/detail.html:12 events/templates/events/edit.html:6
+#: events/templates/events/guests_add.html:6
+#: events/templates/events/guests_invite.html:5
+#: events/templates/events/hosts.html:5 events/templates/events/message.html:6
 #: groups/templates/groups/_search_listing.html:6
 #: groups/templates/groups/group_create.html:6
 #: groups/templates/groups/group_disc_create.html:5
@@ -297,6 +311,7 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:51
 #: challenges/templates/challenges/detail.html:55
+#: events/templates/events/detail.html:81
 #: groups/templates/groups/group_detail.html:90
 msgid "Feed"
 msgstr ""
@@ -404,6 +419,7 @@ msgid "Wait - I'm still working on this action."
 msgstr ""
 
 #: basic/blog/models.py:16 basic/blog/models.py:39 challenges/models.py:23
+#: events/models.py:23
 msgid "title"
 msgstr ""
 
@@ -451,15 +467,20 @@ msgstr ""
 msgid "modified"
 msgstr ""
 
-#: basic/blog/models.py:54
+#: basic/blog/models.py:51 groups/models.py:292 groups/models.py:308
+#: groups/models.py:326 groups/models.py:346 groups/models.py:405
+msgid "group"
+msgstr ""
+
+#: basic/blog/models.py:57
 msgid "post"
 msgstr ""
 
-#: basic/blog/models.py:55
+#: basic/blog/models.py:58
 msgid "posts"
 msgstr ""
 
-#: basic/blog/models.py:87 basic/blog/models.py:88
+#: basic/blog/models.py:90 basic/blog/models.py:91
 msgid "blog roll"
 msgstr ""
 
@@ -629,7 +650,7 @@ msgstr ""
 msgid "goal"
 msgstr ""
 
-#: challenges/models.py:28
+#: challenges/models.py:28 events/models.py:20
 msgid "creator"
 msgstr ""
 
@@ -641,7 +662,7 @@ msgstr ""
 msgid "communities"
 msgstr ""
 
-#: challenges/models.py:59
+#: challenges/models.py:59 events/models.py:298
 msgid "contributor"
 msgstr ""
 
@@ -683,7 +704,7 @@ msgid ""
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:7
-#: challenges/templates/challenges/edit.html:12
+#: challenges/templates/challenges/edit.html:13
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6
 #: groups/templates/groups/group_detail.html:36
@@ -753,34 +774,35 @@ msgstr ""
 msgid "Edit a Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:18
+#: challenges/templates/challenges/edit.html:19
 msgid "Create challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:20
+#: challenges/templates/challenges/edit.html:21
 msgid "Edit challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:26
-#: challenges/templates/challenges/edit.html:39
+#: challenges/templates/challenges/edit.html:27
+#: challenges/templates/challenges/edit.html:40
 msgid "Create Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:28
+#: challenges/templates/challenges/edit.html:29
 msgid "Edit Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:35
-#: challenges/templates/challenges/edit.html:38
+#: challenges/templates/challenges/edit.html:36
+#: challenges/templates/challenges/edit.html:39
+#: events/templates/events/create.html:25
 #: groups/templates/groups/group_create.html:18
 msgid "Cancel"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:36
+#: challenges/templates/challenges/edit.html:37
 msgid "Save Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/edit.html:50
+#: challenges/templates/challenges/edit.html:51
 msgid "Use this form to create or edit a challenge"
 msgstr ""
 
@@ -815,8 +837,732 @@ msgid ""
 "\t    "
 msgstr ""
 
+#: events/admin.py:37 events/templates/events/_details.html:9
+msgid "When"
+msgstr ""
+
+#: events/admin.py:53 events/templates/events/hosts.html:8
+msgid "Hosts"
+msgstr ""
+
+#: events/decorators.py:16
+msgid "You must be an event manager"
+msgstr ""
+
+#: events/decorators.py:24
+msgid "You are not a registered guest"
+msgstr ""
+
+#: events/decorators.py:35
+msgid "You need an invitation for this event"
+msgstr ""
+
+#: events/decorators.py:37
+msgid "Invitation code is not valid for this event"
+msgstr ""
+
 #: events/filterspec.py:13
 msgid "Any"
+msgstr ""
+
+#: events/filterspec.py:21
+msgid "Has Happened"
+msgstr ""
+
+#: events/forms.py:91
+msgid "We couldn't locate this address on our map."
+msgstr ""
+
+#: events/forms.py:102
+msgid "Email addresses"
+msgstr ""
+
+#: events/forms.py:104
+msgid "For multiple email addresses, seperate them with a comma"
+msgstr ""
+
+#: events/forms.py:105
+msgid "Personal note (optional)"
+msgstr ""
+
+#: events/forms.py:107
+msgid "Email me when people RSVP"
+msgstr ""
+
+#: events/forms.py:108
+msgid "Send me a copy of the invitation"
+msgstr ""
+
+#: events/forms.py:133
+msgid "Is this person planning on attending?"
+msgstr ""
+
+#: events/forms.py:155 events/forms.py:254
+#, python-format
+msgid "Invalid zipcode %(data)s"
+msgstr ""
+
+#: events/forms.py:189
+msgid "Send Announcement Email"
+msgstr ""
+
+#: events/forms.py:190
+msgid "Send Invitation Email"
+msgstr ""
+
+#: events/forms.py:191
+msgid "Send Reminder Email"
+msgstr ""
+
+#: events/forms.py:194
+msgid "Remove from guest list"
+msgstr ""
+
+#: events/forms.py:195
+msgid "Make a guest a host"
+msgstr ""
+
+#: events/forms.py:196
+msgid "Remove host privileges"
+msgstr ""
+
+#: events/forms.py:200
+msgid "- Select One -"
+msgstr ""
+
+#: events/forms.py:219
+msgid "All guests must have an email address"
+msgstr ""
+
+#: events/forms.py:225
+msgid "You must leave at least one host for the event"
+msgstr ""
+
+#: events/forms.py:245
+msgid "A Guest with this email address already exists."
+msgstr ""
+
+#: events/forms.py:299
+msgid "Invalid token"
+msgstr ""
+
+#: events/forms.py:354
+msgid "Password"
+msgstr ""
+
+#: events/forms.py:355
+msgid "Confirm Password"
+msgstr ""
+
+#: events/forms.py:365
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: events/forms.py:367
+msgid "Your password must contain at least 5 characters."
+msgstr ""
+
+#: events/forms.py:376
+msgid "Please enter a 5 digit zipcode"
+msgstr ""
+
+#: events/forms.py:380
+msgid "Zipcode is invalid"
+msgstr ""
+
+#: events/forms.py:405
+msgid "Personal Note"
+msgstr ""
+
+#: events/forms.py:406
+msgid "Enter a brief note that will be included in your email"
+msgstr ""
+
+#: events/forms.py:427
+#, python-format
+msgid "Unknown message type: %(type)s"
+msgstr ""
+
+#: events/models.py:22
+msgid "default survey"
+msgstr ""
+
+#: events/models.py:24
+msgid "What do you want to call this shindig?"
+msgstr ""
+
+#: events/models.py:26
+msgid "Street address"
+msgstr ""
+
+#: events/models.py:27
+msgid "Include the city and state"
+msgstr ""
+
+#: events/models.py:29
+msgid "latitude"
+msgstr ""
+
+#: events/models.py:31 groups/models.py:119
+msgid "longitude"
+msgstr ""
+
+#: events/models.py:33 rah/models.py:139
+msgid "location"
+msgstr ""
+
+#: events/models.py:34
+msgid "when"
+msgstr ""
+
+#: events/models.py:36
+msgid "start time"
+msgstr ""
+
+#: events/models.py:37
+msgid "duration"
+msgstr ""
+
+#: events/models.py:40
+msgid "details"
+msgstr ""
+
+#: events/models.py:41
+msgid ""
+"For example, where should people park, what's the nearest subway, do people "
+"need to be buzzed in, etc."
+msgstr ""
+
+#: events/models.py:50
+msgid "is private"
+msgstr ""
+
+#: events/models.py:52
+msgid ""
+"If your event is kept private, only individuals who receive an invite email "
+"will be able to RSVP."
+msgstr ""
+
+#: events/models.py:56
+msgid "limit"
+msgstr ""
+
+#: events/models.py:57
+msgid ""
+"Adding a limit sets a cap on the number of guests that can RSVP. If the "
+"limit is reached, potential guests will need to contact you first."
+msgstr ""
+
+#: events/models.py:65
+msgid "Can host any event type"
+msgstr ""
+
+#: events/models.py:66
+msgid "Can view host details for any event"
+msgstr ""
+
+#: events/models.py:292
+msgid "Attending"
+msgstr ""
+
+#: events/models.py:293
+msgid "Maybe Attending"
+msgstr ""
+
+#: events/models.py:294
+msgid "Not Attending"
+msgstr ""
+
+#: events/models.py:296
+msgid "Event"
+msgstr ""
+
+#: events/models.py:299
+msgid "invited"
+msgstr ""
+
+#: events/models.py:300
+msgid "added"
+msgstr ""
+
+#: events/models.py:301
+msgid "rsvp status"
+msgstr ""
+
+#: events/models.py:303
+msgid "comments"
+msgstr ""
+
+#: events/models.py:304
+msgid "notify on rsvp"
+msgstr ""
+
+#: events/models.py:305
+msgid "is host"
+msgstr ""
+
+#: events/models.py:322
+#, python-format
+msgid "Invited %(date)s"
+msgstr ""
+
+#: events/models.py:324
+#, python-format
+msgid "Added %(date)s"
+msgstr ""
+
+#: events/templates/events/_details.html:4
+msgid "Details"
+msgstr ""
+
+#: events/templates/events/_details.html:11
+#, python-format
+msgid ""
+"\n"
+"      %(event_date)s at %(event_time)s\n"
+"      "
+msgstr ""
+
+#: events/templates/events/_details.html:17
+msgid "Where"
+msgstr ""
+
+#: events/templates/events/_details.html:22
+msgid "Click to view a larger map"
+msgstr ""
+
+#: events/templates/events/_details.html:24
+#: templates/base/_nugget_9c_list.html:5
+msgid "Map of the event"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:2
+msgid "Name:"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:3
+msgid "Email:"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:4
+msgid "Phone:"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:7
+#: events/templates/events/_pilot_commitment_card.html:7
+msgid "Empower Your Home"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:12
+#: events/templates/events/_pilot_commitment_card.html:12
+msgid "I've Done this"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:13
+#: events/templates/events/_pilot_commitment_card.html:13
+msgid "I pledge to do this"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:27
+msgid "Magnify Your Impact"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:32
+msgid "Commit to Do"
+msgstr ""
+
+#: events/templates/events/_energy_commitment_card.html:47
+#: events/templates/events/_hosts.html:8
+#: events/templates/events/_pilot_commitment_card.html:28
+#: events/templates/events/_volunteer_form.html:25
+msgid "Save"
+msgstr ""
+
+#: events/templates/events/_event_nugget_list.html:9
+#, python-format
+msgid ""
+"\n"
+"\t\t  %(event_date)s @ %(event_time)s\n"
+"\t\t  "
+msgstr ""
+
+#: events/templates/events/_event_nugget_list.html:17
+msgid "Subscribe to feed"
+msgstr ""
+
+#: events/templates/events/_event_nugget_list.html:19
+#: templates/rah/profile.html:99
+msgid "atom feed"
+msgstr ""
+
+#: events/templates/events/_guest.html:11
+#, python-format
+msgid "%(guest_name)s is a host"
+msgstr ""
+
+#: events/templates/events/_guest.html:12
+msgid "Host"
+msgstr ""
+
+#: events/templates/events/_guest.html:22
+msgid "Commitment Card"
+msgstr ""
+
+#: events/templates/events/_guests_add.html:3
+#: events/templates/events/detail.html:42
+#: events/templates/events/guests_add.html:9
+msgid "Add Guest"
+msgstr ""
+
+#: events/templates/events/_guests_add.html:6 templates/admin/index.html:29
+msgid "Add"
+msgstr ""
+
+#: events/templates/events/_guests_invite.html:3
+#: events/templates/events/guests_invite.html:8
+msgid "Invite Guests"
+msgstr ""
+
+#: events/templates/events/_guests_invite.html:6
+#: events/templates/events/message.html:23
+msgid "Send"
+msgstr ""
+
+#: events/templates/events/_hosts.html:3
+#: events/templates/events/detail.html:43
+msgid "Select Hosts"
+msgstr ""
+
+#: events/templates/events/_invitations.html:3
+msgid "Invitations"
+msgstr ""
+
+#: events/templates/events/_invitations.html:6
+#, python-format
+msgid ""
+"\n"
+"            %(num_confirmed)s confirmed\n"
+"\t"
+msgstr ""
+
+#: events/templates/events/_invitations.html:12
+#, python-format
+msgid ""
+"\n"
+"            %(num_maybes)s maybe\n"
+"\t"
+msgid_plural ""
+"\n"
+"            %(num_maybes)s maybes\n"
+"\t"
+msgstr[0] ""
+msgstr[1] ""
+
+#: events/templates/events/_invitations.html:20
+#, python-format
+msgid ""
+"\n"
+"            %(num_not_attending)s can't attend\n"
+"\t"
+msgstr ""
+
+#: events/templates/events/_invitations.html:26
+#, python-format
+msgid ""
+"\n"
+"            %(num_invitations)s outstanding invitation\n"
+"\t"
+msgid_plural ""
+"\n"
+"            %(num_invitations)s outstanding invitations\n"
+"\t"
+msgstr[0] ""
+msgstr[1] ""
+
+#: events/templates/events/_invitations.html:33
+msgid "Send Invites"
+msgstr ""
+
+#: events/templates/events/_pilot_commitment_card.html:2
+#: events/templates/events/_volunteer_form.html:2
+#: events/templates/events/sign_in_sheet.html:36
+msgid "Name"
+msgstr ""
+
+#: events/templates/events/_pilot_commitment_card.html:3
+#: events/templates/events/_volunteer_form.html:3
+#: events/templates/events/sign_in_sheet.html:37
+msgid "Email"
+msgstr ""
+
+#: events/templates/events/_pilot_commitment_card.html:4
+#: events/templates/events/_volunteer_form.html:4
+#: events/templates/events/sign_in_sheet.html:38
+msgid "Phone"
+msgstr ""
+
+#: events/templates/events/_rsvp_form.html:12
+#: groups/templates/groups/_group_disc_create_form.html:18
+#: groups/templates/groups/_membership_form.html:7
+msgid "Submit"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:4
+msgid "Event Search"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:7
+#: events/templates/events/create.html:8
+#: events/templates/events/detail.html:14 events/templates/events/edit.html:8
+#: events/templates/events/guests_add.html:7
+#: events/templates/events/guests_invite.html:6
+#: events/templates/events/hosts.html:6 events/templates/events/message.html:7
+#: events/templates/events/show.html:7 events/templates/events/show.html:9
+#: groups/templates/groups/group_detail.html:37
+#: groups/templates/groups/group_detail.html:99 templates/base/nav.html:52
+#: templates/rah/profile.html:30 templates/rah/profile.html.py:125
+msgid "Events"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:8
+#: groups/templates/groups/_search_listing.html:8
+#: groups/templates/groups/_search_listing.html:14
+msgid "Search Results"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:10
+msgid "Event Search Results"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:11
+msgid "The results of your search are below"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:12
+#, python-format
+msgid "Showing %(num_results)s results"
+msgstr ""
+
+#: events/templates/events/_search_listing.html:22
+msgid "More results"
+msgstr ""
+
+#: events/templates/events/_volunteer_form.html:8
+msgid "Commit to take action in your own home"
+msgstr ""
+
+#: events/templates/events/_volunteer_form.html:15
+msgid "What type of community will you start"
+msgstr ""
+
+#: events/templates/events/archive.html:4
+msgid "Events Archive"
+msgstr ""
+
+#: events/templates/events/archive.html:6
+msgid "Event Archive"
+msgstr ""
+
+#: events/templates/events/archive.html:7
+msgid "This is an archive of all events past and future."
+msgstr ""
+
+#: events/templates/events/archive.html:8 events/templates/events/show.html:18
+#, python-format
+msgid "Showing %(num_events)s events"
+msgstr ""
+
+#: events/templates/events/create.html:4 events/templates/events/create.html:9
+#: events/templates/events/create.html:21 events/templates/events/show.html:38
+msgid "Create an Event"
+msgstr ""
+
+#: events/templates/events/create.html:7
+#: events/templates/events/detail.html:13 events/templates/events/edit.html:7
+#: groups/templates/groups/group_create.html:7
+#: groups/templates/groups/group_edit.html:13
+msgid "Community"
+msgstr ""
+
+#: events/templates/events/create.html:12
+msgid ""
+"\n"
+"No special experience is needed to organize an energy meet up, just a "
+"passion\n"
+"for saving energy and a few friends and neighbors. Our <a href=\"/hosting/"
+"\">host materials</a> provide\n"
+"step by step instructions for executing a great event and lots of fun\n"
+"activities and materials to give to guests.\n"
+msgstr ""
+
+#: events/templates/events/create.html:26
+msgid "Create Event"
+msgstr ""
+
+#: events/templates/events/detail.html:9
+#, python-format
+msgid "%(event)s comments feed"
+msgstr ""
+
+#: events/templates/events/detail.html:29
+#: events/templates/events/detail.html:49
+msgid "Guest List"
+msgstr ""
+
+#: events/templates/events/detail.html:39
+msgid "Host Tools"
+msgstr ""
+
+#: events/templates/events/detail.html:41
+msgid "Edit Event Details"
+msgstr ""
+
+#: events/templates/events/detail.html:45
+#: events/templates/events/sign_in_sheet.html:5
+#: events/templates/events/sign_in_sheet.html:29
+msgid "Sign In Sheet"
+msgstr ""
+
+#: events/templates/events/detail.html:46
+msgid "PDF sign in sheet download"
+msgstr ""
+
+#: events/templates/events/detail.html:50
+msgid "Excel guest list download"
+msgstr ""
+
+#: events/templates/events/detail.html:54
+msgid "RSVP"
+msgstr ""
+
+#: events/templates/events/detail.html:57
+#, python-format
+msgid ""
+"\n"
+"                      You are: <span>%(rsvp_status)s</span><br />\n"
+"\t\t      "
+msgstr ""
+
+#: events/templates/events/detail.html:60
+msgid "change"
+msgstr ""
+
+#: events/templates/events/edit.html:4
+#, python-format
+msgid "Edit %(event)s"
+msgstr ""
+
+#: events/templates/events/edit.html:10
+msgid "Edit Event"
+msgstr ""
+
+#: events/templates/events/edit.html:16
+msgid "Edit your Event"
+msgstr ""
+
+#: events/templates/events/edit.html:20
+msgid "Save Changes"
+msgstr ""
+
+#: events/templates/events/message.html:4
+#, python-format
+msgid "%(event)s Message"
+msgstr ""
+
+#: events/templates/events/message.html:9
+#: events/templates/events/message.html:15
+msgid "Message"
+msgstr ""
+
+#: events/templates/events/message.html:17
+msgid "Subject"
+msgstr ""
+
+#: events/templates/events/rsvp_account.html:8 templates/base/nav.html:27
+#: templates/rah/home_page.html:12 templates/rah/home_page.html.py:34
+msgid "Create an Account"
+msgstr ""
+
+#: events/templates/events/rsvp_account.html:13
+msgid "Create Account"
+msgstr ""
+
+#: events/templates/events/rsvp_account.html:14
+msgid "No Thanks"
+msgstr ""
+
+#: events/templates/events/rsvp_confirm.html:8
+msgid "Thanks for the RSVP"
+msgstr ""
+
+#: events/templates/events/rsvp_confirm.html:10
+#, python-format
+msgid ""
+"\n"
+"\t      We'll put you down as <span>%(rsvp_status)s</span>\n"
+"\t      "
+msgstr ""
+
+#: events/templates/events/rsvp_confirm.html:16
+msgid "Confirm RSVP"
+msgstr ""
+
+#: events/templates/events/show.html:11
+msgid ""
+"\n"
+"Come together with friends and neighbors to share tips and tricks for "
+"saving\n"
+"energy at home. Meet ups are also a great place to share information about\n"
+"energy efforts in the community and how to get involved. Find one near you "
+"or\n"
+"host your own.\n"
+msgstr ""
+
+#: events/templates/events/show.html:30
+msgid "People attending an event"
+msgstr ""
+
+#: events/templates/events/show.html:32
+msgid "Hosting a Meetup is fun and easy"
+msgstr ""
+
+#: events/templates/events/show.html:34
+msgid ""
+"\n"
+"            We have all the <a href=\"/hosting/\">materials</a> you need to "
+"host an energy meet up. \n"
+"\t  "
+msgstr ""
+
+#: events/templates/events/show.html:42
+msgid "Search Events"
+msgstr ""
+
+#: events/templates/events/show.html:45
+msgid "Can't find what you're looking for?"
+msgstr ""
+
+#: events/templates/events/show.html:47
+msgid "Browse past events"
+msgstr ""
+
+#: events/templates/events/show.html:52
+msgid "Recent Events"
+msgstr ""
+
+#: events/templates/events/sign_in_sheet.html:30
+msgid ""
+"Check off your name and fill in any missing details. If you're not on the "
+"list, just add yourself."
+msgstr ""
+
+#: events/templates/events/sign_in_sheet.html:39
+msgid "Zipcode"
+msgstr ""
+
+#: events/templates/events/sign_in_sheet.html:65
+#, python-format
+msgid "Page %(page_number)s"
 msgstr ""
 
 #: geo/filterspecs.py:18
@@ -988,10 +1734,6 @@ msgstr ""
 msgid "headquarters"
 msgstr ""
 
-#: groups/models.py:119
-msgid "longitude"
-msgstr ""
-
 #: groups/models.py:120
 msgid "latitute"
 msgstr ""
@@ -1034,11 +1776,6 @@ msgstr ""
 
 #: groups/models.py:149
 msgid "community"
-msgstr ""
-
-#: groups/models.py:292 groups/models.py:308 groups/models.py:326
-#: groups/models.py:346 groups/models.py:405
-msgid "group"
 msgstr ""
 
 #: groups/models.py:293
@@ -1245,11 +1982,6 @@ msgstr ""
 msgid "Discussion removed"
 msgstr ""
 
-#: groups/templates/groups/_group_disc_create_form.html:18
-#: groups/templates/groups/_membership_form.html:7
-msgid "Submit"
-msgstr ""
-
 #: groups/templates/groups/_group_disc_list.html:8
 #, python-format
 msgid ""
@@ -1318,23 +2050,14 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-#: groups/templates/groups/_search_listing.html:8
-#: groups/templates/groups/_search_listing.html:14
-msgid "Search Results"
-msgstr ""
-
 #: groups/templates/groups/_search_listing.html:19
+#: search_widget/templates/search_widget/_search_listing.html:13
 msgid "more"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:4
 #: groups/templates/groups/group_create.html:15
 msgid "Create a Community"
-msgstr ""
-
-#: groups/templates/groups/group_create.html:7
-#: groups/templates/groups/group_edit.html:13
-msgid "Community"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:8
@@ -1357,12 +2080,6 @@ msgid ""
 "\n"
 "\t  Created %(date_created)s\n"
 "\t  "
-msgstr ""
-
-#: groups/templates/groups/group_detail.html:37
-#: groups/templates/groups/group_detail.html:99 templates/base/nav.html:52
-#: templates/rah/profile.html:30 templates/rah/profile.html.py:125
-msgid "Events"
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:38 templates/base/nav.html:56
@@ -1628,19 +2345,19 @@ msgstr ""
 msgid "View group"
 msgstr ""
 
-#: rah/admin.py:20
+#: rah/admin.py:25
 msgid "Location"
 msgstr ""
 
-#: rah/admin.py:39
+#: rah/admin.py:44
 msgid "Parent"
 msgstr ""
 
-#: rah/admin.py:44
+#: rah/admin.py:49
 msgid "Likes"
 msgstr ""
 
-#: rah/admin.py:49
+#: rah/admin.py:54
 msgid "Dislikes"
 msgstr ""
 
@@ -1694,10 +2411,6 @@ msgstr ""
 
 #: rah/models.py:135
 msgid "Other"
-msgstr ""
-
-#: rah/models.py:139
-msgid "location"
 msgstr ""
 
 #: rah/models.py:140
@@ -1853,6 +2566,10 @@ msgstr ""
 msgid "ratings"
 msgstr ""
 
+#: search_widget/templates/search_widget/_search_widget.html:4
+msgid "Search..."
+msgstr ""
+
 #: templates/404.html:3 templates/404.html.py:6
 msgid "Page not found"
 msgstr ""
@@ -1869,10 +2586,6 @@ msgstr ""
 #: templates/admin/index.html:19
 #, python-format
 msgid "%(name)s"
-msgstr ""
-
-#: templates/admin/index.html:29
-msgid "Add"
 msgstr ""
 
 #: templates/admin/index.html:35
@@ -1907,10 +2620,6 @@ msgstr ""
 #: templates/base/_nugget_2c_list_supporter.html:7
 #: templates/base/_nugget_2c_list_supporter.html:10
 msgid "supporter avatar"
-msgstr ""
-
-#: templates/base/_nugget_9c_list.html:5
-msgid "Map of the event"
 msgstr ""
 
 #: templates/base/_nugget_9c_list.html:10
@@ -2050,11 +2759,6 @@ msgstr ""
 msgid ""
 "Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut "
 "dictum velit nec est."
-msgstr ""
-
-#: templates/base/nav.html:27 templates/rah/home_page.html:12
-#: templates/rah/home_page.html.py:34
-msgid "Create an Account"
 msgstr ""
 
 #: templates/base/nav.html:32
@@ -2316,10 +3020,6 @@ msgstr ""
 
 #: templates/rah/profile.html:97
 msgid "Recent Activity"
-msgstr ""
-
-#: templates/rah/profile.html:99
-msgid "atom feed"
 msgstr ""
 
 #: templates/rah/profile.html:110

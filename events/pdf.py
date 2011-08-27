@@ -2,6 +2,7 @@ import cStringIO as StringIO
 import ho.pisa as pisa
 from django.template.loader import get_template
 from django.template import Context
+from django.utils.translation import ugettext as _
 from django.http import HttpResponse
 from cgi import escape
 

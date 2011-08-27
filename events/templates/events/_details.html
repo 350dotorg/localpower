@@ -1,21 +1,26 @@
+{% load i18n %}
 {% if event.details %}
     <div>
-        <h3>Details</h3>
+        <h3>{% blocktrans %}Details{% endblocktrans %}</h3>
         <p>{{ event.details }}</p>
     </div>
 {% endif %}
 <div>
-    <h3>When</h3>
-    <p>{{ event.when|date:"LONG_DATE_FORMAT" }} at {{ event.start|time }}</p>
+    <h3>{% blocktrans %}When{% endblocktrans %}</h3>
+    <p>
+      {% blocktrans with event.when|date:"LONG_DATE_FORMAT" as event_date and event.start|time as event_time %}
+      {{ event_date }} at {{ event_time }}
+      {% endblocktrans %}
+    </p>
 </div>
 <div>
-    <h3>Where</h3>
+    <h3>{% blocktrans %}Where{% endblocktrans %}</h3>
     <p>
         <span id="event_address">{{ event.where }}</span><br />
     </p>
     <a href="http://maps.google.com/maps?q={{event.where|urlencode}}" 
-        title="Click to view a larger map"
+        title="{% blocktrans %}Click to view a larger map{% endblocktrans %}"
         target="_blank">
-        <img src="http://maps.google.com/maps/api/staticmap?center={{event.lat}},{{event.lon}}&zoom=16&size=431x200&markers={{event.lat}},{{event.lon}}&sensor=false" alt="Map of the event"/>
+        <img src="http://maps.google.com/maps/api/staticmap?center={{event.lat}},{{event.lon}}&zoom=16&size=431x200&markers={{event.lat}},{{event.lon}}&sensor=false" alt="{% blocktrans %}Map of the event{% endblocktrans %}"/>
     </a>
 </div>

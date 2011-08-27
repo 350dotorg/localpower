@@ -18,7 +18,7 @@ class HasHappenedFilterSpec(DateFieldFilterSpec):
         )
 
     def title(self):
-        return "Has Happened"
+        return _("Has Happened")
 
 FilterSpec.filter_specs.insert(0, (lambda f: getattr(f, 'has_happened', False),
                                    HasHappenedFilterSpec))

@@ -1,24 +1,24 @@
 {% extends "base/nav_6c3c.html" %}
-
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Edit {{ event }}{% endblock %}
+{% block title %}{% blocktrans %}Edit {{ event }}{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url action_community_show %}">Community</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url action_community_show %}">{% blocktrans %}Community{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     <a href="{{ event.get_absolute_url }}">{{ event }}</a> &rsaquo;
-    Edit Event
+    {% blocktrans %}Edit Event{% endblocktrans %}
 {% endblock %}
 {% block content %}
     <div class="grid_6 alpha">
         <div class="box_two_top"></div>
         <div class="box_two_middle">
-            <h1>Edit your Event</h1>
+            <h1>{% blocktrans %}Edit your Event{% endblocktrans %}</h1>
             <form id="event_form" action="" method="post">
                 {% include "events/_form.html" %}
                 {% csrf_token %}
-                <input type="submit" value="Save Changes" /> |
-                <a href="{{ event.get_absolute_url }}">cancel</a>
+                <input type="submit" value="{% blocktrans %}Save Changes{% endblocktrans %}" /> |
+                <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
             </form>
         </div>
         <div class="box_two_bottom"></div>

@@ -1,8 +1,9 @@
+{% load i18n %}
 <form action="" method="post">
-    <h1>Select Hosts</h1>
+    <h1>{% blocktrans %}Select Hosts{% endblocktrans %}</h1>
     <div id="event_hosts_form">
         {% include "events/_form.html" %}
     </div>
     {% csrf_token %}
-    <input type="submit" value="Save" /> | <a href="{{ event.get_absolute_url }}">cancel</a>
+    <input type="submit" value="{% blocktrans %}Save{% endblocktrans %}" /> | <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
 </form>

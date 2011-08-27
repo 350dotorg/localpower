@@ -1,17 +1,17 @@
 {% extends "base/nav_6c3c.html" %}
 
-
+{% load i18n %}
 {% block content %}
     <div class="grid_6 alpha">
         <div class="box_three_top"></div>
         <div class="box_three_middle">
-            <h1>Create an Account</h1>
+            <h1>{% blocktrans %}Create an Account{% endblocktrans %}</h1>
             <p></p>
                 <form action="{% url event-rsvp-account event.id %}" method="post">
                     {% include "events/_form.html" %}
                     {% csrf_token %}
-                    <input type="submit" value="Create Account" /> |
-                    <a href="{{ event.get_absolute_url }}">No Thanks</a>
+                    <input type="submit" value="{% blocktrans %}Create Account{% endblocktrans %}" /> |
+                    <a href="{{ event.get_absolute_url }}">{% blocktrans %}No Thanks{% endblocktrans %}</a>
                 </form>
         </div>
         <div class="box_three_bottom"></div>

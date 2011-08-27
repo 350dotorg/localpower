@@ -14,6 +14,7 @@ from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.template import Context, loader
 from django.utils.dateformat import format
+from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
 from groups.forms import GroupAssociationRequestRelatedForm
@@ -87,7 +88,7 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
             if error:
                 del self.cleaned_data['where']
                 self._errors['where'] = self.error_class(
-                    ['We couldn\'t locate this address on our map.'])
+                    [_('We couldn\'t locate this address on our map.')])
         return self.cleaned_data
 
     def save(self, *args, **kwargs):
@@ -98,13 +99,13 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
         return event
 
 class GuestInviteForm(InviteForm):
-    emails = MultiEmailField(label="Email addresses", required=True,
+    emails = MultiEmailField(label=_("Email addresses"), required=True,
         widget=forms.Textarea(attrs={"rows": 5}),
-        help_text="For multiple email addresses, seperate them with a comma")
-    note = forms.CharField(label="Personal note (optional)", required=False,
+        help_text=_("For multiple email addresses, seperate them with a comma"))
+    note = forms.CharField(label=_("Personal note (optional)"), required=False,
         widget=forms.Textarea(attrs={"rows": 5}))
-    rsvp_notification = forms.BooleanField(required=False, label="Email me when people RSVP")
-    copy_me = forms.BooleanField(required=False, label="Send me a copy of the invitation")
+    rsvp_notification = forms.BooleanField(required=False, label=_("Email me when people RSVP"))
+    copy_me = forms.BooleanField(required=False, label=_("Send me a copy of the invitation"))
 
     def save(self, *args, **kwargs):
         guest_invites = []
@@ -129,7 +130,7 @@ class GuestAddForm(forms.ModelForm):
     phone = forms.CharField(required=False, max_length=12)
     zipcode = forms.CharField(required=False, max_length=5, min_length=5)
     rsvp_status = forms.ChoiceField(choices=Guest.RSVP_STATUSES,
-        label="Is this person planning on attending?", widget=forms.RadioSelect)
+        label=_("Is this person planning on attending?"), widget=forms.RadioSelect)
 
     class Meta:
         model = Guest
@@ -150,7 +151,8 @@ class GuestAddForm(forms.ModelForm):
             try:
                 self.location = Location.objects.get(zipcode=data)
             except Location.DoesNotExist:
-                raise forms.ValidationError("Invalid zipcode %s" % data)
+                raise forms.ValidationError(
+                    _("Invalid zipcode %(data)s") % {'data': data})
         else:
             self.location = None
         return data
@@ -182,20 +184,20 @@ class GuestListForm(forms.Form):
     from guest_actions import attending, not_attending, announcement_email, invitation_email, \
         reminder_email, remove, make_host, unmake_host
     EMAIL_ACTIONS = {
-        # "1_SA": ("Mark as Attending", attending),
-        # "2_SN": ("Mark as Not Attending", not_attending),
-        "3_EA": ("Send Announcement Email", announcement_email),
-        "4_EI": ("Send Invitation Email", invitation_email),
-        "5_ER": ("Send Reminder Email", reminder_email),
+        # "1_SA": (_("Mark as Attending"), attending),
+        # "2_SN": (_("Mark as Not Attending"), not_attending),
+        "3_EA": (_("Send Announcement Email"), announcement_email),
+        "4_EI": (_("Send Invitation Email"), invitation_email),
+        "5_ER": (_("Send Reminder Email"), reminder_email),
     }
     MISC_ACTIONS = {
-        "6_MR": ("Remove from guest list", remove),
-        "7_MH": ("Make a guest a host", make_host),
-        "8_MU": ("Remove host privledges", unmake_host),
+        "6_MR": (_("Remove from guest list"), remove),
+        "7_MH": (_("Make a guest a host"), make_host),
+        "8_MU": (_("Remove host privileges"), unmake_host),
     }
     ACTIONS = dict(EMAIL_ACTIONS.items() + MISC_ACTIONS.items())
 
-    ACTION_CHOICES = [("", "- Select One -")] + \
+    ACTION_CHOICES = [("", _("- Select One -"))] + \
         sorted([(k, v[0]) for k,v in EMAIL_ACTIONS.iteritems()]) + \
         [(" ", "------------------")] + \
         sorted([(k, v[0]) for k,v in MISC_ACTIONS.iteritems()])
@@ -214,13 +216,13 @@ class GuestListForm(forms.Form):
         if re.search("^\d+_E", action):
             # Action of type Email can only be performed on guests with emails
             if any([not g.contributor.email for g in self.cleaned_data["guests"]]):
-                raise forms.ValidationError("All guests must have an email address")
+                raise forms.ValidationError(_("All guests must have an email address"))
         if action in ["6_MR", "8_MU"]:
             guests = self.cleaned_data["guests"]
             # get all of the guests not selected
             not_selected_guests = [g for g in self.event.guest_set.all() if not (g in guests)]
             if not any([g.is_host for g in not_selected_guests]):
-                raise forms.ValidationError("You must leave at least one host for the event")
+                raise forms.ValidationError(_("You must leave at least one host for the event"))
         return self.cleaned_data
 
     def save(self, *args, **kwargs):
@@ -240,7 +242,7 @@ class GuestEditForm(forms.ModelForm):
         data = self.cleaned_data["email"]
         if data and Guest.objects.filter(event=self.instance.event, contributor__email=data).exclude(
             id=self.instance.id).exists():
-            raise forms.ValidationError("A Guest with this email address already exists.")
+            raise forms.ValidationError(_("A Guest with this email address already exists."))
         return data
 
     def clean_zipcode(self):
@@ -249,7 +251,7 @@ class GuestEditForm(forms.ModelForm):
             try:
                 self.cleaned_data["location"] = Location.objects.get(zipcode=data)
             except Location.DoesNotExist:
-                raise forms.ValidationError("Invalid zipcode %s" % data)
+                raise forms.ValidationError(_("Invalid zipcode %(data)s") % {'data': data})
         return data
 
     def save(self, *args, **kwargs):
@@ -294,7 +296,7 @@ class RsvpForm(forms.ModelForm):
         data = self.cleaned_data["token"]
         event = self.instance.event
         if event.is_private and not event.is_token_valid(data):
-            return forms.ValidationError("Invalid token")
+            return forms.ValidationError(_("Invalid token"))
         return data
 
     def store(self, request):
@@ -349,8 +351,8 @@ class RsvpConfirmForm(forms.ModelForm):
 
 class RsvpAccountForm(forms.ModelForm):
     zipcode = forms.CharField(max_length=10, required=False)
-    password1 = forms.CharField(label='Password', min_length=5, widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+    password1 = forms.CharField(label=_('Password'), min_length=5, widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_('Confirm Password'), widget=forms.PasswordInput)
 
     class Meta:
         model = Guest
@@ -360,9 +362,9 @@ class RsvpAccountForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1", "")
         password2 = self.cleaned_data["password2"]
         if password1 != password2:
-            raise forms.ValidationError("The two password fields didn't match.")
+            raise forms.ValidationError(_("The two password fields didn't match."))
         if len(password2) < 5:
-            raise forms.ValidationError("Your password must contain at least 5 characters.")
+            raise forms.ValidationError(_("Your password must contain at least 5 characters."))
         return password2
 
     def clean_zipcode(self):
@@ -371,11 +373,11 @@ class RsvpAccountForm(forms.ModelForm):
             self.instance.contributor.location = None
             return
         if len(data) <> 5:
-            raise forms.ValidationError("Please enter a 5 digit zipcode")
+            raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
         try:
             self.cleaned_data["location"] = Location.objects.get(zipcode=data)
         except Location.DoesNotExist, e:
-            raise forms.ValidationError("Zipcode is invalid")
+            raise forms.ValidationError(_("Zipcode is invalid"))
         else:
             self.instance.contributor.location = self.cleaned_data["location"]
 
@@ -400,8 +402,8 @@ class RsvpAccountForm(forms.ModelForm):
         return guest
 
 class MessageForm(forms.Form):
-    note = forms.CharField(label="Personal Note", widget=forms.Textarea,
-        help_text="Enter a brief note that will be included in your email")
+    note = forms.CharField(label=_("Personal Note"), widget=forms.Textarea,
+        help_text=_("Enter a brief note that will be included in your email"))
     guests = forms.ModelMultipleChoiceField(queryset=None, widget=forms.MultipleHiddenInput)
 
     def __init__(self, user, event, type, *args, **kwargs):
@@ -422,4 +424,4 @@ class MessageForm(forms.Form):
                 Stream.objects.get(slug="event-announcement").enqueue(content_object=guest,
                     start=datetime.datetime.now(), extra_params=extra_params)
         else:
-            raise AttributeError("Unknown message type: %s" % self.type)
+            raise AttributeError(_("Unknown message type: %(type)s") % {'type': self.type})

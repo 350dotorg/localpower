@@ -1,3 +1,4 @@
+{% load i18n %}
 <form id="rsvp_form" action="{% url event-rsvp event.id %}" method="post">
     {{ rsvp_form.errors }}
     {{ rsvp_form.rsvp_status }}
@@ -8,6 +9,6 @@
     <div>{{ rsvp_form.token }}</div>
     {% csrf_token %}
     <div>
-        <input type="submit" value="Submit" style="width:180px;"/>
+      <input type="submit" value="{% blocktrans %}Submit{% endblocktrans %}" style="width:180px;"/>
     </div>
 </form>

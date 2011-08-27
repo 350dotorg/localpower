@@ -1,26 +1,29 @@
 {% extends "base/nav_form.html" %}
+{% load i18n %}
 {% load dated_static %}
-{% block title %}Create an Event{% endblock %}
+{% block title %}{% blocktrans %}Create an Event{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url index %}">Home</a> &rsaquo;
-    <a href="{% url action_community_show %}">Community</a> &rsaquo;
-    <a href="{% url event-show %}">Events</a> &rsaquo;
-    Create an Event
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url action_community_show %}">{% blocktrans %}Community{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
+    {% blocktrans %}Create an Event{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
+{% blocktrans %}
 No special experience is needed to organize an energy meet up, just a passion
 for saving energy and a few friends and neighbors. Our <a href="/hosting/">host materials</a> provide
 step by step instructions for executing a great event and lots of fun
 activities and materials to give to guests.
+{% endblocktrans %}
 {% endblock %}
 {% block content %}
     <form id="event_form" action="" method="post"  class="form_6c">
-        <h1>Create an Event</h1>
+        <h1>{% blocktrans %}Create an Event{% endblocktrans %}</h1>
         {% include "base/_form.html" %}
         {% csrf_token %}
         <div class="form_buttons">
-            <a href="{% url event-show %}" class="form_cancel">Cancel</a>
-            <button class="button_mega" type="submit">Create Event</button>
+            <a href="{% url event-show %}" class="form_cancel">{% blocktrans %}Cancel{% endblocktrans %}</a>
+            <button class="button_mega" type="submit">{% blocktrans %}Create Event{% endblocktrans %}</button>
         </div>
     </form>
     <script>

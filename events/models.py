@@ -7,6 +7,7 @@ from django.db import models
 from django.dispatch import Signal
 from django.template import Context, loader
 from django.utils.dateformat import DateFormat
+from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
 from invite.models import Invitation
@@ -16,34 +17,53 @@ from commitments.models import Contributor, Commitment, Survey
 from filterspec import HasHappenedFilterSpec
 
 class Event(models.Model):
-    creator = models.ForeignKey("auth.User")
-    default_survey = models.ForeignKey("commitments.survey", default=9)
-    title = models.CharField(max_length=100, help_text="What do you want to call this shindig?")
-    where = models.CharField(max_length=100, verbose_name="Street address",
-        help_text="Include the city and state")
-    lon = models.FloatField(null=True, blank=True)
-    lat = models.FloatField(null=True, blank=True)
-    location = models.ForeignKey("geo.Location", null=True)
-    when = models.DateField()
+    creator = models.ForeignKey("auth.User", verbose_name=_('creator'))
+    default_survey = models.ForeignKey("commitments.survey", default=9,
+                                       verbose_name=_('default survey'))
+    title = models.CharField(_('title'), max_length=100, 
+                             help_text=_("What do you want to call this shindig?"))
+    where = models.CharField(max_length=100, 
+                             verbose_name=_("Street address"),
+                             help_text=_("Include the city and state"))
+    lon = models.FloatField(null=True, blank=True, 
+                            verbose_name=_('latitude'))
+    lat = models.FloatField(null=True, blank=True,
+                            verbose_name=_('longitude'))
+    location = models.ForeignKey("geo.Location", null=True,
+                                 verbose_name=_('location'))
+    when = models.DateField(_('when'))
     when.has_happened = True
-    start = models.TimeField()
-    duration = models.PositiveIntegerField(blank=True, null=True)
-    details = models.TextField(help_text="For example, where should people park,\
-        what's the nearest subway, do people need to be buzzed in, etc.", blank=True)
-    groups = models.ManyToManyField("groups.Group", blank=True,
-        limit_choices_to = {'is_geo_group': False}, verbose_name="Communities")
-    is_private = models.BooleanField(default=False, help_text="If your event is \
-        kept private, only individuals who receive an invite email will be able to RSVP.")
-    limit = models.PositiveIntegerField(blank=True, null=True, help_text="Adding a limit sets a \
-        cap on the number of guests that can RSVP. If the limit is reached, potential guests \
-        will need to contact you first.")
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    start = models.TimeField(_('start time'))
+    duration = models.PositiveIntegerField(_('duration'),
+                                           blank=True, null=True)
+    details = models.TextField(
+        _('details'),
+        help_text=_("For example, where should people park, "
+                    "what's the nearest subway, "
+                    "do people need to be buzzed in, etc."),
+        blank=True)
+    groups = models.ManyToManyField(
+        "groups.Group", blank=True,
+        limit_choices_to = {'is_geo_group': False},
+        verbose_name=_("Communities"))
+    is_private = models.BooleanField(
+        _('is private'),
+        default=False, 
+        help_text=_("If your event is kept private, "
+                    "only individuals who receive an invite email "
+                    "will be able to RSVP."))
+    limit = models.PositiveIntegerField(
+        _('limit'), blank=True, null=True,
+        help_text=_("Adding a limit sets a cap on the number of guests "
+                    "that can RSVP. If the limit is reached, "
+                    "potential guests will need to contact you first."))
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
 
     class Meta:
         permissions = (
-            ("host_any_event_type", "Can host any event type"),
-            ("view_any_event", "Can view host details for any event"),
+            ("host_any_event_type", _("Can host any event type")),
+            ("view_any_event", _("Can view host details for any event")),
         )
 
     def __unicode__(self):
@@ -269,20 +289,22 @@ class GuestManager(models.Manager):
 
 class Guest(models.Model):
     RSVP_STATUSES = (
-        ("A", "Attending",),
-        ("M", "Maybe Attending",),
-        ("N", "Not Attending",),
+        ("A", _("Attending"),),
+        ("M", _("Maybe Attending"),),
+        ("N", _("Not Attending"),),
     )
-    event = models.ForeignKey(Event)
-    contributor = models.ForeignKey("commitments.contributor")
-    invited = models.DateField(null=True, blank=True)
-    added = models.DateField(null=True, blank=True)
-    rsvp_status = models.CharField(blank=True, max_length=1, choices=RSVP_STATUSES)
-    comments = models.TextField(blank=True)
-    notify_on_rsvp = models.BooleanField(default=False)
-    is_host = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    event = models.ForeignKey(Event, verbose_name=_('Event'))
+    contributor = models.ForeignKey("commitments.contributor", 
+                                    verbose_name=_('contributor'))
+    invited = models.DateField(_('invited'), null=True, blank=True)
+    added = models.DateField(_('added'), null=True, blank=True)
+    rsvp_status = models.CharField(_('rsvp status'), blank=True,
+                                   max_length=1, choices=RSVP_STATUSES)
+    comments = models.TextField(_('comments'), blank=True)
+    notify_on_rsvp = models.BooleanField(_('notify on rsvp'), default=False)
+    is_host = models.BooleanField(_('is host'), default=False)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
     objects = GuestManager()
 
     class Meta:
@@ -297,9 +319,9 @@ class Guest(models.Model):
         if self.rsvp_status:
             return self.get_rsvp_status_display()
         if self.invited:
-            return "Invited %s" % DateFormat(self.invited).format("M j")
+            return _("Invited %(date)s") % {'date': DateFormat(self.invited).format("M j")}
         if self.added:
-            return "Added %s" % DateFormat(self.added).format("M j")
+            return _("Added %(date)s") % {'date': DateFormat(self.added).format("M j")}
         raise AttributeError
 
     def __unicode__(self):

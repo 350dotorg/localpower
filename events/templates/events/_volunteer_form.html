@@ -1,17 +1,18 @@
-<h4>Name: <span class="attendee_label">{{ guest.contributor.name }}</span></h4>
-<h4>Email: <span class="attendee_label">{{ guest.contributor.email }}</span></h4>
-<h4>Phone: <span class="attendee_label">{{ guest.contributor.phone }}</span></h4>
+{% load i18n %}
+<h4>{% blocktrans %}Name{% endblocktrans %}: <span class="attendee_label">{{ guest.contributor.name }}</span></h4>
+<h4>{% blocktrans %}Email{% endblocktrans %}: <span class="attendee_label">{{ guest.contributor.email }}</span></h4>
+<h4>{% blocktrans %}Phone{% endblocktrans %}: <span class="attendee_label">{{ guest.contributor.phone }}</span></h4>
 <br />
 <form action="" method="post">
     <p>
-        <h3>Commit to take action in your own home</h3>
+        <h3>{% blocktrans %}Commit to take action in your own home{% endblocktrans %}</h3>
         <ul>
             <li>{{ form.eliminate_vampire }}{{ form.eliminate_vampire.label_tag }}</li>
             <li>{{ form.program_thermostat }}{{ form.program_thermostat.label_tag }}</li>
         </ul>
     </p>
     <p>
-        <h3>What type of community will you start?</h3>
+        <h3>{% blocktrans %}What type of community will you start{% endblocktrans %}?</h3>
         <ul>
             <li>{{ form.school }}{{ form.school.label_tag }}</li>
             <li>{{ form.workplace }}{{ form.workplace.label_tag }}</li>
@@ -21,5 +22,5 @@
         </ul>
     </p>
     {% csrf_token %}
-    <div><input type="submit" value="Save" /></div>
+    <div><input type="submit" value="{% blocktrans %}Save{% endblocktrans %}" /></div>
 </form>

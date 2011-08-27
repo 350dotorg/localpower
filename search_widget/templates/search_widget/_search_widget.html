@@ -1,6 +1,7 @@
+{% load i18n %}
 <form class="search_widget" action="{{ request.path }}" method="get">
     <div>
-        <input id="search_widget_input" class="search_value" name="search" type="text" placeholder="Search..." />
+        <input id="search_widget_input" class="search_value" name="search" type="text" placeholder="{% blocktrans %}Search...{% endblocktrans %}" />
         <button class="search_button" type="submit"><span class="sprite_search_mag"></span></button>
     </div>
 </form>

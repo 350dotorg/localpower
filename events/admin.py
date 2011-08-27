@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db.models import F
 from django.utils.dateformat import DateFormat
+from django.utils.translation import ugettext_lazy as _
 
 from models import Event, Guest
 from forms import EventForm
@@ -33,7 +34,7 @@ class EventAdmin(admin.ModelAdmin):
 
     def _when(self, obj):
         return DateFormat(obj.start_datetime()).format("M j Y @ g:ia")
-    _when.short_description = "When"
+    _when.short_description = _("When")
 
     def city(self, obj):
         return obj.location.name
@@ -49,6 +50,6 @@ class EventAdmin(admin.ModelAdmin):
 
     def hosts(self, obj):
         return ", ".join([g.contributor.name for g in obj.hosts()])
-    hosts.short_description = "Hosts"
+    hosts.short_description = _("Hosts")
 
 admin.site.register(Event, EventAdmin)

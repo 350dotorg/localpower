@@ -1,17 +1,20 @@
 {% extends "base/nav_6c3c.html" %}
 
-
+{% load i18n %}
 {% block content %}
     <div class="grid_6 alpha">
         <div class="box_three_top"></div>
         <div class="box_three_middle">
-            <h1>Thanks for the RSVP</h1>
-            <p>We'll put you down as <span>{{ guest.get_rsvp_status_display }}</span></p>
+            <h1>{% blocktrans %}Thanks for the RSVP{% endblocktrans %}</h1>
+            <p>
+	      {% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
+	      We'll put you down as <span>{{ rsvp_status }}</span>
+	      {% endblocktrans %}</p>
                 <form action="{% url event-rsvp-confirm event.id %}" method="post">
                     {% include "events/_form.html" %}
                     {% csrf_token %}
-                    <input type="submit" value="Confirm RSVP" /> |
-                    <a href="{% url event-rsvp-cancel event.id %}">cancel</a>
+                    <input type="submit" value="{% blocktrans %}Confirm RSVP{% endblocktrans %}" /> |
+                    <a href="{% url event-rsvp-cancel event.id %}">{% blocktrans %}cancel{% endblocktrans %}</a>
                 </form>
         </div>
         <div class="box_three_bottom"></div>

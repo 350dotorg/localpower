@@ -1,18 +1,23 @@
+{% load i18n %}
 {% load dated_static %}
 <ul class="plain_list" style="margin-bottom:0px;">
     {% for event in events %}
         <li>
             <p>
                 <a href="{{ event.get_absolute_url }}">{{ event }}</a><br />
-                <span class="smaller">{{ event.when|date }} @ {{ event.start|time }}</span>
+                <span class="smaller">
+		  {% blocktrans with event.when|date as event_date and event.start|time as event_time %}
+		  {{ event_date }} @ {{ event_time }}
+		  {% endblocktrans %}
+		</span>
             </p>
         </li>
     {% endfor %}
     <p>
-        Subscribe to feed
-        <a href="{% url events_feed %}">
-            <img src="{% dated_static 'images/theme/social_icons/16/feed.png' %}" alt="atom feed" width="16" height="16"/>
-        </a>
+      {% blocktrans %}Subscribe to feed{% endblocktrans %}
+      <a href="{% url events_feed %}">
+        <img src="{% dated_static 'images/theme/social_icons/16/feed.png' %}" alt="{% blocktrans %}atom feed{% endblocktrans %}" width="16" height="16"/>
+      </a>
     </p>
 
 </ul>

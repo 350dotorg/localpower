@@ -1,7 +1,8 @@
+{% load i18n %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Sign In Sheet</title>
+        <title>{% blocktrans %}Sign In Sheet{% endblocktrans %}</title>
         <style type="text/css">
             @page {
                 size: letter;
@@ -25,17 +26,17 @@
     </head>
     <body>
         <div class="center">
-            <h1>Sign In Sheet &mdash; {{ event }} {{guest_count}}</h1>
-            <p>Check off your name and fill in any missing details. If you're not on the list, just add yourself.</p>            
+            <h1>{% blocktrans %}Sign In Sheet{% endblocktrans %} &mdash; {{ event }} {{guest_count}}</h1>
+            <p>{% blocktrans %}Check off your name and fill in any missing details. If you're not on the list, just add yourself.{% endblocktrans %}</p>
         </div>
         <table>
             <thead>
                 <tr>
                     <th style="width:4%; text-size:24px;">&#10004;</th>
-                    <th style="width:27%">Name</th>
-                    <th style="width:40%">Email</th>
-                    <th style="width:19%">Phone</th>
-                    <th style="width:10%">Zipcode</th>
+                    <th style="width:27%">{% blocktrans %}Name{% endblocktrans %}</th>
+                    <th style="width:40%">{% blocktrans %}Email{% endblocktrans %}</th>
+                    <th style="width:19%">{% blocktrans %}Phone{% endblocktrans %}</th>
+                    <th style="width:10%">{% blocktrans %}Zipcode{% endblocktrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +62,7 @@
         </table>
         <div id="footerContent">
             {%block page_foot%}
-                Page <pdf:pagenumber>
+            {% blocktrans with "<pdf:pagenumber>" as page_number %}Page {{page_number}}{% endblocktrans %}
             {%endblock%}
         </div>
     </body>
