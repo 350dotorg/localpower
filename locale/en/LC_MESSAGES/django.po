@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+#   <jon@350.org>, 2011.
 #   <ethan.jucovy@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-24 23:10-0400\n"
-"PO-Revision-Date: 2011-08-14 14:24+0000\n"
-"Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
+"POT-Creation-Date: 2011-08-24 22:48-0400\n"
+"PO-Revision-Date: 2011-08-25 19:55+0000\n"
+"Last-Translator: jwarnow <jon@350.org>\n"
+"Language-Team: English (http://www.transifex.net/projects/p/localpower/team/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
@@ -114,8 +115,7 @@ msgstr ""
 #: groups/templates/groups/group_disc_detail.html:6
 #: groups/templates/groups/group_disc_list.html:6
 #: groups/templates/groups/group_edit.html:7
-#: groups/templates/groups/group_list.html:4
-#: groups/templates/groups/group_list.html:6 templates/base/nav.html:44
+#: groups/templates/groups/group_list.html:4 templates/base/nav.html:44
 #: templates/rah/profile.html:28 templates/rah/profile.html.py:38
 msgid "Communities"
 msgstr "Groups"
@@ -200,11 +200,11 @@ msgstr ""
 
 #: actions/views.py:109
 msgid ""
-"We cancelled your commitment. If you're having trouble completing an action, "
-"try asking a question. Other members will be happy to help!"
+"We cancelled your commitment. If you're having trouble completing an action,"
+" try asking a question. Other members will be happy to help!"
 msgstr ""
-"We cancelled your commitment. If you're having trouble completing a project, "
-"try asking a question. Other members will be happy to help!"
+"We cancelled your commitment. If you're having trouble completing a project,"
+" try asking a question. Other members will be happy to help!"
 
 #: actions/templates/actions/_action_form.html:11
 msgid "Make a commitment to do this action in the future."
@@ -257,9 +257,7 @@ msgid "Find more actions"
 msgstr "Find more projects"
 
 #: actions/templates/actions/_action_form.html:56
-msgid ""
-"If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</"
-"a>."
+msgid "If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</a>."
 msgstr ""
 
 #: actions/templates/actions/action_cancel.html:6
@@ -353,17 +351,12 @@ msgstr ""
 #: actions/templates/actions/action_show.html:9
 msgid ""
 "\n"
-"    The actions you’ll find here will cut energy waste, lower your monthly "
-"bills\n"
-"    and put your home on the leading edge of the energy efficiency "
-"revolution.\n"
+"    The actions you’ll find here will cut energy waste, lower your monthly bills\n"
+"    and put your home on the leading edge of the energy efficiency revolution.\n"
 "  "
 msgstr ""
 "\n"
-"    The projects you’ll find here will cut energy waste, lower your monthly "
-"bills\n"
-"    and put your home on the leading edge of the energy efficiency "
-"revolution.\n"
+"    You can choose any of these projects to take on with your group. Whether you're educating your community, running a pressure campaign to pass a climate-friendly policy, or implementing local climate solutions, you can find resources for your projects here. \n"
 "  "
 
 #: actions/templates/actions/action_show.html:15
@@ -1173,7 +1166,8 @@ msgid ""
 "You cannot leave the community, until you've assigned someone else to be "
 "manager."
 msgstr ""
-"You cannot leave the group, until you've assigned someone else to be manager."
+"You cannot leave the group, until you've assigned someone else to be "
+"manager."
 
 #: groups/views.py:75
 msgid "You cannot leave a community your not a member of"
@@ -1366,6 +1360,7 @@ msgstr "Create a Group"
 
 #: groups/templates/groups/group_create.html:7
 #: groups/templates/groups/group_edit.html:13
+#: groups/templates/groups/group_list.html:6
 msgid "Community"
 msgstr "Group"
 
@@ -1510,13 +1505,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(user_link)s has requested to link this community to "
-"%(object_link)s\n"
+"            %(user_link)s has requested to link this community to %(object_link)s\n"
 "\t    "
 msgstr ""
 "\n"
-"            %(user_link)s has requested to link this group to "
-"%(object_link)s\n"
+"            %(user_link)s has requested to link this group to %(object_link)s\n"
 "\t    "
 
 #: groups/templates/groups/group_detail.html:210
@@ -1605,13 +1598,11 @@ msgstr "Delete Group"
 #: groups/templates/groups/group_edit.html:31
 msgid ""
 "\n"
-"\t\t\t  Deleting a community will immediately remove it from our system.<br/"
-">Communities cannot be undeleted.\n"
+"\t\t\t  Deleting a community will immediately remove it from our system.<br/>Communities cannot be undeleted.\n"
 "\t\t\t  "
 msgstr ""
 "\n"
-"\t\t\t  Deleting a group will immediately remove it from our system.<br/"
-">Groups cannot be undeleted.\n"
+"\t\t\t  Deleting a group will immediately remove it from our system.<br/>Groups cannot be undeleted.\n"
 "\t\t\t  "
 
 #: groups/templates/groups/group_edit.html:50
@@ -1629,17 +1620,13 @@ msgstr ""
 #: groups/templates/groups/group_list.html:8
 msgid ""
 "\n"
-"Starting a community is a great way to help your neighborhood, church, "
-"school,\n"
+"Starting a community is a great way to help your neighborhood, church, school,\n"
 "or local group become more energy savvy. As a community leader, you can use\n"
 "your community to organize meetings, encourage action, and track progress\n"
 "towards your community's goals.\n"
 msgstr ""
 "\n"
-"Starting a group is a great way to help your neighborhood, church, school,\n"
-"or local group become more energy savvy. As a group leader, you can use\n"
-"your group to organize meetings, encourage action, and track progress\n"
-"towards your community's goals.\n"
+"Start a group to help your community, school, or church come together to help build a powerful movement. As a group leader, you can use this website to help organize meetings, plan local projects, track progress, post updates, and launch campaigns!\n"
 
 #: groups/templates/groups/group_list.html:16
 msgid "Start a Community"
@@ -1661,21 +1648,15 @@ msgstr "Join a Group"
 #: groups/templates/groups/group_list.html:36
 msgid ""
 "\n"
-"              People across the country are working together to make their "
-"homes and their communities better than ever before. As\n"
-"              part of a community, you can brainstorm ideas for improving "
-"your community, share local tips about energy efficiency, and\n"
-"              meet people who are interested in building a cleaner "
-"tomorrow.\n"
+"              People across the country are working together to make their homes and their communities better than ever before. As\n"
+"              part of a community, you can brainstorm ideas for improving your community, share local tips about energy efficiency, and\n"
+"              meet people who are interested in building a cleaner tomorrow.\n"
 "\t      "
 msgstr ""
 "\n"
-"              People around the world are working together to make their "
-"homes and their communities better than ever before. As\n"
-"              part of a group, you can brainstorm ideas for improving your "
-"community, share local tips about energy efficiency, and\n"
-"              meet people who are interested in building a cleaner "
-"tomorrow.\n"
+"              People around the world are working together to make their homes and their communities better than ever before. As\n"
+"              part of a group, you can brainstorm ideas for improving your community, share local tips about energy efficiency, and\n"
+"              meet people who are interested in building a cleaner tomorrow.\n"
 "\t      "
 
 #: groups/templates/groups/group_list.html:48
@@ -2038,10 +2019,8 @@ msgstr ""
 #: templates/base/base.html:90
 msgid ""
 "\n"
-"                        Lorem ipsum dolor sit amet, consectetur adipisicing "
-"elit, sed do\n"
-"                        eiusmod tempor incididunt ut labore et dolore magna "
-"aliqua. Ut enim \n"
+"                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\n"
+"                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim \n"
 "                        ad minim veniam, quis nostrud exercitation ullamco.\n"
 "\t\t      "
 msgstr ""
@@ -2086,8 +2065,7 @@ msgstr ""
 #: templates/base/base.html:116
 msgid ""
 "\n"
-"\t\t    Text is available under a <a href=\"http://creativecommons.org/"
-"licenses/by/3.0/\">\n"
+"\t\t    Text is available under a <a href=\"http://creativecommons.org/licenses/by/3.0/\">\n"
 "                    Creative Commons Attribution 3.0 Unported License</a>.\n"
 "\t\t    "
 msgstr ""
@@ -2166,10 +2144,8 @@ msgstr ""
 #: templates/rah/ga_opt_out.html:9
 msgid ""
 "\n"
-"    Click the button below to opt out of our Google Analytics tracking. A "
-"cookie will be set for this browser\n"
-"    only. You need to opt out with every browser you don't want tracked. If "
-"you delete your cookies, tracking\n"
+"    Click the button below to opt out of our Google Analytics tracking. A cookie will be set for this browser\n"
+"    only. You need to opt out with every browser you don't want tracked. If you delete your cookies, tracking\n"
 "    will resume.\n"
 "    "
 msgstr ""
@@ -2200,20 +2176,22 @@ msgstr ""
 
 #: templates/rah/home_page.html:25
 msgid "Be an Energy Trendsetter!"
-msgstr ""
+msgstr "Join A Local Climate Action Group!"
 
 #: templates/rah/home_page.html:27
 #, python-format
 msgid ""
 "\n"
-"                            %(SITE_NAME)s makes energy efficiency easy, fun "
-"and\n"
-"                            social. Across the country, our members are "
-"working to\n"
-"                            transform the way their homes and communities "
-"use energy.\n"
+"                            %(SITE_NAME)s makes energy efficiency easy, fun and\n"
+"                            social. Across the country, our members are working to\n"
+"                            transform the way their homes and communities use energy.\n"
 "\t\t\t  "
 msgstr ""
+"\n"
+"                            %(SITE_NAME)s makes local activism social, easy, and fun.  \n"
+"\n"
+"People everywhere are working to build a powerful movement to transform our communities -- and our planet -- from the ground up. \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span><span class=\"whitespace other\" title=\"Tab\">»</span><span class=\"whitespace other\" title=\"Tab\">»</span>  "
 
 #: templates/rah/home_page.html:40
 msgid "You have the power <br/>to save energy"
@@ -2222,26 +2200,18 @@ msgstr ""
 #: templates/rah/home_page.html:42
 msgid ""
 "\n"
-"                            Our energy actions give you the necessary know-"
-"how to save\n"
-"                            energy, lower your bills and improve our "
-"environment by\n"
-"                            reducing greenhouse gas pollution. The more "
-"actions you\n"
-"                            complete, the more badges and points you earn "
-"for your\n"
+"                            Our energy actions give you the necessary know-how to save\n"
+"                            energy, lower your bills and improve our environment by\n"
+"                            reducing greenhouse gas pollution. The more actions you\n"
+"                            complete, the more badges and points you earn for your\n"
 "                            progress. \n"
 "\t\t\t  "
 msgstr ""
 "\n"
-"                            Our energy projects give you the necessary know-"
-"how to save\n"
-"                            energy, lower your bills and improve our "
-"environment by\n"
-"                            reducing greenhouse gas pollution. The more "
-"projects you\n"
-"                            complete, the more badges and points you earn "
-"for your\n"
+"                            Our energy projects give you the necessary know-how to save\n"
+"                            energy, lower your bills and improve our environment by\n"
+"                            reducing greenhouse gas pollution. The more projects you\n"
+"                            complete, the more badges and points you earn for your\n"
 "                            progress. \n"
 "\t\t\t  "
 
@@ -2257,24 +2227,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                            Stay up-to-date on energy efficiency efforts in "
-"your\n"
-"                            neighborhood, school, workplace or other group "
-"by joining a\n"
-"                            %(SITE_NAME)s community. Communities make it "
-"easy to\n"
-"                            share tips and stories with Trendsetters like "
-"you.\n"
+"                            Stay up-to-date on energy efficiency efforts in your\n"
+"                            neighborhood, school, workplace or other group by joining a\n"
+"                            %(SITE_NAME)s community. Communities make it easy to\n"
+"                            share tips and stories with Trendsetters like you.\n"
 "\t\t\t  "
 msgstr ""
 "\n"
-"                            Stay up-to-date on energy efficiency efforts in "
-"your\n"
-"                            neighborhood, school, workplace or other group "
-"by joining a\n"
+"                            Stay up-to-date on energy efficiency efforts in your\n"
+"                            neighborhood, school, workplace or other group by joining a\n"
 "                            %(SITE_NAME)s group. Groups make it easy to\n"
-"                            share tips and stories with Trendsetters like "
-"you.\n"
+"                            share tips and stories with Trendsetters like you.\n"
 "\t\t\t  "
 
 #: templates/rah/home_page.html:73
@@ -2288,8 +2251,7 @@ msgstr ""
 #: templates/rah/home_page.html:81
 msgid ""
 "\n"
-"                            Sign the pledge by the filling out the form on "
-"the right.\n"
+"                            Sign the pledge by the filling out the form on the right.\n"
 "\t\t\t  "
 msgstr ""
 
@@ -2490,8 +2452,7 @@ msgstr ""
 #: templates/rah/profile_edit.html:103
 msgid ""
 "\n"
-"                      You cannot unlink your facebook account, since you are "
-"currently logged in with facebook\n"
+"                      You cannot unlink your facebook account, since you are currently logged in with facebook\n"
 "\t\t      "
 msgstr ""
 
@@ -2532,3 +2493,5 @@ msgstr ""
 #: templates/rah/user_list.html:7
 msgid "User List"
 msgstr ""
+
+
