@@ -100,11 +100,11 @@ def index(request):
 
     return render_to_response("rah/home_page.html", locals(), context_instance=RequestContext(request))
 
-@cache_page(60 * 60)
 def user_list(request):
     """This page of links allows google CSE to find user profile pages"""
-    users = User.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'id')
-    return render_to_response("rah/user_list.html", {'users': users}, context_instance=RequestContext(request))
+    nav_selected = "users"
+    users = User.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'id').select_related("profile")
+    return render_to_response("rah/user_list.html", locals(), context_instance=RequestContext(request))
 
 def logout(request):
     auth.logout(request)
@@ -125,6 +125,7 @@ def password_reset_complete(request):
 
 @csrf_protect
 def register(request, template_name="registration/register.html"):
+    nav_selected = "users"
     redirect_to = request.REQUEST.get(REDIRECT_FIELD_NAME, '')
     initial = {"email": request.GET["email"]} if "email" in request.GET else None
     user_form = RegistrationForm(initial=initial, data=(request.POST or None))
@@ -155,6 +156,7 @@ def register(request, template_name="registration/register.html"):
     return render_to_response(template_name, {
         'form': user_form,
         'profile_form': profile_form,
+        'nav_selected': nav_selected,
         REDIRECT_FIELD_NAME: redirect_to,
     }, context_instance=RequestContext(request))
 
@@ -164,6 +166,7 @@ def login(request, template_name='registration/login.html',
           redirect_field_name=REDIRECT_FIELD_NAME,
           authentication_form=AuthenticationForm):
     """Displays the login form and handles the login action."""
+    nav_selected = "users"
 
     redirect_to = request.REQUEST.get(redirect_field_name, '')
 
@@ -209,9 +212,11 @@ def login(request, template_name='registration/login.html',
         redirect_field_name: redirect_to,
         'site': current_site,
         'site_name': current_site.name,
+        'nav_selected': nav_selected,
     }, context_instance=RequestContext(request))
 
 def profile(request, user_id):
+    nav_selected = "users"
     user = request.user if request.user.id is user_id else get_object_or_404(User, id=user_id)
 
     profile = user.get_profile()
@@ -240,6 +245,7 @@ def profile(request, user_id):
 
     return render_to_response('rah/profile.html', {
         'user': user,
+        'nav_selected': nav_selected,
         #'total_points': user.get_profile().total_points,
         #'completed': completed,
         #'profile': user.get_profile(),
@@ -254,6 +260,7 @@ def profile(request, user_id):
 @login_required
 @csrf_protect
 def profile_edit(request, user_id):
+    nav_selected = "users"
     if request.user.id <> int(user_id):
         return forbidden(request, 
                          _("Sorry, but you do not have permissions to edit this profile."))
@@ -286,13 +293,8 @@ def profile_edit(request, user_id):
         else:
             messages.error(request, _('No action specified.'))
 
-    return render_to_response('rah/profile_edit.html', {
-        'profile_form': profile_form,
-        'account_form': account_form,
-        'group_notification_form': group_notifications_form,
-        'stream_notification_form': stream_notifications_form,
-        'profile': profile,
-    }, context_instance=RequestContext(request))
+    return render_to_response('rah/profile_edit.html', locals(),
+                              context_instance=RequestContext(request))
 
 @csrf_protect
 def feedback(request):

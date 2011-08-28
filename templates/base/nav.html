@@ -56,6 +56,10 @@
                 <a href="{% url badge_list %}"><span class="sprite_nav_badges"></span> {% blocktrans %}Badges{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
+            <li class="{% ifequal nav_selected "users" %}nav_selected{% endifequal %}">
+                <a href="{% url user_list %}"><span class="sprite_nav_communities"></span> {% blocktrans %}Users{% endblocktrans %}</a>
+                <div class="nav_pointer_wrap"></div>
+            </li>
         </ul>
         {% if request.user.is_authenticated %}        
             <ul id="nav_secondary" class="plain_list">
