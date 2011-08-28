@@ -14,6 +14,14 @@ Showing {{num_users}} users
 {% endblocktrans %}
 {% endblock %}
 {% block content %}
+<div id="events_map_container">
+    <div id="events_map"></div>
+    <div id="events_map_shadow_top"></div>
+    <div id="events_map_shadow_right"></div>
+    <div id="events_map_shadow_bottom"></div>
+    <div id="events_map_shadow_left"></div>
+</div>
+
 <ul class="plain_list">
   {% for user in users %}
   {% with user.get_profile as profile %}
@@ -27,9 +35,11 @@ Showing {{num_users}} users
       <a href="{{user.get_absolute_url}}">
 	{{user.get_full_name}}
       </a>
+      {% if profile.location %}
       <div class="smaller">
 	{{ profile.location }}
       </div>
+      {% endif %}
       {% if profile.about %}
       <div class="smaller">
 	{{profile.about}}
@@ -40,4 +50,29 @@ Showing {{num_users}} users
   {% endwith %}
   {% endfor %}
 </ul>
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+    var RAH = RAH || {};
+    RAH.pagescripts = RAH.pagescripts || [];
+    RAH.pagescripts.push("{% dated_static 'js/pages/group.list.js' %}");
+    RAH.sprite_url = "{% dated_static 'images/theme/sprite.png' %}";
+    // Add locations for plotting on the map
+    RAH.event_locations = [];
+    {% for user in map_users %}
+        var info = "<b>{{ user.get_full_name|escape|escapejs }}</b><br/> {{ user.location|escape|escapejs }}<br/>";
+            info += "<a href='{% url profile user.id %}'>{% blocktrans %}View profile{% endblocktrans %}</a>";
+        RAH.event_locations.push({
+            lat: "{{ user.get_profile.location.lat }}",
+            lon: "{{ user.get_profile.location.lon }}",
+            "info": info
+        });
+    {% endfor %}
+    //]]>
+</script>
 {% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+{% endblock %}
+

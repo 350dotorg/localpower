@@ -104,6 +104,7 @@ def user_list(request):
     """This page of links allows google CSE to find user profile pages"""
     nav_selected = "users"
     users = User.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'id').select_related("profile")
+    map_users = users.filter(profile__location__isnull=False)
     return render_to_response("rah/user_list.html", locals(), context_instance=RequestContext(request))
 
 def logout(request):
