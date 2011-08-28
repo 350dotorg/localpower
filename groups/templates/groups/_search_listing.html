@@ -1,4 +1,4 @@
-{% extends "groups/base.html" %}
+{% extends "base/nav_9c.html" %}
 {% load i18n %}
 {% load dated_static %}
 {% block title %}{% blocktrans %}Communities{% endblocktrans %}{% endblock %}
@@ -7,18 +7,15 @@
     <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
     {% blocktrans %}Search Results{% endblocktrans %}
 {% endblock %}
-{% block right_content %}
-<div class="grid_6 alpha">
-    <div class="box_two_top"></div>
-    <div class="box_two_middle">
-        <h1>{% blocktrans %}Search Results{% endblocktrans %}</h1>
-        {% with object_list as groups %}
-            {% include 'groups/_group_nugget_list.html' %}
-        {% endwith %}
-        {% if page_obj.has_next %}
-            <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">{% blocktrans %}more{% endblocktrans %}</a>
-        {% endif %}
-    </div>
-    <div class="box_two_bottom"></div>
-</div>
+{% block title_bar_title %}{% blocktrans %}Search Results{% endblocktrans %}{% endblock %}
+{% block title_bar_copy %}{% blocktrans %}The results of your search are below{% endblocktrans %}{% endblock %}
+{% block ribbon_bar %}{% blocktrans with object_list|length as num_results %}Showing {{num_results}} results{% endblocktrans %}{% endblock %}
+{% block content %}
+    {% with object_list as groups %}
+    {% include 'groups/_group_nugget_list.html' %}
+    {% endwith %}
+    
+    {% if page_obj.has_next %}
+    <a class="search_more" href="{{ request.path }}?search={{ request.GET.search }}&amp;page={{ page_obj.next_page_number }}">{% blocktrans %}more{% endblocktrans %}</a>
+    {% endif %}
 {% endblock %}
