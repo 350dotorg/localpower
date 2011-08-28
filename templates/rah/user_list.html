@@ -1,16 +1,43 @@
+{% extends "base/nav_9c.html" %}
 {% load i18n %}
 {% load dated_static %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-    <head>
-        <link rel="shortcut icon" href="{% dated_static 'images/theme/favicon.ico' %}"/>
-        <title>{% blocktrans %}User List{% endblocktrans %}</title>
-    </head>
-    <body>
-        <ul>
-        {% for u in users %}
-            <li><a href="{{u.get_absolute_url}}">{{u.get_full_name}}</a></li>
-        {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block title %}{% blocktrans %}User List{% endblocktrans %}{% endblock %}
+{% block title_bar_title %}{% blocktrans %}User List{% endblocktrans %}{% endblock %}
+{% block title_bar_copy %}
+{% blocktrans %}
+Browse users
+{% endblocktrans %}
+{% endblock %}
+{% block ribbon_bar %}
+{% blocktrans with users|length as num_users %}
+Showing {{num_users}} users
+{% endblocktrans %}
+{% endblock %}
+{% block content %}
+<ul class="plain_list">
+  {% for user in users %}
+  {% with user.get_profile as profile %}
+  <li>
+    <a href="{{user.get_absolute_url}}">
+      <img src="{{profile.profile_picture_large}}" 
+	   alt="{% blocktrans %}Profile image{% endblocktrans %}"
+	   height="38" width="45" />
+    </a>
+    <div>
+      <a href="{{user.get_absolute_url}}">
+	{{user.get_full_name}}
+      </a>
+      <div class="smaller">
+	{{ profile.location }}
+      </div>
+      {% if profile.about %}
+      <div class="smaller">
+	{{profile.about}}
+      </div>
+      {% endif %}
+    </div>
+  </li>
+  {% endwith %}
+  {% endfor %}
+</ul>
+{% endblock %}
