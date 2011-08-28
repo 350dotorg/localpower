@@ -30,7 +30,7 @@
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
     <li><a href="#badges">{% blocktrans %}Badges{% endblocktrans %}</a></li>
     {% if not is_others_profile %}
-        <li class="tab_nav_link"><a href="#actions">{% blocktrans %}Edit your profile{% endblocktrans %}</a></li>
+        <li class="tab_nav_link"><a href="{% url profile_edit user.id %}">{% blocktrans %}Edit your profile{% endblocktrans %}</a></li>
     {% endif %}
 {% endblock %}
 {% block content %}
