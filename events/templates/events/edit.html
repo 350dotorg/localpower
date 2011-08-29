@@ -4,7 +4,6 @@
 {% block title %}{% blocktrans %}Edit {{ event }}{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
     <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
-    <a href="{% url action_community_show %}">{% blocktrans %}Community{% endblocktrans %}</a> &rsaquo;
     <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     <a href="{{ event.get_absolute_url }}">{{ event }}</a> &rsaquo;
     {% blocktrans %}Edit Event{% endblocktrans %}
