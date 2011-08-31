@@ -27,6 +27,7 @@
         <link rel="alternate" type="application/atom+xml"  href="{% url blog_feed %}" title="{% blocktrans %}Blog{% endblocktrans %}" />
         <link rel="shortcut icon" href="{% dated_static 'images/theme/favicon.ico' %}"/>
         <link rel="stylesheet" href="{% dated_static 'css/style.css' %}" type="text/css" media="screen" charset="utf-8"/>
+	<link rel="stylesheet" href="{% dated_static 'theme/jquery.ui.custom.css' %}" type="text/css" media="screen" charset="utf-8" />
         {% block extrahead %}{% endblock %}
         {% if testing_feedback_form %}
             <link rel="stylesheet" href="{% dated_static 'css/testing_widget.css' %}" type="text/css" media="screen" charset="utf-8"/>
