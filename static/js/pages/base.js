@@ -2,15 +2,15 @@
 /*global $: false, RAH: false, FB: false, jQuery: false, window: false, google: false, require: false, define: false */
 require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/messages", "mods/facebook"],
     function (ui, form, validation, messages, facebook) {
-        
+
         // Setup datepicker
-        $(".datepicker").datepicker();
-        
+        $("input.datepicker").datepicker();
+
         // setup tabs
         $(".tabs").tabs();
-        
+
         $.ajaxSetup({
-            error: function (XMLHttpRequest, textStatus) { 
+            error: function (XMLHttpRequest, textStatus) {
                 var error_msg = $("<ul/>")
                     .attr({"class": "plain_list shadow"})
                     .append("<li/>")
