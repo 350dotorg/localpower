@@ -2,7 +2,7 @@
     <div class="form_error">{{ error }}</div>
 {% endfor %}
 {% for field in form.visible_fields %}
-<div class="form_row {% if field.errors %}form_error{% endif %} row_{{ field.auto_id }} {{field.field.widget.attrs.class }}">
+<div class="form_row {% if field.errors %}form_error{% endif %} row_{{ field.auto_id }}">
         {% if "CheckboxInput" in field.field.widget|pprint %}
             {{ field }}{{ field.label_tag }}
         {% else %}
