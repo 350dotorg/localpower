@@ -1,0 +1,18 @@
+li.messages {
+  font-family:"MuseoSlab700", Tahoma, sans-serif;
+  color: white;
+}
+li.messages.success {
+  background-color: #45ab02;
+}
+li.messages.info {
+  background-color: #046495;
+}
+li.messages.error {
+  background-color: #f90;
+}
+
+li.messages a.dismiss {
+  float: right;
+  color: white;
+}
