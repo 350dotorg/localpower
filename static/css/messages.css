@@ -1,6 +1,7 @@
 li.messages {
   font-family:"MuseoSlab700", Tahoma, sans-serif;
   color: white;
+  padding: 0 0.5em;
 }
 li.messages.success {
   background-color: #45ab02;
