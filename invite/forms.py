@@ -5,6 +5,7 @@ from django.contrib.sites.models import Site
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import EmailMessage
 from django.template import loader
+from django.utils.translation import ugettext_lazy as _
 
 from utils import hash_val
 from messaging.models import Stream
@@ -13,9 +14,13 @@ from models import Invitation, make_token
 from fields import MultiEmailField
 
 class InviteForm(forms.ModelForm):
-    emails = MultiEmailField(label="Email addresses", required=True, widget=forms.Textarea,
-        help_text="Separate multiple email addresses with a comma.")
-    note = forms.CharField(widget=forms.Textarea, label="Personal note (optional)", required=False)
+    emails = MultiEmailField(
+        label=_("Email addresses"), required=True,
+        widget=forms.Textarea,
+        help_text=_("Separate multiple email addresses with a comma."))
+    note = forms.CharField(widget=forms.Textarea, 
+                           label=_("Personal note (optional)"),
+                           required=False)
     signature = forms.CharField(widget=forms.HiddenInput, required=True)
 
     class Meta:
@@ -39,11 +44,12 @@ class InviteForm(forms.ModelForm):
                 try:
                     target = content_type.get_object_for_this_type(pk=object_pk)
                 except ObjectDoesNotExist:
-                    raise forms.ValidationError("No object found matching %s" % object_pk)
+                    raise forms.ValidationError(
+                        _("No object found matching %(object_pk)s)") % {'object_pk': object_pk})
                 except ValueError:
-                    raise forms.ValidationError("Invalid parameters %s, %s" % (content_type, object_pk))
+                    raise forms.ValidationError(_("Invalid parameters %(content_type)s, %(object_pk)s") % {'content_type': content_type, 'object_pk': object_pk})
                 if hash_val((content_type, object_pk,)) != self.cleaned_data["signature"]:
-                    raise forms.ValidationError("Signature has been currupted")
+                    raise forms.ValidationError(_("Signature has been corrupted"))
         return self.cleaned_data
 
     def save(self, *args, **kwargs):
