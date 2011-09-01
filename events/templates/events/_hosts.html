@@ -2,7 +2,7 @@
 <form action="" method="post">
     <h1>{% blocktrans %}Select Hosts{% endblocktrans %}</h1>
     <div id="event_hosts_form">
-        {% include "events/_form.html" %}
+        {% include "base/_form.html" %}
     </div>
     {% csrf_token %}
     <input type="submit" value="{% blocktrans %}Save{% endblocktrans %}" /> | <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
