@@ -6,7 +6,10 @@ Breadcrumb graphic (tiny icon )
 
 Text
 ====
-About us in the footer
+
+Done
+----
+-About us in the footer- ==It's in the PO files now
 
 
 HTML/CSS
@@ -15,7 +18,6 @@ Email templates
 Challenge nuggets (profile page)
 Community stats (community detail)
 Form error messages on nav_form
-Flash messages
 Join this community button (w/states for pending request)
 My settings page
 Form style for homepage register
@@ -30,6 +32,10 @@ Map info windows
 Events/communities search box
 Create links on logged in nav
 Event detail page map
+
+Done
+----
+-Flash messages-
 
 Features
 ========
@@ -52,11 +58,14 @@ Image gallery
 Upload images to image gallery
 Event RSVP form
 Tab JS
-jQuery UI calendar for event creation
 Fix change date, cancel functionality of action detail page
 Wrap "Is this action right for me?" text in a div.
 Profile picture uploader (Josh)
 Hide inactive actions
+
+Done
+----
+-jQuery UI calendar for event creation-
 
 Code cleanup
 ============
