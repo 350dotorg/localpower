@@ -1,5 +1,5 @@
 {% if messages %}
-    <ul class="plain_list shadow">
+    <ul class="plain_list shadow" id="message_box">
         {% for message in messages %}
             <li class="messages {{ message.tags }}">
                 {% if "ga_track_pageview" in message.tags %}
