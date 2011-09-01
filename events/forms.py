@@ -99,13 +99,17 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
         return event
 
 class GuestInviteForm(InviteForm):
-    emails = MultiEmailField(label=_("Email addresses"), required=True,
+    emails = MultiEmailField(
+        label=_("Email addresses"), required=True,
         widget=forms.Textarea(attrs={"rows": 5}),
         help_text=_("For multiple email addresses, seperate them with a comma"))
-    note = forms.CharField(label=_("Personal note (optional)"), required=False,
+    note = forms.CharField(
+        label=_("Personal note (optional)"), required=False,
         widget=forms.Textarea(attrs={"rows": 5}))
-    rsvp_notification = forms.BooleanField(required=False, label=_("Email me when people RSVP"))
-    copy_me = forms.BooleanField(required=False, label=_("Send me a copy of the invitation"))
+    rsvp_notification = forms.BooleanField(
+        required=False, label=_("Email me when people RSVP"))
+    copy_me = forms.BooleanField(
+        required=False, label=_("Send me a copy of the invitation"))
 
     def save(self, *args, **kwargs):
         guest_invites = []
