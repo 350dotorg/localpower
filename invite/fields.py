@@ -1,3 +1,5 @@
+import re
+
 from django import forms
 from django.core.validators import validate_email
 
@@ -7,7 +9,7 @@ class MultiEmailField(forms.Field):
         # Return an empty list if no input was given.
         if not value:
             return []
-        return [e.strip() for e in value.split(',')
+        return [e.strip() for e in re.split('[,\n]', value)
                 if e.strip()]
 
     def validate(self, value):
