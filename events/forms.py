@@ -270,7 +270,11 @@ class GuestEditForm(forms.ModelForm):
         return super(GuestEditForm, self).save(*args, **kwargs)
 
 class HostForm(forms.Form):
-    guests = forms.ModelMultipleChoiceField(queryset=None, widget=forms.CheckboxSelectMultiple)
+    guests = forms.ModelMultipleChoiceField(
+        label=_("Hosts"),
+        queryset=None,
+        widget=forms.CheckboxSelectMultiple,
+        )
 
     def __init__(self, event, *args, **kwargs):
         super(HostForm, self).__init__(*args, **kwargs)
