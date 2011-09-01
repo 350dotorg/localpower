@@ -4,7 +4,7 @@
 {% load humanize %}
 {% block rah_nav_select %}nav_home{% endblock %}
 {% block 12c_content %}
-
+    {% include "_messages.html" %}
     <div class="grid_12 alpha omega" id="home_slide_nav">
         <a href="#1" id="home_slide_nav_1" class="home_slide_nav_selected">{% blocktrans %}Welcome{% endblocktrans %}</a>
         <a href="#2" id="home_slide_nav_2">{% blocktrans %}Empower your Home{% endblocktrans %}</a>
