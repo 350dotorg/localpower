@@ -1,4 +1,4 @@
-{% extends "base/nav_6c3c.html" %}
+{% extends "base/nav_form.html" %}
 {% load i18n %}
 {% load dated_static %}
 {% block title %}{% blocktrans %}Edit {{ event }}{% endblocktrans %}{% endblock %}
@@ -9,19 +9,13 @@
     {% blocktrans %}Edit Event{% endblocktrans %}
 {% endblock %}
 {% block content %}
-    <div class="grid_6 alpha">
-        <div class="box_two_top"></div>
-        <div class="box_two_middle">
-            <h1>{% blocktrans %}Edit your Event{% endblocktrans %}</h1>
-            <form id="event_form" action="" method="post">
-                {% include "events/_form.html" %}
-                {% csrf_token %}
-                <input type="submit" value="{% blocktrans %}Save Changes{% endblocktrans %}" /> |
-                <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
-            </form>
-        </div>
-        <div class="box_two_bottom"></div>
-    </div>
+    <form id="event_form" action="" method="post">
+      {% include "base/_form.html" %}
+      {% csrf_token %}
+      <input type="submit" value="{% blocktrans %}Save Changes{% endblocktrans %}" /> |
+      <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
+    </form>
+
     <script>
         var RAH = RAH || {};
         RAH.pagescripts = RAH.pagescripts || [];
