@@ -14,6 +14,12 @@ from dated_static.templatetags.dated_static import timestamp_file
 from brabeion import badges as badge_cache
 from brabeion.models import BadgeAward
 
+# We need to import the badge module early, so that its badges will be
+# registered with the brabeion badge cache before any code tries to
+# award a badge out of the cache. Otherwise we get semi-unreproducible
+# KeyErrors in brabeion internals when calling `possibly_award_badge`
+import badges
+
 def all_badges(user=None):
     import badges
     #Fetch all badges and add in the image links
