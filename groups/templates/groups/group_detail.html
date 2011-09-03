@@ -30,18 +30,20 @@
     
 {% endblock %}
 {% block tab_nav %}
-    <li class="tab_nav_selected">{% blocktrans %}Overview{% endblocktrans %}</li>
-    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
-    <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
-    <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
+    <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
+    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
+    <li><a href="#activity">{% blocktrans %}Activity{% endblocktrans %}</a></li>
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
-    <li><a href="#badges">{% blocktrans %}Badges{% endblocktrans %}</a></li>
+    <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
+    <li><a href="#requests">{% blocktrans %}Requests{% endblocktrans %}</a></li>
+    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
     {% if is_manager %}
-    <li class="tab_nav_link"><a href="{% url group_edit group.slug %}">{% blocktrans %}Edit community{% endblocktrans %}</a></li>
+    <span class="tab_nav_link"><a href="{% url group_edit group.slug %}">{% blocktrans %}Edit community{% endblocktrans %}</a></span>
     {% endif %}
 {% endblock %}
 
 {% block content %}
+    <div id="overview">
         <table class="tablesorter">
             <thead>
                 <tr>
@@ -64,6 +66,50 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <p>
+	  {% blocktrans with group.total_points as total_points and group.total_members as num_members %}
+            Community points: {{ total_points }}<br />
+            Total members: {{ num_members }}<br />
+	  {% endblocktrans %}
+        </p>
+        <p>
+          {% if group.is_joinable and is_member %}
+          <a href="{% url group_leave group.id %}">
+	    {% blocktrans %}Leave Community{% endblocktrans %}
+	  </a>
+          {% endif %}
+          {% if group.is_joinable and not is_member and not membership_pending %}
+          <a class="button" href="{% url group_join group.id %}">
+	    {% blocktrans %}Join Community{% endblocktrans %}
+	  </a>
+          {% endif %}
+	</p>
+        {% if membership_pending %}
+        <p>
+	  {% blocktrans %}Your membership status is currently <b>pending</b>.{% endblocktrans %}
+	</p>
+        {% endif %}
+
+    
+	{% if is_member %}
+        <h3>{% blocktrans %}Community Invitations{% endblocktrans %}</h3>
+        <p>
+          {% blocktrans with group.invites_sent as num_invites %}
+	  Invites sent: {{ num_invites }}
+	  {% endblocktrans %}
+	  <br style="clear: both" />
+          <a class="button invite_friend_link" href="{% url invite-invite %}">
+	    {% blocktrans %}Send Invite{% endblocktrans %}</a>
+        </p>
+        <div id="invite_friend_dialog">
+          {% get_invite_form for group %}
+        </div>
+	{% endif %}
+
+    </div>
+
+    <div id="discussions">
         {% if not group.is_geo_group %}
             <h2>{% blocktrans %}Discussions{% endblocktrans %}</h2>
             <div class="group_disc_box_links">
@@ -83,7 +129,9 @@
                 <em>{% blocktrans %}No discussions yet.{% endblocktrans %}</em>
             {% endif %}
         {% endif %}
+    </div>
     
+    <div id="activity">
     {% if group_records %}
         <h2>{% blocktrans %}Community Activity{% endblocktrans %}
             {% if group.slug %}
@@ -94,17 +142,18 @@
             {% render_record record %}
         {% endfor %}
     {% endif %}
+    </div>
 
-	<div>
+    <div id="events">
 	<h2>{% blocktrans %}Events{% endblocktrans %}</h2>
 	<ul class="plain_list nugget_9c_list">
 	{% for event in group.event_set.all %}
             {% include 'base/_nugget_9c_list.html' %}	
 	{% endfor %}
 	</ul>
-	</div>
+    </div>
 
-	<div>
+    <div id="challenges">
 	<h2>{% blocktrans %}Challenges{% endblocktrans %}</h2>
 	  <ul class='plain_list nugget_3c'>
 	{% for challenge in group.challenge_set.all %}
@@ -134,32 +183,9 @@
         </li>
 	{% endfor %}
 	</ul>
-	</div>
+    </div>
 
-        <p>
-	  {% blocktrans with group.total_points as total_points and group.total_members as num_members %}
-            Community points: {{ total_points }}<br />
-            Total members: {{ num_members }}<br />
-	  {% endblocktrans %}
-        </p>
-        <p>
-          {% if group.is_joinable and is_member %}
-          <a href="{% url group_leave group.id %}">
-	    {% blocktrans %}Leave Community{% endblocktrans %}
-	  </a>
-          {% endif %}
-          {% if group.is_joinable and not is_member and not membership_pending %}
-          <a class="button" href="{% url group_join group.id %}">
-	    {% blocktrans %}Join Community{% endblocktrans %}
-	  </a>
-          {% endif %}
-	</p>
-        {% if membership_pending %}
-        <p>
-	  {% blocktrans %}Your membership status is currently <b>pending</b>.{% endblocktrans %}
-	</p>
-        {% endif %}
-    
+    <div id="requests">
 	{% if requesters %}
         <h3>{% blocktrans %}Membership Requests{% endblocktrans %}</h3>
         <ul>
@@ -180,9 +206,9 @@
                 </li>
             {% endfor %}
         </ul>
-    {% endif %}
+	{% endif %}
 
-    {% if event_requests %}
+	{% if event_requests %}
         <h3>{% blocktrans %}Event Link Requests{% endblocktrans %}</h3>
         <ul>
           {% for er in event_requests %}
@@ -204,9 +230,9 @@
           </li>
           {% endfor %}
         </ul>
-    {% endif %}
+	{% endif %}
 
-    {% if challenge_requests %}
+	{% if challenge_requests %}
         <h3>{% blocktrans %}Challenge Link Requests{% endblocktrans %}</h3>
         <ul>
           {% for cr in challenge_requests %}
@@ -228,22 +254,10 @@
           </li>
           {% endfor %}
         </ul>
-    {% endif %}
-    
-    {% if is_member %}
-        <h3>{% blocktrans %}Community Invitations{% endblocktrans %}</h3>
-        <p>
-          {% blocktrans with group.invites_sent as num_invites %}
-	  Invites sent: {{ num_invites }}
-	  {% endblocktrans %}
-          <a class="button invite_friend_link" href="{% url invite-invite %}">
-	    {% blocktrans %}Send Invite{% endblocktrans %}</a>
-        </p>
-        <div id="invite_friend_dialog">
-          {% get_invite_form for group %}
-        </div>
-    {% endif %}
-    
+	{% endif %}
+    </div>
+
+    <div id="actions">
     {% if popular_actions %}
         <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
         {% for action in popular_actions %}
@@ -259,6 +273,7 @@
         </p>
         {% endfor %}
     {% endif %}
+    </div>
 
 <script>
     var RAH = RAH || {};
