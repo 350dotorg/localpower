@@ -14,6 +14,9 @@ towards your community's goals.
 <br/><br/>
 <a class="button" href="{% url group_create %}"><b>+</b>
   {% blocktrans %}Start a Community{% endblocktrans %}</a>
+<br/><br/>
+<a href="{% url group_external_link_only_create %}">
+  {% blocktrans %}(Just add my group to the map &mdash; we have a home on the web somewhere else){% endblocktrans %}</a>
 {% endblock %}
 {% block ribbon_bar %}
 {% blocktrans with groups|length as num_groups %}

@@ -59,6 +59,35 @@ def group_create(request):
     }, context_instance=RequestContext(request))
 
 @login_required
+@csrf_protect
+def group_external_link_only_create(request):
+    """
+    create a form a user can use to create a minimal group which is added to the map
+    but does not offer any features, since it has a home somewhere else on the web.
+    on POST save this group to the database and automatically add the creator
+    to the said group as a manager.
+    """
+    nav_selected = "communities"
+    if request.method == "POST":
+        form = GroupExternalLinkOnlyForm(request.POST, request.FILES)
+        if form.is_valid():
+            group = form.save()
+            GroupUsers.objects.create(group=group, user=request.user, is_manager=True)
+            Stream.objects.get(slug="community-create").enqueue(content_object=group, start=group.created)
+            Record.objects.create_record(request.user, 'group_create', group)
+            badge_cache.possibly_award_badge('created_a_community', user=request.user)
+            messages.success(request, _("%(group)s has been created.") % {
+                    'group': group})
+            return redirect("group_detail", group_slug=group.slug)
+    else:
+        form = GroupExternalLinkOnlyForm()
+    return render_to_response("groups/group_create.html", {
+        "form": form,
+        "site": Site.objects.get_current(),
+        "nav_selected": nav_selected
+    }, context_instance=RequestContext(request))
+
+@login_required
 def group_leave(request, group_id):
     group = get_object_or_404(Group, id=group_id, is_geo_group=False)
     if request.user.id in group.users.all().values_list("id", flat=True):
