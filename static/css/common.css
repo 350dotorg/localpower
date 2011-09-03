@@ -442,7 +442,8 @@ Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav 
 #tab_nav li a {
     color: #333;
 }
-#tab_nav li.tab_nav_selected {
+#tab_nav li.tab_nav_selected,
+#tab_nav li.ui-tabs-selected {
     float: left;
     color: #006499;
     background: #FFF;
