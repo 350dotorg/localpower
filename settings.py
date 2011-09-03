@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'twitter_app',
     'django_extensions',
     'groups',
+    'group_links',
     'search_widget',
     'flagged',
     'invite',
