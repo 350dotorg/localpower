@@ -40,8 +40,11 @@ class GroupForm(forms.ModelForm):
 
     class Meta:
         model = Group
-        exclude = ("is_featured", "lat", "lon", "is_geo_group", "location_type", "sample_location", "member_count",
-                   "parent", "users", "requesters", "email_blacklisted", "disc_moderation", "disc_post_perm",)
+        exclude = ("is_featured", "lat", "lon",
+                   "is_geo_group", "location_type", "sample_location", "member_count",
+                   "parent", "users", "requesters", 
+                   "email_blacklisted", "disc_moderation", "disc_post_perm",
+                   "is_external_link_only")
         widgets = {
             "membership_type": forms.RadioSelect
         }
