@@ -103,6 +103,10 @@ class GroupExternalLinkOnlyForm(GroupForm):
                    "is_external_link_only",
                    "membership_type")
 
+    def save(self):
+        group = super(GroupForm, self).save()
+        group.is_external_link_only = True
+        return group
 
 class MembershipForm(forms.Form):
     MEMBERSHIP_ROLES = (
