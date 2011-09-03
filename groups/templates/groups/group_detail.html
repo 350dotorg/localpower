@@ -44,7 +44,9 @@
 {% endblock %}
 
 {% block content %}
-    {% if not group.is_external_link_only %}
+    {% if group.is_external_link_only %}
+    <a class="button" rel="nofollow" href="{{group.external_link}}">Visit Site</a>
+    {% else %}
     <div id="overview">
         <table class="tablesorter">
             <thead>

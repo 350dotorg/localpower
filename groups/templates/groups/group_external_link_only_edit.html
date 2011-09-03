@@ -15,6 +15,9 @@
       {% with group_form as form %}
       {% include "groups/_group_form.html" %}
       {% endwith %}
+      {% with link_form as form %}
+      {% include "groups/_group_form.html" %}
+      {% endwith %}
       <p style="clear: both">
 	<input type="submit" name="change_group" 
 	       value="{% blocktrans %}Save Settings{% endblocktrans %}" />

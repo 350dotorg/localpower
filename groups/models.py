@@ -291,6 +291,15 @@ class Group(models.Model):
         content_type = ContentType.objects.get_for_model(self)
         return Invitation.objects.filter(content_type=content_type, object_pk=self.pk).count()
 
+    def external_link(self):
+        if not self.is_external_link_only:
+            return None
+        from group_links.models import ExternalLink
+        try:
+            return self.external_link_set.get()
+        except ExternalLink.DoesNotExist:
+            return None
+
     def __unicode__(self):
         return u'%s' % self.name
 

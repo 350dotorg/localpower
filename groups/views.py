@@ -27,6 +27,8 @@ from invite.forms import InviteForm
 from utils import hash_val, forbidden
 from messaging.models import Stream
 from events.models import Event
+from group_links.forms import ExternalLinkForm
+from group_links.models import ExternalLink
 
 from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
 from forms import (GroupForm, 
@@ -229,11 +231,17 @@ def group_list(request):
                               context_instance=RequestContext(request))
 
 def _group_external_link_only_edit(request, group):
+    external_link = group.external_link() # This will return None if it's not set yet
+    group_form = None
+    link_form = None
+
     if request.method == "POST":
         if "change_group" in request.POST:
             group_form = GroupExternalLinkOnlyForm(request.POST, request.FILES, instance=group)
-            if group_form.is_valid():
+            link_form = ExternalLinkForm(request.POST, request.FILES, instance=external_link)
+            if group_form.is_valid() and link_form.is_valid():
                 group = group_form.save()
+                link = link_form.save(group)
                 messages.success(request, _("%(group)s has been updated.") % {'group': group})
                 return redirect("group_edit", group_slug=group.slug)
         elif "upgrade_group" in request.POST:
@@ -245,8 +253,9 @@ def _group_external_link_only_edit(request, group):
             group.delete()
             messages.success(request, _("%(group)s has been deleted.") % {'group': group})
             return redirect("group_list")
-    else:
-        group_form = GroupExternalLinkOnlyForm(instance=group)
+
+    group_form = group_form or GroupExternalLinkOnlyForm(instance=group)
+    link_form = link_form or ExternalLinkForm(instance=external_link)
     site = Site.objects.get_current()
     return render_to_response("groups/group_external_link_only_edit.html", locals(),
                               context_instance=RequestContext(request))
