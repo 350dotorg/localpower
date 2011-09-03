@@ -10,7 +10,7 @@ class ExternalLink(models.Model):
 
     group = models.ForeignKey(Group, verbose_name=_("group"),
                               related_name="external_link_set")
-    url = models.URLField(verify_exists=False)
+    url = models.URLField(_("URL"), verify_exists=False)
 
     def __unicode__(self):
         return self.url
