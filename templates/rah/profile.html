@@ -19,7 +19,7 @@
         {% endif %}
         <span>{% blocktrans with user.date_joined|date:"M Y" as date_joined %}Joined {{ date_joined }}{% endblocktrans %}</span>
     </p>
-    {{ profile.about|linebreaksbr }}
+    {{ user.get_profile.about|linebreaksbr }}
     
 {% endblock %}
 {% block tab_nav %}
