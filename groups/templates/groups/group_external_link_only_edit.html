@@ -1,0 +1,58 @@
+{% extends "base/nav_form.html" %}
+{% load i18n %}
+{% load dated_static %}
+{% block title %}{% blocktrans %}Edit {{ group }} settings{% endblocktrans %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_detail group.slug %}">{{ group.name }}</a> &rsaquo;
+    {% blocktrans %}Edit Community{% endblocktrans %}
+{% endblock %}
+{% block content %}
+    <form id="group_form" action="" method="post" enctype="multipart/form-data" class="form_6c">
+      <h1>{% blocktrans %}Edit Community{% endblocktrans %}</h1>
+
+      {% with group_form as form %}
+      {% include "groups/_group_form.html" %}
+      {% endwith %}
+      <p style="clear: both">
+	<input type="submit" name="change_group" 
+	       value="{% blocktrans %}Save Settings{% endblocktrans %}" />
+      </p>
+      {% csrf_token %}
+    </form>
+
+    <form id="upgrade_group_form" action="" method="post" class="form_6c">
+      <h3>{% blocktrans %}Add Features{% endblocktrans %}</h3>
+      <p>
+	{% blocktrans %}
+	By converting to a full-fledged group in our system, you will have access
+	to more of the site's features including group invitations and
+	members; email-based discussions with or without moderation;
+	and associated events, campaigns, and projects.
+	{% endblocktrans %}
+      </p>
+      <p><input type="submit" name="upgrade_group"
+		value="{% blocktrans %}Upgrade Group{% endblocktrans %}" /></p>
+      {% csrf_token %}
+    </form>
+    
+    <form id="delete_group_form" action="" method="post" class="form_6c">
+      <h3>{% blocktrans %}Delete Community{% endblocktrans %}</h3>
+      <p>
+	{% blocktrans %}
+	Deleting a community will immediately remove it from our system.
+	<br/>
+	Communities cannot be undeleted.
+	{% endblocktrans %}
+      </p>
+      <p><input type="submit" name="delete_group" value="{% blocktrans %}Delete Community{% endblocktrans %}" /></p>
+      {% csrf_token %}
+    </form>
+
+    <script>
+        var RAH = RAH || {};
+        RAH.pagescripts = RAH.pagescripts || [];
+        RAH.pagescripts.push("{% dated_static 'js/pages/group.edit.js' %}"); 
+    </script>
+{% endblock %}

@@ -228,6 +228,29 @@ def group_list(request):
     return render_to_response("groups/group_list.html", locals(), 
                               context_instance=RequestContext(request))
 
+def _group_external_link_only_edit(request, group):
+    if request.method == "POST":
+        if "change_group" in request.POST:
+            group_form = GroupExternalLinkOnlyForm(request.POST, request.FILES, instance=group)
+            if group_form.is_valid():
+                group = group_form.save()
+                messages.success(request, _("%(group)s has been updated.") % {'group': group})
+                return redirect("group_edit", group_slug=group.slug)
+        elif "upgrade_group" in request.POST:
+            group.is_external_link_only = False
+            group.save()
+            messages.success(request, _("%(group)s has been upgraded.") % {'group': group})
+            return redirect("group_edit", group_slug=group.slug)
+        elif "delete_group" in request.POST:
+            group.delete()
+            messages.success(request, _("%(group)s has been deleted.") % {'group': group})
+            return redirect("group_list")
+    else:
+        group_form = GroupExternalLinkOnlyForm(instance=group)
+    site = Site.objects.get_current()
+    return render_to_response("groups/group_external_link_only_edit.html", locals(),
+                              context_instance=RequestContext(request))
+
 @login_required
 @csrf_protect
 def group_edit(request, group_slug):
@@ -235,6 +258,10 @@ def group_edit(request, group_slug):
     group = get_object_or_404(Group, slug=group_slug, is_geo_group=False)
     if not group.is_user_manager(request.user):
         return forbidden(request)
+
+    if group.is_external_link_only:
+        return _group_external_link_only_edit(request, group)
+
     if request.method == "POST":
         if "change_group" in request.POST:
             group_form = GroupForm(request.POST, request.FILES, instance=group)
