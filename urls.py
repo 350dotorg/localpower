@@ -8,6 +8,7 @@ from rah import admin as rah_admin
 from rah.feeds import UserActivityFeed, CommentsFeed
 from geo import admin as geo_admin
 from groups import admin as groups_admin
+from group_links import admin as group_links_admin
 from tagging import admin as tagging_admin
 from events import admin as event_admin
 from media_widget import admin as media_widget_admin
