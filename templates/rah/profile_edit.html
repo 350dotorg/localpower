@@ -5,28 +5,35 @@
 {% block content %}
     <h1>{% blocktrans %}Edit your Profile{% endblocktrans %}</h1>
     <div id="profile_edit_tabs" class="tabs">
-        <ul>
+        <ul id="tab_nav" class="plain_list">
             <li><a href="#account_tab">{% blocktrans %}Account{% endblocktrans %}</a></li>
             <li><a href="#notifications_tab">{% blocktrans %}Notifications{% endblocktrans %}</a></li>
             <li><a href="#social_networks_tab">{% blocktrans %}Social Networks{% endblocktrans %}</a></li>
+	    <li><a href="#settings_tab">{% blocktrans %}Settings{% endblocktrans %}</a></li>
         </ul>
+	<div id="settings_tab">
+          <p>
+            {% if "www.gravatar.com" in profile.profile_picture %}
+            <a href="http://en.gravatar.com/" target="_blank">{% blocktrans %}Change your avatar on gravatar.com{% endblocktrans %}</a><br/>
+            {% endif %}
+            {% if not profile.facebook_connect_only %}
+            <a href="{% url password_change %}">{% blocktrans %}Change your password{% endblocktrans %}</a><br/>
+            {% endif %}
+          </p>
+	</div>
         <div id="account_tab">
-            <p>
-                {% if "www.gravatar.com" in profile.profile_picture %}
-                    <a href="http://en.gravatar.com/" target="_blank">{% blocktrans %}Change your avatar on gravatar.com{% endblocktrans %}</a><br/>
-                {% endif %}
-                {% if not profile.facebook_connect_only %}
-                    <a href="{% url password_change %}">{% blocktrans %}Change your password{% endblocktrans %}</a><br/>
-                {% endif %}
-            </p>
-            <form id="profile_edit_form" action="" method="post" autocomplete="false">
+            <form class="form_6c" id="profile_edit_form" 
+		  action="" method="post" autocomplete="false">
                 {% with account_form as form %}
                     {% include "base/_form.html" %}
                 {% endwith %}
                 {% with profile_form as form %}
                     {% include "base/_form.html" %}
                 {% endwith %}
-                <p><input type="submit" name="edit_account" value="{% blocktrans %}Save profile{% endblocktrans %}" /></p>
+                <p style="clear: both">
+		  <input type="submit" name="edit_account"
+			 value="{% blocktrans %}Save profile{% endblocktrans %}" />
+		</p>
                 {% csrf_token %}
             </form>
         </div>
@@ -52,7 +59,7 @@
                         {% endif %}
                     </div>
                 {% endwith %}
-                <br />
+                <br style="clear: both" />
                 {% with stream_notification_form.stream_notifications as field %}
                     <div id="stream_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
@@ -73,7 +80,7 @@
                         {% endif %}
                     </div>
                 {% endwith %}
-                <p><input type="submit" name="edit_notifications" value="{% blocktrans %}Save notifications{% endblocktrans %}" /></p>
+                <p style="clear: both"><input type="submit" name="edit_notifications" value="{% blocktrans %}Save notifications{% endblocktrans %}" /></p>
                 {% csrf_token %}
             </form>
         </div>
