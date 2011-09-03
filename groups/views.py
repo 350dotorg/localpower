@@ -78,8 +78,10 @@ def group_external_link_only_create(request):
     nav_selected = "communities"
     if request.method == "POST":
         form = GroupExternalLinkOnlyForm(request.POST, request.FILES)
-        if form.is_valid():
+        link_form = ExternalLinkForm(request.POST, request.FILES, instance=external_link)
+        if form.is_valid() and link_form.is_valid():
             group = form.save()
+            link = link_form.save(group)
             GroupUsers.objects.create(group=group, user=request.user, is_manager=True)
             Stream.objects.get(slug="community-create").enqueue(content_object=group, start=group.created)
             Record.objects.create_record(request.user, 'group_create', group)
@@ -89,8 +91,10 @@ def group_external_link_only_create(request):
             return redirect("group_detail", group_slug=group.slug)
     else:
         form = GroupExternalLinkOnlyForm()
+        link_form = ExternalLinkForm()
     return render_to_response("groups/group_create.html", {
         "form": form,
+        "link_form": link_form,
         "site": Site.objects.get_current(),
         "nav_selected": nav_selected
     }, context_instance=RequestContext(request))
