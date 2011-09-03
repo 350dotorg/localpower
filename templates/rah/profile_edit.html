@@ -39,7 +39,7 @@
         </div>
         <div id="notifications_tab">
             <form id="notifications_form" action="" method="post" class="form_6c">
-                {% with group_notification_form.notifications as field %}
+                {% with group_notifications_form.notifications as field %}
                     <div id="community_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
                         <div class="notification_selectors" class="hidden">
@@ -60,7 +60,7 @@
                     </div>
                 {% endwith %}
                 <br style="clear: both" />
-                {% with stream_notification_form.stream_notifications as field %}
+                {% with stream_notifications_form.stream_notifications as field %}
                     <div id="stream_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
                         <div class="notification_selectors" class="hidden">
