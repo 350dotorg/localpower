@@ -120,7 +120,10 @@ class Group(models.Model):
     lat = models.FloatField(_('latitute'), null=True, blank=True)
     membership_type = models.CharField(_('membership type'), max_length=1, 
                                        choices=MEMBERSHIP_CHOICES, default="O", null=True)
+
     is_geo_group = models.BooleanField(_('is geo group'), default=False)
+    is_external_link_only = models.BooleanField(_('is external link only'), default=False)
+
     location_type = models.CharField(_('location type'), max_length=1,
                                      choices=LOCATION_TYPE, blank=True)
     sample_location = models.ForeignKey(Location, null=True, blank=True, 
@@ -150,7 +153,11 @@ class Group(models.Model):
         verbose_name_plural = _("communities")
 
     def is_joinable(self):
-        return not self.is_geo_group
+        if self.is_geo_group:
+            return False
+        if self.is_external_link_group:
+            return False
+        return True
 
     def is_public(self):
         return self.is_geo_group or self.membership_type == "O"
