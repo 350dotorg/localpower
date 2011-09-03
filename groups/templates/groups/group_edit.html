@@ -9,7 +9,9 @@
     {% blocktrans %}Edit Community{% endblocktrans %}
 {% endblock %}
 {% block content %}
-                <ul>
+    <h1>{% blocktrans %}Edit Community{% endblocktrans %}</h1>
+      <div id="group_edit_tabs" class="tabs">
+                <ul id="tab_nav" class="plain_list">
                     <li><a href="#group_tab">{% blocktrans %}Community{% endblocktrans %}</a></li>
                     <li><a href="#members_tab">{% blocktrans %}Members{% endblocktrans %}</a></li>
                     <li><a href="#discussions_tab">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
@@ -19,7 +21,7 @@
                         {% with group_form as form %}
                             {% include "groups/_group_form.html" %}
                         {% endwith %}
-                            <p>
+                            <p style="clear: both">
 			      <input type="submit" name="change_group" 
 				      value="{% blocktrans %}Save Settings{% endblocktrans %}" />
 			    </p>
@@ -37,21 +39,15 @@
                     </form>
                 </div>
                 <div id="members_tab">
-                    <form id="membership_form" action="" method="post" class="form_6c">
-                        {% with membership_form as form %}
-                            {% include "groups/_membership_form.html" %}
-                        {% endwith %}
-                        {% csrf_token %}
-                    </form>
-                </div>
-                <div id="discussions_tab">
-                    <form action="" method="post" class="form_6c">
-                        {{discussions_form.as_p}}
-                        <p><input type="submit" name="discussion_settings" value="{% blocktrans %}Save Discussion Settings{% endblocktrans %}" /></p>
-                        {% csrf_token %}
-                    </form>
-                </div>
-        {% if requesters %}
+		  <h4>{% blocktrans %}Member Roles{% endblocktrans %}</h4>
+                  <form id="membership_form" action="" method="post" class="form_6c">
+                    {% with membership_form as form %}
+                    {% include "groups/_membership_form.html" %}
+                    {% endwith %}
+                    {% csrf_token %}
+                  </form>
+
+		  {% if requesters %}
                 <h4>{% blocktrans %}Membership Requests{% endblocktrans %}</h4>
                 <ul>
                     {% for requester in requesters %}
@@ -70,7 +66,17 @@
                         </li>
                     {% endfor %}
                 </ul>
-        {% endif %}
+		{% endif %}
+
+                </div>
+                <div id="discussions_tab">
+                    <form action="" method="post" class="form_6c">
+                        {{discussions_form.as_p}}
+                        <p><input type="submit" name="discussion_settings" value="{% blocktrans %}Save Discussion Settings{% endblocktrans %}" /></p>
+                        {% csrf_token %}
+                    </form>
+                </div>
+      </div>
     <script>
         var RAH = RAH || {};
         RAH.pagescripts = RAH.pagescripts || [];
