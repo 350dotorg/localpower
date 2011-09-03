@@ -155,7 +155,7 @@ class Group(models.Model):
     def is_joinable(self):
         if self.is_geo_group:
             return False
-        if self.is_external_link_group:
+        if self.is_external_link_only:
             return False
         return True
 
