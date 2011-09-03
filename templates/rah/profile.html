@@ -23,7 +23,7 @@
     
 {% endblock %}
 {% block tab_nav %}
-    <li>{% blocktrans %}Overview{% endblocktrans %}</li>
+    <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
     <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
     <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
@@ -34,6 +34,7 @@
     {% endif %}
 {% endblock %}
 {% block content %}
+	<div id="communities">
         {% if communities %}
             <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_6c_list">
@@ -58,6 +59,8 @@
             {% endfor %}
             </ul>
         {% endif %}
+	</div>
+	<div id="actions">
         {% if commitment_list %}
             <h2>{% blocktrans %}Commitments{% endblocktrans %}</h2>
             <p>
@@ -93,6 +96,8 @@
             {% endfor %}
             </p>
         {% endif %}
+	</div>
+	<div id="overview">
         {% if records %}
             <h2>{% blocktrans %}Recent Activity{% endblocktrans %}
                 <a class="atom_link" href="{% url user_activity_feed user.id %}">
@@ -103,6 +108,13 @@
                 {% render_record rec %}
             {% endfor %}
         {% endif %}
+	</div>
+	<div id="badges">
+	</div>
+	<div id="events">
+	</div>
+	<div id="challenges">
+	</div>
 {% endblock %}
 
 {% block sidebar %}
