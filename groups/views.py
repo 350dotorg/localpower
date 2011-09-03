@@ -29,7 +29,12 @@ from messaging.models import Stream
 from events.models import Event
 
 from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
-from forms import GroupForm, MembershipForm, DiscussionSettingsForm, DiscussionCreateForm, DiscussionApproveForm, DiscussionRemoveForm
+from forms import (GroupForm, 
+                   MembershipForm,
+                   DiscussionSettingsForm,
+                   DiscussionCreateForm,
+                   DiscussionApproveForm,
+                   DiscussionRemoveForm)
 
 @login_required
 @csrf_protect
