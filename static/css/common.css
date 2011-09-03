@@ -449,12 +449,12 @@ Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav Tab Nav 
     border: 1px solid #d6d6d6;
     border-bottom: 0px;
 }
-#tab_nav li.tab_nav_link {
+#tab_nav .tab_nav_link {
     float: right;
     font-size: 12px;
     font-family: inherit;
 }
-#tab_nav li.tab_nav_link a {
+#tab_nav .tab_nav_link a {
     color: #006499;
 }
 
