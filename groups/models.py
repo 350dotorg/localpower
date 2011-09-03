@@ -238,7 +238,7 @@ class Group(models.Model):
 
     def is_user_manager(self, user):
         return user.is_authenticated() and \
-            self.is_joinable() and \
+            not self.is_geo_group and \
             GroupUsers.objects.filter(user=user, group=self, is_manager=True).exists()
 
     def managers(self):
