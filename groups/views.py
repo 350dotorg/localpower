@@ -30,6 +30,7 @@ from events.models import Event
 
 from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
 from forms import (GroupForm, 
+                   GroupExternalLinkOnlyForm,
                    MembershipForm,
                    DiscussionSettingsForm,
                    DiscussionCreateForm,

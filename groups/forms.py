@@ -93,6 +93,17 @@ class GroupForm(forms.ModelForm):
             group.image.storage.delete(original_name)
         return group
 
+class GroupExternalLinkOnlyForm(GroupForm):
+    class Meta:
+        model = Group
+        exclude = ("is_featured", "lat", "lon",
+                   "is_geo_group", "location_type", "sample_location", "member_count",
+                   "parent", "users", "requesters", 
+                   "email_blacklisted", "disc_moderation", "disc_post_perm",
+                   "is_external_link_only",
+                   "membership_type")
+
+
 class MembershipForm(forms.Form):
     MEMBERSHIP_ROLES = (
         ('', _('--Set Membership Role--')),
