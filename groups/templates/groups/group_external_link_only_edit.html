@@ -11,11 +11,11 @@
 {% block content %}
     <form id="group_form" action="" method="post" enctype="multipart/form-data" class="form_6c">
       <h1>{% blocktrans %}Edit Community{% endblocktrans %}</h1>
-
-      {% with group_form as form %}
+      {% with link_form as form %}
       {% include "groups/_group_form.html" %}
       {% endwith %}
-      {% with link_form as form %}
+
+      {% with group_form as form %}
       {% include "groups/_group_form.html" %}
       {% endwith %}
       <p style="clear: both">
