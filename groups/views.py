@@ -78,7 +78,7 @@ def group_external_link_only_create(request):
     nav_selected = "communities"
     if request.method == "POST":
         form = GroupExternalLinkOnlyForm(request.POST, request.FILES)
-        link_form = ExternalLinkForm(request.POST, request.FILES, instance=external_link)
+        link_form = ExternalLinkForm(request.POST, request.FILES)
         if form.is_valid() and link_form.is_valid():
             group = form.save()
             link = link_form.save(group)
