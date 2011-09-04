@@ -54,4 +54,14 @@ urlpatterns = patterns(
         'group_association_request', 
         {'action': 'deny', 'content_type': 'challenges.challenge'}, 
         name='group_challenge_deny'),
+
+    url(r'^(?P<group_id>\d+)/action_approve/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'approve', 'content_type': 'actions.action'}, 
+        name='group_action_approve'),
+    url(r'^(?P<group_id>\d+)/action_deny/(?P<object_id>\d+)/$', 
+        'group_association_request', 
+        {'action': 'deny', 'content_type': 'actions.action'}, 
+        name='group_action_deny'),
+
 )

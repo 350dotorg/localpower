@@ -259,6 +259,30 @@
           {% endfor %}
         </ul>
 	{% endif %}
+
+	{% if action_requests %}
+        <h3>{% blocktrans %}Action Link Requests{% endblocktrans %}</h3>
+        <ul>
+          {% for ar in action_requests %}
+          <li class="membership_request">
+	    {% with ar.content_object as content_object %}
+	    {% linkify content_object as object_link %}
+	    {% blocktrans %}
+            Somebody has requested to link this community to {{ object_link }}
+	    {% endblocktrans %}
+            <div class="membership_tools">
+              <a href="{% url group_action_approve ar.group.id ar.object_id %}">
+		{% blocktrans %}Approve{% endblocktrans %}</a>
+	      {% blocktrans %}or{% endblocktrans %}
+              <a href="{% url group_action_deny ar.group.id ar.object_id %}">
+		{% blocktrans %}Deny{% endblocktrans %}</a>
+            </div>
+	    {% endwith %}
+          </li>
+          {% endfor %}
+        </ul>
+	{% endif %}
+
     </div>
 
     <div id="actions">

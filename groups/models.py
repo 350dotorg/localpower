@@ -228,6 +228,10 @@ class Group(models.Model):
         return self.association_requests_waiting_approval(
             user, content_type=ContentType.objects.get(app_label="challenges", model="challenge"))
 
+    def actions_waiting_approval(self, user):
+        return self.association_requests_waiting_approval(
+            user, content_type=ContentType.objects.get(app_label="actions", model="action"))
+
     def association_requests_waiting_approval(self, user, content_type=None):
         if user.is_authenticated() and self.is_user_manager(user):
             requests = GroupAssociationRequest.objects.filter(group=self, approved=False)
