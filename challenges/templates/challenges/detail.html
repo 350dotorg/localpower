@@ -10,27 +10,34 @@
 {% block title_bar_sub %}{% blocktrans %}Petition Challenge{% endblocktrans %}{% endblock %}
 {% block title_bar %}<div class="title_bar_full_width_title">{{ challenge.title }}</div>{% endblock %}
 {% block tab_nav %}
-    <li class="tab_nav_selected">{% blocktrans %}Overview{% endblocktrans %}</li>
+    <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% ifequal challenge.creator.id request.user.id %}
-        <li class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
+        <span class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
 	    {% blocktrans %}Edit this Challenge{% endblocktrans %}
-	</a></li>
+	</a></span>
     {% endifequal %}
 {% endblock %}
 {% block content %}
-<p class="action_deck">
+<div id="overview">
+  <p class="action_deck">
     {{ challenge.description }}
-</p>
-    <form action="{% url challenges_sign challenge.id %}" method="post" class="form_6c form_6c_dark">
-        {% include "base/_form.html" %}
-        {% csrf_token %}
-        <div class="form_buttons">
-            <button class="button button_mega" type="submit">{% blocktrans %}Sign the Petition{% endblocktrans %}</button>
-        </div>
-    </form>
-    <br/>
+  </p>
+
+  <form action="{% url challenges_sign challenge.id %}" method="post"
+	class="form_6c form_6c_dark">
+    {% include "base/_form.html" %}
+    {% csrf_token %}
+    <div class="form_buttons">
+      <button class="button button_mega" type="submit">
+	{% blocktrans %}Sign the Petition{% endblocktrans %}
+      </button>
+    </div>
+  </form>
+</div>
+
+<div id="supporters">
     {% if supporters %}
         <h2>{% blocktrans %}Latest Supporters{% endblocktrans %}</h2>
         <ul class="plain_list nugget_2c_list">
@@ -48,19 +55,23 @@
         </p>
         {% endif %}
     {% endif %}
-    <div id="comments">
-        <h2 id="comments_form_heading">
-            {% get_content_type_id for challenge as content_type_id %}
-            <a class="button button_small button_feed" href="{% url comments_feed content_type_id,challenge.id %}">
-                <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}
-            </a>
-            {% blocktrans %}Discussions{% endblocktrans %}
-        </h2>
-        {% with challenge as object %}
-            {% render_comment_form for object %}
-            {% render_comment_list for object %}
-        {% endwith %}
-    </div>
+</div>
+
+<div id="discussions">
+  <h2 id="comments_form_heading">
+    {% get_content_type_id for challenge as content_type_id %}
+    <a class="button button_small button_feed" 
+       href="{% url comments_feed content_type_id,challenge.id %}">
+      <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}
+    </a>
+    {% blocktrans %}Discussions{% endblocktrans %}
+  </h2>
+  {% with challenge as object %}
+  {% render_comment_form for object %}
+  {% render_comment_list for object %}
+  {% endwith %}
+</div>
+
 {% endblock %}
 {% block sidebar %}
     <div class="ribbon_small ribbon_small_dark">
