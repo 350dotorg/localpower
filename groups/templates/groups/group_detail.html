@@ -286,21 +286,30 @@
     </div>
 
     <div id="actions">
-    {% if popular_actions %}
-        <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
-        {% for action in popular_actions %}
-        <p>
-          <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
-          <span class="smaller">
-	    {% blocktrans count action.completes_in_group as num_completions %}
-	    {{ num_completions }} member
-	    {% plural %}
-	    {{ num_completions }} members
-	    {% endblocktrans %}
-	  </span>
-        </p>
-        {% endfor %}
-    {% endif %}
+      {% if group.action_set.count %}
+      <h3>{% blocktrans %}Actions{% endblocktrans %}</h3>
+      {% for action in group.action_set.all %}
+      <p>
+        <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
+      </p>
+      {% endfor %}      
+      {% endif %}
+
+      {% if popular_actions %}
+      <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
+      {% for action in popular_actions %}
+      <p>
+        <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
+        <span class="smaller">
+	  {% blocktrans count action.completes_in_group as num_completions %}
+	  {{ num_completions }} member
+	  {% plural %}
+	  {{ num_completions }} members
+	  {% endblocktrans %}
+	</span>
+      </p>
+      {% endfor %}
+      {% endif %}
     </div>
 
     {% endif %}
