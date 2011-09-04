@@ -33,9 +33,16 @@ def action_show(request, tag_slug=None):
         'nav_selected': nav_selected
     }, context_instance=RequestContext(request))
 
-
-def community_show(request):
-    return render_to_response("actions/community_show.html", {}, context_instance=RequestContext(request))
+@csrf_protect
+def community_show(request, action_slug):
+    """Detail page for an action"""
+    nav_selected = "actions"
+    action = get_object_or_404(Action, slug=action_slug)
+    default_vars = _default_action_vars(action, request.user)
+    default_vars.update(locals())
+    if request.method == "POST":
+        pass
+    return render_to_response("actions/action_community_show.html", default_vars, context_instance=RequestContext(request))
 
 @csrf_protect
 def action_detail(request, action_slug):

@@ -1,0 +1,122 @@
+{% extends "base/nav_6c3c.html" %}
+{% load comments %}
+{% load dated_static %}
+{% load i18n %}
+{% block meta_desc %}{{action.name}}: {{action.teaser}}{% endblock %}
+
+{% block extrahead %}
+    <meta property="og:image" content="{{ action.get_detail_illustration }}" />
+    <meta property="og:type" content="activity" />
+    <meta property="og:title" content="{{action.name}}" />
+    <meta property="og:description" content="{{action.teaser}}" />
+    {% get_content_type_id for action as content_type_id %}
+    <link rel="alternate" type="application/atom+xml" href="{% url comments_feed content_type_id,action.id %}" 
+          title="{{ action }} comments feed" />
+{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &raquo;
+    <a href="{% url action_show %}">{% blocktrans %}Actions{% endblocktrans %}</a> &raquo;
+    {{action.name}}
+{% endblock %}
+
+{% block title_bar %}
+    {{action.name}}
+{% endblock %}
+{% block title_bar_sub %}
+    {% blocktrans %}{{ SITE_NAME }} Action{% endblocktrans %}
+{% endblock %}
+{% block title_bar_floaters %}
+    <div class="title_bar_floater">
+        <div class="floater_title">{% blocktrans %}Points{% endblocktrans %}</div>
+        <div class="floater_body"><h1>{{action.points}}</h1></div>
+    </div>
+    <div class="title_bar_floater">
+        <div class="floater_title">{% blocktrans %}Badge{% endblocktrans %}</div>
+        <div class="floater_body">
+            <a href="/badges/{{ action.slug }}-action-badge/">
+                <img src="{{ action.image_paths.white }}" width="80" height="80" />
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{action.name}}{% endblock %}
+
+{% block content %}
+    {% render_template_snippet action.content %}
+    <div id="comments">
+        {% get_content_type_id for action as content_type_id %}
+        <a class="feed_link" href="{% url comments_feed content_type_id,action.id %}">
+	  {% blocktrans %}Feed{% endblocktrans %}</a>
+        {% with action as object %}
+            {% render_comment_form for object %}
+            {% render_comment_list for object %}
+        {% endwith %}
+    </div>
+    <div id="commit_widget">
+        <p>{% blocktrans %}When do you think you'll complete this action?{% endblocktrans %}</p>
+        <div class="commit_calendar"></div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    <div class="ribbon_small ribbon_small_dark">
+        Share
+        <div class="ribbon_small_wrap ribbon_small_wrap_dark"></div>
+    </div>
+    {% with action as object %}
+        {% include "base/_nugget_share.html" %}
+    {% endwith %}
+    {% if progress.date_committed and not progress.is_completed %}
+        <div class="ribbon_small">
+            {% blocktrans %}Your Commitment{% endblocktrans %}
+        <div class="ribbon_small_wrap"></div>
+        </div>
+        <p>
+          {% blocktrans with progress.date_committed|date as commitment_date %}
+	  You committed to complete this action by {{ commitment_date }}. 
+	  {% endblocktrans %}
+          (<a href="#" class="commit_trigger">
+	    {% blocktrans %}change date{% endblocktrans %}
+	  </a> {% blocktrans %}or{% endblocktrans %} 
+          <a href="{% url action_cancel action.slug %}" class="commit_cancel">
+	    {% blocktrans %}cancel{% endblocktrans %}</a>)
+        </p>
+    {% endif %}
+
+    {% if action.users_completed %}
+        <div class="ribbon_small">
+            {% blocktrans with actions.users_completed as users_completed %}
+	    Completed ({{ users_completed }})
+	    {% endblocktrans %}
+            <div class="ribbon_small_wrap"></div>
+        </div>
+        <ul class="plain_list nugget_3c_grid_3">
+            {% for user in users_completed %}
+                <li>
+                    <img width="54" height="54" src="{{user.get_profile.profile_picture}}" />
+                    <div>
+                    {% safe_user_link user %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <div class="ribbon_small">
+        {% blocktrans %}Image Gallery{% endblocktrans %}
+        <div class="ribbon_small_wrap"></div>
+    </div>
+        TODO
+    <div class="ribbon_small">
+        {% blocktrans %}Links and Downloads{% endblocktrans %}
+        <div class="ribbon_small_wrap"></div>
+    </div>
+        TODO
+{% endblock %}
+<script>
+    var RAH = RAH || {};
+    RAH.pagescripts = RAH.pagescripts || [];
+    RAH.pagescripts.push("{% dated_static 'js/pages/action.detail.js' %}");
+</script>
