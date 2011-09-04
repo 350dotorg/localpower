@@ -17,7 +17,7 @@ from rah.decorators import login_required_save_POST
 
 from settings import GA_TRACK_PAGEVIEW
 from models import Action, UserActionProgress, ActionForm, ActionFormData
-from forms import ActionCommitForm
+from forms import ActionCommitForm, ActionGroupLinkForm
 
 def action_show(request, tag_slug=None):
     """Show all actions by Category"""
@@ -34,24 +34,25 @@ def action_show(request, tag_slug=None):
     }, context_instance=RequestContext(request))
 
 @csrf_protect
-def community_show(request, action_slug):
-    """Detail page for an action"""
-    nav_selected = "actions"
-    action = get_object_or_404(Action, slug=action_slug)
-    default_vars = _default_action_vars(action, request.user)
-    default_vars.update(locals())
-    if request.method == "POST":
-        pass
-    return render_to_response("actions/action_community_show.html", default_vars, context_instance=RequestContext(request))
-
-@csrf_protect
 def action_detail(request, action_slug):
     """Detail page for an action"""
     nav_selected = "actions"
     action = get_object_or_404(Action, slug=action_slug)
     default_vars = _default_action_vars(action, request.user)
     default_vars.update(_build_action_form_vars(action, request.user))
-    action_commit_form = ActionCommitForm(user=request.user, action=action, initial={'date_committed':datetime.date.today()+datetime.timedelta(days=1)})
+    action_commit_form = ActionCommitForm(
+        user=request.user, action=action,
+        initial={'date_committed':datetime.date.today()+datetime.timedelta(days=1)})
+
+    group_link_form = None
+    if request.method == "POST":
+        group_link_form = ActionGroupLinkForm(request.user, instance=action, data=request.POST)
+        if group_link_form.is_valid():
+            action = group_link_form.save()
+            messages.success(request, _("Thanks for taking on this project with your group."))
+            return redirect("action_detail", action_slug=action.slug)
+
+    group_link_form = group_link_form or ActionGroupLinkForm(request.user, instance=action)
     default_vars.update(locals())
     return render_to_response("actions/action_detail.html", default_vars, RequestContext(request))
 

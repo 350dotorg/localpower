@@ -67,6 +67,31 @@
         {% endwith %}
     </div>
     <div id="communities">
+      <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
+      {% with action.groups.all as groups %}
+      {% include "groups/_group_nugget_list.html" %}
+      {% endwith %}
+
+      {% with group_link_form as form %}
+      {% if not form.groups.field.queryset.count %}
+      <p>
+	{% url group_list as group_list_url %}
+	{% blocktrans %}
+	You're not yet a member of any communities.  
+	Why don't you <a href="{{group_list_url}}">
+	  look for some communities to join?</a>
+	{% endblocktrans %}
+      </p>	
+      {% else %}
+      <form class="form_6c" method="POST">
+	{% include "base/_form.html" %}
+	{% csrf_token %}
+	<br class="clear" />
+	<input type="submit" name="link_group" 
+	       value="{% blocktrans %}Add{% endblocktrans %}" />
+      </form>
+      {% endif %}
+      {% endwith %}
     </div>
 {% endblock %}
 {% block sidebar %}

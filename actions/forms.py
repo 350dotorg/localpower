@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from records.models import Record
 from tagging.models import Tag
 from tinymce.widgets import TinyMCE
+from groups.forms import GroupAssociationRequestRelatedForm
 
 from models import Action, UserActionProgress
 
@@ -39,3 +40,21 @@ class ActionAdminForm(forms.ModelForm):
         tags = self.cleaned_data["tags"]
         self.instance.tags = " ".join([t.name for t in tags]) if tags and self.instance.pk else ""
         return super(ActionAdminForm, self).save(*args, **kwargs)
+
+class ActionGroupLinkForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
+    class Meta:
+        model = Action
+        fields = ("groups",)
+        widgets = {
+            "groups": forms.CheckboxSelectMultiple(),
+            }
+
+    def __init__(self, user, *args, **kwargs):
+        super(ActionGroupLinkForm, self).__init__(*args, **kwargs)
+        self.user = user
+        self.init_groups(user)
+
+    def save(self, *args, **kwargs):
+        action = super(ActionGroupLinkForm, self).save(*args, **kwargs)
+        self.save_groups(action)
+        return action
