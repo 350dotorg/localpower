@@ -39,27 +39,42 @@
         </div>
         <div id="notifications_tab">
             <form id="notifications_form" action="" method="post" class="form_6c">
-                {% with group_notifications_form.notifications as field %}
-                    <div id="community_notifications" class="form_row {% if field.errors %}error{% endif %}">
-                        {{ field.label_tag }}
-                        <div class="notification_selectors" class="hidden">
-                            <a class="selector select_all" href="">{% blocktrans %}Select All{% endblocktrans %}</a> |
-                            <a class="selector deselect_all" href="">{% blocktrans %}Deselect All{% endblocktrans %}</a>
-                        </div>
-                        {{ field }}
-                        {% if field.help_text %}
-                            <div class="help_text">{{ field.help_text }}</div>
-                        {% endif %}
-                        {% if field.errors %}
-                            <label class="error" for="{{ field.auto_id }}">
-                                {% for error in field.errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </label>
-                        {% endif %}
-                    </div>
-                {% endwith %}
-                <br style="clear: both" />
+              {% with group_notifications_form.notifications as field %}
+              <div id="community_notifications" 
+		   class="form_row {% if field.errors %}error{% endif %}">
+                {{ field.label_tag }}
+
+		{% if not field.field.queryset.count %}
+		<p>
+		  {% url group_list as group_list_url %}
+		  {% blocktrans %}
+		  You're not yet a member of any communities.  
+		  Why don't you <a href="{{group_list_url}}">
+		    look for some communities to join?</a>
+		  {% endblocktrans %}
+		</p>
+		{% else %}
+                <div class="notification_selectors" class="hidden">
+                  <a class="selector select_all" href="">{% blocktrans %}Select All{% endblocktrans %}</a> |
+                  <a class="selector deselect_all" href="">{% blocktrans %}Deselect All{% endblocktrans %}</a>
+                </div>
+                {{ field }}
+                {% if field.help_text %}
+                <div class="help_text">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                <label class="error" for="{{ field.auto_id }}">
+                  {% for error in field.errors %}
+                  {{ error }}
+                  {% endfor %}
+                </label>
+                {% endif %}
+		{% endif %}
+              </div>
+              {% endwith %}
+
+              <br style="clear: both" />
+
                 {% with stream_notifications_form.stream_notifications as field %}
                     <div id="stream_notifications" class="form_row {% if field.errors %}error{% endif %}">
                         {{ field.label_tag }}
