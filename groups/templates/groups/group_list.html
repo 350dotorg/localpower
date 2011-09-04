@@ -11,12 +11,6 @@ or local group become more energy savvy. As a community leader, you can use
 your community to organize meetings, encourage action, and track progress
 towards your community's goals.
 {% endblocktrans %}
-<br/><br/>
-<a class="button" href="{% url group_create %}"><b>+</b>
-  {% blocktrans %}Start a Community{% endblocktrans %}</a>
-<br/><br/>
-<a href="{% url group_external_link_only_create %}">
-  {% blocktrans %}(Just add my group to the map &mdash; we have a home on the web somewhere else){% endblocktrans %}</a>
 {% endblock %}
 {% block ribbon_bar %}
 {% blocktrans with groups|length as num_groups %}
@@ -33,6 +27,27 @@ Showing {{num_groups}} communities
     <div id="events_map_shadow_left"></div>
 </div>
 
+<div id="events_hosting">
+    <img src="{% dated_static 'images/theme/event_example.jpg' %}" width="216" height="162" 
+	 alt="{% blocktrans %}People attending an event{% endblocktrans %}"/>
+    <div>
+      <h2>{% blocktrans %}Start a Community{% endblocktrans %}</h2>
+      <a class="button" href="{% url group_create %}"><b>+</b>
+	  {% blocktrans %}Start a Community{% endblocktrans %}</a>
+      <br/><br/>
+      <p class="smaller">
+	<a href="{% url group_external_link_only_create %}">
+	{% blocktrans %}(Just add my group to the map &mdash; we have a home on the web somewhere else){% endblocktrans %}</a>
+      </p>
+    </div>
+</div>
+<div id="events_search">
+<h2>{% blocktrans %}Search Communities{% endblocktrans %}</h2>
+{% load search_widget %}
+{% search_widget group_search %}
+</div>
+<br class="clear"/>
+
         {% if groups %}
             <h1>{% blocktrans %}Join a Community{% endblocktrans %}</h1>
             <p>
@@ -44,8 +59,6 @@ Showing {{num_groups}} communities
             </p>
             {% include "groups/_group_nugget_list.html" %}
         {% endif %}
-        {% load search_widget %}
-        {% search_widget group_search %}
 
     {% if user.is_authenticated %}
             <h3>{% blocktrans %}Your Communities{% endblocktrans %}</h3>
