@@ -129,7 +129,7 @@ class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("zipcode", "building_type", "about", "is_profile_private")
+        fields = ("zipcode", "about", "is_profile_private")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
