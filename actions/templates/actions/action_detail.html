@@ -43,20 +43,30 @@
 
 {% block title %}{{action.name}}{% endblock %}
 
+{% block tab_nav %}
+    <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
+    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
+    <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
+{% endblock %}
+
 {% block content %}
-    {% render_template_snippet action.content %}
-    <div id="comments">
+    <div id="overview">
+      {% render_template_snippet action.content %}
+    </div>
+    <div id="discussions">
+      <h2 id="comments_form_heading">
         {% get_content_type_id for action as content_type_id %}
-        <a class="feed_link" href="{% url comments_feed content_type_id,action.id %}">
-	  {% blocktrans %}Feed{% endblocktrans %}</a>
+        <a class="button button_small button_feed feed_link"
+	   href="{% url comments_feed content_type_id,action.id %}">
+	  <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}</a>
+	{% blocktrans %}Discussions{% endblocktrans %}
+      </h2>
         {% with action as object %}
             {% render_comment_form for object %}
             {% render_comment_list for object %}
         {% endwith %}
     </div>
-    <div id="commit_widget">
-        <p>{% blocktrans %}When do you think you'll complete this action?{% endblocktrans %}</p>
-        <div class="commit_calendar"></div>
+    <div id="communities">
     </div>
 {% endblock %}
 {% block sidebar %}
