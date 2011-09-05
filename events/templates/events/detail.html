@@ -13,29 +13,29 @@
     <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
     {{ event }}
 {% endblock %}
+{% block title_bar %}
+{{event}}
+{% endblock %}
+{% block title_bar_sub %}
+    {% blocktrans %}{{ SITE_NAME }} Event{% endblocktrans %}
+{% endblock %}
+
+{% block tab_nav %}
+    <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
+    <li><a href="#people">{% blocktrans %}People{% endblocktrans %}</a></li>
+    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
+
+{% endblock %}
 {% block content %}
-    <div class="grid_6 alpha">
-        <div class="box_two_top"></div>
-        <div class="box_two_middle">
-            <h1>{{ event }}</h1>
-            {% include "events/_details.html" %}
-        </div>
-        <div class="box_two_bottom"></div>
-        
-        {% if has_manager_privileges %}
-            <div class="box_two_top"></div>
-            <div class="box_two_middle">
-                <h1>{% blocktrans %}Guest List{% endblocktrans %}</h1>
-                {% include "events/_guest_list.html" %}
-            </div>
-            <div class="box_two_bottom"></div>
-        {% endif %}
+    <div id="overview">
+      {% include "events/_details.html" %}
     </div>
-    <div class="grid_3 omega">
-        <div class="box_one_top"></div>
-        <div class="box_one_middle">
-            {% if has_manager_privileges %}
-                <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
+    <div id="people">        
+        {% if has_manager_privileges %}
+        <h3>{% blocktrans %}Guest List{% endblocktrans %}</h3>
+        {% include "events/_guest_list.html" %}
+
+        <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
                 <ul class="plain_list">
                     <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
                     <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">{% blocktrans %}Add Guest{% endblocktrans %}</a></li>
@@ -49,7 +49,9 @@
                         <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
                     </li>
                 </ul>
-            {% else %}
+                {% include "events/_invitations.html" %}
+		
+		{% else %}
                 <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
                 {% if guest.rsvp_status and not request.GET.reset %}
                     <p>
@@ -68,16 +70,19 @@
         {% if has_manager_privileges %}
             <div class="box_one_top"></div>
             <div class="box_one_middle">
-                {% include "events/_invitations.html" %}
             </div>
             <div class="box_one_bottom"></div>
         {% endif %}
     </div>
-    <br class="clear"/>
-    <br class="clear"/>
-    <div id="comments">
+
+    <div id="discussions">
+      <h2 id="comments_form_heading">
         {% get_content_type_id for event as content_type_id %}
-        <a class="feed_link" href="{% url comments_feed content_type_id,event.id %}">{% blocktrans %}Feed{% endblocktrans %}</a>
+        <a class="button button_small button_feed feed_link"
+	   href="{% url comments_feed content_type_id,event.id %}">
+	  <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}</a>
+	{% blocktrans %}Discussions{% endblocktrans %}
+      </h2>
         {% with event as object %}
             {% render_comment_list for object %}
             {% render_comment_form for object %}
