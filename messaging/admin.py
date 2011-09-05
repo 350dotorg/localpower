@@ -36,7 +36,7 @@ class MessageAdmin(admin.ModelAdmin):
     actions = [preview_messages]
 
 class ABTestAdmin(admin.ModelAdmin):
-    list_display = ("__unicode__", "control_sends", "control_opens", "test_sends", "test_opens")
+    list_display = ("__unicode__", "control_sends", "control_opens", "test_sends", "test_opens", "stream")
 
 class StreamAdmin(admin.ModelAdmin):
     actions = [preview_stream]
