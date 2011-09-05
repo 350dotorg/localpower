@@ -15,10 +15,14 @@
             {% if request.user.get_profile.location %}
                 <div id="nav_profile_location">{{ request.user.get_profile.location }}</div>
             {% endif %}
+
             <div id="nav_profile_stats">
+            {% comment %}
                 <a href="{% url profile request.user.id %}">{% blocktrans with request.user.get_profile.total_points as total_points %}{{total_points}} points{% endblocktrans %}</a> | 
                 <a href="{% url profile request.user.id %}#badges">{% blocktrans %}8 badges{% endblocktrans %}</a>
+	    {% endcomment %}
             </div>
+
         {% else %}
         <div id="nav_logged_out">
             <h2>{% blocktrans %}Join Us Today{% endblocktrans %}</h2>
