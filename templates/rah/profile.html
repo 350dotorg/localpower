@@ -28,7 +28,6 @@
     <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
     <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
-    <li><a href="#badges">{% blocktrans %}Badges{% endblocktrans %}</a></li>
     {% if not is_others_profile %}
         <span class="tab_nav_link"><a href="{% url profile_edit user.id %}">{% blocktrans %}Edit your profile{% endblocktrans %}</a></span>
     {% endif %}
@@ -51,10 +50,12 @@
                     {% blocktrans %}Members{% endblocktrans %}
                     <div class="{% with group.member_count as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ group.member_count|intcomma }}</div>
                 </div>
+		{% comment %}
                 <div class="nugget_6c_list_stat">
                     {% blocktrans %}Points{% endblocktrans %}
                     <div class="{% with group.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ group.total_points|intcomma }}</div>
                 </div>
+		{% endcomment %}
             </li>
             {% endfor %}
             </ul>
@@ -78,9 +79,6 @@
             <p>
             {% for action in recommended %}
                 <a href="{% url action_detail action.slug %}">{{action.name}}</a>
-		{% blocktrans with action.points as action_points %}
-		(+{{action_points}} points)
-		{% endblocktrans %}
 		<br/>
             {% endfor %}
             </p>
@@ -90,9 +88,6 @@
             <p>
             {% for action in completed %}
                 <a href="{% url action_detail action.slug %}">{{action.name}}</a>
-		{% blocktrans with action.points as action_points %}
-		(+{{action_points}} points)
-		{% endblocktrans %}
             {% endfor %}
             </p>
         {% endif %}
@@ -108,8 +103,6 @@
                 {% render_record rec %}
             {% endfor %}
         {% endif %}
-	</div>
-	<div id="badges">
 	</div>
 	<div id="events">
 	</div>
@@ -127,8 +120,12 @@
 	  <div>{{ completed|length }}</div></li>
         <li>{% blocktrans %}Actions Committed{% endblocktrans %}
 	  <div>{{ committed|length }}</div></li>
+
+	{% comment %}
         <li>{% blocktrans %}Points Earned{% endblocktrans %}
 	  <div class="{% with user.get_profile.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ user.get_profile.total_points|intcomma }}</div></li>
+	{% endcomment %}
+
         <li>{% blocktrans %}Challenges Completed{% endblocktrans %}
 	  <div>0</div></li>
     </ul>
@@ -151,6 +148,8 @@
         </li>
         {% endfor %}
     </ul>
+
+    {% comment %}
     <div class="ribbon_small">
       {% blocktrans %}Badges{% endblocktrans %} ({{badges|length}})
         <div class="ribbon_small_wrap"></div>
@@ -165,6 +164,8 @@
         </li>
         {% endfor %}
     </ul>
+    {% endcomment %}
+
     <div class="ribbon_small">
         {% blocktrans %}Committed Actions{% endblocktrans %}
         <div class="ribbon_small_wrap"></div>
