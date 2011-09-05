@@ -3,5 +3,5 @@
     {% safe_user_link record.user %} posted a message to twitter
 {% endblock %}
 {% block activity_date %}
-    on {{ record.created|date }}{% if record.points %} (+{{ record.points }} points){% endif %}
+    on {{ record.created|date }}
 {% endblock %}
