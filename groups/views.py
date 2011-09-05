@@ -83,7 +83,7 @@ def group_external_link_only_create(request):
             group = form.save()
             link = link_form.save(group)
             GroupUsers.objects.create(group=group, user=request.user, is_manager=True)
-            Stream.objects.get(slug="community-create").enqueue(content_object=group, start=group.created)
+            Stream.objects.get(slug="external-community-create").enqueue(content_object=group, start=group.created)
             Record.objects.create_record(request.user, 'group_create', group)
             badge_cache.possibly_award_badge('created_a_community', user=request.user)
             messages.success(request, _("%(group)s has been created.") % {
