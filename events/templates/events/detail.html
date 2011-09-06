@@ -24,7 +24,9 @@
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#people">{% blocktrans %}People{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
-
+    {% if has_manager_privileges %}
+    <span class="tab_nav_link"><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></span>
+    {% endif %}
 {% endblock %}
 {% block content %}
     <div id="overview">
