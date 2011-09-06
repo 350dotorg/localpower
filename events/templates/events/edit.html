@@ -9,11 +9,13 @@
     {% blocktrans %}Edit Event{% endblocktrans %}
 {% endblock %}
 {% block content %}
-    <form id="event_form" action="" method="post">
+    <form class="form_6c" id="event_form" action="" method="post">
       {% include "base/_form.html" %}
       {% csrf_token %}
-      <input type="submit" value="{% blocktrans %}Save Changes{% endblocktrans %}" /> |
-      <a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
+      <div class="form_buttons">
+	<input type="submit" value="{% blocktrans %}Save Changes{% endblocktrans %}" /> |
+	<a href="{{ event.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
+      </div>
     </form>
 
     <script>
