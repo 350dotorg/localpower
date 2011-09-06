@@ -11,6 +11,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.core.urlresolvers import resolve, Resolver404
 from django.forms.widgets import CheckboxSelectMultiple
 from django.template import Context, loader
+from django.utils.translation import ugettext_lazy as _
 
 from settings import SITE_FEEDBACK_EMAIL
 from rah.models import Profile, Feedback, StickerRecipient
@@ -26,7 +27,7 @@ class RegistrationForm(forms.ModelForm):
     first_name = forms.CharField(min_length=2, widget=forms.TextInput(attrs={'class':'form_row_half'}))
     last_name = forms.CharField(required=False, min_length=2, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
 
-    password1 = forms.CharField(label='Password', min_length=5, widget=forms.PasswordInput)
+    password1 = forms.CharField(label=_('Password'), min_length=5, widget=forms.PasswordInput)
     honeypot = Honeypot()
 
     class Meta:
@@ -45,20 +46,20 @@ class RegistrationForm(forms.ModelForm):
             User.objects.get(email=email)
         except User.DoesNotExist:
             return email
-        raise forms.ValidationError('This email address has already been registered in our system. If you have forgotten your password, please use the password reset link.')
+        raise forms.ValidationError(_('This email address has already been registered in our system. If you have forgotten your password, please use the password reset link.'))
 
 class RegistrationProfileForm(forms.Form):
-    zipcode = forms.CharField(max_length=5, required=False, help_text="Leave blank if you don't have a US zipcode", widget=forms.TextInput())
+    zipcode = forms.CharField(max_length=5, required=False, help_text=_("Leave blank if you don't have a US zipcode"), widget=forms.TextInput())
 
     def clean_zipcode(self):
         data = self.cleaned_data['zipcode'].strip()
         if data:
             if len(data) <> 5:
-                raise forms.ValidationError("Please enter a 5 digit zipcode")
+                raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
             try:
                 self.location = Location.objects.get(zipcode=data)
             except Location.DoesNotExist, e:
-                raise forms.ValidationError("Zipcode is invalid")
+                raise forms.ValidationError(_("Zipcode is invalid"))
         return data
 
 class AuthenticationForm(forms.Form):
@@ -66,8 +67,8 @@ class AuthenticationForm(forms.Form):
    Base class for authenticating users. Extend this to get a form that accepts
    username/password logins.
    """
-   email = forms.EmailField(label="Email")
-   password = forms.CharField(label="Password", widget=forms.PasswordInput)
+   email = forms.EmailField(label=_("Email"))
+   password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
 
    def __init__(self, request=None, *args, **kwargs):
        """
@@ -87,13 +88,13 @@ class AuthenticationForm(forms.Form):
        if email and password:
            self.user_cache = auth.authenticate(username=email, password=password)
            if self.user_cache is None:
-               raise forms.ValidationError("Please enter a correct email and password. Note that your password is case-sensitive.")
+               raise forms.ValidationError(_("Please enter a correct email and password. Note that your password is case-sensitive."))
            elif not self.user_cache.is_active:
-               raise forms.ValidationError("This account is inactive.")
+               raise forms.ValidationError(_("This account is inactive."))
 
        if self.request:
            if not self.request.session.test_cookie_worked():
-               raise forms.ValidationError("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in.")
+               raise forms.ValidationError(_("Your Web browser doesn't appear to have cookies enabled. Cookies are required for logging in."))
 
        return self.cleaned_data
 
@@ -111,10 +112,11 @@ class FeedbackForm(forms.ModelForm):
         fields = ("comment", "beta_group", "url")
 
     url = forms.CharField(widget=forms.HiddenInput, required=False)
-    comment = forms.CharField(widget=forms.Textarea, required=False, label="Your Comments")
-    beta_group = forms.BooleanField(help_text="""Check here if you would like to be a part
-                                                of our alpha group and receive information
-                                                on new features before they launch.""", label="", required=False, widget=forms.HiddenInput)
+    comment = forms.CharField(widget=forms.Textarea, required=False, label=_("Your Comments"))
+    beta_group = forms.BooleanField(help_text=_("Check here if you would like to be a part"
+                                                "of our alpha group and receive information"
+                                                "on new features before they launch."),
+                                    label="", required=False, widget=forms.HiddenInput)
     def send(self, request):
         template = loader.get_template('rah/feedback_email.html')
         context  = { 'feedback': self.cleaned_data, 'request': request, }
@@ -123,9 +125,9 @@ class FeedbackForm(forms.ModelForm):
         msg.send()
 
 class ProfileEditForm(forms.ModelForm):
-    about = forms.CharField(max_length=255, required=False, label="About you", widget=forms.Textarea)
+    about = forms.CharField(max_length=255, required=False, label=_("About you"), widget=forms.Textarea)
     zipcode = forms.CharField(max_length=5, required=False)
-    is_profile_private = forms.BooleanField(label="Make Profile Private", required=False)
+    is_profile_private = forms.BooleanField(label=_("Make Profile Private"), required=False)
 
     class Meta:
         model = Profile
@@ -141,11 +143,11 @@ class ProfileEditForm(forms.ModelForm):
             self.instance.location = None
             return
         if len(data) <> 5:
-            raise forms.ValidationError("Please enter a 5 digit zipcode")
+            raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
         try:
             self.instance.location = Location.objects.get(zipcode=data)
         except Location.DoesNotExist, e:
-            raise forms.ValidationError("Zipcode is invalid")
+            raise forms.ValidationError(_("Zipcode is invalid"))
 
 class AccountForm(forms.ModelForm):
     class Meta:
@@ -157,16 +159,16 @@ class AccountForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email'].strip()
         if not len(email):
-            raise ValidationError('Email cannot be blank')
+            raise ValidationError(_('Email cannot be blank'))
 
         if self.instance.email == email or not User.objects.filter(email=email):
             return email
         else:
-             raise ValidationError('This email address has already been registered in our system.')
+             raise ValidationError(_('This email address has already been registered in our system.'))
 
 class SetPasswordForm(auth_forms.SetPasswordForm):
-    new_password1 = forms.CharField(min_length=5, label="New password", widget=forms.PasswordInput)
-    new_password2 = forms.CharField(label="New password confirmation", widget=forms.PasswordInput)
+    new_password1 = forms.CharField(min_length=5, label=_("New password"), widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label=_("New password confirmation"), widget=forms.PasswordInput)
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):
     """
@@ -174,17 +176,20 @@ class PasswordChangeForm(auth_forms.PasswordChangeForm):
     their old password.
     """
     old_password = forms.CharField(label="Old password", widget=forms.PasswordInput)
-    new_password1 = forms.CharField(min_length=5, label="New password", widget=forms.PasswordInput)
-    new_password2 = forms.CharField(label="New password confirmation", widget=forms.PasswordInput)
+    new_password1 = forms.CharField(min_length=5, label=_("New password"), widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label=_("New password confirmation"), widget=forms.PasswordInput)
 
     def clean_old_password(self):
         return super(PasswordChangeForm, self).clean_old_password()
 PasswordChangeForm.base_fields.keyOrder = ['old_password', 'new_password1', 'new_password2']
 
 class GroupNotificationsForm(forms.Form):
-    notifications = forms.ModelMultipleChoiceField(required=False, queryset=None,
-            widget=forms.CheckboxSelectMultiple, help_text="By selecting a community, you have elected to \
-        recieve emails for each thread posted to the discussion board.", label="Community email notifications")
+    notifications = forms.ModelMultipleChoiceField(
+        required=False, queryset=None,
+        widget=forms.CheckboxSelectMultiple, 
+        help_text=_("By selecting a community, you have elected to "
+                    "recieve emails for each thread posted to the discussion board."), 
+        label=_("Community email notifications"))
 
     def __init__(self, user, *args, **kwargs):
         from groups.models import Group
