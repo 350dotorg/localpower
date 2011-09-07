@@ -35,8 +35,10 @@
     <li><a href="#activity">{% blocktrans %}Activity{% endblocktrans %}</a></li>
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
     <li><a href="#challenges">{% blocktrans %}Challenges{% endblocktrans %}</a></li>
-    <li><a href="#requests">{% blocktrans %}Requests{% endblocktrans %}</a></li>
     <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
+    {% if is_manager %}
+    <li><a href="#requests">{% blocktrans %}Requests{% endblocktrans %}</a></li>
+    {% endif %}
     {% endif %}
     {% if is_manager %}
     <span class="tab_nav_link"><a href="{% url group_edit group.slug %}">{% blocktrans %}Edit community{% endblocktrans %}</a></span>
