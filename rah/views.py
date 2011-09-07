@@ -89,10 +89,6 @@ def index(request):
     """
     Home Page
     """
-    # If the user is not logged in, show them the logged out homepage and bail
-    if request.user.is_authenticated():
-        return redirect("profile", user_id=request.user.id) 
-
     section_class = "section_home"
     top_users = Profile.objects.filter(is_profile_private=False, location__isnull=False, facebook_connect_only=True).select_related("user").order_by("-total_points")[:6]
     top_communities = Group.objects.filter(is_featured=True).order_by("-member_count")[:2]
