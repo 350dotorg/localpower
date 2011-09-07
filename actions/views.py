@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_protect
 from tagging.models import Tag
 from records.models import Record
 from records.signals import record_created
-from rah.decorators import login_required_save_POST
+from rah.decorators import login_required_save_POST, login_required_except_GET_save_POST
 
 from settings import GA_TRACK_PAGEVIEW
 from models import Action, UserActionProgress, ActionForm, ActionFormData
@@ -33,6 +33,7 @@ def action_show(request, tag_slug=None):
         'nav_selected': nav_selected
     }, context_instance=RequestContext(request))
 
+@login_required_except_GET_save_POST
 @csrf_protect
 def action_detail(request, action_slug):
     """Detail page for an action"""

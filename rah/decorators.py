@@ -41,3 +41,20 @@ def save_queued_POST(request):
             getattr(module, func_name)(request, *s_args, **s_kwargs)
         request.POST = data
         request.method = method
+
+def login_required_except_GET_save_POST(function, redirect_field_name=REDIRECT_FIELD_NAME):
+    def decorator(request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return function(request, *args, **kwargs)
+        if request.method == "GET":
+            return function(request, *args, **kwargs)
+        if request.method == "POST":
+            if not LRSP in request.session:
+                request.session[LRSP] = []
+            queue = request.session[LRSP]
+            queue.append((function.__module__, function.__name__, request.POST, args, kwargs))
+            request.session[LRSP] = queue
+        path = urlquote(request.get_full_path())
+        tup = settings.LOGIN_URL, redirect_field_name, path
+        return HttpResponseRedirect('%s?%s=%s' % tup)
+    return decorator
