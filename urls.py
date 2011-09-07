@@ -1,6 +1,11 @@
 import settings
 from django.conf.urls.defaults import *
 
+# Horribly monkeypatch Django internals
+from django.contrib.auth import decorators
+from utils import login_required 
+decorators.login_required = login_required
+
 # Register apps with the admin interface
 from actions import admin as actions_admin
 from basic.blog import admin as blog_admin
