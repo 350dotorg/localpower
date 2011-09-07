@@ -7,12 +7,16 @@ except ImportError:
 
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils.http import urlquote
+from django.utils.translation import ugettext_lazy as _
 
 LRSP = "login_required_saved_POST"
 
-def login_required_save_POST(function, redirect_field_name=REDIRECT_FIELD_NAME):
+def login_required_save_POST(function, redirect_field_name=REDIRECT_FIELD_NAME,
+                             message_string=_("You need to create an account first. "
+                                              "Don't worry -- it only takes 15 seconds!")):
     def decorator(request, *args, **kwargs):
         if request.user.is_authenticated():
             return function(request, *args, **kwargs)
@@ -24,6 +28,7 @@ def login_required_save_POST(function, redirect_field_name=REDIRECT_FIELD_NAME):
             request.session[LRSP] = queue
         path = urlquote(request.get_full_path())
         tup = settings.LOGIN_URL, redirect_field_name, path
+        messages.info(request, message_string)        
         return HttpResponseRedirect('%s?%s=%s' % tup)
     return decorator
 
@@ -42,7 +47,10 @@ def save_queued_POST(request):
         request.POST = data
         request.method = method
 
-def login_required_except_GET_save_POST(function, redirect_field_name=REDIRECT_FIELD_NAME):
+def login_required_except_GET_save_POST(
+    function, redirect_field_name=REDIRECT_FIELD_NAME,
+    message_string=_("You need to create an account first. "
+                     "Don't worry -- it only takes 15 seconds!")):
     def decorator(request, *args, **kwargs):
         if request.user.is_authenticated():
             return function(request, *args, **kwargs)
@@ -56,5 +64,6 @@ def login_required_except_GET_save_POST(function, redirect_field_name=REDIRECT_F
             request.session[LRSP] = queue
         path = urlquote(request.get_full_path())
         tup = settings.LOGIN_URL, redirect_field_name, path
+        messages.info(request, message_string)
         return HttpResponseRedirect('%s?%s=%s' % tup)
     return decorator
