@@ -229,7 +229,10 @@ class GroupAssociationRequestRelatedForm(object):
 
     def init_groups(self, user):
         groups = self.fields["groups"]
-        groups.queryset = groups.queryset.filter(groupusers__user=user)
+        if user.is_anonymous():
+            groups.queryset = groups.queryset.none()
+        else:
+            groups.queryset = groups.queryset.filter(groupusers__user=user)
         if not groups.queryset:
             groups.help_text = _("You need to be a member of a community first")
         else:
