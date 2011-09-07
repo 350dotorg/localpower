@@ -189,6 +189,11 @@
     </div>
 
     <div id="requests">
+        {% if not requesters and not event_requests and not challenge_requests and not action_requests %}
+	{% blocktrans %}
+	There are currently no membership or association requests awaiting approval.
+	{% endblocktrans %}
+	{% endif %}
 	{% if requesters %}
         <h3>{% blocktrans %}Membership Requests{% endblocktrans %}</h3>
         <ul>
