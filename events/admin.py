@@ -9,10 +9,6 @@ from forms import EventForm
 class EventAdminForm(EventForm):
     def __init__(self, *args, **kwargs):
         super(EventAdminForm, self).__init__(None, *args, **kwargs)
-        if self.instance.location:
-            self.fields["city"].initial = self.instance.location.name
-            self.fields["state"].initial = self.instance.location.st
-            self.fields["zipcode"].initial = self.instance.location.zipcode
 
     def save(self, *args, **kwargs):
         self.instance.location = self.cleaned_data["location"]
