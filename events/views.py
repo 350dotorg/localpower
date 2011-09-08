@@ -94,6 +94,12 @@ def guests_invite(request, event_id):
     return render_to_response(template, locals(), context_instance=RequestContext(request))
 
 @login_required
+@user_is_event_manager
+def event_commitments(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    return Response("ok")
+
+@login_required
 @require_POST
 @user_is_event_manager
 def guests_edit(request, event_id, guest_id, type):

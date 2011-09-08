@@ -27,6 +27,9 @@ urlpatterns = patterns("events.views",
     url(r"^(?P<event_id>\d+)/rsvp/account/$", "rsvp_account", name="event-rsvp-account"),
     url(r"^(?P<event_id>\d+)/rsvp/cancel/$", "rsvp_cancel", name="event-rsvp-cancel"),
     url(r"^rsvp_statuses/", "rsvp_statuses", name="event-rsvp_statuses"),
+
+    url(r"^(?P<event_id>\d+)/commitments/$", "event_commitments", name="event-commitments"),
+
     url(r"^(?P<event_id>\d+)/print/$", "print_sheet", name="event-print"),
     url(r"^(?P<event_id>\d+)/spreadsheet/$", "spreadsheet", name="event-spreadsheet"),
     url(r"^(?P<event_id>\d+)/guests/reminder/$", "message", {"type": "reminder"}, name="event-reminder"),
