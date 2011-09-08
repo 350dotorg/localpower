@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
-from models import Message, ABTest, Stream
+from models import Message, ABTest, Stream, Queue
 
 def preview_messages(modeladmin, request, queryset):
     previews = []
@@ -44,3 +44,4 @@ class StreamAdmin(admin.ModelAdmin):
 admin.site.register(Message, MessageAdmin)
 admin.site.register(ABTest, ABTestAdmin)
 admin.site.register(Stream, StreamAdmin)
+admin.site.register(Queue)
