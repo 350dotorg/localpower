@@ -79,7 +79,7 @@ class EmailBackend(BaseEmailBackend):
             import sys, traceback
             traceback = '\n'.join(traceback.format_exception(*(sys.exc_info())))
             from pprint import pformat
-            mail_data = pformat(postmark_message.__dict__)
+            mail_data = pformat(message.__dict__)
             message = u"%s\n\n%s" % (traceback, mail_data)
             from django.core.mail import mail_admins
             mail_admins('Error sending mail', message, fail_silently=True)
