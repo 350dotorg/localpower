@@ -147,7 +147,7 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 AUTHENTICATION_BACKENDS = ('rah.backends.EmailBackend',)
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/user/"
 LOGIN_URL = "/register/"
 LOGOUT_URL = "/logout/"
 AUTH_PROFILE_MODULE = 'rah.Profile'

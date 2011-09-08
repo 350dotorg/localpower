@@ -255,6 +255,10 @@ def profile(request, user_id):
     }, context_instance=RequestContext(request))
 
 @login_required
+def user_self_redirect(request):
+    return redirect("profile", user_id=request.user.id)
+
+@login_required
 @csrf_protect
 def profile_edit(request, user_id):
     nav_selected = "users"
