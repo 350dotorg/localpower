@@ -97,7 +97,7 @@ def guests_invite(request, event_id):
 @user_is_event_manager
 def event_commitments(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    return Response("ok")
+    return HttpResponse("ok")
 
 @login_required
 @require_POST
