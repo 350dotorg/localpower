@@ -229,7 +229,7 @@ class GroupAssociationRequestRelatedForm(object):
 
     def init_groups(self, user):
         groups = self.fields["groups"]
-        if user.is_anonymous():
+        if user is None or user.is_anonymous():
             groups.queryset = groups.queryset.none()
         else:
             groups.queryset = groups.queryset.filter(groupusers__user=user)
