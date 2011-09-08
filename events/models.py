@@ -324,6 +324,10 @@ class Guest(models.Model):
             return _("Added %(date)s") % {'date': DateFormat(self.added).format("M j")}
         raise AttributeError
 
+    @property
+    def email(self):
+        return self.contributor.email
+
     def __unicode__(self):
         return unicode(self.contributor)
 
