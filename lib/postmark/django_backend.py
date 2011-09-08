@@ -69,7 +69,20 @@ class EmailBackend(BaseEmailBackend):
             postmark_message.send()
         except:
             if self.fail_silently:
+                # Since we try to email admins if fail_silently=False
+                # we need to just throw away the error if fail_silently=True
+                # or else we could end up with infinite loops of failed
+                # mail-sending if the problem is with the mail configuration
+                # or postmark service.
                 return False
-            raise
+
+            import sys, traceback
+            traceback = '\n'.join(traceback.format_exception(*(sys.exc_info())))
+            from pprint import pformat
+            mail_data = pformat(postmark_message.__dict__)
+            message = u"%s\n\n%s" % (traceback, mail_data)
+            from django.core.mail import mail_admins
+            mail_admins('Error sending mail', message, fail_silently=True)
+            #raise
         return True
 
