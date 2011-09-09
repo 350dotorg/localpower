@@ -1,2 +1,2 @@
 I just committed to the action, {{ content_object.name|safe }}, by 
-{{ record.data.date_committed|date }}
+{{ record.data.date_committed|date }}{% if record.points %} for {{ record.points }} points{% endif %}

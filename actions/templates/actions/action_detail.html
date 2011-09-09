@@ -27,7 +27,6 @@
     {% blocktrans %}{{ SITE_NAME }} Action{% endblocktrans %}
 {% endblock %}
 {% block title_bar_floaters %}
-    {% comment %}
     <div class="title_bar_floater">
         <div class="floater_title">{% blocktrans %}Points{% endblocktrans %}</div>
         <div class="floater_body"><h1>{{action.points}}</h1></div>
@@ -40,7 +39,6 @@
             </a>
         </div>
     </div>
-    {% endcomment %}
 {% endblock %}
 
 {% block title %}{{action.name}}{% endblock %}

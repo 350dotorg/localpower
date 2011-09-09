@@ -4,5 +4,5 @@
     <a href="{{ content_object.get_absolute_url }}">{{ content_object.name }}</a>, 
 {% endblock %}
 {% block activity_date %}
-    on {{ record.created|date }}
+    on {{ record.created|date }}{% if record.points %} (+{{ record.points }} points){% endif %}
 {% endblock %}
