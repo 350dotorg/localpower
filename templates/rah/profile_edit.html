@@ -148,9 +148,10 @@
 			{% endif %}
 			{% endif %}
                         {% if profile.twitter_access_token %}
-                            <a class="" href="{% url twitter_oauth_unauth %}">{% blocktrans %}Unlink your Twitter account{% endblocktrans %}</a>
+			<br/>
+                        <a class="" href="{% url twitter_oauth_unauth %}">{% blocktrans %}Unlink your Twitter account{% endblocktrans %}</a>
                         {% else %}
-                            <a id="link_with_twitter" class="" href="{% url twitter_oauth_auth %}">{% blocktrans %}Link your Twitter account{% endblocktrans %}</a>
+                        <a id="link_with_twitter" class="" href="{% url twitter_oauth_auth %}">{% blocktrans %}Link your Twitter account{% endblocktrans %}</a>
                         {% endif %}
                     </p>
                 </li>
