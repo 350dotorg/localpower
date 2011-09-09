@@ -12,7 +12,8 @@ CONSUMER_KEY = getattr(settings, 'TWITTER_CONSUMER_KEY', '')
 CONSUMER_SECRET = getattr(settings, 'TWITTER_CONSUMER_SECRET', '')
 
 CONSUMER = oauth.OAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
-CONNECTION = httplib.HTTPSConnection(SERVER)
+def CONNECTION():
+    return httplib.HTTPSConnection(SERVER)
 
 # We use this URL to check if Twitters oAuth worked
 TWITTER_CHECK_AUTH = 'https://twitter.com/account/verify_credentials.json'
@@ -34,9 +35,13 @@ def request_oauth_resource(url, access_token, parameters=None, signature_method=
 
 def fetch_response(oauth_request):
     url = oauth_request.to_url()
-    CONNECTION.request(oauth_request.http_method, url)
-    response = CONNECTION.getresponse()
-    s = response.read()
+    c = CONNECTION()
+    try:
+        c.request(oauth_request.http_method, url)
+        response = CONNECTION.getresponse()
+        s = response.read()
+    finally:
+        c.close()
     return s
 
 def get_unauthorised_request_token(signature_method=signature_method):

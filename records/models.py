@@ -213,6 +213,7 @@ def publish_to_social_networks(sender, request, record, **kwargs):
     from django.contrib.sites.models import Site
     from django.utils.html import strip_tags
     from facebook_app.models import publish_message
+    from twitter_app.utils import update_status
 
     profile = request.user.get_profile()
     if profile.facebook_share or profile.twitter_share:
@@ -222,7 +223,7 @@ def publish_to_social_networks(sender, request, record, **kwargs):
         if profile.facebook_share:
             publish_message(request.user, message, link)
         if profile.twitter_share:
-            pass
+            update_status(profile.twitter_access_token, message)
     elif profile.ask_to_share:
         request.session[ASK_TO_SHARE_TOKEN] = True
 record_created.connect(publish_to_social_networks)
