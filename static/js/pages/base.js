@@ -4,7 +4,7 @@ require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/m
     function (ui, form, validation, messages, facebook) {
 
         // Setup datepicker
-	    //$("input.datepicker").datepicker();
+	$("input.datepicker").datepicker();
 
         // setup tabs
         $(".tabs").tabs();
