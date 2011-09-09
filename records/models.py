@@ -224,7 +224,8 @@ def publish_to_social_networks(sender, request, record, **kwargs):
         if profile.facebook_share:
             publish_message(request.user, message, link)
         if profile.twitter_share:
-            update_status(OAuthToken.from_string(profile.twitter_access_token), message)
+            update_status(OAuthToken.from_string(profile.twitter_access_token), 
+                          "%s (%s)" % (message, link))
     elif profile.ask_to_share:
         request.session[ASK_TO_SHARE_TOKEN] = True
 record_created.connect(publish_to_social_networks)
