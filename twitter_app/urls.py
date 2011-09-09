@@ -18,4 +18,7 @@ urlpatterns = patterns('twitter_app.views',
     url(r'^status/$',
         view=post_status,
         name='twitter_oauth_post_status'),
+
+    url(r"^sharing/enable/$", "sharing", {"is_enabled": True}, name="twitter_enable_sharing"),
+    url(r"^sharing/disable/$", "sharing", {"is_enabled": False}, name="twitter_disable_sharing"),
 )

@@ -140,6 +140,13 @@
 			 width="48" height="48" class="floater"/>
                     <p class="floater">
                         <b>{% blocktrans %}Twitter{% endblocktrans %}</b><br/>
+			{% if profile.twitter_access_token %}
+			{% if profile.twitter_share %}
+			<a href="{% url twitter_disable_sharing %}">{% blocktrans %}Disable automatic sharing{% endblocktrans %}</a>
+			{% else %}
+			<a href="{% url twitter_enable_sharing %}">{% blocktrans %}Enable automatic sharing{% endblocktrans %}</a>
+			{% endif %}
+			{% endif %}
                         {% if profile.twitter_access_token %}
                             <a class="" href="{% url twitter_oauth_unauth %}">{% blocktrans %}Unlink your Twitter account{% endblocktrans %}</a>
                         {% else %}

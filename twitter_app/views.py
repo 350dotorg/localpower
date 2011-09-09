@@ -64,3 +64,22 @@ def post_status(request):
         else:
             messages.error(request, "There was a problem posting your tweet. Twitter says, '%s'" % resp)
     return redirect("index")
+
+
+@login_required
+def sharing(request, is_enabled):
+    profile = request.user.get_profile()
+    if profile.twitter_access_token:
+        profile.twitter_share = is_enabled
+        profile.save()
+        if is_enabled:
+            messages.success(request, "Your activity stream will now be shared on Twitter")
+        else:
+            messages.success(request, "Your activity stream will no longer be shared on Twitter")
+    else:
+        messages.error(request, "You must link your Twitter account first")
+    next = request.GET.get("next", "")
+    if not next:
+        next = reverse('profile_edit', kwargs={'user_id': request.user.id}) + "#social_networks_tab"
+
+    return redirect(next) if next else redirect("profile_edit", user_id=request.user.id)
