@@ -17,7 +17,8 @@ class BaseActionForm(forms.Form):
 class ActionCommitForm(BaseActionForm):
     date_committed = forms.DateField(
         label=_("Commit date"),
-        widget=forms.DateInput(attrs={"class": "date_commit_field"}))
+        widget=forms.DateInput(format="%m/%d/%Y", 
+                               attrs={"class": "datepicker date_commit_field"}))
 
     def save(self):
         return self.action.commit_for_user(
