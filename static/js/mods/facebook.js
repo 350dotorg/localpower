@@ -4,7 +4,7 @@ define(["https://connect.facebook.net/en_US/all.js"], function (facebook) {
     FB.init({appId: RAH.ENV.facebook_appid, status: true, cookie: true, xfbml: true});
     return {
         setup: function () {
-            $("#fb-login").click(function () {
+            $("div.fb_button a.fb_button").click(function () {
                 FB.login(function (response) {
                     if (response.session) {
                         var next_elem = $("input[type='hidden'][name='next']");
