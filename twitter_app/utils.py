@@ -38,7 +38,7 @@ def fetch_response(oauth_request):
     c = CONNECTION()
     try:
         c.request(oauth_request.http_method, url)
-        response = CONNECTION.getresponse()
+        response = c.getresponse()
         s = response.read()
     finally:
         c.close()
