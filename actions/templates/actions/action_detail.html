@@ -52,6 +52,11 @@
 {% block content %}
     <div id="overview">
       {% render_template_snippet action.content %}
+      <div id="commit_widget">
+        <p>{% blocktrans %}When do you think you'll complete this action?{% endblocktrans %}</p>
+        <div class="commit_calendar"></div>
+      </div>
+
     </div>
     <div id="discussions">
       <h2 id="comments_form_heading">
@@ -149,9 +154,9 @@
         <div class="ribbon_small_wrap"></div>
     </div>
         TODO
-{% endblock %}
 <script>
     var RAH = RAH || {};
     RAH.pagescripts = RAH.pagescripts || [];
     RAH.pagescripts.push("{% dated_static 'js/pages/action.detail.js' %}");
 </script>
+{% endblock %}

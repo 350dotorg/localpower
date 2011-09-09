@@ -3,9 +3,11 @@
     {% if not progress.is_completed %}
         {% if not progress.date_committed %}
             <form class="action_commit_form" method="post" action="{% url action_commit action.slug %}">
+	      <div>
                 {% with action_commit_form as form %}
                     {% include "base/_form.html" %}
                 {% endwith %}
+	      </div>
                 <p>
                     <input type="submit" class="commit_trigger tooltip" value="{{ commit_title }}"
                         title="{% blocktrans %}Make a commitment to do this action in the future.{% endblocktrans %}" />
@@ -14,9 +16,11 @@
             </form>
         {% else %}
             <form class="action_commit_form" method="post" action="{% url action_commit action.slug %}">
+	      <div>
                 {% with action_commit_form as form %}
                     {% include "base/_form.html" %}
                 {% endwith %}
+	      </div>
                 {% csrf_token %}
                 <h4>
 		  {% blocktrans count days_till_commitment as days_till_commitment %}

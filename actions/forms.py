@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,8 +19,20 @@ class BaseActionForm(forms.Form):
 class ActionCommitForm(BaseActionForm):
     date_committed = forms.DateField(
         label=_("Commit date"),
-        widget=forms.DateInput(format="%m/%d/%Y", 
-                               attrs={"class": "datepicker date_commit_field"}))
+        widget=forms.DateInput(format="%Y-%m-%d", 
+                               attrs={"class": "date_commit_field"}))
+
+    def __init__(self, *args, **kwargs):
+        super(ActionCommitForm, self).__init__(*args, **kwargs)
+        try:
+            uap = UserActionProgress.objects.get(user=self.user, action=self.action)
+        except UserActionProgress.DoesNotExist:
+            uap = None
+        if uap and uap.date_committed:
+            self.fields["date_committed"].initial = uap.date_committed
+        else:
+            self.fields["date_committed"].initial = (datetime.date.today() + 
+                                                     datetime.timedelta(days=1))
 
     def save(self):
         return self.action.commit_for_user(

@@ -1,9 +1,10 @@
 /*jslint maxerr: 1000, white: true, browser: true, devel: true, rhino: true, onevar: false, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, sub: true */
 /*global $: false, RAH: false, FB: false, WebFont: false, jQuery: false, window: false, google: false, require: false, define: false */
 require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comments) {
+
     comments.setup();
 
-    $(".date_commit_field").parent().hide();
+    $("div.date_commit_field").parent().hide();
     $(".commit_trigger").click(function () {
         $("#commit_widget").dialog("open");
         return false;
@@ -20,8 +21,9 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
         width: 550,
         height: 450,
         open: function () {
-            $(this).find(".commit_calendar").datepicker({
+	    $(this).find(".commit_calendar").datepicker({
                 dateFormat: "yy-mm-dd", 
+		defaultDate: $("input.date_commit_field").val(),
                 maxDate: "+2y", 
                 minDate: "0", 
                 numberOfMonths: 2,
