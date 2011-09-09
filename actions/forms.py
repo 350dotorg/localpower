@@ -24,6 +24,10 @@ class ActionCommitForm(BaseActionForm):
 
     def __init__(self, *args, **kwargs):
         super(ActionCommitForm, self).__init__(*args, **kwargs)
+        if not self.user or self.user.is_anonymous() or not self.action:
+            self.fields["date_committed"].initial = (datetime.date.today() + 
+                                                     datetime.timedelta(days=1))
+            return
         try:
             uap = UserActionProgress.objects.get(user=self.user, action=self.action)
         except UserActionProgress.DoesNotExist:
