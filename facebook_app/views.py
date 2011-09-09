@@ -41,7 +41,7 @@ def login(request):
             user = auth.authenticate(username=profile.user.email, is_facebook_connect=True)
             logged_in.send(sender=None, request=request, user=user, is_new_user=is_new_user)
             auth.login(request, user)
-            return redirect(next or "index")
+            return redirect(next or settings.LOGIN_REDIRECT_URL)
     messages.error(request, "Facebook login credentials could not be verified, please try again.")
     return redirect(next or "login")
 
