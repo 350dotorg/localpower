@@ -191,6 +191,7 @@
 	</ul>
     </div>
 
+    {% if is_manager %}
     <div id="requests">
         {% if not requesters and not event_requests and not challenge_requests and not action_requests %}
 	{% blocktrans %}
@@ -291,6 +292,7 @@
 	{% endif %}
 
     </div>
+    {% endif %}
 
     <div id="actions">
       {% if group.action_set.count %}
