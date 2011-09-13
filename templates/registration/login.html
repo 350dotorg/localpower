@@ -1,23 +1,24 @@
 {% extends "base/nav_form.html" %}
 {% load dated_static %}
-{% block title %}Log in{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Log in{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-   <a href="{% url index %}">Home</a> &raquo; 
-   Log in
+   <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &raquo; 
+   {% blocktrans %}Log in{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
-<h3>Need a little help?</h3>
+<h3>{% blocktrans %}Need a little help?{% endblocktrans %}</h3>
 <ul>
     <li>
-        <a href="{% url register %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Create an account</a><br/>
+        <a href="{% url register %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">{% blocktrans %}Create an account{% endblocktrans %}</a><br/>
     </li>
     <li>
-        <a href="{% url password_reset %}">Recover your password</a>
+        <a href="{% url password_reset %}">{% blocktrans %}Recover your password{% endblocktrans %}</a>
     </li>
 </ul>
 <div class="fb_button">
     <a href="#" class="fb_button fb_button_large">
-        <span id="fb_login_text" class="fb_button_text">Log in with Facebook</span>
+        <span id="fb_login_text" class="fb_button_text">{% blocktrans %}Log in with Facebook{% endblocktrans %}</span>
     </a>
 </div>
 {% endblock %}
@@ -29,7 +30,7 @@
         {% endwith %}
         {% csrf_token %}
         <div class="form_buttons">
-            <button class="button_mega" type="submit">Log in</button>
+            <button class="button_mega" type="submit">{% blocktrans %}Log in{% endblocktrans %}</button>
             <input type="hidden" name="next" value="{{ next|escape }}" />
         </div>
     </form>

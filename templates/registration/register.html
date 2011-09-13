@@ -1,20 +1,23 @@
 {% extends "base/nav_form.html" %}
 {% load dated_static %}
-{% block title %}Sign up{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Sign up{% endblocktrans %}{% endblock %}
 {% block breadcrumbs %}
-   <a href="{% url index %}">Home</a> &raquo; 
-   Sign up
+   <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &raquo; 
+   {% blocktrans %}Sign up{% endblocktrans %}
 {% endblock %}
 {% block form_info %}
-<h3>A clean energy future starts with us. </h3>
+<h3>{% blocktrans %}A clean energy future starts with us.{% endblocktrans %}</h3>
 <p>
+{% blocktrans %}
     Across the country, Trendsetters are working to transform the way our homes and
     communities use energy. Join us! Become a Trendsetter by creating an account
     and pledging to save energy.
+{% endblocktrans %}
 </p>
 <div class="fb_button">
     <a href="#" class="fb_button fb_button_large">
-        <span id="fb_login_text" class="fb_button_text">Join with Facebook</span>
+        <span id="fb_login_text" class="fb_button_text">{% blocktrans %}Join with Facebook{% endblocktrans %}</span>
     </a>
 </div>
 <!--<ul>-->
@@ -26,14 +29,14 @@
 {% endblock %}
 {% block content %}
 <form action="{% url register %}" method="post" class="form_6c">
-    <h1>Sign Up Now</h1>
+    <h1>{% blocktrans %}Sign Up Now{% endblocktrans %}</h1>
     {% include "base/_form.html" %}
     {% with profile_form as form %}
         {% include "base/_form.html" %}
     {% endwith %}
     {% csrf_token %}
     <div class="form_buttons">
-        <button class="button_mega" type="submit">Sign Up</button>
+        <button class="button_mega" type="submit">{% blocktrans %}Sign Up{% endblocktrans %}</button>
         <input type="hidden" name="next" value="{{ next|escape }}" />
     </div>
 </form>
