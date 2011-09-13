@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-12 23:10-0400\n"
+"POT-Creation-Date: 2011-09-12 23:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -868,6 +868,132 @@ msgid ""
 "\t    "
 msgstr ""
 
+#: commitments/templates/commitments/show.html:4
+msgid "My commitments"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:10
+msgid "Collect Pledge Cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:12
+msgid ""
+"\n"
+"            Pledge Cards are a great way to start a conversation about "
+"saving energy. The card invites the recipient to take\n"
+"            the Trendsetter Pledge, and get started on that pledge by "
+"committing to energy actions. You can download the\n"
+"            Pledge Card and print out as many copies as you need.\n"
+"\t  "
+msgstr ""
+
+#: commitments/templates/commitments/show.html:19
+msgid "Step 1:"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:21
+msgid "Download the Pledge Card"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:21
+#: events/templates/events/detail.html:47
+msgid "PDF sign in sheet download"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:25
+msgid "Step 2:"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:26
+msgid "Enter pledge cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:29
+msgid "Pick your place"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:30
+msgid ""
+"\n"
+"        <p>\n"
+"            In your community, there are tons of opportunities for you to "
+"get creative, meet new people and help others\n"
+"            start saving energy. Here are a few ideas for good recruitment "
+"venues:\n"
+"        </p>\n"
+"        <ul class=\"spaced_list\">\n"
+"            <li>\n"
+"                <b>In your child’s school:</b> Engage parents by bringing "
+"Pledge Cards to PTA meetings or green fairs at\n"
+"                your school.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your college or high school:</b> Work with your "
+"environmental club to collect Trendsetter Pledges\n"
+"                in places like the dining hall and other venues around "
+"campus.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>In your office:</b> Hold a “lunch n’ learn” about energy "
+"efficiency and hand out Pledge Cards. You\n"
+"                can invite a member of the facilities staff to give a brief "
+"presentation about how energy is used in\n"
+"                your office building. You may want to consider using the "
+"Energy Meeting tool for this kind of event.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your place of worship:</b> Hand out Pledge Cards "
+"during a potluck or field day. \n"
+"            </li>\n"
+"            <li>\n"
+"                <b>Around your neighborhood:</b> Set up a table at your "
+"block party. Organize a group of your neighbors\n"
+"                to get together and knock on doors with a Pledge Card in "
+"hand. This is a great way to meet your\n"
+"                neighbors!\n"
+"            </li>\n"
+"        </ul>\n"
+"\t"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:59
+msgid "Level up"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:62
+#, python-format
+msgid ""
+"\n"
+"            Set a recruitment goal for yourself or <a href="
+"\"%(group_list_url)s\">your community</a>. Challenge a friend to\n"
+"            see who can recruit the most Trendsetters. A little friendly "
+"competition can go a long way towards inspiring\n"
+"            people to keep at it.\n"
+"\t  "
+msgstr ""
+
+#: commitments/templates/commitments/show.html:69
+msgid "Your collected Pledge Cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:135
+msgid "to enter pledge cards."
+msgstr ""
+
+#: commitments/templates/commitments/show.html:145
+msgid "Collected pledges"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:147
+#, python-format
+msgid ""
+"\n"
+"            You've collected <b>%(pledge_card_count)s</b> pledge cards.\n"
+"            See all your <a href=\"#managecards\">collected Pledge Cards</"
+"a>.\n"
+"\t  "
+msgstr ""
+
 #: events/admin.py:33 events/templates/events/_details.html:9
 msgid "When"
 msgstr ""
@@ -1453,10 +1579,6 @@ msgstr ""
 #: events/templates/events/sign_in_sheet.html:5
 #: events/templates/events/sign_in_sheet.html:29
 msgid "Sign In Sheet"
-msgstr ""
-
-#: events/templates/events/detail.html:47
-msgid "PDF sign in sheet download"
 msgstr ""
 
 #: events/templates/events/detail.html:51

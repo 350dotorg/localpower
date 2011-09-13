@@ -1,29 +1,33 @@
 {% extends "commitments/base.html" %}
 {% load dated_static %}
-{% block title %}My commitments{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}My commitments{% endblocktrans %}{% endblock %}
 
 {% block content %}
 <div class="grid_6 alpha">
     <div class="box_two_top"></div>
     <div class="box_two_middle">
-        <h1>Collect Pledge Cards</h1>
+        <h1>{% blocktrans %}Collect Pledge Cards{% endblocktrans %}</h1>
         <p>
+	  {% blocktrans %}
             Pledge Cards are a great way to start a conversation about saving energy. The card invites the recipient to take
             the Trendsetter Pledge, and get started on that pledge by committing to energy actions. You can download the
             Pledge Card and print out as many copies as you need.
+	  {% endblocktrans %}
         </p>
         <p>
-            <b>Step 1:</b>
+            <b>{% blocktrans %}Step 1:{% endblocktrans %}</b>
             <a href="http://rahstatic.s3.amazonaws.com/meeting_materials/general_pledge_card.pdf" class="button">
-                Download the Pledge Card <span class="file_icon pdf_icon" title="PDF sign in sheet download"></span>
+                {% blocktrans %}Download the Pledge Card{% endblocktrans %} <span class="file_icon pdf_icon" title="{% blocktrans %}PDF sign in sheet download{% endblocktrans %}"></span>
             </a>
         </p>
         <p>
-            <b>Step 2:</b>
-            <a href="{% url commitments_card_create %}" class="button commitment_card_open">Enter pledge cards</a>
+            <b>{% blocktrans %}Step 2:{% endblocktrans %}</b>
+            <a href="{% url commitments_card_create %}" class="button commitment_card_open">{% blocktrans %}Enter pledge cards{% endblocktrans %}</a>
         </p>
 
-        <h2>Pick your place</h2>
+        <h2>{% blocktrans %}Pick your place{% endblocktrans %}</h2>
+	{% blocktrans %}
         <p>
             In your community, there are tons of opportunities for you to get creative, meet new people and help others
             start saving energy. Here are a few ideas for good recruitment venues:
@@ -51,17 +55,21 @@
                 neighbors!
             </li>
         </ul>
-        <h2>Level up</h2>
+	{% endblocktrans %}
+        <h2>{% blocktrans %}Level up{% endblocktrans %}</h2>
         <p>
-            Set a recruitment goal for yourself or <a href="{% url group_list %}">your community</a>. Challenge a friend to
+	  {% url group_list as group_list_url %}
+	  {% blocktrans %}
+            Set a recruitment goal for yourself or <a href="{{group_list_url}}">your community</a>. Challenge a friend to
             see who can recruit the most Trendsetters. A little friendly competition can go a long way towards inspiring
             people to keep at it.
+	  {% endblocktrans %}
         </p>
     
-        <h2 id="managecards">Your collected Pledge Cards</h2>
+        <h2 id="managecards">{% blocktrans %}Your collected Pledge Cards{% endblocktrans %}</h2>
         {% if request.user.is_authenticated %}
         {# <p> #}
-        {#     <a href="{% url commitments_card_create %}" class="button commitment_card_open">Enter a new pledge card</a> #}
+        {#     <a href="{% url commitments_card_create %}" class="button commitment_card_open">{% blocktrans %}Enter a new pledge card{% endblocktrans %}</a> #}
         {# </p> #}
         <div id="commitments_show_table">
         {% if actions %}
@@ -124,7 +132,7 @@
         <p>
             <a href="{% url login %}?next={{ request.path }}">Login</a> or 
             <a href="{% url register %}?next={{ request.path }}">register</a> 
-            to enter pledge cards.
+            {% blocktrans %}to enter pledge cards.{% endblocktrans %}
         </p>
         {% endif %}
     </div>
@@ -134,10 +142,12 @@
     {% if request.user.is_authenticated %}
     <div class="box_one_top"></div>
     <div class="box_one_middle">
-        <h3>Collected pledges</h3>
+        <h3>{% blocktrans %}Collected pledges{% endblocktrans %}</h3>
         <p>
-            You've collected <b>{{ pledge_card_count }}</b> pledge card{{ pledge_card_count|pluralize }}. 
+	  {% blocktrans %}
+            You've collected <b>{{ pledge_card_count }}</b> pledge cards.
             See all your <a href="#managecards">collected Pledge Cards</a>.
+	  {% endblocktrans %}
         </p>
     </div>
     <div class="box_one_bottom"></div>
