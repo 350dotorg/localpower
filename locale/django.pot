@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-12 20:17-0400\n"
+"POT-Creation-Date: 2011-09-12 23:10-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -295,6 +295,7 @@ msgstr ""
 #: groups/templates/groups/group_edit.html:6
 #: groups/templates/groups/group_external_link_only_edit.html:6
 #: templates/rah/feedback.html:6 templates/rah/ga_opt_out.html:5
+#: templates/registration/login.html:6 templates/registration/register.html:6
 msgid "Home"
 msgstr ""
 
@@ -2991,7 +2992,7 @@ msgid ""
 "dictum velit nec est."
 msgstr ""
 
-#: templates/base/nav.html:35
+#: templates/base/nav.html:35 templates/registration/register.html:20
 msgid "Join with Facebook"
 msgstr ""
 
@@ -3418,4 +3419,52 @@ msgstr ""
 
 #: templates/rah/user_list.html:64
 msgid "View profile"
+msgstr ""
+
+#: templates/registration/login.html:4 templates/registration/login.html:7
+#: templates/registration/login.html:33
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/login.html:10
+msgid "Need a little help?"
+msgstr ""
+
+#: templates/registration/login.html:13
+msgid "Create an account"
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Recover your password"
+msgstr ""
+
+#: templates/registration/login.html:21
+msgid "Log in with Facebook"
+msgstr ""
+
+#: templates/registration/register.html:4
+#: templates/registration/register.html:7
+msgid "Sign up"
+msgstr ""
+
+#: templates/registration/register.html:10
+msgid "A clean energy future starts with us."
+msgstr ""
+
+#: templates/registration/register.html:12
+msgid ""
+"\n"
+"    Across the country, Trendsetters are working to transform the way our "
+"homes and\n"
+"    communities use energy. Join us! Become a Trendsetter by creating an "
+"account\n"
+"    and pledging to save energy.\n"
+msgstr ""
+
+#: templates/registration/register.html:32
+msgid "Sign Up Now"
+msgstr ""
+
+#: templates/registration/register.html:39
+msgid "Sign Up"
 msgstr ""
