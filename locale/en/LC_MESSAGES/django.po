@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-12 20:17-0400\n"
-"PO-Revision-Date: 2011-09-13 00:26+0000\n"
-"Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
+"POT-Creation-Date: 2011-09-12 23:17-0400\n"
+"PO-Revision-Date: 2011-09-13 05:49+0000\n"
+"Last-Translator: jwarnow <jon@350.org>\n"
 "Language-Team: English (http://www.transifex.net/projects/p/localpower/team/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -302,6 +302,7 @@ msgstr ""
 #: groups/templates/groups/group_edit.html:6
 #: groups/templates/groups/group_external_link_only_edit.html:6
 #: templates/rah/feedback.html:6 templates/rah/ga_opt_out.html:5
+#: templates/registration/login.html:6 templates/registration/register.html:6
 msgid "Home"
 msgstr ""
 
@@ -689,6 +690,8 @@ msgstr ""
 #: challenges/forms.py:12
 msgid "How many petitions do you want to collect?"
 msgstr ""
+"How many signatures do you think you can collect? Be ambitious -- but be "
+"realistic too. "
 
 #: challenges/models.py:20 challenges/models.py:58
 msgid "challenge"
@@ -890,6 +893,116 @@ msgid ""
 "\n"
 "\t    Goal: %(challenge_goal)s supporters\n"
 "\t    "
+msgstr ""
+
+#: commitments/templates/commitments/show.html:4
+msgid "My commitments"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:10
+msgid "Collect Pledge Cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:12
+msgid ""
+"\n"
+"            Pledge Cards are a great way to start a conversation about saving energy. The card invites the recipient to take\n"
+"            the Trendsetter Pledge, and get started on that pledge by committing to energy actions. You can download the\n"
+"            Pledge Card and print out as many copies as you need.\n"
+"\t  "
+msgstr ""
+
+#: commitments/templates/commitments/show.html:19
+msgid "Step 1:"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:21
+msgid "Download the Pledge Card"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:21
+#: events/templates/events/detail.html:47
+msgid "PDF sign in sheet download"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:25
+msgid "Step 2:"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:26
+msgid "Enter pledge cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:29
+msgid "Pick your place"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:30
+msgid ""
+"\n"
+"        <p>\n"
+"            In your community, there are tons of opportunities for you to get creative, meet new people and help others\n"
+"            start saving energy. Here are a few ideas for good recruitment venues:\n"
+"        </p>\n"
+"        <ul class=\"spaced_list\">\n"
+"            <li>\n"
+"                <b>In your child’s school:</b> Engage parents by bringing Pledge Cards to PTA meetings or green fairs at\n"
+"                your school.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your college or high school:</b> Work with your environmental club to collect Trendsetter Pledges\n"
+"                in places like the dining hall and other venues around campus.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>In your office:</b> Hold a “lunch n’ learn” about energy efficiency and hand out Pledge Cards. You\n"
+"                can invite a member of the facilities staff to give a brief presentation about how energy is used in\n"
+"                your office building. You may want to consider using the Energy Meeting tool for this kind of event.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your place of worship:</b> Hand out Pledge Cards during a potluck or field day. \n"
+"            </li>\n"
+"            <li>\n"
+"                <b>Around your neighborhood:</b> Set up a table at your block party. Organize a group of your neighbors\n"
+"                to get together and knock on doors with a Pledge Card in hand. This is a great way to meet your\n"
+"                neighbors!\n"
+"            </li>\n"
+"        </ul>\n"
+"\t"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:59
+msgid "Level up"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:62
+#, python-format
+msgid ""
+"\n"
+"            Set a recruitment goal for yourself or <a href=\"%(group_list_url)s\">your community</a>. Challenge a friend to\n"
+"            see who can recruit the most Trendsetters. A little friendly competition can go a long way towards inspiring\n"
+"            people to keep at it.\n"
+"\t  "
+msgstr ""
+
+#: commitments/templates/commitments/show.html:69
+msgid "Your collected Pledge Cards"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:135
+msgid "to enter pledge cards."
+msgstr ""
+
+#: commitments/templates/commitments/show.html:145
+msgid "Collected pledges"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:147
+#, python-format
+msgid ""
+"\n"
+"            You've collected <b>%(pledge_card_count)s</b> pledge cards.\n"
+"            See all your <a href=\"#managecards\">collected Pledge Cards</a>.\n"
+"\t  "
 msgstr ""
 
 #: events/admin.py:33 events/templates/events/_details.html:9
@@ -1438,6 +1551,10 @@ msgid ""
 "step by step instructions for executing a great event and lots of fun\n"
 "activities and materials to give to guests.\n"
 msgstr ""
+"\n"
+"No special experience is needed to organize a local meeting -- just passion, a willingness to collaborate with your neighbors. Our <a href=\"/hosting/\">host materials</a> provide\n"
+"step by step instructions for executing a great event and lots of fun\n"
+"activities and materials to give to guests.\n"
 
 #: events/templates/events/create.html:25
 msgid "Create Event"
@@ -1475,10 +1592,6 @@ msgstr ""
 #: events/templates/events/sign_in_sheet.html:5
 #: events/templates/events/sign_in_sheet.html:29
 msgid "Sign In Sheet"
-msgstr ""
-
-#: events/templates/events/detail.html:47
-msgid "PDF sign in sheet download"
 msgstr ""
 
 #: events/templates/events/detail.html:51
@@ -2489,7 +2602,7 @@ msgstr ""
 
 #: groups/templates/groups/group_list.html:45
 msgid "Search Communities"
-msgstr ""
+msgstr "Search the Map"
 
 #: groups/templates/groups/group_list.html:52
 msgid "Join a Community"
@@ -2952,7 +3065,7 @@ msgstr ""
 
 #: templates/base/base.html:88
 msgid "Who are we? Listen up."
-msgstr ""
+msgstr "Want to know more?"
 
 #: templates/base/base.html:90
 msgid ""
@@ -2962,6 +3075,8 @@ msgid ""
 "                        ad minim veniam, quis nostrud exercitation ullamco.\n"
 "\t\t      "
 msgstr ""
+"\n"
+"This website was created to connect people for bold climate action. We're still improving and adding features all the time."
 
 #: templates/base/base.html:95
 msgid "Learn More"
@@ -3029,8 +3144,10 @@ msgid ""
 "Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut "
 "dictum velit nec est."
 msgstr ""
+"Join a growing community of climate activists who are building a movement "
+"and transforming their communities from the ground up. "
 
-#: templates/base/nav.html:35
+#: templates/base/nav.html:35 templates/registration/register.html:20
 msgid "Join with Facebook"
 msgstr ""
 
@@ -3460,6 +3577,52 @@ msgstr ""
 
 #: templates/rah/user_list.html:64
 msgid "View profile"
+msgstr ""
+
+#: templates/registration/login.html:4 templates/registration/login.html:7
+#: templates/registration/login.html:33
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/login.html:10
+msgid "Need a little help?"
+msgstr ""
+
+#: templates/registration/login.html:13
+msgid "Create an account"
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Recover your password"
+msgstr ""
+
+#: templates/registration/login.html:21
+msgid "Log in with Facebook"
+msgstr ""
+
+#: templates/registration/register.html:4
+#: templates/registration/register.html:7
+msgid "Sign up"
+msgstr ""
+
+#: templates/registration/register.html:10
+msgid "A clean energy future starts with us."
+msgstr "Join a growing community of climate activists. "
+
+#: templates/registration/register.html:12
+msgid ""
+"\n"
+"    Across the country, Trendsetters are working to transform the way our homes and\n"
+"    communities use energy. Join us! Become a Trendsetter by creating an account\n"
+"    and pledging to save energy.\n"
+msgstr ""
+
+#: templates/registration/register.html:32
+msgid "Sign Up Now"
+msgstr ""
+
+#: templates/registration/register.html:39
+msgid "Sign Up"
 msgstr ""
 
 
