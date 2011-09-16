@@ -63,7 +63,8 @@ def group_create(request):
     return render_to_response("groups/group_create.html", {
         "form": form,
         "site": Site.objects.get_current(),
-        "nav_selected": nav_selected
+        "nav_selected": nav_selected,
+        'external_group': False,
     }, context_instance=RequestContext(request))
 
 @login_required
@@ -96,7 +97,8 @@ def group_external_link_only_create(request):
         "form": form,
         "link_form": link_form,
         "site": Site.objects.get_current(),
-        "nav_selected": nav_selected
+        "nav_selected": nav_selected,
+        'external_group': True,
     }, context_instance=RequestContext(request))
 
 @login_required
