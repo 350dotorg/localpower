@@ -32,7 +32,21 @@
 {% block content %}
     <div id="overview">
       {% include "events/_details.html" %}
+
+      <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
+      {% if guest.rsvp_status and not request.GET.reset %}
+      <p>
+	{% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
+        You are: <span>{{ rsvp_status }}</span><br />
+	{% endblocktrans %}
+        (<a href="{{ event.get_absolute_url }}?reset=true">{% blocktrans %}change{% endblocktrans %}</a>)
+      </p>
+      {% else %}
+      {% include "events/_rsvp_form.html" %}
+      {% endif %}
+
     </div>
+
     <div id="people">        
         {% if has_manager_privileges %}
         <h3>{% blocktrans %}Guest List{% endblocktrans %}</h3>
@@ -55,18 +69,7 @@
         {% include "events/_invitations.html" %}
 		
 	{% else %}
-        <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
-        {% if guest.rsvp_status and not request.GET.reset %}
-        <p>
-	  {% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
-          You are: <span>{{ rsvp_status }}</span><br />
-	  {% endblocktrans %}
-          (<a href="{{ event.get_absolute_url }}?reset=true">{% blocktrans %}change{% endblocktrans %}</a>)
-        </p>
-        {% else %}
-        {% include "events/_rsvp_form.html" %}
-        {% endif %}
-
+	Nothing to see here!  Move along.
         {% endif %}
     </div>
 
