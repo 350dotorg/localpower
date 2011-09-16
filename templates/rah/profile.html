@@ -109,6 +109,35 @@
         {% endif %}
 	</div>
 	<div id="events">
+
+	  <ul class="plain_list nugget_3c_list">
+            {% for event in events %}
+            <li>
+              <div class="nugget_3c_list_graphic">
+                <div class="nugget_3c_list_cal_month">{{ event.when|date:"M"|upper }}</div>
+                <div class="nugget_3c_list_cal_date">{{ event.when|date:"j" }}</div>
+              </div>
+              <div class="nugget_3c_list_text">
+                <a href="{% url event-detail event.id %}">{{ event.title }}</a><br/>
+                <span>{{ event.location }}</span>
+              </div>            
+            </li>
+	    
+	    {% empty %}
+	    
+	    {% if is_others_profile %}
+	    {% blocktrans with user.get_full_name as user_full_name %}
+	    {{ user_full_name }} is not participating in any events.
+	    {% endblocktrans %}
+	    {% else %}
+	    {% url event-show as event_list_url %}
+	    {% blocktrans %}
+	    You have not signed up for any events.  Why don't you 
+	    <a href="{{ event_list_url }}">look for an event to attend near you</a>?
+	    {% endblocktrans %}
+	    {% endif %}
+	    
+	    {% endfor %}
 	</div>
 	<div id="challenges">
 	</div>
@@ -146,6 +175,18 @@
                 <span>{{ event.location }}</span>
             </div>            
         </li>
+	{% empty %}
+	{% if is_others_profile %}
+	{% blocktrans with user.get_full_name as user_full_name %}
+	{{ user_full_name }} is not participating in any events.
+	{% endblocktrans %}
+	{% else %}
+	{% url event-show as event_list_url %}
+	{% blocktrans %}
+	You have not signed up for any events.  Why don't you 
+	<a href="{{ event_list_url }}">look for an event to attend near you</a>?
+	{% endblocktrans %}
+	{% endif %}
         {% endfor %}
     </ul>
     {% comment %}
