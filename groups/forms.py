@@ -27,7 +27,9 @@ class GroupForm(forms.ModelForm):
     description = forms.CharField(label=_("Community description"),
                                   help_text=_("What is the community all about?"),
         widget=forms.Textarea(attrs={"rows": 5}))
-    headquarters = GoogleLocationField(label=_("Headquarters"))
+    headquarters = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("Include at least city, state and country"))
     image = forms.FileField(label=_("Upload a community image"),
                             help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
