@@ -22,6 +22,7 @@
                         <img src="{% dated_static 'images/theme/home_slide_1.png' %}" alt="" width="420" height="298"/>
                     </div>
                     <div class="home_slide_right">
+		      {% if request.user.is_anonymous %}
                         <h1>{% blocktrans %}Be an Energy Trendsetter!{% endblocktrans %}</h1>
                         <p>
 			  {% blocktrans %}
@@ -33,6 +34,17 @@
                         <p>
                             <a href="{% url register %}" class="button button_mega button_shadow">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
                         </p>
+			{% else %}
+                        <h1>{% blocktrans %}Welcome Back!{% endblocktrans %}</h1>
+                        <p>
+			  {% blocktrans %}
+			  Welcome back to {{ SITE_NAME }}!
+			  {% endblocktrans %}
+                        </p>
+                        <p>
+                            <a href="{% url user_self_redirect %}" class="button button_mega button_shadow">{% blocktrans %}My Account{% endblocktrans %} &rsaquo;</a>
+                        </p>
+			{% endif %}
                     </div>
                 </div>
                 <div id="home_slide_2" class="home_slide">
