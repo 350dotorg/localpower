@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-12 23:17-0400\n"
+"POT-Creation-Date: 2011-09-16 09:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -333,8 +333,8 @@ msgstr ""
 #: actions/templates/actions/action_detail.html:67
 #: challenges/templates/challenges/detail.html:15
 #: challenges/templates/challenges/detail.html:67
-#: events/templates/events/detail.html:26
-#: events/templates/events/detail.html:86 groups/models.py:377
+#: events/templates/events/detail.html:31
+#: events/templates/events/detail.html:85 groups/models.py:377
 #: groups/templates/groups/group_detail.html:34
 #: groups/templates/groups/group_detail.html:120
 #: groups/templates/groups/group_disc_detail.html:8
@@ -350,7 +350,7 @@ msgstr ""
 
 #: actions/templates/actions/action_detail.html:66
 #: challenges/templates/challenges/detail.html:65
-#: events/templates/events/detail.html:85
+#: events/templates/events/detail.html:84
 #: groups/templates/groups/group_detail.html:144
 msgid "Feed"
 msgstr ""
@@ -825,7 +825,7 @@ msgstr ""
 #: challenges/templates/challenges/edit.html:36
 #: challenges/templates/challenges/edit.html:39
 #: events/templates/events/create.html:24
-#: groups/templates/groups/group_create.html:21
+#: groups/templates/groups/group_create.html:30
 msgid "Cancel"
 msgstr ""
 
@@ -896,7 +896,7 @@ msgid "Download the Pledge Card"
 msgstr ""
 
 #: commitments/templates/commitments/show.html:21
-#: events/templates/events/detail.html:47
+#: events/templates/events/detail.html:68
 msgid "PDF sign in sheet download"
 msgstr ""
 
@@ -1164,7 +1164,7 @@ msgstr ""
 msgid "longitude"
 msgstr ""
 
-#: events/models.py:33 rah/models.py:139
+#: events/models.py:33 groups/models.py:118 rah/models.py:139
 msgid "location"
 msgstr ""
 
@@ -1366,7 +1366,7 @@ msgid "Commitment Card"
 msgstr ""
 
 #: events/templates/events/_guests_add.html:3
-#: events/templates/events/detail.html:43
+#: events/templates/events/detail.html:64
 #: events/templates/events/guests_add.html:9
 msgid "Add Guest"
 msgstr ""
@@ -1382,7 +1382,7 @@ msgid "Send"
 msgstr ""
 
 #: events/templates/events/_hosts.html:3
-#: events/templates/events/detail.html:44
+#: events/templates/events/detail.html:65
 msgid "Select Hosts"
 msgstr ""
 
@@ -1558,47 +1558,48 @@ msgid "%(SITE_NAME)s Event"
 msgstr ""
 
 #: events/templates/events/detail.html:25
-msgid "People"
+msgid "RSVPs"
 msgstr ""
 
 #: events/templates/events/detail.html:28
-#: events/templates/events/detail.html:42
-msgid "Edit Event Details"
-msgstr ""
-
-#: events/templates/events/detail.html:37
-#: events/templates/events/detail.html:50
-msgid "Guest List"
-msgstr ""
-
-#: events/templates/events/detail.html:40
+#: events/templates/events/detail.html:61
 msgid "Host Tools"
 msgstr ""
 
+#: events/templates/events/detail.html:33
+#: events/templates/events/detail.html:63
+msgid "Edit Event Details"
+msgstr ""
+
+#: events/templates/events/detail.html:40
+msgid "RSVP"
+msgstr ""
+
+#: events/templates/events/detail.html:43
+#, python-format
+msgid ""
+"\n"
+"        You are: <span>%(rsvp_status)s</span><br />\n"
+"\t"
+msgstr ""
+
 #: events/templates/events/detail.html:46
+msgid "change"
+msgstr ""
+
+#: events/templates/events/detail.html:55
+#: events/templates/events/detail.html:71
+msgid "Guest List"
+msgstr ""
+
+#: events/templates/events/detail.html:67
 #: events/templates/events/sign_in_sheet.html:5
 #: events/templates/events/sign_in_sheet.html:29
 msgid "Sign In Sheet"
 msgstr ""
 
-#: events/templates/events/detail.html:51
+#: events/templates/events/detail.html:72
 msgid "Excel guest list download"
-msgstr ""
-
-#: events/templates/events/detail.html:57
-msgid "RSVP"
-msgstr ""
-
-#: events/templates/events/detail.html:60
-#, python-format
-msgid ""
-"\n"
-"                      You are: <span>%(rsvp_status)s</span><br />\n"
-"\t\t      "
-msgstr ""
-
-#: events/templates/events/detail.html:63
-msgid "change"
 msgstr ""
 
 #: events/templates/events/edit.html:4
@@ -1764,11 +1765,11 @@ msgstr ""
 msgid "Enter a name for your new community"
 msgstr ""
 
-#: groups/forms.py:25
+#: groups/forms.py:25 groups/forms.py:100
 msgid "Community address"
 msgstr ""
 
-#: groups/forms.py:26
+#: groups/forms.py:26 groups/forms.py:101
 msgid "This will be your community's web address"
 msgstr ""
 
@@ -1780,77 +1781,81 @@ msgstr ""
 msgid "What is the community all about?"
 msgstr ""
 
-#: groups/forms.py:30
-msgid "Headquarters"
-msgstr ""
-
-#: groups/forms.py:31
-msgid "Upload a community image"
+#: groups/forms.py:31 rah/admin.py:25
+msgid "Location"
 msgstr ""
 
 #: groups/forms.py:32
-msgid "You can upload png, jpg or gif files upto 512K"
+msgid "Include at least city, state and country"
 msgstr ""
 
-#: groups/forms.py:56
+#: groups/forms.py:33
+msgid "Upload a community image"
+msgstr ""
+
+#: groups/forms.py:34
+msgid "(Optional) You can upload png, jpg or gif files up to 512K"
+msgstr ""
+
+#: groups/forms.py:58
 msgid "Community images cannot be larger than 512K"
 msgstr ""
 
-#: groups/forms.py:59
+#: groups/forms.py:61
 #, python-format
 msgid "Images cannot be of type %(type)s"
 msgstr ""
 
-#: groups/forms.py:66
+#: groups/forms.py:68
 msgid "Community addresses cannot begin with a state name."
 msgstr ""
 
-#: groups/forms.py:71 groups/forms.py:73 groups/forms.py:77
+#: groups/forms.py:73 groups/forms.py:75 groups/forms.py:79
 msgid "This community address is not available."
 msgstr ""
 
-#: groups/forms.py:113
+#: groups/forms.py:120
 msgid "--Set Membership Role--"
 msgstr ""
 
-#: groups/forms.py:114 groups/templates/groups/_membership_form.html:28
+#: groups/forms.py:121 groups/templates/groups/_membership_form.html:28
 msgid "Manager"
 msgstr ""
 
-#: groups/forms.py:115 groups/templates/groups/_membership_form.html:28
+#: groups/forms.py:122 groups/templates/groups/_membership_form.html:28
 msgid "Regular Member"
 msgstr ""
 
-#: groups/forms.py:116
+#: groups/forms.py:123
 msgid "Remove from Community"
 msgstr ""
 
-#: groups/forms.py:120
+#: groups/forms.py:127
 msgid "You must select a membership action."
 msgstr ""
 
-#: groups/forms.py:124
+#: groups/forms.py:131
 msgid "You must select at least one member from the community."
 msgstr ""
 
-#: groups/forms.py:137
+#: groups/forms.py:144
 msgid "You must leave at least one manager in the community."
 msgstr ""
 
-#: groups/forms.py:151
+#: groups/forms.py:158
 #, python-format
 msgid "Role option %(role)s does not exist"
 msgstr ""
 
-#: groups/forms.py:164
+#: groups/forms.py:171
 msgid "Comment"
 msgstr ""
 
-#: groups/forms.py:181
+#: groups/forms.py:188
 msgid "Parent ID is currupted"
 msgstr ""
 
-#: groups/forms.py:237
+#: groups/forms.py:244
 msgid "You need to be a member of a community first"
 msgstr ""
 
@@ -1896,10 +1901,6 @@ msgstr ""
 
 #: groups/models.py:117
 msgid "is featured"
-msgstr ""
-
-#: groups/models.py:118
-msgid "headquarters"
 msgstr ""
 
 #: groups/models.py:120
@@ -2038,124 +2039,124 @@ msgstr ""
 msgid "%(user)s would like to link %(object)s to %(group)s"
 msgstr ""
 
-#: groups/views.py:58 groups/views.py:89
+#: groups/views.py:58 groups/views.py:90
 #, python-format
 msgid "%(group)s has been created."
 msgstr ""
 
-#: groups/views.py:108
+#: groups/views.py:110
 #, python-format
 msgid "You have been removed from community %(group)s"
 msgstr ""
 
-#: groups/views.py:112
+#: groups/views.py:114
 msgid ""
 "You cannot leave the community, until you've assigned someone else to be "
 "manager."
 msgstr ""
 
-#: groups/views.py:116
+#: groups/views.py:118
 msgid "You cannot leave a community your not a member of"
 msgstr ""
 
-#: groups/views.py:123
+#: groups/views.py:125
 msgid "You are already a member"
 msgstr ""
 
-#: groups/views.py:126
+#: groups/views.py:128
 msgid "Your membership is currently pending"
 msgstr ""
 
-#: groups/views.py:130
+#: groups/views.py:132
 #, python-format
 msgid "You have successfully joined community %(group)s"
 msgstr ""
 
-#: groups/views.py:137
+#: groups/views.py:139
 #, python-format
 msgid ""
 "You have made a request to join %(group)s, a managershould grant or deny "
 "your membership shortly."
 msgstr ""
 
-#: groups/views.py:158
+#: groups/views.py:160
 #, python-format
 msgid "%(user)s has been added to the community"
 msgstr ""
 
-#: groups/views.py:164
+#: groups/views.py:166
 #, python-format
 msgid "%(user)s has been denied access to the community"
 msgstr ""
 
-#: groups/views.py:167
+#: groups/views.py:169
 #, python-format
 msgid "%(user)s has already been added to this community"
 msgstr ""
 
-#: groups/views.py:170
+#: groups/views.py:172
 #, python-format
 msgid "%(user)s has already been denied access to this community"
 msgstr ""
 
-#: groups/views.py:192
+#: groups/views.py:194
 #, python-format
 msgid "Your community has been linked with %(object)s"
 msgstr ""
 
-#: groups/views.py:196
+#: groups/views.py:198
 #, python-format
 msgid "Your community will not be linked with %(object)s"
 msgstr ""
 
-#: groups/views.py:200
+#: groups/views.py:202
 #, python-format
 msgid "%(object)s has already been linked with your community"
 msgstr ""
 
-#: groups/views.py:204
+#: groups/views.py:206
 #, python-format
 msgid "%(object)s has not been linked with your community"
 msgstr ""
 
-#: groups/views.py:249 groups/views.py:283 groups/views.py:292
+#: groups/views.py:251 groups/views.py:287 groups/views.py:296
 #, python-format
 msgid "%(group)s has been updated."
 msgstr ""
 
-#: groups/views.py:254
+#: groups/views.py:256
 #, python-format
 msgid "%(group)s has been upgraded."
 msgstr ""
 
-#: groups/views.py:258 groups/views.py:299
+#: groups/views.py:260 groups/views.py:303
 #, python-format
 msgid "%(group)s has been deleted."
 msgstr ""
 
-#: groups/views.py:306
+#: groups/views.py:310
 #, python-format
 msgid "%(group)s's memberships have been updated."
 msgstr ""
 
-#: groups/views.py:312
+#: groups/views.py:316
 #, python-format
 msgid "You no longer have permissions to edit %(group)s"
 msgstr ""
 
-#: groups/views.py:319 rah/views.py:295
+#: groups/views.py:323 rah/views.py:295
 msgid "No action specified."
 msgstr ""
 
-#: groups/views.py:428
+#: groups/views.py:432
 msgid "Discussion posted"
 msgstr ""
 
-#: groups/views.py:458
+#: groups/views.py:462
 msgid "Discussion approved"
 msgstr ""
 
-#: groups/views.py:472
+#: groups/views.py:476
 msgid "Discussion removed"
 msgstr ""
 
@@ -2234,7 +2235,7 @@ msgid "more"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:4
-#: groups/templates/groups/group_create.html:15
+#: groups/templates/groups/group_create.html:22
 msgid "Create a Community"
 msgstr ""
 
@@ -2244,12 +2245,20 @@ msgid "Community"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:8
-#: groups/templates/groups/group_create.html:22
+#: groups/templates/groups/group_create.html:31
 msgid "Create Community"
 msgstr ""
 
-#: groups/templates/groups/group_create.html:11
+#: groups/templates/groups/group_create.html:12
 msgid "info!"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:14
+msgid "info for group creation should go here"
+msgstr ""
+
+#: groups/templates/groups/group_create.html:20
+msgid "Add My Group to the Map"
 msgstr ""
 
 #: groups/templates/groups/group_detail.html:11
@@ -2622,10 +2631,6 @@ msgstr ""
 
 #: invite/forms.py:52
 msgid "Signature has been corrupted"
-msgstr ""
-
-#: rah/admin.py:25
-msgid "Location"
 msgstr ""
 
 #: rah/admin.py:44
