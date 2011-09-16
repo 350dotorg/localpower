@@ -2,7 +2,7 @@
     <div class="overset_form_message error">{{ error }}</div>
 {% endfor %}
 {% for field in form %}
-    {% if field.name == "slug" %}
+    {% if not external_group and field.name == "slug" %}
         <div id="group_slug_wrapper">
             <label id="group_slug_domain">http://{{SITE_DOMAIN}}/</label>
             <p id="group_slug_address" class="form_row overset {% if field.errors %}error{% endif %}">

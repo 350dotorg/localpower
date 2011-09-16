@@ -263,6 +263,7 @@ def _group_external_link_only_edit(request, group):
     group_form = group_form or GroupExternalLinkOnlyForm(instance=group)
     link_form = link_form or ExternalLinkForm(instance=external_link)
     site = Site.objects.get_current()
+    external_group = True
     return render_to_response("groups/group_external_link_only_edit.html", locals(),
                               context_instance=RequestContext(request))
 
@@ -277,6 +278,7 @@ def group_edit(request, group_slug):
     if group.is_external_link_only:
         return _group_external_link_only_edit(request, group)
 
+    external_group = False
     if request.method == "POST":
         if "change_group" in request.POST:
             group_form = GroupForm(request.POST, request.FILES, instance=group)

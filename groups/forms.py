@@ -94,6 +94,11 @@ class GroupForm(forms.ModelForm):
         return group
 
 class GroupExternalLinkOnlyForm(GroupForm):
+
+    slug = forms.SlugField(label=_("Community address"),
+                           help_text=_("This will be your community's web address"),
+                           widget=forms.HiddenInput)
+
     class Meta:
         model = Group
         exclude = ("is_featured", "lat", "lon",
