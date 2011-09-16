@@ -84,17 +84,22 @@
             {% endfor %}
             </p>
         {% endif %}
+
         {% if completed %}
             <h2>{% blocktrans %}Completed Actions{% endblocktrans %}</h2>
             <p>
-            {% for action in completed %}
-                <a href="{% url action_detail action.slug %}">{{action.name}}</a>
+            {% for row in completed %}
+	    {% with row.action as action %}
+            <a href="{% url action_detail action.slug %}">{{action.name}}</a>
 		{% blocktrans with action.points as action_points %}
 		(+{{action_points}} points)
 		{% endblocktrans %}
+	    <br/>
+	    {% endwith %}
             {% endfor %}
             </p>
         {% endif %}
+
 	</div>
 	<div id="overview">
         {% if records %}
@@ -152,7 +157,7 @@
         <li>{% blocktrans %}Actions Completed{% endblocktrans %}
 	  <div>{{ completed|length }}</div></li>
         <li>{% blocktrans %}Actions Committed{% endblocktrans %}
-	  <div>{{ committed|length }}</div></li>
+	  <div>{{ commitment_list|length }}</div></li>
         <li>{% blocktrans %}Points Earned{% endblocktrans %}
 	  <div class="{% with user.get_profile.total_points as digit %}{% if digit < 9 %}digits_1{% else %}{% if digit > 999999 %}digits_max{% else %}{% if digit > 99999 %}digits_6{% else %}{% if digit > 9999 %}digits_5{% else %}{% if digit > 999 %}digits_4{% else %}{% if digit > 99 %}digits_3{% else %}{% if digit > 9 %}digits_2{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endwith %}">{{ user.get_profile.total_points|intcomma }}</div></li>
         <li>{% blocktrans %}Challenges Completed{% endblocktrans %}
@@ -205,8 +210,22 @@
         {% endfor %}
     </ul>
     {% endcomment %}
+   
+    {% if commitment_list|length %}
     <div class="ribbon_small">
         {% blocktrans %}Committed Actions{% endblocktrans %}
         <div class="ribbon_small_wrap"></div>
     </div>
+    <ul class="plain_list nugget_3c_list">
+      {% for row in commitment_list %}
+      <li>
+        <a href="{% url action_detail row.action.slug %}">{{row.action.name}}</a> 
+	{% blocktrans with row.date_committed|date as action_date_committed %}
+	by {{action_date_committed}}
+	{% endblocktrans %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
 {% endblock %}

@@ -206,6 +206,10 @@ class UserActionProgressManager(models.Manager):
          return self.select_related().filter(user=user, is_completed=False,
             date_committed__isnull=False).order_by("date_committed")
 
+    def completed_for_user(self, user):
+         return self.select_related().filter(user=user, is_completed=True
+                                             ).order_by("date_committed")
+
     def pending_commitments(self, user=None):
         queryset = self.filter(is_completed=False, date_committed__isnull=False)
         return queryset if not user else queryset.filter(user=user)

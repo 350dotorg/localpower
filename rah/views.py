@@ -223,6 +223,7 @@ def profile(request, user_id):
 
     actions = Action.objects.actions_by_status(user)
     commitment_list = UserActionProgress.objects.commitments_for_user(user)
+    completed = UserActionProgress.objects.completed_for_user(user)
     groups = Group.objects.filter(users=user, is_geo_group=False)
     events = Event.objects.filter(guest__contributor__user=user)
     records = Record.objects.user_records(user, 10)
@@ -244,7 +245,7 @@ def profile(request, user_id):
         'user': user,
         'nav_selected': nav_selected,
         #'total_points': user.get_profile().total_points,
-        #'completed': completed,
+        'completed': completed,
         #'profile': user.get_profile(),
         'is_others_profile': request.user <> user,
         'commitment_list': UserActionProgress.objects.commitments_for_user(user),
