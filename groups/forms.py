@@ -29,7 +29,7 @@ class GroupForm(forms.ModelForm):
         widget=forms.Textarea(attrs={"rows": 5}))
     headquarters = GoogleLocationField(label=_("Headquarters"))
     image = forms.FileField(label=_("Upload a community image"),
-                            help_text=_("You can upload png, jpg or gif files upto 512K"),
+                            help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
 
     states = ["ak", "al", "ar", "az", "ca", "co", "ct", "dc", "de", "fl", "ga", "hi", "ia", "id", "il",
