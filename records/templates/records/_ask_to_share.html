@@ -6,37 +6,39 @@
         <img src="{% dated_static 'images/theme/we_fb.jpg' %}" width="218" height="80"/>
     </div>
     <p>
-        Like peas and carrots, Facebook and {{ SITE_NAME }} go together. Linking your account to Facebook helps you
+        Like peas and carrots, social networks and {{ SITE_NAME }} go together. Linking your account to your social networks helps you
         share your achievements and inspire your friends to become part of the movement.
     </p>
     {% for error in form.social_network.errors %}
         <label class="error" for="{{ field.auto_id }}">{{ error|escape }}</label>
     {% endfor %}
-    <input type="hidden" value="f" name="social_network" id="id_social_network0" />
-    {# <label>Select a network to share your activity on</label> #}
-    {# <ul class="buttonset" class="plain_list"> #}
-    {#     {% for id, label in form.social_network.field.choices %} #}
-    {#         <li> #}
-    {#             <input value="{{ id }}" type="radio" name="{{ form.social_network.name }}"  #}
-    {#                 id="id_{{ form.social_network.name }}{{ forloop.counter0 }}" #}
-    {#                 {% if id == field.data %}checked="checked"{% endif %} /> #}
-    {#             <label for="id_{{ form.social_network.name }}{{ forloop.counter0 }}"> #}
-    {#                 {% if label == "Twitter" %} #}
-    {#                     <img src="{% dated_static 'images/theme/social_icons/24/twitter.png' %}" #}
-    {#                         width="24" height="24"/> #}
-    {#                 {% else %} #}
-    {#                     <img src="{% dated_static 'images/theme/social_icons/24/facebook.png' %}" #}
-    {#                         width="24" height="24"/> #}
-    {#                 {% endif %} #}
-    {#             </label> #}
-    {#         </li> #}
-    {#     {% endfor %} #}
-    {# </ul> #}
+    
+    <label>Select a network to share your activity on</label> 
+    <ul class="buttonset plain_list">
+      {% for id, label in form.SOCIAL_NETWORKS %} 
+      <li>
+	<input value="{{ id }}" type="checkbox"
+	       name="social_network"
+               id="id_{{ form.social_network.name }}{{ forloop.counter0 }}" 
+               {% if id == "t" and profile.twitter_share or id == "f" and profile.facebook_share %}checked="checked"{% endif %} /> 
+        <label for="id_{{ form.social_network.name }}{{ forloop.counter0 }}">
+	  {% if label == "Twitter" %} 
+	  <img src="{% dated_static 'images/theme/social_icons/24/twitter.png' %}" 
+	       width="24" height="24"/> 
+	  {% else %} 
+          <img src="{% dated_static 'images/theme/social_icons/24/facebook.png' %}" 
+               width="24" height="24"/> 
+          {% endif %} 
+	  {{label}}
+        </label> 
+      </li> 
+      {% endfor %} 
+    </ul> 
     <div>
         {{ form.has_twitter_access }}
         {{ form.has_facebook_access }}
     </div>
-    <button type="submit">Enable Facebook Sharing</button>
+    <button type="submit">Enable Social Sharing</button>
     <a id="ask_to_share_cancel" class="button" href="{% url profile_edit request.user.id %}">Not now</a>
     <p class="center">
         <a href="{% url records_dont_ask_again %}" class="smaller">Stop asking me this!</a>

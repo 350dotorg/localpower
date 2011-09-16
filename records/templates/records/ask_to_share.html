@@ -1,11 +1,7 @@
-{% extends "base.html" %}
+{% extends "base/nav_6c3c_b.html" %}
 {% block title %}Share on Social Networks{% endblock %}
 
-{% block right_content %}
-    <div class="box_three_top"></div>
-    <div class="box_three_middle">
-        <h1>Share your activity</h1>
-        {% include "records/_ask_to_share.html" %}
-    </div>
-    <div class="box_three_bottom"></div>
+{% block content %}
+<h1>Share your activity</h1>
+{% include "records/_ask_to_share.html" %}
 {% endblock %}

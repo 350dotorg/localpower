@@ -25,6 +25,8 @@ def chart(request, user_id):
 @login_required
 def ask_to_share(request):
     form = AskToShareForm(request=request, data=(request.POST or None))
+    profile = request.user.get_profile()
+
     if form.is_valid():
         is_shared = form.save(request=request)
         message_html = False
