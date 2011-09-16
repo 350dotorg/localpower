@@ -68,9 +68,12 @@
         </ul>
         {% if request.user.is_authenticated %}        
             <ul id="nav_secondary" class="plain_list">
-                <li>
-                    <a href=""><span class="sprite_nav_calendar"></span>{% blocktrans %}My Calendar{% endblocktrans %}</a>
-                </li>
+	      {% comment %}
+              <li>
+                <a href=""><span class="sprite_nav_calendar"></span>{% blocktrans %}My Calendar{% endblocktrans %}</a>
+              </li>
+	      {% endcomment %}
+		
                 <li>
                     <a href="{% url profile request.user.id %}"><span class="sprite_nav_settings"></span>{% blocktrans %}My Profile / Settings{% endblocktrans %}</a>
                 </li>
