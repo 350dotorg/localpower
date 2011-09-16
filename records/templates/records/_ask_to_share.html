@@ -20,7 +20,7 @@
 	<input value="{{ id }}" type="checkbox"
 	       name="social_network"
                id="id_{{ form.social_network.name }}{{ forloop.counter0 }}" 
-               {% if id == "t" and profile.twitter_share or id == "f" and profile.facebook_share %}checked="checked"{% endif %} /> 
+               checked="checked" />
         <label for="id_{{ form.social_network.name }}{{ forloop.counter0 }}">
 	  {% if label == "Twitter" %} 
 	  <img src="{% dated_static 'images/theme/social_icons/24/twitter.png' %}" 
