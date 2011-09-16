@@ -23,7 +23,11 @@
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#rsvps">{% blocktrans %}RSVPs{% endblocktrans %}</a></li>
+
+    {% if has_manager_privileges %}
     <li><a href="#host-tools">{% blocktrans %}Host Tools{% endblocktrans %}</a></li>
+    {% endif %}
+
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% if has_manager_privileges %}
     <span class="tab_nav_link"><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></span>
@@ -52,9 +56,8 @@
         {% include "events/_guest_list.html" %}
     </div>
 
+    {% if has_manager_privileges %}
     <div id="host-tools">
-        {% if has_manager_privileges %}
-
         <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
         <ul class="plain_list">
           <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
@@ -70,12 +73,8 @@
           </li>
         </ul>
         {% include "events/_invitations.html" %}
-		
-	{% else %}
-	Nothing to see here!  Move along.
-        {% endif %}
     </div>
-
+    {% endif %}
 
     <div id="discussions">
       <h2 id="comments_form_heading">
