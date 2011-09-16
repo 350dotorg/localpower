@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-16 09:06-0400\n"
+"POT-Creation-Date: 2011-09-16 09:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2250,7 +2250,7 @@ msgid "Create Community"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:12
-msgid "info!"
+msgid "info for adding group to map should go here"
 msgstr ""
 
 #: groups/templates/groups/group_create.html:14
