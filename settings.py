@@ -6,7 +6,7 @@ sys.path.insert(0, local_join('lib'))
 
 # Name of the site for use in templates
 SITE_NAME = "[Site Name]"
-SITE_DOMAIN = "[Site Domain]"
+SITE_DOMAIN = "http://localhost:8000"
 SITE_FEEDBACK_EMAIL = "feedback@example.com"
 
 # Local time zone for this installation. Choices can be found here:
@@ -98,7 +98,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'django.contrib.comments',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.sitemaps',
@@ -138,6 +137,8 @@ INSTALLED_APPS = (
     'badges',
     'challenges',
     'actionkit_usersync',
+    'django.contrib.comments',
+
 )
 
 FIXTURE_DIR = ('fixtures',)
