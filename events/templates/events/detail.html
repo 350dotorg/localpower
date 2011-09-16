@@ -22,7 +22,8 @@
 
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
-    <li><a href="#people">{% blocktrans %}People{% endblocktrans %}</a></li>
+    <li><a href="#people">{% blocktrans %}RSVPs{% endblocktrans %}</a></li>
+    <li><a href="#people">{% blocktrans %}Host Tools{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% if has_manager_privileges %}
     <span class="tab_nav_link"><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></span>
@@ -38,44 +39,37 @@
         {% include "events/_guest_list.html" %}
 
         <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
-                <ul class="plain_list">
-                    <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
-                    <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">{% blocktrans %}Add Guest{% endblocktrans %}</a></li>
-                    <li><a id="event_hosts_link" href="{% url event-hosts event.id %}">{% blocktrans %}Select Hosts{% endblocktrans %}</a></li>
-                    <li>
-                        <a href="{% url event-print event.id %}">{% blocktrans %}Sign In Sheet{% endblocktrans %}</a>
-                        <span class="file_icon pdf_icon" title="{% blocktrans %}PDF sign in sheet download{% endblocktrans %}"></span>
-                    </li>
-                    <li>
-                        <a href="{% url event-spreadsheet event.id %}">{% blocktrans %}Guest List{% endblocktrans %}</a>
-                        <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
-                    </li>
-                </ul>
-                {% include "events/_invitations.html" %}
+        <ul class="plain_list">
+          <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
+          <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">{% blocktrans %}Add Guest{% endblocktrans %}</a></li>
+          <li><a id="event_hosts_link" href="{% url event-hosts event.id %}">{% blocktrans %}Select Hosts{% endblocktrans %}</a></li>
+          <li>
+            <a href="{% url event-print event.id %}">{% blocktrans %}Sign In Sheet{% endblocktrans %}</a>
+            <span class="file_icon pdf_icon" title="{% blocktrans %}PDF sign in sheet download{% endblocktrans %}"></span>
+          </li>
+          <li>
+            <a href="{% url event-spreadsheet event.id %}">{% blocktrans %}Guest List{% endblocktrans %}</a>
+            <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
+          </li>
+        </ul>
+        {% include "events/_invitations.html" %}
 		
-		{% else %}
-                <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
-                {% if guest.rsvp_status and not request.GET.reset %}
-                    <p>
-		      {% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
-                      You are: <span>{{ rsvp_status }}</span><br />
-		      {% endblocktrans %}
-                      (<a href="{{ event.get_absolute_url }}?reset=true">{% blocktrans %}change{% endblocktrans %}</a>)
-                    </p>
-                {% else %}
-                    {% include "events/_rsvp_form.html" %}
-                {% endif %}
-            {% endif %}
-        </div>
-        <div class="box_one_bottom"></div>
-        
-        {% if has_manager_privileges %}
-            <div class="box_one_top"></div>
-            <div class="box_one_middle">
-            </div>
-            <div class="box_one_bottom"></div>
+	{% else %}
+        <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
+        {% if guest.rsvp_status and not request.GET.reset %}
+        <p>
+	  {% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
+          You are: <span>{{ rsvp_status }}</span><br />
+	  {% endblocktrans %}
+          (<a href="{{ event.get_absolute_url }}?reset=true">{% blocktrans %}change{% endblocktrans %}</a>)
+        </p>
+        {% else %}
+        {% include "events/_rsvp_form.html" %}
+        {% endif %}
+
         {% endif %}
     </div>
+
 
     <div id="discussions">
       <h2 id="comments_form_heading">
