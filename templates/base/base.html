@@ -15,7 +15,9 @@
         <meta name="geo.region" content="US-DC"/>
         <meta name="ICBM" content="38.896231, -77.024158"/>
         <meta name="og:site_name" content="{{ SITE_NAME }}"/>
-        <meta name="fb:app_id" content="132085630163980"/>
+        <meta name="fb:app_id" content="{{ settings.FACEBOOK_APPID }}"/>
+        <meta property="og:site_name" content="{{ SITE_NAME }}"/>
+        <meta property="fb:app_id" content="{{ settings.FACEBOOK_APPID }}"/>
         <meta name="keywords" content="{% block meta_keywords %}{% blocktrans %}energy efficiency, home energy, climate change, {{ SITE_NAME }}{% endblocktrans %}{% endblock %}" />
         <meta name="description" content="{% block meta_desc %}{% blocktrans %}We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned.{% endblocktrans %}{% endblock %}" />
         <meta name="DC.title" content="{{ SITE_NAME }}" /> 
