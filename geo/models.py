@@ -1,4 +1,13 @@
+from django.contrib.gis.db.models import GeoManager
+from django.contrib.gis.db.models import PointField
 from django.db import models
+
+class Point(models.Model):
+    latlng = PointField()
+    raw_address = models.TextField()
+    formatted_address = models.TextField()
+
+    objects = GeoManager()
 
 class Location(models.Model):
     name = models.CharField(max_length=200, db_index=True)
