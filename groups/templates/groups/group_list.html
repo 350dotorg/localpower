@@ -80,15 +80,15 @@ Showing {{num_groups}} communities
     // Add locations for plotting on the map
     RAH.event_locations = [];
     {% for group in map_groups %}
-        var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.headquarters|escape|escapejs }}<br/>";
+        var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.geom.address|escape|escapejs }}<br/>";
        {% if group.is_external_link_only %}
             info += "<a ref='nofollow' href='{{group.external_link}}'>{% blocktrans %}Go to group website{% endblocktrans %}</a>";
        {% else %}
             info += "<a href='{% url group_detail group.slug %}'>{% blocktrans %}View group{% endblocktrans %}</a>";
        {% endif %}
         RAH.event_locations.push({
-            lat: "{{ group.lat }}",
-            lon: "{{ group.lon }}",
+            lat: "{{ group.geom.latlng.y }}",
+            lon: "{{ group.geom.latlng.x }}",
             "info": info
         });
     {% endfor %}

@@ -27,9 +27,11 @@ class GroupForm(forms.ModelForm):
     description = forms.CharField(label=_("Community description"),
                                   help_text=_("What is the community all about?"),
         widget=forms.Textarea(attrs={"rows": 5}))
-    headquarters = GoogleLocationField(
+
+    geom = GoogleLocationField(
         label=_("Location"),
         help_text=_("Include at least city, state and country"))
+
     image = forms.FileField(label=_("Upload a community image"),
                             help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
@@ -74,10 +76,12 @@ class GroupForm(forms.ModelForm):
         return data
 
     def save(self):
-        if self.cleaned_data["headquarters"]:
-            field = self.fields["headquarters"]
-            self.instance.lat = field.raw_data["latitude"]
-            self.instance.lon = field.raw_data["longitude"]
+        if self.cleaned_data["geom"]:
+            point = self.cleaned_data["geom"]
+            raw_data = self.fields["geom"].raw_data
+            self.instance.lat = raw_data["latitude"]
+            self.instance.lon = raw_data["longitude"]
+
         group = super(GroupForm, self).save()
         current_image = self.cleaned_data["image"]
         if current_image and current_image != group.image.field.default:
