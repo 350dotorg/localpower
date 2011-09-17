@@ -29,10 +29,15 @@ class ContributorForm(forms.ModelForm):
         return super(ContributorForm, self).save(*args, **kwargs)
 
 class ContributorAdmin(GenericFilterAdmin):
-    list_display = ("first_name", "last_name", "email", "phone", "location", "registered_user",
+    list_display = (
+        "first_name", "last_name",
+        "email", "phone", 
+        "location",
+        "registered_user",
         "created", "updated",)
     list_display_links = ('first_name', 'last_name')
-    search_fields = ['first_name', 'last_name', 'email', 'location__zipcode',]
+    search_fields = ['first_name', 'last_name', 'email',
+                     'location__zipcode',]
     date_hierarchy = "created"
     generic_filters = ('has_user_filter', 'collector_filter',)
     form = ContributorForm
