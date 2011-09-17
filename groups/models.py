@@ -407,10 +407,9 @@ def infer_user_location_from_group(sender, instance, created, **kwargs):
     usergroup = instance
     group = usergroup.group
     profile = usergroup.user.get_profile()
-    if profile.location:
+    if profile.geom:
         return
-    location = group.geom
-    profile.location = location
+    profile.geom = group.geom
     profile.save()
 
 models.signals.post_save.connect(add_invited_user_to_group, sender=Rsvp)
