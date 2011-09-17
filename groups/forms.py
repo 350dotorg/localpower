@@ -34,10 +34,6 @@ class GroupForm(forms.ModelForm):
                             help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
 
-    states = ["ak", "al", "ar", "az", "ca", "co", "ct", "dc", "de", "fl", "ga", "hi", "ia", "id", "il",
-        "in", "ks", "ky", "la", "ma", "md", "me", "mi", "mn", "mo", "ms", "mt", "nc", "nd", "ne",
-        "nh", "nj", "nm", "nv", "ny", "oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut",
-        "va", "vt", "wa", "wi", "wv", "wy"]
     group_name_blacklist = ["user", "users", "admin", "event", "team", "teams", "community", "communities", "groups", "groups"]
 
     class Meta:
@@ -64,8 +60,6 @@ class GroupForm(forms.ModelForm):
 
     def clean_slug(self):
         data = self.cleaned_data["slug"]
-        if data in GroupForm.states or any([data.startswith("%s-" % state) for state in GroupForm.states]):
-            raise forms.ValidationError(_("Community addresses cannot begin with a state name."))
 
         # Make sure the name is not in the blacklist or a resolvable URL
         try:
