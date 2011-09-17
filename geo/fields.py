@@ -25,6 +25,7 @@ class GoogleGeoField(forms.CharField):
             res = load(urlopen(url))
             if res['status'] != 'OK':
                 raise Exception
+            ## TODO: we are just always taking the top result
             results = res['results'][0]
             location = results['geometry']['location']
             if 'address' not in data:
@@ -33,15 +34,6 @@ class GoogleGeoField(forms.CharField):
                 data['latitude'] = location['lat']
             if 'longitude' not in data:
                 data['longitude'] = location['lng']
-
-            # search for the postal_code
-            zipcode = None
-            for comp in results['address_components']:
-                if 'postal_code' in comp['types']:
-                    zipcode = comp['short_name']
-                    data['zipcode'] = zipcode
-                    data['location'] = Location.objects.get(zipcode=zipcode)
-                    break
             return data
         except:
             raise ValidationError('Could not locate this address')
@@ -51,10 +43,9 @@ class GoogleGeoField(forms.CharField):
         if value:
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
             data = GoogleGeoField._google_geocode(url)
-            if 'location' in data:
-                data['user_input'] = value
-                return data
-            url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, data['latitude'], data['longitude'])
+
+            url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, 
+                                       data['latitude'], data['longitude'])
             result = GoogleGeoField._google_geocode(url, data)
             result['user_input'] = value
             return result
@@ -63,16 +54,8 @@ class GoogleGeoField(forms.CharField):
 class GoogleLocationField(GoogleGeoField):
     def __init__(self, *args, **kwargs):
         super(GoogleLocationField, self).__init__(*args, **kwargs)
-        self.raw_data = {}
 
     def prepare_value(self, value):
         if isinstance(value, int) or isinstance(value, long):
             return Location.objects.get(pk=value)
-        return value
-
-    def clean(self, value):
-        value = super(GoogleLocationField, self).clean(value)
-        if value:
-            self.raw_data = value
-            return value['location']
         return value
