@@ -41,7 +41,7 @@ class GroupForm(forms.ModelForm):
     class Meta:
         model = Group
         exclude = ("is_featured", "lat", "lon",
-                   "location_type", "sample_location", "member_count",
+                   "sample_location", "member_count",
                    "parent", "users", "requesters", 
                    "email_blacklisted", "disc_moderation", "disc_post_perm",
                    "is_external_link_only")
@@ -102,7 +102,7 @@ class GroupExternalLinkOnlyForm(GroupForm):
     class Meta:
         model = Group
         exclude = ("is_featured", "lat", "lon",
-                   "location_type", "sample_location", "member_count",
+                   "sample_location", "member_count",
                    "parent", "users", "requesters", 
                    "email_blacklisted", "disc_moderation", "disc_post_perm",
                    "is_external_link_only",
