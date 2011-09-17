@@ -9,6 +9,9 @@ class Point(models.Model):
 
     objects = GeoManager()
 
+    def __unicode__(self):
+        return self.formatted_address or self.raw_address
+
 class Location(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     zipcode = models.CharField(max_length=5, db_index=True)

@@ -21,7 +21,12 @@
                 {% if "CheckboxInput" in field.field.widget|pprint %}
                     {{ field }}{{ field.label_tag }}
                 {% else %}
+		{% if field.name == "geom" %}
+                    {{ field.label_tag }}
+                    <input type="text" name="geom" id="id_geom" value="{% if group.geom %}{{group.geom.raw_address}}{% endif %}" />
+		{% else %}
                     {{ field.label_tag }}{{ field }}
+                {% endif %}
                 {% endif %}
                 <span class="help_text">{{ field.help_text }}</span>
                 {% for error in field.errors %}

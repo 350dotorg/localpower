@@ -409,7 +409,7 @@ def infer_user_location_from_group(sender, instance, created, **kwargs):
     profile = usergroup.user.get_profile()
     if profile.location:
         return
-    location = group.headquarters
+    location = group.geom
     profile.location = location
     profile.save()
 

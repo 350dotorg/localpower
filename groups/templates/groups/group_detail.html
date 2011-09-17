@@ -17,8 +17,8 @@
 {% block title_bar_title %}{{group.name}}{% endblock %}
 {% block title_bar_copy %}
     <p id="title_bar_9c_info">
-        {% if group.headquarters %}
-            {{ group.headquarters }} | 
+        {% if group.geom %}
+            {{ group.geom.formatted_address }} | 
         {% endif %}
         <span>
 	  {% blocktrans with group.created|date:"M Y" as date_created %}

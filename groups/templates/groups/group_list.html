@@ -86,7 +86,7 @@ Showing {{num_groups}} communities
        {% else %}
             info += "<a href='{% url group_detail group.slug %}'>{% blocktrans %}View group{% endblocktrans %}</a>";
        {% endif %}
-        RAH.event_locations.push({
+       RAH.event_locations.push({
             lat: "{{ group.geom.latlng.y }}",
             lon: "{{ group.geom.latlng.x }}",
             "info": info
