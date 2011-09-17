@@ -68,17 +68,11 @@ class Group(models.Model):
     membership_type = models.CharField(_('membership type'), max_length=1, 
                                        choices=MEMBERSHIP_CHOICES, default="O", null=True)
 
-    is_geo_group = models.BooleanField(_('is geo group'), default=False)
     is_external_link_only = models.BooleanField(_('is external link only'), default=False)
 
-    location_type = models.CharField(_('location type'), max_length=1,
-                                     blank=True)
     sample_location = models.ForeignKey(Location, null=True, blank=True, 
                                         related_name="sample_group_set",
                                         verbose_name=_('sample location'))
-    parent = models.ForeignKey("self", null=True, blank=True, 
-                               verbose_name=_('parent'),
-                               related_name="children")
     users = models.ManyToManyField(User, through="GroupUsers", verbose_name=_('users'))
     requesters = models.ManyToManyField(User, through="MembershipRequests", 
                                         related_name="requested_group_set",
