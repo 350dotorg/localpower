@@ -17,6 +17,8 @@ from django.utils.dateformat import format
 from django.utils.translation import ugettext_lazy as _
 
 from geo.models import Location
+from geo.fields import GoogleLocationField
+
 from groups.forms import GroupAssociationRequestRelatedForm
 from invite.models import Invitation
 from invite.forms import InviteForm
@@ -39,59 +41,46 @@ def _durations():
 DURATIONS = _durations()
 
 class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
+
+    geom = GoogleLocationField(
+        label=_("Street address"),
+        help_text=_("Include the city, state and country"))
+
     class Meta:
         model = Event
-        fields = ("title", "where", "details", "when", "start", "duration", "is_private", "lat", "lon", "groups")
+        fields = ("title", "details", 
+                  "when", "start", "duration", 
+                  "location",
+                  "is_private", "groups")
         widgets = {
             "when": forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker future_date_warning"}),
             "start": SelectTimeWidget(minute_step=15, twelve_hr=True, use_seconds=False),
             "duration": forms.Select(choices=[("", "---")]+DURATIONS),
-            "lat": forms.HiddenInput(),
-            "lon": forms.HiddenInput(),
             "groups": forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, user, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
+        ## move geom/streetaddress directly below details
+        ## instead of at the end of the form
+        keyOrder = self.fields.keyOrder
+        keyOrder.remove("geom")
+        keyOrder.insert(keyOrder.index("details") + 1, "geom")
         self.fields["start"].initial = datetime.time(18,0)
+        if self.instance:
+            self.fields["geom"].initial = self.instance.geom
         self.user = user
         self.init_groups(user)
 
-    def clean(self):
-        if "where" in self.cleaned_data:
-            error = False
-            raw_address = self.cleaned_data["where"]
-            url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false"
-            url += "&address=%s" % urllib2.quote(raw_address)
-
-            try:
-                resp = json.load(urllib2.urlopen(url))
-            except:
-                pass
-            else:
-                if resp['status'] == 'OK':
-                    self.cleaned_data['lat'] = resp['results'][0]['geometry']['location']['lat']
-                    self.cleaned_data['lon'] = resp['results'][0]['geometry']['location']['lng']
-                    self.cleaned_data['where'] = resp['results'][0]['formatted_address']
-
-                    # look for a postal_code and then lookup the location
-                    for component in resp['results'][0]['address_components']:
-                        if "postal_code" in component['types']:
-                            zipcode = component['short_name']
-                            break
-                    try:
-                        self.cleaned_data['location'] = Location.objects.get(zipcode=zipcode)
-                    except:
-                        error = True
-                else:
-                    error = True
-            if error:
-                del self.cleaned_data['where']
-                self._errors['where'] = self.error_class(
-                    [_('We couldn\'t locate this address on our map.')])
-        return self.cleaned_data
-
     def save(self, *args, **kwargs):
+        if self.cleaned_data["geom"]:
+            point = self.cleaned_data["geom"]
+            raw_data = self.fields["geom"].raw_data
+            self.instance.lat = raw_data["latitude"]
+            self.instance.lon = raw_data["longitude"]
+            self.instance.where = raw_data["user_input"]
+            self.instance.geom = point
+
         self.instance.creator = self.user
         self.instance.location = self.cleaned_data["location"]
         event = super(EventForm, self).save(*args, **kwargs)
