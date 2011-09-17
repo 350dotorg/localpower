@@ -137,7 +137,12 @@ class Profile(models.Model):
     )
 
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+
     location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_('location'))
+    geom = models.ForeignKey('geo.Point', blank=True, null=True,
+                             verbose_name=_('location'))
+
+
     building_type = models.CharField(_('building type'), null=True, max_length=1, choices=BUILDING_CHOICES, blank=True)
     about = models.CharField(_('about'), null=True, blank=True, max_length=255)
     is_profile_private = models.BooleanField(_('is profile private'), default=0)

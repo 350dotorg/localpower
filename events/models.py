@@ -23,6 +23,7 @@ class Event(models.Model):
                                        verbose_name=_('default survey'))
     title = models.CharField(_('title'), max_length=100, 
                              help_text=_("What do you want to call this shindig?"))
+
     where = models.CharField(max_length=100, 
                              verbose_name=_("Street address"),
                              help_text=_("Include the city and state"))
@@ -32,6 +33,10 @@ class Event(models.Model):
                             verbose_name=_('longitude'))
     location = models.ForeignKey("geo.Location", null=True,
                                  verbose_name=_('location'))
+
+    geom = models.ForeignKey('geo.Point', blank=True, null=True,
+                             verbose_name=_('location'))
+
     when = models.DateField(_('when'))
     when.has_happened = True
     start = models.TimeField(_('start time'))

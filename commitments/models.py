@@ -121,7 +121,11 @@ class Contributor(models.Model):
     last_name = models.CharField(blank=True, max_length=50)
     email = models.EmailField(blank=True, null=True, db_index=True)
     phone = models.CharField(blank=True, max_length=12)
+
     location = models.ForeignKey("geo.Location", blank=True, null=True)
+    geom = models.ForeignKey('geo.Point', blank=True, null=True,
+                             verbose_name='location')
+
     user = models.ForeignKey("auth.User", blank=True, null=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
