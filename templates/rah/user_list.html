@@ -35,9 +35,9 @@ Showing {{num_users}} users
       <a href="{{user.get_absolute_url}}">
 	{{user.get_full_name}}
       </a>
-      {% if profile.location %}
+      {% if profile.geom %}
       <div class="smaller">
-	{{ profile.location }}
+	{{ profile.geom }}
       </div>
       {% endif %}
       {% if profile.about %}
@@ -60,13 +60,15 @@ Showing {{num_users}} users
     // Add locations for plotting on the map
     RAH.event_locations = [];
     {% for user in map_users %}
-        var info = "<b>{{ user.get_full_name|escape|escapejs }}</b><br/> {{ user.location|escape|escapejs }}<br/>";
+        {% with user.get_profile.geom as geom %}
+        var info = "<b>{{ user.get_full_name|escape|escapejs }}</b><br/> {{ geom|escape|escapejs }}<br/>";
             info += "<a href='{% url profile user.id %}'>{% blocktrans %}View profile{% endblocktrans %}</a>";
         RAH.event_locations.push({
-            lat: "{{ user.get_profile.location.lat }}",
-            lon: "{{ user.get_profile.location.lon }}",
+            lat: "{{ geom.latlng.y }}",
+            lon: "{{ geom.latlng.x }}",
             "info": info
         });
+        {% endwith %}
     {% endfor %}
     //]]>
 </script>

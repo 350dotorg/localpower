@@ -14,8 +14,8 @@
 {% block title_bar_title %}{{user.get_full_name}}{% endblock %}
 {% block title_bar_copy %}
     <p id="title_bar_9c_info">
-        {% if user.get_profile.location %}
-            {{ user.get_profile.location }} | 
+        {% if user.get_profile.geom %}
+            {{ user.get_profile.geom.formatted_address }} | 
         {% endif %}
         <span>{% blocktrans with user.date_joined|date:"M Y" as date_joined %}Joined {{ date_joined }}{% endblocktrans %}</span>
     </p>
@@ -124,7 +124,7 @@
               </div>
               <div class="nugget_3c_list_text">
                 <a href="{% url event-detail event.id %}">{{ event.title }}</a><br/>
-                <span>{{ event.location }}</span>
+                <span>{{ event.geom.raw_address }}</span>
               </div>            
             </li>
 	    
@@ -177,7 +177,7 @@
             </div>
             <div class="nugget_3c_list_text">
                 <a href="{% url event-detail event.id %}">{{ event.title }}</a><br/>
-                <span>{{ event.location }}</span>
+                <span>{{ event.geom.raw_address }}</span>
             </div>            
         </li>
 	{% empty %}

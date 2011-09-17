@@ -15,6 +15,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from settings import SITE_FEEDBACK_EMAIL
 from rah.models import Profile, Feedback, StickerRecipient
+
+from geo.fields import GoogleLocationField
 from geo.models import Location
 
 from fields import Honeypot
@@ -126,28 +128,30 @@ class FeedbackForm(forms.ModelForm):
 
 class ProfileEditForm(forms.ModelForm):
     about = forms.CharField(max_length=255, required=False, label=_("About you"), widget=forms.Textarea)
-    zipcode = forms.CharField(max_length=5, required=False)
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"))
     is_profile_private = forms.BooleanField(label=_("Make Profile Private"), required=False)
 
     class Meta:
         model = Profile
-        fields = ("zipcode", "about", "is_profile_private")
+        fields = ("about", "is_profile_private")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
-        self.fields["zipcode"].initial = self.instance.location.zipcode if self.instance.location else ""
+        ## move geom/streetaddress to top of form
+        keyOrder = self.fields.keyOrder
+        keyOrder.remove("geom")
+        keyOrder.insert(0, "geom")
+        self.fields["geom"].initial = ""
+        if self.instance and self.instance.geom:
+            self.fields["geom"].initial = self.instance.geom.raw_address
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
-        if not len(data):
-            self.instance.location = None
-            return
-        if len(data) <> 5:
-            raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
-        try:
-            self.instance.location = Location.objects.get(zipcode=data)
-        except Location.DoesNotExist, e:
-            raise forms.ValidationError(_("Zipcode is invalid"))
+    def save(self, *args, **kwargs):
+        if self.cleaned_data["geom"]:
+            point = self.cleaned_data["geom"]
+            self.instance.geom = point
+        return super(ProfileEditForm, self).save(*args, **kwargs)
 
 class AccountForm(forms.ModelForm):
     class Meta:

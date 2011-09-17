@@ -67,8 +67,9 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
         keyOrder.remove("geom")
         keyOrder.insert(keyOrder.index("details") + 1, "geom")
         self.fields["start"].initial = datetime.time(18,0)
-        if self.instance:
-            self.fields["geom"].initial = self.instance.geom
+        self.fields["geom"].initial = ""        
+        if self.instance and self.instance.geom:
+            self.fields["geom"].initial = self.instance.geom.raw_address
         self.user = user
         self.init_groups(user)
 

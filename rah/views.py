@@ -90,7 +90,7 @@ def index(request):
     Home Page
     """
     section_class = "section_home"
-    top_users = Profile.objects.filter(is_profile_private=False, location__isnull=False, facebook_connect_only=True).select_related("user").order_by("-total_points")[:6]
+    top_users = Profile.objects.filter(is_profile_private=False, geom__isnull=False, facebook_connect_only=True).select_related("user").order_by("-total_points")[:6]
     top_communities = Group.objects.filter(is_featured=True).order_by("-member_count")[:2]
     locals().update(_progress_stats())
 
@@ -100,7 +100,7 @@ def user_list(request):
     """This page of links allows google CSE to find user profile pages"""
     nav_selected = "users"
     users = User.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'id').select_related("profile")
-    map_users = users.filter(profile__location__isnull=False)
+    map_users = users.filter(profile__geom__isnull=False)
     return render_to_response("rah/user_list.html", locals(), context_instance=RequestContext(request))
 
 def logout(request):
