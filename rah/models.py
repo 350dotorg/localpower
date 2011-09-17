@@ -6,6 +6,7 @@ import re
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.localflavor.us.models import USStateField
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
@@ -34,7 +35,7 @@ class Feedback(models.Model):
     def __unicode__(self):
         return u'%s...' % (self.comment[:15])
 
-class ProfileManager(models.Manager):
+class ProfileManager(GeoManager):
     def user_engagement(self, users=None, date_start=None, date_end=None):
         from django.db import connection, transaction
 

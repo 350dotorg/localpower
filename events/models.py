@@ -1,6 +1,7 @@
 import datetime
 
 from django.contrib.auth.models import User
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.db import models
@@ -58,6 +59,8 @@ class Event(models.Model):
                     "potential guests will need to contact you first."))
     created = models.DateTimeField(_('created'), auto_now_add=True)
     updated = models.DateTimeField(_('updated'), auto_now=True)
+
+    objects = GeoManager()
 
     class Meta:
         permissions = (
@@ -192,7 +195,13 @@ class Event(models.Model):
         if self._guest_key in request.session:
             del request.session[self._guest_key()]
 
-class GuestManager(models.Manager):
+## We'll just go ahead and make GuestManager
+## a GeoManager subclass even though Guest
+## doesn't have any GIS fields itself; it has
+## foreign keys to both Event and Contributor
+## which are GIS-aware, so we may as well
+## make GuestManager GIS-aware too
+class GuestManager(GeoManager):
     def rsvped_with_order(self):
         return self.exclude(rsvp_status=" ").order_by("rsvp_status", "created")
 

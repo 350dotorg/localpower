@@ -2,13 +2,14 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.gis.db.models import GeoManager
 
 from geo.models import Location
 
 def yesterday():
     return datetime.datetime.today() - datetime.timedelta(days=1)
 
-class ContributorManager(models.Manager):
+class ContributorManager(GeoManager):
     def get_or_create_from_user(self, user):
         try:
             return self.get(user=user), True

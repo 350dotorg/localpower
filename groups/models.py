@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.gis.db.models import GeoManager
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail, EmailMessage
 from django.db import models, transaction, IntegrityError
@@ -22,7 +23,7 @@ from thumbnails.fields import ImageAndThumbsField
 from messaging.models import Stream
 from utils import hash_val
 
-class GroupManager(models.Manager):
+class GroupManager(GeoManager):
     def groups_with_memberships(self, user, limit=None):
         groups = self.all().order_by("name")
         groups = groups.extra(
