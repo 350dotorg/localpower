@@ -4,6 +4,19 @@ from utils import local_join
 
 sys.path.insert(0, local_join('lib'))
 
+## Configure this in local_settings
+## but note the GeoDjango ENGINE
+#DATABASES = {
+#  'default': {
+#    'ENGINE': 'django.contrib.gis.db.backends.mysql',
+#      'NAME': '',
+#      'USER': '',
+#      'PASSWORD': '',
+#      'HOST': '',
+#      'PORT': '',
+#      },
+#  }
+
 # Name of the site for use in templates
 SITE_NAME = "[Site Name]"
 SITE_DOMAIN = "http://localhost:8000"
@@ -17,6 +30,8 @@ SITE_FEEDBACK_EMAIL = "feedback@example.com"
 TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
+
+
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
 
@@ -104,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.markup',
     'django.contrib.humanize',
+    'django.contrib.gis',
     'tinymce',
     'rah',
     'rateable',
