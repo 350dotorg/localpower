@@ -3,9 +3,10 @@ from urllib2 import quote, urlopen
 
 from django import forms
 from django.forms import ValidationError
+from django.contrib.gis import geos
 from django.contrib.localflavor.us.forms import USZipCodeField
 
-from models import Location
+from models import Location, Point
 
 GOOGLE_GEOCODE_URL = 'http://maps.googleapis.com/maps/api/geocode/json?sensor=false'
 
@@ -54,8 +55,28 @@ class GoogleGeoField(forms.CharField):
 class GoogleLocationField(GoogleGeoField):
     def __init__(self, *args, **kwargs):
         super(GoogleLocationField, self).__init__(*args, **kwargs)
+        self.raw_data = {}
 
     def prepare_value(self, value):
         if isinstance(value, int) or isinstance(value, long):
             return Location.objects.get(pk=value)
+        return value
+
+    def clean(self, value):
+        value = super(GoogleLocationField, self).clean(value)
+        if value:
+            try:
+                lat = value['latitude']
+                lng = value['longitude']
+                user_input = value['user_input']
+                google_address = value['address']
+            except:
+                return value
+            latlng = geos.Point(float(lng), float(lat))
+            point = Point.objects.create(
+                latlng=latlng,
+                raw_address=user_input,
+                formatted_address=google_address)
+            self.raw_data = value
+            return point
         return value
