@@ -50,11 +50,11 @@ class GoogleGeoField(forms.CharField):
         value = super(GoogleGeoField, self).clean(value)
         if value:
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
-            data = GoogleLocationField._google_geocode(url)
+            data = GoogleGeoField._google_geocode(url)
             if 'location' in data:
                 return data
             url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, data['latitude'], data['longitude'])
-            return GoogleLocationField._google_geocode(url, data)
+            return GoogleGeoField._google_geocode(url, data)
         return value
 
 class GoogleLocationField(GoogleGeoField):
