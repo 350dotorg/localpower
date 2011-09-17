@@ -80,7 +80,7 @@ Showing {{num_groups}} communities
     // Add locations for plotting on the map
     RAH.event_locations = [];
     {% for group in map_groups %}
-        var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.geom.address|escape|escapejs }}<br/>";
+        var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.geom.raw_address|escape|escapejs }}<br/>";
        {% if group.is_external_link_only %}
             info += "<a ref='nofollow' href='{{group.external_link}}'>{% blocktrans %}Go to group website{% endblocktrans %}</a>";
        {% else %}
