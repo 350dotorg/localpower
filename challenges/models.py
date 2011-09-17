@@ -34,7 +34,7 @@ class Challenge(models.Model):
     objects = ChallengeManager()
 
     groups = models.ManyToManyField("groups.Group", blank=True,
-        limit_choices_to = {'is_geo_group': False}, verbose_name=_("communities"))
+                                    verbose_name=_("communities"))
 
     def number_of_supporters(self):
         return self.supporters.all().count()

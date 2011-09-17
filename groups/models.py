@@ -24,7 +24,7 @@ from utils import hash_val
 
 class GroupManager(models.Manager):
     def groups_with_memberships(self, user, limit=None):
-        groups = self.filter(is_geo_group=False).order_by("name")
+        groups = self.all().order_by("name")
         groups = groups.extra(
                     select_params = (user.id,),
                     select = { 'is_member': 'SELECT groups_groupusers.created \
@@ -38,29 +38,6 @@ class GroupManager(models.Manager):
                                                         WHERE groups_membershiprequests.user_id = %s AND \
                                                         groups_membershiprequests.group_id = groups_group.id'})
         return groups[:limit] if limit else groups
-
-    def user_geo_group_tuple(self, user, location_type):
-        location = user.get_profile().location
-        geo_groups = []
-        slug = Group.LOCATION_SLUG[location_type](location)
-        query = self.filter(slug=slug)
-        geo_groups.append((location_type, query[0] if query else None))
-        parent_key = Group.LOCATION_PARENT[location_type]
-        while parent_key:
-            size = Group.LOCATION_SIZE[location_type](location)
-            parent_size = Group.LOCATION_SIZE[parent_key](location)
-            if parent_size > size:
-                geo_groups = geo_groups + self.user_geo_group_tuple(user, parent_key)
-                break
-            else:
-                parent_key = Group.LOCATION_PARENT[parent_key]
-        return geo_groups
-
-    def create_geo_group(self, location_type, location, parent):
-        name = Group.LOCATION_NAME[location_type](location)
-        slug = Group.LOCATION_SLUG[location_type](location)
-        return Group.objects.create(name=name, slug=slug, headquarters=location,
-                is_geo_group=True, location_type=location_type, sample_location=location, parent=parent)
 
     def groups_not_blacklisted_by_user(self, user):
         return self.filter(users=user).exclude(pk__in=user.email_blacklisted_group_set.all())
@@ -78,36 +55,6 @@ class Group(models.Model):
         ('O', _('Open membership')),
         ('C', _('Closed membership')),
     )
-    LOCATION_TYPE = (
-        ('S', _('State')),
-        ('C', _('County')),
-        ('P', _('Place')),
-    )
-    LOCATION_PARENT = {
-        'S': None,
-        'C': 'S',
-        'P': 'C',
-    }
-    LOCATION_NAME = {
-        'S': lambda l: l.state,
-        'C': lambda l: l.county,
-        'P': lambda l: "%s, %s" % (l.name, l.state),
-    }
-    LOCATION_SLUG = {
-        'S': lambda l: slugify(l.st),
-        'C': lambda l: "%s-%s" % (slugify(l.st), slugify(l.county)),
-        'P': lambda l: "%s-%s-%s" % (slugify(l.st), slugify(l.county), slugify(l.name)),
-    }
-    LOCATION_URL = {
-        'S': lambda l: ("geo_group_state", [l.st]),
-        'C': lambda l: ("geo_group_county", [l.st, slugify(l.county)]),
-        'P': lambda l: ("geo_group_place", [l.st, slugify(l.county), slugify(l.name)]),
-    }
-    LOCATION_SIZE = {
-        'S': lambda l: Location.objects.filter(state=l.state).aggregate(size=models.Count('state')),
-        'C': lambda l: Location.objects.filter(state=l.state,county=l.county).aggregate(size=models.Count('county')),
-        'P': lambda l: Location.objects.filter(state=l.state,county=l.county,name=l.name).aggregate(size=models.Count('name'))
-    }
 
     name = models.CharField(_('name'), max_length=255, blank=True)
     slug = models.CharField(_('slug'), max_length=255, unique=True, db_index=True)
@@ -125,7 +72,7 @@ class Group(models.Model):
     is_external_link_only = models.BooleanField(_('is external link only'), default=False)
 
     location_type = models.CharField(_('location type'), max_length=1,
-                                     choices=LOCATION_TYPE, blank=True)
+                                     blank=True)
     sample_location = models.ForeignKey(Location, null=True, blank=True, 
                                         related_name="sample_group_set",
                                         verbose_name=_('sample location'))
@@ -153,14 +100,12 @@ class Group(models.Model):
         verbose_name_plural = _("communities")
 
     def is_joinable(self):
-        if self.is_geo_group:
-            return False
         if self.is_external_link_only:
             return False
         return True
 
     def is_public(self):
-        return self.is_geo_group or self.membership_type == "O"
+        return self.membership_type == "O"
 
     def is_member(self, user):
         return user.is_authenticated() and \
@@ -242,18 +187,10 @@ class Group(models.Model):
 
     def is_user_manager(self, user):
         return user.is_authenticated() and \
-            not self.is_geo_group and \
             GroupUsers.objects.filter(user=user, group=self, is_manager=True).exists()
 
     def managers(self):
         return User.objects.filter(group=self, groupusers__is_manager=True)
-
-    def parents(self):
-        parents = []
-        if self.parent:
-            parents.extend(self.parent.parents())
-            parents.append(self.parent)
-        return parents
 
     def has_other_managers(self, user):
         managers = GroupUsers.objects.filter(group=self, is_manager=True)
@@ -278,8 +215,6 @@ class Group(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        if self.is_geo_group:
-            return Group.LOCATION_URL[self.location_type](self.sample_location)
         return ("group_detail", [str(self.slug)])
 
     def users_not_blacklisted(self):
@@ -441,21 +376,6 @@ class GroupAssociationRequest(models.Model):
 """
 Signals!
 """
-@transaction.commit_on_success
-def associate_with_geo_groups(sender, instance, **kwargs):
-    user = instance.user
-    GroupUsers.objects.filter(user=user, group__is_geo_group=True).delete()
-    if instance.location:
-        geo_groups = Group.objects.user_geo_group_tuple(user, 'P')
-        parent = None
-        for location_type, geo_group in reversed(geo_groups):
-            if not geo_group:
-                geo_group = Group.objects.create_geo_group(location_type, instance.location, parent)
-            try:
-                GroupUsers.objects.create(user=user, group=geo_group)
-            except IntegrityError:
-                transaction.commit()
-            parent = geo_group
 
 def add_invited_user_to_group(sender, instance, **kwargs):
     invitation = instance.invitation
@@ -492,7 +412,6 @@ def infer_user_location_from_group(sender, instance, created, **kwargs):
     profile.location = location
     profile.save()
 
-models.signals.post_save.connect(associate_with_geo_groups, sender=Profile)
 models.signals.post_save.connect(add_invited_user_to_group, sender=Rsvp)
 models.signals.post_save.connect(update_discussion_reply_count, sender=Discussion)
 models.signals.post_save.connect(update_group_member_count, sender=GroupUsers)

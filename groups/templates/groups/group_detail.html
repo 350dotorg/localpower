@@ -116,7 +116,6 @@
     </div>
 
     <div id="discussions">
-        {% if not group.is_geo_group %}
             <h2>{% blocktrans %}Discussions{% endblocktrans %}</h2>
             <div class="group_disc_box_links">
                 {% if is_poster %}
@@ -134,7 +133,6 @@
             {% else %}
                 <em>{% blocktrans %}No discussions yet.{% endblocktrans %}</em>
             {% endif %}
-        {% endif %}
     </div>
     
     <div id="activity">

@@ -44,7 +44,6 @@ class Event(models.Model):
         blank=True)
     groups = models.ManyToManyField(
         "groups.Group", blank=True,
-        limit_choices_to = {'is_geo_group': False},
         verbose_name=_("Communities"))
     is_private = models.BooleanField(
         _('is private'),

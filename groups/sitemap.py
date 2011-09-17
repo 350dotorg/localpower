@@ -6,7 +6,7 @@ class GroupSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Group.objects.filter(is_geo_group=False)
+        return Group.objects.all()
 
     def lastmod(self, obj):
         return obj.updated

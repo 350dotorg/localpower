@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         field = GoogleGeoField()
-        for group in Group.objects.select_related().filter(is_geo_group=False):
+        for group in Group.objects.select_related().all():
             time.sleep(.5)
             data = field.clean(str(group.headquarters))
             print "UPDATE `groups_group` SET `lat`='%s', `lon`='%s' WHERE `id`='%s';" % (data['latitude'], data['longitude'], group.id)

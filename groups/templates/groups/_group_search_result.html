@@ -2,11 +2,13 @@
 <img class="group_image" src="{% thumbnail object.image.thumbnail_30x30smartcrop %}" alt="{% blocktrans %}group image{% endblocktrans %}" height="30" width="30" />
 <div class="group_details">
     <h6><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h6>
+    {% comment %}
     {% for parent in object.parents %}
         <span class="group_parent">
             <a href="{{ parent.get_absolute_url }}">{{ parent.name }}</a>
             {% if not forloop.last %}&gt;{% endif %}
         </span>
     {% endfor %}
+    {% endcomment %}
 </div>
 <br class="clear" />

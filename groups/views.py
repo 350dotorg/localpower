@@ -103,7 +103,7 @@ def group_external_link_only_create(request):
 
 @login_required
 def group_leave(request, group_id):
-    group = get_object_or_404(Group, id=group_id, is_geo_group=False)
+    group = get_object_or_404(Group, id=group_id)
     if request.user.id in group.users.all().values_list("id", flat=True):
         if group.has_other_managers(request.user):
             GroupUsers.objects.filter(group=group, user=request.user).delete()
@@ -120,7 +120,7 @@ def group_leave(request, group_id):
 
 @login_required
 def group_join(request, group_id):
-    group = get_object_or_404(Group, id=group_id, is_geo_group=False)
+    group = get_object_or_404(Group, id=group_id)
     if GroupUsers.objects.filter(group=group, user=request.user).exists():
         messages.error(request, _("You are already a member"))
         return redirect("group_detail", group_slug=group.slug)
@@ -143,7 +143,7 @@ def group_join(request, group_id):
 
 @login_required
 def group_membership_request(request, group_id, user_id, action):
-    group = get_object_or_404(Group, id=group_id, is_geo_group=False)
+    group = get_object_or_404(Group, id=group_id)
     user = get_object_or_404(User, id=user_id)
     if not group.is_user_manager(request.user):
         return forbidden(request)
@@ -175,7 +175,7 @@ def group_membership_request(request, group_id, user_id, action):
 
 @login_required
 def group_association_request(request, group_id, object_id, action, content_type):
-    group = get_object_or_404(Group, id=group_id, is_geo_group=False)
+    group = get_object_or_404(Group, id=group_id)
     model_type = get_model(*content_type.split("."))
     content_type = ContentType.objects.get_for_model(model_type)
     content_object = get_object_or_404(model_type, id=object_id)
@@ -211,16 +211,7 @@ def group_detail(request, group_slug):
     """
     display all of the information about a particular group
     """
-    group = get_object_or_404(Group, slug=group_slug, is_geo_group=False)
-    return _group_detail(request, group)
-
-def geo_group(request, state, county_slug=None, place_slug=None):
-    slug = state.lower()
-    if county_slug:
-        slug += "-%s" % county_slug
-    if place_slug:
-        slug += "-%s" % place_slug
-    group = get_object_or_404(Group, slug=slug)
+    group = get_object_or_404(Group, slug=group_slug)
     return _group_detail(request, group)
 
 def group_list(request):
@@ -230,9 +221,8 @@ def group_list(request):
     nav_selected = "communities"
     groups = Group.objects.groups_with_memberships(request.user)
     if request.user.is_authenticated():
-        my_groups = Group.objects.filter(users=request.user, is_geo_group=False)
-    map_groups = Group.objects.filter(lat__isnull=False, lon__isnull=False,
-                                      is_geo_group=False)
+        my_groups = Group.objects.filter(users=request.user)
+    map_groups = Group.objects.filter(lat__isnull=False, lon__isnull=False)
     return render_to_response("groups/group_list.html", locals(), 
                               context_instance=RequestContext(request))
 
@@ -271,7 +261,7 @@ def _group_external_link_only_edit(request, group):
 @csrf_protect
 def group_edit(request, group_slug):
     nav_selected = "communities"
-    group = get_object_or_404(Group, slug=group_slug, is_geo_group=False)
+    group = get_object_or_404(Group, slug=group_slug)
     if not group.is_user_manager(request.user):
         return forbidden(request)
 

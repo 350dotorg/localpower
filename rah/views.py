@@ -63,7 +63,7 @@ def _total_commitment_cards():
     return (ContributorSurvey.objects.all().count())
 
 def _total_communities():
-    return (Group.objects.filter(is_geo_group=False).count() or 0)
+    return (Group.objects.all().count() or 0)
 
 def _total_events():
     return (Event.objects.filter(when__lte=datetime.now()).count() or 0)
@@ -224,7 +224,7 @@ def profile(request, user_id):
     actions = Action.objects.actions_by_status(user)
     commitment_list = UserActionProgress.objects.commitments_for_user(user)
     completed = UserActionProgress.objects.completed_for_user(user)
-    groups = Group.objects.filter(users=user, is_geo_group=False)
+    groups = Group.objects.filter(users=user)
     events = Event.objects.filter(guest__contributor__user=user)
     records = Record.objects.user_records(user, 10)
     badges = user_badges(user)
@@ -251,7 +251,7 @@ def profile(request, user_id):
         'commitment_list': UserActionProgress.objects.commitments_for_user(user),
         'events': events,
         'badges': badges,
-        'communities': Group.objects.filter(users=user, is_geo_group=False),
+        'communities': Group.objects.filter(users=user),
         'records': Record.objects.user_records(user, 10),
     }, context_instance=RequestContext(request))
 

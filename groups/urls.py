@@ -24,9 +24,7 @@ urlpatterns = patterns(
     url(r'^(?P<group_id>\d+)/join/$', 'group_join', name='group_join'),
     url(r'^(?P<group_id>\d+)/approve/(?P<user_id>\d+)/$', 'group_membership_request', {'action': 'approve'}, name='group_approve'),
     url(r'^(?P<group_id>\d+)/deny/(?P<user_id>\d+)/$', 'group_membership_request', {'action': 'deny'}, name='group_deny'),
-    url(r'^(?P<state>[A-Z]{2})/(?P<county_slug>[a-z0-9-]+)/(?P<place_slug>[a-z0-9-]+)/$', 'geo_group', name='geo_group_place'),
-    url(r'^(?P<state>[A-Z]{2})/(?P<county_slug>[a-z0-9-]+)/$', 'geo_group', name='geo_group_county'),
-    url(r'^(?P<state>[A-Z]{2})/$', 'geo_group', name='geo_group_state'),
+
     url(r'^search/$', search_list, group_search_info, name='group_search'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/$', 'group_detail', name='group_detail'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/edit/$', 'group_edit', name='group_edit'),
