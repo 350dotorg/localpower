@@ -156,7 +156,7 @@
                 </a>
                 <div>
                     <a href="{{ group.get_absolute_url }}">{{ group.name }}</a><br/>
-                    <span>{{ group.headquarters }}</span><br/>
+                    <span>{{ group.geom }}</span><br/>
                     {% blocktrans with group.member_count|intcomma as num_members %}
 		    {{num_members}} members 
 		    {% endblocktrans %}
