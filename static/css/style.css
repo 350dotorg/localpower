@@ -77,6 +77,11 @@ Home Page Home Page Home Page Home Page Home Page Home Page Home Page Home Page 
 #home_slide_4 .home_slide_left{ width: 380px;}
 #home_slide_4 .home_slide_right{ width: 344px;}
 
+#home_slide_container .home_slide_main_text a {
+  color: #8FD100;
+  font-weight: bold;
+}
+
 /*Stat bar*/
 #home_stat_bar{
     border: 1px solid #CCCCCC;

@@ -24,7 +24,7 @@
                     <div class="home_slide_right">
 		      {% if request.user.is_anonymous %}
                         <h1>{% blocktrans %}Be an Energy Trendsetter!{% endblocktrans %}</h1>
-                        <p>
+                        <p class="home_slide_main_text">
 			  {% blocktrans %}
                             {{ SITE_NAME }} makes energy efficiency easy, fun and
                             social. Across the country, our members are working to
@@ -35,8 +35,8 @@
                             <a href="{% url register %}" class="button button_mega button_shadow">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
                         </p>
 			{% else %}
-                        <h1>{% blocktrans %}Welcome Back!{% endblocktrans %}</h1>
-                        <p>
+                        <h1>{% blocktrans with request.user.first_name as user_name %}Welcome back, {{user_name}}!{% endblocktrans %}</h1>
+                        <p class="home_slide_main_text">
 			  {% blocktrans %}
 			  Welcome back to {{ SITE_NAME }}!
 			  {% endblocktrans %}
@@ -50,7 +50,7 @@
                 <div id="home_slide_2" class="home_slide">
                     <div class="home_slide_left">
                         <h1>{% blocktrans %}You have the power <br/>to save energy{% endblocktrans %}</h1>
-                        <p>
+                        <p class="home_slide_main_text">
 			  {% blocktrans %}
                             Our energy actions give you the necessary know-how to save
                             energy, lower your bills and improve our environment by
@@ -73,7 +73,7 @@
                     </div>
                     <div class="home_slide_right">
                         <h1>{% blocktrans %}Support energy efficiency in your community{% endblocktrans %}</h1>
-                        <p>
+                        <p class="home_slide_main_text">
 			  {% blocktrans %}
                             Stay up-to-date on energy efficiency efforts in your
                             neighborhood, school, workplace or other group by joining a
@@ -89,7 +89,7 @@
                 <div id="home_slide_4" class="home_slide">
                     <div class="home_slide_left">
                         <h1>{% blocktrans %}Pledge to save energy at home and set the trend in your community{% endblocktrans %}</h1>
-                        <p>
+                        <p class="home_slide_main_text">
 			  {% blocktrans %}
                             Sign the pledge by the filling out the form on the right.
 			  {% endblocktrans %}
