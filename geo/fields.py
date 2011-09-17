@@ -52,9 +52,12 @@ class GoogleGeoField(forms.CharField):
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
             data = GoogleGeoField._google_geocode(url)
             if 'location' in data:
+                data['user_input'] = value
                 return data
             url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, data['latitude'], data['longitude'])
-            return GoogleGeoField._google_geocode(url, data)
+            result = GoogleGeoField._google_geocode(url, data)
+            result['user_input'] = value
+            return result
         return value
 
 class GoogleLocationField(GoogleGeoField):
