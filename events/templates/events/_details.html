@@ -16,11 +16,11 @@
 <div>
     <h3>{% blocktrans %}Where{% endblocktrans %}</h3>
     <p>
-        <span id="event_address">{{ event.where }}</span><br />
+        <span id="event_address">{{ event.geom.raw_address }}</span><br />
     </p>
-    <a href="http://maps.google.com/maps?q={{event.where|urlencode}}" 
+    <a href="http://maps.google.com/maps?q={{event.geom.formatted_address|urlencode}}" 
         title="{% blocktrans %}Click to view a larger map{% endblocktrans %}"
         target="_blank">
-        <img src="http://maps.google.com/maps/api/staticmap?center={{event.lat}},{{event.lon}}&zoom=16&size=431x200&markers={{event.lat}},{{event.lon}}&sensor=false" alt="{% blocktrans %}Map of the event{% endblocktrans %}"/>
+        <img src="http://maps.google.com/maps/api/staticmap?center={{event.geom.latlng.y}},{{event.geom.latlng.x}}&zoom=16&size=431x200&markers={{event.geom.latlng.y}},{{event.geom.latlng.x}}&sensor=false" alt="{% blocktrans %}Map of the event{% endblocktrans %}"/>
     </a>
 </div>
