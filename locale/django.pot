@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-16 09:36-0400\n"
+"POT-Creation-Date: 2011-09-16 22:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3000,47 +3000,47 @@ msgstr ""
 msgid "Save energy at home and organize your community"
 msgstr ""
 
-#: templates/base/base.html:19
+#: templates/base/base.html:21
 #, python-format
 msgid "energy efficiency, home energy, climate change, %(SITE_NAME)s"
 msgstr ""
 
-#: templates/base/base.html:20 templates/base/base.html.py:24
+#: templates/base/base.html:22 templates/base/base.html.py:26
 msgid ""
 "We can take action to keep millions of pounds of dirty coal from polluting "
 "our communities. Every point you earn means one less pound of coal needs to "
 "be burned."
 msgstr ""
 
-#: templates/base/base.html:23
+#: templates/base/base.html:25
 msgid "energy efficiency; home energy; climate change;"
 msgstr ""
 
-#: templates/base/base.html:27 templates/base/base.html.py:62
+#: templates/base/base.html:29 templates/base/base.html.py:64
 msgid "Blog"
 msgstr ""
 
-#: templates/base/base.html:54
+#: templates/base/base.html:56
 msgid "Search the site..."
 msgstr ""
 
-#: templates/base/base.html:61 templates/base/base.html.py:115
+#: templates/base/base.html:63 templates/base/base.html.py:117
 msgid "About Us"
 msgstr ""
 
-#: templates/base/base.html:64 templates/base/nav.html:92
+#: templates/base/base.html:66 templates/base/nav.html:92
 msgid "Log Out"
 msgstr ""
 
-#: templates/base/base.html:66
+#: templates/base/base.html:68
 msgid "Log In"
 msgstr ""
 
-#: templates/base/base.html:88
+#: templates/base/base.html:90
 msgid "Who are we? Listen up."
 msgstr ""
 
-#: templates/base/base.html:90
+#: templates/base/base.html:92
 msgid ""
 "\n"
 "                        Lorem ipsum dolor sit amet, consectetur adipisicing "
@@ -3051,44 +3051,44 @@ msgid ""
 "\t\t      "
 msgstr ""
 
-#: templates/base/base.html:95
+#: templates/base/base.html:97
 msgid "Learn More"
 msgstr ""
 
-#: templates/base/base.html:99
+#: templates/base/base.html:101
 msgid "Follow Us"
 msgstr ""
 
-#: templates/base/base.html:101
+#: templates/base/base.html:103
 msgid "Find us on Facebook"
 msgstr ""
 
-#: templates/base/base.html:103
+#: templates/base/base.html:105
 msgid "Follow us on Twitter"
 msgstr ""
 
-#: templates/base/base.html:105
+#: templates/base/base.html:107
 msgid "Watch us on YouTube"
 msgstr ""
 
-#: templates/base/base.html:107
+#: templates/base/base.html:109
 msgid "Subscribe to our blog"
 msgstr ""
 
-#: templates/base/base.html:112 templates/rah/feedback.html:3
+#: templates/base/base.html:114 templates/rah/feedback.html:3
 #: templates/rah/feedback.html.py:7
 msgid "Feedback"
 msgstr ""
 
-#: templates/base/base.html:113
+#: templates/base/base.html:115
 msgid "Terms of Use"
 msgstr ""
 
-#: templates/base/base.html:114
+#: templates/base/base.html:116
 msgid "Privacy Policy"
 msgstr ""
 
-#: templates/base/base.html:116
+#: templates/base/base.html:118
 msgid ""
 "\n"
 "\t\t    Text is available under a <a href=\"http://creativecommons.org/"
@@ -3224,7 +3224,8 @@ msgid ""
 msgstr ""
 
 #: templates/rah/home_page.html:38
-msgid "Welcome Back!"
+#, python-format
+msgid "Welcome back, %(user_name)s!"
 msgstr ""
 
 #: templates/rah/home_page.html:40
