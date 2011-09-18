@@ -130,9 +130,9 @@ def register(request, template_name="registration/register.html"):
 
     if user_form.is_valid() and profile_form.is_valid():
         new_user = user_form.save()
-        if hasattr(profile_form, 'location'):
+        if hasattr(profile_form, 'geom'):
             profile = new_user.get_profile()
-            profile.location = profile_form.location
+            profile.geom = profile_form.geom
             profile.save()
         user = auth.authenticate(username=new_user.email, password=user_form.cleaned_data["password1"])
         logged_in.send(sender=None, request=request, user=user, is_new_user=True)

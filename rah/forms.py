@@ -51,17 +51,14 @@ class RegistrationForm(forms.ModelForm):
         raise forms.ValidationError(_('This email address has already been registered in our system. If you have forgotten your password, please use the password reset link.'))
 
 class RegistrationProfileForm(forms.Form):
-    zipcode = forms.CharField(max_length=5, required=False, help_text=_("Leave blank if you don't have a US zipcode"), widget=forms.TextInput())
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"))
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
+    def clean(self):
+        data = self.cleaned_data.get("geom")
         if data:
-            if len(data) <> 5:
-                raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
-            try:
-                self.location = Location.objects.get(zipcode=data)
-            except Location.DoesNotExist, e:
-                raise forms.ValidationError(_("Zipcode is invalid"))
+            self.geom = data
         return data
 
 class AuthenticationForm(forms.Form):
