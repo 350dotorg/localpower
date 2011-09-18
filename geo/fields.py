@@ -4,18 +4,10 @@ from urllib2 import quote, urlopen
 from django import forms
 from django.forms import ValidationError
 from django.contrib.gis import geos
-from django.contrib.localflavor.us.forms import USZipCodeField
 
 from models import Location, Point
 
 GOOGLE_GEOCODE_URL = 'http://maps.googleapis.com/maps/api/geocode/json?sensor=false'
-
-class ZipCodeField(USZipCodeField):
-    def clean(self, value):
-        if value:
-            if not Location.objects.filter(zipcode=value).exists():
-                raise ValidationError("Invalid zipcode %s" % value)
-        return value
 
 class GoogleGeoField(forms.CharField):
     @classmethod
@@ -35,6 +27,7 @@ class GoogleGeoField(forms.CharField):
                 data['latitude'] = location['lat']
             if 'longitude' not in data:
                 data['longitude'] = location['lng']
+            data['google_top_result'] = results
             return data
         except:
             raise ValidationError('Could not locate this address')
@@ -42,6 +35,7 @@ class GoogleGeoField(forms.CharField):
     def clean(self, value):
         value = super(GoogleGeoField, self).clean(value)
         if value:
+            value = value.encode("utf8")
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
             data = GoogleGeoField._google_geocode(url)
 

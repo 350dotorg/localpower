@@ -24,3 +24,6 @@ class Location(models.Model):
 
     def __unicode__(self):
         return u'%s, %s' % (self.name, self.st)
+
+    def long(self):
+        return u'%s, %s, USA' % (self.name, self.state)
