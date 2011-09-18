@@ -69,7 +69,7 @@ class ProfileManager(GeoManager):
         }
         query = """
             SELECT u.id, u.first_name AS "first name", u.last_name AS "last name", u.email,
-                NULL AS phone, l.name AS city, l.st AS state, l.zipcode AS "zip code",
+                NULL AS phone, l.raw_address AS "raw address", l.formatted_address AS "formatted address",
                 %(action_cases)s,
                 NULL AS 'organize',
                 NULL AS 'volunteer',
@@ -115,7 +115,7 @@ class ProfileManager(GeoManager):
                 END AS "field training guest"
             FROM auth_user u
             JOIN rah_profile p ON u.id = p.user_id
-            LEFT JOIN geo_location l ON p.location_id = l.id
+            LEFT JOIN geo_point l ON p.geom_id = l.id
             %(action_joins)s
             %(users_filter)s
             ORDER BY u.id
