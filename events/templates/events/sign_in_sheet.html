@@ -46,7 +46,7 @@
                         <td>{{ guest.contributor.name }}</td>
                         <td>{{ guest.contributor.email }}</td>
                         <td>{{ guest.contributor.phone }}</td>
-                        <td>{{ guest.contributor.location.zipcode }}</td>
+                        <td>{{ guest.contributor.geom }}</td>
                     </tr>
                 {% endfor %}
                 {% for row in blank_rows %}

@@ -221,11 +221,11 @@ def spreadsheet(request, event_id):
 
     questions = event.default_survey.questions()
     writer = csv.writer(response)
-    writer.writerow(["Name", "Email", "Phone", "Zipcode", "Status"] + list(questions))
+    writer.writerow(["Name", "Email", "Phone", "Location", "Status"] + list(questions))
 
     for g in event.guests_with_commitments():
         answers = [getattr(g, question) for question in questions]
-        writer.writerow([g.contributor.name, g.contributor.email, g.contributor.phone, g.contributor.zipcode, g.status()] + answers)
+        writer.writerow([g.contributor.name, g.contributor.email, g.contributor.phone, g.contributor.geom.formatted_address, g.status()] + answers)
 
     return response
 

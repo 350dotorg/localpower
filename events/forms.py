@@ -122,34 +122,25 @@ class GuestAddForm(forms.ModelForm):
     last_name = forms.CharField(required=False, max_length=50)
     email = forms.EmailField(required=False, max_length=75)
     phone = forms.CharField(required=False, max_length=12)
-    zipcode = forms.CharField(required=False, max_length=5, min_length=5)
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("Where does this guest live?"))
     rsvp_status = forms.ChoiceField(choices=Guest.RSVP_STATUSES,
         label=_("Is this person planning on attending?"), widget=forms.RadioSelect)
 
     class Meta:
         model = Guest
-        fields = ("first_name", "last_name", "email", "phone", "zipcode", "rsvp_status",)
+        fields = ("first_name", "last_name", "email", "phone", "geom", "rsvp_status",)
         widgets = {
             "rsvp_status": forms.RadioSelect,
         }
+
 
     def clean_email(self):
         email = self.cleaned_data["email"]
         if email:
             return email
         return None
-
-    def clean_zipcode(self):
-        data = self.cleaned_data["zipcode"]
-        if data:
-            try:
-                self.location = Location.objects.get(zipcode=data)
-            except Location.DoesNotExist:
-                raise forms.ValidationError(
-                    _("Invalid zipcode %(data)s") % {'data': data})
-        else:
-            self.location = None
-        return data
 
     def save(self, *args, **kwargs):
         email = self.cleaned_data["email"]
@@ -162,7 +153,11 @@ class GuestAddForm(forms.ModelForm):
         contributor.first_name = self.cleaned_data["first_name"]
         contributor.last_name = self.cleaned_data["last_name"]
         contributor.phone = self.cleaned_data["phone"]
-        contributor.location = self.location
+
+        if self.cleaned_data["geom"]:
+            point = self.cleaned_data["geom"]
+            contributor.geom = point
+
         contributor.save()
         try:
             guest = Guest.objects.get(event=self.instance.event, contributor=contributor)
@@ -227,7 +222,9 @@ class GuestEditForm(forms.ModelForm):
     name = forms.CharField(required=False, max_length=100)
     email = forms.EmailField(required=False, max_length=75)
     phone = forms.CharField(required=False, max_length=12)
-    zipcode = forms.CharField(required=False, max_length=5)
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("Where does this guest live?"))
 
     class Meta:
         model = Guest
@@ -237,15 +234,6 @@ class GuestEditForm(forms.ModelForm):
         if data and Guest.objects.filter(event=self.instance.event, contributor__email=data).exclude(
             id=self.instance.id).exists():
             raise forms.ValidationError(_("A Guest with this email address already exists."))
-        return data
-
-    def clean_zipcode(self):
-        data = self.cleaned_data["zipcode"]
-        if data:
-            try:
-                self.cleaned_data["location"] = Location.objects.get(zipcode=data)
-            except Location.DoesNotExist:
-                raise forms.ValidationError(_("Invalid zipcode %(data)s") % {'data': data})
         return data
 
     def save(self, *args, **kwargs):
@@ -258,9 +246,9 @@ class GuestEditForm(forms.ModelForm):
         phone = self.cleaned_data.get("phone", None)
         if phone:
             self.instance.contributor.phone = phone
-        zipcode = self.cleaned_data.get("zipcode", None)
-        if zipcode:
-            self.instance.contributor.zipcode = zipcode
+        geom = self.cleaned_data.get("geom", None)
+        if geom:
+            self.instance.contributor.geom = geom
         return super(GuestEditForm, self).save(*args, **kwargs)
 
 class HostForm(forms.Form):
@@ -348,13 +336,16 @@ class RsvpConfirmForm(forms.ModelForm):
         return guest
 
 class RsvpAccountForm(forms.ModelForm):
-    zipcode = forms.CharField(max_length=10, required=False)
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"),
+        required=False)
     password1 = forms.CharField(label=_('Password'), min_length=5, widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm Password'), widget=forms.PasswordInput)
 
     class Meta:
         model = Guest
-        fields = ("zipcode", "password1", "password2",)
+        fields = ("geom", "password1", "password2",)
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1", "")
@@ -365,24 +356,11 @@ class RsvpAccountForm(forms.ModelForm):
             raise forms.ValidationError(_("Your password must contain at least 5 characters."))
         return password2
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
-        if not len(data):
-            self.instance.contributor.location = None
-            return
-        if len(data) <> 5:
-            raise forms.ValidationError(_("Please enter a 5 digit zipcode"))
-        try:
-            self.cleaned_data["location"] = Location.objects.get(zipcode=data)
-        except Location.DoesNotExist, e:
-            raise forms.ValidationError(_("Zipcode is invalid"))
-        else:
-            self.instance.contributor.location = self.cleaned_data["location"]
-
     def save(self, request, *args, **kwargs):
         from rah.signals import logged_in
-        user = User(first_name=self.instance.contributor.first_name, last_name=self.instance.contributor.last_name,
-            email=self.instance.contributor.email)
+        user = User(first_name=self.instance.contributor.first_name, 
+                    last_name=self.instance.contributor.last_name,
+                    email=self.instance.contributor.email)
         user.username = hashlib.md5(self.instance.contributor.email).hexdigest()[:30]
         user.set_password(self.cleaned_data.get("password1", auth.models.UNUSABLE_PASSWORD))
         user.save()
@@ -392,7 +370,7 @@ class RsvpAccountForm(forms.ModelForm):
 
         # Set the location on the new user's profile
         profile = user.get_profile()
-        profile.location = self.instance.contributor.location
+        profile.geom = self.instance.contributor.geom
         profile.save()
 
         guest = super(RsvpAccountForm, self).save(*args, **kwargs)

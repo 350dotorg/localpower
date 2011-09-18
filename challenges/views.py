@@ -39,8 +39,9 @@ def detail(request, challenge_id):
             'last_name': request.user.last_name,
             'email': request.user.email,
         }
-        if request.user.get_profile().location:
-            initial['zipcode'] = request.user.get_profile().location.zipcode
+        profile = request.user.get_profile()
+        if profile.geom:
+            initial['geom'] = profile.geom.formatted_address
     else:
         initial = {}
     form = PetitionForm(challenge=challenge, data=(request.POST or None), initial=initial)

@@ -81,7 +81,7 @@ class Event(models.Model):
         return ("event-detail", [str(self.id)])
 
     def place(self):
-        return "%s %s" % (self.where, self.location)
+        return self.geom.raw_address
 
     def odd_guests(self):
         return [g for i,g in enumerate(self.guest_set.rsvped_with_order()) if i % 2 != 0]
@@ -176,8 +176,9 @@ class Event(models.Model):
                 try:
                     contributor = Contributor.objects.get(user=user)
                 except Contributor.DoesNotExist:
-                    contributor = Contributor(first_name=user.first_name, last_name=user.last_name,
-                        email=user.email, location=user.get_profile().location, user=user)
+                    contributor = Contributor(
+                        first_name=user.first_name, last_name=user.last_name,
+                        email=user.email, geom=user.get_profile().geom, user=user)
                 return Guest(event=self, contributor=contributor)
         if self._guest_key() in request.session:
             return request.session[self._guest_key()]
@@ -241,7 +242,7 @@ class GuestManager(GeoManager):
         }
         query = """
             SELECT DISTINCT -1, cn.first_name AS "first name", cn.last_name AS "last name", cn.email,
-                cn.phone, l.name AS city, l.st AS state, l.zipcode AS "zip code",
+                cn.phone, l.name AS city, l.st AS state, l.formatted_address AS "formatted address",
                 %(action_cases)s,
                 CASE
                     WHEN `organize_commit`.answer = "True" THEN "yes"
@@ -280,7 +281,7 @@ class GuestManager(GeoManager):
             JOIN events_event e ON g.event_id = e.id
             JOIN commitments_contributor cn ON cn.id = g.contributor_id
             LEFT JOIN commitments_commitment cm ON cn.id = cm.contributor_id
-            LEFT JOIN geo_location l ON cn.location_id = l.id
+            LEFT JOIN geo_point l ON cn.geom_id = l.id
             LEFT JOIN commitments_commitment `organize_commit` ON `organize_commit`.question = 'organize'
                 AND `organize_commit`.contributor_id = cn.id
                 AND DATE(`organize_commit`.updated) >= '%(date_start)s'
@@ -357,7 +358,7 @@ def make_creator_a_guest(sender, instance, **kwargs):
     creator = instance.creator
     contributor, created = Contributor.objects.get_or_create(user=creator, defaults={
         "first_name":creator.first_name, "last_name":creator.last_name, "email":creator.email,
-        "location": creator.get_profile().location})
+        "geom": creator.get_profile().geom})
     Guest.objects.get_or_create(event=instance, contributor=contributor, defaults={
         "added":datetime.date.today(), "rsvp_status": "A", "is_host":True})
 models.signals.post_save.connect(make_creator_a_guest, sender=Event)

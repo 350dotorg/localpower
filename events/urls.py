@@ -7,7 +7,7 @@ from models import Event
 event_search_info = {
     'queryset': Event.objects.all(),
     'paginate_by': 5,
-    'search_fields': ['title', 'details', 'where', 'location__zipcode'],
+    'search_fields': ['title', 'details', 'where', 'geom__formatted_address'],
     'template_name': 'events/_search_listing',
 }
 

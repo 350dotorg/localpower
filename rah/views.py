@@ -335,13 +335,6 @@ def validate_field(request):
         if request.user.is_authenticated() and request.user.email == email:
             valid = True
 
-    # Valid if zipcode is in our location table
-    elif request.POST.get("zipcode"):
-        if request.POST.get("zipcode").isdigit() and len(request.POST.get("zipcode")) == 5:
-            location = Location.objects.filter(zipcode__exact = request.POST.get("zipcode"))
-            if location:
-                valid = True
-
     return HttpResponse(json.dumps(valid))
 
 def search(request):

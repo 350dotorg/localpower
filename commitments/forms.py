@@ -1,18 +1,30 @@
 from django import forms
 from django.forms import ModelForm
+from django.utils.translation import ugettext_lazy as _
+
+from geo.fields import GoogleLocationField
+from geo.models import Location
 
 from models import Contributor
-from geo.models import Location
 
 class ContributorForm(forms.ModelForm):
 
-    zipcode = forms.CharField(max_length=10, required=False, help_text="Leave blank if you're not a US resident", label="Zipcode")
+    geom = GoogleLocationField(
+        label=_("Location"),
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"))
     email = forms.EmailField(label='Email', widget=forms.TextInput, required=False)
     first_name = forms.CharField(min_length=2)
 
     class Meta:
         model = Contributor
         fields = ('first_name', 'last_name', 'email', 'phone')
+
+    def __init__(self, *args, **kwargs):
+        super(ContributorForm, self).__init__(*args, **kwargs)
+        ## geom/location should be at bottom
+        self.fields["geom"].initial = ""
+        if self.instance and self.instance.geom:
+            self.fields["geom"].initial = self.instance.geom.raw_address
 
     def clean(self):
         email = self.cleaned_data.get('email', None)
@@ -41,14 +53,8 @@ class ContributorForm(forms.ModelForm):
 
         return self.cleaned_data['email']
 
-    def clean_zipcode(self):
-        data = self.cleaned_data['zipcode'].strip()
-        if not len(data):
-            self.instance.location = None
-            return
-        if len(data) <> 5:
-            raise forms.ValidationError("Please enter a 5 digit zipcode")
-        try:
-            self.instance.location = Location.objects.get(zipcode=data)
-        except Location.DoesNotExist, e:
-            raise forms.ValidationError("Zipcode is invalid")
+    def save(self, *args, **kwargs):
+        if self.cleaned_data["geom"]:
+            point = self.cleaned_data["geom"]
+            self.instance.geom = point
+        return super(ContributorForm, self).save(*args, **kwargs)
