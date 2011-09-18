@@ -1,11 +1,13 @@
 {% extends "base/nav.html" %}
 {% load i18n %}
-{% block content_9c %}
+{% block breadcrumbs_slot %}
 <div id="breadcrumbs">
     {% block breadcrumbs %}
     {% blocktrans %}breadcrumbs{% endblocktrans %}
     {% endblock %}
 </div>
+{% endblock %}
+{% block content_9c %}
 <div id="title_bar">
     {% block title_bar_floaters %}{% endblock %}
     {% block title_bar_sub %}{% endblock %}

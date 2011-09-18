@@ -1,8 +1,10 @@
 {% extends "base/nav.html" %}
-{% block content_9c %}
+{% block breadcrumbs_slot %}
     <div id="breadcrumbs_shadow">
         {% block breadcrumbs %}{% endblock %}
     </div>
+{% endblock %}
+{% block content_9c %}
     <div class="grid_6 alpha">
         <div id="content_6c">
         {% block content %}{% endblock %}
