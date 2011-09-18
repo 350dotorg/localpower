@@ -15,14 +15,14 @@ from forms import ProfileEditForm
 from rateable.models import Rating
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("email", "first_name", "last_name", "location", "date_joined",)
+    list_display = ("email", "first_name", "last_name", "geom", "date_joined",)
     ordering = ("id",)
     date_hierarchy = "date_joined"
     search_fields = ("email", "first_name", "last_name",)
 
-    def location(self, obj):
-        return obj.get_profile().location
-    location.short_description = _("Location")
+    def geom(self, obj):
+        return obj.get_profile().geom
+    geom.short_description = _("Location")
 
 class ProfileAdmin(admin.ModelAdmin):
     form = ProfileEditForm
