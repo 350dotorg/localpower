@@ -59,6 +59,13 @@ Showing {{num_users}} users
     RAH.sprite_url = "{% dated_static 'images/theme/sprite.png' %}";
     // Add locations for plotting on the map
     RAH.event_locations = [];
+    RAH.map_center = {};
+    {% with request.user.get_profile.geom as geom %}
+    {% if geom %}
+    RAH.map_center.lat = {{geom.latlng.y}};
+    RAH.map_center.lng = {{geom.latlng.x}};
+    {% endif %}
+    {% endwith %}
     {% for user in map_users %}
         {% with user.get_profile.geom as geom %}
         var info = "<b>{{ user.get_full_name|escape|escapejs }}</b><br/> {{ geom|escape|escapejs }}<br/>";

@@ -26,7 +26,7 @@ require(["libs/jquery.validation", "libs/jquery.ui", "mods/search", "libs/marker
             zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
             panControl: false, 
             scrollwheel: false,
-            center: new google.maps.LatLng(37.000000, -96.000000)
+            center: new google.maps.LatLng(RAH.map_center.lat || 37.000000, RAH.map_center.lng || -96.000000)
         };
         var gmap = new google.maps.Map(document.getElementById("events_map"), myOptions);
         var infowindow = new google.maps.InfoWindow({ content: "" });

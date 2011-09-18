@@ -79,6 +79,13 @@ Showing {{num_groups}} communities
     RAH.sprite_url = "{% dated_static 'images/theme/sprite.png' %}";
     // Add locations for plotting on the map
     RAH.event_locations = [];
+    RAH.map_center = {};
+    {% with request.user.get_profile.geom as geom %}
+    {% if geom %}
+    RAH.map_center.lat = {{geom.latlng.y}};
+    RAH.map_center.lng = {{geom.latlng.x}};
+    {% endif %}
+    {% endwith %}
     {% for group in map_groups %}
         var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.geom.raw_address|escape|escapejs }}<br/>";
        {% if group.is_external_link_only %}
