@@ -10,10 +10,6 @@ class EventAdminForm(EventForm):
     def __init__(self, *args, **kwargs):
         super(EventAdminForm, self).__init__(None, *args, **kwargs)
 
-    def save(self, *args, **kwargs):
-        self.instance.location = self.cleaned_data["location"]
-        return super(EventAdminForm, self).save(*args, **kwargs)
-
 class EventAdmin(admin.ModelAdmin):
     list_display = ("name", "_when", "city", "state", "hosts", "guests", "guests_with_commitment_card", "is_private",)
     list_filter = ("when", "location",)
