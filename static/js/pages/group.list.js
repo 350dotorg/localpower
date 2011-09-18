@@ -43,7 +43,6 @@ require(["libs/jquery.ui", "mods/search", "libs/markerclusterer"],
                 map: gmap,
                 info: RAH.event_locations[i].info
             });
-	    console.log(marker);
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.setContent(this.info);
                 infowindow.open(gmap, this);
