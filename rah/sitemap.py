@@ -15,8 +15,8 @@ class RahSitemap(Sitemap):
     def items(self):
         """Add urls here and they will be added to sitemap.xml"""
         urls = [
-            "/actions/",
-            "/communities/",
+            "/projects/",
+            "/groups/",
             "/",
             "/user/list/",
         ]
