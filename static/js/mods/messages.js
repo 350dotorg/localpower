@@ -9,6 +9,9 @@ define(function () {
                 });
                 return false;
             });
+	    $(".messages").effect("highlight",
+				  {'color': '#80B1CC'}, 
+				  2000);
             this.auto_remove_messages();
         },
         auto_remove_messages: function () {
