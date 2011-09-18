@@ -4,13 +4,16 @@ li.messages {
   padding: 0.25em 0.5em;
 }
 li.messages.success {
-  background-color: #45ab02;
+  background-color: #f90;
+/*  background-color: #45ab02; */
 }
 li.messages.info {
-  background-color: #046495;
+  background-color: #f90;
+/*  background-color: #046495; */
 }
 li.messages.error {
-  background-color: #f90;
+  background-color: #FF2222
+/* background-color: #f90; */
 }
 
 li.messages a.dismiss {
