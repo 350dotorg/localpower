@@ -238,6 +238,18 @@ class UserActionProgress(models.Model):
         return _("%(user)s is working on %(action)s") % {'user': self.user,
                                                          'action': self.action}
 
+class GroupActionProgressManager(models.Manager):
+    def commitments_for_group(self, group):
+         return self.select_related().filter(group=group, is_completed=False,
+            date_committed__isnull=False).order_by("date_committed")
+
+    def completed_for_group(self, user):
+         return self.select_related().filter(group=group, is_completed=True
+                                             ).order_by("date_committed")
+
+    def pending_commitments(self, group=None):
+        queryset = self.filter(is_completed=False, date_committed__isnull=False)
+        return queryset if not group else queryset.filter(group=group)
 
 class GroupActionProgress(models.Model):
     group = models.ForeignKey(Group, verbose_name=_('group'))
@@ -246,7 +258,7 @@ class GroupActionProgress(models.Model):
     date_committed = models.DateField(_('date completed'), null=True)
     created = models.DateTimeField(_('created'), auto_now_add=True)
     updated = models.DateTimeField(_('updated'), auto_now=True)
-    objects = UserActionProgressManager()
+    objects = GroupActionProgressManager()
 
     class Meta:
         unique_together = ("group", "action",)
