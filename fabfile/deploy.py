@@ -111,8 +111,8 @@ def deploy(revision=None, code_only=False, sync_media=True):
         optimize_static()
         if _truth_value(sync_media):
             s3sync()
-        syncdb()
-        migratedb()
+    syncdb()
+    migratedb()
     restart_app_server()
     disable_maintenance_page()
     print(green("%(revision)s has been deployed to %(environment)s" % env))
