@@ -175,6 +175,7 @@ def group_membership_request(request, group_id, user_id, action):
 
 @login_required
 def group_association_request(request, group_id, object_id, action, content_type):
+    from actions.models import GroupActionProgress
     group = get_object_or_404(Group, id=group_id)
     model_type = get_model(*content_type.split("."))
     content_type = ContentType.objects.get_for_model(model_type)
@@ -194,6 +195,10 @@ def group_association_request(request, group_id, object_id, action, content_type
             messages.success(request, _("Your community has been linked with %(object)s") % {
                     'object': content_object})
         elif action == "deny":
+            if hasattr(content_object, 'find_progress_for_group'):
+                progress = content_object.find_progress_for_group(group)
+                if progress:
+                    progress.delete()
             association_request.delete()
             messages.success(request, _("Your community will not be linked with %(object)s") % {
                     'object': content_object})
