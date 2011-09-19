@@ -93,6 +93,8 @@ class Action(models.Model):
         "groups.Group", blank=True,
         verbose_name=_("Communities"))
 
+    is_group_project = models.BooleanField(default=False, db_index=True)
+
     def creator(self):
         return ""
 
@@ -252,7 +254,7 @@ class GroupActionProgressManager(models.Manager):
         return queryset if not group else queryset.filter(group=group)
 
 class GroupActionProgress(models.Model):
-    group = models.ForeignKey(Group, verbose_name=_('group'))
+    group = models.ForeignKey('groups.Group', verbose_name=_('group'))
     action = models.ForeignKey(Action, verbose_name=_('action'))
     is_completed = models.BooleanField(_('is completed'), default=False)
     date_committed = models.DateField(_('date completed'), null=True)
