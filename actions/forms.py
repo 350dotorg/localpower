@@ -7,8 +7,9 @@ from records.models import Record
 from tagging.models import Tag
 from tinymce.widgets import TinyMCE
 from groups.forms import GroupAssociationRequestRelatedForm
+from groups.models import Group
 
-from models import Action, UserActionProgress
+from models import Action, UserActionProgress, GroupActionProgress
 
 class BaseActionForm(forms.Form):
     def __init__(self, user, action, *args, **kwargs):
@@ -41,6 +42,55 @@ class ActionCommitForm(BaseActionForm):
     def save(self):
         return self.action.commit_for_user(
             self.user, self.cleaned_data["date_committed"])
+
+class GroupActionCommitForm(BaseActionForm):
+    date_committed = forms.DateField(
+        label=_("Commit date"),
+        widget=forms.DateInput(format="%Y-%m-%d", 
+                               attrs={"class": "date_commit_field"}))
+    group = forms.CharField(widget=forms.HiddenInput, required=True)
+
+    def __init__(self, *args, **kwargs):
+        group = kwargs.pop("group", None)
+        super(GroupActionCommitForm, self).__init__(*args, **kwargs)
+        self.group = group
+        self.fields["group"].initial = group.slug if group else ''
+        if (not self.user or self.user.is_anonymous() 
+            or not self.action
+            or not self.group):
+            self.fields["date_committed"].initial = (datetime.date.today() + 
+                                                     datetime.timedelta(days=1))
+            return
+        try:
+            gap = GroupActionProgress.objects.get(group=self.group, action=self.action)
+        except GroupActionProgress.DoesNotExist:
+            gap = None
+        if gap and gap.date_committed:
+            self.fields["date_committed"].initial = gap.date_committed
+        else:
+            self.fields["date_committed"].initial = (datetime.date.today() + 
+                                                     datetime.timedelta(days=1))
+
+    def clean_group(self):
+        group = self.cleaned_data.get("group")
+        if not group:
+            return
+        try:
+            group = Group.objects.get(slug=group)
+        except Group.DoesNotExist:
+            raise forms.ValidationError(_("The specific group does not exist."))
+        if self.user and self.user not in group:
+            raise forms.ValidationError(_("You must be a member of the group."))
+
+    def save(self):
+        link_form = ActionGroupLinkForm(self.user, instance=self.action,
+                                        data={'groups': [self.group.pk]})
+        if not link_form.is_valid():
+            return
+        action = link_form.save()
+        if self.group in link_form.cleaned_data["groups"]:
+            return self.action.commit_for_group(
+                self.group, self.cleaned_data["date_committed"])
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),

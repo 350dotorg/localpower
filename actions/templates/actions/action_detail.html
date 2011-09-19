@@ -80,6 +80,7 @@
       {% include "groups/_group_nugget_list.html" %}
       {% endwith %}
 
+      {% comment %}
       {% with group_link_form as form %}
       {% if not form.groups.field.queryset.count %}
       <p>
@@ -100,6 +101,7 @@
       </form>
       {% endif %}
       {% endwith %}
+      {% endcomment %}
     </div>
     {% endif %}
 {% endblock %}

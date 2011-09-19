@@ -32,7 +32,10 @@ class ActionFormNode(template.Node):
                   "commit_title": commit_title,
                   "undo_title": undo_title}
         context.push()
-        value = render_to_string("actions/_action_form.html", values, context)
+        if action and action.is_group_project:
+            value = render_to_string("actions/_group_action_form.html", values, context)
+        else:
+            value = render_to_string("actions/_action_form.html", values, context)
         context.pop()
         return value
 

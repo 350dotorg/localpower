@@ -1,0 +1,9 @@
+{% for form in group_link_forms %}
+  {% with form.progress as progress %}
+  {% with form as action_commit_form %}
+  {% with form.hidden_fields.0 as extra_form_data %}
+    {% include "actions/_action_form.html" %}
+  {% endwith %}
+  {% endwith %}
+  {% endwith %}
+{% endfor %}

@@ -50,6 +50,7 @@
                 <input type="submit" class="tooltip" value="{{ complete_title }}" 
                     title="{% blocktrans %}Claim your points if you’re already doing, or just completed, this action{% endblocktrans %}"/>
             </p>
+	    {{ extra_form_data }}
             {% csrf_token %}
         </form>
     {% else %}
@@ -59,6 +60,7 @@
             <p class="action_undo">
               {% blocktrans %}If this was a mistake, <a href="#" class="undo_trigger">click to undo</a>.{% endblocktrans %}
             </p>
+	    {{ extra_form_data }}
             {% csrf_token %}
         </form>
     {% endif %}

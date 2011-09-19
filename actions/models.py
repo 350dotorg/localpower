@@ -159,6 +159,27 @@ class Action(models.Model):
                 record = Record.objects.create_record(user, "action_commitment", self, data={"date_committed": date})
         return (uap, record)
 
+    @transaction.commit_on_success
+    def commit_for_group(self, group, date, add_to_stream=True):
+        try:
+            gap = GroupActionProgress.objects.create(group=group, action=self)
+        except IntegrityError:
+            transaction.commit()
+            gap = GroupActionProgress.objects.get(group=group, action=self)
+        was_committed = gap.date_committed <> None
+        gap.date_committed = date
+        gap.save()
+        record = None
+        if add_to_stream and False: ## @@todo
+            if was_committed:
+                Stream.objects.get(slug="commitment").upqueue(content_object=uap, start=uap.created,
+                    end=uap.date_committed, batch_content_object=user)
+            else:
+                Stream.objects.get(slug="commitment").enqueue(content_object=uap, start=uap.updated,
+                    end=uap.date_committed, batch_content_object=user)
+                record = Record.objects.create_record(user, "action_commitment", self, data={"date_committed": date})
+        return (gap, record)
+
     def cancel_for_user(self, user):
         try:
             uap = UserActionProgress.objects.get(user=user, action=self)

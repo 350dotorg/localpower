@@ -15,9 +15,11 @@ from records.models import Record
 from records.signals import record_created
 from rah.decorators import login_required_save_POST, login_required_except_GET_save_POST
 
+from groups.models import Group
 from settings import GA_TRACK_PAGEVIEW
-from models import Action, UserActionProgress, ActionForm, ActionFormData
-from forms import ActionCommitForm, ActionGroupLinkForm
+from models import (Action, UserActionProgress, GroupActionProgress,
+                    ActionForm, ActionFormData)
+from forms import ActionCommitForm, GroupActionCommitForm, ActionGroupLinkForm
 
 def action_show(request, tag_slug=None, is_group_project=False):
     """Show all actions by Category"""
@@ -44,9 +46,23 @@ def action_detail(request, action_slug):
     nav_selected = "group_actions" if action.is_group_project else "solo_actions"
     default_vars = _default_action_vars(action, request.user)
     default_vars.update(_build_action_form_vars(action, request.user))
-    action_commit_form = ActionCommitForm(user=request.user, action=action)
 
-    group_link_form = None
+    group_link_forms = []
+    action_commit_form = None
+    if action.is_group_project and not request.user.is_anonymous():
+        for group in Group.objects.groups_with_memberships(request.user):
+            form = GroupActionCommitForm(user=request.user, action=action,
+                                         group=group)
+            try:
+                form.progress = GroupActionProgress.objects.get(
+                    action=action, 
+                    group=group)
+            except GroupActionProgress.DoesNotExist:
+                form.progress = None
+            group_link_forms.append(form)
+    else:
+        action_commit_form = ActionCommitForm(user=request.user, action=action)
+
     if request.method == "POST":
         group_link_form = ActionGroupLinkForm(request.user, instance=action, data=request.POST)
         if group_link_form.is_valid():
@@ -54,7 +70,6 @@ def action_detail(request, action_slug):
             messages.success(request, _("Thanks for taking on this project with your group."))
             return redirect("action_detail", action_slug=action.slug)
 
-    group_link_form = group_link_form or ActionGroupLinkForm(request.user, instance=action)
     default_vars.update(locals())
     return render_to_response("actions/action_detail.html", default_vars, RequestContext(request))
 
