@@ -52,12 +52,7 @@ def card(request, contrib_id=None, form_name=None):
             and request.user.has_perm("contributor.edit_any_contributor") == False:
             return forbidden(request, "You don't have permission to edit this contributor.")
 
-    # If the contributor has a location, get the zipcode
-    # TODO: move this to the form's init
-    contrib_loc = contributor.location.zipcode if contributor.location else ""
-
-    # Setup a contrib form
-    contrib_form = ContributorForm((request.POST or None), instance=contributor, initial={"zipcode": contrib_loc})
+    contrib_form = ContributorForm((request.POST or None), instance=contributor)
 
     # If a survey_form was specified, use that, otherwise use a default
     form_name = request.GET.get("form_name", str(form_name))

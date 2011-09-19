@@ -151,15 +151,6 @@ class Contributor(models.Model):
         return ("%s %s" % (self.first_name, self.last_name)).strip()
     name = property(_get_name, _set_name)
 
-    def _set_zipcode(self, value):
-        try:
-            self.location = Location.objects.get(zipcode=value)
-        except Location.DoesNotExist:
-            self.location = None
-    def _get_zipcode(self):
-        return self.location.zipcode if self.location else ""
-    zipcode = property(_get_zipcode, _set_zipcode)
-
     def needs_more_info(self):
         return not (self.user or (self.first_name and self.email))
 
