@@ -46,7 +46,9 @@
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
+    {% if action.is_group_project %}
     <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -71,6 +73,7 @@
             {% render_comment_list for object %}
         {% endwith %}
     </div>
+    {% if action.is_group_project %}
     <div id="communities">
       <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
       {% with action.groups.all as groups %}
@@ -98,6 +101,7 @@
       {% endif %}
       {% endwith %}
     </div>
+    {% endif %}
 {% endblock %}
 {% block sidebar %}
     <div class="ribbon_small ribbon_small_dark">
