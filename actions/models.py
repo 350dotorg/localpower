@@ -238,6 +238,33 @@ class UserActionProgress(models.Model):
         return _("%(user)s is working on %(action)s") % {'user': self.user,
                                                          'action': self.action}
 
+
+class GroupActionProgress(models.Model):
+    group = models.ForeignKey(Group, verbose_name=_('group'))
+    action = models.ForeignKey(Action, verbose_name=_('action'))
+    is_completed = models.BooleanField(_('is completed'), default=False)
+    date_committed = models.DateField(_('date completed'), null=True)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    updated = models.DateTimeField(_('updated'), auto_now=True)
+    objects = UserActionProgressManager()
+
+    class Meta:
+        unique_together = ("group", "action",)
+        verbose_name = _("group action progress")
+        verbose_name_plural = _("group action progress")
+
+    def other_commitments(self):
+        return GroupActionProgress.objects.filter(group=self.group, date_committed__isnull=False,
+            is_completed=0).exclude(pk=self.pk).order_by("date_committed")
+
+    ## TODO: send messaging.message emails to all group admins
+    #def email(self):
+    #    return self.user.email
+
+    def __unicode__(self):
+        return _("%(group)s is working on %(action)s") % {'user': self.group,
+                                                          'action': self.action}
+
 class ActionForm(models.Model):
     """
     ActionForm is used to link a worksheet form to an action.  Since we will use
