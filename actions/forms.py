@@ -53,16 +53,16 @@ class GroupActionCommitForm(BaseActionForm):
     def __init__(self, *args, **kwargs):
         group = kwargs.pop("group", None)
         super(GroupActionCommitForm, self).__init__(*args, **kwargs)
-        self.group = group
+        self.group_obj = group
         self.fields["group"].initial = group.slug if group else ''
         if (not self.user or self.user.is_anonymous() 
             or not self.action
-            or not self.group):
+            or not self.group_obj):
             self.fields["date_committed"].initial = (datetime.date.today() + 
                                                      datetime.timedelta(days=1))
             return
         try:
-            gap = GroupActionProgress.objects.get(group=self.group, action=self.action)
+            gap = GroupActionProgress.objects.get(group=self.group_obj, action=self.action)
         except GroupActionProgress.DoesNotExist:
             gap = None
         if gap and gap.date_committed:
@@ -84,13 +84,13 @@ class GroupActionCommitForm(BaseActionForm):
 
     def save(self):
         link_form = ActionGroupLinkForm(self.user, instance=self.action,
-                                        data={'groups': [self.group.pk]})
+                                        data={'groups': [self.group_obj.pk]})
         if not link_form.is_valid():
             return
         action = link_form.save()
-        if self.group in link_form.cleaned_data["groups"]:
+        if self.group_obj in link_form.cleaned_data["groups"]:
             return self.action.commit_for_group(
-                self.group, self.cleaned_data["date_committed"])
+                self.group_obj, self.cleaned_data["date_committed"])
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),

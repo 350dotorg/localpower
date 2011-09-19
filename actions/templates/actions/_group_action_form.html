@@ -1,4 +1,10 @@
-{% for form in group_link_forms %}
+<div id="group_action_form_container">
+  <select id="group_action_form_picker">
+    {% for form in group_link_forms %}
+    <option value="{{form.group_obj.slug}}">{{form.group_obj.name}}</option>
+    {% endfor %}
+  </select>
+  {% for form in group_link_forms %}
   {% with form.progress as progress %}
   {% with form as action_commit_form %}
   {% with form.hidden_fields.0 as extra_form_data %}
@@ -6,4 +12,5 @@
   {% endwith %}
   {% endwith %}
   {% endwith %}
-{% endfor %}
+  {% endfor %}
+</div>
