@@ -55,7 +55,7 @@ class ContributorManager(GeoManager):
         }
         query = """
             SELECT DISTINCT -1, cn.first_name AS "first name", cn.last_name AS "last name", cn.email,
-                cn.phone, l.name AS city, l.st AS state, l.zipcode AS "zip code",
+                cn.phone, l.raw_address AS "raw address", l.formatted_address AS "formatted address",
                 %(action_cases)s,
                 CASE
                     WHEN `organize_commit`.answer = "True" THEN "yes"
@@ -97,7 +97,7 @@ class ContributorManager(GeoManager):
                 END AS "field training guest"
             FROM commitments_contributor cn
             LEFT JOIN commitments_commitment cm ON cn.id = cm.contributor_id
-            LEFT JOIN geo_location l ON cn.location_id = l.id
+            LEFT JOIN geo_point l ON cn.geom_id = l.id
             LEFT JOIN commitments_commitment `organize_commit` ON `organize_commit`.question = 'organize'
                 AND `organize_commit`.contributor_id = cn.id
                 AND DATE(`organize_commit`.updated) >= '%(date_start)s'
