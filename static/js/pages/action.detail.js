@@ -5,6 +5,11 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
     comments.setup();
 
     $("div.date_commit_field").parent().hide();
+    $(".group_action_form_picker").change(function() {
+	    var group = $(this).val();
+	    $(this).closest(".group_action_form_container").find("div.group_action_form_group").hide();
+	    $(this).closest(".group_action_form_container").find("div.group_action_form_group." + group).show();
+    });
     $(".commit_trigger").click(function () {
 	    $(".action_commit_form").removeClass("active");
 	    $(this).closest("form.action_commit_form").addClass("active");

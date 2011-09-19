@@ -1,11 +1,16 @@
-<div id="group_action_form_container">
-  <select id="group_action_form_picker">
+{% load i18n %}
+<div class="group_action_form_container">
+  {% blocktrans %}
+  Select a group:
+  {% endblocktrans %}
+  <select class="group_action_form_picker">
     {% for form in group_link_forms %}
     <option value="{{form.group_obj.slug}}">{{form.group_obj.name}}</option>
     {% endfor %}
   </select>
   {% for form in group_link_forms %}
-  <h3>{{form.group_obj.name}}</3h>
+  <div class="group_action_form_group {{form.group_obj.slug}}" {% if not forloop.first %}style="display: none"{% endif %}>
+  <h3>{{form.group_obj.name}}</h3>
   {% with form.progress as progress %}
   {% with form.days_till_commitment as days_till_commitment %}
   {% with form as action_commit_form %}
@@ -15,5 +20,6 @@
   {% endwith %}
   {% endwith %}
   {% endwith %}
+  </div>
   {% endfor %}
 </div>
