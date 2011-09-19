@@ -20,8 +20,9 @@ class ContributorManager(GeoManager):
                 contributor.save()
                 return contributor, True
             except Contributor.DoesNotExist:
-                return self.create(first_name=user.first_name, last_name=user.last_name,
-                    email=user.email, location=user.get_profile().location, user=user), False
+                return (self.create(first_name=user.first_name, last_name=user.last_name,
+                                   email=user.email, geom=user.get_profile().geom, user=user), 
+                        False)
 
     def contirbutor_engagment(self, date_start=None, date_end=None):
         from django.db import connection, transaction
