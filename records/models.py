@@ -221,11 +221,17 @@ def publish_to_social_networks(sender, request, record, **kwargs):
         message = record.render_for_social(request)
         message = message.encode("utf-8")
         link = "http://%s%s" % (Site.objects.get_current().domain, record.get_absolute_url())
-        if profile.facebook_share:
-            publish_message(request.user, message, link)
-        if profile.twitter_share:
-            update_status(OAuthToken.from_string(profile.twitter_access_token), 
-                          "%s (%s)" % (message, link))
+        try:
+            if profile.facebook_share:
+                publish_message(request.user, message, link)
+        except:
+            pass
+        try:
+            if profile.twitter_share:
+                update_status(OAuthToken.from_string(profile.twitter_access_token), 
+                              "%s (%s)" % (message, link))
+        except:
+            pass
     elif profile.ask_to_share:
         request.session[ASK_TO_SHARE_TOKEN] = True
 record_created.connect(publish_to_social_networks)
