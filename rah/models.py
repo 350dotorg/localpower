@@ -11,7 +11,6 @@ from django.contrib.localflavor.us.models import USStateField
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 
-from geo.models import Location
 from records.models import Record
 from twitter_app import utils as twitter_app
 from actions.models import Action, UserActionProgress
@@ -138,7 +137,6 @@ class Profile(models.Model):
 
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
 
-    location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_('location'))
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))
 

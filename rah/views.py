@@ -32,7 +32,6 @@ from records.models import Record
 from rah.forms import RegistrationForm, RegistrationProfileForm, AuthenticationForm, \
     AccountForm, ProfileEditForm, GroupNotificationsForm, FeedbackForm, StickerRecipientForm
 from settings import GA_TRACK_PAGEVIEW, GA_TRACK_CONVERSION, LOGIN_REDIRECT_URL, LOCALE
-from geo.models import Location
 from twitter_app.forms import StatusForm as TwitterStatusForm
 from groups.models import Group
 from commitments.models import Contributor, Commitment, Survey, ContributorSurvey

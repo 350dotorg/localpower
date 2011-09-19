@@ -129,7 +129,7 @@ def possibly_award_shout_out_badge(sender, instance, created, **kwargs):
 models.signals.post_save.connect(possibly_award_shout_out_badge, sender=Profile)
 
 def possibly_award_storyteller_badge(sender, instance, created, **kwargs):
-    if instance.location and instance.building_type and instance.about and \
+    if instance.geom and instance.building_type and instance.about and \
             instance.get_profile().first_name and instance.get_profile().last_name:
         import badges
         badge_cache.possibly_award_badge('completed_profile', user=instance.user)

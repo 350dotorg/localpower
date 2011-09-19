@@ -17,7 +17,6 @@ from settings import SITE_FEEDBACK_EMAIL
 from rah.models import Profile, Feedback, StickerRecipient
 
 from geo.fields import GoogleLocationField
-from geo.models import Location
 
 from fields import Honeypot
 

@@ -12,8 +12,8 @@
                    {{request.user.get_full_name }}
                 </a>
             </h3>
-            {% if request.user.get_profile.location %}
-                <div id="nav_profile_location">{{ request.user.get_profile.location }}</div>
+            {% if request.user.get_profile.geom %}
+                <div id="nav_profile_location">{{ request.user.get_profile.geom }}</div>
             {% endif %}
             <div id="nav_profile_stats">
                 <a href="{% url profile request.user.id %}">{% blocktrans with request.user.get_profile.total_points as total_points %}{{total_points}} points{% endblocktrans %}</a>
