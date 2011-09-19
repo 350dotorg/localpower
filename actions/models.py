@@ -106,7 +106,6 @@ class Action(models.Model):
         images['white'] = timestamp_file("images/badges/%s-action-badge-0-white.png" % self.slug)
         return images
 
-
     @transaction.commit_on_success
     def complete_for_user(self, user):
         try:
@@ -122,6 +121,22 @@ class Action(models.Model):
             Stream.objects.get(slug="commitment").dequeue(content_object=uap)
             record = Record.objects.create_record(user, "action_complete", self)
         return (uap, record)
+
+    @transaction.commit_on_success
+    def complete_for_group(self, group):
+        try:
+            gap = GroupActionProgress.objects.create(group=group, action=self)
+        except IntegrityError:
+            transaction.commit()
+            gap = GroupActionProgress.objects.get(group=group, action=self)
+        was_completed = gap.is_completed
+        gap.is_completed = True
+        gap.save()
+        record = None
+        if not was_completed and False: ## @@todo
+            Stream.objects.get(slug="commitment").dequeue(content_object=gap)
+            record = Record.objects.create_record(user, "action_complete", self)
+        return (gap, record)
 
     def undo_for_user(self, user):
         try:

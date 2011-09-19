@@ -277,7 +277,7 @@
 	    {% with content_object|find_action_progress:group as progress %}
 	    {% if progress.is_completed %}
 	    {% blocktrans %}
-            One of your members has indicated that your group has completed the project {{ object_link }} on {{ progress.updated|date }}.
+            One of your members has indicated that your group has completed the project {{ object_link }}.
 	    {% endblocktrans %}
 	    {% else %}
 	    One of your members has proposed that your group should take on the project {{ object_link }}, and complete it by {{ progress.date_committed|date }}.

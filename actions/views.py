@@ -90,7 +90,18 @@ def action_complete(request, action_slug):
     action = get_object_or_404(Action, slug=action_slug)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
-    uap, record = action.complete_for_user(request.user)
+    if action.is_group_project:
+        action_commit_form = GroupActionCommitForm(user=request.user, 
+                                                   action=action,
+                                                   mark_completed=True,
+                                                   data=request.POST)
+        if action_commit_form.is_valid():
+            uap, record = action_commit_form.save()
+        else:
+            return redirect("action_detail", action_slug=action.slug)
+    else:
+        uap, record = action.complete_for_user(request.user)
+
     if record:
         record_created.send(sender=None, request=request, record=record)
     messages.success(request, _("Nice work! We've updated your profile, "

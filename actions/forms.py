@@ -52,6 +52,7 @@ class GroupActionCommitForm(BaseActionForm):
 
     def __init__(self, *args, **kwargs):
         group = kwargs.pop("group", None)
+        self.mark_completed = kwargs.pop("mark_completed", False)
         super(GroupActionCommitForm, self).__init__(*args, **kwargs)
 
         if not group:
@@ -76,6 +77,8 @@ class GroupActionCommitForm(BaseActionForm):
         else:
             self.fields["date_committed"].initial = (datetime.date.today() + 
                                                      datetime.timedelta(days=1))
+        if self.mark_completed:
+            self.fields["date_committed"].required = False
 
     def clean_group(self):
         group = self.cleaned_data.get("group")
@@ -105,8 +108,11 @@ class GroupActionCommitForm(BaseActionForm):
         action.save()
 
         #if self.group_obj in link_form.cleaned_data["groups"]:
-        return self.action.commit_for_group(
-            self.group_obj, self.cleaned_data["date_committed"])
+        if self.mark_completed:
+            return self.action.complete_for_group(self.group_obj)
+        else:
+            return self.action.commit_for_group(
+                self.group_obj, self.cleaned_data["date_committed"])
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
