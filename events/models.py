@@ -10,7 +10,6 @@ from django.template import Context, loader
 from django.utils.dateformat import DateFormat
 from django.utils.translation import ugettext_lazy as _
 
-from geo.models import Location
 from invite.models import Invitation
 from messaging.models import Stream
 from commitments.models import Contributor, Commitment, Survey
@@ -31,8 +30,6 @@ class Event(models.Model):
                             verbose_name=_('latitude'))
     lat = models.FloatField(null=True, blank=True,
                             verbose_name=_('longitude'))
-    location = models.ForeignKey("geo.Location", null=True,
-                                 verbose_name=_('location'))
 
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))

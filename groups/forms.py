@@ -12,7 +12,6 @@ from django.utils.translation import ugettext_lazy as _
 from PIL.Image import open as pil_open
 from utils import hash_val
 
-from geo.models import Location
 from geo.fields import GoogleLocationField
 
 from models import Group, GroupUsers, Discussion, GroupAssociationRequest
@@ -40,7 +39,7 @@ class GroupForm(forms.ModelForm):
 
     class Meta:
         model = Group
-        exclude = ("is_featured", "lat", "lon",
+        exclude = ("is_featured",
                    "sample_location", "member_count",
                    "parent", "users", "requesters", 
                    "email_blacklisted", "disc_moderation", "disc_post_perm",
@@ -70,18 +69,16 @@ class GroupForm(forms.ModelForm):
         except:
             raise forms.ValidationError(_("This community address is not available."))
 
+        # Make sure there isn't a group with this slug
+        if Group.objects.filter(slug=data):
+            raise forms.ValidationError(_("Another group is already using this address."))
+
         # Make sure there isn't a flatpage with this slug
         if FlatPage.objects.filter(url="/%s/" % data):
             raise forms.ValidationError(_("This community address is not available."))
         return data
 
     def save(self):
-        if self.cleaned_data["geom"]:
-            point = self.cleaned_data["geom"]
-            raw_data = self.fields["geom"].raw_data
-            self.instance.lat = raw_data["latitude"]
-            self.instance.lon = raw_data["longitude"]
-
         group = super(GroupForm, self).save()
         current_image = self.cleaned_data["image"]
         if current_image and current_image != group.image.field.default:
@@ -108,6 +105,17 @@ class GroupExternalLinkOnlyForm(GroupForm):
                    "is_external_link_only",
                    "membership_type")
 
+    def clean_slug(self):
+        try:
+            slug = super(GroupExternalLinkOnlyForm, self).clean_slug()
+        except forms.ValidationError:
+            pass
+        else:
+            return slug
+        count = Group.objects.filter(slug__startswith=self.cleaned_data['slug']).count()
+        self.cleaned_data['slug'] = "%s-%s" % (self.cleaned_data['slug'], count + 1)
+        return super(GroupExternalLinkOnlyForm, self).clean_slug()
+                    
     def save(self):
         group = super(GroupExternalLinkOnlyForm, self).save()
         group.is_external_link_only = True

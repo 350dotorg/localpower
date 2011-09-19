@@ -16,7 +16,6 @@ from django.template import Context, loader
 from django.utils.dateformat import format
 from django.utils.translation import ugettext_lazy as _
 
-from geo.models import Location
 from geo.fields import GoogleLocationField
 
 from groups.forms import GroupAssociationRequestRelatedForm
@@ -50,7 +49,6 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
         model = Event
         fields = ("title", "details", 
                   "when", "start", "duration", 
-                  "location",
                   "is_private", "groups")
         widgets = {
             "when": forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker future_date_warning"}),
@@ -83,7 +81,6 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
             self.instance.geom = point
 
         self.instance.creator = self.user
-        self.instance.location = self.cleaned_data["location"]
         event = super(EventForm, self).save(*args, **kwargs)
         self.save_groups(event)
         return event

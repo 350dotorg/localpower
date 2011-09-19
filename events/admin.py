@@ -12,7 +12,7 @@ class EventAdminForm(EventForm):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ("name", "_when", "city", "state", "hosts", "guests", "guests_with_commitment_card", "is_private",)
-    list_filter = ("when", "location",)
+    list_filter = ("when", "geom",)
     date_hierarchy = "when"
     readonly_fields = ("limit",)
     form = EventAdminForm
@@ -29,10 +29,10 @@ class EventAdmin(admin.ModelAdmin):
     _when.short_description = _("When")
 
     def city(self, obj):
-        return obj.location.name
+        return '' # obj.location.name
 
     def state(self, obj):
-        return obj.location.st
+        return '' #obj.location.st
 
     def guests(self, obj):
         return obj.guest_set.count()
