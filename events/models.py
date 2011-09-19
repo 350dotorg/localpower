@@ -23,14 +23,6 @@ class Event(models.Model):
     title = models.CharField(_('title'), max_length=100, 
                              help_text=_("What do you want to call this shindig?"))
 
-    where = models.CharField(max_length=100, 
-                             verbose_name=_("Street address"),
-                             help_text=_("Include the city and state"))
-    lon = models.FloatField(null=True, blank=True, 
-                            verbose_name=_('latitude'))
-    lat = models.FloatField(null=True, blank=True,
-                            verbose_name=_('longitude'))
-
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))
 

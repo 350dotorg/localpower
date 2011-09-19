@@ -73,12 +73,7 @@ class EventForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
 
     def save(self, *args, **kwargs):
         if self.cleaned_data["geom"]:
-            point = self.cleaned_data["geom"]
-            raw_data = self.fields["geom"].raw_data
-            self.instance.lat = raw_data["latitude"]
-            self.instance.lon = raw_data["longitude"]
-            self.instance.where = raw_data["user_input"]
-            self.instance.geom = point
+            self.instance.geom = self.cleaned_data["geom"]
 
         self.instance.creator = self.user
         event = super(EventForm, self).save(*args, **kwargs)
