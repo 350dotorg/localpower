@@ -11,14 +11,26 @@ register = template.Library()
 
 class ActionFormNode(template.Node):
     def __init__(self, complete_title=None, commit_title=None, undo_title=None):
-        self.complete_title = complete_title or _("I did this!")
-        self.commit_title = commit_title or _("Make a commitment")
-        self.undo_title = undo_title or _("Wait - I'm still working on this action.")
+        self.complete_title = complete_title
+        self.commit_title = commit_title
+        self.undo_title = undo_title
 
     def render(self, context):
-        values = {"complete_title": self.complete_title,
-                  "commit_title": self.commit_title,
-                  "undo_title": self.undo_title}
+        action = context.get("action")
+        if action and action.is_group_project:
+            complete_title =  _("My group already did this!")
+            commit_title = _("My group will do this")
+            undo_title =  _("Wait - my group is still working on this action.")
+        else:
+            complete_title =  _("I did this!")
+            commit_title = _("Make a commitment")
+            undo_title =  _("Wait - I'm still working on this action.")
+        complete_title = self.complete_title or complete_title
+        commit_title = self.commit_title or commit_title
+        undo_title = self.undo_title or undo_title
+        values = {"complete_title": complete_title,
+                  "commit_title": commit_title,
+                  "undo_title": undo_title}
         context.push()
         value = render_to_string("actions/_action_form.html", values, context)
         context.pop()
