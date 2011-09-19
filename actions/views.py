@@ -54,9 +54,19 @@ def action_detail(request, action_slug):
             form = GroupActionCommitForm(user=request.user, action=action,
                                          group=group)
             try:
-                form.progress = GroupActionProgress.objects.get(
+                progress = GroupActionProgress.objects.get(
                     action=action, 
                     group=group)
+                days_till_commitment = 0
+                if progress.date_committed:
+                    days_till_commitment = (progress.date_committed -
+                                            datetime.date.today())
+                    days_till_commitment = (days_till_commitment.days
+                                            if days_till_commitment.days > 0
+                                            else 0)
+                form.progress = progress
+                form.days_till_commitment = days_till_commitment
+
             except GroupActionProgress.DoesNotExist:
                 form.progress = None
             group_link_forms.append(form)

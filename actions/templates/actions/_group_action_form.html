@@ -7,9 +7,11 @@
   {% for form in group_link_forms %}
   <h3>{{form.group_obj.name}}</3h>
   {% with form.progress as progress %}
+  {% with form.days_till_commitment as days_till_commitment %}
   {% with form as action_commit_form %}
   {% with form.hidden_fields.0 as extra_form_data %}
     {% include "actions/_action_form.html" %}
+  {% endwith %}
   {% endwith %}
   {% endwith %}
   {% endwith %}
