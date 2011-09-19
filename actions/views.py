@@ -26,7 +26,7 @@ def action_show(request, tag_slug=None):
     if request.user.is_authenticated():
         actions = Action.objects.actions_by_status(request.user)
     else:
-        actions = Action.objects.all()
+        actions = Action.objects.filter(is_group_project=False)
 
     return render_to_response("actions/action_show.html", {
         'actions': actions,
@@ -38,7 +38,7 @@ def action_show(request, tag_slug=None):
 def action_detail(request, action_slug):
     """Detail page for an action"""
     nav_selected = "actions"
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     default_vars = _default_action_vars(action, request.user)
     default_vars.update(_build_action_form_vars(action, request.user))
     action_commit_form = ActionCommitForm(user=request.user, action=action)
@@ -59,7 +59,7 @@ def action_detail(request, action_slug):
 @csrf_protect
 def action_complete(request, action_slug):
     """invoked when a user marks an action as completed"""
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
     uap, record = action.complete_for_user(request.user)
@@ -75,7 +75,7 @@ def action_complete(request, action_slug):
 @login_required
 @csrf_protect
 def action_undo(request, action_slug):
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
     if action.undo_for_user(request.user):
@@ -89,7 +89,7 @@ def action_undo(request, action_slug):
 @login_required_save_POST
 @csrf_protect
 def action_commit(request, action_slug):
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
     action_commit_form = ActionCommitForm(user=request.user, action=action, data=request.POST)
@@ -110,7 +110,7 @@ def action_commit(request, action_slug):
 @login_required
 @csrf_protect
 def action_cancel(request, action_slug):
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     if request.method == "POST":
         if action.cancel_for_user(request.user):
             messages.success(request, _("We cancelled your commitment. If "
@@ -127,7 +127,7 @@ def action_cancel(request, action_slug):
 def save_action_form(request, action_slug, form_name):
     import action_forms
 
-    action = get_object_or_404(Action, slug=action_slug)
+    action = get_object_or_404(Action, slug=action_slug, is_group_project=False)
     action_form = get_object_or_404(ActionForm, action=action, form_name=form_name)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)

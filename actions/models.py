@@ -21,12 +21,13 @@ class ActionManager(models.Manager):
     def get_popular(self, count=6):
         # Returns the most popular actions where popularity is defined as the sum of completed and commited users
         # TODO: Write a unit test for get_popular
-        actions = Action.objects.all()
+        actions = Action.objects.filter(is_group_project=False)
         count = actions.count() if actions.count() < count else count
         return sorted(actions, reverse=True, key=lambda action: action.users_completed+action.users_committed)[:count]
 
     def actions_by_status(self, user):
-        actions = Action.objects.select_related().all().extra(select_params = (user.id,),
+        actions = Action.objects.select_related().filter(
+            is_group_project=False).extra(select_params = (user.id,),
                     select = { 'completed': 'SELECT uap.is_completed FROM actions_useractionprogress uap \
                                              WHERE uap.user_id = %s AND uap.action_id = actions_action.id'
                     }).extra(select_params = (user.id,),
