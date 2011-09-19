@@ -4,6 +4,7 @@
 {% load record %}
 {% load invites %}
 {% load dated_static %}
+{% load actions %}
 
 {% block title %}{{group.name}}{% endblock %}
 {% block extrahead %}
@@ -273,16 +274,33 @@
           <li class="membership_request">
 	    {% with ar.content_object as content_object %}
 	    {% linkify content_object as object_link %}
+	    {% with content_object|find_action_progress:group as progress %}
+	    {% if progress.is_completed %}
 	    {% blocktrans %}
-            Somebody has requested to link this community to {{ object_link }}
+            One of your members has indicated that your group has completed the project {{ object_link }} on {{ progress.updated|date }}.
 	    {% endblocktrans %}
+	    {% else %}
+	    One of your members has proposed that your group should take on the project {{ object_link }}, and complete it by {{ progress.date_committed|date }}.
+	    {% endif %}
             <div class="membership_tools">
               <a href="{% url group_action_approve ar.group.id ar.object_id %}">
-		{% blocktrans %}Approve{% endblocktrans %}</a>
+		{% if progress.is_completed %}
+		{% blocktrans %}Confirm{% endblocktrans %}
+		{% else %}
+		{% blocktrans %}Approve{% endblocktrans %}
+		{% endif %}
+	      </a>
+	      
 	      {% blocktrans %}or{% endblocktrans %}
               <a href="{% url group_action_deny ar.group.id ar.object_id %}">
-		{% blocktrans %}Deny{% endblocktrans %}</a>
+		{% if progress.is_completed %}
+		{% blocktrans %}Deny{% endblocktrans %}
+		{% else %}
+		{% blocktrans %}Reject{% endblocktrans %}
+		{% endif %}
+	      </a>
             </div>
+	    {% endwith %}
 	    {% endwith %}
           </li>
           {% endfor %}

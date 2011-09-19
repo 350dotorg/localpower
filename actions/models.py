@@ -180,6 +180,12 @@ class Action(models.Model):
                 record = Record.objects.create_record(user, "action_commitment", self, data={"date_committed": date})
         return (gap, record)
 
+    def find_progress_for_group(self, group):
+        try:
+            return GroupActionProgress.objects.get(group=group, action=self)
+        except GroupActionProgress.DoesNotExist:
+            return None
+
     def cancel_for_user(self, user):
         try:
             uap = UserActionProgress.objects.get(user=user, action=self)
@@ -298,7 +304,7 @@ class GroupActionProgress(models.Model):
     #    return self.user.email
 
     def __unicode__(self):
-        return _("%(group)s is working on %(action)s") % {'user': self.group,
+        return _("%(group)s is working on %(action)s") % {'group': self.group,
                                                           'action': self.action}
 
 class ActionForm(models.Model):

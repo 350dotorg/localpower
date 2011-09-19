@@ -70,3 +70,8 @@ def render_template_snippet(parser, token):
             "%(tag_name)s tag requires 1 arguments {%% %(tag_name)s \
             [template_snippet] %%}" % {"tag_name": token.contents.split()[0]}
     return TemplateSnippetNode(parser.compile_filter(snippet))
+
+@register.filter
+def find_action_progress(action, group):
+    return action.find_progress_for_group(group)
+
