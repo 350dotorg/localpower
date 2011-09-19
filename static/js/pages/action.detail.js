@@ -6,7 +6,9 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
 
     $("div.date_commit_field").parent().hide();
     $(".commit_trigger").click(function () {
-        $("#commit_widget").dialog("open");
+	    $(".action_commit_form").removeClass("active");
+	    $(this).closest("form.action_commit_form").addClass("active");
+	    $("#commit_widget").dialog("open");
         return false;
     });
     $(".undo_trigger").click(function () {
@@ -23,19 +25,19 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
         open: function () {
 	    $(this).find(".commit_calendar").datepicker({
                 dateFormat: "yy-mm-dd", 
-		defaultDate: $("input.date_commit_field").val(),
+		defaultDate: $(".active input.date_commit_field").val(),
                 maxDate: "+2y", 
                 minDate: "0", 
                 numberOfMonths: 2,
                 onSelect: function (dateText, inst) { 
-                    $(".date_commit_field").val(dateText);
+                    $(".active .date_commit_field").val(dateText);
                 }
             });
         },
         buttons: { 
             "Commit": function () {
                 $("#commit_widget").dialog("close");
-                var form = $(".action_commit_form");
+                var form = $(".action_commit_form.active");
                 form.submit();
             }
         }

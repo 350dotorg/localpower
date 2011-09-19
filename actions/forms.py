@@ -53,6 +53,12 @@ class GroupActionCommitForm(BaseActionForm):
     def __init__(self, *args, **kwargs):
         group = kwargs.pop("group", None)
         super(GroupActionCommitForm, self).__init__(*args, **kwargs)
+
+        if not group:
+            group = self.data.get("group")
+            if group:
+                group = Group.objects.get(slug=group)
+
         self.group_obj = group
         self.fields["group"].initial = group.slug if group else ''
         if (not self.user or self.user.is_anonymous() 
@@ -79,18 +85,28 @@ class GroupActionCommitForm(BaseActionForm):
             group = Group.objects.get(slug=group)
         except Group.DoesNotExist:
             raise forms.ValidationError(_("The specific group does not exist."))
-        if self.user and self.user not in group:
+        if self.user and self.user not in group.users.all():
             raise forms.ValidationError(_("You must be a member of the group."))
 
     def save(self):
+        ## Wow, what a mess.  Need to stash the old set of groups
+        #  so that the link form's .groups attribute doesn't completely
+        #  overwrite it.  But also, we need to make sure to execute
+        #  the old-group-set-stashing query before any data is written,
+        #  or else we'd lose it anyway because of lazy SQL evaluation.
+        previous_groups = list(self.action.groups.all())
         link_form = ActionGroupLinkForm(self.user, instance=self.action,
                                         data={'groups': [self.group_obj.pk]})
         if not link_form.is_valid():
-            return
+            return 
         action = link_form.save()
-        if self.group_obj in link_form.cleaned_data["groups"]:
-            return self.action.commit_for_group(
-                self.group_obj, self.cleaned_data["date_committed"])
+        for previous_group in previous_groups:
+            action.groups.add(previous_group)
+        action.save()
+
+        #if self.group_obj in link_form.cleaned_data["groups"]:
+        return self.action.commit_for_group(
+            self.group_obj, self.cleaned_data["date_committed"])
 
 class ActionAdminForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),

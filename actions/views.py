@@ -110,7 +110,10 @@ def action_commit(request, action_slug):
     action = get_object_or_404(Action, slug=action_slug)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
-    action_commit_form = ActionCommitForm(user=request.user, action=action, data=request.POST)
+    if action.is_group_project:
+        action_commit_form = GroupActionCommitForm(user=request.user, action=action, data=request.POST)
+    else:
+        action_commit_form = ActionCommitForm(user=request.user, action=action, data=request.POST)
     # TODO: There is weirdness here if you have already completed the action and try to commit again. 
     # This can happen when you are logged out, commit to an action you've already completes, are asked to log in, and are directed back to the action detail page.
     if action_commit_form.is_valid():
