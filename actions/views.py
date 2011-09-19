@@ -50,7 +50,7 @@ def action_detail(request, action_slug):
     group_link_forms = []
     action_commit_form = None
     if action.is_group_project and not request.user.is_anonymous():
-        for group in Group.objects.groups_with_memberships(request.user):
+        for group in Group.objects.filter(users=request.user):
             form = GroupActionCommitForm(user=request.user, action=action,
                                          group=group)
             try:
@@ -145,6 +145,7 @@ def action_commit(request, action_slug):
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/commit')
         messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/commit/%s' % action_slug)
         return redirect("action_detail", action_slug=action.slug)
+
     default_vars = _default_action_vars(action, request.user)
     default_vars.update(locals())
     return render_to_response("actions/action_detail.html", default_vars, RequestContext(request))
