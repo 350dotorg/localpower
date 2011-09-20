@@ -126,7 +126,9 @@
       {% if form.progress.is_completed %}
       <li><a href="{% url group_detail form.group_obj.slug %}">{{ form.group_obj }}</a> has completed this project.</li>
       {% else %}
+      {% if form.progress.date_committed %}
       <li><a href="{% url group_detail form.group_obj.slug %}">{{ form.group_obj }}</a> has committed to complete this project by {{ form.progress.date_committed|date }}.</li>
+      {% endif %}
       {% endif %}
       {% endif %}
       </ul>
