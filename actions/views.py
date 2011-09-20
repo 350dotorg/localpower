@@ -105,8 +105,7 @@ def action_complete(request, action_slug):
     if record:
         record_created.send(sender=None, request=request, record=record)
     messages.success(request, _("Nice work! We've updated your profile, "
-                                "so all your friends can see your progress "
-                                "(<a href='#' class='undo_trigger'>Undo</a>)"))
+                                "so all your friends can see your progress "))
     messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/complete')
     messages.add_message(request, GA_TRACK_PAGEVIEW, '/actions/complete/%s' % action_slug)
     return redirect("action_detail", action_slug=action.slug)
