@@ -153,6 +153,21 @@ class Action(models.Model):
             return False
         return True
 
+    def undo_for_group(self, group):
+        try:
+            gap = GroupActionProgress.objects.get(group=group, action=self)
+            was_completed = gap.is_completed
+            gap.is_completed = False
+            gap.save()
+            if was_completed and False: ## @@todo
+                if gap.date_committed:
+                    Stream.objects.get(slug="commitment").upqueue(content_object=uap,
+                        start=uap.created, end=uap.date_committed, batch_content_object=user)
+                Record.objects.void_record(user, "action_complete", self)
+        except GroupActionProgress.DoesNotExist:
+            return False
+        return True
+
     @transaction.commit_on_success
     def commit_for_user(self, user, date, add_to_stream=True):
         try:

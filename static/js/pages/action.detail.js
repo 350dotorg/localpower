@@ -17,7 +17,7 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
         return false;
     });
     $(".undo_trigger").click(function () {
-        $(".action_undo_form").submit();
+	    $(this).closest(".action_forms").find(".action_undo_form").submit();
     });
     $("#commit_widget").dialog({
         title: "Make a Commitment", 

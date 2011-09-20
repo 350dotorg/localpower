@@ -117,7 +117,17 @@ def action_undo(request, action_slug):
     action = get_object_or_404(Action, slug=action_slug)
     if request.method == "GET":
         return redirect("action_detail", action_slug=action.slug)
-    if action.undo_for_user(request.user):
+
+    success = False
+    if action.is_group_project:
+        form = GroupActionCommitForm(user=request.user, action=action, data=request.POST, mark_undone=True)
+        if form.is_valid() and action.undo_for_group(form.group_obj):
+            success = True
+    else:
+        if action.undo_for_user(request.user):
+            success = True
+
+    if success:
         messages.success(request, _("No worries. We've updated the record. "
                                     "Let us know when you're finished with "
                                     "this action."))
