@@ -51,7 +51,7 @@ def action_detail(request, action_slug):
     group_link_forms = []
     action_commit_form = None
     if action.is_group_project and not request.user.is_anonymous():
-        for group in Group.objects.filter(users=request.user):
+        for group in Group.objects.filter(users=request.user).order_by("name"):
             form = GroupActionCommitForm(user=request.user, action=action,
                                          group=group)
             try:
@@ -67,7 +67,6 @@ def action_detail(request, action_slug):
                                             else 0)
                 form.progress = progress
                 form.days_till_commitment = days_till_commitment
-
             except GroupActionProgress.DoesNotExist:
                 form.progress = None
             group_link_forms.append(form)
