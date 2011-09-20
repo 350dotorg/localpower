@@ -2,14 +2,49 @@
 {% load dated_static %}
 {% load humanize %}
 {% load i18n %}
-{% block title %}{% blocktrans %}Actions{% endblocktrans %}{% endblock %}
+
+{% block title %}
+{% if is_group_project %}
+{% blocktrans %}
+Group Projects
+{% endblocktrans %}
+{% else %}
+{% blocktrans %}
+Solo Actions
+{% endblocktrans %}
+{% endif %}
+{% endblock %}
+
 {% block title_bar_image %}sprite_section_action_large{% endblock %}
-{% block title_bar_title %}{% blocktrans %}Actions{% endblocktrans %}{% endblock %}
+
+{% block title_bar_title %}
+{% if is_group_project %}
+{% blocktrans %}
+Group Projects
+{% endblocktrans %}
+{% else %}
+{% blocktrans %}
+Solo Actions
+{% endblocktrans %}
+{% endif %}
+{% endblock %}
+
 {% block title_bar_copy %}
+
+  {% if is_group_project %}
   {% blocktrans %}
     The actions you’ll find here will cut energy waste, lower your monthly bills
     and put your home on the leading edge of the energy efficiency revolution.
   {% endblocktrans %}
+
+  {% else %}
+
+  {% blocktrans %}
+    The solo actions you’ll find here will cut energy waste, lower your monthly bills
+    and put your home on the leading edge of the energy efficiency revolution.
+  {% endblocktrans %}
+  {% endif %}
+
 {% endblock %}
 {% block ribbon_bar %}
   {% blocktrans count actions|length as num_actions %}

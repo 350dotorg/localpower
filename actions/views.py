@@ -35,7 +35,8 @@ def action_show(request, tag_slug=None, is_group_project=False):
 
     return render_to_response("actions/action_show.html", {
         'actions': actions,
-        'nav_selected': nav_selected
+        'nav_selected': nav_selected,
+        'is_group_project': is_group_project,
     }, context_instance=RequestContext(request))
 
 @login_required_except_GET_save_POST
