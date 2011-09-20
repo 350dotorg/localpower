@@ -49,7 +49,7 @@ require(["mods/comments", "libs/jquery.ui", "libs/jquery.qtip"], function (comme
     });
     $(".commit_cancel").click(function () {
         if (confirm("Are you sure you want to cancel your commitment?")) {
-            $(".action_cancel_form").submit();
+            $(this).closest(".action_forms").find(".action_cancel_form").submit();
         }
         return false; 
     });
