@@ -42,8 +42,12 @@
 		  </a>)
                 </p>
             </form>
-            <form class="action_cancel_form" method="post"
-                action="{% url action_cancel action.slug %}">{% csrf_token %}</form>
+            <form class="action_cancel_form"
+		  method="post"
+                  action="{% url action_cancel action.slug %}">
+	      {{ extra_form_data }}
+	      {% csrf_token %}
+	    </form>
         {% endif %}
         <form class="action_complete_form" method="post" action="{% url action_complete action.slug %}">
             <p>

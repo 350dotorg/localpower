@@ -154,8 +154,18 @@ def action_commit(request, action_slug):
 @csrf_protect
 def action_cancel(request, action_slug):
     action = get_object_or_404(Action, slug=action_slug)
+    success = False
     if request.method == "POST":
-        if action.cancel_for_user(request.user):
+        if action.is_group_project:
+            form = GroupActionCommitForm(user=request.user, action=action, data=request.POST, mark_cancelled=True)
+            
+            if form.is_valid() and action.cancel_for_group(form.group_obj):
+                success = True
+        else:
+            if action.cancel_for_user(request.user):
+                success = True
+
+        if success:
             messages.success(request, _("We cancelled your commitment. If "
                                         "you're having trouble completing an "
                                         "action, try asking a question. "

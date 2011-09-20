@@ -53,6 +53,8 @@ class GroupActionCommitForm(BaseActionForm):
     def __init__(self, *args, **kwargs):
         group = kwargs.pop("group", None)
         self.mark_completed = kwargs.pop("mark_completed", False)
+        self.mark_cancelled = kwargs.pop("mark_cancelled", False)
+
         super(GroupActionCommitForm, self).__init__(*args, **kwargs)
 
         if not group:
@@ -77,7 +79,7 @@ class GroupActionCommitForm(BaseActionForm):
         else:
             self.fields["date_committed"].initial = (datetime.date.today() + 
                                                      datetime.timedelta(days=1))
-        if self.mark_completed:
+        if self.mark_completed or self.mark_cancelled:
             self.fields["date_committed"].required = False
 
     def clean_group(self):

@@ -214,6 +214,19 @@ class Action(models.Model):
             return False
         return True
 
+    def cancel_for_group(self, group):
+        try:
+            gap = GroupActionProgress.objects.get(group=group, action=self)
+            was_committed = gap.date_committed <> None
+            gap.date_committed = None
+            gap.save()
+            if was_committed and False: ## @@todo
+                Stream.objects.get(slug="commitment").dequeue(content_object=uap)
+                Record.objects.void_record(user, "action_commitment", self)
+        except GroupActionProgress.DoesNotExist:
+            return False
+        return True
+
     def tag_list(self):
         tag_names = [t.name for t in self.tags]
         return ", ".join(tag_names) if tag_names else ""
