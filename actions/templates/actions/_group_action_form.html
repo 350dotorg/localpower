@@ -1,5 +1,25 @@
 {% load i18n %}
 <div class="group_action_form_container">
+  <h3>
+    {% blocktrans %}
+    Take on this project
+    {% endblocktrans %}
+  </h3>
+
+{% if not group_link_forms %}
+
+  {% url group_list as group_list_url %}
+  {% url group_create as group_create_url %}
+  {% blocktrans %}
+  You're not yet a member of any groups.  
+  You can  <a href="{{ group_list_url }}">look for
+    a group near you</a> to join, or
+  <a href="{{ group_create_url }}"> start your own 
+    group</a> to take on this project.
+  {% endblocktrans %}
+
+{% else %}
+
   {% blocktrans %}
   Select a group:
   {% endblocktrans %}
@@ -8,9 +28,10 @@
     <option value="{{form.group_obj.slug}}">{{form.group_obj.name}}</option>
     {% endfor %}
   </select>
+  <br />
+  <br />
   {% for form in group_link_forms %}
   <div class="group_action_form_group {{form.group_obj.slug}}" {% if not forloop.first %}style="display: none"{% endif %}>
-  <h3>{{form.group_obj.name}}</h3>
   {% with form.progress as progress %}
   {% with form.days_till_commitment as days_till_commitment %}
   {% with form as action_commit_form %}
@@ -22,4 +43,6 @@
   {% endwith %}
   </div>
   {% endfor %}
+
+{% endif %}
 </div>

@@ -145,6 +145,14 @@ Actions Actions Actions Actions Actions Actions Actions Actions Actions Actions 
     line-height: 24px; 
 }
 
+.group_action_form_container {
+    background-color: #F2F2F2;
+    padding: 0.5em;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    *border: 1px solid #ccc;
+}
 
 /* ---------------------------------------------------------------------------------------------------------------------
 Events Show Events Show Events Show Events Show Events Show Events Show Events Show Events Show Events Show Events Show
