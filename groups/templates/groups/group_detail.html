@@ -347,6 +347,18 @@
     {% endif %}
 
     <div id="actions">
+      <h2>{% blocktrans %}Projects and Actions{% endblocktrans %}</h2>
+      {% if not group.action_set.count and not popular_actions %}
+      {% if is_member %}
+      {% url action_show as project_list_url %}
+      Your group hasn't taken on any projects.  Why don't you 
+      <a href="{{ project_list_url }}">look for a project</a> to
+      take on with your group?
+      {% else %}
+      This group hasn't taken on any projects.
+      {% endif %}
+      {% endif %}
+
       {% if group.action_set.count %}
       <h3>{% blocktrans %}Actions{% endblocktrans %}</h3>
       {% for action in group.action_set.all %}
