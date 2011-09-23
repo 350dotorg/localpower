@@ -38,7 +38,8 @@ def archive(request):
 @login_required
 def create(request):
     nav_selected = "events"
-    form = EventForm(user=request.user, data=(request.POST or None))
+    form = EventForm(user=request.user, data=(request.POST or None),
+                     initial={"groups": request.GET.getlist("groups")})
     if form.is_valid():
         event = form.save()
         Record.objects.create_record(request.user, "event_create", event)

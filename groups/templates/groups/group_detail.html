@@ -156,9 +156,9 @@
 	{% if is_member %}
 	{% url event-create as event_create_url %}
 	{% url event-show as event_list_url %}
-	{% blocktrans %}
+	{% blocktrans with group.id as group_id %}
 	Your group hasn't created any events. Why don't you 
-	<a href="{{ event_create_url }}">create a new event</a> or
+	<a href="{{ event_create_url }}?groups={{group_id}}">create a new event</a> or
 	<a href="{{ event_list_url }}">look for a nearby event</a> 
 	for your group to participate in?
 	{% endblocktrans %}
