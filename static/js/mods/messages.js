@@ -12,23 +12,11 @@ define(function () {
 	    $(".messages").effect("highlight",
 				  {'color': '#80B1CC'}, 
 				  2000);
-            this.auto_remove_messages();
-        },
-        auto_remove_messages: function () {
-            $(".messages:not(.sticky)").each(function () {
-                var elem = $(this);
-                setTimeout(function () {
-                    elem.slideUp(400, function () {
-                        elem.remove();
-                    });
-                }, 5000);
-            });
         },
         add_message: function (html) {
             if (html) {
                 $("#message_box").hide().append(html).slideDown();
             }
-            this.auto_remove_messages();
         }
     };
 });
