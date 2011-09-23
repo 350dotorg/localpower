@@ -151,11 +151,28 @@
 
     <div id="events">
 	<h2>{% blocktrans %}Events{% endblocktrans %}</h2>
+	{% with group.event_set.all as group_events %}
+	{% if not group_events %}
+	{% if is_member %}
+	{% url event-create as event_create_url %}
+	{% url event-show as event_list_url %}
+	{% blocktrans %}
+	Your group hasn't created any events. Why don't you 
+	<a href="{{ event_create_url }}">create a new event</a> or
+	<a href="{{ event_list_url }}">look for a nearby event</a> 
+	for your group to participate in?
+	{% endblocktrans %}
+	{% else %}
+	This group hasn't created any events.
+	{% endif %}
+	{% else %}
 	<ul class="plain_list nugget_9c_list">
-	{% for event in group.event_set.all %}
+	{% for event in group_events %}
             {% include 'base/_nugget_9c_list.html' %}	
 	{% endfor %}
 	</ul>
+	{% endif %}
+	{% endwith %}
     </div>
 
     <div id="challenges">
