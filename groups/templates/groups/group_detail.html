@@ -177,8 +177,25 @@
 
     <div id="challenges">
 	<h2>{% blocktrans %}Challenges{% endblocktrans %}</h2>
-	  <ul class='plain_list nugget_3c'>
-	{% for challenge in group.challenge_set.all %}
+	{% with group.challenge_set.all as group_challenges %}
+
+	{% if not group_challenges %}
+	{% if is_member %}
+	{% url challenges_create as campaign_create_url %}
+	{% url challenges_list as campaign_list_url %}
+	{% blocktrans with group.id as group_id %}
+	Your group hasn't created any campaigns. Why don't you 
+	<a href="{{ campaign_create_url }}?groups={{group_id}}">create a new campaign</a> or
+	<a href="{{ campaign_list_url }}">look for an existing campaign</a>
+	for your group to participate in?
+	{% endblocktrans %}
+	{% else %}
+	This group hasn't created any campaigns.
+	{% endif %}
+
+	{% else %}
+	<ul class='plain_list nugget_3c'>
+	{% for challenge in group_challenges %}
         <li class="nugget_3c_tall {% if challenge.status %}nugget_3c_completed{% endif %}">
             <div class="nugget_3c_status">
                 {% if challenge.status %}
@@ -205,6 +222,8 @@
         </li>
 	{% endfor %}
 	</ul>
+	{% endif %}
+	{% endwith %}
     </div>
 
     {% if is_manager %}
