@@ -27,7 +27,7 @@
     "pk": 7, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ recipient.get_full_name }},<br />\r\n    {{ content_object.user.get_full_name }} has posted a new discussion, {{ content_object.subject }}, on your group\u2019s page. \r\n</p>\r\n<h2>{{ content_object.subject }}</h2>\r\n{{ content_object.body|linebreaks }}\r\n<p>\r\n    <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">Click here to check it out</a> \r\n</p>\r\n<p>\r\n    Onwards,<br />\r\n    Kelly Blynn for the 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "body": "{{ content_object.user.get_full_name }} has posted a new discussion, {{ content_object.subject }}, on your group\u2019s page. \r\n</p>\r\n<h2>{{ content_object.subject }}</h2>\r\n{{ content_object.body|linebreaks }}\r\n<p>\r\n    You can reply to this email, or <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">click here to see the whole discussion</a> \r\n</p>", 
       "updated": "2011-09-26 13:27:30", 
       "batch_window": null, 
       "name": "New Community Discussion", 
