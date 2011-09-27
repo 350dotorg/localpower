@@ -14,5 +14,7 @@
     {"pk": 13, "model": "messaging.stream", "fields": {"updated": "2010-09-13 10:18:34", "slug": "event-create", "label": "Creating an event", "created": "2010-09-13 10:18:34", "can_unsubscribe": 1}},
     {"pk": 14, "model": "messaging.stream", "fields": {"updated": "2010-10-15 12:39:34", "slug": "event-guest-add", "label": "Guest added to event directly", "created": "2010-10-15 12:39:34", "can_unsubscribe": 0}},
     {"pk": 15, "model": "messaging.stream", "fields": {"updated": "2011-01-12 15:52:34", "slug": "community-create", "label": "Creating a community", "created": "2011-01-12 15:52:34", "can_unsubscribe": 0}},
-    {"pk": 16, "model": "messaging.stream", "fields": {"updated": "2011-01-19 13:34:34", "slug": "event-group-association-request", "label": "Requesting to associate an event and a group", "created": "2011-01-19 13:34:34", "can_unsubscribe": 0}}
+    {"pk": 16, "model": "messaging.stream", "fields": {"updated": "2011-01-19 13:34:34", "slug": "event-group-association-request", "label": "Requesting to associate an event and a group", "created": "2011-01-19 13:34:34", "can_unsubscribe": 0}},
+    {"pk": 17, "model": "messaging.stream", "fields": {"updated": "2011-01-12 15:52:34", "slug": "external-community-create", "label": "Creating an external community", "created": "2011-01-12 15:52:34", "can_unsubscribe": 0}}
+
 ]
