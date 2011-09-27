@@ -1,0 +1,705 @@
+[
+  {
+    "pk": 6, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% load i18n %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ user_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible. \r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just created this group: <a href=\u201dhttp://{{ domain }}{{ content_object.get_absolute_url }}\u201d>{{ content_object}}</a>.\r\n</p>\r\n\r\n<p>\r\nSince you\u2019re new, let me take a moment explain the basic features of the website:\r\n</p> \r\n\r\n<ul>\r\n<li>\r\nTo get started, <a href=\u201dhttp://{{ domain }}{{ content_object.get_absolute_url }}\u201d>invite some local friends to join you</a>.\r\n</li>\r\n<li>\r\nYou can also check out some group projects right here: <a href=\u201dhttp://groups.350.org/projects/\u201d>http://groups.350.org/projects/</a>.\r\n</li>\r\n<li>\r\nAs the group manager, you can moderate discussions, add projects, start campaigns, plan events, and more by using the tools on your group\u2019s page.\r\n</li>\r\n</ul>\r\n\r\n<p>\r\nOne last thing: I\u2019m here to help. If you have a problem, an idea, or a question, just let me know at <mailto:\u201dkelly@350.org\u201d>kelly@350.org</a>.  \r\n</p>\r\n<p>\r\nI\u2019d love to hear your ideas for building a strong climate movement both in your community and around the world.\r\n</p>\r\n<p>\r\nOnwards,<br/>\r\nKelly Blynn<br/>\r\nCommunity Manager, 350.org\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 13:23:12", 
+      "batch_window": null, 
+      "name": "You've created a community", 
+      "created": "2011-01-13 09:44:23", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        28
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.managers()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Making the most of your group."
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ recipient.get_full_name }},<br />\r\n    {{ content_object.user.get_full_name }} has posted a new discussion, {{ content_object.subject }}, on your group\u2019s page. \r\n</p>\r\n<h2>{{ content_object.subject }}</h2>\r\n{{ content_object.body|linebreaks }}\r\n<p>\r\n    <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">Click here to check it out</a> \r\n</p>\r\n<p>\r\n    Onwards,<br />\r\n    Kelly Blynn for the 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 13:27:30", 
+      "batch_window": null, 
+      "name": "New Community Discussion", 
+      "created": "2010-08-20 15:48:01", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        32
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: [u for u in x.group.users_not_blacklisted() if u.pk != x.user.pk]", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "email_extra_headers", 
+      "generic_relation_content_type": null, 
+      "subject": "New 350 Groups Discussion: {{ content_object.subject }}"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi there,<br />\r\n\r\nSomeone just requested to join your group, {{ content_object.group }}:<br/>\r\n\r\n{{ content_object.user.get_full_name }} ({{ content_object.user.email }}) just requested to join.\r\n</p>\r\n\r\n<p>\r\n    Click here to <a href=\"http://{{ domain }}{% url group_approve content_object.group.id content_object.user.id %}\">accept</a> \r\n    or <a href=\"http://{{ domain }}{% url group_deny content_object.group.id content_object.user.id %}\">deny</a> the request\r\n</p>\r\n<p>\r\n   Remember, {{ content_object.group }} is a closed group. Anyone who wants to join the <br />\r\n   group has to get your nod first. To make it open,\r\n   <a href=\"http://{{ domain }}{% url group_edit content_object.group.slug %}\">modify your community settings.</a>\r\n</p>\r\n\r\n<p>\r\n    Onwards,<br />\r\n    The 350.org team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 13:30:35", 
+      "batch_window": null, 
+      "name": "Community Join Request", 
+      "created": "2010-08-23 14:59:55", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        30
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.group.managers()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Group Join Request"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.user.first_name }},<br />\r\n    You\u2019re in! The group administrator just approved your access to {{ content_object.group }}.\r\n</p>\r\n<p>\r\n    Click here to go to <a href=\"http://{{ domain }}{{ content_object.group.get_absolute_url }}\">{{ content_object.group }}</a>\r\n</p>\r\n<p>\r\n    On the group page, you can check out who else is active, what projects your group is working on, and more.\r\n</p>\r\n<p>\r\nYou can browse the <a href=\"http://groups.350.org/projects\">list of group projects</a> to check out some other projects to do as a group. \r\n</p>\r\n<p>\r\nOnwards,<br />\r\n \r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:01:11", 
+      "batch_window": null, 
+      "name": "Community Membership Approved", 
+      "created": "2010-08-23 13:32:27", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        30
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.user", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Group Membership Response"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.user.first_name }},<br />\r\n\r\n    We're sending you this note because a group administrator turned down your request to join {{ content_object.group }}. \r\n</p>\r\n<p>Don\u2019t worry -- there\u2019s lots of other groups to join, or you can start one of your own.</p>\r\n<p>\r\n    <a href=\"http://{{ domain }}{% url group_list %}\">Click here to find more groups</a><br />\r\n    <a href=\"http://{{ domain }}{% url group_create %}\">Click here to create your own</a>\r\n</p>\r\n<p>\r\n    Remember, only closed groups need administrator approval. You can join any  <br />\r\n    of the open groups at anytime.\r\n</p>\r\n<p>\r\n Good luck,<br />\r\n   The 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:03:07", 
+      "batch_window": null, 
+      "name": "Community Membership Denied", 
+      "created": "2010-08-23 13:40:52", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        30
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.user", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Group Membership Response"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.first_name }},\r\n</p>\r\n<p>\r\n    {{ author.first_name }} has an update about the event:<br />\r\n    {{ note }}\r\n</p>\r\n<p>\r\n   Onwards,<br />\r\n   The 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:06:12", 
+      "batch_window": null, 
+      "name": "Event announcement", 
+      "created": "2010-08-26 10:44:59", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        42
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Update about {{ content_object.event }} on {{ content_object.event.when|date }}"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>Hi {{ recipient.first_name }},</p>\r\n\r\n<p>\r\nThanks for hosting an event on<br/>\r\n{{ content_object.when|date }} at {{ content_object.start|time }}.\r\n</p>\r\n\r\n<p>\r\n<b>Your next step is to invite guests.  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }\">Get started now.</a></b>\r\n</p>\r\n\r\n<p>\r\nUse <a href=\"{{ content_object.get_absolute_url }}\"> your event's page</a> to manage every aspect of<br/>\r\nyour event.  On the event's page, you can:\r\n<ul>\r\n<li>Check the status of your guests</li>\r\n<li>Make someone else a co-host</li>\r\n<li>Send reminder and announcement emails to your whole guest list</li>\r\n</ul>\r\n</p>\r\n\r\n<p>\r\nOnwards,<br/>\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:16:41", 
+      "batch_window": null, 
+      "name": "Once you create an event", 
+      "created": "2010-09-13 10:43:34", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        40
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.creator", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Your event: {{ content_object.event }}"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ recipient.first_name }},\r\n</p>\r\n\r\n<p>\r\nSo far, {{ content_object.confirmed_guests.count }} {{ content_object.confirmed_guests.count|pluralize:\"person,people\" }} have responded to your event invitation, but you're still waiting on<br/>\r\n{{ content_object.outstanding_invitations }} other{{ content_object.outstanding_invitations|pluralize}}:\r\n{% if content_object.outstanding_invitations %}\r\n<ul>\r\n{% for guest in content_object.guests_that_have_not_responded %}\r\n<li>{{ guest }}</li>\r\n{% endfor %}\r\n</ul>\r\n{% endif %}\r\nYou can send these people a friendly reminder. <a href=\"http://{{ domain }}{% url event-reminder content_object.id %}?guests={{ event.guests_no_response_id_list }}\">Click here to send them a reminder email</a>.\r\n</p>\r\n\r\n<p>\r\nSome people overlook emails in their inbox.  <strong>Calling these guests can go a long way</strong>.  If you've already spoken to them, you can <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">update their RSVP status on your event's page.</a>\r\n</p>\r\n\r\n<p>\r\nOnwards,<br/>\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:16:51", 
+      "batch_window": null, 
+      "name": "1 week after after you create an event", 
+      "created": "2010-09-13 12:58:28", 
+      "sends": 0, 
+      "x_value": 120, 
+      "time_snap": "11:00:00", 
+      "content_types": [
+        40
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": 240, 
+      "recipient_function": "lambda x: x.hosts()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Guest list update for your event: {{ content_object.event }}"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ content_object.first_name }},\r\n</p>\r\n\r\n<p>\r\nYour event is right around the corner! It's an exciting time,<br/>\r\nbut don't forget to nail down the final details.\r\n</p>\r\n\r\n<p>\r\nFirst, <a href=\"http://{{ domain }}{% url event-reminder content_object.id %}?guests={{ event.guests_no_response_id_list }}\">send one last reminder to your guests</a>.\r\n</p>\r\n\r\n<p>\r\nNext, make sure to gather any materials you might need for your meeting.\r\n</p>\r\n\r\n<p>\r\nHave a great time at the event -- and good luck!\r\n</p>\r\n\r\n<p>\r\nOnwards,<br/>\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:16:19", 
+      "batch_window": null, 
+      "name": "48 hours before the event", 
+      "created": "2010-09-13 13:55:02", 
+      "sends": 0, 
+      "x_value": 48, 
+      "time_snap": "11:00:00", 
+      "content_types": [
+        40
+      ], 
+      "message_timing": "before_end", 
+      "minimum_duration": 168, 
+      "recipient_function": "lambda x: x.hosts()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Your event is less than 2 days away!"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ recipient.first_name }},\r\n</p>\r\n\r\n<p>\r\nWe\u2019re sending a quick note to check in and see how your event went.\r\n</p>\r\n<p>\r\nJust respond to this email to let me know. \r\n</p>\r\n<p>\r\nYou can also take this opportunity to <a href=\"http://{{ domain }}{% url group_list %}\">invite your guests to join a local group</a>.  \r\nThat way, you can keep in touch with your guests and plan future projects as a group.\r\n</p>\r\n\r\n<p>\r\nOnwards,<br/>\r\nThe 350.org team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:20:38", 
+      "batch_window": null, 
+      "name": "Day after the event", 
+      "created": "2010-09-13 16:09:09", 
+      "sends": 0, 
+      "x_value": 24, 
+      "time_snap": "11:00:00", 
+      "content_types": [
+        40
+      ], 
+      "message_timing": "after_end", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.hosts()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "How'd it go?"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHey {{ recipient.first_name }},\r\n</p>\r\n\r\n<div>\r\nYou're all set to attend a local event tomorrow:\r\n<div style=\"margin-left: 20px;\">\r\n<i>Location:</i>\r\n<span>{{ content_object.place_name }}</span><br/>\r\n<span style=\"margin-left: 65px;\">{{ content_object.geom.raw_address }}</span><br/>\r\n<span style=\"margin-left: 65px;\">({{ content_object.geom.formatted_address }})</span>\r\n</div>\r\n<div style=\"margin-left: 20px;\">\r\n<i>Time:</i>\r\n<span>{{ content_object.start|time }}</span>\r\n</div>\r\n<div style=\"margin-left: 20px;\">\r\n<i>Date:</i>\r\n<span>{{ content_object.when|date }}</span>\r\n</div>\r\n</div>\r\n\r\n<p>\r\nOnwards,<br/>\r\nThe 350.org team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:22:29", 
+      "batch_window": null, 
+      "name": "Day before the event", 
+      "created": "2010-09-14 15:24:10", 
+      "sends": 0, 
+      "x_value": 24, 
+      "time_snap": "11:00:00", 
+      "content_types": [
+        40
+      ], 
+      "message_timing": "before_end", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.attendees()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "{{ content_object.creator.first_name }}'s event is tomorrow!"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hey {{ content_object.first_name }},\r\n</p>\r\n<p>\r\n    We\u2019re really excited that you\u2019re coming to {{ content_object.event }}! Mark you calendar now:\r\n    <div style=\"margin-left: 15px;\">\r\n        <div>\r\n            <div style=\"float: left;\"><i>Location:</i></div>\r\n            <div style=\"margin-left: 60px;\">\r\n                {{ content_object.event.geom.raw_address }}<br />\r\n                {{ content_object.event.geom.formatted_address }}<br />\r\n            </div>\r\n            <div style=\"clear: both;\"></div>\r\n        </div>\r\n        <div>\r\n            <div style=\"float: left;\"><i>Time:</i></div>\r\n            <div style=\"margin-left: 60px;\">\r\n                {{ content_object.event.start|time }}\r\n            </div>\r\n            <div style=\"clear: both;\"></div>\r\n        </div>\r\n        <div>\r\n            <div style=\"float: left;\"><i>Date:</i></div>\r\n            <div style=\"margin-left: 60px;\">\r\n                {{ content_object.event.when|date }}\r\n            </div>\r\n            <div style=\"clear: both;\"></div>\r\n        </div>\r\n    </div>\r\n</p>\r\n\r\n<p>\r\n    Here\u2019s what {{ author.first_name }}, the event's host, wants you to know:<br />\r\n    {{ note }}\r\n</p>\r\n<p>\r\n    Thanks,<br />\r\n    The 350.org team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-26 14:24:13", 
+      "batch_window": null, 
+      "name": "Event reminder", 
+      "created": "2010-08-26 10:41:09", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        42
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Remember {{ content_object.event }} on {{ content_object.event.when|date }}"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.event.creator.get_full_name }},\r\n    {{ content_object }} has RSVP\u2019d to <a href=\"http://{{ domain }}{{ content_object.event.get_absolute_url }}\">{{ content_object.event }}</a>\r\n    as {{ content_object.get_rsvp_status_display }}.\r\n</p>\r\n<p>\r\n  Cheers,<br />\r\n  The 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 14:56:31", 
+      "batch_window": null, 
+      "name": "RSVP notification", 
+      "created": "2010-08-25 12:25:09", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        42
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.event.creator", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "RSVP from {{ content_object }} to {{ content_object.event }}"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n Hi there, <br /><br />\r\n  {{ content_object.user.get_full_name }} ({{ content_object.user.email }}) is building a movement to solve the climate crisis with 350.org, and wants you to join in. <br /><br />\r\n\r\n<strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept your invitation</a></strong>\r\n</p>\r\n<p>\r\nBy creating an account, you can:</p>\r\n<ul><li>Find others in your community to build power and brainstorm.</li>\r\n<li>Access easy-to-use tools that will inspire your community to join you.</li>\r\n<li>Link up with climate leaders across the country and around the world.</li>\r\n<li>Track your community's progress.</li></ul>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} has to say: <br />\r\n       <em>{{ note|safe }}</em> \r\n    </p>\r\n{% endif %}\r\n\r\n<p>\r\n    Get started today!\r\n</p>\r\n<p>\r\n    <strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Sign up at groups.350.org</a></strong>\r\n</p>\r\n<p>\r\n    Cheers,<br />\r\n    The 350.org team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:01:22", 
+      "batch_window": null, 
+      "name": "Invite", 
+      "created": "2010-08-26 12:45:17", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        34
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.email", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Invitation from {{ content_object.user.get_full_name }} to 350 Groups"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi,<br />\r\n    {{ content_object.user.get_full_name }} wants you to attend a local event <br />\r\n    in {{ content_object.content_object.geom.formatted_address }} on {{ content_object.content_object.when|date:\"LONG_DATE_FORMAT\" }} at \r\n    {{ content_object.content_object.start|time }}.\r\n</p>\r\n<p>\r\n    <a href=\"http://{{ domain }}{% url event-invite content_object.content_object.id content_object.token %}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">\r\n        Click here to RSVP\r\n    </a>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} wants you to know: <br />\r\n       {{ note|safe }} \r\n    </p>\r\n{% endif %}\r\n<p>\r\n  Cheers,<br />\r\n  The Team at 350.org\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:14:12", 
+      "batch_window": null, 
+      "name": "Event invite", 
+      "created": "2010-08-26 12:50:44", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        34
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.email", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": 40, 
+      "subject": "Invitation from {{ content_object.user.get_full_name }} to a local event"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi,<br />\r\n    {{ content_object.user.get_full_name}} wants you to join {{ content_object.content_object }}.\r\n</p>\r\n<p>\r\n    <a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept the invitation</a>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} wants you to know: <br />\r\n       {{ note|safe }} \r\n    </p>\r\n{% endif %}\r\n<p>\r\n  {{ content_object.content_object }} is a group on 350.org. 350 Groups help people get organized, connect with friends, and do projects together to transform their communities and help fight the climate crisis.<br/>\r\n Link up today:</p>\r\n<p>\r\n    <a href=\"https://{{ domain }}{% url register %}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Join now</a>\r\n</p>\r\n<p>\r\n  Cheers,<br />\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:17:25", 
+      "batch_window": null, 
+      "name": "Community invite", 
+      "created": "2010-08-26 12:52:16", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        34
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.email", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": 28, 
+      "subject": "Invitation from {{ content_object.user.get_full_name }} to join a group"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Welcome {{ content_object.first_name }}!\r\n</p>\r\n<p>\r\n  Congratulations on your new account on 350.org.\r\n</p>\r\n<p>\r\n  On 350.org, people like you are getting together to take on projects, transform their communities, and build a movement to solve the climate crisis.\r\n</p>\r\n<p>\r\n    Can\u2019t wait to get started? <a href=\"http://{{ domain }}{% url login %}\">Click here to log in</a>.\r\n</p>\r\n<p>\r\n    With so much to do, where should you begin?  Here are some bright ideas:</p>\r\n  <ul>   \r\n      <li>Get plugged in to your local movement <a href=\"http://{{ domain }}{% url group_list %}\">\r\n          by finding a local group to join</a>.</li>\r\n      <li>Are you the first person to join in in your community?\r\n          <a href=\"http://{{ domain }}{% url group_create %}\">Start a local group</a> and then organize your community to take\r\n          action together.</li>\r\n</ul>\r\n<p>\r\n    As you cruise around the site, let us know what you think by dropping us a line at feedback@350.org.\r\n</p>\r\n<p>Thanks -- and we\u2019ll be in touch!</p>\r\n<p>\r\n  Onwards,<br />\r\n  The 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:27:40", 
+      "batch_window": null, 
+      "name": "Registration", 
+      "created": "2010-08-19 11:00:22", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        3
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "email", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Your brand new account"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\nThe following user has just registered for a new account on 350 Groups:\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object.get_full_name }}</a>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:28:50", 
+      "batch_window": null, 
+      "name": "New Account", 
+      "created": "2010-08-19 12:01:47", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        3
+      ], 
+      "message_timing": "after_start", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: \"newaccounts@repowerathome.com\"", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "New 350 Groups User: {{ content_object.email }}"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ recipient.first_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible.\r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just put this group on the map: <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object}}</a></p>\r\n\r\n<p>\r\nYour group\u2019s pin on the map will link out to your external action website.\r\n</p>\r\n\r\n<p>\r\nIf you ever want to change your group listing to use the features on groups.350.org (like launching group projects, organizing events, and launching local campaigns) you can do it easily whenever you\u2019d like. Just let us know!\r\n</p>\r\n\r\n<p>\r\nOnwards,<br />\r\n<br />\r\nKelly Blynn for the 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-27 15:31:31", 
+      "batch_window": null, 
+      "name": "Thanks for listing your group", 
+      "created": "2011-01-13 09:44:23", 
+      "sends": 0, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        28
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: x.managers()", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "Thanks for listing your group!"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2011-08-14 12:18:16", 
+      "stream": 15, 
+      "created": "2011-01-13 09:55:11", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 6
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-20 16:00:02", 
+      "stream": 3, 
+      "created": "2010-08-20 16:00:02", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 7
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-23 15:00:13", 
+      "stream": 4, 
+      "created": "2010-08-23 15:00:13", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 8
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-23 14:57:04", 
+      "stream": 5, 
+      "created": "2010-08-23 13:46:40", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 9
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-23 14:56:59", 
+      "stream": 6, 
+      "created": "2010-08-23 13:46:47", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 10
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-26 10:45:27", 
+      "stream": 9, 
+      "created": "2010-08-26 10:45:27", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 11
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-09-13 16:13:07", 
+      "stream": 13, 
+      "created": "2010-09-13 16:13:07", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 12
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-09-13 16:13:14", 
+      "stream": 13, 
+      "created": "2010-09-13 16:13:14", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 13
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-09-13 16:13:24", 
+      "stream": 13, 
+      "created": "2010-09-13 16:13:24", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 15
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-09-13 16:13:29", 
+      "stream": 13, 
+      "created": "2010-09-13 16:13:29", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 16
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-09-14 16:08:48", 
+      "stream": 13, 
+      "created": "2010-09-14 16:08:48", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 17
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-26 10:45:20", 
+      "stream": 8, 
+      "created": "2010-08-26 10:45:20", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 18
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-25 12:31:59", 
+      "stream": 7, 
+      "created": "2010-08-25 12:31:59", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 19
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-26 13:02:01", 
+      "stream": 10, 
+      "created": "2010-08-26 13:02:01", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 20
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-26 13:02:08", 
+      "stream": 11, 
+      "created": "2010-08-26 13:02:08", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 21
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-26 13:02:13", 
+      "stream": 12, 
+      "created": "2010-08-26 13:02:13", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 22
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-19 12:02:04", 
+      "stream": 2, 
+      "created": "2010-08-19 12:02:04", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 23
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2010-08-19 12:02:13", 
+      "stream": 2, 
+      "created": "2010-08-19 12:02:13", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 24
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2011-09-05 16:34:59", 
+      "stream": 17, 
+      "created": "2011-01-13 09:55:11", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 25
+    }
+  }
+]

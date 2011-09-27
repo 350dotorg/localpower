@@ -1,2 +1,10 @@
-alter table actions_action add is_group_project bool NOT NULL;
-CREATE INDEX `actions_action_171b4c55` ON `actions_action` (`is_group_project`);
+drop table messaging_abtest;
+drop table messaging_examplecontentobject;
+drop table messaging_message;
+drop table messaging_message_content_types;
+drop table messaging_messagelink;
+drop table messaging_queue;
+drop table messaging_recipientmessage;
+drop table messaging_sent;
+drop table messaging_stream;
+drop table messaging_streamblacklist;
