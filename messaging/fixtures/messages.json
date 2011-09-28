@@ -424,7 +424,7 @@
       ], 
       "message_timing": "after_start", 
       "minimum_duration": null, 
-      "recipient_function": "lambda x: \"newaccounts@repowerathome.com\"", 
+      "recipient_function": "lambda x: 'group-notifications@350.org'",
       "send_as_batch": 0, 
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
@@ -453,6 +453,30 @@
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
       "subject": "Thanks for listing your group!"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "messaging.message", 
+    "fields": {
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nThe following group has just been registered on 350 Groups:<br/>\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object }}</a>\r\n</p>\r\n<p>\r\nPlease double check that this group does not contain spam, and, if it does, you can delete or edit it through the site's administrative interface here:<br/>\r\n  <a href=\"http://{{ domain }}/admin/groups/group/{{content_object.id}}/\">http://{{ domain }}/admin/groups/group/{{content_object.id}}/</a>\r\n</p>\r\n{% endblock %}", 
+      "updated": "2011-09-28 16:34:36", 
+      "batch_window": null, 
+      "name": "New Group", 
+      "created": "2011-09-28 16:31:46", 
+      "sends": 1, 
+      "x_value": 0, 
+      "time_snap": null, 
+      "content_types": [
+        2
+      ], 
+      "message_timing": "send_immediately", 
+      "minimum_duration": null, 
+      "recipient_function": "lambda x: 'group-notifications@350.org'", 
+      "send_as_batch": 0, 
+      "extra_headers_function": "", 
+      "generic_relation_content_type": null, 
+      "subject": "New 350 Groups Group: {{ content_object }}"
     }
   }, 
   {
@@ -700,6 +724,32 @@
       "test_percentage": 0, 
       "test_message": null, 
       "message": 25
+    }
+  },
+  {
+    "pk": 24, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2011-09-28 16:32:31", 
+      "stream": 17, 
+      "created": "2011-09-28 16:32:31", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 26
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "messaging.abtest", 
+    "fields": {
+      "is_enabled": 1, 
+      "updated": "2011-09-28 16:32:42", 
+      "stream": 15, 
+      "created": "2011-09-28 16:32:42", 
+      "test_percentage": 0, 
+      "test_message": null, 
+      "message": 26
     }
   }
 ]
