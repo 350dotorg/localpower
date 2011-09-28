@@ -131,7 +131,8 @@ Home Page Home Page Home Page Home Page Home Page Home Page Home Page Home Page 
     color: #333;
     font-size: 22px;
 }
-#home_featured_users{
+#home_featured_users,
+#home_featured_projects {
     border-right: 1px solid #ccc;
 }
 

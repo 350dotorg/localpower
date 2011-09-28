@@ -133,6 +133,17 @@
     </div>
     <div class="grid_12 alpha omega">
         <div class="grid_4 alpha">
+	  <div id="home_featured_projects">
+            <h2 class="home_feature_heading">{% blocktrans %}Featured Projects{% endblocktrans %}</h2>
+                <ul class="plain_list nugget_2c_list">
+                </ul>
+                <br/>
+                <div class="center">
+                    <a href="{% url action_show %}" class="button button_blue button_189">{% blocktrans %}Browse Projects{% endblocktrans %}</a>
+                </div>
+	  </div>
+        </div>
+        <div class="grid_4">
             <div id="home_featured_users">
                 <h2 class="home_feature_heading">{% blocktrans %}Featured Users{% endblocktrans %}</h2>
                 <ul class="plain_list nugget_2c_list">
@@ -146,7 +157,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid_4">
+        <div class="grid_4 omega">
             <h2 class="home_feature_heading">{% blocktrans %}Featured Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_4c_list">
                 {% for group in top_communities %}
@@ -173,11 +184,6 @@
                 <a href="{% url group_list %}" class="button button_blue button_189">{% blocktrans %}Browse Communities{% endblocktrans %}</a>
             </div>
 
-        </div>
-        <div class="grid_4 omega">
-	  {% comment %}
-            <h2 class="home_feature_heading">{% blocktrans %}Recent Badges Earned{% endblocktrans %}</h2>
-	  {% endcomment %}
         </div>
     </div>
     <script>
