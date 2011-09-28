@@ -67,7 +67,6 @@ def group_create(request):
         'external_group': False,
     }, context_instance=RequestContext(request))
 
-@login_required
 @csrf_protect
 def group_external_link_only_create(request):
     """
@@ -83,10 +82,12 @@ def group_external_link_only_create(request):
         if form.is_valid() and link_form.is_valid():
             group = form.save()
             link = link_form.save(group)
-            GroupUsers.objects.create(group=group, user=request.user, is_manager=True)
+            if request.user.is_authenticated():
+                GroupUsers.objects.create(group=group, user=request.user, is_manager=True)
             Stream.objects.get(slug="external-community-create").enqueue(content_object=group, start=group.created)
-            Record.objects.create_record(request.user, 'group_create', group)
-            badge_cache.possibly_award_badge('created_a_community', user=request.user)
+            if request.user.is_authenticated():
+                Record.objects.create_record(request.user, 'group_create', group)
+                badge_cache.possibly_award_badge('created_a_community', user=request.user)
             messages.success(request, _("%(group)s has been created.") % {
                     'group': group})
             return redirect("group_detail", group_slug=group.slug)
