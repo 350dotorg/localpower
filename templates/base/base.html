@@ -26,7 +26,7 @@
         <meta name="DC.description" content="{% blocktrans %}We can take action to keep millions of pounds of dirty coal from polluting our communities. Every point you earn means one less pound of coal needs to be burned.{% endblocktrans %}" /> 
         <meta name="DC.format" content="text/html; charset=utf-8" />
         <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" /> 
-        <link rel="alternate" type="application/atom+xml"  href="{% url blog_feed %}" title="{% blocktrans %}Blog{% endblocktrans %}" />
+        <link rel="alternate" type="application/atom+xml"  href="http://feeds.feedburner.com/350org" title="{% blocktrans %}Blog{% endblocktrans %}" />
         <link rel="shortcut icon" href="{% dated_static 'images/theme/favicon.ico' %}"/>
         <link rel="stylesheet" href="{% dated_static 'css/style.css' %}" type="text/css" media="screen" charset="utf-8"/>
 	<link rel="stylesheet" href="{% dated_static 'theme/jquery.ui.custom.css' %}" type="text/css" media="screen" charset="utf-8" />
@@ -61,7 +61,7 @@
                     </form>
                     <div id="header_links">
                         <a href="/about/" id="header_about">{% blocktrans %}About Us{% endblocktrans %}</a>
-                        <a href="{% url blog_index %}">{% blocktrans %}Blog{% endblocktrans %}</a>
+                        <a href="http://www.350.org/about/blog/">{% blocktrans %}Blog{% endblocktrans %}</a>
                          {% if request.user.is_authenticated %}
                             <a href="{% url logout %}" class="button button_small button_blue">{% blocktrans %}Log Out{% endblocktrans %}</a>
                          {% else %}
@@ -106,7 +106,7 @@
                         </a>
                         <a href="" class="sprite_social_yt" title="{% blocktrans %}Watch us on YouTube{% endblocktrans %}">
                         </a>
-                        <a href="{% url blog_feed %}" class="sprite_social_rss" title="{% blocktrans %}Subscribe to our blog{% endblocktrans %}">
+                        <a href="http://feeds.feedburner.com/350org" class="sprite_social_rss" title="{% blocktrans %}Subscribe to our blog{% endblocktrans %}">
                         </a>
                     </div>
                 </div>
