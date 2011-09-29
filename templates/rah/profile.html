@@ -36,8 +36,8 @@
 {% endblock %}
 {% block content %}
 	<div id="communities">
+          <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
         {% if communities %}
-            <h2>{% blocktrans %}Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_6c_list">
             {% for group in communities %}
             <li {% if forloop.last %}class="nugget_6c_list_last"{% endif %}>
@@ -59,6 +59,22 @@
             </li>
             {% endfor %}
             </ul>
+
+	{% else %}
+	    {% if is_others_profile %}
+	    {% blocktrans with user.get_full_name as user_full_name %}
+	    {{ user_full_name }} has not yet joined any groups.
+	    {% endblocktrans %}
+	    {% else %}
+	    {% url group_list as group_list_url %}
+	    {% url group_create as group_create_url %}
+	    {% blocktrans %}
+	    You aren't yet a member of any groups.
+	    You can <a href="{{group_list_url}}">look 
+	      for a local group to join</a>, or <a href="{{group_create_url}}">
+	      create a new group</a> if there aren't yet any near you.
+	    {% endblocktrans %}
+	    {% endif %}
         {% endif %}
 	</div>
 	<div id="actions">
@@ -113,10 +129,23 @@
             {% for rec in records %}
                 {% render_record rec %}
             {% endfor %}
+	{% else %}
+	    {% if is_others_profile %}
+	    {% blocktrans with user.get_full_name as user_full_name %}
+	    {{ user_full_name }} has no recent activity.
+	    {% endblocktrans %}
+	    {% else %}
+	    {% url group_list as group_list_url %}
+	    {% blocktrans %}
+	    You haven't yet taken any actions on the site.
+	    To start out, why don't you <a href="{{group_list_url}}">look 
+	      for a local group to join</a>?
+	    {% endblocktrans %}
+	    {% endif %}
         {% endif %}
 	</div>
 	<div id="events">
-
+	  <h2>{% blocktrans %}Events{% endblocktrans %}</h2>
 	  <ul class="plain_list nugget_3c_list">
             {% for event in events %}
             <li>
