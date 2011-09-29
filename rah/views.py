@@ -45,6 +45,9 @@ from badges.models import user_badges
 from decorators import save_queued_POST
 from signals import logged_in
 
+def redirect_to_blog(request):
+    return redirect("http://www.350.org/about/blog/")
+
 def _total_trendsetters():
     return (Profile.objects.all().count()) + \
         (Contributor.objects.filter(user__isnull=True).count() or 0)
