@@ -78,6 +78,24 @@
         {% endif %}
 	</div>
 	<div id="actions">
+	  {% if not commitment_list and not committed and not completed %}
+	  <h2>{% blocktrans %}Actions{% endblocktrans %}</h2>
+	  {% if is_others_profile %}
+	  {% blocktrans with user.get_full_name as user_full_name %}
+	  {{ user_full_name }} hasn't gotten involved with any projects yet.
+	  {% endblocktrans %}
+	  {% else %}
+	  {% url action_show as project_list_url %}
+	  {% url solo_action_show as solo_project_list_url %}
+	  {% blocktrans %}
+	  You haven't taken on any projects yet.  You can 
+	  <a href="{{ project_list_url }}">look for a project</a> to
+	  get involved with with a group, or <a href="{{ solo_project_list_url }}">
+	    browse the list of solo actions</a> that you can commit to do on your own.
+	  {% endblocktrans %}
+	  {% endif %}
+	  {% endif %}
+
         {% if commitment_list %}
             <h2>{% blocktrans %}Commitments{% endblocktrans %}</h2>
             <p>
