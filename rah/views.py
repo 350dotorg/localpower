@@ -94,6 +94,8 @@ def index(request):
     section_class = "section_home"
     top_users = Profile.objects.filter(is_profile_private=False, geom__isnull=False, facebook_connect_only=True).select_related("user").order_by("-total_points")[:6]
     top_communities = Group.objects.filter(is_featured=True).order_by("-member_count")[:2]
+
+    map_groups = Group.objects.filter(geom__isnull=False)
     locals().update(_progress_stats())
 
     return render_to_response("rah/home_page.html", locals(), context_instance=RequestContext(request))
