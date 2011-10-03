@@ -47,7 +47,7 @@ from actions.sitemap import ActionSitemap
 from groups.sitemap import GroupSitemap
 from rah.sitemap import RahSitemap
 sitemaps = {
-    'blog':     BlogSitemap,
+#    'blog':     BlogSitemap,
     'flat':     FlatPageSitemap,
     'actions':  ActionSitemap,
     'groups':   GroupSitemap,
@@ -97,8 +97,8 @@ urlpatterns += patterns(
     url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', { 'post_reset_redirect': '/password_reset_done/' }, name='password_reset'),
     url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', { 'post_reset_redirect': '/reset/done/', 'set_password_form': SetPasswordForm }, name='password_reset_confirm'),
     url(r'^', include('django.contrib.auth.urls')),
-    url(r'^blog/', include('basic.blog.urls')),
-    url(r'^blog/feed/$', BlogPostsFeed(), name='blog_feed'),
+    url(r'^blog/', 'rah.views.redirect_to_blog'),
+#    url(r'^blog/feed/$', BlogPostsFeed(), name='blog_feed'),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^twitter/', include('twitter_app.urls')),
     url(r'^rateable/', include('rateable.urls')),
