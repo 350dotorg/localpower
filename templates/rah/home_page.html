@@ -143,7 +143,17 @@
         <div class="grid_4 alpha">
 	  <div id="home_featured_projects">
             <h2 class="home_feature_heading">{% blocktrans %}Featured Projects{% endblocktrans %}</h2>
-                <ul class="plain_list nugget_2c_list">
+                <ul class="plain_list nugget_4c_list">
+		  {% for project in top_projects %}
+		  {% load humanize %}
+		  <li>
+		    <img src="{{ project.image_paths.small }}" width="40" height="40"/>
+		    <div>
+		      <a href="{{ project.get_absolute_url }}">{{ project }}</a><br/>
+		      {% blocktrans with project.points|intcomma as total_points %}{{total_points}} points{% endblocktrans %}
+		    </div>
+		  </li>
+		  {% endfor %}
                 </ul>
                 <br/>
                 <div class="center">
