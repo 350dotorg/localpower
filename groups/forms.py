@@ -7,6 +7,7 @@ from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.flatpages.models import FlatPage
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from PIL.Image import open as pil_open
@@ -105,7 +106,25 @@ class GroupExternalLinkOnlyForm(GroupForm):
                    "is_external_link_only",
                    "membership_type")
 
+    def __init__(self, *args, **kw):
+        ## a hack to mitigate https://github.com/350org/localpower/issues/117
+        super(GroupExternalLinkOnlyForm, self).__init__(*args, **kw)
+        self.data['slug'] = self.data.get("slug") \
+            or slugify(self.data.get("name", ""))
+
+    def clean_name(self):
+        ## a hack to mitigate https://github.com/350org/localpower/issues/117
+        name = self.cleaned_data.get("name")
+        if not name.strip():
+            raise forms.ValidationError(_("This field is required."))
+        if not slugify(name):
+            raise forms.ValidationError(_(
+                    "You must include at least one "
+                    "letter or number in your group's name."))
+        return name
+
     def clean_slug(self):
+        ## a hack to mitigate https://github.com/350org/localpower/issues/117
         try:
             slug = super(GroupExternalLinkOnlyForm, self).clean_slug()
         except forms.ValidationError:
