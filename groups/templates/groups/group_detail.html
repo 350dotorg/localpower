@@ -39,7 +39,10 @@
         <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Find {{group}} on Facebook{% endblocktrans %}</span>
       </a>
     </div>
+    <br style="clear: both"/>
+    {% if twitter_link %}
     <br />
+    {% endif %}
     {% endif %}
     {% if twitter_link %}
     <div class="twitter_button">
@@ -48,7 +51,6 @@
         <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Follow {{group}} on Twitter{% endblocktrans %}</span>
       </a>
     </div>
-    <br />
     {% endif %}
 
     {% if is_manager %}
