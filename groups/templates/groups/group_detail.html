@@ -50,7 +50,7 @@
 
     {% if is_manager %}
     <br /> <br />
-    <div>
+    <div id="external_link_buttons">
     <a href="{% url group_facebook_link_form group.id %}" class="button">
       {% if facebook_link %}
       {% blocktrans %}Edit Facebook Group{% endblocktrans %}

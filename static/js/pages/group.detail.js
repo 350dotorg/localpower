@@ -4,5 +4,26 @@ require(["libs/jquery.tablesorter", "mods/invite"],
     function (tablesorter, invite) {
         $("table").tablesorter();
         invite.setup();
+
+        $("#external_link_buttons a.button").each(function () {
+          var link = $(this);
+          var container = $("<div class='hidden'></div>");
+          $("body").append(container);
+          container.load(link.attr("href"), function () {
+            $("button, input:submit, a.button, input.button", container).button();
+            $("form", container).attr("action", link.attr("href"));
+            container.dialog({ 
+              autoOpen: false,
+              modal: true,
+              height: 575,
+              width: 360
+            });
+          });
+          link.click(function () {
+            container.dialog("open");
+            return false;
+          });
+        });
+
     });
 
