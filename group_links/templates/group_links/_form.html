@@ -1,0 +1,13 @@
+{% load i18n %}
+<form method="POST" class="form_6c"
+      {% if link_type == "twitter" %}
+      action="{% url group_twitter_link_form group.id %}"
+      {% endif %}{% if link_type == "facebook" %}
+      action="{% url group_facebook_link_form group.id %}"
+      {% endif %}
+      >
+    <h1>{% blocktrans %}Add External Link{% endblocktrans %}</h1>
+    {% include "base/_form.html" %}
+    {% csrf_token %}
+    <input type="submit" value="{% blocktrans %}Add{% endblocktrans %}" /> | <a href="{{ group.get_absolute_url }}">{% blocktrans %}cancel{% endblocktrans %}</a>
+</form>

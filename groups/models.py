@@ -236,6 +236,24 @@ class Group(models.Model):
         except ExternalLink.DoesNotExist:
             return None
 
+    def facebook_link(self):
+        if self.is_external_link_only:
+            return None
+        from group_links.models import ExternalLink
+        link = self.external_link_set.filter(url__contains="facebook.com")
+        if not len(link):
+            return None
+        return link[0]
+
+    def twitter_link(self):
+        if self.is_external_link_only:
+            return None
+        from group_links.models import ExternalLink
+        link = self.external_link_set.filter(url__contains="twitter.com")
+        if not len(link):
+            return None
+        return link[0]
+
     def __unicode__(self):
         return u'%s' % self.name
 

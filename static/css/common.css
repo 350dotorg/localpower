@@ -528,3 +528,74 @@ Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc Misc 
 .float {float: left;}
 .hidden {display: none;}
 .smaller {font-size: 12px; line-height: 16px;}
+
+#title_bar_9c div.group_links div {
+  width: auto !important;
+  margin-left: 0 !important;
+}
+
+a.twitter_button, a.twitter_button_rtl,
+.twitter_button, .twitter_button_rtl,
+.facebook_button {
+  text-decoration: none;
+  border: 1px solid black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.twitter_button {
+  background: #C6E4F2 url(../images/theme/twitter_bird_32.png) 0 0 no-repeat;;
+}
+.facebook_button {
+  background: #5F78AB url(../images/theme/facebook_32.png) 0 0 no-repeat;
+}
+
+.twitter_button,
+.facebook_button {
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  margin-right: 5px;
+}
+
+.twitter_button a:hover,
+.facebook_button a:hover {
+  text-decoration: none;
+}
+
+.twitter_button_large .twitter_button_text {
+  margin-left: 33px;
+  padding: 2px 6px 4px 6px;
+}
+
+.twitter_button .twitter_button_text {
+    color: black;
+}
+.facebook_button .twitter_button_text {
+    color: white;
+}
+
+.facebook_button .twitter_button_text,
+.twitter_button .twitter_button_text {
+    display: block;
+    font-family:"MuseoSlab700", Tahoma, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 16px; 
+
+  padding: 0 6px 0 6px;
+  margin: 0 1px 0 33px;
+  text-shadow: none;
+}
+.twitter_button_large {
+  font-size: 13px;
+  line-height: 32px;
+}
+.twitter_button,
+.facebook_button {
+  cursor: pointer;
+}

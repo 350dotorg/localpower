@@ -15,3 +15,8 @@ class ExternalLink(models.Model):
     def __unicode__(self):
         return self.url
 
+    def is_facebook(self):
+        return "facebook.com" in self.url
+    
+    def is_twitter(self):
+        return "twitter.com" in self.url

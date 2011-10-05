@@ -20,6 +20,14 @@ urlpatterns = patterns(
     url(r'^create/$', 'group_create', name='group_create'),
     url(r'^create/external/$', 'group_external_link_only_create', 
         name='group_external_link_only_create'),
+
+    url(r'^(?P<group_id>\d+)/facebook/edit/$', 'group_external_link_form',
+        {'link_type': "facebook"},
+        name='group_facebook_link_form'),
+    url(r'^(?P<group_id>\d+)/twitter/edit/$', 'group_external_link_form', 
+        {'link_type': "twitter"},
+        name='group_twitter_link_form'),
+
     url(r'^(?P<group_id>\d+)/leave/$', 'group_leave', name='group_leave'),
     url(r'^(?P<group_id>\d+)/join/$', 'group_join', name='group_join'),
     url(r'^(?P<group_id>\d+)/approve/(?P<user_id>\d+)/$', 'group_membership_request', {'action': 'approve'}, name='group_approve'),

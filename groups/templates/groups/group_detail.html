@@ -27,7 +27,55 @@
 	  {% endblocktrans %}
 	</span>
     </p>
-    {{ group.description|linebreaksbr }}
+
+    <div class="group_links">
+    {% with group.facebook_link as facebook_link %}
+    {% with group.twitter_link as twitter_link %}
+    {% if facebook_link %}
+    <div class="facebook_button">
+      <a href="{{ facebook_link }}" 
+	 class="twitter_button_large">
+        <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Join {{group}} on Facebook{% endblocktrans %}</span>
+      </a>
+    </div>
+    {% endif %}
+    {% if twitter_link %}
+    <div class="twitter_button">
+      <a href="{{ twitter_link }}" 
+	 class="twitter_button_large">
+        <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Follow {{group}} on Twitter{% endblocktrans %}</span>
+      </a>
+    </div>
+    {% endif %}
+
+    {% if is_manager %}
+    <br /> <br />
+    <div>
+    <a href="{% url group_facebook_link_form group.id %}" class="button">
+      {% if facebook_link %}
+      {% blocktrans %}Edit Facebook Group{% endblocktrans %}
+      {% else %}
+      {% blocktrans %}Add Facebook Group{% endblocktrans %}
+      {% endif %}
+    </a>
+    <a href="{% url group_twitter_link_form group.id %}" class="button">
+      {% if twitter_link %}
+      {% blocktrans %}Edit Twitter Account{% endblocktrans %}
+      {% else %}
+      {% blocktrans %}Add Twitter Account{% endblocktrans %}
+      {% endif %}
+    </a>
+    </div>
+    <br /> <br />
+    {% endif %}
+
+    {% endwith %}
+    {% endwith %}
+    </div>
+    <br />    <br />
+    <p style="clear: both;">
+      {{ group.description|linebreaksbr }}
+    </p>
 {% endblock %}
 {% block tab_nav %}
     {% if not group.is_external_link_only %}

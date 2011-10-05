@@ -265,6 +265,33 @@ def _group_external_link_only_edit(request, group):
 
 @login_required
 @csrf_protect
+def group_external_link_form(request, group_id, link_type=None):
+    nav_selected = "communities"
+    group = get_object_or_404(Group, id=group_id)
+    if not group.is_user_manager(request.user):
+        return forbidden(request)
+
+    instance = None
+    if link_type == "twitter":
+        instance = group.twitter_link()
+    elif link_type == "facebook":
+        instance = group.facebook_link()
+
+    if request.method == "POST":
+        form = ExternalLinkForm(request.POST, instance=instance)
+        if form.is_valid():
+            link = form.save(group=group)
+            return redirect(group)
+    else:
+        form = ExternalLinkForm(instance=instance)
+
+    template = "group_links/_form.html" if request.is_ajax() \
+        else "group_links/form.html"
+    return render_to_response(template, locals(), 
+                              context_instance=RequestContext(request))    
+
+@login_required
+@csrf_protect
 def group_edit(request, group_slug):
     nav_selected = "communities"
     group = get_object_or_404(Group, slug=group_slug)

@@ -1,0 +1,20 @@
+{% extends "base/nav_form.html" %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url group_list %}">{% blocktrans %}Communities{% endblocktrans %}</a> &rsaquo;
+    <a href="{{ group.get_absolute_url }}">{{ group }}</a> &rsaquo;
+    {% blocktrans %}Add External Link{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+    <div class="grid_6 alpha">
+        <div class="box_three_top"></div>
+        <div class="box_three_middle">
+            {% include "group_links/_form.html" %}
+        </div>
+        <div class="box_three_bottom"></div>
+    </div>
+{% endblock %}
