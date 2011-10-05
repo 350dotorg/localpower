@@ -33,24 +33,22 @@
     {% with group.facebook_link as facebook_link %}
     {% with group.twitter_link as twitter_link %}
     {% if facebook_link %}
-    <div>
     <div class="facebook_button">
       <a href="{{ facebook_link }}" 
 	 class="twitter_button_large">
         <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Find {{group}} on Facebook{% endblocktrans %}</span>
       </a>
     </div>
-    </div>
+    <br />
     {% endif %}
     {% if twitter_link %}
-    <div>
     <div class="twitter_button">
       <a href="{{ twitter_link }}" 
 	 class="twitter_button_large">
         <span id="twitter_login_text" class="twitter_button_text">{% blocktrans %}Follow {{group}} on Twitter{% endblocktrans %}</span>
       </a>
     </div>
-    </div>
+    <br />
     {% endif %}
 
     {% if is_manager %}
