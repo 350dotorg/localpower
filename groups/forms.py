@@ -70,8 +70,11 @@ class GroupForm(forms.ModelForm):
         except:
             raise forms.ValidationError(_("This community address is not available."))
 
+        collision = Group.objects.filter(slug=data)
+        if self.instance and self.instance.pk:
+            collision = collision.exclude(pk=self.instance.pk)
         # Make sure there isn't a group with this slug
-        if Group.objects.filter(slug=data):
+        if collision:
             raise forms.ValidationError(_("Another group is already using this address."))
 
         # Make sure there isn't a flatpage with this slug
