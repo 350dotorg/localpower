@@ -232,8 +232,8 @@ class Group(models.Model):
             return None
         from group_links.models import ExternalLink
         try:
-            return self.external_link_set.get()
-        except ExternalLink.DoesNotExist:
+            return self.external_link_set.all()[0]
+        except:
             return None
 
     def facebook_link(self):

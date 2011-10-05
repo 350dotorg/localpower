@@ -28,6 +28,7 @@
 	</span>
     </p>
 
+    {% if not group.is_external_link_only %}
     <div class="group_links">
     {% with group.facebook_link as facebook_link %}
     {% with group.twitter_link as twitter_link %}
@@ -73,6 +74,8 @@
     {% endwith %}
     </div>
     <br />    <br />
+    {% endif %}
+
     <p style="clear: both;">
       {{ group.description|linebreaksbr }}
     </p>
