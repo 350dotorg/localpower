@@ -148,11 +148,11 @@ models.signals.post_save.connect(profile_post_save, sender=Profile)
 
 # Verify that the ActionKit API settings are correct 
 # and successfully connect to the server
-actionkit = get_client()
-import xmlrpclib
-try:
-    actionkit.version()
-except xmlrpclib.ProtocolError:
-    print ("Your ActionKit API settings are incorrect; please double-check them "
-           "and try again.")
-    raise
+#actionkit = get_client()
+#import xmlrpclib
+#try:
+#    actionkit.version()
+#except xmlrpclib.ProtocolError:
+#    print ("Your ActionKit API settings are incorrect; please double-check them "
+#           "and try again.")
+#    raise
