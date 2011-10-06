@@ -1,6 +1,6 @@
 {% extends "records/base.html" %}
-{% if content_object %}
 {% block activity_item %}
+{% if content_object %}
     {% safe_user_link record.user %} completed 
     <a href="{% url action_detail content_object.slug %}">{{ content_object.name }}</a> 
 {% endblock %}
@@ -8,3 +8,4 @@
     on {{ record.created|date }}{% if record.points %} (+{{ record.points }} points){% endif %}
 {% endif %}
 {% endblock %}
+
