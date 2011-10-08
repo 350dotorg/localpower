@@ -9,22 +9,34 @@ from groups.forms import GroupAssociationRequestRelatedForm
 from models import Challenge, Support
 
 class ChallengeForm(forms.ModelForm, GroupAssociationRequestRelatedForm):
-    goal = forms.IntegerField(min_value=1, help_text=_("How many petitions do you want to collect?"))
+    goal = forms.IntegerField(min_value=1, 
+                              label=_("How many signatures do you want to collect?"))
+    target = forms.CharField(min_length=3, widget=forms.TextInput(), label=_(
+            "Who do you want to petition?"))
+    demand = forms.CharField(min_length=10, widget=forms.TextInput(), label=_(
+            "What do you want them to do?"))
+    description = forms.CharField(min_length=15, widget=forms.Textarea(attrs={'rows': 5}),
+                                  label=_(
+            "Why is this important?"))
 
     class Meta:
         model = Challenge
-        fields = ('title', 'description', 'goal', 'groups')
+        fields = ('target', 'demand', 'description', 'goal', 'groups')
         widgets = {
             "groups": forms.CheckboxSelectMultiple(),
+            "title": forms.HiddenInput(),
             }
 
     def __init__(self, user, *args, **kwargs):
         super(ChallengeForm, self).__init__(*args, **kwargs)
         self.user = user
         self.init_groups(user)
-
+        
     def save(self, *args, **kwargs):
         challenge = super(ChallengeForm, self).save(*args, **kwargs)
+        challenge.title = challenge.title or u"%s: %s" % (self.cleaned_data['target'],
+                                                          self.cleaned_data['demand'])
+        challenge.save()
         self.save_groups(challenge)
         return challenge
 
