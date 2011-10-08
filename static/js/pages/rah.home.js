@@ -58,11 +58,4 @@ require([], function () {
         return false;
     });
 
-    var markers = "";
-    for( var i = RAH.event_locations.length - 1; i >= 0; i = i - 1 ) {
-         markers += "markers=" + RAH.event_locations[i].lat + "," + RAH.event_locations[i].lon + "&";
-    }
-    markers += "sensor=false";
-    var src = "http://maps.googleapis.com/maps/api/staticmap?size=420x298&" + markers;
-    $("#home_slide_1 .home_slide_left img").attr("src", src);
 });
