@@ -187,6 +187,9 @@
                 <div>
                     <a href="{{ group.get_absolute_url }}">{{ group.name }}</a><br/>
                     <span>{{ group.geom }}</span><br/>
+		    {% if group.is_external_link_only %}
+		    <a class="button" rel="nofollow" href="{{group.external_link}}">Visit Site</a>
+		    {% else %}
                     {% blocktrans with group.member_count|intcomma as num_members %}
 		    {{num_members}} members 
 		    {% endblocktrans %}
@@ -194,6 +197,7 @@
 		    {% blocktrans with group.total_points|intcomma as num_points %}
 		    {{num_points}} points
 		    {% endblocktrans %}
+		    {% endif %}
                 </div>
                 </li>
                 {% endfor %}
