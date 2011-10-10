@@ -58,8 +58,8 @@ class Event(models.Model):
 
     class Meta:
         permissions = (
-            ("host_any_event_type", _("Can host any event type")),
-            ("view_any_event", _("Can view host details for any event")),
+            ("host_any_event_type", "Can host any event type"),
+            ("view_any_event", "Can view host details for any event"),
         )
 
     def __unicode__(self):
