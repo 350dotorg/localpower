@@ -1,18 +1,234 @@
 [
   {
     "pk": 1, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "S\u00e3o Paulo, SP, Brazil", 
+      "latlng": "POINT (-46.6388182000000029 -23.5489433000000012)", 
+      "formatted_address": "Sao Paulo - S\u00e3o Paulo, Brazil"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Rio de Janeiro, RJ, Brazil", 
+      "latlng": "POINT (-43.2095868999999979 -22.9035392999999985)", 
+      "formatted_address": "Rio de Janeiro, Brazil"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Salvador, Bahia, Brazil", 
+      "latlng": "POINT (-38.5123820000000023 -12.9703817000000008)", 
+      "formatted_address": "Salvador - Bahia, Brazil"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Santo Domingo, Dominican Republic", 
+      "latlng": "POINT (-69.9833332999999982 18.5000000000000000)", 
+      "formatted_address": "Santo Domingo, Dominican Republic"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Ankara, Turkey", 
+      "latlng": "POINT (32.8541099999999986 39.9207699999999974)", 
+      "formatted_address": "Ankara Province/Ankara, Turkey"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Bandar Sri Begawan, Brunei", 
+      "latlng": "POINT (114.9422222000000033 4.8902777999999998)", 
+      "formatted_address": "Bandar Seri Begawan, Brunei Darussalam"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Singapore, Singapore", 
+      "latlng": "POINT (103.8499802000000045 1.2894365000000001)", 
+      "formatted_address": "Singapore"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Seoul, South Korea", 
+      "latlng": "POINT (126.9779692000000040 37.5665350000000018)", 
+      "formatted_address": "Seoul, South Korea"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Taipei, Taiwan", 
+      "latlng": "POINT (121.5598344999999938 25.0910750000000000)", 
+      "formatted_address": "Taipei City, Taiwan"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Kuala Lumpur", 
+      "latlng": "POINT (101.6868549999999942 3.1390030000000002)", 
+      "formatted_address": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Wellington, New Zealand", 
+      "latlng": "POINT (174.7732353000000103 -41.2924944999999965)", 
+      "formatted_address": "Wellington, New Zealand"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Sydney, Australia", 
+      "latlng": "POINT (151.2070913999999959 -33.8689008999999999)", 
+      "formatted_address": "Sydney NSW, Australia"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Bellingham, WA, USA", 
+      "latlng": "POINT (-122.4882249000000058 48.7595529000000028)", 
+      "formatted_address": "Bellingham, WA, USA"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Cincinnatti, Ohio, USA", 
+      "latlng": "POINT (-84.5120196000000021 39.1031181999999973)", 
+      "formatted_address": "Cincinnati, OH, USA"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Vietnam", 
+      "latlng": "POINT (108.2771989999999960 14.0583240000000007)", 
+      "formatted_address": "Vietnam"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "New Haven, CT, USA", 
+      "latlng": "POINT (-72.9281576999999999 41.3081527000000008)", 
+      "formatted_address": "New Haven, CT, USA"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Sacramento, CA, USA", 
+      "latlng": "POINT (-121.4943995999999942 38.5815719000000001)", 
+      "formatted_address": "Sacramento, CA, USA"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Manitoba, Canada", 
+      "latlng": "POINT (-98.8138763000000040 53.7608608000000032)", 
+      "formatted_address": "Manitoba, Canada"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Cairo, Egypt", 
+      "latlng": "POINT (31.2495089999999998 30.0647419999999990)", 
+      "formatted_address": "Cairo, Egypt"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "American Samoa", 
+      "latlng": "POINT (-170.1322169999999971 -14.2709720000000004)", 
+      "formatted_address": "American Samoa"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Milan and Rome, Italy", 
+      "latlng": "POINT (12.4942486000000006 41.8905197999999999)", 
+      "formatted_address": "Rome, Italy"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Chile", 
+      "latlng": "POINT (-71.5429689999999994 -35.6751470000000026)", 
+      "formatted_address": "Chile"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Ecuador", 
+      "latlng": "POINT (-78.1834060000000051 -1.8312390000000001)", 
+      "formatted_address": "Ecuador"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "geo.point", 
+    "fields": {
+      "raw_address": "Bujumbura, Burundi", 
+      "latlng": "POINT (29.3593490000000017 -3.3762170000000000)", 
+      "formatted_address": "Bujumbura, Burundi"
+    }
+  },
+  {
+    "pk": 1, 
     "model": "groups.group", 
     "fields": {
       "membership_type": "O", 
       "is_featured": 0, 
       "description": "350 S\u00e3o Paulo is a group of volunteers who participated in the 350 Brazil workshop in August 2011 and is now working to promote better urban mobility in the city, among other 350 campaign activities.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:56", 
+      "created": "2011-10-10 14:44:57", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:56", 
+      "updated": "2011-10-10 14:44:57", 
       "is_external_link_only": 1, 
-      "geom": 638, 
+      "geom": 1, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-sao-paulo", 
@@ -27,12 +243,12 @@
       "is_featured": 0, 
       "description": "350 RJ is a group of volunteers, most of whom participated in the 350 Brazil workshop in August 2011 in Rio de Janeiro, who organized the Moving Planet events in Rio de Janeiro.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:56", 
+      "created": "2011-10-10 14:44:59", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:56", 
+      "updated": "2011-10-10 14:44:59", 
       "is_external_link_only": 1, 
-      "geom": 639, 
+      "geom": 2, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-rj", 
@@ -47,12 +263,12 @@
       "is_featured": 0, 
       "description": "Partners since last year, 350 Salvador organized many clean up days in Salvador and have participated in all the past 350 days of action. They are really organized and getting bigger day by day!", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:57", 
+      "created": "2011-10-10 14:45:01", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:57", 
+      "updated": "2011-10-10 14:45:01", 
       "is_external_link_only": 1, 
-      "geom": 640, 
+      "geom": 3, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-salvador-acao-mar-azul", 
@@ -67,12 +283,12 @@
       "is_featured": 0, 
       "description": "350Dominicana is comprised of a small team of coordinating volunteers that works with young people throughout Santo Domingo and the whole country.  They've worked to start the first school recycling program in the country, and now are working for the first bike lane.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:57", 
+      "created": "2011-10-10 14:45:02", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:57", 
+      "updated": "2011-10-10 14:45:02", 
       "is_external_link_only": 1, 
-      "geom": 641, 
+      "geom": 4, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350dominicana", 
@@ -87,12 +303,12 @@
       "is_featured": 0, 
       "description": "350 Ankara has been around since 2009 and have ton increasingly strong local organizing, highlighted by a powerful Moving Planet event in 2011.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:57", 
+      "created": "2011-10-10 14:45:03", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:57", 
+      "updated": "2011-10-10 14:45:03", 
       "is_external_link_only": 1, 
-      "geom": 642, 
+      "geom": 5, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-ankara", 
@@ -107,12 +323,12 @@
       "is_featured": 0, 
       "description": "350 Brunei", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:57", 
+      "created": "2011-10-10 14:45:04", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:57", 
+      "updated": "2011-10-10 14:45:04", 
       "is_external_link_only": 1, 
-      "geom": 643, 
+      "geom": 6, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-brunei", 
@@ -127,12 +343,12 @@
       "is_featured": 0, 
       "description": "350 Singapore", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:58", 
+      "created": "2011-10-10 14:45:06", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:58", 
+      "updated": "2011-10-10 14:45:06", 
       "is_external_link_only": 1, 
-      "geom": 644, 
+      "geom": 7, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-singapore", 
@@ -147,12 +363,12 @@
       "is_featured": 0, 
       "description": "350 South Korea", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:58", 
+      "created": "2011-10-10 14:45:07", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:58", 
+      "updated": "2011-10-10 14:45:07", 
       "is_external_link_only": 1, 
-      "geom": 645, 
+      "geom": 8, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-south-korea", 
@@ -167,12 +383,12 @@
       "is_featured": 0, 
       "description": "350 Taiwan", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:58", 
+      "created": "2011-10-10 14:45:08", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:58", 
+      "updated": "2011-10-10 14:45:08", 
       "is_external_link_only": 1, 
-      "geom": 646, 
+      "geom": 9, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-taiwan", 
@@ -187,12 +403,12 @@
       "is_featured": 0, 
       "description": "350 Malaysia", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:58", 
+      "created": "2011-10-10 14:45:10", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:58", 
+      "updated": "2011-10-10 14:45:10", 
       "is_external_link_only": 1, 
-      "geom": 647, 
+      "geom": 10, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-malaysia", 
@@ -207,12 +423,12 @@
       "is_featured": 0, 
       "description": "Established as a charitable trust in 2009, 350 Aotearoa works nation-wide to empower grassroots organizing on climate change.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:59", 
+      "created": "2011-10-10 14:45:11", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:59", 
+      "updated": "2011-10-10 14:45:11", 
       "is_external_link_only": 1, 
-      "geom": 648, 
+      "geom": 11, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-aotearoa", 
@@ -227,12 +443,12 @@
       "is_featured": 0, 
       "description": "350 Australia is a small team, with a steering committee, that has coordinated with many partners to make the 350 days of action powerful and connected to Australia's strong climate movement.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:59", 
+      "created": "2011-10-10 14:45:12", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:59", 
+      "updated": "2011-10-10 14:45:12", 
       "is_external_link_only": 1, 
-      "geom": 649, 
+      "geom": 12, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-australia", 
@@ -247,12 +463,12 @@
       "is_featured": 0, 
       "description": "350 Bellingham ", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:59", 
+      "created": "2011-10-10 14:45:13", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:59", 
+      "updated": "2011-10-10 14:45:13", 
       "is_external_link_only": 1, 
-      "geom": 650, 
+      "geom": 13, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-bellingham", 
@@ -267,12 +483,12 @@
       "is_featured": 0, 
       "description": "350 Cincinnati ", 
       "member_count": 0, 
-      "created": "2011-10-09 11:53:59", 
+      "created": "2011-10-10 14:45:15", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:53:59", 
+      "updated": "2011-10-10 14:45:15", 
       "is_external_link_only": 1, 
-      "geom": 651, 
+      "geom": 14, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-cincinnati", 
@@ -287,12 +503,12 @@
       "is_featured": 0, 
       "description": "350 Vietnam- Da Nang ", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:00", 
+      "created": "2011-10-10 14:45:16", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:00", 
+      "updated": "2011-10-10 14:45:16", 
       "is_external_link_only": 1, 
-      "geom": 652, 
+      "geom": 15, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-vietnam-da-nang", 
@@ -307,12 +523,12 @@
       "is_featured": 0, 
       "description": "350 Connecticut \n", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:00", 
+      "created": "2011-10-10 14:45:17", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:00", 
+      "updated": "2011-10-10 14:45:17", 
       "is_external_link_only": 1, 
-      "geom": 653, 
+      "geom": 16, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-connecticut", 
@@ -327,12 +543,12 @@
       "is_featured": 0, 
       "description": "350 Sacramento \n", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:00", 
+      "created": "2011-10-10 14:45:18", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:00", 
+      "updated": "2011-10-10 14:45:18", 
       "is_external_link_only": 1, 
-      "geom": 654, 
+      "geom": 17, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-sacramento", 
@@ -347,12 +563,12 @@
       "is_featured": 0, 
       "description": "350 Manitoba", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:00", 
+      "created": "2011-10-10 14:45:20", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:00", 
+      "updated": "2011-10-10 14:45:20", 
       "is_external_link_only": 1, 
-      "geom": 655, 
+      "geom": 18, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-manitoba", 
@@ -367,12 +583,12 @@
       "is_featured": 0, 
       "description": "350 Egypt", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:00", 
+      "created": "2011-10-10 14:45:21", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:00", 
+      "updated": "2011-10-10 14:45:21", 
       "is_external_link_only": 1, 
-      "geom": 656, 
+      "geom": 19, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-egypt", 
@@ -387,12 +603,12 @@
       "is_featured": 0, 
       "description": "American Samoa 350 is a grassroots organizing group led by Suluama Faaiuaso and fellow youth colleagues", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:01", 
+      "created": "2011-10-10 14:45:22", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:01", 
+      "updated": "2011-10-10 14:45:22", 
       "is_external_link_only": 1, 
-      "geom": 657, 
+      "geom": 20, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "american-samoa-350", 
@@ -407,12 +623,12 @@
       "is_featured": 0, 
       "description": "Climate Action Italy is a newly formed climate organizing group in Italy, properly the first group in Itay that soley focuses on climate change. Moving Planet was their first campaign to sensitize Italians for climate issues. ", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:01", 
+      "created": "2011-10-10 14:45:23", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:01", 
+      "updated": "2011-10-10 14:45:23", 
       "is_external_link_only": 1, 
-      "geom": 658, 
+      "geom": 21, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "climate-action-italy", 
@@ -427,12 +643,12 @@
       "is_featured": 0, 
       "description": "350 Chile is a group of volunteers and partners that came together in 2010 to coordinate 10/10 events, and gained strength in 2011, organizing Moving Planet in Santiago and coordinating with cities throughout Chile.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:01", 
+      "created": "2011-10-10 14:45:25", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:01", 
+      "updated": "2011-10-10 14:45:25", 
       "is_external_link_only": 1, 
-      "geom": 659, 
+      "geom": 22, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-chile", 
@@ -447,12 +663,12 @@
       "is_featured": 0, 
       "description": "350 Ecuador is a group of volunteers and partners doing education around climate change, and working with partners to coordinate 350 actions, particularly around urban mobility and bicycling.  They focus primarily in Quito.", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:01", 
+      "created": "2011-10-10 14:45:26", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:01", 
+      "updated": "2011-10-10 14:45:26", 
       "is_external_link_only": 1, 
-      "geom": 660, 
+      "geom": 23, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-ecuador", 
@@ -467,12 +683,12 @@
       "is_featured": 0, 
       "description": "This group has been active since 2009 and brings together a number of youth organizations of civil society, media and ordinary citizens involved in environmental issues in general", 
       "member_count": 0, 
-      "created": "2011-10-09 11:54:02", 
+      "created": "2011-10-10 14:45:27", 
       "disc_post_perm": 0, 
       "image": "images/theme/default_group.png", 
-      "updated": "2011-10-09 11:54:02", 
+      "updated": "2011-10-10 14:45:27", 
       "is_external_link_only": 1, 
-      "geom": 661, 
+      "geom": 24, 
       "disc_moderation": 0, 
       "sample_location": null, 
       "slug": "350-burundi-campaign", 
