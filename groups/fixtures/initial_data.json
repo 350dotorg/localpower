@@ -478,8 +478,7 @@
       "slug": "350-burundi-campaign", 
       "name": "350 Burundi Campaign"
     }
-  }
-][
+  },
   {
     "pk": 1, 
     "model": "group_links.externallink", 
