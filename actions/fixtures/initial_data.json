@@ -1,0 +1,294 @@
+[
+  {
+    "pk": 16,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-29 20:41:37",
+      "users_committed": 3,
+      "name": "Insulate your water heater",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:36:58",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>Your hot water heater needs insulation if it has an R-value of less than 24.  Don't know your hot water heater's R-value ... or even what an R-value is? Relax. Touch the outside of your water heater. <strong>If your heater is warm to the touch, you need extra insulation</strong>.<cite>\"<a href=\"http://www.energysavers.gov/your_home/water_heating/index.cfm/mytopic=13070\">Energy Savers: Insulate Your Water Heater Tank for Energy Savings</a>.\" U.S. Department of Energy. 24 March 2009. 3 March 2010.</cite></p>\r\n\r\n<h2>The rewards</h2>\r\n<p>Without proper insulation, your hot water heater is heating your basement in addition to your hot water. Adding a blanket will trap heat where it belongs and lower your hot water bill by up to 10%.</p>\r\n\r\n{% action_form %}\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Size your hot water heater</h3>\r\n<p>You'll need to know the gallon size of your hot water tank. Your manual has this information, but if you're like us, your manual is long gone.</p>\r\n<p>No big.  Most residential hot water heaters hold 30-50 gallons.<cite>Nunan, Jon. \"<a href=\"http://www.servicemagic.com/article.show.Hot-Water-Needs.8976.html\">Hot Water Needs</a>\" Service Magic. n.d. 20 Jan. 2010</cite> Unless your house is unusually big, you can work with this number.</p>\r\n\r\n<h3>Step 2: Buy an insulation kit</h3>\r\n<p>Armed with the knowledge about your heater's size, head to your local hardware store. While shopping for water heater blankets, you'll come across a happy surprise: insulating blankets are downright <i>cheap</i>. Most sell for under $20. Since they'll save you a bundle on hot water costs, you'll easily recoup your investment in less than a year,<cite>Based on calculations from http://www.energystar.gov/index.cfm?c=products.pr_pie</cite> and keep saving money for years to come.</p> \r\n<p>Okay, let's pick the right blanket and start saving money right away. Buy one that fits your water heater and has an R-value of 8 or more.<cite>\"<a href=\"http://www.energysavers.gov/your_home/water_heating/index.cfm/mytopic=13070\">Energy Savers: Insulate Your Water Heater Tank for Energy Savings</a>.\" U.S. Department of Energy. 24 March 2009. 3 March 2010.</cite> Then head back home and get it installed.</p>\r\n\r\n<h3>Step 3: Install the insulation</h3>\r\n<p>Your time is now! If you have an electric hot water heater, you can easily install the insulation yourself. This video will give you the low-down, but all you need is scissors and a couple of free minutes.</p> \r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/EDzaa-6j7O8&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/EDzaa-6j7O8&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n<p>Installing blankets on gas and oil powered heaters is a bit trickier. You want to make sure you keep the insulation away from both the bottom and top of the heater. We recommend having a qualified professional do it for you. Safety first!</p>\r\n {% action_form %}",
+      "users_completed": 3,
+      "teaser": "Keep your heater nice n' toasty while saving 10% on your water heating bill.<cite>\"<a href=\"http://www.energysavers.gov/your_home/water_heating/index.cfm/mytopic=13070\">Energy Savers: Insulate Your Water Heater Tank for Energy Savings</a>.\" U.S. Department of Energy. 24 March 2009. 3 March 2010.</cite>",
+      "points": 621,
+      "groups": [],
+      "slug": "insulate-water-heater"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-29 20:42:47",
+      "users_committed": 3,
+      "name": "Replace your outdated refrigerator ",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:37:00",
+      "content": "<h2>Is this action right for me?</h2>\r\n<p>Consider an upgrade if your current model is <strong>more than ten years old</strong>. If your refrigerator is old enough to worry about starting middle school, it's likely the biggest energy-guzzling appliance in your home.<cite><a href=\"http://www1.eere.energy.gov/consumer/tips/appliances.html\">\"Energy Savers Tip: Appliances</a>.\" Department of Energy. 22 Jan 2009. 30 March 2010.</cite></p>\r\n\r\n<h2>The rewards</h2>\r\n<p>A new refrigerator will use <strong>30-40% less energy</strong> than a 10-year-old unit.<cite>\"Statistic for a typical, new 18.5-cu.-ft. refrigerator with top-mount freezer (without a through-the-door ice dispenser). \"<a target=\"_blank\" href=\"http://www.fypower.org/res/efficient-appliances/refrigerator.html\">Residential Sector: Efficient Refrigerators</a>.\" <i>Flex Your Power</i>. n.d. 30 March 2010.</cite></p> \r\n\r\n {% action_form %}\r\n\r\n<h2>What should I know?</h2>\r\n\r\n<h3>Buy Energy Star, be an energy star</h3>\r\n<p>Look for the blue Energy Star label when selecting your appliance. <strong>Energy Star refrigerators use 20% less energy than similar, non-certified models.</strong><cite>\"<a href=\"http://energystar.custhelp.com/cgi-bin/energystar.cfg/php/enduser/std_adp.php?p_faqid=4912>What's more energy efficient, a refrigerator with a top-mounted freezers, bottom-mounted freezer, or a side-by-side?</a>\" ENERGY STAR. 9 Sept. 2009. 20 Jan. 2010.</cite> <a href=\"http://www.energystar.gov/index.cfm?fuseaction=refrig.calculator\">This calculator</a> will tell you how much energy your current fridge is wasting when compared to a new model. You can find an Energy Star model for almost any type of refrigerator, giving you access to all the latest features.</p>\r\n\r\n<h3>Get cash back</h3>\r\n<p>\r\nMany states, manufacturers and utilities offer tax credits and rebates on Energy Star certified appliances. That's like <strong>getting paid to save money on your electricity bill</strong>. To find incentives in your 'hood, check out <a href=\"http://www.energystar.gov/index.cfm?fuseaction=rebate.rebate_locator\">this easy-to-use database</a> from Energy Star.  \r\n</p>",
+      "users_completed": 0,
+      "teaser": "A new fridge will pay you dividends every month with energy savings.",
+      "points": 511,
+      "groups": [],
+      "slug": "replace-your-outdated-refrigerator"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-08-31 11:42:52",
+      "users_committed": 0,
+      "name": "Set your water heater to 120\u00b0F",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:37:58",
+      "content": "<h2>Is this action right for me?</h2>\r\n<p>A long time ago, in a secret meeting in a smoke-filled room, hot water bosses got together and decided to pre-set hot water tanks to 140\u00b0. <strong>If you haven't ever changed yours, it's likely that it's set too high.</strong></p>\r\n\r\n<h2>The rewards</h2>\r\n<p>Hot water heaters set to 140\u00b0 run the risk of scalding you. This is especially dangerous for children and senior citizens. A lower setting will also save you some real energy. By moving your hot water heater temperature from 140\u00b0 to 120\u00b0, <strong>you can save around $200</strong> over five years.<cite>Vandenbergh, Michael P. et al. \"Individual Carbon Emissions: The Low-Hanging Fruit.\" UCLA Law Review 1701 (2008): 1746</cite> \r\n {% action_form %}\r\n\r\n<h2>What should I know?</h2>\r\n<p>You'll find it's pretty easy to locate the thermostat. Consult <a target=\"_blank\" href=\"http://waterheatertimer.org/How-to-adjust-water-heater-temperature.html\">this chart</a> to find the location of your thermostat. If you're fed up with reading, sit back, relax, and watch these two folks adjust their water heaters.</p>\r\n<h3>Gas Water Heaters:</h3>\r\n<p>Sometimes, heaters don't have clear markings on the dials. <strong>Turning the dial counterclockwise means you're turning the temperature down</strong>. If you start running out of hot water, you can always adjust the temperature back up by turning the dial clockwise.</p>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/IYSc4MPDKZY&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/IYSc4MPDKZY&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" wmode=\"opaque\" width=\"408\" height=\"342\"></embed></object>\r\n<h3>Electric Water Heaters:</h3>\r\n<p>These usually have two thermostats that you'll need to adjust.</p>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/VXW541IxI2U&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/VXW541IxI2U&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" wmode=\"opaque\" width=\"408\" height=\"342\"></embed></object>\r\n {% action_form %}",
+      "users_completed": 1,
+      "teaser": "Save hundreds with a turn of a dial. ",
+      "points": 691,
+      "groups": [],
+      "slug": "adjust-water-heater-temperature"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:32:53",
+      "users_committed": 0,
+      "name": "Have a home energy audit and retrofit",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:38:21",
+      "content": "<h2>Is this action right for me?</h2>\r\n<p><strong>Nearly two-thirds of all single-family homes have inadequate or poor insulation</strong>.<cite>Levy, Jonathan I et al. \"<a href=\"http://www.ehjournal.net/content/2/1/4\">The public health benefits of insulation retrofits in existing housing in the United States</a>.\" Environmental Health: A Global Access Science Source 2003, 2:4.</cite> Is your home among them? Poor insulation leads to waste, high energy bills and drafty, uncomfortable rooms. An energy auditor will recommend custom solutions to your home's problems that form the basis of a successful retrofit.</p>\r\n<h2>The rewards</h2>\r\n<p>The benefits of the audit/retrofit process are enormous for both your comfort, your wallet and our health.</p>\r\n<ul>\r\n<li>After a retrofit, the average homeowner <strong>reduces her energy use by over 20%</strong>.<cite>http://www.mdhomeperformance.org/faqs.html#cost</cite></li>\r\n<li>If we retrofitted every home in America that needed it, the pollution reductions from the energy savings would <strong>prevent  6,500 asthma attacks every year</strong>, among other public health benefits.<cite>Levy, Jonathan I et al. \"<a href=\"http://www.ehjournal.net/content/2/1/4\">The public health benefits of insulation retrofits in existing housing in the United States</a>.\" Environmental Health: A Global Access Science Source 2003, 2:4.</cite></li>\r\n<li>Because a retrofit lowers energy bills and improves comfort, it's also a great way to <strong>add value to your home</strong>. Data show that for every dollar saved in annual utility costs, homeowners can expect to add about $20 to the market value of their home. In other words, a homeowner that saves $300 on annual heating and cooling costs by adding insulation could add $6,000 to the market value of his home.<cite><a href=\"http://www.businesswire.com/portal/site/home/permalink/?ndmViewId=news_view&amp;newsId=20070828005436&amp;newsLang=en\">Labor Day Home Improvement Projects That Pay</a>28 Aug 2007</cite></li>\r\n</ul>\r\n<p>Judy, a homeowner in DC, thought her home was pretty efficient, but was blown away by the savings and improved comfort of her retrofitted home. Listen to her talk about her experience (via Weatherize DC).</p>\r\n<p>\r\n<object width=\"408\" height=\"342\">\r\n<param name=\"movie\" value=\"http://www.youtube.com/v/d0fBf2yTMco?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1\" />\r\n<param name=\"allowFullScreen\" value=\"true\" />\r\n<param name=\"allowscriptaccess\" value=\"always\" /><embed type=\"application/x-shockwave-flash\" width=\"408\" height=\"342\" src=\"http://www.youtube.com/v/d0fBf2yTMco?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1\" allowfullscreen=\"true\" wmode=\"opaque\" allowscriptaccess=\"always\"></embed>\r\n</object>\r\n<br /><br /> {% action_form %}</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Find an energy auditor</h3>\r\n<p>Start your retrofit off right by having an energy audit. We recommend working with an energy auditor who is participating in the <strong>Home Performance with Energy Star</strong> program. Home Performance with Energy Star, a program of the Department of Energy, is now available in many states. Many states also offer incentives for both energy audits and the retrofit work. To find out if your state is participating, <a href=\"http://www.google.com/url?sa=t&amp;source=web&amp;ct=res&amp;cd=2&amp;ved=0CCgQFjAB&amp;url=http%3A%2F%2Fwww.energystar.gov%2Findex.cfm%3Fc%3Dhome_improvement.hm_improvement_hpwes_partners&amp;ei=01ezS6WrBIL48AaIpPTHAQ&amp;usg=AFQjCNFKVAQf5qMLYfHYnqalolVIF6QJiA&amp;sig2=6CFko-yzzsfYjJ2GdhYNMA\" target=\"_blank\">visit this page</a>.  If your state is not a participating member, you can still receive high-quality work from auditors who have standards like <strong>BPI</strong> and <strong>RESNET</strong>. Visit the BPI and RESNET page to find an auditor near you:</p>\r\n<ul>\r\n<li><a href=\"http://www.bpi.org/tools_locator.aspx?associateTypeID=CTR\" target=\"_blank\">Find a BPI auditor</a></li>\r\n<li><a href=\"http://resnet.us/trade/find-raters-auditors\" target=\"_blank\">Find a RESNET auditor</a></li>\r\n</ul>\r\n<h3>Step 2: Organize your documents</h3>\r\n<p>Think of any concerns you may already have and collect your recent utility bills.</p>\r\n<h3>Step 3: Have the audit</h3>\r\n<p>Your auditor will perform several tests to measure your home's overall leakiness and pinpoint problems. At the end of the audit, your auditor will present you with a list of recommendations to solve your home's specific problems.</p>\r\n<h3>Step 4: Complete the retrofit work</h3>\r\n<p>The audit is just the first step! It's good to know where you stand, but you won't start saving energy until you implement the upgrades. With your auditor's recommendations in hand, you can work with a contractor to make the right improvements to your home. Your auditor may recommend a contractor, or you can <strong>use the BPI and RESNET links from step 1 to find a certified contractor</strong>.</p>\r\n<p>{% action_form %}</p>",
+      "users_completed": 1,
+      "teaser": "Home energy auditors help you solve the unique problems in your home. ",
+      "points": 1500,
+      "groups": [],
+      "slug": "have-home-energy-audit"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-08 23:32:41",
+      "users_committed": 1,
+      "name": "Insulate your hot water pipes",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:39:17",
+      "content": "<h2>Is this action right for me?</h2>\r\n<p>Leaving your pipes uninsulated is like strolling around in a tank top in a blizzard. Cover up those naked pipes with some insulation.</p>\r\n\r\n<h2>The rewards</h2>\r\n<p>If you insulate your pipes, they can deliver water that's 2\u20134\u00baF hotter.<cite>\"<a href=\"http://www.energysavers.gov/your_home/water_heating/index.cfm/mytopic=13060\">Insulate Hot Water Pipes for Energy Saving</a>.\" Department of Energy. n.d. 20 May 2010.</cite> Insulated pipes are also much better protected against frost.</p>\r\n\r\n{% action_form %}\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Buy the insulation</h3>\r\n<p>You can get the insulation everywhere and it's cheap. Measure the diameter of your pipes before you head to the store, or ask a store clerk about the most common sizes. The diameter of your pipe should match the diameter of the insulation sleeve for a snug fit.</p>\r\n\r\n<h3>Step 2: Install the insulation</h3>\r\n<p>Installing the insulation is one of the easiest ways you can save energy: cut, wrap and tape. <strong>The most important sections of pipe are three feet or closer to your hot water heater.</strong><cite>\"<a href=\"http://www.energysavers.gov/your_home/water_heating/index.cfm/mytopic=13060\">Insulate Hot Water Pipes for Energy Savings</a>.\" Department of Energy. 24 Feb 2009. 26 May 2010.</cite> If you have a gas or oil-powered water heater, make sure to keep your insulation at least six inches away from the flue.<cite>Ibid.</cite></p> \r\n<h3>Watch this video to see how simple it can be!</h3>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/FqGrYK_jRkQ&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/FqGrYK_jRkQ&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>{% action_form %}",
+      "users_completed": 0,
+      "teaser": "Instead of heating the basement, keep energy in place with insulation. ",
+      "points": 138,
+      "groups": [],
+      "slug": "insulate-water-pipes"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-08 23:39:22",
+      "users_committed": 0,
+      "name": "Install a chimney draft guard",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:39:51",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>A roaring fire keeps your home cozy, but unused fireplaces are a huge source of drafts. Drafts come charging down the flue, pulling warm air away from your hearth and letting cold air come right on in to your family room.</p>\r\n\r\n<h2>The rewards</h2>\r\n<p>Fireplaces account for 14% of total \"air infiltration\" in the typical home.<cite>\"<a href=\"http://www1.eere.energy.gov/consumer/tips/pdfs/energy_savers.pdf\">Energy Savers Booklet: Tips on Saving Energy & Money at Home</a>.\" Department of Energy. May 2009. 29 March 2010.</cite> Brrr! Stop drafts in their tracks by using a chimney draft guard whenever your fireplace is not in use.</p>\r\n{% action_form %}\r\n<h2>Get it done!</h2>\r\n<p>Only you can prevent leaky fireplaces. Check out how easy draft guards are to install and use:</p>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/UwbfPqiWUs0&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/UwbfPqiWUs0&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n\r\n<h3>Step 1: Size your fireplace</h3>\r\n<p>It's important that the chimney draft guard fits snugly.</p>\r\n\r\n<h3>Step 2: Order your draft guard</h3>\r\n\r\n<h3>Step 3: Install the draft guard</h3>\r\n<p>Keep the guard in place whenever you're not using your fireplace &mdash; unless you need to leave it open for Santa or other visitors unaccustomed to using doors. When the guard comes in contact with heat, it will deflate and fall out, so there's no risk of combustion.</p> {% action_form %}",
+      "users_completed": 1,
+      "teaser": "It looks like a balloon, but it's actually an incredibly effective stopper for your chimney. ",
+      "points": 420,
+      "groups": [],
+      "slug": "install-chimney-draft-guard"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-16 16:14:54",
+      "users_committed": 2,
+      "name": "Use the cold wash cycle",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:40:26",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>If your washing machine could talk, it would probably say two things:</p> \r\n<ul><li>\"Stop spilling mustard on your shirts!\"</li>\r\n<li>\"Switch to the cold cycle!\"</li></ul> \r\n<p>Take your washing machine's advice &mdash; switch to the cold wash cycle.</p>\r\n<h2>The rewards</h2>\r\n<p>When you wash your clothes in hot water, <strong>90% of the energy is used to heat the water</strong>.<cite>Chua, Jasmin M. \"<a href=\"http://planetgreen.discovery.com/home-garden/beat-the-heat-wash-in-cold.html\">Beat the Heat, Wash in Cold</a>.\" Planet Green. 23 March 2008. 3 March 2010.</cite> By switching to the cold cycle, you save energy and money.  Your clothes will be brighter and your wallet will be mightier!</p>\r\n{% action_form %}\r\n<h2>What should I know?</h2>\r\n<h3>Out damn spot</h3>\r\n<p>There are many laundry detergents available that are specifically formulated to work with cold water, including Tide Coldwash&trade; and Woolite Liquid Cold Water Wash&trade;.  As an added bonus, clothes last longer when they're washed in cold water.</p>\r\n<h3>Dirty little secret</h3>\r\n<p><strong>The warm water in your washing machine does not disinfect your clothes.</strong> The water simply doesn't get hot enough to kill germs. Use bleach or another disinfectant to sanitize your clothes, and stop wasting money on the warm wash cycle.</p><cite>http://abcnews.go.com/Health/Wellness/washing-machines-loaded-bacteria-dirty-clothes/story?id=10751420&page=1</cite>\r\n {% action_form %}",
+      "users_completed": 0,
+      "teaser": "Every time you wash your clothes, you could be saving 90% on energy costs. ",
+      "points": 735,
+      "groups": [],
+      "slug": "wash-clothes-cold-water"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:34:09",
+      "users_committed": 1,
+      "name": "Use a programmable thermostat",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:40:59",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>Heating and cooling are the biggest energy expenses in most homes, and programmable thermostats can significantly cut costs for virtually every home. If you have a manual thermostat, you can also save by <a href=\"http://repowerathome.com/actions/save-with-manual-thermostat/\">going here</a>.</p>\r\n<h2>The rewards</h2>\r\n<p>A programmable thermostat will likely <strong>save you hundreds of dollars every year while making your home effortlessly more comfortable</strong>. You can set it, forget it, and watch the savings add up.</p>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<h3>Get With The Program</h3>\r\n<p>If you've been intimidated in the past by your programmable thermostat, don't despair. Having a better home is easier than you think, and it's all just a few clicks away. Here's an example of how to program a thermostat.</p>\r\n<p>\r\n<object width=\"408\" height=\"342\">\r\n<param name=\"movie\" value=\"http://www.youtube.com/v/s2gg8jaddto&amp;hl=en_US&amp;fs=1&amp;color1=0x3a3a3a&amp;color2=0x999999\" />\r\n<param name=\"allowFullScreen\" value=\"true\" />\r\n<param name=\"allowscriptaccess\" value=\"always\" /><embed type=\"application/x-shockwave-flash\" width=\"408\" height=\"342\" src=\"http://www.youtube.com/v/s2gg8jaddto&amp;hl=en_US&amp;fs=1&amp;color1=0x3a3a3a&amp;color2=0x999999\" allowfullscreen=\"true\" wmode=\"opaque\" allowscriptaccess=\"always\"></embed>\r\n</object>\r\n</p>\r\n<h3>Find Your Model</h3>\r\n<p>If you need more specific information, you can find step-by-step instructions for your model by selecting your thermostat manufacturer:</p>\r\n<ul>\r\n<li><a href=\"http://www.yourhome.honeywell.com/Home/Products/Thermostats/SummaryList.htm\">Honeywell</a></li>\r\n<li><a href=\"http://www.luxproducts.com/thermostats_du.htm\">Lux</a></li>\r\n<li><a href=\"http://www.hunterfan.com/product.aspx?folder_id=108&amp;id=15502\">Hunter</a></li>\r\n<li><a href=\"http://www.emersonclimate.com/en-US/products/thermostats/Pages/thermostats.aspx\">White-Rodgers</a></li>\r\n</ul>\r\n<h3>Make Your Savings Plan</h3>\r\n<p>The ideal time to set back your thermostat is when your home is empty or when you're asleep. Think about when you typically go to bed, leave in the morning and come home at night. <strong>Set your thermostat to lower your heat or air conditioning while you're asleep or at work, and turn back up by the time you wake up or get home.</strong> During the winter, rolling back your thermostat from 72&deg; to 60&deg; for eight hours a day will save you around 12% on your heating bill.<cite>Department of Energy, Energy Savers, <a href=\"http://www.energysavers.gov/your_home/space_heating_cooling/index.cfm/mytopic=12720\">Thermostats and Control Systems</a></cite> You can achieve similar savings in the summer by raising your thermostat.</p>\r\n<ul>\r\n<li><a href=\"http://rahstatic.s3.amazonaws.com/actionmedia/thermostat activity.pdf\">Download the setback activity sheet</a></li>\r\n</ul>\r\n<h3>Common Thermostat Myths</h3>\r\n<h4>\"If I set my thermostat to 80&deg;, my house will get hotter, faster.\"</h4>\r\n<p>Your heating and cooling system only has two modes: on and off. The rate at which it heats or cools your home is unaffected by the temperature setting. By setting your thermostat higher, you&rsquo;re just ensuring that your heater will be on for longer than you need and your house will be hotter or colder than you want. Set your thermostat to the temperature you actually want and let it be.</p>\r\n<h4>\"Turning my thermostat down doesn&rsquo;t really save energy! My HVAC system will just have to work harder when I get back.\"</h4>\r\n<p>This is a common myth, but it's false. Using your thermostat to turn your heat or air conditioner down will save energy. Period.</p>\r\n<p>Consider the following example: Let&rsquo;s say you want your home to be 72&deg; degrees in the winter. You leave your house at 8am and return at 6pm. If you have a programmable thermostat set to turn the heat off, you will use absolutely no energy during that 10-hour period. If you leave your thermostat at 72&deg;, your heat will continually switch on and off, heating an empty house for 10 hours.<br /> When your programmable thermostat switches back on to heat your house, it will stay on for slightly longer than the thermostat that has been left alone. However, the slight increase in energy use during this time period pales in comparison to the energy saved during that 10-hour period.</p>\r\n<h4>\"My pipes will freeze!\"</h4>\r\n<p>If your pipes are not well-insulated inside your home, and the outside air temperature is below 20&deg;, you should consider keeping your thermostat above 55&deg;.<cite><a href=\"http://www.weather.com/activities/homeandgarden/home/hometips/severeweather/pipefreeze_prevent.html\">Severe Weather Readiness</a> Weather.com. n.d. 7 Apr 2010</cite> This setback still allows room for significant savings. However, a much more effective way to prevent your pipes from freezing and bursting is to <a href=\"http://repowerathome.com/actions/insulate-water-pipes/\">insulate exposed pipes</a>.</p>\r\n<p>{% action_form %}</p>",
+      "users_completed": 0,
+      "teaser": "Want a comfortable home with no hassle? Say hello to your thermostat. ",
+      "points": 1250,
+      "groups": [],
+      "slug": "programmable-thermostat"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-09-16 16:13:57",
+      "users_committed": 0,
+      "name": "Dial down your thermostat",
+      "is_group_project": 0,
+      "created": "2009-12-10 12:41:57",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>What's the difference between a room that's 72\u00b0 and a room that's 74\u00b0?</p>\r\n<p>Some serious energy savings! You probably won't be able to feel the difference, but you'll definitely be able to see the savings on your energy bill.</p>\r\n<h2>The rewards</h2>\r\n<p>A savvy homeowner who changes her thermostat is saving as much as $125 every year &mdash just by going down or up two degrees.<cite>Vandenbergh, Michael P. et al. \"Individual Carbon Emissions: The Low-Hanging Fruit.\" UCLA Law Review 1701 (2008): 1744</cite> Would you like to be $125 richer? <strong>Raise your thermostat two degrees in the summer and lower it two degrees in the winter!</strong></p>\r\n\r\n{% action_form %}\r\n\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Experiment to find a comfortable setting</h3>\r\n<p>While two degrees will save you real cash, you'll save even more if your setback is a bit higher or lower. Find a setting that's comfortable for you and start saving right now.</p>\r\n\r\n<h3>Step 2: Enact your reduced settings</h3>\r\n<p>Just thinking about it doesn't save energy. Do some stretches, warm up your fingers, and go over to your thermostat. With a few pushes of a button, you too can be an energy-saving star. </p>{% action_form %}",
+      "users_completed": 1,
+      "teaser": "With a few pushes of a button, you too can be an energy-saving star.",
+      "points": 994,
+      "groups": [],
+      "slug": "dial-down-thermostat"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:13:42",
+      "users_committed": 0,
+      "name": "****Educate Your Community****",
+      "is_group_project": 1,
+      "created": "2011-10-05 21:12:21",
+      "content": "<p><span style=\"font-family: Times; font-size: medium;\"> </span></p>\r\n<div style=\"color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #ffffff; background-position: initial initial; background-repeat: initial initial; margin: 8px;\">\r\n<h2><span style=\"font-family: Times; font-size: small;\">&nbsp;</span>Is this right for my group?</h2>\r\n<div>\r\n<p>Single-origin coffee irony iphone marfa pitchfork. Jean shorts +1 beard messenger bag ad. Mustache marfa cliche pitchfork sartorial, PBR nulla synth scenester.</p>\r\n</div>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<p>Pitchfork brooklyn cardigan single-origin coffee. Do 8-bit artisan, twee vinyl seitan vero. Keffiyeh butcher sunt eiusmod, sustainable fanny pack four loko.</p>\r\n<p>[Insert Video Stuff here]</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Select Your Video</h3>\r\n<p>Assumenda ut fap exercitation seitan enim DIY.</p>\r\n<ul>\r\n<li>Example</li>\r\n<li>Example</li>\r\n<li>Example</li>\r\n</ul>\r\n<h3>Step 2: Find a Screening Space and a Way to Show the Video</h3>\r\n<p>Wes anderson helvetica sunt nihil cardigan nulla. Vegan et commodo ullamco. Retro et scenester, enim sartorial messenger bag synth chambray raw denim vinyl voluptate delectus.</p>\r\n<h3>Step 3: Promote It</h3>\r\n<p>Seitan banksy vice sustainable shoreditch. Ethical brooklyn artisan, qui viral +1 butcher cupidatat odio readymade gentrify. Sed commodo sunt non. Accusamus eu et squid keytar.</p>\r\n<p>{% action_form %}</p>\r\n</div>\r\n<p>&nbsp;</p>",
+      "users_completed": 0,
+      "teaser": "Educate your community on the basics of climate science, and recruit more people into your local group. ",
+      "points": 3000,
+      "groups": [],
+      "slug": "educate-presentation"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:33:34",
+      "users_committed": 0,
+      "name": "Organize a Movie Screening",
+      "is_group_project": 1,
+      "created": "2011-09-12 20:32:27",
+      "content": "<h2><span style=\"font-family: Times; font-size: small;\">&nbsp;</span>Is this right for my group?</h2>\r\n<div>\r\n<p>Single-origin coffee irony iphone marfa pitchfork.  Jean shorts  +1 beard messenger bag ad.  Mustache marfa cliche pitchfork sartorial,  PBR nulla  synth scenester.</p>\r\n</div>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<p>Pitchfork brooklyn cardigan single-origin  coffee.  Do 8-bit artisan, twee vinyl seitan vero.  Keffiyeh butcher  sunt eiusmod, sustainable fanny pack four loko.</p>\r\n<p>[Insert Video Stuff here]</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Select Your Video</h3>\r\n<p>Assumenda ut fap  exercitation seitan enim DIY.</p>\r\n<ul>\r\n<li>Example</li>\r\n<li>Example</li>\r\n<li>Example</li>\r\n</ul>\r\n<h3>Step 2: Find a Screening Space and a Way to Show the Video</h3>\r\n<p>Wes anderson helvetica sunt nihil cardigan nulla.  Vegan et commodo  ullamco.  Retro et scenester, enim sartorial messenger bag synth  chambray raw denim vinyl voluptate  delectus.</p>\r\n<h3>Step 3: Promote It</h3>\r\n<p>Seitan banksy vice sustainable shoreditch.  Ethical brooklyn artisan,  qui  viral +1 butcher cupidatat  odio readymade gentrify.  Sed commodo  sunt non.  Accusamus eu  et squid keytar.</p>\r\n<p>{% action_form %}</p>",
+      "users_completed": 0,
+      "teaser": "Inspire your community with a local screening of a climate activist movie. ",
+      "points": 2000,
+      "groups": [
+        4,
+        17
+      ],
+      "slug": "screening"
+    }
+  },
+  {
+    "pk": 37,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-02-14 21:52:37",
+      "users_committed": 0,
+      "name": "Replace five light bulbs with CFLs ",
+      "is_group_project": 0,
+      "created": "2010-01-13 16:12:30",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>In 1879, Thomas Edison demonstrated his light bulb to awestruck crowds. Americans were still getting used to indoor plumbing, so electric lights were kinda a big deal. Nowadays, many homes are still using lighting technology that's virtually unchanged since Thomas Edison's day. <strong>If you haven't switched out your incandescent light bulbs, you're partying like a Victorian.</strong> Invest in some compact fluorescent light bulbs (CFLs) today and join the 21st century.</p>\r\n\r\n<h2>The rewards</h2>\r\n<p>You may have heard it all before, but let's just take a moment to review how awesome CFLs are:</p>\r\n<ul><li>CFLs are <strong>four times more efficient</strong> than outdated incandescent light bulbs.<cite>http://www.greenamerica.org/pubs/realgreen/articles/cfls.cfm</cite></li>\r\n<li>The average home has 45 light bulbs. Switching all of these bulbs will <strong>save you over $1,300</strong> over the bulbs' lifetimes.<cite>Dakss, Brian. \"<a href=\"http://www.cbsnews.com/stories/2007/06/22/earlyshow/living/home/main2965734.shtml\">'Green' Light Bulb Buying Guide</a>.\" CBS News. 22 June 2007. 5 March 2010.</cite><cite>ENERGY STAR, \"<a href=\"http://www.energystar.gov/index.cfm?c=cfls.pr_cfls\">Compact Fluorescent Light Bulbs for Consumers</a>.\" n.d. 5 March 2010.</cite></li>\r\n<li>If every household in the United States installed just one CFL, we would prevent greenhouse gas emissions equivalent to those of more than <strong>800,000 cars</strong> annually<cite>\"<a href=\"http://www.energystar.gov/ia/partners/promotions/change_light/downloads/Fact_Sheet_Mercury.pdf\">Frequently Asked Questions: Information on Compact Fluorescent Light Bulbs (CFLs) and Mercury</a>.\" Energy Star. July 2008.</cite>.</li>\r\n<li>CFLs <strong>last 10 times longer</strong>, which means fewer trips to the hardware store and fewer arguments over why there's <i>still</i> a blown-out bulb in the kitchen. </li></ul>\r\n{% action_form %}\r\n<h2>Get it done!</h2>\r\n<h3>Buy the bulbs</h3>\r\n<p><strong>Almost every hardware store now carries CFLs</strong>, including big retailers like Target and Home Depot.</p>\r\n<p>The package will tell you what wattage to buy based on the light you're replacing. A 60 Watt incandescent bulb, for example, can be replaced by a 13-15 Watt CFL bulb. <cite>http://energystar.custhelp.com/cgi-bin/energystar.cfg/php/enduser/std_adp.php?p_faqid=2563</cite></p>\r\n<h3>Act now</h3>\r\n<p>It's hard to know when it's time to trade in your car for a newer model. Not so with incandescent light bulbs. Every day you wait, you're wasting energy that you could easily be saving. Replace those bulbs today.</p>\r\n<h2>FAQs</h2>\r\n<h3>What's the deal with mercury in CFLs?</h3>\r\n<p>The rumors are true: CFLs contain a small amount of mercury. Really small &mdash; many CFLs now contain less than 1 milligram of mercury.<cite>Ibid.</cite> To put that in perspective, the average aspirin tablet weighs 325 milligrams. Old thermometers, on the other hand, contain around 500 milligrams of mercury<cite>Ibid.</cite> </p>\r\n<p>Because they do contain a small amount of mercury, CFLs should be recycled at the end of their lives. Visit <a target=\"_blank\" href=\"http://www.earth911.org\">Earth911</a> to find a recycling center near you.</p> \r\n<p>No mercury is released when the bulbs are intact. If you do break a bulb, it's okay. Open a window and leave the room for 15 minutes. When you come back, use tape to pick up any shards of glass, and vacuum the area thoroughly. For more information about CFL disposal, visit the <a href=\"http://www.energystar.gov/ia/partners/promotions/change_light/downloads/Fact_Sheet_Mercury.pdf\">Energy Star information page</a>.</p>\r\n<h4>More CFLs = less mercury</h4>\r\n<p>Say what? It's true. The adoption of CFLs will actually reduce the amount of mercury released into our environment. Since CFLs are so much more efficient, they require much less energy than incandescent bulbs to produce the same amount of light. That means we can significantly reduce our demand for coal, the most common source of electricity in the U.S. Burning coal is a dirty business. It releases all sorts of nasty chemicals, including a lot of mercury. When you compare their life cycle impacts, CFLs leave incadescents behind in a cloud of soot.</p>\r\n<img src=\"http://rahstatic.s3.amazonaws.com/actionmedia/mercury_cfl_coal_graph.png\"><cite>Ibid.</cite>\r\n{% action_form %}",
+      "users_completed": 0,
+      "teaser": "Compact fluorescent light bulbs (CFLs) are awesome in so many ways.",
+      "points": 158,
+      "groups": [],
+      "slug": "replace-your-incandescent-light-bulbs-with-cfls"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:04:23",
+      "users_committed": 0,
+      "name": "Have a Climate Meetup",
+      "is_group_project": 1,
+      "created": "2011-10-05 20:46:05",
+      "content": "<h2><span style=\"font-family: Times; font-size: small;\">&nbsp;</span>Is this right for my group?</h2>\r\n<p>This is a great way to bring your community together for some  inspiration, get fired up about future projects, and talk about what you  can do locally.&nbsp;</p>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<p>Meetings don't have to be boring! We've got lots of resources to help you have a fun and inspiring local meeting.</p>\r\n<p>[Insert Video Stuff here]</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Settle on a time and venue for your meeting.</h3>\r\n<p>Make sure to have [sample content]</p>\r\n<ul>\r\n<li>Example</li>\r\n<li>Example</li>\r\n<li>Example</li>\r\n</ul>\r\n<h3>Step 2: Register Your Event</h3>\r\n<p>You should register your event <a href=\"../../../../events/\">here on 350 Groups</a>, and you also might want to <a href=\"http://www.facebook.com/events/create/\">register a Facebook event</a> as well.</p>\r\n<h3>Step 3: Plan it and Promote It</h3>\r\n<p>Get it out there and make sure people can join you. Put up posters,  send out emails, and make sure you have everything you need.</p>\r\n<p>{% action_form %}</p>",
+      "users_completed": 0,
+      "teaser": "Meetings are the stuff movements are made of -- but they don't have to be boring!",
+      "points": 1000,
+      "groups": [],
+      "slug": "meetup"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:09:02",
+      "users_committed": 0,
+      "name": "Do a Light Bulb Exchange",
+      "is_group_project": 1,
+      "created": "2011-10-05 21:08:00",
+      "content": "<p><span style=\"font-family: Times; font-size: medium;\"> </span></p>\r\n<div style=\"color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #ffffff; background-position: initial initial; background-repeat: initial initial; margin: 8px;\">\r\n<h2>Is this right for my group?</h2>\r\n<div>\r\n<p>Single-origin coffee irony iphone marfa pitchfork. Jean shorts +1 beard messenger bag ad. Mustache marfa cliche pitchfork sartorial, PBR nulla synth scenester.</p>\r\n</div>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<p>Pitchfork brooklyn cardigan single-origin coffee. Do 8-bit artisan, twee vinyl seitan vero. Keffiyeh butcher sunt eiusmod, sustainable fanny pack four loko.</p>\r\n<p>[Insert Video Stuff here]</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Select Your Video</h3>\r\n<p>Assumenda ut fap exercitation seitan enim DIY.</p>\r\n<ul>\r\n<li>Example</li>\r\n<li>Example</li>\r\n<li>Example</li>\r\n</ul>\r\n<h3>Step 2: Find a Screening Space and a Way to Show the Video</h3>\r\n<p>Wes anderson helvetica sunt nihil cardigan nulla. Vegan et commodo ullamco. Retro et scenester, enim sartorial messenger bag synth chambray raw denim vinyl voluptate delectus.</p>\r\n<h3>Step 3: Promote It</h3>\r\n<p>Seitan banksy vice sustainable shoreditch. Ethical brooklyn artisan, qui viral +1 butcher cupidatat odio readymade gentrify. Sed commodo sunt non. Accusamus eu et squid keytar.</p>\r\n<p>{% action_form %}</p>\r\n</div>\r\n<p>&nbsp;</p>",
+      "users_completed": 0,
+      "teaser": "Swapping light bulbs is a small act that can lead to big change. ",
+      "points": 4000,
+      "groups": [],
+      "slug": "lightbulb-exchange"
+    }
+  },
+  {
+    "pk": 47,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-10-05 21:33:24",
+      "users_committed": 0,
+      "name": "Run a Local Climate Candidate",
+      "is_group_project": 1,
+      "created": "2011-10-05 21:08:40",
+      "content": "<p><span style=\"font-family: Times; font-size: medium;\"> </span></p>\r\n<div style=\"color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #ffffff; background-position: initial initial; background-repeat: initial initial; margin: 8px;\">\r\n<h2><span style=\"font-family: Times; font-size: small;\">&nbsp;</span>Is this right for my group?</h2>\r\n<div>\r\n<p>Single-origin coffee irony iphone marfa pitchfork. Jean shorts +1 beard messenger bag ad. Mustache marfa cliche pitchfork sartorial, PBR nulla synth scenester.</p>\r\n</div>\r\n<p>{% action_form %}</p>\r\n<h2>What should I know?</h2>\r\n<p>Pitchfork brooklyn cardigan single-origin coffee. Do 8-bit artisan, twee vinyl seitan vero. Keffiyeh butcher sunt eiusmod, sustainable fanny pack four loko.</p>\r\n<p>[Insert Video Stuff here]</p>\r\n<h2>Get it done!</h2>\r\n<h3>Step 1: Select Your Video</h3>\r\n<p>Assumenda ut fap exercitation seitan enim DIY.</p>\r\n<ul>\r\n<li>Example</li>\r\n<li>Example</li>\r\n<li>Example</li>\r\n</ul>\r\n<h3>Step 2: Find a Screening Space and a Way to Show the Video</h3>\r\n<p>Wes anderson helvetica sunt nihil cardigan nulla. Vegan et commodo ullamco. Retro et scenester, enim sartorial messenger bag synth chambray raw denim vinyl voluptate delectus.</p>\r\n<h3>Step 3: Promote It</h3>\r\n<p>Seitan banksy vice sustainable shoreditch. Ethical brooklyn artisan, qui viral +1 butcher cupidatat odio readymade gentrify. Sed commodo sunt non. Accusamus eu et squid keytar.</p>\r\n<p>{% action_form %}</p>\r\n</div>\r\n<p>&nbsp;</p>",
+      "users_completed": 0,
+      "teaser": "Tired of just asking leaders for climate action? Then put a climate leader in office!",
+      "points": 6000,
+      "groups": [],
+      "slug": "run-a-candidate"
+    }
+  },
+  {
+    "pk": 39,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-02-09 12:28:21",
+      "users_committed": 0,
+      "name": "Insulate your windows",
+      "is_group_project": 0,
+      "created": "2010-01-25 17:03:30",
+      "content": "<p>Leaky windows are the worst. Heat loss from your windows can account for 10-25% of your winter heating bill.<cite>\"<a href=\"http://www1.eere.energy.gov/consumer/tips/windows.html\">Energy Saver Tips: Windows</a>.\" Energy Savers. Department of Energy. 22 Jan 2009. 25 Jan 2010.</cite> Recently, we read about a guy who was so frustrated by his leaky windows that he moved to a windowless, underground lair. </p>\r\n<p>Okay ... by \"guy\" we mean \"supervillain.\" And by \"read\" we mean \"saw it on a cartoon.\" Same thing, right?</p>\r\n<p>The point is that leaky windows can drive you bonkers. You can literally feel money leaving your house through leaks. And the uncomfortable drafts seem like they belong in <i>Little House on the Prairie</i>, not your modern home.</p>\r\n<p>Fortunately, you don't have to go through the hassle and expense of building an underground lair to escape drafts.  If you have a free hour, you can insulate your windows. </p>\r\n{% action_form %}\r\n\r\n<h3>Step One: Buy an insulation kit</h3>\r\n<p>Window insulation kits contain a special plastic sheet and double-sided tape. The sheet traps air between the sheet and glass, creating an insulating barrier. Kits &mdash; like those from <a target=\"_blank\" href=\"http://www.amazon.com/3M-2141W-Indoor-5-Window-Insulator/dp/B00002NCJI\">3M</a> and <a target=\"_blank\" href=\"http://www.acehardware.com/product/index.jsp?productId=1286194&CAWELAID=109365640\">Ace</a> &mdash; are easy to install and generally cost less than $4 per window.</p>\r\n\r\n<h3>Step 2: Put it on up</h3>\r\n<p>With just some scissors and a few minutes, you can stop uncomfortable drafts. This guy successfully insulates his windows with his eyes covered:</p>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/Pc9CyLa0Z1E&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/Pc9CyLa0Z1E&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n {% action_form %}",
+      "users_completed": 0,
+      "teaser": "Stop leaks in their tracks with a window insulation kit.",
+      "points": 610,
+      "groups": [],
+      "slug": "insulate-your-windows"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "actions.action",
+    "fields": {
+      "updated": "2011-02-12 17:27:18",
+      "users_committed": 0,
+      "name": "Set your computer to sleep automatically",
+      "is_group_project": 0,
+      "created": "2010-01-27 14:28:56",
+      "content": "<h2>Is this right for me?</h2>\r\n<p>Did you know that <strong>the typical computer uses most of its energy when no one is sitting in front of it</strong>?<cite>Energy Center of Wisconsin. \"<a href=\"http://www.ecw.org/ecwresults/257-1.pdf\">Electricity Savings Opportunities for Home Electronics and Other Plug-In Devices in Minnesota Homes</a>.\" May 2010, p. 21</cite> Configure your power management settings to reduce this use.</p>\r\n\r\n<h2>The rewards</h2>\r\n<p>Without proper sleep setting enabled, <strong>each computer is costing you an additional $25-$75 every year</strong>.<cite>\"<a href=\"http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_faq\">Frequently Asked Questions (FAQs)</a>.\" ENERGY STAR. n.d. 27 Jan 2010.</cite> Your computer works hard sending your email, reading blogs and enabling your online shopping addiction. Give it a rest!</p>\r\n {% action_form %}\r\n<h2>Get it done</h2>\r\n<h3>Make a plan</h3>\r\n<p>It's easy to customize your power management preferences. Set your computer to enter sleep mode after 15 minutes or less of inactivity. Have the monitor also turn off after 15 minutes or less of inactivity. </p>\r\n<h3>Change your settings</h3>\r\n<h4>In Windows XP:</h4>\r\n<p>Start -> Control Panel -> Power Options</p>\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/EI3VFL6yDoA?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/EI3VFL6yDoA?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n\r\n\r\n<h4>In Windows Vista & Windows 7:</h4>\r\n<p>Start -> Control Panel -> Hardware and Sound -> Change Power-Saving Settings</p>\r\n\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/66Lm5L5F_ec?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/66Lm5L5F_ec?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n\r\n<h4>In Mac OS X:</h4>\r\n<p>System Preferences -> Energy Saver</p>\r\n\r\n<object width=\"408\" height=\"342\"><param name=\"movie\" value=\"http://www.youtube.com/v/I7-CLz3Cti0?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/I7-CLz3Cti0?fs=1&amp;hl=en_US&amp;color1=0x3a3a3a&amp;color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" wmode=\"opaque\" allowfullscreen=\"true\" width=\"408\" height=\"342\"></embed></object>\r\n<br />\r\n<h3>Common myths</h3>\r\n<h4>\"A blank screen means my computer is asleep\"</h4>\r\n<p>Your monitor may be asleep, but your computer processor can still be on. When the processor is on, it's still using almost as much energy as it is when you're using it. The only way to reduce this energy use is to turn the computer off or set it to sleep/hibernate.</p>\r\n<h4>\"Screensavers save energy\"</h4>\r\n<p>A computer uses just as much energy when displaying a screen saver as when it's on.</p>\r\n {% action_form %}",
+      "users_completed": 0,
+      "teaser": "Imagine a wonderful world where you could save money by sleeping. ",
+      "points": 538,
+      "groups": [],
+      "slug": "set-your-computer-sleep-automatically"
+    }
+  }
+]

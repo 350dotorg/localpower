@@ -27,5 +27,5 @@ def create_default_actions(app, created_models, verbosity, **kwargs):
                 call_command("loaddata", "actions/fixtures/actionforms.json", verbosity=0, interactive=True)
             break
 
-signals.post_syncdb.connect(create_default_actions, sender=actions_app,
-    dispatch_uid="rah.management.create_default_actions")
+#signals.post_syncdb.connect(create_default_actions, sender=actions_app,
+#        dispatch_uid="rah.management.create_default_actions")
