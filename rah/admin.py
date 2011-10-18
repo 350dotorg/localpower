@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User, Group, Permission
+from django.contrib.auth.admin import (UserAdmin as BaseUserAdmin,
+                                       GroupAdmin)
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.flatpages.admin import FlatPageAdmin
@@ -14,8 +16,8 @@ from models import Profile
 from forms import ProfileEditForm
 from rateable.models import Rating
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ("email", "first_name", "last_name", "geom", "date_joined",)
+class UserAdmin(BaseUserAdmin):
+    list_display = ("email", "first_name", "last_name", "geom", "date_joined", "username")
     ordering = ("id",)
     date_hierarchy = "date_joined"
     search_fields = ("email", "first_name", "last_name",)
@@ -27,8 +29,8 @@ class UserAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     form = ProfileEditForm
 
+admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-admin.site.register(Group)
 admin.site.register(Permission)
 admin.site.register(Profile, ProfileAdmin)
 
