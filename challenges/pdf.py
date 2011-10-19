@@ -99,5 +99,7 @@ def _download(request, challenge, supporters):
     os.unlink(filename)
     del(fd)
 
-    resp['Content-Disposition'] = "attachment; filename=petition%s.pdf" % random.randint(0, 10000)
+    from django.template.defaultfilters import slugify
+    resp['Content-Disposition'] = "attachment; filename=%s.pdf" % (
+        slugify(challenge.title))
     return resp
