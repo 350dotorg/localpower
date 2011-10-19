@@ -91,7 +91,8 @@ def _download(request, challenge, supporters):
     fd, filename = tempfile.mkstemp(suffix=".pdf")
     doc = DocTemplate(filename, pagesize=pagesizes.letter)
 
-    doc.pagefooter = "%s%s - a 350.org project" % (
+    doc.pageheader = challenge.title
+    doc.pagefooter = "%s%s - 350.org" % (
         settings.SITE_DOMAIN, challenge.get_absolute_url())
 
     doc.build(data, canvasmaker=canvas.Canvas)
