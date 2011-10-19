@@ -45,15 +45,6 @@
                 {% include "base/_nugget_2c_list_supporter.html" %}
             {% endfor %}
         </ul>
-        {% if challenge.number_of_supporters > 12 %}
-        <p class="right">
-            <a href="">
-	      {% blocktrans with challenge.number_of_supporters|intcomma as number_of_supporters %}
-	      View all {{number_of_supporters}} supporters
-	      {% endblocktrans %}
-	    </a>
-        </p>
-        {% endif %}
     {% endif %}
 </div>
 
