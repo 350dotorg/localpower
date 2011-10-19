@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-16 22:22-0400\n"
-"PO-Revision-Date: 2011-10-08 14:25+0000\n"
-"Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
+"PO-Revision-Date: 2011-10-13 23:08+0000\n"
+"Last-Translator: jwarnow <jon@350.org>\n"
 "Language-Team: English (http://www.transifex.net/projects/p/localpower/team/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1765,7 +1765,7 @@ msgstr ""
 #: groups/feeds.py:18
 #, python-format
 msgid "%(group)s Activity Stream"
-msgstr ""
+msgstr "%(group)s Activity Feed"
 
 #: groups/feeds.py:27
 #, python-format
@@ -2290,7 +2290,7 @@ msgstr ""
 #: groups/templates/groups/group_detail.html:11
 #, python-format
 msgid "%(SITE_NAME)s Community Activity"
-msgstr "%(SITE_NAME)s Group Activity"
+msgstr "%(SITE_NAME)s Group Activity Feed"
 
 #: groups/templates/groups/group_detail.html:24
 #, python-format
@@ -2302,7 +2302,7 @@ msgstr ""
 
 #: groups/templates/groups/group_detail.html:35
 msgid "Activity"
-msgstr ""
+msgstr "Activity Feed"
 
 #: groups/templates/groups/group_detail.html:40
 msgid "Requests and Notifications"
@@ -2391,7 +2391,7 @@ msgstr ""
 
 #: groups/templates/groups/group_detail.html:142
 msgid "Community Activity"
-msgstr "Group Activity"
+msgstr "Group Activity Feed"
 
 #: groups/templates/groups/group_detail.html:181
 #, python-format
@@ -2688,7 +2688,7 @@ msgstr ""
 #: rah/feeds.py:19
 #, python-format
 msgid "%(user)s Activity Stream"
-msgstr ""
+msgstr "%(user)s Activity Feed"
 
 #: rah/feeds.py:28
 #, python-format
@@ -3285,7 +3285,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:52
 msgid "You have the power <br/>to save energy"
-msgstr ""
+msgstr "You have the power <br/>to transform your community."
 
 #: templates/rah/home_page.html:54
 msgid ""
@@ -3298,12 +3298,8 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"                            Our energy projects give you the necessary know-how to save\n"
-"                            energy, lower your bills and improve our environment by\n"
-"                            reducing greenhouse gas pollution. The more projects you\n"
-"                            complete, the more badges and points you earn for your\n"
-"                            progress. \n"
-"\t\t\t  "
+"There's plenty you can do at the local level to fight climate change, build a movement, and transform your community from the ground up. The projects on this website give you the know-how and the tools to organize a strong local group and jumpstart the climate movement. \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span><span class=\"whitespace other\" title=\"Tab\">»</span><span class=\"whitespace other\" title=\"Tab\">»</span>  "
 
 #: templates/rah/home_page.html:63
 msgid "See All Actions"
@@ -3311,7 +3307,7 @@ msgstr "See All Projects"
 
 #: templates/rah/home_page.html:75
 msgid "Support energy efficiency in your community"
-msgstr ""
+msgstr "Find a local group to join"
 
 #: templates/rah/home_page.html:77
 #, python-format
