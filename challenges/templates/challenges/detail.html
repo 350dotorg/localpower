@@ -14,6 +14,7 @@
     <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% ifequal challenge.creator.id request.user.id %}
+    <li><a href="#download">{% blocktrans %}Download{% endblocktrans %}</a></li>
         <span class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
 	    {% blocktrans %}Edit this Challenge{% endblocktrans %}
 	</a></span>
@@ -62,6 +63,25 @@
   {% render_comment_list for object %}
   {% endwith %}
 </div>
+
+{% ifequal challenge.creator.id request.user.id %}
+<div id="download">
+  <h2>{% blocktrans %}Download Signatures{% endblocktrans %}</h2>
+  {% if supporters|length %}
+  {% url challenges_pdf challenge.id as download_url %}
+  {% blocktrans with supporters|length as num_signatures %}
+  You have collected {{ num_signatures }} signatures.
+  <a class="button" href="{{ download_url }}">
+    Download PDF
+  </a>
+  {% endblocktrans %}
+  {% else %}
+  {% blocktrans %}
+  You have not yet collected any signatures.
+  {% endblocktrans %}
+  {% endif %}
+</div>
+{% endifequal %}
 
 {% endblock %}
 {% block sidebar %}
