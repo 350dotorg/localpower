@@ -72,3 +72,17 @@ def edit(request, challenge_id=None):
         return forbidden(request, _('You do not have permissions to edit %(challenge)s'
                                     ) % {'challenge': challenge})
     return _edit(request, challenge)
+
+@login_required
+def pdf_download(request, challenge_id=None):
+    challenge = get_object_or_404(Challenge, id=challenge_id)
+    if request.user != challenge.creator:
+        return forbidden(request, _('You do not have permissions to download %(challenge)s'
+                                    ) % {'challenge': challenge})
+    supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
+    if not len(supporters):
+        messages.error(request, _("No one has signed this petition yet."))
+        return redirect("challenges_detail", challenge_id=challenge_id)
+
+    from challenges.pdf import _download
+    return _download(request, challenge, supporters)
