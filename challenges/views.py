@@ -13,8 +13,20 @@ from forms import ChallengeForm, PetitionForm
 
 def _edit(request, challenge):
     nav_selected = "challenges"
-    form = ChallengeForm(request.user, instance=challenge, data=(request.POST or None),
-                         initial={'groups': request.GET.getlist("groups")})
+    title = challenge.title or ''
+    title = title.split(":")
+    if len(title) == 1:
+        target = ''
+        demand = title[0].strip()
+    else:
+        target = title[0].strip()
+        demand = title[1].strip()
+
+    form = ChallengeForm(request.user, instance=challenge, 
+                         data=(request.POST or None),
+                         initial={'groups': request.GET.getlist("groups"),
+                                  "target": target,
+                                  "demand": demand})
     if form.is_valid():
         form.save()
         return redirect(challenge)
@@ -50,7 +62,7 @@ def detail(request, challenge_id):
         form.save()
         messages.success(request, _('Thanks for your support'))
         return redirect('challenges_detail', challenge_id=challenge_id)
-    supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")[:12]
+    supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
     return render_to_response('challenges/detail.html', locals(), context_instance=RequestContext(request))
 
 @login_required
