@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.http import HttpResponse
+from django.template.defaultfilters import slugify, date
 from reportlab.lib import colors
 from reportlab.lib import pagesizes
 from reportlab.lib.styles import getSampleStyleSheet
@@ -78,17 +80,20 @@ def _download(request, challenge, supporters):
     for sig in supporters:
         contributor = sig.contributor
         para = Paragraph(
-            u"%s<b>%s</b><br/>%s" % (
+            u"%s<b>%s</b><br/>%s &mdash; %s" % (
                 entry_prefix,
                 contributor.name, 
-                contributor.geom or ''),
+                contributor.geom or '',
+                date(sig.pledged_at)),
             styles['Heading1'])
         data.append(para)
 
     fd, filename = tempfile.mkstemp(suffix=".pdf")
     doc = DocTemplate(filename, pagesize=pagesizes.letter)
-    #doc.pageheader = header
-    #doc.pagefooter = footer
+
+    doc.pagefooter = "%s%s - a 350.org project" % (
+        settings.SITE_DOMAIN, challenge.get_absolute_url())
+
     doc.build(data, canvasmaker=canvas.Canvas)
 
     with open(filename) as fp:
@@ -99,7 +104,6 @@ def _download(request, challenge, supporters):
     os.unlink(filename)
     del(fd)
 
-    from django.template.defaultfilters import slugify
     resp['Content-Disposition'] = "attachment; filename=%s.pdf" % (
         slugify(challenge.title))
     return resp
