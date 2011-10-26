@@ -34,7 +34,7 @@ class GoogleGeoField(forms.CharField):
 
     def clean(self, value):
         value = super(GoogleGeoField, self).clean(value)
-        if value:
+        if value and value.strip():
             value = value.encode("utf8")
             url = '%s&address=%s' % (GOOGLE_GEOCODE_URL, quote(value))
             data = GoogleGeoField._google_geocode(url)
