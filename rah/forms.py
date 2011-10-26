@@ -149,6 +149,8 @@ class ProfileEditForm(forms.ModelForm):
         if self.cleaned_data["geom"]:
             point = self.cleaned_data["geom"]
             self.instance.geom = point
+        elif self.data.get("geom") is not None and self.data.get("geom", "").strip() == "":
+            self.instance.geom = None
         return super(ProfileEditForm, self).save(*args, **kwargs)
 
 class AccountForm(forms.ModelForm):
