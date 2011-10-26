@@ -146,7 +146,7 @@ class ProfileEditForm(forms.ModelForm):
             self.fields["geom"].initial = self.instance.geom.raw_address
 
     def save(self, *args, **kwargs):
-        if self.cleaned_data["geom"]:
+        if self.cleaned_data.get("geom") and self.cleaned_data["geom"].strip():
             point = self.cleaned_data["geom"]
             self.instance.geom = point
         elif self.data.get("geom") is not None and self.data.get("geom", "").strip() == "":
