@@ -52,7 +52,8 @@ class RegistrationForm(forms.ModelForm):
 class RegistrationProfileForm(forms.Form):
     geom = GoogleLocationField(
         label=_("Location"),
-        help_text=_("(Optional) Be as specific as you're comfortable sharing"))
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"),
+        required=False)
 
     def clean(self):
         data = self.cleaned_data.get("geom")
@@ -126,7 +127,8 @@ class ProfileEditForm(forms.ModelForm):
     about = forms.CharField(max_length=255, required=False, label=_("About you"), widget=forms.Textarea)
     geom = GoogleLocationField(
         label=_("Location"),
-        help_text=_("(Optional) Be as specific as you're comfortable sharing"))
+        help_text=_("(Optional) Be as specific as you're comfortable sharing"),
+        required=False)
     is_profile_private = forms.BooleanField(label=_("Make Profile Private"), required=False)
 
     class Meta:
