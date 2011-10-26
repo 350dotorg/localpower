@@ -44,7 +44,7 @@ class GoogleGeoField(forms.CharField):
             result = GoogleGeoField._google_geocode(url, data)
             result['user_input'] = value
             return result
-        return value
+        return value if (value and value.strip()) else None
 
 class GoogleLocationField(GoogleGeoField):
     def __init__(self, *args, **kwargs):
