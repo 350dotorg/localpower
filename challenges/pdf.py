@@ -11,6 +11,10 @@ from reportlab.platypus import Table, TableStyle, Paragraph
 from reportlab.platypus import Frame, PageTemplate
 import tempfile
 import random
+import ho.pisa as pisa
+import pyPdf
+import markdown
+import os
 
 class FancyFrame(Frame):
 
@@ -97,11 +101,58 @@ def _download(request, challenge, supporters):
 
     doc.build(data, canvasmaker=canvas.Canvas)
 
+    cover_letter = u"""
+# %s
+
+%s
+
+&mdash;%s""" % (challenge.title, challenge.description, challenge.creator.get_full_name())
+    groups = list(challenge.groups.all())
+    if groups:
+        group_string = u""
+        last_group = groups[-1]
+        for group in groups[:-1]:
+            group_string = u"%s, %s" % (group_string, unicode(group))
+        group_string += u" and %s" % unicode(last_group)
+        cover_letter += group_string
+    _default_css = open(settings.PDF_PISA_CSS)
+    DEFAULT_CSS = _default_css.read()
+    _default_css.close()
+    del(_default_css)
+    cover_letter = markdown.markdown(cover_letter)
+    cover_letter = ("""<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />"""
+                    """</head><body>%s</body></html>""" % (cover_letter.encode("utf8")))
+    fd, cover_letter_filename = tempfile.mkstemp(suffix=".pdf")
+    cover_letter_file = open(cover_letter_filename, 'wb')
+    pisa.CreatePDF(cover_letter, cover_letter_file, default_css=DEFAULT_CSS)
+    cover_letter_file.close()
+
+    cover_letter_file = open(cover_letter_filename)
+    cover_letter = pyPdf.PdfFileReader(cover_letter_file)
+    content_file = open(filename)
+    content = pyPdf.PdfFileReader(content_file)
+    result = pyPdf.PdfFileWriter()
+    for page in cover_letter.pages:
+        result.addPage(page)
+    for page in content.pages:
+        result.addPage(page)
+
+    # Write the combined PDF to a new tempfile
+    fd, result_filename = tempfile.mkstemp(suffix=".pdf")
+    fp = open(result_filename, 'wb')
+    result.write(fp)
+
+    # Clean up after ourselves
+    cover_letter_file.close()
+    content_file.close()
+    fp.close()
+    os.unlink(cover_letter_filename)
+    os.unlink(filename)
+    filename = result_filename
+
     with open(filename) as fp:
         content = fp.read()
         resp = HttpResponse(content, content_type="application/pdf")
-
-    import os
     os.unlink(filename)
     del(fd)
 
