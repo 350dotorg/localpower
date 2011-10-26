@@ -151,7 +151,6 @@
 		    <img src="{{ project.image_paths.small }}" width="40" height="40"/>
 		    <div style="width: 70%">
 		      <a href="{{ project.get_absolute_url }}">{{ project }}</a><br/>
-		      {% blocktrans with project.points|intcomma as total_points %}{{total_points}} points{% endblocktrans %}
 		    </div>
 		  </li>
 		  {% endfor %}
@@ -192,10 +191,6 @@
 		    {% else %}
                     {% blocktrans with group.member_count|intcomma as num_members %}
 		    {{num_members}} members 
-		    {% endblocktrans %}
-		    <span>|</span>
-		    {% blocktrans with group.total_points|intcomma as num_points %}
-		    {{num_points}} points
 		    {% endblocktrans %}
 		    {% endif %}
                 </div>

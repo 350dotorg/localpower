@@ -108,7 +108,6 @@
                     <th class="header">{% blocktrans %}Members{% endblocktrans %}</th>
                     <th class="header">{% blocktrans %}Committed Actions{% endblocktrans %}</th>
                     <th class="header">{% blocktrans %}Actions Completed{% endblocktrans %}</th>
-                    <th class="header">{% blocktrans %}Points Earned{% endblocktrans %}</th>
                     <th class="header">{% blocktrans %}Last Active{% endblocktrans %}</th>
                 </tr>
             </thead>
@@ -118,7 +117,6 @@
                         <td>{% safe_user_link user %}</td>
                         <td>{{ user.actions_committed|default_if_none:0 }}</td>
                         <td>{{ user.actions_completed|default_if_none:0 }}</td>
-                        <td>{{ user.total_points}}</td>
                         <td>{{ user.last_active|date }}</td>
                     </tr>
                 {% endfor %}
@@ -126,8 +124,7 @@
         </table>
 
         <p>
-	  {% blocktrans with group.total_points as total_points and group.total_members as num_members %}
-            Community points: {{ total_points }}<br />
+	  {% blocktrans with group.total_members as num_members %}
             Total members: {{ num_members }}<br />
 	  {% endblocktrans %}
         </p>

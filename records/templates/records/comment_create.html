@@ -4,5 +4,5 @@
     <a href="{% url action_detail content_object.action.slug %}">{{ content_object.name }}</a> 
 {% endblock %}
 {% block activity_date %}
-    on {{ record.created|date }}{% if record.points %} (+{{ record.points }} points){% endif %}
+    on {{ record.created|date }}
 {% endblock %}

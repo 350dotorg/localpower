@@ -68,9 +68,12 @@ Solo Actions
 	    COMMITTED: {{commitment_date}}
 	    {% endblocktrans %}
         {% else %}
+	    &nbsp;
+	    {% comment %}
 	    {% blocktrans with action.points|intcomma as action_points %}
             {{ action_points }} Points
 	    {% endblocktrans %}
+	    {% endcomment %}
         {% endif %}
     {% endif %}
     </div>
