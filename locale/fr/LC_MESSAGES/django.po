@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-16 22:22-0400\n"
+"POT-Creation-Date: 2011-10-25 23:29-0400\n"
 "PO-Revision-Date: 2011-08-14 13:56+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,70 +53,80 @@ msgstr ""
 msgid "Video game Systems"
 msgstr ""
 
-#: actions/forms.py:21
+#: actions/forms.py:22 actions/forms.py:48
 msgid "Commit date"
 msgstr ""
 
-#: actions/models.py:76 actions/models.py:219 actions/models.py:248
+#: actions/forms.py:93
+msgid "The specific group does not exist."
+msgstr ""
+
+#: actions/forms.py:95
+msgid "You must be a member of the group."
+msgstr ""
+
+#: actions/models.py:77 actions/models.py:291 actions/models.py:329
+#: actions/models.py:359
 msgid "action"
 msgstr ""
 
-#: actions/models.py:77
+#: actions/models.py:78
 msgid "actions"
 msgstr ""
 
-#: actions/models.py:79 groups/models.py:112 rateable/models.py:37
+#: actions/models.py:80 groups/models.py:60 rateable/models.py:37
 msgid "name"
 msgstr ""
 
-#: actions/models.py:80 basic/blog/models.py:17 basic/blog/models.py:40
-#: groups/models.py:113
+#: actions/models.py:81 basic/blog/models.py:17 basic/blog/models.py:40
+#: groups/models.py:61
 msgid "slug"
 msgstr ""
 
-#: actions/models.py:81
+#: actions/models.py:82
 msgid "teaser"
 msgstr ""
 
-#: actions/models.py:82
+#: actions/models.py:83
 msgid "content"
 msgstr ""
 
-#: actions/models.py:83
+#: actions/models.py:84
 msgid "points"
 msgstr ""
 
-#: actions/models.py:84
+#: actions/models.py:85
 msgid "users completed"
 msgstr ""
 
-#: actions/models.py:85
+#: actions/models.py:86
 msgid "users committed"
 msgstr ""
 
-#: actions/models.py:87 groups/models.py:135
+#: actions/models.py:88 groups/models.py:79
 msgid "users"
 msgstr ""
 
-#: actions/models.py:88 actions/models.py:222 actions/models.py:251
-#: actions/models.py:273 basic/blog/models.py:47 challenges/models.py:32
-#: events/models.py:60 events/models.py:306 groups/models.py:142
-#: groups/models.py:314 groups/models.py:329 groups/models.py:347
-#: groups/models.py:367 groups/models.py:427 rah/models.py:27
-#: rah/models.py:234
+#: actions/models.py:89 actions/models.py:294 actions/models.py:332
+#: actions/models.py:362 actions/models.py:384 basic/blog/models.py:47
+#: challenges/models.py:32 events/models.py:54 events/models.py:309
+#: groups/models.py:86 groups/models.py:264 groups/models.py:279
+#: groups/models.py:297 groups/models.py:317 groups/models.py:377
+#: rah/models.py:27 rah/models.py:238
 msgid "created"
 msgstr ""
 
-#: actions/models.py:89 actions/models.py:223 actions/models.py:252
-#: actions/models.py:274 challenges/models.py:33 events/models.py:61
-#: events/models.py:307 groups/models.py:143 groups/models.py:315
-#: groups/models.py:368 groups/models.py:428 rah/models.py:28
-#: rah/models.py:235
+#: actions/models.py:90 actions/models.py:295 actions/models.py:333
+#: actions/models.py:363 actions/models.py:385 challenges/models.py:33
+#: events/models.py:55 events/models.py:310 groups/models.py:87
+#: groups/models.py:265 groups/models.py:318 groups/models.py:378
+#: rah/models.py:28 rah/models.py:239
 msgid "updated"
 msgstr ""
 
-#: actions/models.py:95 actions/templates/actions/action_detail.html:49
-#: actions/templates/actions/action_detail.html:75 events/models.py:48
+#: actions/models.py:95 actions/templates/actions/action_detail.html:52
+#: actions/templates/actions/action_detail.html:80 events/models.py:42
+#: group_links/templates/group_links/form.html:7
 #: groups/templates/groups/_search_listing.html:4
 #: groups/templates/groups/_search_listing.html:7
 #: groups/templates/groups/group_disc_create.html:6
@@ -125,94 +135,161 @@ msgstr ""
 #: groups/templates/groups/group_edit.html:7
 #: groups/templates/groups/group_external_link_only_edit.html:7
 #: groups/templates/groups/group_list.html:4
-#: groups/templates/groups/group_list.html:6 templates/base/nav.html:47
-#: templates/rah/profile.html:28 templates/rah/profile.html.py:38
+#: groups/templates/groups/group_list.html:6 templates/base/nav.html:48
+#: templates/rah/profile.html:30 templates/rah/profile.html.py:39
 msgid "Communities"
 msgstr ""
 
-#: actions/models.py:218 actions/models.py:270 groups/models.py:311
-#: groups/models.py:327 groups/models.py:345 groups/models.py:365
-#: rah/models.py:23 rah/models.py:138 rah/models.py:233
+#: actions/models.py:290 actions/models.py:381 groups/models.py:261
+#: groups/models.py:277 groups/models.py:295 groups/models.py:315
+#: rah/models.py:23 rah/models.py:138 rah/models.py:237
 msgid "user"
 msgstr ""
 
-#: actions/models.py:220
+#: actions/models.py:292 actions/models.py:330
 msgid "is completed"
 msgstr ""
 
-#: actions/models.py:221
+#: actions/models.py:293 actions/models.py:331
 msgid "date completed"
 msgstr ""
 
-#: actions/models.py:228 actions/models.py:229
+#: actions/models.py:300 actions/models.py:301
 msgid "user action progress"
 msgstr ""
 
-#: actions/models.py:239
+#: actions/models.py:311
 #, python-format
 msgid "%(user)s is working on %(action)s"
 msgstr ""
 
-#: actions/models.py:249
+#: actions/models.py:328 group_links/models.py:11 groups/models.py:262
+#: groups/models.py:278 groups/models.py:296 groups/models.py:316
+#: groups/models.py:375
+msgid "group"
+msgstr ""
+
+#: actions/models.py:338 actions/models.py:339
+msgid "group action progress"
+msgstr ""
+
+#: actions/models.py:350
+#, python-format
+msgid "%(group)s is working on %(action)s"
+msgstr ""
+
+#: actions/models.py:360
 msgid "form name"
 msgstr ""
 
-#: actions/models.py:250
+#: actions/models.py:361
 msgid "var name"
 msgstr ""
 
-#: actions/models.py:256 actions/models.py:269
+#: actions/models.py:367 actions/models.py:380
 msgid "action form"
 msgstr ""
 
-#: actions/models.py:257
+#: actions/models.py:368
 msgid "action forms"
 msgstr ""
 
-#: actions/models.py:260
+#: actions/models.py:371
 #, python-format
 msgid "%(action)s is using form %(form_name)s"
 msgstr ""
 
-#: actions/models.py:271
+#: actions/models.py:382
 msgid "data"
 msgstr ""
 
-#: actions/models.py:282
+#: actions/models.py:393
 #, python-format
 msgid "%(user)s is working on %(action_form)s"
 msgstr ""
 
-#: actions/models.py:299
+#: actions/models.py:410
 #, python-format
 msgid ""
 "%(num_actions)s actions were applied to your account from a commitment card"
 msgstr ""
 
-#: actions/views.py:51
+#: actions/views.py:80
 msgid "Thanks for taking on this project with your group."
 msgstr ""
 
-#: actions/views.py:68
+#: actions/views.py:107
 msgid ""
 "Nice work! We've updated your profile, so all your friends can see your "
-"progress (<a href='#' class='undo_trigger'>Undo</a>)"
+"progress "
 msgstr ""
 
-#: actions/views.py:82
+#: actions/views.py:130
 msgid ""
 "No worries. We've updated the record. Let us know when you're finished with "
 "this action."
 msgstr ""
 
-#: actions/views.py:102
+#: actions/views.py:153
 msgid "Thanks for making a commitment."
 msgstr ""
 
-#: actions/views.py:116
+#: actions/views.py:178
 msgid ""
 "We cancelled your commitment. If you're having trouble completing an action,"
 " try asking a question. Other members will be happy to help!"
+msgstr ""
+
+#: actions/templates/actions/_action_detail_progress.html:5
+#: actions/templates/actions/_action_detail_your_commitment.html:5
+#: actions/templates/actions/action_detail.html:143
+#: actions/templates/actions/action_detail_progress.html:5
+msgid "Your Commitment"
+msgstr ""
+
+#: actions/templates/actions/_action_detail_progress.html:9
+#: actions/templates/actions/_action_detail_your_commitment.html:9
+#: actions/templates/actions/action_detail.html:147
+#: actions/templates/actions/action_detail_progress.html:9
+#, python-format
+msgid ""
+"\n"
+"\t  You committed to complete this action by %(commitment_date)s. \n"
+"\t  "
+msgstr ""
+
+#: actions/templates/actions/_action_detail_progress.html:13
+#: actions/templates/actions/_action_detail_your_commitment.html:13
+#: actions/templates/actions/_action_form.html:38
+#: actions/templates/actions/action_detail.html:151
+#: actions/templates/actions/action_detail_progress.html:13
+msgid "change date"
+msgstr ""
+
+#: actions/templates/actions/_action_detail_progress.html:14
+#: actions/templates/actions/_action_detail_your_commitment.html:14
+#: actions/templates/actions/action_detail.html:152
+#: actions/templates/actions/action_detail_progress.html:14
+#: groups/templates/groups/group_detail.html:297
+#: groups/templates/groups/group_detail.html:320
+#: groups/templates/groups/group_detail.html:344
+#: groups/templates/groups/group_detail.html:378
+#: groups/templates/groups/group_edit.html:62
+msgid "or"
+msgstr ""
+
+#: actions/templates/actions/_action_detail_progress.html:16
+#: actions/templates/actions/_action_detail_your_commitment.html:16
+#: actions/templates/actions/_action_form.html:41
+#: actions/templates/actions/action_detail.html:154
+#: actions/templates/actions/action_detail_progress.html:16
+#: events/templates/events/_guests_add.html:6
+#: events/templates/events/_guests_invite.html:6
+#: events/templates/events/_hosts.html:8 events/templates/events/edit.html:17
+#: events/templates/events/message.html:24
+#: events/templates/events/rsvp_confirm.html:17
+#: group_links/templates/group_links/_form.html:12
+msgid "cancel"
 msgstr ""
 
 #: actions/templates/actions/_action_form.html:13
@@ -241,36 +318,47 @@ msgid ""
 "\t\t  "
 msgstr ""
 
-#: actions/templates/actions/_action_form.html:38
-#: actions/templates/actions/action_detail.html:120
-msgid "change date"
-msgstr ""
-
-#: actions/templates/actions/_action_form.html:41
-#: actions/templates/actions/action_detail.html:123
-#: events/templates/events/_guests_add.html:6
-#: events/templates/events/_guests_invite.html:6
-#: events/templates/events/_hosts.html:8 events/templates/events/edit.html:17
-#: events/templates/events/message.html:24
-#: events/templates/events/rsvp_confirm.html:17
-msgid "cancel"
-msgstr ""
-
-#: actions/templates/actions/_action_form.html:51
+#: actions/templates/actions/_action_form.html:55
 msgid ""
 "Claim your points if you’re already doing, or just completed, this action"
 msgstr ""
 
-#: actions/templates/actions/_action_form.html:57
+#: actions/templates/actions/_action_form.html:62
 msgid "You've done this action!"
 msgstr ""
 
-#: actions/templates/actions/_action_form.html:58
+#: actions/templates/actions/_action_form.html:63
 msgid "Find more actions"
 msgstr ""
 
-#: actions/templates/actions/_action_form.html:60
+#: actions/templates/actions/_action_form.html:65
 msgid "If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</a>."
+msgstr ""
+
+#: actions/templates/actions/_group_action_form.html:4
+msgid ""
+"\n"
+"    Take on this project\n"
+"    "
+msgstr ""
+
+#: actions/templates/actions/_group_action_form.html:13
+#, python-format
+msgid ""
+"\n"
+"  You're not yet a member of any groups.  \n"
+"  You can  <a href=\"%(group_list_url)s\">look for\n"
+"    a group near you</a> to join, or\n"
+"  <a href=\"%(group_create_url)s\"> start your own \n"
+"    group</a> to take on this project.\n"
+"  "
+msgstr ""
+
+#: actions/templates/actions/_group_action_form.html:23
+msgid ""
+"\n"
+"  Select a group:\n"
+"  "
 msgstr ""
 
 #: actions/templates/actions/action_cancel.html:6
@@ -286,6 +374,7 @@ msgstr ""
 #: events/templates/events/guests_add.html:6
 #: events/templates/events/guests_invite.html:5
 #: events/templates/events/hosts.html:5 events/templates/events/message.html:6
+#: group_links/templates/group_links/form.html:6
 #: groups/templates/groups/_search_listing.html:6
 #: groups/templates/groups/group_create.html:6
 #: groups/templates/groups/group_disc_create.html:5
@@ -299,11 +388,9 @@ msgid "Home"
 msgstr ""
 
 #: actions/templates/actions/action_detail.html:19
-#: actions/templates/actions/action_show.html:5
-#: actions/templates/actions/action_show.html:7
-#: groups/templates/groups/group_detail.html:38
-#: groups/templates/groups/group_detail.html:299 templates/base/nav.html:43
-#: templates/rah/profile.html:27
+#: groups/templates/groups/group_detail.html:90
+#: groups/templates/groups/group_detail.html:411 templates/rah/profile.html:29
+#: templates/rah/profile.html.py:84
 msgid "Actions"
 msgstr ""
 
@@ -312,30 +399,29 @@ msgstr ""
 msgid "%(SITE_NAME)s Action"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:31
-#: templates/rah/profile.html:54
+#: actions/templates/actions/action_detail.html:32
+#: templates/rah/profile.html:57
 msgid "Points"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:35
+#: actions/templates/actions/action_detail.html:36
 msgid "Badge"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:47
+#: actions/templates/actions/action_detail.html:49
 #: challenges/templates/challenges/detail.html:13
-#: events/templates/events/detail.html:24
-#: groups/templates/groups/group_detail.html:33 templates/rah/profile.html:26
+#: events/templates/events/detail.html:24 templates/rah/profile.html:28
 msgid "Overview"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:48
-#: actions/templates/actions/action_detail.html:67
+#: actions/templates/actions/action_detail.html:50
+#: actions/templates/actions/action_detail.html:71
 #: challenges/templates/challenges/detail.html:15
-#: challenges/templates/challenges/detail.html:67
+#: challenges/templates/challenges/detail.html:59
 #: events/templates/events/detail.html:31
-#: events/templates/events/detail.html:85 groups/models.py:377
-#: groups/templates/groups/group_detail.html:34
-#: groups/templates/groups/group_detail.html:120
+#: events/templates/events/detail.html:85 groups/models.py:327
+#: groups/templates/groups/group_detail.html:86
+#: groups/templates/groups/group_detail.html:168
 #: groups/templates/groups/group_disc_detail.html:8
 #: groups/templates/groups/group_disc_list.html:8
 #: groups/templates/groups/group_disc_list.html:14
@@ -343,18 +429,18 @@ msgstr ""
 msgid "Discussions"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:56
+#: actions/templates/actions/action_detail.html:60
 msgid "When do you think you'll complete this action?"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:66
-#: challenges/templates/challenges/detail.html:65
+#: actions/templates/actions/action_detail.html:70
+#: challenges/templates/challenges/detail.html:57
 #: events/templates/events/detail.html:84
-#: groups/templates/groups/group_detail.html:144
+#: groups/templates/groups/group_detail.html:191
 msgid "Feed"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:84
+#: actions/templates/actions/action_detail.html:90
 #, python-format
 msgid ""
 "\n"
@@ -364,33 +450,18 @@ msgid ""
 "\t"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:96
-#: events/templates/events/_guests_add.html:6 templates/admin/index.html:29
+#: actions/templates/actions/action_detail.html:102
+#: events/templates/events/_guests_add.html:6
+#: group_links/templates/group_links/_form.html:12
+#: templates/admin/index.html:29
 msgid "Add"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:112
-msgid "Your Commitment"
-msgstr ""
-
-#: actions/templates/actions/action_detail.html:116
-#, python-format
-msgid ""
-"\n"
-"\t  You committed to complete this action by %(commitment_date)s. \n"
-"\t  "
-msgstr ""
-
 #: actions/templates/actions/action_detail.html:121
-#: groups/templates/groups/group_detail.html:214
-#: groups/templates/groups/group_detail.html:237
-#: groups/templates/groups/group_detail.html:261
-#: groups/templates/groups/group_detail.html:284
-#: groups/templates/groups/group_edit.html:62
-msgid "or"
+msgid "Your Group Commitments"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:129
+#: actions/templates/actions/action_detail.html:161
 #, python-format
 msgid ""
 "\n"
@@ -398,15 +469,29 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:148
+#: actions/templates/actions/action_detail.html:181
 msgid "Image Gallery"
 msgstr ""
 
-#: actions/templates/actions/action_detail.html:153
+#: actions/templates/actions/action_detail.html:186
 msgid "Links and Downloads"
 msgstr ""
 
-#: actions/templates/actions/action_show.html:9
+#: actions/templates/actions/action_show.html:8
+#: actions/templates/actions/action_show.html:22
+msgid ""
+"\n"
+"Group Projects\n"
+msgstr ""
+
+#: actions/templates/actions/action_show.html:12
+#: actions/templates/actions/action_show.html:26
+msgid ""
+"\n"
+"Solo Actions\n"
+msgstr ""
+
+#: actions/templates/actions/action_show.html:35
 msgid ""
 "\n"
 "    The actions you’ll find here will cut energy waste, lower your monthly bills\n"
@@ -414,7 +499,15 @@ msgid ""
 "  "
 msgstr ""
 
-#: actions/templates/actions/action_show.html:15
+#: actions/templates/actions/action_show.html:42
+msgid ""
+"\n"
+"    The solo actions you’ll find here will cut energy waste, lower your monthly bills\n"
+"    and put your home on the leading edge of the energy efficiency revolution.\n"
+"  "
+msgstr ""
+
+#: actions/templates/actions/action_show.html:50
 #, python-format
 msgid ""
 "\n"
@@ -427,13 +520,13 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: actions/templates/actions/action_show.html:28
+#: actions/templates/actions/action_show.html:63
 #: challenges/templates/challenges/list.html:30
-#: groups/templates/groups/group_detail.html:170
+#: groups/templates/groups/group_detail.html:251
 msgid "COMPLETED"
 msgstr ""
 
-#: actions/templates/actions/action_show.html:32
+#: actions/templates/actions/action_show.html:67
 #, python-format
 msgid ""
 "\n"
@@ -441,7 +534,7 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: actions/templates/actions/action_show.html:36
+#: actions/templates/actions/action_show.html:73
 #, python-format
 msgid ""
 "\n"
@@ -449,20 +542,32 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: actions/templates/actions/action_show.html:47
+#: actions/templates/actions/action_show.html:85
 #, python-format
 msgid "Image for %(action_name)s"
 msgstr ""
 
-#: actions/templatetags/actions.py:14
+#: actions/templatetags/actions.py:21
+msgid "My group already did this!"
+msgstr ""
+
+#: actions/templatetags/actions.py:22
+msgid "My group will do this"
+msgstr ""
+
+#: actions/templatetags/actions.py:23
+msgid "Wait - my group is still working on this action."
+msgstr ""
+
+#: actions/templatetags/actions.py:25
 msgid "I did this!"
 msgstr ""
 
-#: actions/templatetags/actions.py:15
+#: actions/templatetags/actions.py:26
 msgid "Make a commitment"
 msgstr ""
 
-#: actions/templatetags/actions.py:16
+#: actions/templatetags/actions.py:27
 msgid "Wait - I'm still working on this action."
 msgstr ""
 
@@ -487,7 +592,7 @@ msgstr ""
 msgid "Public"
 msgstr ""
 
-#: basic/blog/models.py:42 groups/models.py:364
+#: basic/blog/models.py:42 groups/models.py:314
 msgid "body"
 msgstr ""
 
@@ -667,8 +772,20 @@ msgstr ""
 msgid "View posts tagged"
 msgstr ""
 
-#: challenges/forms.py:12
-msgid "How many petitions do you want to collect?"
+#: challenges/forms.py:13
+msgid "How many signatures do you want to collect?"
+msgstr ""
+
+#: challenges/forms.py:15
+msgid "Who do you want to petition?"
+msgstr ""
+
+#: challenges/forms.py:17
+msgid "What do you want them to do?"
+msgstr ""
+
+#: challenges/forms.py:20
+msgid "Why is this important?"
 msgstr ""
 
 #: challenges/models.py:20 challenges/models.py:58
@@ -679,7 +796,7 @@ msgstr ""
 msgid "challenges"
 msgstr ""
 
-#: challenges/models.py:24 groups/models.py:114
+#: challenges/models.py:24 groups/models.py:62
 msgid "description"
 msgstr ""
 
@@ -701,11 +818,11 @@ msgstr ""
 msgid "supporters"
 msgstr ""
 
-#: challenges/models.py:37 groups/models.py:153
+#: challenges/models.py:37 groups/models.py:97
 msgid "communities"
 msgstr ""
 
-#: challenges/models.py:59 events/models.py:298
+#: challenges/models.py:59 events/models.py:301
 msgid "contributor"
 msgstr ""
 
@@ -725,13 +842,22 @@ msgstr ""
 msgid "supports"
 msgstr ""
 
-#: challenges/views.py:49
+#: challenges/views.py:63
 msgid "Thanks for your support"
 msgstr ""
 
-#: challenges/views.py:58
+#: challenges/views.py:72
 #, python-format
 msgid "You do not have permissions to edit %(challenge)s"
+msgstr ""
+
+#: challenges/views.py:80
+#, python-format
+msgid "You do not have permissions to download %(challenge)s"
+msgstr ""
+
+#: challenges/views.py:84
+msgid "No one has signed this petition yet."
 msgstr ""
 
 #: challenges/templates/challenges/_progress_bar.html:4
@@ -750,15 +876,15 @@ msgstr ""
 #: challenges/templates/challenges/edit.html:13
 #: challenges/templates/challenges/list.html:4
 #: challenges/templates/challenges/list.html:6
-#: groups/templates/groups/group_detail.html:37
-#: groups/templates/groups/group_detail.html:163 templates/base/nav.html:51
-#: templates/rah/profile.html:29
+#: groups/templates/groups/group_detail.html:89
+#: groups/templates/groups/group_detail.html:227 templates/base/nav.html:56
+#: templates/rah/profile.html:31
 msgid "Challenges"
 msgstr ""
 
 #: challenges/templates/challenges/detail.html:10
 #: challenges/templates/challenges/list.html:32
-#: groups/templates/groups/group_detail.html:172
+#: groups/templates/groups/group_detail.html:253
 msgid "Petition Challenge"
 msgstr ""
 
@@ -766,31 +892,49 @@ msgstr ""
 msgid "Supporters"
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:18
+#: challenges/templates/challenges/detail.html:17
+msgid "Download"
+msgstr ""
+
+#: challenges/templates/challenges/detail.html:19
 msgid "Edit this Challenge"
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:34
+#: challenges/templates/challenges/detail.html:35
 msgid "Sign the Petition"
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:42
+#: challenges/templates/challenges/detail.html:43
 msgid "Latest Supporters"
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:51
+#: challenges/templates/challenges/detail.html:69
+msgid "Download Signatures"
+msgstr ""
+
+#: challenges/templates/challenges/detail.html:72
 #, python-format
 msgid ""
 "\n"
-"\t      View all %(number_of_supporters)s supporters\n"
-"\t      "
+"  You have collected %(num_signatures)s signatures.\n"
+"  <a class=\"button\" href=\"%(download_url)s\">\n"
+"    Download PDF\n"
+"  </a>\n"
+"  "
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:78
+#: challenges/templates/challenges/detail.html:79
+msgid ""
+"\n"
+"  You have not yet collected any signatures.\n"
+"  "
+msgstr ""
+
+#: challenges/templates/challenges/detail.html:89
 msgid "Share"
 msgstr ""
 
-#: challenges/templates/challenges/detail.html:85
+#: challenges/templates/challenges/detail.html:96
 msgid "Petitions signed"
 msgstr ""
 
@@ -863,6 +1007,17 @@ msgid ""
 "\n"
 "\t    Goal: %(challenge_goal)s supporters\n"
 "\t    "
+msgstr ""
+
+#: commitments/forms.py:13 events/forms.py:118 events/forms.py:218
+#: events/forms.py:332 groups/forms.py:32 rah/admin.py:27 rah/forms.py:54
+#: rah/forms.py:128
+msgid "Location"
+msgstr ""
+
+#: commitments/forms.py:14 events/forms.py:333 rah/forms.py:55
+#: rah/forms.py:129
+msgid "(Optional) Be as specific as you're comfortable sharing"
 msgstr ""
 
 #: commitments/templates/commitments/show.html:4
@@ -975,11 +1130,11 @@ msgid ""
 "\t  "
 msgstr ""
 
-#: events/admin.py:33 events/templates/events/_details.html:9
+#: events/admin.py:29 events/templates/events/_details.html:9
 msgid "When"
 msgstr ""
 
-#: events/admin.py:49 events/forms.py:278 events/templates/events/hosts.html:8
+#: events/admin.py:45 events/forms.py:248 events/templates/events/hosts.html:8
 msgid "Hosts"
 msgstr ""
 
@@ -1007,116 +1162,111 @@ msgstr ""
 msgid "Has Happened"
 msgstr ""
 
-#: events/forms.py:91
-msgid "We couldn't locate this address on our map."
+#: events/forms.py:45
+msgid "Street address"
 msgstr ""
 
-#: events/forms.py:103 invite/forms.py:18
+#: events/forms.py:46
+msgid "Include the city, state and country"
+msgstr ""
+
+#: events/forms.py:85 invite/forms.py:18
 msgid "Email addresses"
 msgstr ""
 
-#: events/forms.py:105
+#: events/forms.py:87
 msgid "For multiple email addresses, seperate them with a comma"
 msgstr ""
 
-#: events/forms.py:107 invite/forms.py:22
+#: events/forms.py:89 invite/forms.py:22
 msgid "Personal note (optional)"
 msgstr ""
 
-#: events/forms.py:110
+#: events/forms.py:92
 msgid "Email me when people RSVP"
 msgstr ""
 
-#: events/forms.py:112
+#: events/forms.py:94
 msgid "Send me a copy of the invitation"
 msgstr ""
 
-#: events/forms.py:137
+#: events/forms.py:119 events/forms.py:219
+msgid "Where does this guest live?"
+msgstr ""
+
+#: events/forms.py:121
 msgid "Is this person planning on attending?"
 msgstr ""
 
-#: events/forms.py:159 events/forms.py:258
-#, python-format
-msgid "Invalid zipcode %(data)s"
-msgstr ""
-
-#: events/forms.py:193
+#: events/forms.py:170
 msgid "Send Announcement Email"
 msgstr ""
 
-#: events/forms.py:194
+#: events/forms.py:171
 msgid "Send Invitation Email"
 msgstr ""
 
-#: events/forms.py:195
+#: events/forms.py:172
 msgid "Send Reminder Email"
 msgstr ""
 
-#: events/forms.py:198
+#: events/forms.py:175
 msgid "Remove from guest list"
 msgstr ""
 
-#: events/forms.py:199
+#: events/forms.py:176
 msgid "Make a guest a host"
 msgstr ""
 
-#: events/forms.py:200
+#: events/forms.py:177
 msgid "Remove host privileges"
 msgstr ""
 
-#: events/forms.py:204
+#: events/forms.py:181
 msgid "- Select One -"
 msgstr ""
 
-#: events/forms.py:223
+#: events/forms.py:200
 msgid "All guests must have an email address"
 msgstr ""
 
-#: events/forms.py:229
+#: events/forms.py:206
 msgid "You must leave at least one host for the event"
 msgstr ""
 
-#: events/forms.py:249
+#: events/forms.py:228
 msgid "A Guest with this email address already exists."
 msgstr ""
 
-#: events/forms.py:307
+#: events/forms.py:277
 msgid "Invalid token"
 msgstr ""
 
-#: events/forms.py:362 rah/forms.py:30 rah/forms.py:71
+#: events/forms.py:335 rah/forms.py:31 rah/forms.py:69
 msgid "Password"
 msgstr ""
 
-#: events/forms.py:363
+#: events/forms.py:336
 msgid "Confirm Password"
 msgstr ""
 
-#: events/forms.py:373
+#: events/forms.py:346
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: events/forms.py:375
+#: events/forms.py:348
 msgid "Your password must contain at least 5 characters."
 msgstr ""
 
-#: events/forms.py:384 rah/forms.py:58 rah/forms.py:146
-msgid "Please enter a 5 digit zipcode"
-msgstr ""
-
-#: events/forms.py:388 rah/forms.py:62 rah/forms.py:150
-msgid "Zipcode is invalid"
-msgstr ""
-
-#: events/forms.py:413
+#: events/forms.py:373
 msgid "Personal Note"
 msgstr ""
 
-#: events/forms.py:414
+#: events/forms.py:374
 msgid "Enter a brief note that will be included in your email"
 msgstr ""
 
-#: events/forms.py:435
+#: events/forms.py:395
 #, python-format
 msgid "Unknown message type: %(type)s"
 msgstr ""
@@ -1129,122 +1279,98 @@ msgstr ""
 msgid "What do you want to call this shindig?"
 msgstr ""
 
-#: events/models.py:26
-msgid "Street address"
-msgstr ""
-
-#: events/models.py:27
-msgid "Include the city and state"
-msgstr ""
-
-#: events/models.py:29
-msgid "latitude"
-msgstr ""
-
-#: events/models.py:31 groups/models.py:119
-msgid "longitude"
-msgstr ""
-
-#: events/models.py:33 groups/models.py:118 rah/models.py:139
+#: events/models.py:27 groups/models.py:68 rah/models.py:141
 msgid "location"
 msgstr ""
 
-#: events/models.py:34
+#: events/models.py:29
 msgid "when"
 msgstr ""
 
-#: events/models.py:36
+#: events/models.py:31
 msgid "start time"
 msgstr ""
 
-#: events/models.py:37
+#: events/models.py:32
 msgid "duration"
 msgstr ""
 
-#: events/models.py:40
+#: events/models.py:35
 msgid "details"
 msgstr ""
 
-#: events/models.py:41
+#: events/models.py:36
 msgid ""
 "For example, where should people park, what's the nearest subway, do people "
 "need to be buzzed in, etc."
 msgstr ""
 
-#: events/models.py:50
+#: events/models.py:44
 msgid "is private"
 msgstr ""
 
-#: events/models.py:52
+#: events/models.py:46
 msgid ""
 "If your event is kept private, only individuals who receive an invite email "
 "will be able to RSVP."
 msgstr ""
 
-#: events/models.py:56
+#: events/models.py:50
 msgid "limit"
 msgstr ""
 
-#: events/models.py:57
+#: events/models.py:51
 msgid ""
 "Adding a limit sets a cap on the number of guests that can RSVP. If the "
 "limit is reached, potential guests will need to contact you first."
 msgstr ""
 
-#: events/models.py:65
-msgid "Can host any event type"
-msgstr ""
-
-#: events/models.py:66
-msgid "Can view host details for any event"
-msgstr ""
-
-#: events/models.py:292
+#: events/models.py:295
 msgid "Attending"
 msgstr ""
 
-#: events/models.py:293
+#: events/models.py:296
 msgid "Maybe Attending"
 msgstr ""
 
-#: events/models.py:294
+#: events/models.py:297
 msgid "Not Attending"
 msgstr ""
 
-#: events/models.py:296
+#: events/models.py:299
 msgid "Event"
 msgstr ""
 
-#: events/models.py:299
+#: events/models.py:302
 msgid "invited"
 msgstr ""
 
-#: events/models.py:300
+#: events/models.py:303
 msgid "added"
 msgstr ""
 
-#: events/models.py:301
+#: events/models.py:304
 msgid "rsvp status"
 msgstr ""
 
-#: events/models.py:303
+#: events/models.py:306
 msgid "comments"
 msgstr ""
 
-#: events/models.py:304
+#: events/models.py:307
 msgid "notify on rsvp"
 msgstr ""
 
-#: events/models.py:305
+#: events/models.py:308
 msgid "is host"
 msgstr ""
 
-#: events/models.py:322
+#: events/models.py:325
 #, python-format
 msgid "Invited %(date)s"
 msgstr ""
 
-#: events/models.py:324
+#: events/models.py:327
 #, python-format
 msgid "Added %(date)s"
 msgstr ""
@@ -1329,7 +1455,7 @@ msgid "Subscribe to feed"
 msgstr ""
 
 #: events/templates/events/_event_nugget_list.html:19
-#: templates/rah/profile.html:108
+#: templates/rah/profile.html:140
 msgid "atom feed"
 msgstr ""
 
@@ -1425,7 +1551,7 @@ msgstr ""
 
 #: events/templates/events/_pilot_commitment_card.html:3
 #: events/templates/events/_volunteer_form.html:3
-#: events/templates/events/sign_in_sheet.html:37 rah/forms.py:70
+#: events/templates/events/sign_in_sheet.html:37 rah/forms.py:68
 msgid "Email"
 msgstr ""
 
@@ -1452,9 +1578,10 @@ msgstr ""
 #: events/templates/events/guests_invite.html:6
 #: events/templates/events/hosts.html:6 events/templates/events/message.html:7
 #: events/templates/events/show.html:7 events/templates/events/show.html:9
-#: groups/templates/groups/group_detail.html:36
-#: groups/templates/groups/group_detail.html:154 templates/base/nav.html:55
-#: templates/rah/profile.html:30 templates/rah/profile.html.py:168
+#: groups/templates/groups/group_detail.html:88
+#: groups/templates/groups/group_detail.html:201 templates/base/nav.html:52
+#: templates/rah/profile.html:32 templates/rah/profile.html.py:162
+#: templates/rah/profile.html:213
 msgid "Events"
 msgstr ""
 
@@ -1608,8 +1735,8 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: events/templates/events/rsvp_account.html:8 templates/base/nav.html:30
-#: templates/rah/home_page.html:12 templates/rah/home_page.html.py:35
+#: events/templates/events/rsvp_account.html:8 templates/base/nav.html:31
+#: templates/rah/home_page.html:12 templates/rah/home_page.html.py:38
 msgid "Create an Account"
 msgstr ""
 
@@ -1710,16 +1837,16 @@ msgstr ""
 msgid "external links"
 msgstr ""
 
-#: group_links/models.py:11 groups/models.py:312 groups/models.py:328
-#: groups/models.py:346 groups/models.py:366 groups/models.py:425
-msgid "group"
-msgstr ""
-
 #: group_links/models.py:13
 msgid "URL"
 msgstr ""
 
-#: groups/admin.py:15
+#: group_links/templates/group_links/_form.html:9
+#: group_links/templates/group_links/form.html:9
+msgid "Add External Link"
+msgstr ""
+
+#: groups/admin.py:11
 msgid "Managers"
 msgstr ""
 
@@ -1741,11 +1868,11 @@ msgstr ""
 msgid "Enter a name for your new community"
 msgstr ""
 
-#: groups/forms.py:25 groups/forms.py:100
+#: groups/forms.py:25 groups/forms.py:99
 msgid "Community address"
 msgstr ""
 
-#: groups/forms.py:26 groups/forms.py:101
+#: groups/forms.py:26 groups/forms.py:100
 msgid "This will be your community's web address"
 msgstr ""
 
@@ -1757,382 +1884,362 @@ msgstr ""
 msgid "What is the community all about?"
 msgstr ""
 
-#: groups/forms.py:31 rah/admin.py:25
-msgid "Location"
-msgstr ""
-
-#: groups/forms.py:32
+#: groups/forms.py:33
 msgid "Include at least city, state and country"
 msgstr ""
 
-#: groups/forms.py:33
+#: groups/forms.py:35
 msgid "Upload a community image"
 msgstr ""
 
-#: groups/forms.py:34
+#: groups/forms.py:36
 msgid "(Optional) You can upload png, jpg or gif files up to 512K"
 msgstr ""
 
-#: groups/forms.py:58
+#: groups/forms.py:56
 msgid "Community images cannot be larger than 512K"
 msgstr ""
 
-#: groups/forms.py:61
+#: groups/forms.py:59
 #, python-format
 msgid "Images cannot be of type %(type)s"
 msgstr ""
 
-#: groups/forms.py:68
-msgid "Community addresses cannot begin with a state name."
-msgstr ""
-
-#: groups/forms.py:73 groups/forms.py:75 groups/forms.py:79
+#: groups/forms.py:69 groups/forms.py:71 groups/forms.py:82
 msgid "This community address is not available."
 msgstr ""
 
-#: groups/forms.py:120
+#: groups/forms.py:78
+msgid "Another group is already using this address."
+msgstr ""
+
+#: groups/forms.py:122
+msgid "This field is required."
+msgstr ""
+
+#: groups/forms.py:125
+msgid "You must include at least one letter or number in your group's name."
+msgstr ""
+
+#: groups/forms.py:149
 msgid "--Set Membership Role--"
 msgstr ""
 
-#: groups/forms.py:121 groups/templates/groups/_membership_form.html:28
+#: groups/forms.py:150 groups/templates/groups/_membership_form.html:28
 msgid "Manager"
 msgstr ""
 
-#: groups/forms.py:122 groups/templates/groups/_membership_form.html:28
+#: groups/forms.py:151 groups/templates/groups/_membership_form.html:28
 msgid "Regular Member"
 msgstr ""
 
-#: groups/forms.py:123
+#: groups/forms.py:152
 msgid "Remove from Community"
 msgstr ""
 
-#: groups/forms.py:127
+#: groups/forms.py:156
 msgid "You must select a membership action."
 msgstr ""
 
-#: groups/forms.py:131
+#: groups/forms.py:160
 msgid "You must select at least one member from the community."
 msgstr ""
 
-#: groups/forms.py:144
+#: groups/forms.py:173
 msgid "You must leave at least one manager in the community."
 msgstr ""
 
-#: groups/forms.py:158
+#: groups/forms.py:187
 #, python-format
 msgid "Role option %(role)s does not exist"
 msgstr ""
 
-#: groups/forms.py:171
+#: groups/forms.py:200
 msgid "Comment"
 msgstr ""
 
-#: groups/forms.py:188
+#: groups/forms.py:217
 msgid "Parent ID is currupted"
 msgstr ""
 
-#: groups/forms.py:244
+#: groups/forms.py:273
 msgid "You need to be a member of a community first"
 msgstr ""
 
-#: groups/models.py:70
+#: groups/models.py:48
 msgid "Yes, a manager must approve all discussions"
 msgstr ""
 
-#: groups/models.py:71
+#: groups/models.py:49
 msgid "No, members can post discussions directly"
 msgstr ""
 
-#: groups/models.py:74
+#: groups/models.py:52
 msgid "Members and managers"
 msgstr ""
 
-#: groups/models.py:75
+#: groups/models.py:53
 msgid "Only managers"
 msgstr ""
 
-#: groups/models.py:78
+#: groups/models.py:56
 msgid "Open membership"
 msgstr ""
 
-#: groups/models.py:79
+#: groups/models.py:57
 msgid "Closed membership"
 msgstr ""
 
-#: groups/models.py:82
-msgid "State"
-msgstr ""
-
-#: groups/models.py:83
-msgid "County"
-msgstr ""
-
-#: groups/models.py:84
-msgid "Place"
-msgstr ""
-
-#: groups/models.py:115
+#: groups/models.py:63
 msgid "image"
 msgstr ""
 
-#: groups/models.py:117
+#: groups/models.py:65
 msgid "is featured"
 msgstr ""
 
-#: groups/models.py:120
-msgid "latitute"
-msgstr ""
-
-#: groups/models.py:121
+#: groups/models.py:71
 msgid "membership type"
 msgstr ""
 
-#: groups/models.py:124
-msgid "is geo group"
-msgstr ""
-
-#: groups/models.py:125
+#: groups/models.py:74
 msgid "is external link only"
 msgstr ""
 
-#: groups/models.py:127
-msgid "location type"
-msgstr ""
-
-#: groups/models.py:131
+#: groups/models.py:78
 msgid "sample location"
 msgstr ""
 
-#: groups/models.py:133 groups/models.py:369
-msgid "parent"
-msgstr ""
-
-#: groups/models.py:138
+#: groups/models.py:82
 msgid "requesters"
 msgstr ""
 
-#: groups/models.py:141
+#: groups/models.py:85
 msgid "email blacklisted"
 msgstr ""
 
-#: groups/models.py:146
+#: groups/models.py:90
 msgid "Moderate discussions?"
 msgstr ""
 
-#: groups/models.py:148
+#: groups/models.py:92
 msgid "Who can post discussions?"
 msgstr ""
 
-#: groups/models.py:152
+#: groups/models.py:96
 msgid "community"
 msgstr ""
 
-#: groups/models.py:313
+#: groups/models.py:263
 msgid "is manager"
 msgstr ""
 
-#: groups/models.py:319
+#: groups/models.py:269
 msgid "member"
 msgstr ""
 
-#: groups/models.py:320
+#: groups/models.py:270
 msgid "members"
 msgstr ""
 
-#: groups/models.py:323
+#: groups/models.py:273
 #, python-format
 msgid "%(user)s belongs to community %(group)s"
 msgstr ""
 
-#: groups/models.py:333
+#: groups/models.py:283
 msgid "group membership request"
 msgstr ""
 
-#: groups/models.py:334
+#: groups/models.py:284
 msgid "group membership requests"
 msgstr ""
 
-#: groups/models.py:337
+#: groups/models.py:287
 #, python-format
 msgid "%(user)s request to join %(group)s on %(date)s"
 msgstr ""
 
-#: groups/models.py:351
+#: groups/models.py:301
 msgid "group discussion blacklist entry"
 msgstr ""
 
-#: groups/models.py:352
+#: groups/models.py:302
 msgid "group discussion blacklist entries"
 msgstr ""
 
-#: groups/models.py:355
+#: groups/models.py:305
 #, python-format
 msgid "%(user)s will not recieve emails for %(group)s discussions"
 msgstr ""
 
-#: groups/models.py:363
+#: groups/models.py:313
 msgid "subject"
 msgstr ""
 
-#: groups/models.py:370
+#: groups/models.py:319
+msgid "parent"
+msgstr ""
+
+#: groups/models.py:320
 msgid "is public"
 msgstr ""
 
-#: groups/models.py:371
+#: groups/models.py:321
 msgid "is removed"
 msgstr ""
 
-#: groups/models.py:372
+#: groups/models.py:322
 msgid "reply count"
 msgstr ""
 
-#: groups/models.py:376
+#: groups/models.py:326
 msgid "Discussion"
 msgstr ""
 
-#: groups/models.py:421 rateable/models.py:34
+#: groups/models.py:371 rateable/models.py:34
 msgid "content type"
 msgstr ""
 
-#: groups/models.py:422
+#: groups/models.py:372
 msgid "object id"
 msgstr ""
 
-#: groups/models.py:426
+#: groups/models.py:376
 msgid "approved"
 msgstr ""
 
-#: groups/models.py:432
+#: groups/models.py:382
 msgid "group association request"
 msgstr ""
 
-#: groups/models.py:433
+#: groups/models.py:383
 msgid "group association requests"
 msgstr ""
 
-#: groups/models.py:436
+#: groups/models.py:386
 #, python-format
 msgid "%(user)s would like to link %(object)s to %(group)s"
 msgstr ""
 
-#: groups/views.py:58 groups/views.py:90
+#: groups/views.py:58 groups/views.py:91
 #, python-format
 msgid "%(group)s has been created."
 msgstr ""
 
-#: groups/views.py:110
+#: groups/views.py:111
 #, python-format
 msgid "You have been removed from community %(group)s"
 msgstr ""
 
-#: groups/views.py:114
+#: groups/views.py:115
 msgid ""
 "You cannot leave the community, until you've assigned someone else to be "
 "manager."
 msgstr ""
 
-#: groups/views.py:118
+#: groups/views.py:119
 msgid "You cannot leave a community your not a member of"
 msgstr ""
 
-#: groups/views.py:125
+#: groups/views.py:126
 msgid "You are already a member"
 msgstr ""
 
-#: groups/views.py:128
+#: groups/views.py:129
 msgid "Your membership is currently pending"
 msgstr ""
 
-#: groups/views.py:132
+#: groups/views.py:133
 #, python-format
 msgid "You have successfully joined community %(group)s"
 msgstr ""
 
-#: groups/views.py:139
+#: groups/views.py:140
 #, python-format
 msgid ""
 "You have made a request to join %(group)s, a managershould grant or deny "
 "your membership shortly."
 msgstr ""
 
-#: groups/views.py:160
+#: groups/views.py:161
 #, python-format
 msgid "%(user)s has been added to the community"
 msgstr ""
 
-#: groups/views.py:166
+#: groups/views.py:167
 #, python-format
 msgid "%(user)s has been denied access to the community"
 msgstr ""
 
-#: groups/views.py:169
+#: groups/views.py:170
 #, python-format
 msgid "%(user)s has already been added to this community"
 msgstr ""
 
-#: groups/views.py:172
+#: groups/views.py:173
 #, python-format
 msgid "%(user)s has already been denied access to this community"
 msgstr ""
 
-#: groups/views.py:194
+#: groups/views.py:196
 #, python-format
 msgid "Your community has been linked with %(object)s"
 msgstr ""
 
-#: groups/views.py:198
+#: groups/views.py:204
 #, python-format
 msgid "Your community will not be linked with %(object)s"
 msgstr ""
 
-#: groups/views.py:202
+#: groups/views.py:208
 #, python-format
 msgid "%(object)s has already been linked with your community"
 msgstr ""
 
-#: groups/views.py:206
+#: groups/views.py:212
 #, python-format
 msgid "%(object)s has not been linked with your community"
 msgstr ""
 
-#: groups/views.py:251 groups/views.py:287 groups/views.py:296
+#: groups/views.py:247 groups/views.py:310 groups/views.py:319
 #, python-format
 msgid "%(group)s has been updated."
 msgstr ""
 
-#: groups/views.py:256
+#: groups/views.py:252
 #, python-format
 msgid "%(group)s has been upgraded."
 msgstr ""
 
-#: groups/views.py:260 groups/views.py:303
+#: groups/views.py:256 groups/views.py:326
 #, python-format
 msgid "%(group)s has been deleted."
 msgstr ""
 
-#: groups/views.py:310
+#: groups/views.py:333
 #, python-format
 msgid "%(group)s's memberships have been updated."
 msgstr ""
 
-#: groups/views.py:316
+#: groups/views.py:339
 #, python-format
 msgid "You no longer have permissions to edit %(group)s"
 msgstr ""
 
-#: groups/views.py:323 rah/views.py:296
+#: groups/views.py:346 rah/views.py:301
 msgid "No action specified."
 msgstr ""
 
-#: groups/views.py:432
+#: groups/views.py:455
 msgid "Discussion posted"
 msgstr ""
 
-#: groups/views.py:462
+#: groups/views.py:485
 msgid "Discussion approved"
 msgstr ""
 
-#: groups/views.py:476
+#: groups/views.py:499
 msgid "Discussion removed"
 msgstr ""
 
@@ -2158,10 +2265,10 @@ msgid ""
 msgstr ""
 
 #: groups/templates/groups/_group_disc_nugget.html:21
-#: groups/templates/groups/group_detail.html:213
-#: groups/templates/groups/group_detail.html:236
-#: groups/templates/groups/group_detail.html:260
-#: groups/templates/groups/group_detail.html:283
+#: groups/templates/groups/group_detail.html:296
+#: groups/templates/groups/group_detail.html:319
+#: groups/templates/groups/group_detail.html:343
+#: groups/templates/groups/group_detail.html:374
 #: groups/templates/groups/group_edit.html:61
 msgid "Approve"
 msgstr ""
@@ -2176,11 +2283,11 @@ msgstr ""
 
 #: groups/templates/groups/_group_nugget_list.html:6
 #: groups/templates/groups/_group_search_result.html:2
-#: groups/templates/groups/group_detail.html:15
+#: groups/templates/groups/group_detail.html:16
 msgid "group image"
 msgstr ""
 
-#: groups/templates/groups/_group_nugget_list.html:11
+#: groups/templates/groups/_group_nugget_list.html:12
 #, python-format
 msgid ""
 "\n"
@@ -2237,12 +2344,12 @@ msgstr ""
 msgid "Add My Group to the Map"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:11
+#: groups/templates/groups/group_detail.html:12
 #, python-format
 msgid "%(SITE_NAME)s Community Activity"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:24
+#: groups/templates/groups/group_detail.html:25
 #, python-format
 msgid ""
 "\n"
@@ -2250,67 +2357,88 @@ msgid ""
 "\t  "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:35
-msgid "Activity"
+#: groups/templates/groups/group_detail.html:39 templates/base/base.html:104
+msgid "Find us on Facebook"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:40
-msgid "Requests and Notifications"
+#: groups/templates/groups/group_detail.html:47 templates/base/base.html:106
+msgid "Follow us on Twitter"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:44
-msgid "Edit community"
+#: groups/templates/groups/group_detail.html:57
+msgid "Edit Facebook Group"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:56
-#: groups/templates/groups/group_edit.html:16 templates/rah/profile.html:50
+#: groups/templates/groups/group_detail.html:59
+msgid "Add Facebook Group"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:64
+msgid "Edit Twitter Account"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:66
+msgid "Add Twitter Account"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:85
+#: groups/templates/groups/group_detail.html:108
+#: groups/templates/groups/group_edit.html:16 templates/rah/profile.html:52
 msgid "Members"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:57 templates/rah/profile.html:76
-#: templates/rah/profile.html.py:216
+#: groups/templates/groups/group_detail.html:87
+msgid "Activity"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:92
+msgid "Requests and Notifications"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:96
+msgid "Edit community"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:109
+#: templates/rah/profile.html:114 templates/rah/profile.html.py:262
 msgid "Committed Actions"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:58 templates/rah/profile.html:157
+#: groups/templates/groups/group_detail.html:110
+#: templates/rah/profile.html:202
 msgid "Actions Completed"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:59 templates/rah/profile.html:161
-msgid "Points Earned"
-msgstr ""
-
-#: groups/templates/groups/group_detail.html:60
+#: groups/templates/groups/group_detail.html:111
 msgid "Last Active"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:77
+#: groups/templates/groups/group_detail.html:127
 #, python-format
 msgid ""
 "\n"
-"            Community points: %(total_points)s<br />\n"
 "            Total members: %(num_members)s<br />\n"
 "\t  "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:85
+#: groups/templates/groups/group_detail.html:134
 msgid "Leave Community"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:90
+#: groups/templates/groups/group_detail.html:139
 #: groups/templates/groups/group_disc_list.html:36
 msgid "Join Community"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:96
+#: groups/templates/groups/group_detail.html:145
 msgid "Your membership status is currently <b>pending</b>."
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:102
+#: groups/templates/groups/group_detail.html:151
 msgid "Community Invitations"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:104
+#: groups/templates/groups/group_detail.html:153
 #, python-format
 msgid ""
 "\n"
@@ -2318,28 +2446,50 @@ msgid ""
 "\t  "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:109
+#: groups/templates/groups/group_detail.html:158
 msgid "Send Invite"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:123
+#: groups/templates/groups/group_detail.html:171
 #: groups/templates/groups/group_disc_list.html:29
 msgid "New discussion"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:129
+#: groups/templates/groups/group_detail.html:177
 msgid "Archive"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:135
+#: groups/templates/groups/group_detail.html:183
 msgid "No discussions yet."
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:142
+#: groups/templates/groups/group_detail.html:189
 msgid "Community Activity"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:181
+#: groups/templates/groups/group_detail.html:207
+#, python-format
+msgid ""
+"\n"
+"\tYour group hasn't created any events. Why don't you \n"
+"\t<a href=\"%(event_create_url)s?groups=%(group_id)s\">create a new event</a> or\n"
+"\t<a href=\"%(event_list_url)s\">look for a nearby event</a> \n"
+"\tfor your group to participate in?\n"
+"\t"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:234
+#, python-format
+msgid ""
+"\n"
+"\tYour group hasn't created any campaigns. Why don't you \n"
+"\t<a href=\"%(campaign_create_url)s?groups=%(group_id)s\">create a new campaign</a> or\n"
+"\t<a href=\"%(campaign_list_url)s\">look for an existing campaign</a>\n"
+"\tfor your group to participate in?\n"
+"\t"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:262
 #, python-format
 msgid ""
 "\n"
@@ -2349,19 +2499,19 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:197
+#: groups/templates/groups/group_detail.html:280
 msgid ""
 "\n"
 "\tThere are currently no membership or association requests awaiting approval.\n"
 "\t"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:202
+#: groups/templates/groups/group_detail.html:285
 #: groups/templates/groups/group_edit.html:51
 msgid "Membership Requests"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:207
+#: groups/templates/groups/group_detail.html:290
 #, python-format
 msgid ""
 "\n"
@@ -2369,20 +2519,20 @@ msgid ""
 "\t\t  "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:216
-#: groups/templates/groups/group_detail.html:239
-#: groups/templates/groups/group_detail.html:263
-#: groups/templates/groups/group_detail.html:286
+#: groups/templates/groups/group_detail.html:299
+#: groups/templates/groups/group_detail.html:322
+#: groups/templates/groups/group_detail.html:346
+#: groups/templates/groups/group_detail.html:381
 #: groups/templates/groups/group_edit.html:64
 msgid "Deny"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:224
+#: groups/templates/groups/group_detail.html:307
 msgid "Event Link Requests"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:231
-#: groups/templates/groups/group_detail.html:255
+#: groups/templates/groups/group_detail.html:314
+#: groups/templates/groups/group_detail.html:338
 #, python-format
 msgid ""
 "\n"
@@ -2390,27 +2540,39 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:248
+#: groups/templates/groups/group_detail.html:331
 msgid "Challenge Link Requests"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:272
+#: groups/templates/groups/group_detail.html:355
 msgid "Action Link Requests"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:278
+#: groups/templates/groups/group_detail.html:363
 #, python-format
 msgid ""
 "\n"
-"            Somebody has requested to link this community to %(object_link)s\n"
+"            One of your members has indicated that your group has completed the project %(object_link)s.\n"
 "\t    "
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:308
+#: groups/templates/groups/group_detail.html:372
+msgid "Confirm"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:383
+msgid "Reject"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:398
+msgid "Projects and Actions"
+msgstr ""
+
+#: groups/templates/groups/group_detail.html:420
 msgid "Popular Actions"
 msgstr ""
 
-#: groups/templates/groups/group_detail.html:313
+#: groups/templates/groups/group_detail.html:425
 #, python-format
 msgid ""
 "\n"
@@ -2575,11 +2737,11 @@ msgstr ""
 msgid "You're not a member of any communities yet!"
 msgstr ""
 
-#: groups/templates/groups/group_list.html:85
+#: groups/templates/groups/group_list.html:92 templates/rah/home_page.html:224
 msgid "Go to group website"
 msgstr ""
 
-#: groups/templates/groups/group_list.html:87
+#: groups/templates/groups/group_list.html:94 templates/rah/home_page.html:226
 msgid "View group"
 msgstr ""
 
@@ -2601,15 +2763,15 @@ msgstr ""
 msgid "Signature has been corrupted"
 msgstr ""
 
-#: rah/admin.py:44
+#: rah/admin.py:46
 msgid "Parent"
 msgstr ""
 
-#: rah/admin.py:49
+#: rah/admin.py:51
 msgid "Likes"
 msgstr ""
 
-#: rah/admin.py:54
+#: rah/admin.py:56
 msgid "Dislikes"
 msgstr ""
 
@@ -2637,43 +2799,39 @@ msgstr ""
 msgid "Don't use or else your submission will be flagged as spam"
 msgstr ""
 
-#: rah/forms.py:49
+#: rah/forms.py:50
 msgid ""
 "This email address has already been registered in our system. If you have "
 "forgotten your password, please use the password reset link."
 msgstr ""
 
-#: rah/forms.py:52
-msgid "Leave blank if you don't have a US zipcode"
-msgstr ""
-
-#: rah/forms.py:91
+#: rah/forms.py:89
 msgid ""
 "Please enter a correct email and password. Note that your password is case-"
 "sensitive."
 msgstr ""
 
-#: rah/forms.py:93
+#: rah/forms.py:91
 msgid "This account is inactive."
 msgstr ""
 
-#: rah/forms.py:97
+#: rah/forms.py:95
 msgid ""
 "Your Web browser doesn't appear to have cookies enabled. Cookies are "
 "required for logging in."
 msgstr ""
 
-#: rah/forms.py:115
+#: rah/forms.py:113
 msgid "Your Comments"
 msgstr ""
 
-#: rah/forms.py:116
+#: rah/forms.py:114
 msgid ""
 "Check here if you would like to be a partof our alpha group and receive "
 "informationon new features before they launch."
 msgstr ""
 
-#: rah/forms.py:128
+#: rah/forms.py:126
 msgid "About you"
 msgstr ""
 
@@ -2739,136 +2897,136 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: rah/models.py:140
+#: rah/models.py:144
 msgid "building type"
 msgstr ""
 
-#: rah/models.py:141
+#: rah/models.py:145
 msgid "about"
 msgstr ""
 
-#: rah/models.py:142
+#: rah/models.py:146
 msgid "is profile private"
 msgstr ""
 
-#: rah/models.py:143
+#: rah/models.py:147
 msgid "twitter access token"
 msgstr ""
 
-#: rah/models.py:145
+#: rah/models.py:149
 msgid "twitter share"
 msgstr ""
 
-#: rah/models.py:146
+#: rah/models.py:150
 msgid "facebook access token"
 msgstr ""
 
-#: rah/models.py:148
+#: rah/models.py:152
 msgid "facebook connect only"
 msgstr ""
 
-#: rah/models.py:149
+#: rah/models.py:153
 msgid "facebook share"
 msgstr ""
 
-#: rah/models.py:150
+#: rah/models.py:154
 msgid "ask to share"
 msgstr ""
 
-#: rah/models.py:151
+#: rah/models.py:155
 msgid "total points"
 msgstr ""
 
-#: rah/models.py:155
+#: rah/models.py:159
 msgid "profile"
 msgstr ""
 
-#: rah/models.py:156
+#: rah/models.py:160
 msgid "profiles"
 msgstr ""
 
-#: rah/models.py:225
+#: rah/models.py:229
 msgid "first name"
 msgstr ""
 
-#: rah/models.py:226
+#: rah/models.py:230
 msgid "last name"
 msgstr ""
 
-#: rah/models.py:227
+#: rah/models.py:231
 msgid "email"
 msgstr ""
 
-#: rah/models.py:228
+#: rah/models.py:232
 msgid "address"
 msgstr ""
 
-#: rah/models.py:229
+#: rah/models.py:233
 msgid "city"
 msgstr ""
 
-#: rah/models.py:230
+#: rah/models.py:234
 msgid "state"
 msgstr ""
 
-#: rah/models.py:231
+#: rah/models.py:235
 msgid "zipcode"
 msgstr ""
 
-#: rah/models.py:238
+#: rah/models.py:242
 msgid "sticker recipient"
 msgstr ""
 
-#: rah/models.py:239
+#: rah/models.py:243
 msgid "sticker recipients"
 msgstr ""
 
-#: rah/views.py:108
+#: rah/views.py:113
 msgid "You have successfully logged out."
 msgstr ""
 
-#: rah/views.py:112
+#: rah/views.py:117
 msgid "Your password was changed successfully."
 msgstr ""
 
-#: rah/views.py:116
+#: rah/views.py:121
 msgid ""
 "We just sent you an email with instructions for resetting your password."
 msgstr ""
 
-#: rah/views.py:120
+#: rah/views.py:125
 msgid "Password reset successfully!"
 msgstr ""
 
-#: rah/views.py:222
+#: rah/views.py:227
 msgid "Sorry, but you do not have permissions to view this profile."
 msgstr ""
 
-#: rah/views.py:268
+#: rah/views.py:273
 msgid "Sorry, but you do not have permissions to edit this profile."
 msgstr ""
 
-#: rah/views.py:284
+#: rah/views.py:289
 msgid "Your profile has been updated."
 msgstr ""
 
-#: rah/views.py:293
+#: rah/views.py:298
 msgid "Your notifications have been updated."
 msgstr ""
 
-#: rah/views.py:315
+#: rah/views.py:320
 msgid "Thank you for the feedback."
 msgstr ""
 
-#: rah/views.py:354
+#: rah/views.py:352
 msgid "Thanks for the comment."
 msgstr ""
 
-#: rah/views.py:358
+#: rah/views.py:356
 msgid "You do not have permissions."
 msgstr ""
 
-#: rah/views.py:364
+#: rah/views.py:362
 msgid "Thanks for registering."
 msgstr ""
 
@@ -2938,11 +3096,6 @@ msgstr ""
 msgid "Unknown content"
 msgstr ""
 
-#: templates/base/_nugget_2c_list.html:7 templates/base/nav.html:19
-#, python-format
-msgid "%(total_points)s points"
-msgstr ""
-
 #: templates/base/_nugget_2c_list_supporter.html:7
 #: templates/base/_nugget_2c_list_supporter.html:10
 msgid "supporter avatar"
@@ -2984,7 +3137,7 @@ msgstr ""
 msgid "energy efficiency; home energy; climate change;"
 msgstr ""
 
-#: templates/base/base.html:29 templates/base/base.html.py:64
+#: templates/base/base.html:29 templates/base/base.html.py:65
 msgid "Blog"
 msgstr ""
 
@@ -2992,23 +3145,27 @@ msgstr ""
 msgid "Search the site..."
 msgstr ""
 
-#: templates/base/base.html:63 templates/base/base.html.py:117
+#: templates/base/base.html:63 templates/base/base.html.py:118
 msgid "About Us"
 msgstr ""
 
-#: templates/base/base.html:66 templates/base/nav.html:92
+#: templates/base/base.html:64
+msgid "350.org Homepage"
+msgstr ""
+
+#: templates/base/base.html:67 templates/base/nav.html:99
 msgid "Log Out"
 msgstr ""
 
-#: templates/base/base.html:68
+#: templates/base/base.html:69
 msgid "Log In"
 msgstr ""
 
-#: templates/base/base.html:90
+#: templates/base/base.html:91
 msgid "Who are we? Listen up."
 msgstr ""
 
-#: templates/base/base.html:92
+#: templates/base/base.html:93
 msgid ""
 "\n"
 "                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\n"
@@ -3017,48 +3174,41 @@ msgid ""
 "\t\t      "
 msgstr ""
 
-#: templates/base/base.html:97
+#: templates/base/base.html:98
 msgid "Learn More"
 msgstr ""
 
-#: templates/base/base.html:101
+#: templates/base/base.html:102
 msgid "Follow Us"
 msgstr ""
 
-#: templates/base/base.html:103
-msgid "Find us on Facebook"
-msgstr ""
-
-#: templates/base/base.html:105
-msgid "Follow us on Twitter"
-msgstr ""
-
-#: templates/base/base.html:107
+#: templates/base/base.html:108
 msgid "Watch us on YouTube"
 msgstr ""
 
-#: templates/base/base.html:109
+#: templates/base/base.html:110
 msgid "Subscribe to our blog"
 msgstr ""
 
-#: templates/base/base.html:114 templates/rah/feedback.html:3
+#: templates/base/base.html:115 templates/rah/feedback.html:3
 #: templates/rah/feedback.html.py:7
 msgid "Feedback"
 msgstr ""
 
-#: templates/base/base.html:115
+#: templates/base/base.html:116
 msgid "Terms of Use"
 msgstr ""
 
-#: templates/base/base.html:116
+#: templates/base/base.html:117
 msgid "Privacy Policy"
 msgstr ""
 
-#: templates/base/base.html:118
+#: templates/base/base.html:119
 msgid ""
 "\n"
-"\t\t    Text is available under a <a href=\"http://creativecommons.org/licenses/by/3.0/\">\n"
-"                    Creative Commons Attribution 3.0 Unported License</a>.\n"
+"\t\t    350 Groups by <a href=\"http://350.org\">350.org</a> is licensed under a\n"
+"\t\t    <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\">\n"
+"\t\t      Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.\n"
 "\t\t    "
 msgstr ""
 
@@ -3070,45 +3220,58 @@ msgstr ""
 msgid "Your profile picture"
 msgstr ""
 
+#: templates/base/nav.html:21
+#, python-format
+msgid "%(total_points)s points"
+msgstr ""
+
 #: templates/base/nav.html:22
 msgid "8 badges"
 msgstr ""
 
-#: templates/base/nav.html:27
+#: templates/base/nav.html:28
 msgid "Join Us Today"
 msgstr ""
 
-#: templates/base/nav.html:28
+#: templates/base/nav.html:29
 msgid ""
 "Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut "
 "dictum velit nec est."
 msgstr ""
 
-#: templates/base/nav.html:35 templates/registration/register.html:20
+#: templates/base/nav.html:36 templates/registration/register.html:20
 msgid "Join with Facebook"
 msgstr ""
 
-#: templates/base/nav.html:60 templates/rah/profile.html:199
+#: templates/base/nav.html:44
+msgid "Group Projects"
+msgstr ""
+
+#: templates/base/nav.html:61 templates/rah/profile.html:245
 msgid "Badges"
 msgstr ""
 
 #: templates/base/nav.html:65
+msgid "Solo Actions"
+msgstr ""
+
+#: templates/base/nav.html:70
 msgid "Users"
 msgstr ""
 
-#: templates/base/nav.html:73
+#: templates/base/nav.html:78
 msgid "My Calendar"
 msgstr ""
 
-#: templates/base/nav.html:78
+#: templates/base/nav.html:83
 msgid "My Profile / Settings"
 msgstr ""
 
-#: templates/base/nav.html:83
+#: templates/base/nav.html:88
 msgid "Invite Friends"
 msgstr ""
 
-#: templates/base/nav.html:88
+#: templates/base/nav.html:94
 msgid "Enter Commitment Cards"
 msgstr ""
 
@@ -3169,11 +3332,11 @@ msgstr ""
 msgid "Empower your Community"
 msgstr ""
 
-#: templates/rah/home_page.html:26
+#: templates/rah/home_page.html:29
 msgid "Be an Energy Trendsetter!"
 msgstr ""
 
-#: templates/rah/home_page.html:28
+#: templates/rah/home_page.html:31
 #, python-format
 msgid ""
 "\n"
@@ -3183,12 +3346,12 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 
-#: templates/rah/home_page.html:38
+#: templates/rah/home_page.html:41
 #, python-format
 msgid "Welcome back, %(user_name)s!"
 msgstr ""
 
-#: templates/rah/home_page.html:40
+#: templates/rah/home_page.html:43
 #, python-format
 msgid ""
 "\n"
@@ -3196,15 +3359,15 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 
-#: templates/rah/home_page.html:45
+#: templates/rah/home_page.html:48
 msgid "My Account"
 msgstr ""
 
-#: templates/rah/home_page.html:52
+#: templates/rah/home_page.html:55
 msgid "You have the power <br/>to save energy"
 msgstr ""
 
-#: templates/rah/home_page.html:54
+#: templates/rah/home_page.html:57
 msgid ""
 "\n"
 "                            Our energy actions give you the necessary know-how to save\n"
@@ -3215,15 +3378,15 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 
-#: templates/rah/home_page.html:63
+#: templates/rah/home_page.html:66
 msgid "See All Actions"
 msgstr ""
 
-#: templates/rah/home_page.html:75
+#: templates/rah/home_page.html:78
 msgid "Support energy efficiency in your community"
 msgstr ""
 
-#: templates/rah/home_page.html:77
+#: templates/rah/home_page.html:80
 #, python-format
 msgid ""
 "\n"
@@ -3234,54 +3397,66 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 
-#: templates/rah/home_page.html:85
+#: templates/rah/home_page.html:88
 msgid "Find Communities"
 msgstr ""
 
-#: templates/rah/home_page.html:91
-msgid "Pledge to save energy at home and set the trend in your community"
+#: templates/rah/home_page.html:94
+msgid "Host and attend local climate events"
 msgstr ""
 
-#: templates/rah/home_page.html:93
+#: templates/rah/home_page.html:96
 msgid ""
 "\n"
-"                            Sign the pledge by the filling out the form on the right.\n"
+"                          Find local events taking place near you, or host your own event using our organizational tools and event materials.  After the event, start a group to keep the momentum going and stay in touch with other attendees.\n"
 "\t\t\t  "
 msgstr ""
 
-#: templates/rah/home_page.html:111
+#: templates/rah/home_page.html:101
+msgid "Find Events"
+msgstr ""
+
+#: templates/rah/home_page.html:119
 #, python-format
 msgid "Total %(SITE_NAME)s Trendsetters"
 msgstr ""
 
-#: templates/rah/home_page.html:117
+#: templates/rah/home_page.html:125
 #, python-format
 msgid "Total %(SITE_NAME)s Communities"
 msgstr ""
 
-#: templates/rah/home_page.html:123
+#: templates/rah/home_page.html:131
 #, python-format
 msgid "Pounds of Coal Saved by %(SITE_NAME)s"
 msgstr ""
 
-#: templates/rah/home_page.html:129
+#: templates/rah/home_page.html:137
 #, python-format
 msgid "Actions Taken by %(SITE_NAME)s"
 msgstr ""
 
-#: templates/rah/home_page.html:137
-msgid "Featured Users"
-msgstr ""
-
-#: templates/rah/home_page.html:145
-msgid "Browse Users"
-msgstr ""
-
-#: templates/rah/home_page.html:150
-msgid "Featured Communities"
+#: templates/rah/home_page.html:146
+msgid "Featured Projects"
 msgstr ""
 
 #: templates/rah/home_page.html:160
+msgid "Browse Projects"
+msgstr ""
+
+#: templates/rah/home_page.html:166
+msgid "Featured Users"
+msgstr ""
+
+#: templates/rah/home_page.html:174
+msgid "Browse Users"
+msgstr ""
+
+#: templates/rah/home_page.html:179
+msgid "Featured Communities"
+msgstr ""
+
+#: templates/rah/home_page.html:192
 #, python-format
 msgid ""
 "\n"
@@ -3289,20 +3464,8 @@ msgid ""
 "\t\t    "
 msgstr ""
 
-#: templates/rah/home_page.html:164
-#, python-format
-msgid ""
-"\n"
-"\t\t    %(num_points)s points\n"
-"\t\t    "
-msgstr ""
-
-#: templates/rah/home_page.html:173
+#: templates/rah/home_page.html:202
 msgid "Browse Communities"
-msgstr ""
-
-#: templates/rah/home_page.html:179
-msgid "Recent Badges Earned"
 msgstr ""
 
 #: templates/rah/profile.html:6
@@ -3324,15 +3487,53 @@ msgstr ""
 msgid "Joined %(date_joined)s"
 msgstr ""
 
-#: templates/rah/profile.html:32
+#: templates/rah/profile.html:34
 msgid "Edit your profile"
 msgstr ""
 
-#: templates/rah/profile.html:64
+#: templates/rah/profile.html:67
+#, python-format
+msgid ""
+"\n"
+"\t    %(user_full_name)s has not yet joined any groups.\n"
+"\t    "
+msgstr ""
+
+#: templates/rah/profile.html:73
+#, python-format
+msgid ""
+"\n"
+"\t    You aren't yet a member of any groups.\n"
+"\t    You can <a href=\"%(group_list_url)s\">look \n"
+"\t      for a local group to join</a>, or <a href=\"%(group_create_url)s\">\n"
+"\t      create a new group</a> if there aren't yet any near you.\n"
+"\t    "
+msgstr ""
+
+#: templates/rah/profile.html:86
+#, python-format
+msgid ""
+"\n"
+"\t  %(user_full_name)s hasn't gotten involved with any projects yet.\n"
+"\t  "
+msgstr ""
+
+#: templates/rah/profile.html:92
+#, python-format
+msgid ""
+"\n"
+"\t  You haven't taken on any projects yet.  You can \n"
+"\t  <a href=\"%(project_list_url)s\">look for a project</a> to\n"
+"\t  get involved with with a group, or <a href=\"%(solo_project_list_url)s\">\n"
+"\t    browse the list of solo actions</a> that you can commit to do on your own.\n"
+"\t  "
+msgstr ""
+
+#: templates/rah/profile.html:102
 msgid "Commitments"
 msgstr ""
 
-#: templates/rah/profile.html:68
+#: templates/rah/profile.html:106
 #, python-format
 msgid ""
 "\n"
@@ -3340,23 +3541,33 @@ msgid ""
 "\t\t"
 msgstr ""
 
-#: templates/rah/profile.html:80 templates/rah/profile.html.py:94
-#, python-format
-msgid ""
-"\n"
-"\t\t(+%(action_points)s points)\n"
-"\t\t"
-msgstr ""
-
-#: templates/rah/profile.html:89
+#: templates/rah/profile.html:124
 msgid "Completed Actions"
 msgstr ""
 
-#: templates/rah/profile.html:106
+#: templates/rah/profile.html:138
 msgid "Recent Activity"
 msgstr ""
 
-#: templates/rah/profile.html:134
+#: templates/rah/profile.html:148
+#, python-format
+msgid ""
+"\n"
+"\t    %(user_full_name)s has no recent activity.\n"
+"\t    "
+msgstr ""
+
+#: templates/rah/profile.html:153
+#, python-format
+msgid ""
+"\n"
+"\t    You haven't yet taken any actions on the site.\n"
+"\t    To start out, why don't you <a href=\"%(group_list_url)s\">look \n"
+"\t      for a local group to join</a>?\n"
+"\t    "
+msgstr ""
+
+#: templates/rah/profile.html:179
 #, python-format
 msgid ""
 "\n"
@@ -3364,7 +3575,7 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: templates/rah/profile.html:139
+#: templates/rah/profile.html:184
 #, python-format
 msgid ""
 "\n"
@@ -3373,19 +3584,23 @@ msgid ""
 "\t    "
 msgstr ""
 
-#: templates/rah/profile.html:153
+#: templates/rah/profile.html:198
 msgid "Vital Stats"
 msgstr ""
 
-#: templates/rah/profile.html:159
+#: templates/rah/profile.html:204
 msgid "Actions Committed"
 msgstr ""
 
-#: templates/rah/profile.html:163
+#: templates/rah/profile.html:206
+msgid "Groups Joined"
+msgstr ""
+
+#: templates/rah/profile.html:208
 msgid "Challenges Completed"
 msgstr ""
 
-#: templates/rah/profile.html:185
+#: templates/rah/profile.html:230
 #, python-format
 msgid ""
 "\n"
@@ -3393,7 +3608,7 @@ msgid ""
 "\t"
 msgstr ""
 
-#: templates/rah/profile.html:190
+#: templates/rah/profile.html:235
 #, python-format
 msgid ""
 "\n"
@@ -3402,12 +3617,12 @@ msgid ""
 "\t"
 msgstr ""
 
-#: templates/rah/profile.html:207
+#: templates/rah/profile.html:253
 #, python-format
 msgid "Badge for %(badge_name)s"
 msgstr ""
 
-#: templates/rah/profile.html:223
+#: templates/rah/profile.html:269
 #, python-format
 msgid ""
 "\n"
@@ -3553,7 +3768,7 @@ msgid ""
 "Showing %(num_users)s users\n"
 msgstr ""
 
-#: templates/rah/user_list.html:64
+#: templates/rah/user_list.html:72
 msgid "View profile"
 msgstr ""
 
