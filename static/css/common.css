@@ -52,9 +52,9 @@ Header Header Header Header Header Header Header Header Header Header Header Hea
 #header_logo { position:absolute; left: 0px; top:9px; color: #fff; }
 .logo_text {font-family:"MuseoSlab900", Tahoma, sans-serif; font-size: 44px; line-height: 46px;}
 .logo_text:hover { text-decoration: none;}
-#header #cse_search_box_form{ left:420px; top:20px; width: 290px;}
+#header #cse_search_box_form{ left:340px; top:20px; width: 250px;}
 #cse_search_box{
-    width:246px;
+    width:210px;
 }
 #cse_search_box_submit, #cse_search_box{
     border: 1px solid #FFFFFF;
@@ -66,7 +66,7 @@ Header Header Header Header Header Header Header Header Header Header Header Hea
 }
 #header_links a, #header_links button { margin-left:9px; }
 #header_links a { color: #FFFFFF; }
-#header_about { border-right: 1px solid #FFFFFF; padding-right: 12px; }
+#header_links a.not_last { border-right: 1px solid #FFFFFF; padding-right: 12px; }
 
 /* ---------------------------------------------------------------------------------------------------------------------
 Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content 
