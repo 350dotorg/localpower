@@ -324,6 +324,11 @@ class Discussion(models.Model):
 
     disallow_replies = models.BooleanField(_('disallow replies'), default=False)
 
+    ## This will be used to denote discussions that are attached to an event/campaign
+    ## linked to the group.  Right now an informal text field with storage like
+    ## "events.Event:3"
+    attached_to = models.TextField(null=True)
+
     class Meta:
         verbose_name = _('Discussion')
         verbose_name = _('Discussions')
@@ -339,8 +344,38 @@ class Discussion(models.Model):
         return ("group_disc_detail", [self.group.slug, self.thread_id])
 
     def email_recipients(self):
-        return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
+        if self.attached_to is None:
+            return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
 
+        target = self.attached_to.split(":")
+        if target[0] == "events.Event":
+            from events.models import Event
+            try:
+                event = Event.objects.get(pk=target[1], groups=self.group)
+            except Event.DoesNotExist:
+                self.attached_to = None
+                self.save()
+                return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
+            guests = event.attendees()
+            # @@TODO: this is too many queries, select related
+            # @@TODO: check blacklist
+            return [u.contributor for u in guests if u.contributor.email != self.user.email]
+
+        elif target[0] == "challenges.Challenge":
+            from challenges.models import Challenge
+            try:
+                petition = Challenge.objects.get(pk=target[1], groups=self.group)
+            except Challenge.DoesNotExist:
+                self.attached_to = None
+                self.save()
+                return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
+            # @@TODO: check blacklist
+            return [u for u in petition.supporters.all() if u.email != self.user.email]
+
+        self.attached_to = None
+        self.save()
+        return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
+        
     def email_extra_headers(self, user_object):
         """
         The Messaging system will look for this method to call
