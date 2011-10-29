@@ -361,6 +361,11 @@ class Discussion(models.Model):
         will need to trust the inbound email as coming from the
         user it claims to be coming from.
         """
+        if self.disallow_replies:
+            # If we're not allowing replies, just use the system defaults
+            # and don't build a magic reply-to header.
+            return None
+
         value = json.dumps(dict(parent_id=self.thread_id,
                                 user=user_object.email,
                                 group=self.group.slug))
