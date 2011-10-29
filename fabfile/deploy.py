@@ -108,8 +108,8 @@ def deploy(revision=None, code_only=False, sync_media=True):
     code_deploy()
     if not _truth_value(code_only):
         install_requirements()
-        optimize_static()
         if _truth_value(sync_media):
+            optimize_static()
             s3sync()
     syncdb()
     migratedb()
