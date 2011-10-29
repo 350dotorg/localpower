@@ -14,7 +14,9 @@
                 <ul id="tab_nav" class="plain_list">
                     <li><a href="#group_tab">{% blocktrans %}Community{% endblocktrans %}</a></li>
                     <li><a href="#members_tab">{% blocktrans %}Members{% endblocktrans %}</a></li>
+{% comment %}
                     <li><a href="#discussions_tab">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
+{% endcomment %}
                 </ul>
                 <div id="group_tab">
                     <form id="group_form" action="" method="post" enctype="multipart/form-data" class="form_6c">
@@ -69,6 +71,8 @@
 		{% endif %}
 
                 </div>
+
+{% comment %}
                 <div id="discussions_tab">
                     <form action="" method="post" class="form_6c">
                         {{discussions_form.as_p}}
@@ -76,6 +80,7 @@
                         {% csrf_token %}
                     </form>
                 </div>
+{% endcomment %}
       </div>
     <script>
         var RAH = RAH || {};
