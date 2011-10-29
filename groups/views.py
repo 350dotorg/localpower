@@ -5,6 +5,7 @@ from smtplib import SMTPException
 
 from brabeion import badges as badge_cache
 
+from django.conf import settings
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -364,6 +365,11 @@ def receive_mail(request):
     addr = msg.get("To")
     if not addr:
         return forbidden(request)
+
+    suffix = "@" + settings.SMTP_HTTP_RELAY_DOMAIN
+    if not addr.endswith(suffix):
+        return forbidden(request)
+    addr = addr[:-len(suffix)]
 
     try:
         values, tamper_check = base64.b64decode(addr).split("\0")
