@@ -40,7 +40,7 @@
       ], 
       "message_timing": "after_start", 
       "minimum_duration": null, 
-      "recipient_function": "lambda x: [u for u in x.group.users_not_blacklisted() if u.pk != x.user.pk]", 
+      "recipient_function": "email_recipients", 
       "send_as_batch": 0, 
       "extra_headers_function": "email_extra_headers", 
       "generic_relation_content_type": null, 

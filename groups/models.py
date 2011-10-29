@@ -338,6 +338,9 @@ class Discussion(models.Model):
     def get_absolute_url(self):
         return ("group_disc_detail", [self.group.slug, self.thread_id])
 
+    def email_recipients(self):
+        return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
+
     def email_extra_headers(self, user_object):
         """
         The Messaging system will look for this method to call
