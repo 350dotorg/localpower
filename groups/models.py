@@ -322,6 +322,8 @@ class Discussion(models.Model):
     reply_count = models.IntegerField(_('reply count'), null=True)
     objects = DiscussionManager()
 
+    disallow_replies = models.BooleanField(_('disallow replies'), default=False)
+
     class Meta:
         verbose_name = _('Discussion')
         verbose_name = _('Discussions')

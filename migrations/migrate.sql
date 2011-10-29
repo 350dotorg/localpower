@@ -1,0 +1,1 @@
+ALTER TABLE groups_discussion ADD COLUMN disallow_replies BOOL NOT NULL;
