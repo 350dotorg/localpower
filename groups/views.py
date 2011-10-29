@@ -469,7 +469,10 @@ def group_disc_create(request, group_slug):
                               context_instance=RequestContext(request)) 
 
 def group_disc_detail(request, group_slug, disc_id):
-    disc = get_object_or_404(Discussion, id=disc_id, parent=None)
+    # @@TODO: eventually allow managers to view private discussions
+    # see https://github.com/350org/localpower/issues/139
+
+    disc = get_object_or_404(Discussion, id=disc_id, parent=None, is_public=True)
     group = Group.objects.get(slug=group_slug)
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
@@ -512,9 +515,15 @@ def group_disc_remove(request, group_slug, disc_id):
 
 def group_disc_list(request, group_slug):
     group = Group.objects.get(slug=group_slug)
-    paginator = Paginator(Discussion.objects.filter(parent=None, group=group), 20)
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
+
+    discs = Discussion.objects.filter(parent=None, group=group)
+    # @@TODO: eventually allow managers to view private discussions
+    # see https://github.com/350org/localpower/issues/139
+    discs = discs.filter(is_public=True)
+
+    paginator = Paginator(discs, 20)
     # Make sure page request is an int. If not, deliver first page.
     try:
         page = int(request.GET.get('page', '1'))
