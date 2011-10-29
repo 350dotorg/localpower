@@ -44,7 +44,7 @@
       "send_as_batch": 0, 
       "extra_headers_function": "email_extra_headers", 
       "generic_relation_content_type": null, 
-      "subject": "New 350 Groups Discussion: {{ content_object.subject }}"
+      "subject": "[350 Groups: {{content_object.group.name}}] {{ content_object.subject }}"
     }
   }, 
   {
