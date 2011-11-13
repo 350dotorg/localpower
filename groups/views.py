@@ -448,7 +448,6 @@ def group_disc_create(request, group_slug):
     if request.method == "POST":
         disc_form = DiscussionCreateForm(request.POST)
         if disc_form.is_valid():
-            group = Group.objects.get(slug=group_slug)
             disc = Discussion.objects.create(
                 subject=disc_form.cleaned_data['subject'],
                 body=disc_form.cleaned_data['body'], 
@@ -555,6 +554,10 @@ def _group_detail(request, group):
     action_requests = group.actions_waiting_approval(request.user)
 
     has_other_managers = group.has_other_managers(request.user)
-    discs = Discussion.objects.filter(parent=None, group=group).order_by("-created")[:5]
+    discs = Discussion.objects.filter(parent=None, group=group)
+    # @@TODO: eventually allow managers to view private discussions
+    # see https://github.com/350org/localpower/issues/139
+    discs = discs.filter(is_public=True)
+    discs = discs.order_by("-created")[:5]
     return render_to_response("groups/group_detail.html", locals(), 
                               context_instance=RequestContext(request))

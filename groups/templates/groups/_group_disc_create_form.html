@@ -1,5 +1,6 @@
 {% load i18n %}
-<form action="{% url group_disc_create group.slug %}" method="post" accept-charset="utf-8">
+<form action="{{ disc_form_submit_to }}" 
+      method="post" accept-charset="utf-8">
     {% for field in disc_form %}
         {% if field.is_hidden %}
             {{ field }}

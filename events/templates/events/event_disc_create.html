@@ -1,0 +1,23 @@
+{% extends "base/nav_form.html" %}
+{% load i18n %}
+{% block title %}{% blocktrans %}New Message{% endblocktrans %}{% endblock %}
+{% block breadcrumbs %}
+    <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-show %}">{% blocktrans %}Events{% endblocktrans %}</a> &rsaquo;
+    <a href="{% url event-detail event.id %}">{{ event }}</a>
+&rsaquo;
+{% blocktrans %}New Message{% endblocktrans %}
+{% endblock %}
+{% block content %}
+<div class="grid_6 alpha">
+    <div class="box_two_top"></div>
+    <div class="box_two_middle">
+      <h1>{% blocktrans %}New Message{% endblocktrans %}</h1>
+      {% url event_disc_create event.id as disc_form_submit_to %}
+      {% include "groups/_group_disc_create_form.html" %}
+    </div>
+    <div class="box_two_bottom"></div>
+</div>
+{% endblock %}
+
+{% block js %}{% endblock %}

@@ -84,8 +84,19 @@ class Event(models.Model):
     def has_manager_privileges(self, user):
         if not user.is_authenticated():
             return False
-        return user.has_perm("events.view_any_event") or \
-            Guest.objects.filter(event=self, contributor__user=user, is_host=True).exists()
+        if user.has_perm("events.view_any_event"):
+            return True
+        if Guest.objects.filter(event=self, 
+                                contributor__user=user, 
+                                is_host=True).exists():
+            return True
+        from groups.models import GroupUsers
+        if GroupUsers.objects.filter(
+            user=user,
+            group=self.groups.all(),
+            is_manager=True).exists():
+            return True
+        return False
 
     def is_guest(self, request):
         user = request.user

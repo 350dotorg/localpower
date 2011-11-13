@@ -18,6 +18,7 @@
         {% endfor %}
         {% if is_poster %}
             <h2>{% blocktrans %}Post a new response{% endblocktrans %}</h2>
+	    {% url group_disc_create group.slug as disc_form_submit_to %}
             {% include "groups/_group_disc_create_form.html" %}
         {% else %}
             {% if group.is_joinable %}

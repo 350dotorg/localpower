@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.decorators.http import require_POST
 
 from utils import forbidden
@@ -56,6 +57,47 @@ def detail(request, event_id, token=None):
     if not has_manager_privileges:
         rsvp_form = RsvpForm(instance=guest, initial={"token": token, "rsvp_status": "A"})
     return render_to_response("events/detail.html", locals(), context_instance=RequestContext(request))
+
+@login_required
+@user_is_event_manager
+@csrf_protect
+def event_disc_create(request, event_id):
+    nav_selected = "events"
+    event = get_object_or_404(Event, id=event_id)
+
+    from groups.forms import DiscussionCreateForm
+    from groups.models import GroupUsers, Discussion
+
+    manager = GroupUsers.objects.filter(
+        user=request.user,
+        group=event.groups.all(),
+        is_manager=True)
+    try:
+        manager = manager[0]
+    except IndexError:
+        return redirect(event)
+    group = manager.group
+
+    if request.method == "POST":
+        disc_form = DiscussionCreateForm(request.POST)
+        if disc_form.is_valid():
+            disc = Discussion.objects.create(
+                subject=disc_form.cleaned_data['subject'],
+                body=disc_form.cleaned_data['body'],
+                parent_id=None,
+                user=request.user,
+                group=group,
+                reply_count=0,
+                is_public=False,
+                disallow_replies=True)
+            messages.success(request, "Discussion posted")
+            return redirect(event)
+    else:
+        disc_form = DiscussionCreateForm()
+
+    return render_to_response("events/event_disc_create.html", locals(), 
+                              context_instance=RequestContext(request)) 
+
 
 @login_required
 @user_is_event_manager
