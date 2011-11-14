@@ -27,7 +27,7 @@
     "pk": 7, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{{ content_object.user.get_full_name }} says:\r\n<p>{{ content_object.body|linebreaks }}</p>\r\n<hr/><p>\r\nPosted in <a href=\"http://{{ domain }}{{ content_object.group.get_absolute_url }}\">{{content_object.group.name}}</a>\r\n{% if content_object.is_public and not content_object.disallow_replies %}<br/>You can reply to this email, or <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">click here to see the whole discussion</a>{% endif %}</p>", 
+      "body": "{{ content_object.user.get_full_name }} says:\r\n<p>{{ content_object.body|linebreaks }}</p>\r\n<hr/><p>\r\nPosted in <a href=\"http://{{ domain }}{{ content_object.container.get_absolute_url }}\">{{content_object.container}}</a>\r\n{% if content_object.is_public and not content_object.disallow_replies %}<br/>You can reply to this email, or <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">click here to see the whole discussion</a>{% endif %}</p>", 
       "updated": "2011-09-26 13:27:30", 
       "batch_window": null, 
       "name": "New Community Discussion", 
@@ -44,7 +44,7 @@
       "send_as_batch": 0, 
       "extra_headers_function": "email_extra_headers", 
       "generic_relation_content_type": null, 
-      "subject": "[350 Groups: {{content_object.group.name}}] {{ content_object.subject }}"
+      "subject": "[350 Groups: {{content_object.container}}] {{ content_object.subject }}"
     }
   }, 
   {

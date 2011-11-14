@@ -343,6 +343,33 @@ class Discussion(models.Model):
     def get_absolute_url(self):
         return ("group_disc_detail", [self.group.slug, self.thread_id])
 
+    def container(self):
+        if self.attached_to is None:
+            return self.group
+        target = self.attached_to.split(":")
+        if target[0] == "events.Event":
+            from events.models import Event
+            try:
+                event = Event.objects.get(pk=target[1], groups=self.group)
+            except Event.DoesNotExist:
+                self.attached_to = None
+                self.save()
+                return self.group
+            return event
+        elif target[0] == "challenges.Challenge":
+            from challenges.models import Challenge
+            try:
+                petition = Challenge.objects.get(pk=target[1], groups=self.group)
+            except Challenge.DoesNotExist:
+                self.attached_to = None
+                self.save()
+                return self.group
+            return petition
+
+        self.attached_to = None
+        self.save()
+        
+
     def email_recipients(self):
         if self.attached_to is None:
             return [u for u in self.group.users_not_blacklisted() if u.pk != self.user.pk]
