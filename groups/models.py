@@ -458,7 +458,7 @@ def update_group_member_count(sender, instance, **kwargs):
         pass #in case the group was just deleted
 
 def alert_users_of_discussion(sender, instance, **kwargs):
-    if instance.is_public and not instance.is_removed and not instance.reply_count:
+    if (instance.is_public or instance.attached_to) and not instance.is_removed and not instance.reply_count:
         Stream.objects.get(slug="community-discussion").enqueue(content_object=instance, start=instance.created)
     return True
 
