@@ -88,7 +88,7 @@ def event_disc_create(request, event_id):
                 user=request.user,
                 group=group,
                 reply_count=0,
-                target="events.Event:%s" % event.id,
+                attached_to="events.Event:%s" % event.id,
                 is_public=False,
                 disallow_replies=True)
             messages.success(request, "Discussion posted")
