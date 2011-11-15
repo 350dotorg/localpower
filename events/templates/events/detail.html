@@ -28,7 +28,6 @@
     <li><a href="#host-tools">{% blocktrans %}Host Tools{% endblocktrans %}</a></li>
     {% endif %}
 
-    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% if has_manager_privileges %}
     <span class="tab_nav_link"><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></span>
     {% endif %}
@@ -48,6 +47,19 @@
       {% else %}
       {% include "events/_rsvp_form.html" %}
       {% endif %}
+
+      <hr />
+      <h3 id="comments_form_heading">
+        {% get_content_type_id for event as content_type_id %}
+        <a class="button button_small button_feed feed_link"
+	   href="{% url comments_feed content_type_id,event.id %}">
+	  <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}</a>
+	{% blocktrans %}Discussions{% endblocktrans %}
+      </h3>
+        {% with event as object %}
+            {% render_comment_list for object %}
+            {% render_comment_form for object %}
+        {% endwith %}
 
     </div>
 
@@ -76,19 +88,6 @@
     </div>
     {% endif %}
 
-    <div id="discussions">
-      <h2 id="comments_form_heading">
-        {% get_content_type_id for event as content_type_id %}
-        <a class="button button_small button_feed feed_link"
-	   href="{% url comments_feed content_type_id,event.id %}">
-	  <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}</a>
-	{% blocktrans %}Discussions{% endblocktrans %}
-      </h2>
-        {% with event as object %}
-            {% render_comment_list for object %}
-            {% render_comment_form for object %}
-        {% endwith %}
-    </div>
     <script>
         var RAH = RAH || {};
         RAH.pagescripts = RAH.pagescripts || [];

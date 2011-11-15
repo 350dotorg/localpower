@@ -12,7 +12,6 @@
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
-    <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
     {% ifequal challenge.creator.id request.user.id %}
     <li><a href="#download">{% blocktrans %}Download{% endblocktrans %}</a></li>
         <span class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
@@ -36,6 +35,21 @@
       </button>
     </div>
   </form>
+
+  <hr />
+  <h3 id="comments_form_heading">
+    {% get_content_type_id for challenge as content_type_id %}
+    <a class="button button_small button_feed" 
+       href="{% url comments_feed content_type_id,challenge.id %}">
+      <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}
+    </a>
+    {% blocktrans %}Discussions{% endblocktrans %}
+  </h3>
+  {% with challenge as object %}
+  {% render_comment_form for object %}
+  {% render_comment_list for object %}
+  {% endwith %}
+
 </div>
 
 <div id="supporters">
@@ -47,21 +61,6 @@
             {% endfor %}
         </ul>
     {% endif %}
-</div>
-
-<div id="discussions">
-  <h2 id="comments_form_heading">
-    {% get_content_type_id for challenge as content_type_id %}
-    <a class="button button_small button_feed" 
-       href="{% url comments_feed content_type_id,challenge.id %}">
-      <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}
-    </a>
-    {% blocktrans %}Discussions{% endblocktrans %}
-  </h2>
-  {% with challenge as object %}
-  {% render_comment_form for object %}
-  {% render_comment_list for object %}
-  {% endwith %}
 </div>
 
 {% ifequal challenge.creator.id request.user.id %}
