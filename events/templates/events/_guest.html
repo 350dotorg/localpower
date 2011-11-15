@@ -10,15 +10,11 @@
         {% if guest.is_host %}
             <span class="smaller event_host" title="{% blocktrans with guest.contributor.name as guest_name %}{{guest_name}} is a host{% endblocktrans %}">
 	      {% blocktrans %}Host{% endblocktrans %}</span>
-        {% endif %}
+	    {% endif %}
+	    <span class="smaller">&mdash; {{ guest.status }}
+
         {% if guest.comments %}
             <span class="ui-icon ui-icon-comment tooltip guest_icon" title="{{ guest.comments }}"></span>
         {% endif %}
-    </div>
-    <h5 id="{% url event-guests-edit-status event.id,guest.id %}" class="editable rsvp_select">
-        {% include "events/_guest_status.html" %}
-    </h5>
-    <a class="commitment_card_open" href="{% url commitments_card_with_form guest.contributor.id,event.default_survey.form_name %}">
-      {% blocktrans %}Commitment Card{% endblocktrans %}
-    </a>
+    </div> 
 </div>
