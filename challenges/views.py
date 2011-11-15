@@ -4,8 +4,8 @@ from django.http import Http404
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.decorators.http import require_POST
-
 from utils import forbidden
 
 from models import Challenge, Support
@@ -86,3 +86,47 @@ def pdf_download(request, challenge_id=None):
 
     from challenges.pdf import _download
     return _download(request, challenge, supporters)
+
+@login_required
+@csrf_protect
+def challenges_disc_create(request, challenge_id):
+    nav_selected = "challenges"
+    challenge = get_object_or_404(Challenge, id=challenge_id)
+
+    if not challenge.has_manager_privileges(request.user):
+        return forbidden(request, _('You do not have permissions'))
+        
+    from groups.forms import DiscussionCreateForm
+    from groups.models import GroupUsers, Discussion
+
+    manager = GroupUsers.objects.filter(
+        user=request.user,
+        group__in=challenge.groups.all(),
+        is_manager=True)
+    try:
+        manager = manager[0]
+    except IndexError:
+        return redirect(challenge)
+    group = manager.group
+
+    if request.method == "POST":
+        disc_form = DiscussionCreateForm(request.POST)
+        if disc_form.is_valid():
+            disc = Discussion.objects.create(
+                subject=disc_form.cleaned_data['subject'],
+                body=disc_form.cleaned_data['body'],
+                parent_id=None,
+                user=request.user,
+                group=group,
+                reply_count=0,
+                attached_to="challenges.Challenge:%s" % challenge.id,
+                is_public=False,
+                disallow_replies=True)
+            messages.success(request, "Discussion posted")
+            return redirect(challenge)
+    else:
+        disc_form = DiscussionCreateForm()
+
+    return render_to_response("challenges/challenge_disc_create.html", 
+                              locals(), 
+                              context_instance=RequestContext(request)) 

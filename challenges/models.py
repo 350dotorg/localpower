@@ -36,6 +36,21 @@ class Challenge(models.Model):
     groups = models.ManyToManyField("groups.Group", blank=True,
                                     verbose_name=_("communities"))
 
+    def has_manager_privileges(self, user):
+        if not user.is_authenticated():
+            return False
+        if user.is_staff:
+            return True
+        if self.creator == user:
+            return True
+        from groups.models import GroupUsers
+        if GroupUsers.objects.filter(
+            user=user,
+            group=self.groups.all(),
+            is_manager=True).exists():
+            return True
+        return False
+
     def number_of_supporters(self):
         return self.supporters.all().count()
 

@@ -7,4 +7,6 @@ urlpatterns = patterns('challenges.views',
     url(r'^(?P<challenge_id>\d+)/edit/$', 'edit', name='challenges_edit'),
     url(r'^(?P<challenge_id>\d+)/sign/$', 'detail', name='challenges_sign'),
     url(r'^(?P<challenge_id>\d+)/pdf/$', 'pdf_download', name='challenges_pdf'),
+
+    url(r'^(?P<challenge_id>\d+)/disc/create/$', 'challenges_disc_create', name='challenges_disc_create'),
 )
