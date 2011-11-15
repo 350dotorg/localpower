@@ -93,7 +93,7 @@ class Event(models.Model):
         from groups.models import GroupUsers
         if GroupUsers.objects.filter(
             user=user,
-            group=self.groups.all(),
+            group__in=self.groups.all(),
             is_manager=True).exists():
             return True
         return False

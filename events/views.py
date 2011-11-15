@@ -70,7 +70,7 @@ def event_disc_create(request, event_id):
 
     manager = GroupUsers.objects.filter(
         user=request.user,
-        group=event.groups.all(),
+        group__in=event.groups.all(),
         is_manager=True)
     try:
         manager = manager[0]
