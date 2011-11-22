@@ -103,26 +103,16 @@
     <a class="button" rel="nofollow" href="{{group.external_link}}">Visit Site</a>
     {% else %}
     <div id="overview">
-        <table class="tablesorter">
-            <thead>
-                <tr>
-                    <th class="header">{% blocktrans %}Members{% endblocktrans %}</th>
-                    <th class="header">{% blocktrans %}Committed Actions{% endblocktrans %}</th>
-                    <th class="header">{% blocktrans %}Actions Completed{% endblocktrans %}</th>
-                    <th class="header">{% blocktrans %}Last Active{% endblocktrans %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in top_members %}
-                    <tr>
-                        <td>{% safe_user_link user %}</td>
-                        <td>{{ user.actions_committed|default_if_none:0 }}</td>
-                        <td>{{ user.actions_completed|default_if_none:0 }}</td>
-                        <td>{{ user.last_active|date }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <ul>
+        {% for user in top_members %}
+        <li>
+	  {% safe_user_link user %}
+	  {% if user.last_active %}
+          &mdash; last active {{ user.last_active|date }}
+	  {% endif %}
+	</li>
+        {% endfor %}
+      </ul>
 
         <p>
 	  {% blocktrans with group.total_members as num_members %}
