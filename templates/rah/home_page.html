@@ -162,20 +162,6 @@
 	  </div>
         </div>
         <div class="grid_4">
-            <div id="home_featured_users">
-                <h2 class="home_feature_heading">{% blocktrans %}Featured Users{% endblocktrans %}</h2>
-                <ul class="plain_list nugget_2c_list">
-                    {% for user in top_users %}
-                        {% include "base/_nugget_2c_list.html" %}
-                    {% endfor %}
-                </ul>
-                <br/>
-                <div class="center">
-                    <a href="{% url user_list %}" class="button button_blue button_189">{% blocktrans %}Browse Users{% endblocktrans %}</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid_4 omega">
             <h2 class="home_feature_heading">{% blocktrans %}Featured Communities{% endblocktrans %}</h2>
             <ul class="plain_list nugget_4c_list">
                 {% for group in top_communities %}
@@ -201,7 +187,20 @@
             <div class="center">
                 <a href="{% url group_list %}" class="button button_blue button_189">{% blocktrans %}Browse Communities{% endblocktrans %}</a>
             </div>
-
+        </div>
+        <div class="grid_4 omega">
+            <div id="home_featured_users">
+                <h2 class="home_feature_heading">{% blocktrans %}Featured Users{% endblocktrans %}</h2>
+                <ul class="plain_list nugget_2c_list">
+                    {% for user in top_users %}
+                        {% include "base/_nugget_2c_list.html" %}
+                    {% endfor %}
+                </ul>
+                <br/>
+                <div class="center">
+                    <a href="{% url user_list %}" class="button button_blue button_189">{% blocktrans %}Browse Users{% endblocktrans %}</a>
+                </div>
+            </div>
         </div>
     </div>
     <script>
