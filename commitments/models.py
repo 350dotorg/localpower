@@ -148,7 +148,11 @@ class Contributor(models.Model):
     def _get_name(self):
         if self.user:
             return self.user.get_full_name()
-        return ("%s %s" % (self.first_name, self.last_name)).strip()
+        # https://github.com/350org/localpower/issues/143
+        last_initial = self.last_name
+        if last_initial:
+            last_initial = "%s." % last_initial
+        return ("%s %s" % (self.first_name, last_initial)).strip()
     name = property(_get_name, _set_name)
 
     def needs_more_info(self):

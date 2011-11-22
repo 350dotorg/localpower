@@ -94,8 +94,7 @@
                                 {% for commitment in tuple.0 %}
                                     <li class="contributor__{{ commitment.contributor.id }}">
                                         &nbsp;&nbsp;&nbsp;
-                                        {{ commitment.contributor.first_name }} 
-                                        {{ commitment.contributor.last_name }}
+                                        {{ commitment.contributor.name }} 
                                         <span class="commit_user_list_edit_link hidden">
                                             (<a href="{% url commitments_card commitment.contributor.id %}" class="commitment_card_open">edit</a>)
                                         </span>

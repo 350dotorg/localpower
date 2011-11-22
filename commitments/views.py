@@ -70,7 +70,7 @@ def card(request, contrib_id=None, form_name=None):
         survey_form.contributor = contributor
         survey_form.save()
 
-        messages.success(request, "Commitment card for %s %s saved" % (contributor.first_name, contributor.last_name,))
+        messages.success(request, "Commitment card for %s saved" % contributor.name)
 
     if request.is_ajax():
         if request.method == 'POST':

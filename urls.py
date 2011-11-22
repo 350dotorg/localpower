@@ -5,6 +5,17 @@ from django.conf.urls.defaults import *
 from django.contrib.auth import decorators
 from utils import login_required 
 decorators.login_required = login_required
+# And some more, for https://github.com/350org/localpower/issues/143
+from django.contrib.auth.models import User
+def get_full_name_anonymized(self):
+    if self.last_name:
+        last_initial = "%s." % self.last_name[0]
+    else:
+        last_initial = ''
+    full_name = u'%s %s' % (self.first_name, last_initial)
+    return full_name.strip()
+User.get_full_name = get_full_name_anonymized
+
 
 # Register apps with the admin interface
 from actions import admin as actions_admin
