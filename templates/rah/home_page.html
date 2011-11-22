@@ -143,21 +143,29 @@
     <div class="grid_12 alpha omega">
         <div class="grid_4 alpha">
 	  <div id="home_featured_projects">
-            <h2 class="home_feature_heading">{% blocktrans %}Featured Projects{% endblocktrans %}</h2>
+            <h2 class="home_feature_heading">{% blocktrans %}Recent Events{% endblocktrans %}</h2>
                 <ul class="plain_list nugget_4c_list">
-		  {% for project in top_projects %}
-		  {% load humanize %}
+		  {% for event in top_events %}
 		  <li>
-		    <img src="{{ project.image_paths.small }}" width="40" height="40"/>
-		    <div style="width: 70%">
-		      <a href="{{ project.get_absolute_url }}">{{ project }}</a><br/>
+		    <a href="{% url event-detail event.id %}" class="group_list_thumb">
+                      <img src="http://maps.google.com/maps/api/staticmap?center={{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;zoom=6&amp;size=80x80&amp;markers=size:small%7C{{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;sensor=false" alt="{{event.geom}}" height="60" width="60" />
+		    </a>
+		    <div>
+		      <a href="{% url event-detail event.id %}">
+			{{ event }}</a>
+		      <br />
+		      <span>{{ event.when }}</span>
+		      <br />
+		      {% with event.attendees|length as attendees %}
+		      {{attendees}} attendee{{attendees|pluralize}}
+		      {% endwith %}
 		    </div>
 		  </li>
 		  {% endfor %}
                 </ul>
                 <br/>
                 <div class="center">
-                    <a href="{% url action_show %}" class="button button_blue button_189">{% blocktrans %}Browse Projects{% endblocktrans %}</a>
+                    <a href="{% url action_show %}" class="button button_blue button_189">{% blocktrans %}Find Events Near You{% endblocktrans %}</a>
                 </div>
 	  </div>
         </div>
