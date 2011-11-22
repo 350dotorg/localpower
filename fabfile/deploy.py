@@ -25,19 +25,20 @@ def enable_maintenance_page():
 def _fetch():
     "Updates the application with new code"
     require("hosts", "deploy_to")
-    run("cd %(deploy_to)s && git fetch --all" % env)
+    sudo("cd %(deploy_to)s && git fetch --all" % env, user="wsgi")
 
 def _reset():
     "Set the workspace to the desired revision"
     require("hosts", "deploy_to")
-    run("cd %(deploy_to)s && git reset --hard" % env)
+    sudo("cd %(deploy_to)s && git reset --hard" % env, user="wsgi")
 
 def _checkout():
     "Checkout the revision you would like to deploy"
     require("hosts", "deploy_to")
     with settings(warn_only=True):
-        result = run("cd %(deploy_to)s && git checkout -b \
-            `date +'%%Y-%%m-%%d_%%H-%%M-%%S'`_`whoami` %(sha)s" % env)
+        result = sudo("cd %(deploy_to)s && git checkout -b \
+            `date +'%%Y-%%m-%%d_%%H-%%M-%%S'`_`whoami` %(sha)s" % env,
+                      user="wsgi")
         if result.failed:
             abort(red("Have you pushed your latest changes to the repository?"))
 
@@ -97,6 +98,17 @@ def disable_maintenance_page():
                 sudo("rm /etc/nginx/sites-enabled/maintenance")
                 sudo("ln -s /etc/nginx/sites-available/rah /etc/nginx/sites-enabled/rah")
                 sudo("/etc/init.d/nginx reload")
+
+def _touch_wsgi():
+    require("deploy_to", "hosts", "wsgi_file")
+    sudo("touch %(wsgi_file)s" % env, user="wsgi")
+
+def push():
+    require("deploy_to", "hosts", "environment")
+    _fetch()
+    _reset()
+    _checkout()
+    _touch_wsgi()
 
 def deploy(revision=None, code_only=False, sync_media=True):
     "Deploy a revision to server"

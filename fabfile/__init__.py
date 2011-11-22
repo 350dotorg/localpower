@@ -3,7 +3,7 @@ from fabric.contrib.console import confirm
 
 from utils import query_revision
 
-env.user = "ubuntu"
+env.user = "egj"
 env.disable_known_hosts = True
 
 # Roles take a list of one or more servers
@@ -11,9 +11,11 @@ env.roledefs = {
     "application": [""],
     "loadbalancer": [""],
     "staging": ["ec2-107-20-218-152.compute-1.amazonaws.com"],
+    "prod": ["50.57.104.102"],
 }
 
-env.deploy_to = "/home/%(user)s/webapp" % env
+env.deploy_to = "/var/www/local.350.org/localpower"
+env.wsgi_file = "/var/www/local.350.org/django.wsgi"
 env.parent = "origin"
 env.revision = "HEAD"
 env.sha = query_revision(env.revision)
@@ -25,9 +27,9 @@ def staging():
     env.loadbalancers = env.roledefs["staging"]
 
 def prod():
-    env.roles = ["application"]
+    env.roles = ["prod"]
     env.environment = "production"
-    env.loadbalancers = env.roledefs["loadbalancer"]
+    env.loadbalancers = env.roledefs["prod"]
 
 def environment(environment):
     env.environment = environment

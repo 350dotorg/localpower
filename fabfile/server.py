@@ -15,7 +15,7 @@ from deploy import install_requirements
 env.disable_known_hosts = True
 
 env.zone = "us-east-1d"
-env.key_name = "lpkey"
+#env.key_name = "lpkey"
 env.db_name = "lp"
 env.db_user = "lp_db_user"
 
