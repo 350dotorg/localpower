@@ -2487,7 +2487,7 @@ msgstr ""
 
 #: groups/templates/groups/group_detail.html:87
 msgid "Activity"
-msgstr "Activity Feed"
+msgstr "Updates"
 
 #: groups/templates/groups/group_detail.html:92
 msgid "Requests and Notifications"
