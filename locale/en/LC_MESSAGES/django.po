@@ -3646,11 +3646,11 @@ msgstr "Browse Groups"
 
 #: templates/rah/home_page.html:166
 msgid "Featured Users"
-msgstr ""
+msgstr "New Members"
 
 #: templates/rah/home_page.html:174
 msgid "Browse Users"
-msgstr ""
+msgstr "Find Members"
 
 #: templates/rah/home_page.html:179
 msgid "Featured Communities"
