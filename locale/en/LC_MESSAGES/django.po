@@ -3654,7 +3654,7 @@ msgstr "Find Members"
 
 #: templates/rah/home_page.html:179
 msgid "Featured Communities"
-msgstr "Featured Groups"
+msgstr "Featured 350 Groups"
 
 #: templates/rah/home_page.html:192
 #, python-format
