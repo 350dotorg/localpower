@@ -250,7 +250,7 @@ class Message(models.Model):
         context = template.Context(params)
         # render the body and subject template with the given, template
         subject = template.Template(self.subject).render(context)
-        subject = html_unescape(subject.replace("&amp;", "&"))
+        subject = html_unescape(subject)
 
         body = template.Template(self.body).render(context)
         replacer = LinkReplacer(recipient_message=recipient_message)
