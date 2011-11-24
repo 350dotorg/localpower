@@ -17,6 +17,34 @@ from fields import PickledObjectField
 
 URL_REGEX = re.compile(r"(?<!src=(\"|\'))(https?)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|]", re.IGNORECASE)
 
+## http://effbot.org/zone/re-sub.htm#unescape-html
+import re, htmlentitydefs
+##
+# Removes HTML or XML character references and entities from a text string.
+#
+# @param text The HTML (or XML) source text.
+# @return The plain text, as a Unicode string, if necessary.
+def html_unescape(text):
+    def fixup(m):
+        text = m.group(0)
+        if text[:2] == "&#":
+            # character reference
+            try:
+                if text[:3] == "&#x":
+                    return unichr(int(text[3:-1], 16))
+                else:
+                    return unichr(int(text[2:-1]))
+            except ValueError:
+                pass
+        else:
+            # named entity
+            try:
+                text = unichr(htmlentitydefs.name2codepoint[text[1:-1]])
+            except KeyError:
+                pass
+        return text # leave as is
+    return re.sub("&#?\w+;", fixup, text)
+
 class LinkReplacer(object):
     def __init__(self, recipient_message, *args, **kwargs):
         self.recipient_message = recipient_message
@@ -222,6 +250,8 @@ class Message(models.Model):
         context = template.Context(params)
         # render the body and subject template with the given, template
         subject = template.Template(self.subject).render(context)
+        subject = html_unescape(subject)
+
         body = template.Template(self.body).render(context)
         replacer = LinkReplacer(recipient_message=recipient_message)
         body = re.sub(URL_REGEX, replacer.replace_link, body)
