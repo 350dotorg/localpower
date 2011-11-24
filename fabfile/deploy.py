@@ -103,12 +103,21 @@ def _touch_wsgi():
     require("deploy_to", "hosts", "wsgi_file")
     sudo("touch %(wsgi_file)s" % env, user="wsgi")
 
+@runs_once
+def _syncdb():
+    "Sync the database with any new models"
+    require("hosts", "deploy_to")
+    if fabric.version.VERSION[0] > 0 or \
+            confirm("This script cannot handle interactive shells, are you sure you want to run syncdb?"):
+        sudo("cd %(deploy_to)s && %(virtualenv)s/bin/python manage.py syncdb" % env, user="wsgi")
+
 def push():
     require("deploy_to", "hosts", "environment")
     _fetch()
     _reset()
     _checkout()
     _touch_wsgi()
+    _syncdb()
 
 def deploy(revision=None, code_only=False, sync_media=True):
     "Deploy a revision to server"

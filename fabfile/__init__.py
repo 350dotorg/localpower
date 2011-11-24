@@ -16,6 +16,7 @@ env.roledefs = {
 
 env.deploy_to = "/var/www/local.350.org/localpower"
 env.wsgi_file = "/var/www/local.350.org/django.wsgi"
+env.virtualenv = "/var/www/local.350.org/ve"
 env.parent = "origin"
 env.revision = "HEAD"
 env.sha = query_revision(env.revision)
