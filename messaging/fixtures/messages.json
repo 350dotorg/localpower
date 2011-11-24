@@ -3,7 +3,7 @@
     "pk": 6, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% load i18n %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ user_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible. \r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just created this group: <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object}}</a>.\r\n</p>\r\n\r\n<p>\r\nSince you\u2019re new, let me take a moment explain the basic features of the website:\r\n</p> \r\n\r\n<ul>\r\n<li>\r\nTo get started, <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">invite some local friends to join you</a>.\r\n</li>\r\n<li>\r\nYou can also check out some group projects right here: <a href=\"http://groups.350.org/projects/\">http://groups.350.org/projects/</a>.\r\n</li>\r\n<li>\r\nAs the group manager, you can moderate discussions, add projects, start campaigns, plan events, and more by using the tools on your group\u2019s page.\r\n</li>\r\n</ul>\r\n\r\n<p>\r\nOne last thing: I\u2019m here to help. If you have a problem, an idea, or a question, just let me know at <mailto:\"kelly@350.org\">kelly@350.org</a>.  \r\n</p>\r\n<p>\r\nI\u2019d love to hear your ideas for building a strong climate movement both in your community and around the world.\r\n</p>\r\n<p>\r\nOnwards,<br/>\r\nKelly Blynn<br/>\r\nCommunity Manager, 350.org\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% load i18n %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ user_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible. \r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just created this group: <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object}}</a>.\r\n</p>\r\n\r\n<p>\r\nSince you\u2019re new, let me take a moment explain the basic features of the website:\r\n</p> \r\n\r\n<ul>\r\n<li>\r\nTo get started, <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">invite some local friends to join you</a>.\r\n</li>\r\n<li>\r\nYou can also check out some group projects right here: <a href=\"http://{{ domain }}/projects/\">http://{{ domain }}/projects/</a>.\r\n</li>\r\n<li>\r\nAs the group manager, you can moderate discussions, add projects, start campaigns, plan events, and more by using the tools on your group\u2019s page.\r\n</li>\r\n</ul>\r\n\r\n<p>\r\nOne last thing: I\u2019m here to help. If you have a problem, an idea, or a question, just let me know at <mailto:\"kelly@350.org\">kelly@350.org</a>.  \r\n</p>\r\n<p>\r\nI\u2019d love to hear your ideas for building a strong climate movement both in your community and around the world.\r\n</p>\r\n<p>\r\nOnwards,<br/>\r\nKelly Blynn<br/>\r\nCommunity Manager, 350.org\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-26 13:23:12", 
       "batch_window": null, 
       "name": "You've created a community", 
@@ -44,7 +44,7 @@
       "send_as_batch": 0, 
       "extra_headers_function": "email_extra_headers", 
       "generic_relation_content_type": null, 
-      "subject": "[350 Groups: {{content_object.container}}] {{ content_object.subject }}"
+      "subject": "[350 Local: {{content_object.container}}] {{ content_object.subject }}"
     }
   }, 
   {
@@ -75,7 +75,7 @@
     "pk": 9, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.user.first_name }},<br />\r\n    You\u2019re in! The group administrator just approved your access to {{ content_object.group }}.\r\n</p>\r\n<p>\r\n    Click here to go to <a href=\"http://{{ domain }}{{ content_object.group.get_absolute_url }}\">{{ content_object.group }}</a>\r\n</p>\r\n<p>\r\n    On the group page, you can check out who else is active, what projects your group is working on, and more.\r\n</p>\r\n<p>\r\nYou can browse the <a href=\"http://groups.350.org/projects\">list of group projects</a> to check out some other projects to do as a group. \r\n</p>\r\n<p>\r\nOnwards,<br />\r\n \r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi {{ content_object.user.first_name }},<br />\r\n    You\u2019re in! The group administrator just approved your access to {{ content_object.group }}.\r\n</p>\r\n<p>\r\n    Click here to go to <a href=\"http://{{ domain }}{{ content_object.group.get_absolute_url }}\">{{ content_object.group }}</a>\r\n</p>\r\n<p>\r\n    On the group page, you can check out who else is active, what projects your group is working on, and more.\r\n</p>\r\n<p>\r\nYou can browse the <a href=\"http://{{ domain }}/projects\">list of group projects</a> to check out some other projects to do as a group. \r\n</p>\r\n<p>\r\nOnwards,<br />\r\n \r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-26 14:01:11", 
       "batch_window": null, 
       "name": "Community Membership Approved", 
@@ -315,7 +315,7 @@
     "pk": 20, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n Hi there, <br /><br />\r\n  {{ content_object.user.get_full_name }} ({{ content_object.user.email }}) is building a movement to solve the climate crisis with 350.org, and wants you to join in. <br /><br />\r\n\r\n<strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept your invitation</a></strong>\r\n</p>\r\n<p>\r\nBy creating an account, you can:</p>\r\n<ul><li>Find others in your community to build power and brainstorm.</li>\r\n<li>Access easy-to-use tools that will inspire your community to join you.</li>\r\n<li>Link up with climate leaders across the country and around the world.</li>\r\n<li>Track your community's progress.</li></ul>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} has to say: <br />\r\n       <em>{{ note|safe }}</em> \r\n    </p>\r\n{% endif %}\r\n\r\n<p>\r\n    Get started today!\r\n</p>\r\n<p>\r\n    <strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Sign up at groups.350.org</a></strong>\r\n</p>\r\n<p>\r\n    Cheers,<br />\r\n    The 350.org team\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n Hi there, <br /><br />\r\n  {{ content_object.user.get_full_name }} ({{ content_object.user.email }}) is building a movement to solve the climate crisis with 350.org, and wants you to join in. <br /><br />\r\n\r\n<strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept your invitation</a></strong>\r\n</p>\r\n<p>\r\nBy creating an account, you can:</p>\r\n<ul><li>Find others in your community to build power and brainstorm.</li>\r\n<li>Access easy-to-use tools that will inspire your community to join you.</li>\r\n<li>Link up with climate leaders across the country and around the world.</li>\r\n<li>Track your community's progress.</li></ul>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} has to say: <br />\r\n       <em>{{ note|safe }}</em> \r\n    </p>\r\n{% endif %}\r\n\r\n<p>\r\n    Get started today!\r\n</p>\r\n<p>\r\n    <strong><a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Sign up at {{ domain }}</a></strong>\r\n</p>\r\n<p>\r\n    Cheers,<br />\r\n    The 350.org team\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-27 15:01:22", 
       "batch_window": null, 
       "name": "Invite", 
@@ -332,7 +332,7 @@
       "send_as_batch": 0, 
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
-      "subject": "Invitation from {{ content_object.user.get_full_name }} to 350 Groups"
+      "subject": "Invitation from {{ content_object.user.get_full_name }} to 350 Local"
     }
   }, 
   {
@@ -363,7 +363,7 @@
     "pk": 22, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi,<br />\r\n    {{ content_object.user.get_full_name}} wants you to join {{ content_object.content_object }}.\r\n</p>\r\n<p>\r\n    <a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept the invitation</a>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} wants you to know: <br />\r\n       {{ note|safe }} \r\n    </p>\r\n{% endif %}\r\n<p>\r\n  {{ content_object.content_object }} is a group on 350.org. 350 Groups help people get organized, connect with friends, and do projects together to transform their communities and help fight the climate crisis.<br/>\r\n Link up today:</p>\r\n<p>\r\n    <a href=\"https://{{ domain }}{% url register %}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Join now</a>\r\n</p>\r\n<p>\r\n  Cheers,<br />\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\n    Hi,<br />\r\n    {{ content_object.user.get_full_name}} wants you to join {{ content_object.content_object }}.\r\n</p>\r\n<p>\r\n    <a href=\"{{ content_object.get_permalink }}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Click here to accept the invitation</a>\r\n</p>\r\n{% if note %}\r\n    <p>\r\n       Here's what {{ content_object.user.first_name }} wants you to know: <br />\r\n       {{ note|safe }} \r\n    </p>\r\n{% endif %}\r\n<p>\r\n  {{ content_object.content_object }} is a group on {{ domain }}. 350 Local help people get organized, connect with friends, and do projects together to transform their communities and help fight the climate crisis.<br/>\r\n Link up today:</p>\r\n<p>\r\n    <a href=\"https://{{ domain }}{% url register %}?source=sprd-taf&subsource={{ content_object.get_absolute_url }}\">Join now</a>\r\n</p>\r\n<p>\r\n  Cheers,<br />\r\nThe 350.org Team\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-27 15:17:25", 
       "batch_window": null, 
       "name": "Community invite", 
@@ -411,7 +411,7 @@
     "pk": 24, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\nThe following user has just registered for a new account on 350 Groups:\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object.get_full_name }}</a>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\nThe following user has just registered for a new account on 350 Local:\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object.get_full_name }}</a>\r\n{% endblock %}", 
       "updated": "2011-09-27 15:28:50", 
       "batch_window": null, 
       "name": "New Account", 
@@ -428,14 +428,14 @@
       "send_as_batch": 0, 
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
-      "subject": "New 350 Groups User: {{ content_object.email }}"
+      "subject": "New 350 Local User: {{ content_object.email }}"
     }
   }, 
   {
     "pk": 25, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ recipient.first_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible.\r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just put this group on the map: <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object}}</a></p>\r\n\r\n<p>\r\nYour group\u2019s pin on the map will link out to your external action website.\r\n</p>\r\n\r\n<p>\r\nIf you ever want to change your group listing to use the features on groups.350.org (like launching group projects, organizing events, and launching local campaigns) you can do it easily whenever you\u2019d like. Just let us know!\r\n</p>\r\n\r\n<p>\r\nOnwards,<br />\r\n<br />\r\nKelly Blynn for the 350.org Team\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nHi {{ recipient.first_name }},\r\n</p>\r\n\r\n<p>\r\nI\u2019m Kelly, the community manager for 350 groups around the world. My job is to help you and your group be as strong, as fun, and as effective as possible.\r\n</p>\r\n\r\n<p>\r\nYou\u2019re getting this note because you just put this group on the map: <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object}}</a></p>\r\n\r\n<p>\r\nYour group\u2019s pin on the map will link out to your external action website.\r\n</p>\r\n\r\n<p>\r\nIf you ever want to change your group listing to use the features on {{ domain }} (like launching group projects, organizing events, and launching local campaigns) you can do it easily whenever you\u2019d like. Just let us know!\r\n</p>\r\n\r\n<p>\r\nOnwards,<br />\r\n<br />\r\nKelly Blynn for the 350.org Team\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-27 15:31:31", 
       "batch_window": null, 
       "name": "Thanks for listing your group", 
@@ -459,7 +459,7 @@
     "pk": 26, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nThe following group has just been registered on 350 Groups:<br/>\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object }}</a>\r\n</p>\r\n<p>\r\nPlease double check that this group does not contain spam, and, if it does, you can delete or edit it through the site's administrative interface here:<br/>\r\n  <a href=\"http://{{ domain }}/admin/groups/group/{{content_object.id}}/\">http://{{ domain }}/admin/groups/group/{{content_object.id}}/</a>\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nThe following group has just been registered on 350 Local:<br/>\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object }}</a>\r\n</p>\r\n<p>\r\nPlease double check that this group does not contain spam, and, if it does, you can delete or edit it through the site's administrative interface here:<br/>\r\n  <a href=\"http://{{ domain }}/admin/groups/group/{{content_object.id}}/\">http://{{ domain }}/admin/groups/group/{{content_object.id}}/</a>\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-28 16:34:36", 
       "batch_window": null, 
       "name": "New Group", 
@@ -476,14 +476,14 @@
       "send_as_batch": 0, 
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
-      "subject": "New 350 Groups Group: {{ content_object }}"
+      "subject": "New 350 Local Group: {{ content_object }}"
     }
   }, 
   {
     "pk": 27, 
     "model": "messaging.message", 
     "fields": {
-      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nThe following event has just been registered on 350 Groups:<br/>\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object }} in {{ content_object.geom }}</a>\r\n</p>\r\n<p>\r\nPlease double check that this event does not contain spam, and, if it does, you can delete or edit it through the site's administrative interface here:<br/>\r\n  <a href=\"http://{{ domain }}/admin/events/event/{{content_object.id}}/\">http://{{ domain }}/admin/events/event/{{content_object.id}}/</a>\r\n</p>\r\n{% endblock %}", 
+      "body": "{% extends 'rah/base_email.html' %}\r\n{% block email_content %}\r\n<p>\r\nThe following event has just been registered on 350 Local:<br/>\r\n  <a href=\"http://{{ domain }}{{ content_object.get_absolute_url }}\">{{ content_object }} in {{ content_object.geom }}</a>\r\n</p>\r\n<p>\r\nPlease double check that this event does not contain spam, and, if it does, you can delete or edit it through the site's administrative interface here:<br/>\r\n  <a href=\"http://{{ domain }}/admin/events/event/{{content_object.id}}/\">http://{{ domain }}/admin/events/event/{{content_object.id}}/</a>\r\n</p>\r\n{% endblock %}", 
       "updated": "2011-09-28 16:34:36", 
       "batch_window": null, 
       "name": "New Event", 
@@ -500,7 +500,7 @@
       "send_as_batch": 0, 
       "extra_headers_function": "", 
       "generic_relation_content_type": null, 
-      "subject": "New 350 Groups Event: {{ content_object }}"
+      "subject": "New 350 Local Event: {{ content_object }}"
     }
   }, 
   {
