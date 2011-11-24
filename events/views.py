@@ -104,7 +104,7 @@ def event_disc_create(request, event_id):
                 attached_to="events.Event:%s" % event.id,
                 is_public=False,
                 disallow_replies=True)
-            messages.success(request, "Discussion posted")
+            messages.success(request, "Your message has been sent to the event's participants.")
             return redirect(event)
     else:
         disc_form = DiscussionCreateForm()

@@ -136,7 +136,7 @@ def challenges_disc_create(request, challenge_id):
                 attached_to="challenges.Challenge:%s" % challenge.id,
                 is_public=False,
                 disallow_replies=True)
-            messages.success(request, "Discussion posted")
+            messages.success(request, "Your message has been sent to the campaign's supporters.")
             return redirect(challenge)
     else:
         disc_form = DiscussionCreateForm()
