@@ -83,6 +83,13 @@
             <a href="{% url event-spreadsheet event.id %}">{% blocktrans %}Guest List{% endblocktrans %}</a>
             <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
           </li>
+
+	  {% if manager %}
+	  <li>
+	    <a href="{% url event_disc_create event.id %}">Mail all participants</a>
+	  </li>
+	  {% endif %}
+
         </ul>
         {% include "events/_invitations.html" %}
     </div>

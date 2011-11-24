@@ -56,6 +56,18 @@ def detail(request, event_id, token=None):
     has_manager_privileges = event.has_manager_privileges(request.user)
     if not has_manager_privileges:
         rsvp_form = RsvpForm(instance=guest, initial={"token": token, "rsvp_status": "A"})
+
+    manager = None
+    if has_manager_privileges:
+        manager = GroupUsers.objects.filter(
+            user=request.user,
+            group__in=event.groups.all(),
+            is_manager=True)
+        try:
+            manager = manager[0]
+        except IndexError:
+            manager = None
+
     return render_to_response("events/detail.html", locals(), context_instance=RequestContext(request))
 
 @login_required

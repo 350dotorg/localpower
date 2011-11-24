@@ -12,12 +12,12 @@
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
-    {% ifequal challenge.creator.id request.user.id %}
+    {% if has_manager_privileges %}
     <li><a href="#download">{% blocktrans %}Download{% endblocktrans %}</a></li>
         <span class="tab_nav_link"><a href="{% url challenges_edit challenge.id %}">
 	    {% blocktrans %}Edit this Challenge{% endblocktrans %}
 	</a></span>
-    {% endifequal %}
+    {% endif %}
 {% endblock %}
 {% block content %}
 <div id="overview">
@@ -60,10 +60,17 @@
                 {% include "base/_nugget_2c_list_supporter.html" %}
             {% endfor %}
         </ul>
+
+	{% if has_manager_privileges %}
+	<a href="{% url challenges_disc_create challenge.id %}">
+	  Mail supporters
+	</a>
+	{% endif %}
+
     {% endif %}
 </div>
 
-{% ifequal challenge.creator.id request.user.id %}
+{% if has_manager_privileges %}
 <div id="download">
   <h2>{% blocktrans %}Download Signatures{% endblocktrans %}</h2>
   {% if supporters|length %}
@@ -80,7 +87,7 @@
   {% endblocktrans %}
   {% endif %}
 </div>
-{% endifequal %}
+{% endif %}
 
 {% endblock %}
 {% block sidebar %}

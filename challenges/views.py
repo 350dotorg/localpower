@@ -63,6 +63,19 @@ def detail(request, challenge_id):
         messages.success(request, _('Thanks for your support'))
         return redirect('challenges_detail', challenge_id=challenge_id)
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
+
+    has_manager_privileges = challenge.has_manager_privileges(request.user)
+    manager = None
+    if has_manager_privileges:
+        manager = GroupUsers.objects.filter(
+            user=request.user,
+            group__in=challenge.groups.all(),
+            is_manager=True)
+        try:
+            manager = manager[0]
+        except IndexError:
+            manager = None
+
     return render_to_response('challenges/detail.html', locals(), context_instance=RequestContext(request))
 
 @login_required
