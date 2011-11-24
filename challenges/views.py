@@ -64,6 +64,7 @@ def detail(request, challenge_id):
         return redirect('challenges_detail', challenge_id=challenge_id)
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
 
+    from groups.models import GroupUsers
     has_manager_privileges = challenge.has_manager_privileges(request.user)
     manager = None
     if has_manager_privileges:

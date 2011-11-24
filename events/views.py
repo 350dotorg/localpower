@@ -57,6 +57,7 @@ def detail(request, event_id, token=None):
     if not has_manager_privileges:
         rsvp_form = RsvpForm(instance=guest, initial={"token": token, "rsvp_status": "A"})
 
+    from groups.models import GroupUsers
     manager = None
     if has_manager_privileges:
         manager = GroupUsers.objects.filter(
