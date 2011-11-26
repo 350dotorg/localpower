@@ -28,6 +28,28 @@
   <form action="{% url challenges_sign challenge.id %}" method="post"
 	class="form_6c form_6c_dark">
     {% include "base/_form.html" %}
+
+    {% if groups_to_join %}
+    <div class="form_row">
+    <ul class="plain_list">
+      {% for group in groups_to_join %}
+      <li>
+	<input name="join_group" value="{{ group.slug }}"
+	       {% if group.is_joinable and group.is_public %}checked="checked"{% endif %}
+	       id="join_group_{{ group.slug }}" type="checkbox"></input>
+	<label style="color: white; font-weight: bold;" 
+	       for="join_group_{{ group.slug }}">
+	  Add me to 
+	  <a style="color: #F90;"
+	     href="{{ group.get_absolute_url }}">{{ group }}</a>
+	  and keep me posted on local activities.
+	</label>
+      </li>
+      {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
     {% csrf_token %}
     <div class="form_buttons">
       <button class="button button_mega" type="submit">

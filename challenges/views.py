@@ -64,18 +64,11 @@ def detail(request, challenge_id):
         return redirect('challenges_detail', challenge_id=challenge_id)
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
 
-    from groups.models import GroupUsers
     has_manager_privileges = challenge.has_manager_privileges(request.user)
-    manager = None
-    if has_manager_privileges:
-        manager = GroupUsers.objects.filter(
-            user=request.user,
-            group__in=challenge.groups.all(),
-            is_manager=True)
-        try:
-            manager = manager[0]
-        except IndexError:
-            manager = None
+    
+    groups_to_join = challenge.groups.filter(is_external_link_only=False)
+    if request.user.is_authenticated():
+        groups_to_join = groups_to_join.exclude(groupusers__user=request.user)
 
     return render_to_response('challenges/detail.html', locals(), context_instance=RequestContext(request))
 
