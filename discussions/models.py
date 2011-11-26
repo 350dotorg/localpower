@@ -31,6 +31,7 @@ class Discussion(models.Model):
     objects = DiscussionManager()
 
     disallow_replies = models.BooleanField(_('disallow replies'), default=False)
+    contact_admin = models.BooleanField(_('contact admin'), default=False)
 
     class Meta:
         verbose_name = _('Discussion')
@@ -53,6 +54,11 @@ class Discussion(models.Model):
         if self.content_type == ContentType.objects.get(
             app_label="events", model="event"):
             event = self.content_object
+
+            if self.contact_admin:
+                # TODO: also email related-group-managers
+                return event.hosts()
+
             guests = event.attendees()
             # @@TODO: this is too many queries, select related
             # @@TODO: check blacklist?
@@ -61,8 +67,22 @@ class Discussion(models.Model):
         if self.content_type == ContentType.objects.get(
             app_label="challenges", model="challenge"):
             petition = self.content_object
+            
+            if self.contact_admin:
+                # TODO: also email related-group-managers
+                return [petition.creator]
+
             # @@TODO: check blacklist
             return [u for u in petition.supporters.all() if u.email != self.user.email]
+        
+        if self.content_type == ContentType.objects.get(
+            app_label="groups", model="group"):
+            group = self.content_object
+
+            if self.contact_admin:
+                return group.managers()
+            
+            # @@TODO: implement
         
         return []
         

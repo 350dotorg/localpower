@@ -43,6 +43,9 @@ urlpatterns = patterns(
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/remove/$', 'group_disc_remove', name='group_disc_remove'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/approve/$', 'group_disc_approve', name='group_disc_approve'),
 
+    url(r'^(?P<group_slug>[a-z0-9-]+)/contact/$', 'group_contact_admins',
+        name='group_contact_admins'),
+
     url(r'^(?P<group_id>\d+)/event_approve/(?P<object_id>\d+)/$', 
         'group_association_request', 
         {'action': 'approve', 'content_type': 'events.event'}, 

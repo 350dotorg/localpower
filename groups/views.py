@@ -441,6 +441,33 @@ def receive_mail(request):
 
 @login_required
 @csrf_protect
+def group_contact_admins(request, group_slug):
+    group = Group.objects.get(slug=group_slug)
+    from discussions.models import Discussion as GenericDiscussion
+    if request.method == "POST":
+        disc_form = DiscussionCreateForm(request.POST)
+        if disc_form.is_valid():
+            disc = GenericDiscussion.objects.create(
+                subject="Message to group leaders: %s" % disc_form.cleaned_data['subject'],
+                body=disc_form.cleaned_data['body'],
+                parent_id=None,
+                user=request.user, 
+                content_object=group,
+                is_public=False,
+                disallow_replies=True,
+                reply_count=0,
+                contact_admin=True,
+            )
+            messages.success(request, _("Your message has been sent to the group leaders"))
+            return redirect(group)
+    else:
+        disc_form = DiscussionCreateForm()
+    return render_to_response("groups/group_disc_contact_admins.html",
+                              locals(), 
+                              context_instance=RequestContext(request)) 
+
+@login_required
+@csrf_protect
 def group_disc_create(request, group_slug):
     group = Group.objects.get(slug=group_slug)
     if not group.is_poster(request.user):
