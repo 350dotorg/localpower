@@ -266,15 +266,18 @@ def print_sheet(request, event_id):
 def spreadsheet(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     response = HttpResponse(mimetype="text/csv")
-    response["Content-Disposition"] = "attachment; filename=%s Guest List.csv" % event
+    response["Content-Disposition"] = \
+        "attachment; filename=%s Guest List.csv" % event
 
-    questions = event.default_survey.questions()
     writer = csv.writer(response)
-    writer.writerow(["Name", "Email", "Phone", "Location", "Status"] + list(questions))
+    writer.writerow(["Name", "Email", "Phone", "Location", "Status"])
 
-    for g in event.guests_with_commitments():
-        answers = [getattr(g, question) for question in questions]
-        writer.writerow([g.contributor.name, g.contributor.email, g.contributor.phone, g.contributor.geom.formatted_address, g.status()] + answers)
+    for g in Guest.objects.filter(event=event):
+        writer.writerow([g.contributor.name,
+                         g.contributor.email,
+                         g.contributor.phone, 
+                         g.contributor.geom.formatted_address,
+                         g.status()]
 
     return response
 
