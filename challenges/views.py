@@ -111,17 +111,7 @@ def challenges_disc_create(request, challenge_id):
         return forbidden(request, _('You do not have permissions'))
         
     from groups.forms import DiscussionCreateForm
-    from groups.models import GroupUsers, Discussion
-
-    manager = GroupUsers.objects.filter(
-        user=request.user,
-        group__in=challenge.groups.all(),
-        is_manager=True)
-    try:
-        manager = manager[0]
-    except IndexError:
-        return redirect(challenge)
-    group = manager.group
+    from discussions.models import Discussion
 
     if request.method == "POST":
         disc_form = DiscussionCreateForm(request.POST)
@@ -131,9 +121,8 @@ def challenges_disc_create(request, challenge_id):
                 body=disc_form.cleaned_data['body'],
                 parent_id=None,
                 user=request.user,
-                group=group,
+                content_object=challenge,
                 reply_count=0,
-                attached_to="challenges.Challenge:%s" % challenge.id,
                 is_public=False,
                 disallow_replies=True)
             messages.success(request, "Your message has been sent to the campaign's supporters.")

@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'brabeion',
     'badges',
     'challenges',
+    'discussions',
     #'actionkit_usersync',
     'django.contrib.comments',
 

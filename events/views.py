@@ -79,17 +79,10 @@ def event_disc_create(request, event_id):
     event = get_object_or_404(Event, id=event_id)
 
     from groups.forms import DiscussionCreateForm
-    from groups.models import GroupUsers, Discussion
+    from discussions.models import Discussion
 
-    manager = GroupUsers.objects.filter(
-        user=request.user,
-        group__in=event.groups.all(),
-        is_manager=True)
-    try:
-        manager = manager[0]
-    except IndexError:
+    if not event.has_manager_privileges(request.user):
         return redirect(event)
-    group = manager.group
 
     if request.method == "POST":
         disc_form = DiscussionCreateForm(request.POST)
@@ -99,9 +92,8 @@ def event_disc_create(request, event_id):
                 body=disc_form.cleaned_data['body'],
                 parent_id=None,
                 user=request.user,
-                group=group,
+                content_object=event,
                 reply_count=0,
-                attached_to="events.Event:%s" % event.id,
                 is_public=False,
                 disallow_replies=True)
             messages.success(request, "Your message has been sent to the event's participants.")
