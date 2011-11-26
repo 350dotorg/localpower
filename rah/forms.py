@@ -1,6 +1,8 @@
+import datetime
 import hashlib
 from smtplib import SMTPException
 from urlparse import urlparse
+from PIL.Image import open as pil_open
 
 from django import forms
 from django.contrib import auth
@@ -124,16 +126,22 @@ class FeedbackForm(forms.ModelForm):
         msg.send()
 
 class ProfileEditForm(forms.ModelForm):
+    IMAGE_FORMATS = {"PNG": "png", "JPEG": "jpeg", "GIF": "gif"}
+
     about = forms.CharField(max_length=255, required=False, label=_("About you"), widget=forms.Textarea)
     geom = GoogleLocationField(
         label=_("Location"),
         help_text=_("(Optional) Be as specific as you're comfortable sharing"),
         required=False)
     is_profile_private = forms.BooleanField(label=_("Make Profile Private"), required=False)
+    image = forms.FileField(label=_("Upload a profile image"),
+                            help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
+                            required=False)
+
 
     class Meta:
         model = Profile
-        fields = ("about", "is_profile_private")
+        fields = ("about", "is_profile_private", "image")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
@@ -145,13 +153,35 @@ class ProfileEditForm(forms.ModelForm):
         if self.instance and self.instance.geom:
             self.fields["geom"].initial = self.instance.geom.raw_address
 
+    def clean_image(self):
+        data = self.cleaned_data["image"]
+        if data:
+            if data.size > 4194304:
+                raise forms.ValidationError(_("Profile images cannot be larger than 512K"))
+            self.image_format = pil_open(data.file).format
+            if not self.image_format in ProfileEditForm.IMAGE_FORMATS:
+                raise forms.ValidationError(_("Images cannot be of type %(type)s") % {
+                        'type': data.content_type})
+        return data
+
     def save(self, *args, **kwargs):
         if self.cleaned_data.get("geom"):
             point = self.cleaned_data["geom"]
             self.instance.geom = point
         elif self.data.get("geom") is not None and self.data.get("geom", "").strip() == "":
             self.instance.geom = None
-        return super(ProfileEditForm, self).save(*args, **kwargs)
+        profile = super(ProfileEditForm, self).save(*args, **kwargs)
+
+        current_image = self.cleaned_data["image"]
+        if current_image and current_image != profile.image.field.default:
+            timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+            image_name = "%s_%s.%s" % (profile.pk, timestamp, ProfileEditForm.IMAGE_FORMATS[self.image_format])
+            original_file = profile.image.file
+            original_name = original_file.name
+            profile.image.save(image_name, original_file, save=True)
+            profile.image.storage.delete(original_name)
+
+        return profile
 
 class AccountForm(forms.ModelForm):
     class Meta:

@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.gis.db.models import GeoManager
@@ -15,6 +16,7 @@ from records.models import Record
 from twitter_app import utils as twitter_app
 from actions.models import Action, UserActionProgress
 from facebook_app.models import facebook_profile
+from thumbnails.fields import ImageAndThumbsField
 
 def yestarday():
     return datetime.datetime.today() - datetime.timedelta(days=1)
@@ -153,6 +155,10 @@ class Profile(models.Model):
     facebook_share = models.BooleanField(_('facebook share'), default=False)
     ask_to_share = models.BooleanField(_('ask to share'), default=True)
     total_points = models.IntegerField(_('total points'), default=0)
+
+    image = ImageAndThumbsField(_('image'), upload_to="profile_images", 
+                                null=True)
+
     objects = ProfileManager()
 
     class Meta:
@@ -163,6 +169,11 @@ class Profile(models.Model):
         return u'%s' % (self.user.email)
 
     def profile_picture(self, default_icon='identicon'):
+        if self.image:
+            return settings.MEDIA_URL + getattr(
+                self.image, 'thumbnail_colorspace_80x80smartcrop')
+
+
         key = "profile_picture_%s" % self.user.id
         cache_hit = cache.get(key)
         if cache_hit:
@@ -181,6 +192,10 @@ class Profile(models.Model):
             return profile_picture
 
     def profile_picture_large(self, default_icon='identicon'):
+        if self.image:
+            return settings.MEDIA_URL + getattr(
+                self.image, 'thumbnail_colorspace_160x160smartcrop')
+
         facebook_picture = facebook_profile(self.user, "large")
         if facebook_picture:
             return facebook_picture

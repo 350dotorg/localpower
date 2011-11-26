@@ -283,7 +283,8 @@ def profile_edit(request, user_id):
 
     if request.method == 'POST':
         if "edit_account" in request.POST:
-            profile_form = ProfileEditForm(request.POST, instance=profile)
+            profile_form = ProfileEditForm(request.POST, request.FILES,
+                                           instance=profile)
             account_form = AccountForm(request.POST, instance=request.user)
             if profile_form.is_valid() and account_form.is_valid():
                 profile_form.save()
