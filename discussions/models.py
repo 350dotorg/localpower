@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
@@ -80,7 +81,7 @@ class Discussion(models.Model):
             group = self.content_object
 
             if self.contact_admin:
-                return group.managers()
+                return group.managers() or [settings.DEFAULT_FROM_EMAIL]
             
             # @@TODO: implement
         
