@@ -111,13 +111,21 @@ def _syncdb():
             confirm("This script cannot handle interactive shells, are you sure you want to run syncdb?"):
         sudo("cd %(deploy_to)s && %(virtualenv)s/bin/python manage.py syncdb" % env, user="wsgi")
 
+@runs_once
+def _migratedb():
+    "Migrate the database"
+    require("hosts", "deploy_to")
+    if confirm("Would you like to migrate the database?"):
+        sudo("cd %(deploy_to)s && %(virtualenv)s/bin/python manage.py migrate" % env, user="wsgi")
+
 def push():
     require("deploy_to", "hosts", "environment")
     _fetch()
     _reset()
     _checkout()
-    _touch_wsgi()
+    _migratedb()
     _syncdb()
+    _touch_wsgi()
 
 def deploy(revision=None, code_only=False, sync_media=True):
     "Deploy a revision to server"
