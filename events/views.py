@@ -277,7 +277,7 @@ def spreadsheet(request, event_id):
                          g.contributor.email,
                          g.contributor.phone, 
                          g.contributor.geom.formatted_address,
-                         g.status()]
+                         g.status()])
 
     return response
 
