@@ -8,6 +8,27 @@
     </div>
     <div>{{ rsvp_form.token }}</div>
     {% csrf_token %}
+
+    {% if groups_to_join %}
+    <div class="form_row">
+    <ul class="plain_list">
+      {% for group in groups_to_join %}
+      <li>
+	<input name="join_group" value="{{ group.id }}"
+	       {% if group.is_joinable and group.is_public %}checked="checked"{% endif %}
+	       id="join_group_{{ group.slug }}" type="checkbox"></input>
+	<label style="font-weight: bold;" 
+	       for="join_group_{{ group.slug }}">
+	  Add me to 
+	  <a href="{{ group.get_absolute_url }}">{{ group }}</a>
+	  and keep me posted on local activities.
+	</label>
+      </li>
+      {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
     <div>
       <input type="submit" value="{% blocktrans %}Submit{% endblocktrans %}" style="width:180px;"/>
     </div>

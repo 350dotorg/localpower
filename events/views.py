@@ -54,8 +54,9 @@ def detail(request, event_id, token=None):
     event = get_object_or_404(Event, id=event_id)
     guest = event.current_guest(request, token)
     has_manager_privileges = event.has_manager_privileges(request.user)
-    if not has_manager_privileges:
-        rsvp_form = RsvpForm(instance=guest, initial={"token": token, "rsvp_status": "A"})
+
+    rsvp_form = RsvpForm(instance=guest, initial={
+            "token": token, "rsvp_status": "A"})
 
     from groups.models import GroupUsers
     manager = None
@@ -68,6 +69,11 @@ def detail(request, event_id, token=None):
             manager = manager[0]
         except IndexError:
             manager = None
+
+    groups_to_join = event.groups.all()
+    groups_to_join = groups_to_join.filter(is_external_link_only=False)
+    if request.user.is_authenticated():
+        groups_to_join = groups_to_join.exclude(groupusers__user=request.user)
 
     return render_to_response("events/detail.html", locals(), context_instance=RequestContext(request))
 
@@ -198,6 +204,11 @@ def rsvp(request, event_id):
             return redirect("event-rsvp-confirm", event_id=event.id)
         else:
             rsvp_form.save()
+
+            from groups.views import group_join
+            for group_id in request.POST.getlist("join_group"):
+                group_join(request, group_id)
+
             return redirect(event)
     return render_to_response("events/show.html", locals(), context_instance=RequestContext(request))
 
