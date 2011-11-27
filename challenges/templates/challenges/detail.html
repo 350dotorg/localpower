@@ -34,7 +34,7 @@
     <ul class="plain_list">
       {% for group in groups_to_join %}
       <li>
-	<input name="join_group" value="{{ group.slug }}"
+	<input name="join_group" value="{{ group.id }}"
 	       {% if group.is_joinable and group.is_public %}checked="checked"{% endif %}
 	       id="join_group_{{ group.slug }}" type="checkbox"></input>
 	<label style="color: white; font-weight: bold;" 

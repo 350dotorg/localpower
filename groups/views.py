@@ -124,10 +124,11 @@ def group_leave(request, group_id):
 def group_join(request, group_id):
     group = get_object_or_404(Group, id=group_id)
     if GroupUsers.objects.filter(group=group, user=request.user).exists():
-        messages.error(request, _("You are already a member"))
+        messages.error(request, _("You are already a member of %(group)s") % {
+                'group': group})
         return redirect("group_detail", group_slug=group.slug)
     if MembershipRequests.objects.filter(group=group, user=request.user).exists():
-        messages.error(request, _("Your membership is currently pending"))
+        messages.error(request, _("Your membership in %(group)s is currently pending") % {'group': group})
         return redirect("group_detail", group_slug=group.slug)
     if group.is_public():
         GroupUsers.objects.create(group=group, user=request.user, is_manager=False)

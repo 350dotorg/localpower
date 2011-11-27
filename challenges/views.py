@@ -61,12 +61,18 @@ def detail(request, challenge_id):
     if form.is_valid():
         form.save()
         messages.success(request, _('Thanks for your support'))
+
+        from groups.views import group_join
+        for group_id in request.POST.getlist("join_group"):
+            group_join(request, group_id)
+
         return redirect('challenges_detail', challenge_id=challenge_id)
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
 
     has_manager_privileges = challenge.has_manager_privileges(request.user)
     
-    groups_to_join = challenge.groups.filter(is_external_link_only=False)
+    groups_to_join = challenge.groups.all()
+    groups_to_join = groups_to_join.filter(is_external_link_only=False)
     if request.user.is_authenticated():
         groups_to_join = groups_to_join.exclude(groupusers__user=request.user)
 
