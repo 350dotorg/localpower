@@ -1,16 +1,49 @@
+from json import dumps
+
 from django.contrib.gis.db.models import GeoManager
 from django.contrib.gis.db.models import PointField
 from django.db import models
+
+from geo.yahoo import Geocoder
 
 class Point(models.Model):
     latlng = PointField()
     raw_address = models.TextField()
     formatted_address = models.TextField()
 
+    city = models.CharField(max_length=200, db_index=True, 
+                            null=True, blank=True)
+    state = models.CharField(max_length=200, db_index=True, 
+                             null=True, blank=True)
+    country = models.CharField(max_length=200, db_index=True, 
+                               null=True, blank=True)
+    postal = models.CharField(max_length=200, db_index=True, 
+                              null=True, blank=True)
+    raw_data = models.TextField(null=True, blank=True)
+
     objects = GeoManager()
 
     def __unicode__(self):
         return self.formatted_address or self.raw_address
+
+    def geocode(self):
+        return Geocoder.geocode(self.formatted_address)
+
+    def normalize(self):
+        data = self.geocode()
+        self.raw_data = dumps(data)
+        r = data[2]['top_result']
+        self.city = r.get('city') or None
+        self.state = r.get('state') or None
+        self.country = r.get('country') or None
+        self.postal = r.get('postal') or r.get('zip') or None
+        self.save()
+
+    def save(self, *args, **kw):
+        models.Model.save(self, *args, **kw)
+        if self.raw_data:
+            return
+        self.normalize()
 
 class Location(models.Model):
     name = models.CharField(max_length=200, db_index=True)
