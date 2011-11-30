@@ -14,6 +14,7 @@ from django.template.defaultfilters import slugify
 from django.utils import simplejson as json
 from django.utils.translation import ugettext_lazy as _
 
+from geo.filterspec import CountryFilterSpec, StateFilterSpec, CityFilterSpec
 from geo.models import Location
 from records.models import Record
 from rah.models import Profile
@@ -67,7 +68,6 @@ class Group(models.Model):
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))
 
-
     membership_type = models.CharField(_('membership type'), max_length=1, 
                                        choices=MEMBERSHIP_CHOICES, default="O", null=True)
 
@@ -76,6 +76,8 @@ class Group(models.Model):
     sample_location = models.ForeignKey(Location, null=True, blank=True, 
                                         related_name="sample_group_set",
                                         verbose_name=_('sample location'))
+    sample_location.country_filter = True
+
     users = models.ManyToManyField(User, through="GroupUsers", verbose_name=_('users'))
     requesters = models.ManyToManyField(User, through="MembershipRequests", 
                                         related_name="requested_group_set",
@@ -84,7 +86,11 @@ class Group(models.Model):
                                                related_name="email_blacklisted_group_set",
                                                verbose_name=_('email blacklisted'))
     created = models.DateTimeField(_('created'), auto_now_add=True)
+    created.state_filter = True
+
     updated = models.DateTimeField(_('updated'), auto_now=True)
+    updated.city_filter = True
+
     objects = GroupManager()
     disc_moderation = models.IntegerField(choices=DISC_MODERATION, default=0, null=True, 
                                           verbose_name=_("Moderate discussions?"))

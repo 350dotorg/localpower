@@ -15,6 +15,7 @@ from messaging.models import Stream
 from commitments.models import Contributor, Commitment, Survey
 
 from filterspec import HasHappenedFilterSpec
+from geo.filterspec import CountryFilterSpec, StateFilterSpec, CityFilterSpec
 
 class Event(models.Model):
     creator = models.ForeignKey("auth.User", verbose_name=_('creator'))
@@ -29,14 +30,20 @@ class Event(models.Model):
     when = models.DateField(_('when'))
     when.has_happened = True
     start = models.TimeField(_('start time'))
+    start.country_filter = True
+
     duration = models.PositiveIntegerField(_('duration'),
                                            blank=True, null=True)
+    duration.state_filter = True
+
     details = models.TextField(
         _('details'),
         help_text=_("For example, where should people park, "
                     "what's the nearest subway, "
                     "do people need to be buzzed in, etc."),
         blank=True)
+    details.city_filter = True
+
     groups = models.ManyToManyField(
         "groups.Group", blank=True,
         verbose_name=_("Communities"))

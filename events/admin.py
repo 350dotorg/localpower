@@ -11,11 +11,18 @@ class EventAdminForm(EventForm):
         super(EventAdminForm, self).__init__(None, *args, **kwargs)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ("name", "_when", "city", "state", "hosts", "guests", "guests_with_commitment_card", "is_private",)
-    list_filter = ("when", "geom",)
+    valid_lookups = ("geom",)
+    list_display = ("title", "_when", "geom", "hosts", "guests", "guests_with_commitment_card", "is_private",)
+    list_filter = ("when", "start", "duration", "details",)
     date_hierarchy = "when"
     readonly_fields = ("limit",)
     form = EventAdminForm
+
+    def lookup_allowed(self, lookup, *args, **kwargs):
+        for valid_lookup in self.valid_lookups:
+            if lookup.startswith(valid_lookup):
+                return True
+        return admin.ModelAdmin.lookup_allowed(self, lookup, *args, **kwargs)
 
     def save_form(self, request, form, change):
         form.user = request.user
