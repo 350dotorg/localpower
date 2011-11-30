@@ -15,7 +15,8 @@ from messaging.models import Stream
 from commitments.models import Contributor, Commitment, Survey
 
 from filterspec import HasHappenedFilterSpec
-from geo.filterspec import CountryFilterSpec, StateFilterSpec, CityFilterSpec
+from geo.filterspec import (CountryFilterSpec, StateFilterSpec, 
+                            CityFilterSpec, RegionFilterSpec)
 
 class Event(models.Model):
     creator = models.ForeignKey("auth.User", verbose_name=_('creator'))
@@ -58,6 +59,8 @@ class Event(models.Model):
         help_text=_("Adding a limit sets a cap on the number of guests "
                     "that can RSVP. If the limit is reached, "
                     "potential guests will need to contact you first."))
+    limit.region_filter = True
+
     created = models.DateTimeField(_('created'), auto_now_add=True)
     updated = models.DateTimeField(_('updated'), auto_now=True)
 

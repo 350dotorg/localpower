@@ -14,7 +14,8 @@ from django.template.defaultfilters import slugify
 from django.utils import simplejson as json
 from django.utils.translation import ugettext_lazy as _
 
-from geo.filterspec import CountryFilterSpec, StateFilterSpec, CityFilterSpec
+from geo.filterspec import (CountryFilterSpec, StateFilterSpec,
+                            CityFilterSpec, RegionFilterSpec)
 from geo.models import Location
 from records.models import Record
 from rah.models import Profile
@@ -94,6 +95,8 @@ class Group(models.Model):
     objects = GroupManager()
     disc_moderation = models.IntegerField(choices=DISC_MODERATION, default=0, null=True, 
                                           verbose_name=_("Moderate discussions?"))
+    disc_moderation.region_filter = True
+
     disc_post_perm = models.IntegerField(choices=DISC_POST_PERM, default=0, null=True,
                                          verbose_name=_("Who can post discussions?"))
     member_count = models.IntegerField(default=0)

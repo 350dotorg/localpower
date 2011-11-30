@@ -75,6 +75,17 @@ class CityFilterSpec(CustomFilterSpec):
     def title(self):
         return _("City")
 
+class RegionFilterSpec(CustomFilterSpec):
+    my_lookup_kwarg = "geom__region"
+
+    def prepare_choices(self):
+        return Point.objects.values_list(
+            "region", flat=True).distinct().order_by("region")
+
+    def title(self):
+        return _("Region")
+
+insert_filterspec(RegionFilterSpec, 'region_filter')
 insert_filterspec(CountryFilterSpec, 'country_filter')
 insert_filterspec(StateFilterSpec, 'state_filter')
 insert_filterspec(CityFilterSpec, 'city_filter')
@@ -85,7 +96,10 @@ class UserStateFilterSpec(StateFilterSpec):
     my_lookup_kwarg = "profile__geom__state"
 class UserCityFilterSpec(CityFilterSpec):
     my_lookup_kwarg = "profile__geom__city"
+class UserRegionFilterSpec(RegionFilterSpec):
+    my_lookup_kwarg = "profile__geom__region"
 
+insert_filterspec(UserRegionFilterSpec, 'user_region_filter')
 insert_filterspec(UserCountryFilterSpec, 'user_country_filter')
 insert_filterspec(UserStateFilterSpec, 'user_state_filter')
 insert_filterspec(UserCityFilterSpec, 'user_city_filter')

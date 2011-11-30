@@ -19,6 +19,7 @@ from rateable.models import Rating
 User._meta.get_field('email').user_country_filter = True
 User._meta.get_field('first_name').user_state_filter = True
 User._meta.get_field('last_name').user_city_filter = True
+User._meta.get_field('date_joined').user_region_filter = True
 
 class UserAdmin(BaseUserAdmin):
     valid_lookups = ("profile__geom",)
@@ -27,7 +28,7 @@ class UserAdmin(BaseUserAdmin):
     date_hierarchy = "date_joined"
     search_fields = ("email", "first_name", "last_name",)
     list_filter = BaseUserAdmin.list_filter + (
-        "email", "first_name", "last_name")
+        "date_joined", "email", "first_name", "last_name")
 
     def lookup_allowed(self, lookup, *args, **kwargs):
         for valid_lookup in self.valid_lookups:

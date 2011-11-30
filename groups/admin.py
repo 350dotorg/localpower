@@ -4,11 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 class GroupAdmin(admin.ModelAdmin):
     valid_lookups = ("geom",)
-    list_display = ("name", "managers", "total_members",
+    list_display = ("name", "geom", "managers", "total_members",
                     "committed_actions", "completed_actions",
                     "total_points", "created",)
     readonly_fields = ("sample_location",)
-    list_filter = ("sample_location", "created", "updated")
+    list_filter = ("disc_moderation", "sample_location", "created", "updated")
 
     def lookup_allowed(self, lookup, *args, **kwargs):
         for valid_lookup in self.valid_lookups:

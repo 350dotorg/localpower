@@ -13,7 +13,7 @@ class EventAdminForm(EventForm):
 class EventAdmin(admin.ModelAdmin):
     valid_lookups = ("geom",)
     list_display = ("title", "_when", "geom", "hosts", "guests", "guests_with_commitment_card", "is_private",)
-    list_filter = ("when", "start", "duration", "details",)
+    list_filter = ("when", "is_private", "limit", "start", "duration", "details",)
     date_hierarchy = "when"
     readonly_fields = ("limit",)
     form = EventAdminForm
