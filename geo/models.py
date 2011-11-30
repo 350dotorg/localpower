@@ -5,6 +5,7 @@ from django.contrib.gis.db.models import PointField
 from django.db import models
 
 from geo.yahoo import Geocoder
+from geo.regions import REGION_MAP
 
 class Point(models.Model):
     latlng = PointField()
@@ -20,6 +21,8 @@ class Point(models.Model):
     postal = models.CharField(max_length=200, db_index=True, 
                               null=True, blank=True)
     raw_data = models.TextField(null=True, blank=True)
+    region = models.CharField(max_length=200, db_index=True,
+                              null=True, blank=True)
 
     objects = GeoManager()
 
@@ -37,6 +40,7 @@ class Point(models.Model):
         self.state = r.get('state') or None
         self.country = r.get('country') or None
         self.postal = r.get('postal') or r.get('zip') or None
+        self.region = REGION_MAP.get(self.country) or None
         self.save()
 
     def save(self, *args, **kw):
@@ -44,7 +48,7 @@ class Point(models.Model):
         if self.raw_data:
             return
         self.normalize()
-
+    
 class Location(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     zipcode = models.CharField(max_length=5, db_index=True)
