@@ -78,3 +78,14 @@ class CityFilterSpec(CustomFilterSpec):
 insert_filterspec(CountryFilterSpec, 'country_filter')
 insert_filterspec(StateFilterSpec, 'state_filter')
 insert_filterspec(CityFilterSpec, 'city_filter')
+
+class UserCountryFilterSpec(CountryFilterSpec):
+    my_lookup_kwarg = "profile__geom__country"
+class UserStateFilterSpec(StateFilterSpec):
+    my_lookup_kwarg = "profile__geom__state"
+class UserCityFilterSpec(CityFilterSpec):
+    my_lookup_kwarg = "profile__geom__city"
+
+insert_filterspec(UserCountryFilterSpec, 'user_country_filter')
+insert_filterspec(UserStateFilterSpec, 'user_state_filter')
+insert_filterspec(UserCityFilterSpec, 'user_city_filter')
