@@ -307,7 +307,7 @@ def message(request, event_id, type):
 
 @login_required
 @csrf_protect
-def event_contact_admins(request, group_slug):
+def event_contact_admins(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     from discussions.models import Discussion as GenericDiscussion
     from groups.forms import DiscussionCreateForm
