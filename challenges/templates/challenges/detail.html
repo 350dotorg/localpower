@@ -21,6 +21,13 @@
 {% endblock %}
 {% block content %}
 <div id="overview">
+  <p style="clear: both">
+    <a href="{% url challenge_contact_admins challenge.id %}" class="button">
+      Contact Campaign Organizers
+    </a>
+  </p>
+
+
   <p class="action_deck">
     {{ challenge.description }}
   </p>

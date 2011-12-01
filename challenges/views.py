@@ -132,3 +132,32 @@ def challenges_disc_create(request, challenge_id):
     return render_to_response("challenges/challenge_disc_create.html", 
                               locals(), 
                               context_instance=RequestContext(request)) 
+
+@login_required
+@csrf_protect
+def challenge_contact_admins(request, challenge_id):
+    challenge = get_object_or_404(Challenge, id=challenge_id)
+    from discussions.models import Discussion as GenericDiscussion
+    from groups.forms import DiscussionCreateForm
+
+    if request.method == "POST":
+        disc_form = DiscussionCreateForm(request.POST)
+        if disc_form.is_valid():
+            disc = GenericDiscussion.objects.create(
+                subject="Message to campaign organizers: %s" % disc_form.cleaned_data['subject'],
+                body=disc_form.cleaned_data['body'],
+                parent_id=None,
+                user=request.user, 
+                content_object=challenge,
+                is_public=False,
+                disallow_replies=True,
+                reply_count=0,
+                contact_admin=True,
+            )
+            messages.success(request, "Your message has been sent to the campaign organizers")
+            return redirect(challenge)
+    else:
+        disc_form = DiscussionCreateForm()
+    return render_to_response("challenges/challenge_disc_contact_admins.html",
+                              locals(), 
+                              context_instance=RequestContext(request)) 
