@@ -326,7 +326,7 @@ def event_contact_admins(request, event_id):
                 reply_count=0,
                 contact_admin=True,
             )
-            messages.success(request, _("Your message has been sent to the event organizers"))
+            messages.success(request, "Your message has been sent to the event organizers")
             return redirect(group)
     else:
         disc_form = DiscussionCreateForm()
