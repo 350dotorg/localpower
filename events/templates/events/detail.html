@@ -34,6 +34,12 @@
 {% endblock %}
 {% block content %}
     <div id="overview">
+      <p style="clear: both">
+        <a href="{% url event_contact_admins event.id %}" class="button">
+	  Contact Event Organizers
+	</a>
+      </p>
+
       {% include "events/_details.html" %}
 
       <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
