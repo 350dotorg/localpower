@@ -55,21 +55,14 @@
                     <a href="/" title="Home" id="header_logo" class="logo_text">
                         {{ SITE_NAME }}
                     </a>
-                    <form action="/search" id="cse_search_box_form" class="search_widget">
-                        <div>
-                            <input type="hidden" name="cx" value="014150106453223044781:ssnlsa12t7k" />
-                            <input type="hidden" name="cof" value="FORID:11" />
-                            <input type="hidden" name="ie" value="UTF-8" />
-                            <input type="text" name="q" size="31" id="cse_search_box" placeholder="{% blocktrans %}Search the site...{% endblocktrans %}"/>
-                            <button type="submit" id="cse_search_box_submit" class="search_button">
-                                <span class="sprite_search_mag"></span>
-                            </button>
-                        </div>
-                    </form>
                     <div id="header_links">
-                        <a href="/about/" class="not_last" id="header_about">{% blocktrans %}About Us{% endblocktrans %}</a>
-			<a href="http://www.350.org" class="not_last">{% blocktrans %}350.org Homepage{% endblocktrans %}</a>
-                        <a href="http://www.350.org/about/blog/">{% blocktrans %}Blog{% endblocktrans %}</a>
+			<a href="http://www.350.org" class="not_last">{% blocktrans %}350.org{% endblocktrans %}</a>
+                        <a href="http://www.350.org/about/blog/" class="not_last">{% blocktrans %}Blog{% endblocktrans %}</a>
+                        <a href="/about/" class="not_last" id="header_about">{% blocktrans %}About{% endblocktrans %}</a>
+                        <a href="{% url group_list %}" class="not_last" id="header_about">{% blocktrans %}Groups{% endblocktrans %}</a>
+                        <a href="{% url action_show %}" class="not_last" id="header_about">{% blocktrans %}Projects{% endblocktrans %}</a>
+                        <a href="{% url challenges_list %}" id="header_about">{% blocktrans %}Campaigns{% endblocktrans %}</a>
+
                          {% if request.user.is_authenticated %}
                             <a href="{% url logout %}" class="button button_small button_blue">{% blocktrans %}Log Out{% endblocktrans %}</a>
                          {% else %}
