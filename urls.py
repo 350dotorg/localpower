@@ -31,6 +31,7 @@ from media_widget import admin as media_widget_admin
 from django.contrib.flatpages import admin as flatpages_admin
 from messaging import admin as messaging_admin
 from commitments import admin as commitments_admin
+from challenges import admin as challenges_admin
 
 # Unregister some models within some apps from the admin
 from django.contrib import admin

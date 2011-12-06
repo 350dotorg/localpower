@@ -75,6 +75,10 @@ class Support(models.Model):
     send_updates = models.BooleanField(_('send updates'), default=False)
     pledged_at = models.DateTimeField(_('pledged at'), auto_now_add=True)
 
+    def __unicode__(self):
+        return "%s supported %s on %s" % (
+            self.contributor, self.challenge, self.pledged_at)
+
     class Meta:
         unique_together = ('challenge', 'contributor',)
         verbose_name = _('support')
