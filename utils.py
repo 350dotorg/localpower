@@ -1,5 +1,6 @@
 import os
 import re
+from django.conf import settings
 
 def local_join(path):
     """Convenience function for path joining"""
@@ -8,7 +9,6 @@ def local_join(path):
 def hash_val(value):
     """Creates a SHA1 hash of a value with the secret key"""
     import hashlib
-    from django.conf import settings
     if not value:
         raise Exception("Cannot hash a value that evaluates to False")
     try:
@@ -90,9 +90,14 @@ def user_passes_test(test_func, login_url=None, redirect_field_name=REDIRECT_FIE
             if test_func(request.user):
                 return view_func(request, *args, **kwargs)
             path = urlquote(request.get_full_path())
-            tup = login_url, redirect_field_name, path
-            messages.info(request, message_string)
-            return HttpResponseRedirect('%s?%s=%s' % tup)
+            if message_string is not None:
+                messages.info(request, message_string)
+            if redirect_field_name is not None:
+                tup = login_url, redirect_field_name, path
+                url = '%s?%s=%s' % tup
+            else:
+                url = login_url
+            return HttpResponseRedirect(url)
         return wraps(view_func, assigned=available_attrs(view_func))(_wrapped_view)
     return decorator
 
@@ -105,6 +110,23 @@ def login_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME):
     actual_decorator = user_passes_test(
         lambda u: u.is_authenticated(),
         redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+
+
+def user_can_create_groups(function=None):
+    """
+    Decorator for views that checks that the user is logged in, redirecting
+    to the log-in page if necessary.
+    """
+    login_url = settings.GROUP_CREATION_FORM
+    actual_decorator = user_passes_test(
+        lambda u: u.is_staff,
+        redirect_field_name=None,
+        login_url=login_url,
+        message_string=None,
     )
     if function:
         return actual_decorator(function)

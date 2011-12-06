@@ -227,6 +227,8 @@ TINYMCE_DEFAULT_CONFIG = {
 #    'content_css': MEDIA_URL + 'css/style.css',
 }
 
+GROUP_CREATION_FORM = "/groups/form/"
+
 try:
     from local_settings import *
 except ImportError:

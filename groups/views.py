@@ -25,7 +25,7 @@ from django.views.decorators.http import require_POST
 from records.models import Record
 from invite.models import Invitation
 from invite.forms import InviteForm
-from utils import hash_val, forbidden
+from utils import hash_val, forbidden, user_can_create_groups
 from messaging.models import Stream
 from events.models import Event
 from group_links.forms import ExternalLinkForm
@@ -40,7 +40,7 @@ from forms import (GroupForm,
                    DiscussionApproveForm,
                    DiscussionRemoveForm)
 
-@login_required
+@user_can_create_groups
 @csrf_protect
 def group_create(request):
     """
@@ -68,6 +68,7 @@ def group_create(request):
         'external_group': False,
     }, context_instance=RequestContext(request))
 
+@user_can_create_groups
 @csrf_protect
 def group_external_link_only_create(request):
     """
