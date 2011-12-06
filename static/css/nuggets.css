@@ -54,7 +54,7 @@ Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets 
     padding: 9px 9px 9px 9px;
 }
 .nugget_3c_grid_2 li div {
-    font-family:"MuseoSlab900", Tahoma, sans-serif;
+    font-family:ff-din-round-web-pro-1,ff-din-round-web-pro-2, Tahoma, sans-serif;
     font-size: 58px;
     line-height: 58px;
     text-align: center;
@@ -228,7 +228,7 @@ Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets Nuggets 
 }
 .nugget_6c_list .nugget_6c_list_stat div {
     font-size: 12px;
-    font-family:"MuseoSlab900", Tahoma, sans-serif;
+    font-family:ff-din-round-web-pro-1,ff-din-round-web-pro-2, Tahoma, sans-serif;
     line-height: 40px;
 }
 .nugget_6c_list .nugget_6c_list_stat .digits_1 { font-size: 48px; }

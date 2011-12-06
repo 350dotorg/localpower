@@ -6,7 +6,7 @@ body, html {
     font-size: 14px;
     line-height: 21px;
     color: #333; 
-    background-color: #323232; }
+    background-color: #313a42; }
 a { color: #006499; text-decoration: none; }
 a:hover { text-decoration:underline; }
 a:active { color: #6EC3D1; text-decoration:underline; }
@@ -50,7 +50,7 @@ Header Header Header Header Header Header Header Header Header Header Header Hea
     background-color: #103665; }
 #header{ position:relative; }
 #header_logo { position:absolute; left: 0px; top:9px; color: #fff; }
-.logo_text {font-family:"MuseoSlab900", Tahoma, sans-serif; font-size: 44px; line-height: 46px;}
+.logo_text {font-family:ff-din-round-web-pro-1, ff-din-round-web-pro-2, Tahoma, sans-serif; font-size: 44px; line-height: 46px;}
 .logo_text:hover { text-decoration: none;}
 #header #cse_search_box_form{ left:340px; top:20px; width: 250px;}
 #cse_search_box{
@@ -76,11 +76,11 @@ Content Content Content Content Content Content Content Content Content Content 
     width: 100%; 
     height:100%;
     overflow:auto;
-    background: #00285c url('../images/theme/content_bg_inside.png') 0 0 repeat-x;
+    background: #007dae url('../images/theme/bg.jpg') 0 0 repeat;
     padding-bottom:36px;
 }
 #content_container.section_home{
-    background: #F2F2F2 url('../images/theme/content_bg_home.png') 0 0 repeat-x;
+    background: #F2F2F2 url('../images/theme/bg.jpg') 0 0 repeat;
 }
 #content_9c_container {
     background-color: #FFF;
@@ -147,7 +147,7 @@ Footer Footer Footer Footer Footer Footer Footer Footer Footer Footer Footer Foo
 Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar 
 --------------------------------------------------------------------------------------------------------------------- */
 #title_bar {
-    background: #0E8FDF url('../images/theme/sprite.png') 0px -990px repeat-x;
+    background: #007DAE url('../images/theme/sprite.png') 0px -990px repeat-x;
     color: #FFF;
     padding: 9px 0 9px 18px;
     position: relative;
@@ -157,7 +157,7 @@ Title bar Title bar Title bar Title bar Title bar Title bar Title bar Title bar 
     margin-bottom: 18px;
 }
 #title_bar_bottom_shadow {
-    background: #0E8FDF url('../images/theme/sprite.png') 0px -480px repeat-x;
+    background: #007DAE url('../images/theme/sprite.png') 0px -480px repeat-x;
     height: 10px;
     width: 100%;
     bottom: 0px;
@@ -365,7 +365,7 @@ Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav 
     height:35px;
 }
 #nav_primary li a {
-    color: #323232;
+    color: #313a42;
     width:204px;
     display: inline-block;
     border-top: 1px solid #CCC;
@@ -389,7 +389,7 @@ Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav 
 }
 #nav_secondary li a:hover {
     text-decoration: none;
-    color: #323232;
+    color: #313a42;
 }
 #nav_secondary li a {
     color: #999999;
@@ -515,7 +515,7 @@ Colors Colors Colors Colors Colors Colors Colors Colors Colors Colors Colors Col
 .white        { color: #FFFFFF; }
 .grey         { color: #333333; }
 .grey_light   { color: #C1C1C1; }
-.grey_dark    { color: #323232; }
+.grey_dark    { color: #313a42; }
 .red          { color: #c3262f; }
 
 /* ---------------------------------------------------------------------------------------------------------------------
