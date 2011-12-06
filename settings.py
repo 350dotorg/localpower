@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'badges',
     'challenges',
     'discussions',
-    #'actionkit_usersync',
+    'actionkit_usersync',
     'django.contrib.comments',
 
 )
