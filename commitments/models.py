@@ -151,7 +151,7 @@ class Contributor(models.Model):
         # https://github.com/350org/localpower/issues/143
         last_initial = self.last_name
         if last_initial:
-            last_initial = "%s." % last_initial
+            last_initial = "%s." % last_initial[0]
         return ("%s %s" % (self.first_name, last_initial)).strip()
     name = property(_get_name, _set_name)
 
