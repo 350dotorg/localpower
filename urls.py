@@ -32,6 +32,7 @@ from django.contrib.flatpages import admin as flatpages_admin
 from messaging import admin as messaging_admin
 from commitments import admin as commitments_admin
 from challenges import admin as challenges_admin
+from assetmanager import admin as assetmanager_admin
 
 # Unregister some models within some apps from the admin
 from django.contrib import admin

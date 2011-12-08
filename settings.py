@@ -155,6 +155,7 @@ INSTALLED_APPS = (
     'discussions',
     'actionkit_usersync',
     'django.contrib.comments',
+    'assetmanager',
 
 )
 
@@ -169,6 +170,8 @@ LOGIN_REDIRECT_URL = "/user/"
 LOGIN_URL = "/register/"
 LOGOUT_URL = "/logout/"
 AUTH_PROFILE_MODULE = 'rah.Profile'
+
+DEFAULT_FILE_STORAGE = 'assetmanager.storage_backend.OverwritingStorage'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
 GA_TRACK_PAGEVIEW = 50
