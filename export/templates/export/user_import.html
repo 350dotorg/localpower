@@ -1,0 +1,60 @@
+{% extends "admin/base_site.html" %}
+{% load adminmedia %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="/admin/jsi18n/"></script> 
+    <script type="text/javascript" src="/media/js/core.js"></script> 
+    <script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script> 
+    <script type="text/javascript" src="/media/js/jquery.min.js"></script> 
+    <script type="text/javascript" src="/media/js/jquery.init.js"></script> 
+    <script type="text/javascript" src="/media/js/actions.min.js"></script>
+    {{ form.media }}
+{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/widgets.css"/>
+{% endblock %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+     <a href="../../">Home</a> &rsaquo;
+     user export
+</div>
+{% endif %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+  <p>
+    You can upload a spreadsheet of users to bulk-add, in CSV format.
+  </p>
+  <p>
+    First name, Last name, Email, City, State/province, Country, Postal/zip, Phone, Language
+  </p>
+  <p><strong>
+      Users will be added to the 350.org email list.
+  </strong></p>
+    <form action="{% url user_import %}" method="post" 
+	  enctype="multipart/form-data"
+	  id="user_import_form">{% csrf_token %}
+        <div>
+          <fieldset class="module aligned">
+	    <div class="form-row users">
+	      <div> 
+		<label for="users">Upload a CSV</label>
+		<input type="file" id="users" name="users" />
+		</div>
+	    </div>
+          </fieldset>
+          
+          <div class="submit-row" > 
+            <input type="submit" value="Export" class="default" /> 
+          </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

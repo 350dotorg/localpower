@@ -1,0 +1,118 @@
+{% extends "admin/base_site.html" %}
+{% load adminmedia %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="/admin/jsi18n/"></script> 
+    <script type="text/javascript" src="/media/js/core.js"></script> 
+    <script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script> 
+    <script type="text/javascript" src="/media/js/jquery.min.js"></script> 
+    <script type="text/javascript" src="/media/js/jquery.init.js"></script> 
+    <script type="text/javascript" src="/media/js/actions.min.js"></script>
+    {{ form.media }}
+    <style type="text/css">
+      form table {
+        width: 100%;
+      }
+      form table tr td input {
+        width: 100%;
+      }
+    </style>
+{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/widgets.css"/>
+{% endblock %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+     <a href="../../">Home</a> &rsaquo;
+     user export
+</div>
+{% endif %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+  <p>
+    You can upload a spreadsheet of users to bulk-add, in CSV format.
+  </p>
+  <p>
+    First name, Last name, Email, City, State/province, Country, Postal/zip, Phone, Language
+  </p>
+  <p><strong>
+      Users will be added to the 350.org email list.
+  </strong></p>
+
+    <form action="{% url user_import %}" method="post" 
+	  id="user_import_form">{% csrf_token %}
+      <input type="hidden" name="confirm" value="true" />
+      <table>
+	<thead>
+	  <tr>
+	    <th>First name</th>
+	    <th>Last name</th>
+	    <th>Email</th>
+	    <th>Location</th>
+	    <th>Phone</th>
+	    <th>Language</th>
+	    <th>Import?</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for user in users %}
+	<tr>
+	  <td><input type="text" name="first_name_{{ forloop.counter0 }}"
+		     value="{{ user.first_name }}" />
+	  </td>
+	  <td><input type="text" name="last_name_{{ forloop.counter0 }}"
+		     value="{{ user.last_name }}" />
+	  </td>
+	  <td><input type="text" name="email_{{ forloop.counter0 }}"
+		     value="{{ user.email }}" />
+	  </td>
+	  <td><input type="text" name="location_{{ forloop.counter0 }}"
+		     value="{{ user.location }}" />
+	  </td>
+	  <td><input type="text" name="phone_{{ forloop.counter0 }}"
+		     value="{{ user.phone }}" />
+	  </td>
+	  <td><input type="text" name="language_{{ forloop.counter0 }}"
+		     value="{{ user.language }}" />
+	  </td>
+	  <td><input type="checkbox" name="confirm_{{ forloop.counter0 }}"
+		     checked="checked" />
+	  </td>
+	</tr>
+	</tbody>
+	{% endfor %}
+      </table> 
+      <div class="submit-row" > 
+        <input type="submit" value="Confirm" class="default" /> 
+      </div>
+    </form>
+
+    <h2>Or try again</h2>
+    <form action="{% url user_import %}" method="post" 
+	  enctype="multipart/form-data"
+	  id="user_import_form">{% csrf_token %}
+        <div>
+          <fieldset class="module aligned">
+	    <div class="form-row users">
+	      <div> 
+		<label for="users">Upload a CSV</label>
+		<input type="file" id="users" name="users" />
+		</div>
+	    </div>
+          </fieldset>
+          
+          <div class="submit-row" > 
+            <input type="submit" value="Export" /> 
+          </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -21,3 +21,28 @@ def user_export(request):
         form.save_to_writer(writer)
         return response
     return render_to_response("export/user_export.html", locals(), context_instance=RequestContext(request))
+
+@staff_member_required
+def user_import(request):
+    if request.method == "GET":
+        return render_to_response("export/user_import.html", locals(), context_instance=RequestContext(request))
+    users = request.FILES['users']
+
+    reader = csv.reader(users)
+    lines = [i for i in reader]
+    if lines[0][0].strip().lower() == "first name":
+        lines.pop(0)
+    
+    users = []
+    for line in lines:
+        users.append(dict(
+                first_name=line[0].strip(),
+                last_name=line[1].strip(),
+                email=line[2].strip(),
+                location=", ".join(i.strip() for i in line[3:7] 
+                                   if i and i.strip()),
+                phone=line[7],
+                language=line[8],
+                ))
+
+    return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
