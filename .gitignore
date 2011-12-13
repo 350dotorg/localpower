@@ -16,3 +16,4 @@ lib/src/*
 static_build/*
 docs/_build/*
 .#*
+*.orig

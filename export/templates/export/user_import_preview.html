@@ -65,26 +65,42 @@
 	<tbody>
 	{% for user in users %}
 	<tr>
-	  <td><input type="text" name="first_name_{{ forloop.counter0 }}"
+	  <td>
+	    <div class="form row {% if user.errors and user.errors.first_name %}form_error{% endif %}">
+	      <input type="text" name="first_name_{{ forloop.counter0 }}"
 		     value="{{ user.first_name }}" />
+	    </div>
 	  </td>
-	  <td><input type="text" name="last_name_{{ forloop.counter0 }}"
-		     value="{{ user.last_name }}" />
+	  <td>
+	    <input type="text" name="last_name_{{ forloop.counter0 }}"
+		   value="{{ user.last_name }}" />
 	  </td>
-	  <td><input type="text" name="email_{{ forloop.counter0 }}"
+	  <td>
+	    <div class="form row {% if user.errors and user.errors.email %}form_error{% endif %}">
+	      <input type="text" name="email_{{ forloop.counter0 }}"
 		     value="{{ user.email }}" />
+	      {% if user.errors %}
+	      {% for error in user.errors.email %}
+	      <label class="form_error">{{ error|escape }}</label>
+	      {% endfor %}
+	      {% endif %}
+	    </div>
 	  </td>
-	  <td><input type="text" name="location_{{ forloop.counter0 }}"
-		     value="{{ user.location }}" />
+	  <td>
+	    <input type="text" name="geom_{{ forloop.counter0 }}"
+		   value="{{ user.geom }}" />
 	  </td>
-	  <td><input type="text" name="phone_{{ forloop.counter0 }}"
-		     value="{{ user.phone }}" />
+	  <td>
+	    <input type="text" name="phone_{{ forloop.counter0 }}"
+		   value="{{ user.phone }}" />
 	  </td>
-	  <td><input type="text" name="language_{{ forloop.counter0 }}"
-		     value="{{ user.language }}" />
+	  <td>
+	    <input type="text" name="language_{{ forloop.counter0 }}"
+		   value="{{ user.language }}" />
 	  </td>
-	  <td><input type="checkbox" name="confirm_{{ forloop.counter0 }}"
-		     checked="checked" />
+	  <td>
+	    <input type="checkbox" name="confirm_{{ forloop.counter0 }}"
+		   checked="checked" />
 	  </td>
 	</tr>
 	</tbody>
