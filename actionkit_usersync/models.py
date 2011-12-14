@@ -100,35 +100,49 @@ def actionkit_push(user, profile):
     # i think the localpower system allows that
     # currently just setting empty strings (per line above)
    
-    actionkit = get_client()
-    ak_user = actionkit.User.save_or_create(dict(
-            email=user.email,
-            first_name=user.first_name,
-            last_name=user.last_name,
-            zip=location.zipcode,
-            postal=location.postal,
-            region=location.county,
-            state=location.st,
-            state_name=location.state,
-            city=location.name,
-            country=location.country
-            ))
+    try:
+        actionkit = get_client()
+    except:
+        return
+
+    try:
+        ak_user = actionkit.User.save_or_create(dict(
+                email=user.email,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                zip=location.zipcode,
+                postal=location.postal,
+                region=location.county,
+                state=location.st,
+                state_name=location.state,
+                city=location.name,
+                country=location.country
+                ))
+    except:
+        return
 
     try:
         page_name = settings.ACTIONKIT_PAGE_NAME
     except AttributeError:
         return ak_user
 
-    history = actionkit.User.subscription_history({'id': ak_user['id']})
+    try:
+        history = actionkit.User.subscription_history({'id': ak_user['id']})
+    except:
+        return ak_user
+
     ever_been_subscribed = False
     for entry in history:
         if entry.get("page_name") == page_name:
             ever_been_subscribed = True
             break
     if not ever_been_subscribed:
-        result = actionkit.act(dict(
-                page=page_name,
-                email=user.email))
+        try:
+            result = actionkit.act(dict(
+                    page=page_name,
+                    email=user.email))
+        except:
+            return ak_user
 
     return ak_user
 
