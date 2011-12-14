@@ -1,5 +1,6 @@
 import csv
 
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import UNUSABLE_PASSWORD
 from django.db import transaction
@@ -40,9 +41,6 @@ def _import_users(request):
             user_form = RegistrationForm(data=user_data)
             profile_form = RegistrationProfileForm(user_data)
 
-            user_data['location'] = user_data['geom']
-            del user_data['geom']
-
             if user_form.is_valid() and profile_form.is_valid():
                 new_user = user_form.save(commit=False)
                 new_user.set_unusable_password()
@@ -65,6 +63,11 @@ def _import_users(request):
                 profile = user.get_profile()
                 profile.geom = user.geom
                 profile.save()
+            messages.success(
+                request, 
+                "Added user: <a href='/admin/auth/user/%s/'>%s</a>" % (
+                    user.pk, user.get_full_name()))
+        return HttpResponseRedirect(".")
 
     return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
         
@@ -84,17 +87,22 @@ def user_import(request):
         lines.pop(0)
     
     users = []
+    lineno = 0
     for line in lines:
-        users.append(dict(
-                first_name=line[0].strip(),
-                last_name=line[1].strip(),
-                email=line[2].strip(),
-                geom=", ".join(i.strip() for i in line[3:7] 
-                               if i and i.strip()),
-                phone=line[7],
-                language=line[8],
-                ))
-
+        lineno += 1
+        try:
+            users.append(dict(
+                    first_name=line[0].strip(),
+                    last_name=line[1].strip(),
+                    email=line[2].strip(),
+                    geom=", ".join(i.strip() for i in line[3:7] 
+                                   if i and i.strip()),
+                    phone=line[7],
+                    language=line[8],
+                    ))
+        except IndexError:
+            messages.error(request, 'Error reading line %s of the spreadsheet.' % lineno)
+            return HttpResponseRedirect(".")
 
 
     return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
