@@ -23,7 +23,8 @@ User._meta.get_field('date_joined').user_region_filter = True
 
 class UserAdmin(BaseUserAdmin):
     valid_lookups = ("profile__geom",)
-    list_display = ("email", "first_name", "last_name", "geom", "date_joined", "username")
+    list_display = ("email", "first_name", "last_name", "geom", "date_joined", "username",
+                    "language", "phone")
     ordering = ("id",)
     date_hierarchy = "date_joined"
     search_fields = ("email", "first_name", "last_name",)
@@ -35,6 +36,12 @@ class UserAdmin(BaseUserAdmin):
             if lookup.startswith(valid_lookup):
                 return True
         return admin.ModelAdmin.lookup_allowed(self, lookup, *args, **kwargs)
+
+    def phone(self, obj):
+        return obj.get_profile().phone
+
+    def language(self, obj):
+        return obj.get_profile().language
 
     def geom(self, obj):
         return obj.get_profile().geom

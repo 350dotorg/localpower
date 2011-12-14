@@ -138,10 +138,15 @@ class ProfileEditForm(forms.ModelForm):
                             help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
 
+    phone = forms.CharField(max_length=12, required=False,
+                            widget=forms.HiddenInput)
+    language = forms.CharField(max_length=10, required=False,
+                               widget=forms.HiddenInput)
+
 
     class Meta:
         model = Profile
-        fields = ("about", "is_profile_private", "image")
+        fields = ("about", "is_profile_private", "image", "phone", "language")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
@@ -152,6 +157,14 @@ class ProfileEditForm(forms.ModelForm):
         self.fields["geom"].initial = ""
         if self.instance and self.instance.geom:
             self.fields["geom"].initial = self.instance.geom.raw_address
+
+        self.fields["phone"].initial = ""
+        if self.instance and self.instance.phone:
+            self.fields["phone"].initial = self.instance.phone
+
+        self.fields["language"].initial = ""
+        if self.instance and self.instance.language:
+            self.fields["language"].initial = self.instance.language
 
     def clean_image(self):
         data = self.cleaned_data["image"]
@@ -170,6 +183,12 @@ class ProfileEditForm(forms.ModelForm):
             self.instance.geom = point
         elif self.data.get("geom") is not None and self.data.get("geom", "").strip() == "":
             self.instance.geom = None
+
+        if self.cleaned_data.get("phone"):
+            self.instance.phone = self.cleaned_data['phone']
+        if self.cleaned_data.get("language"):
+            self.instance.language = self.cleaned_data['language']
+
         profile = super(ProfileEditForm, self).save(*args, **kwargs)
 
         current_image = self.cleaned_data["image"]

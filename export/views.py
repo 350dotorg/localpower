@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import loader, Context, RequestContext
 
 from rah.models import Profile
-from rah.forms import RegistrationForm, RegistrationProfileForm
+from rah.forms import RegistrationForm, ProfileEditForm
 
 from forms import UserExportForm
 
@@ -39,13 +39,14 @@ def _import_users(request):
                     ])
             user_data['password1'] = "password"
             user_form = RegistrationForm(data=user_data)
-            profile_form = RegistrationProfileForm(user_data)
+            profile_form = ProfileEditForm(user_data)
 
             if user_form.is_valid() and profile_form.is_valid():
                 new_user = user_form.save(commit=False)
                 new_user.set_unusable_password()
-                if hasattr(profile_form, 'geom'):
-                    setattr(new_user, 'geom', profile_form.geom)
+                for attr in ("geom", "language", "phone"):
+                    if attr in profile_form.cleaned_data and profile_form.cleaned_data[attr]:
+                        setattr(new_user, attr, profile_form.cleaned_data[attr])
                 users.append(new_user)
             else:
                 has_errors = True
@@ -59,10 +60,11 @@ def _import_users(request):
     else:
         for user in users:
             user.save()
-            if hasattr(user, 'geom'):
-                profile = user.get_profile()
-                profile.geom = user.geom
-                profile.save()
+            profile = user.get_profile()
+            for attr in ("geom", "language", "phone"):
+                if hasattr(user, attr):
+                    setattr(profile, attr, getattr(user, attr))
+            profile.save()
             messages.success(
                 request, 
                 "Added user: <a href='/admin/auth/user/%s/'>%s</a>" % (
