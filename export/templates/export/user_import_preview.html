@@ -50,6 +50,13 @@
     <form action="{% url user_import %}" method="post" 
 	  id="user_import_form">{% csrf_token %}
       <input type="hidden" name="confirm" value="true" />
+      <label for="group">(Optional) Add all users to group:</label>
+      <select id="group" name="group">
+	<option value="">--</option>
+	{% for group in groups %}
+	<option value="{{ group.slug }}">{{ group.name }}</option>
+	{% endfor %}
+      </select>
       <table>
 	<thead>
 	  <tr>

@@ -8,6 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import loader, Context, RequestContext
 
+from groups.models import Group, GroupUsers
 from rah.models import Profile
 from rah.forms import RegistrationForm, ProfileEditForm
 
@@ -30,6 +31,14 @@ def user_export(request):
 def _import_users(request):
     users = []
     has_errors = False
+
+    group = None
+    if "group" in request.POST and request.POST['group']:
+        try:
+            group = Group.objects.get(slug=request.POST['group'])
+        except Group.DoesNotExist:
+            messages.error(request, "Group '%s' does not exist.")
+        
     for key in request.POST.keys():
         if key.startswith("confirm_"):
             counter = key[len("confirm_"):]
@@ -65,12 +74,21 @@ def _import_users(request):
                 if hasattr(user, attr):
                     setattr(profile, attr, getattr(user, attr))
             profile.save()
-            messages.success(
-                request, 
-                "Added user: <a href='/admin/auth/user/%s/'>%s</a>" % (
-                    user.pk, user.get_full_name()))
+
+            if group is not None:
+                GroupUsers.objects.create(group=group, user=user, is_manager=False)
+                message = ("Added user: <a href='/admin/auth/user/%s/'>%s</a> "
+                           "to group <a href='/admin/groups/group/%s/'>%s</a>" % (
+                        user.pk, user.get_full_name(), group.pk, group.name))
+            else:
+                message = ("Added user: <a href='/admin/auth/user/%s/'>%s</a> " % (
+                        user.pk, user.get_full_name(), group.pk, group.name))
+
+            messages.success(request, message)
+
         return HttpResponseRedirect(".")
 
+    groups = Group.objects.all()
     return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
         
 @staff_member_required
@@ -106,5 +124,6 @@ def user_import(request):
             messages.error(request, 'Error reading line %s of the spreadsheet.' % lineno)
             return HttpResponseRedirect(".")
 
+    groups = Group.objects.all()
 
     return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
