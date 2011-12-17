@@ -26,6 +26,8 @@ class UserExportForm(forms.Form):
             if not self.cleaned_data["filter_inactive"] or any(row[8:]):
                 writer.writerow(['="%s"' % s if s and self.cleaned_data["excel_friendly"] else s for s in row])
 
+
+## This code can be cleaned up if https://code.djangoproject.com/ticket/17431 is accepted and merged to Django core
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth.tokens import default_token_generator
