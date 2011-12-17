@@ -103,6 +103,11 @@ def _touch_wsgi():
     require("deploy_to", "hosts", "wsgi_file")
     sudo("touch %(wsgi_file)s" % env, user="wsgi")
 
+def _supervisor_restart():
+    require("deploy_to", "hosts", "wsgi_file", "virtualenv")
+    sudo("cd %(deploy_to)s && %(virtualenv)s/bin/python manage.py supervisor restart all" % env,
+         user="wsgi")
+
 @runs_once
 def _syncdb():
     "Sync the database with any new models"
@@ -118,6 +123,7 @@ def _migratedb():
     if confirm("Would you like to migrate the database?"):
         sudo("cd %(deploy_to)s && %(virtualenv)s/bin/python manage.py migrate" % env, user="wsgi")
 
+
 def push():
     require("deploy_to", "hosts", "environment")
     _fetch()
@@ -126,6 +132,7 @@ def push():
     _migratedb()
     _syncdb()
     _touch_wsgi()
+    _supervisor_restart()
 
 def deploy(revision=None, code_only=False, sync_media=True):
     "Deploy a revision to server"
