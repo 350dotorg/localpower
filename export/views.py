@@ -137,6 +137,8 @@ def user_import(request):
 
     return render_to_response("export/user_import_preview.html", locals(), context_instance=RequestContext(request))
 
+### https://code.djangoproject.com/ticket/16919 would let this code all go away
+
 import re
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
