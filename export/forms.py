@@ -61,7 +61,7 @@ class AccountConfirmForm(PasswordResetForm):
                 'token': token_generator.make_token(user),
                 'protocol': use_https and 'https' or 'http',
                 }
-            msg = EmailMessage(_("Connect with your local 350 groups"),
+            msg = EmailMessage("Connect with your local 350 groups",
                                t.render(Context(c)), None, [user.email])
             msg.content_subtype = "html"
             msg.send()
