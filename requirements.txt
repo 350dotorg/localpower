@@ -24,3 +24,5 @@ yolk==0.4.1
 vobject==0.8.1c
 -e git+https://github.com/aljosa/django-tinymce.git#egg=django-tinymce
 pyPdf==1.13
+django-celery
+django-kombu

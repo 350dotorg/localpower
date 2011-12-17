@@ -156,8 +156,14 @@ INSTALLED_APPS = (
     'actionkit_usersync',
     'django.contrib.comments',
     'assetmanager',
-
+    'djcelery',
+    'djkombu',
 )
+
+BROKER_URL = "django://"
+
+import djcelery
+djcelery.setup_loader()
 
 FIXTURE_DIR = ('fixtures',)
 
