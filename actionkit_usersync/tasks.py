@@ -21,22 +21,27 @@ def actionkit_push(user, profile):
     # EGJ TODO: what if profile.geom is None?
     # i think the localpower system allows that
     # currently just setting empty strings (per line above)
-   
+
     try:
         actionkit = get_client()
     except:
         return
 
+    struct = dict(
+        email=user.email,
+        first_name=user.first_name,
+        last_name=user.last_name)
+    if location.postal:
+        struct['postal'] = location.postal
+    if location.state:
+        struct['state_name'] = location.state
+    if location.city:
+        struct['city'] = location.city
+    if location.country:
+        struct['country'] = location.country
+
     try:
-        ak_user = actionkit.User.save_or_create(dict(
-                email=user.email,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                postal=location.postal,
-                state_name=location.state,
-                city=location.city,
-                country=location.country
-                ))
+        ak_user = actionkit.User.save_or_create(struct)
     except:
         return
 
@@ -45,8 +50,10 @@ def actionkit_push(user, profile):
     except AttributeError:
         return ak_user
 
-    groups_managed = GroupUsers.objects.filter(user=user, is_manager=True).values_list(
-        "group__slug", flat=True)
+    try:
+        managers_page_name = settings.ACTIONKIT_MANAGERS_PAGE_NAME
+    except AttributeError:
+        managers_page_name = None
 
     try:
         history = actionkit.User.subscription_history({'id': ak_user['id']})
@@ -54,10 +61,14 @@ def actionkit_push(user, profile):
         return ak_user
 
     ever_been_subscribed = False
+    ever_been_subscribed_as_manager = False
     for entry in history:
         if entry.get("page_name") == page_name:
             ever_been_subscribed = True
-            break
+        if entry.get("page_name") == managers_page_name and managers_page_name is not None:
+            ## XXX TODO: this isn't right, we need to search for the action explicitly
+            ever_been_subscribed_as_manager = entry
+
     if not ever_been_subscribed:
         try:
             result = actionkit.act(dict(
@@ -65,5 +76,22 @@ def actionkit_push(user, profile):
                     email=user.email))
         except:
             return ak_user
+
+    if managers_page_name is not None:
+        groups_managed = GroupUsers.objects.filter(user=user, is_manager=True).values_list(
+            "group__slug", flat=True)
+        if len(groups_managed):
+            if not ever_been_subscribed_as_manager:
+                try:
+                    result = actionkit.act(dict(
+                            page=page_name,
+                            email=user.email,
+                            action_350localgroups=','.join(groups_managed),
+                            ))
+                except:
+                    return ak_user
+            else:
+                ## XXX TODO
+                pass
 
     return ak_user

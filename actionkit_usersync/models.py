@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from rah.models import Profile
+from groups.models import GroupUser
 from actionkit_usersync.tasks import actionkit_push
 
 def user_post_save(sender, instance, created, **kwargs):
@@ -14,6 +15,13 @@ def profile_post_save(sender, instance, created, **kwargs):
     user = profile.user
     ak_user = actionkit_push.delay(user, profile)
 models.signals.post_save.connect(profile_post_save, sender=Profile)
+
+def groupuser_post_save(sender, instance, created, **kwargs):
+    groupuser = instance
+    user = groupuser.user
+    profile = user.get_profile()
+    ak_user = actionkit_push.delay(user, profile)
+models.signals.post_save.connect(groupuser_post_save, sender=GroupUser)
 
 # EGJ TODO: test profile post-save signal
 
