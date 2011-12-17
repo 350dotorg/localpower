@@ -158,6 +158,7 @@ INSTALLED_APPS = (
     'assetmanager',
     'djcelery',
     'djkombu',
+    'djsupervisor',
 )
 
 BROKER_URL = "django://"

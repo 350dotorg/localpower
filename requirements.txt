@@ -26,3 +26,4 @@ vobject==0.8.1c
 pyPdf==1.13
 django-celery
 django-kombu
+django-supervisor
