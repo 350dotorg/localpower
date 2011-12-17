@@ -13,7 +13,7 @@ from groups.models import Group, GroupUsers
 from rah.models import Profile
 from rah.forms import RegistrationForm, ProfileEditForm
 
-from forms import UserExportForm
+from forms import UserExportForm, AccountConfirmForm
 
 # writer.writerow(['="%s"' % s if s and excel_friendly else s for s in row])
 
@@ -87,7 +87,7 @@ def _import_users(request):
 
             ## Now send the new user an email, telling him we created an account
             ## and giving him a link to set a password for his account.
-            form = PasswordResetForm({'email': user.email})
+            form = AccountConfirmForm({'email': user.email})
             if form.is_valid():
                 form.save(email_template_name='export/user_import_password_reset_email.html',
                           use_https=request.is_secure(),

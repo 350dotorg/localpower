@@ -25,3 +25,43 @@ class UserExportForm(forms.Form):
         for row in queryset:
             if not self.cleaned_data["filter_inactive"] or any(row[8:]):
                 writer.writerow(['="%s"' % s if s and self.cleaned_data["excel_friendly"] else s for s in row])
+
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.models import get_current_site
+from django.template import Context, loader
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+from django.utils.http import int_to_base36
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, PasswordChangeForm
+
+class AccountConfirmForm(PasswordResetForm):
+
+    def save(self, domain_override=None, email_template_name='registration/password_reset_email.html',
+             use_https=False, token_generator=default_token_generator, request=None):
+        """
+        Generates a one-use only link for resetting password and sends to the user
+        """
+        from django.core.mail import send_mail, EmailMessage
+        for user in self.users_cache:
+            if not domain_override:
+                current_site = get_current_site(request)
+                site_name = current_site.name
+                domain = current_site.domain
+            else:
+                site_name = domain = domain_override
+            t = loader.get_template(email_template_name)
+            c = {
+                'email': user.email,
+                'domain': domain,
+                'site_name': site_name,
+                'uid': int_to_base36(user.id),
+                'user': user,
+                'token': token_generator.make_token(user),
+                'protocol': use_https and 'https' or 'http',
+                }
+            msg = EmailMessage(_("Connect with your local 350 groups"),
+                               t.render(Context(c)), None, [user.email])
+            msg.content_subtype = "html"
+            msg.send()
