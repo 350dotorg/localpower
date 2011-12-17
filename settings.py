@@ -159,6 +159,7 @@ INSTALLED_APPS = (
     'djcelery',
     'djkombu',
     'djsupervisor',
+    'djcelery_email',
 )
 
 BROKER_URL = "django://"

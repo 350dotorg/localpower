@@ -27,3 +27,4 @@ pyPdf==1.13
 django-celery
 django-kombu
 django-supervisor
+django-celery-email
