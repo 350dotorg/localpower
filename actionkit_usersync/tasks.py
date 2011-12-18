@@ -59,20 +59,7 @@ def actionkit_push(user, profile):
     except AttributeError:
         managers_page_name = None
 
-    try:
-        history = actionkit.User.subscription_history({'id': ak_user['id']})
-    except:
-        return ak_user
-
-    ever_been_subscribed = False
-    ever_been_subscribed_as_manager = False
-    for entry in history:
-        if entry.get("page_name") == page_name:
-            ever_been_subscribed = True
-        if entry.get("page_name") == managers_page_name and managers_page_name is not None:
-            ## XXX TODO: this isn't right, we need to search for the action explicitly
-            ever_been_subscribed_as_manager = entry
-
+    ever_been_subscribed = actionkit.Action.search({'user': ak_user['id'], 'page__name': page_name})
     if not ever_been_subscribed:
         try:
             result = actionkit.act(dict(
@@ -85,17 +72,19 @@ def actionkit_push(user, profile):
         groups_managed = GroupUsers.objects.filter(user=user, is_manager=True).values_list(
             "group__slug", flat=True)
         if len(groups_managed):
+            ever_been_subscribed_as_manager = actionkit.Action.search({'user': ak_user['id'], 'page__name': managers_page_name})
             if not ever_been_subscribed_as_manager:
                 try:
                     result = actionkit.act(dict(
-                            page=page_name,
+                            page=managers_page_name,
                             email=user.email,
                             action_350localgroups=','.join(groups_managed),
                             ))
                 except:
                     return ak_user
             else:
-                ## XXX TODO
-                pass
+                page_type = actionkit.Page.get({'name': managers_page_name})['type']
+                result = getattr(actionkit, '%sAction'%page_type).set_custom_fields({'id': ever_been_subscribed_as_manager[0]['id'],
+                                                                                     '350localgroups': ','.join(groups_managed)})
 
     return ak_user
