@@ -29,8 +29,12 @@ def actionkit_push(user, profile):
 
     struct = dict(
         email=user.email,
-        first_name=user.first_name,
-        last_name=user.last_name)
+        first_name=user.first_name or '',
+        last_name=user.last_name or '')
+
+    struct['custom_fields'] = {
+        '350local_username': user.id
+        }
     if location.postal:
         struct['postal'] = location.postal
     if location.state:
