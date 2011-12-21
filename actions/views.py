@@ -76,6 +76,8 @@ def action_detail(request, action_slug):
     else:
         action_commit_form = ActionCommitForm(user=request.user, action=action)
 
+    group_link_form = ActionGroupLinkForm(request.user, instance=action)
+
     if request.method == "POST":
         group_link_form = ActionGroupLinkForm(request.user, instance=action, data=request.POST)
         if group_link_form.is_valid():

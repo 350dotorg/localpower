@@ -83,26 +83,6 @@
       {% endwith %}
 
       {% comment %}
-      {% with group_link_form as form %}
-      {% if not form.groups.field.queryset.count %}
-      <p>
-	{% url group_list as group_list_url %}
-	{% blocktrans %}
-	You're not yet a member of any communities.  
-	Why don't you <a href="{{group_list_url}}">
-	  look for some communities to join?</a>
-	{% endblocktrans %}
-      </p>	
-      {% else %}
-      <form class="form_6c" method="POST">
-	{% include "base/_form.html" %}
-	{% csrf_token %}
-	<br class="clear" />
-	<input type="submit" name="link_group" 
-	       value="{% blocktrans %}Add{% endblocktrans %}" />
-      </form>
-      {% endif %}
-      {% endwith %}
       {% endcomment %}
     </div>
     {% endif %}
@@ -154,6 +134,34 @@
 	    {% blocktrans %}cancel{% endblocktrans %}</a>)
         </p>
     {% endif %}
+
+        <div class="ribbon_small">
+          {% blocktrans %}Your Groups{% endblocktrans %}
+          <div class="ribbon_small_wrap"></div>
+        </div>
+
+	<div>
+	  {% with group_link_form as form %}
+	  {% if not form.groups.field.queryset.count %}
+	  <p>
+	    {% url group_list as group_list_url %}
+	    {% blocktrans %}
+	    You're not yet a member of any communities.  
+	    Why don't you <a href="{{group_list_url}}">
+	      look for some communities to join?</a>
+	    {% endblocktrans %}
+	  </p>	
+	  {% else %}
+	  <form class="form_6c" method="POST">
+	    {% include "base/_form.html" %}
+	    {% csrf_token %}
+	    <br class="clear" />
+	    <input type="submit" name="link_group" 
+		   value="{% blocktrans %}Link this project to your groups{% endblocktrans %}" />
+	  </form>
+	  {% endif %}
+	  {% endwith %}
+	</div>
     {% endif %}
 
     {% if action.users_completed %}
