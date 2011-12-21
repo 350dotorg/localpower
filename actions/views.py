@@ -21,6 +21,9 @@ from models import (Action, UserActionProgress, GroupActionProgress,
                     ActionForm, ActionFormData)
 from forms import ActionCommitForm, GroupActionCommitForm, ActionGroupLinkForm
 
+def redirect_stub(request, tag_slug=None, is_group_project=False):
+    return redirect("action_show")
+
 def action_show(request, tag_slug=None, is_group_project=False):
     """Show all actions by Category"""
     nav_selected = "group_actions" if is_group_project else "solo_actions"
