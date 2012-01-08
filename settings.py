@@ -238,7 +238,7 @@ TINYMCE_DEFAULT_CONFIG = {
 #    'content_css': MEDIA_URL + 'css/style.css',
 }
 
-GROUP_CREATION_FORM = "/groups/form/"
+GROUP_CREATION_FORM = "/groups/new/"
 
 try:
     from local_settings import *
