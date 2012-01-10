@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <alex@350.org>, 2011.
+#   <alex@350.org>, 2011, 2012.
 #   <ethan.jucovy@gmail.com>, 2011.
 #   <jon@350.org>, 2011.
 #   <kelly@350.org>, 2011.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-25 23:29-0400\n"
-"PO-Revision-Date: 2011-12-09 19:00+0000\n"
+"PO-Revision-Date: 2012-01-06 16:34+0000\n"
 "Last-Translator: alex350 <alex@350.org>\n"
 "Language-Team: English (http://www.transifex.net/projects/p/localpower/team/en/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: actions/action_forms.py:36
 msgid "Video game Systems"
-msgstr "Video Game Systems"
+msgstr ""
 
 #: actions/forms.py:22 actions/forms.py:48
 msgid "Commit date"
@@ -571,7 +571,7 @@ msgstr ""
 
 #: actions/templatetags/actions.py:21
 msgid "My group already did this!"
-msgstr ""
+msgstr "My group already did this"
 
 #: actions/templatetags/actions.py:22
 msgid "My group will do this"
@@ -583,7 +583,7 @@ msgstr ""
 
 #: actions/templatetags/actions.py:25
 msgid "I did this!"
-msgstr ""
+msgstr "I already did this project"
 
 #: actions/templatetags/actions.py:26
 msgid "Make a commitment"
@@ -1010,7 +1010,7 @@ msgid ""
 "transformation.\n"
 msgstr ""
 "\n"
-"Together we can achieve big things. Join or start a petition campaign to spur positive action in your community to take the world one step closer to a healthy climate for us all.\n"
+"Together we can achieve big things. Join or start a petition campaign to spur positive action in your community to take the world one step closer to a healthy climate for us all. <a href=\"http://local.350.org/campaigns/guide/\">Read the petition guide to help make the most of your efforts.</a>\n"
 
 #: challenges/templates/challenges/list.html:15
 msgid "<b>+</b> Create a Challenge"
@@ -1455,7 +1455,7 @@ msgstr ""
 #: events/templates/events/_energy_commitment_card.html:12
 #: events/templates/events/_pilot_commitment_card.html:12
 msgid "I've Done this"
-msgstr ""
+msgstr "I've done this"
 
 #: events/templates/events/_energy_commitment_card.html:13
 #: events/templates/events/_pilot_commitment_card.html:13
@@ -1855,7 +1855,7 @@ msgstr ""
 
 #: events/templates/events/sign_in_sheet.html:39
 msgid "Zipcode"
-msgstr ""
+msgstr "Postal code or zip code"
 
 #: events/templates/events/sign_in_sheet.html:65
 #, python-format
@@ -1881,7 +1881,7 @@ msgstr ""
 
 #: group_links/models.py:13
 msgid "URL"
-msgstr ""
+msgstr "Your group's website link"
 
 #: group_links/templates/group_links/_form.html:9
 #: group_links/templates/group_links/form.html:9
@@ -2420,19 +2420,19 @@ msgstr ""
 
 #: groups/templates/groups/group_detail.html:57
 msgid "Edit Facebook Group"
-msgstr ""
+msgstr "Edit Facebook group"
 
 #: groups/templates/groups/group_detail.html:59
 msgid "Add Facebook Group"
-msgstr ""
+msgstr "Add Facebook group"
 
 #: groups/templates/groups/group_detail.html:64
 msgid "Edit Twitter Account"
-msgstr ""
+msgstr "Edit Twitter account"
 
 #: groups/templates/groups/group_detail.html:66
 msgid "Add Twitter Account"
-msgstr ""
+msgstr "Add Twitter account"
 
 #: groups/templates/groups/group_detail.html:85
 #: groups/templates/groups/group_detail.html:108
@@ -2541,6 +2541,12 @@ msgid ""
 "\tfor your group to participate in?\n"
 "\t"
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>Your group hasn't created any campaigns yet. Is there an initiative \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>you’re working on that you’d like to launch a petition for?\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span><a href=\"%(campaign_create_url)s?groups=%(group_id)s\">Click here to launch your own petition</a>  on 350 Local.\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span><a href=\"%(campaign_list_url)s\">Check out the list</a> of campaigns others have started to get ideas.\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>"
 
 #: groups/templates/groups/group_detail.html:262
 #, python-format
@@ -2756,7 +2762,7 @@ msgid ""
 "towards your community's goals.\n"
 msgstr ""
 "\n"
-"Start a group to help your community, school, or church come together to help build a powerful movement. As a group leader, you can use this website to help organize meetings, plan local projects, track progress, post updates, and launch campaigns!\n"
+"Start a group to help your community, school, or church come together to help build a powerful movement. As a group leader, you can use this website to help organize meetings, plan local projects, track progress, post updates, and launch campaigns. <a href=\"http://local.350.org/groups/info/\">Please read about 350 groups here before starting your own.</a>\n"
 
 #: groups/templates/groups/group_list.html:16
 #, python-format
@@ -3038,11 +3044,11 @@ msgstr ""
 
 #: rah/models.py:234
 msgid "state"
-msgstr ""
+msgstr "state or region"
 
 #: rah/models.py:235
 msgid "zipcode"
-msgstr ""
+msgstr "postal code or zip code"
 
 #: rah/models.py:242
 msgid "sticker recipient"
@@ -3311,8 +3317,8 @@ msgid ""
 "Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut "
 "dictum velit nec est."
 msgstr ""
-"Join a growing community of climate activists who are building a movement "
-"and transforming their communities from the ground up. "
+"Sign up to connect locally and get more involved in a growing community of "
+"climate activists who are building a global movement to stop climate change."
 
 #: templates/base/nav.html:36 templates/registration/register.html:20
 msgid "Join with Facebook"
@@ -3538,7 +3544,7 @@ msgstr "Featured Members"
 
 #: templates/rah/home_page.html:174
 msgid "Browse Users"
-msgstr "Browse Members"
+msgstr "Find fellow 350 Local members with the map below."
 
 #: templates/rah/home_page.html:179
 msgid "Featured Communities"
@@ -3597,6 +3603,12 @@ msgid ""
 "\t      create a new group</a> if there aren't yet any near you.\n"
 "\t    "
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    You aren't yet a member of any groups.\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    You can <a href=\"%(group_list_url)s\">look \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>      for a local group to join</a>, or if you’re ready, <a href=\"%(group_create_url)s\">\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>      apply to create a new group</a> if there aren't yet any near you. If there isn’t a local group yet, check out the projects page for ideas for how to pull together a meeting to kick off your local group.\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    "
 
 #: templates/rah/profile.html:86
 #, python-format
@@ -3616,6 +3628,12 @@ msgid ""
 "\t    browse the list of solo actions</a> that you can commit to do on your own.\n"
 "\t  "
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>  You haven't taken on any projects yet. You can \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>  <a href=\"%(project_list_url)s\">Get started with one of these projects</a>\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>  to build a local group \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    and educate your community. <a href=\"%(solo_project_list_url)s\"></a>\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>  "
 
 #: templates/rah/profile.html:102
 msgid "Commitments"
@@ -3654,6 +3672,11 @@ msgid ""
 "\t      for a local group to join</a>?\n"
 "\t    "
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>You haven't yet taken any actions on the site.  Here are a few places to start:<br />\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    1. <a href=\"%(group_list_url)s\">Search for a local group near you.</a><br /> \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    2. No local groups? <a href=\"http://local.350.org/user/list\">Try seeing if there are any other 350 members nearby</a> to connect with about starting something.<br />\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    3. Get together with a local group, some friends, or fellow organizers to start a project or campaign to start or grow your local climate movement!"
 
 #: templates/rah/profile.html:179
 #, python-format
@@ -3671,6 +3694,10 @@ msgid ""
 "\t    <a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
 "\t    "
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    You have not signed up for any events.  Why don't you \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    <a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>    You could also consider planning a local event yourself!"
 
 #: templates/rah/profile.html:198
 msgid "Vital Stats"
@@ -3704,6 +3731,10 @@ msgid ""
 "\t<a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
 "\t"
 msgstr ""
+"\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>You have not signed up for any events.  Why don't you \n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span><a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
+"<span class=\"whitespace other\" title=\"Tab\">»</span>You could also consider planning a local event yourself!"
 
 #: templates/rah/profile.html:253
 #, python-format
@@ -3841,7 +3872,7 @@ msgstr ""
 
 #: templates/rah/user_list.html:4 templates/rah/user_list.html.py:5
 msgid "User List"
-msgstr ""
+msgstr "Member List"
 
 #: templates/rah/user_list.html:7
 msgid ""
@@ -3849,7 +3880,7 @@ msgid ""
 "Browse users\n"
 msgstr ""
 "\n"
-"Browse Members\n"
+"Looking to form a team or start an initiative? Search this map to see if there are other 350 members near you. No one yet? Don’t worry! <a href=\"http://local.350.org/projects/\">Check out the projects page</a> for ideas for how to start organizing and connecting locally.\n"
 
 #: templates/rah/user_list.html:12
 #, python-format
