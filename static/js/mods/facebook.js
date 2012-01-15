@@ -11,7 +11,7 @@ define(["https://connect.facebook.net/en_US/all.js"], function (facebook) {
                         var next = next_elem ? next_elem.val() : window.location;
                         window.location = "/facebook/login/?next=" + next;
                     }
-                }, { perms: "email"});
+                }, { scope: "email"});
             });
         },
         authorize: function () {
@@ -21,7 +21,7 @@ define(["https://connect.facebook.net/en_US/all.js"], function (facebook) {
                     var next = next_elem.length ? next_elem.val() : window.location;
                     window.location = "/facebook/authorize/?next=" + next;
                 }
-            }, { perms: "email"});
+            }, { scope: "email"});
             return false;
         }
     };
