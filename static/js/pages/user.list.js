@@ -3,7 +3,7 @@
 require(["libs/jquery.ui", "libs/markerclusterer"],
     function (ui, markerclusterer) {
         var myOptions = {
-            zoom: 4,
+            zoom: (RAH.map_center.lat ? 4 : 1),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             streetViewControl: false,

@@ -25,7 +25,7 @@ require(["libs/jquery.ui", "mods/search", "libs/markerclusterer"],
                 .appendTo(ul);
         };
         var myOptions = {
-            zoom: 4,
+            zoom: (RAH.map_center.lat ? 4 : 1),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             streetViewControl: false,
