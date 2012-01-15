@@ -10,7 +10,7 @@ easy-thumbnails==1.0-alpha-8
 -e git+https://github.com/fabric/fabric.git#egg=fabric
 -e git+http://github.com/django-extensions/django-extensions.git#egg=django_extensions
 -e hg+http://code.welldev.org/django-storages/#egg=django-storages
--e git+http://github.com/facebook/python-sdk.git#egg=facebook
+-e git+http://github.com/localpower/facebook-python-sdk.git#egg=facebook
 -e git+https://github.com/ojii/django-admin-filters.git#egg=django-admin-filters
 -e git+https://github.com/HonzaKral/django-threadedcomments.git#egg=django-threadedcomments
 -e git+https://github.com/eldarion/brabeion.git#egg=brabeion
