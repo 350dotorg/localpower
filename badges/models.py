@@ -41,6 +41,9 @@ def user_badges(user):
     all_badges = badge_cache._registry
     user_badges = []
     for award in BadgeAward.objects.filter(user=user):
+        if award.slug not in all_badges:
+            award.delete()
+            continue
         all_badges[award.slug].awarded_at = award.awarded_at
         all_badges[award.slug].level = award.level
         all_badges[award.slug] = add_images(all_badges[award.slug])
