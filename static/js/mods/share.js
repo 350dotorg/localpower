@@ -25,7 +25,7 @@ define(["libs/jquery.ui", "mods/facebook", "libs/jquery.validation", "mods/messa
                                     share_mod.share(form);
                                 });
                             }
-                        }, { perms: "email,publish_stream,offline_access" });
+                        }, { scope: "email,publish_stream,offline_access" });
                     } else {
                         share_mod.share(form);
                     }
