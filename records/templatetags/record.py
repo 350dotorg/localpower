@@ -21,7 +21,7 @@ class RecordNode(template.Node):
         from django.core.urlresolvers import NoReverseMatch
         try:
             return record.render(request)
-        except NoReverseMatch:
+        except:
             record.delete()
             return ''
 
