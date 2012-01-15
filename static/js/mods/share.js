@@ -20,7 +20,7 @@ define(["libs/jquery.ui", "mods/facebook", "libs/jquery.validation", "mods/messa
                     var form = $(this);
                     if ($("#id_has_facebook_access", form).val() !== "True") {
                         FB.login(function (response) {
-                            if (response.session) {
+                            if (response.authResponse) {
                                 $.get("/facebook/authorize/", function (data) {
                                     share_mod.share(form);
                                 });
