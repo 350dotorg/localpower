@@ -18,7 +18,12 @@ class RecordNode(template.Node):
     def render(self, context):
         record = self.record_expr.resolve(context)
         request = context["request"]
-        return record.render(request)
+        from django.core.urlresolvers import NoReverseMatch
+        try:
+            return record.render(request)
+        except NoReverseMatch:
+            record.delete()
+            return ''
 
 @register.tag
 def render_record(parser, token):
