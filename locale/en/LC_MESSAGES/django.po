@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-25 23:29-0400\n"
-"PO-Revision-Date: 2012-01-13 21:36+0000\n"
+"PO-Revision-Date: 2012-01-24 23:05+0000\n"
 "Last-Translator: alex350 <alex@350.org>\n"
 "Language-Team: English (http://www.transifex.net/projects/p/localpower/team/en/)\n"
 "MIME-Version: 1.0\n"
@@ -334,7 +334,8 @@ msgstr ""
 msgid ""
 "Claim your points if you’re already doing, or just completed, this action"
 msgstr ""
-"Claim your points if you’re already doing, or just completed, this project"
+"Let the 350 community know you're already doing, or just completed, this "
+"action. Be an inspiration or even a resource for others!"
 
 #: actions/templates/actions/_action_form.html:62
 msgid "You've done this action!"
@@ -1786,7 +1787,7 @@ msgstr ""
 #: events/templates/events/rsvp_account.html:8 templates/base/nav.html:31
 #: templates/rah/home_page.html:12 templates/rah/home_page.html.py:38
 msgid "Create an Account"
-msgstr ""
+msgstr "Learn More"
 
 #: events/templates/events/rsvp_account.html:13
 msgid "Create Account"
@@ -3413,15 +3414,15 @@ msgstr "Welcome"
 
 #: templates/rah/home_page.html:10
 msgid "Empower your Home"
-msgstr "Start Local Projects"
+msgstr "Find a Group Near You"
 
 #: templates/rah/home_page.html:11
 msgid "Empower your Community"
-msgstr "Find Local Groups"
+msgstr "Start Organizing!"
 
 #: templates/rah/home_page.html:29
 msgid "Be an Energy Trendsetter!"
-msgstr "Join A Local Climate Action Group!"
+msgstr "Join 350 Local"
 
 #: templates/rah/home_page.html:31
 #, python-format
@@ -3433,9 +3434,7 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"                            %(SITE_NAME)s makes local activism social, easy, and fun.  \n"
-"\n"
-"People everywhere are working to build a powerful movement to transform our communities -- and our planet -- from the ground up."
+"From Afghanistan to Zimbabwe, people in nearly every country on the planet are mobilizing their communities for just solutions to the climate crisis. %(SITE_NAME)s is designed to make it simple to connect with other climate activists where we live, build powerful local movements to transform our communities, and stand in solidarity with one another globally to stop climate change.  Let’s build this movement together! makes local activism social, easy, and fun."
 
 #: templates/rah/home_page.html:41
 #, python-format
@@ -3458,7 +3457,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:55
 msgid "You have the power <br/>to save energy"
-msgstr "You have the power to transform your community. "
+msgstr "Search the map to see if there’s a group near you."
 
 #: templates/rah/home_page.html:57
 msgid ""
@@ -3471,15 +3470,15 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"There's plenty you can do at the local level to fight climate change, build a movement, and transform your community from the ground up. The projects on this website give you the know-how and the tools to organize a strong local group and jumpstart the climate movement.  "
+"There's plenty we can all do at the local level to fight climate change, build a movement, and transform our communities from the ground up. Check out the projects on this website for ideas to build your team, educate your community, and advocate for solutions in your community."
 
 #: templates/rah/home_page.html:66
 msgid "See All Actions"
-msgstr "See All Projects"
+msgstr "Search the Map"
 
 #: templates/rah/home_page.html:78
 msgid "Support energy efficiency in your community"
-msgstr "Find a local group to join"
+msgstr "Start a project to build your local movement"
 
 #: templates/rah/home_page.html:80
 #, python-format
@@ -3492,15 +3491,15 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"                            Get involved with a local group to build local power. With %(SITE_NAME)s, you can connect with local activists to take on projects, launch campaigns, and more."
+"There's plenty we can all do at the local level to fight climate change, build a movement, and transform our communities from the ground up. Check out the projects on this website for ideas to build your team, educate your community, and advocate for solutions in your community.<!-- %(SITE_NAME)s -->"
 
 #: templates/rah/home_page.html:88
 msgid "Find Communities"
-msgstr "Find Groups"
+msgstr "See All Projects"
 
 #: templates/rah/home_page.html:94
 msgid "Host and attend local climate events"
-msgstr ""
+msgstr "See what 350 Local is all about"
 
 #: templates/rah/home_page.html:96
 msgid ""
@@ -3509,11 +3508,11 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"Find local events taking place near you, or host your own event using our organizational tools and event materials.  After the event, start a group to keep the momentum going and stay in touch with other attendees."
+"People are organizing all over the world, alone or in groups, to address the climate crisis. With 350 Local, we’re hoping to better connect those people and help them increase power in their communities. Learn more about how 350 Local can help you build a group and get things started where you live."
 
 #: templates/rah/home_page.html:101
 msgid "Find Events"
-msgstr ""
+msgstr "More Info"
 
 #: templates/rah/home_page.html:119
 #, python-format
