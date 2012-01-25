@@ -35,7 +35,8 @@
 			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url register %}" class="button button_mega button_shadow">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
+                            <a href="{% blocktrans %}home_slide_1_logged_out_url{% endblocktrans %}"
+			       class="button button_mega button_shadow">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
                         </p>
 			{% else %}
                         <h1>{% blocktrans with request.user.first_name as user_name %}Welcome back, {{user_name}}!{% endblocktrans %}</h1>
@@ -45,7 +46,8 @@
 			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url user_self_redirect %}" class="button button_mega button_shadow">{% blocktrans %}My Account{% endblocktrans %} &rsaquo;</a>
+                            <a href="{% blocktrans %}home_slide_1_logged_in_url{% endblocktrans %}"
+			       class="button button_mega button_shadow">{% blocktrans %}My Account{% endblocktrans %} &rsaquo;</a>
                         </p>
 			{% endif %}
                     </div>
@@ -63,7 +65,8 @@
 			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url action_show %}" class="button button_mega button_shadow">{% blocktrans %}See All Actions{% endblocktrans %} &rsaquo;</a>
+                            <a href="{% blocktrans %}home_slide_2_url{% endblocktrans %}"
+			       class="button button_mega button_shadow">{% blocktrans %}See All Actions{% endblocktrans %} &rsaquo;</a>
                         </p>
                     </div>
                     <div class="home_slide_right">
@@ -85,7 +88,8 @@
 			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url group_list %}" class="button button_mega button_shadow">{% blocktrans %}Find Communities{% endblocktrans %} &rsaquo;</a>
+                            <a href="{% blocktrans %}home_slide_3_url{% endblocktrans %}"
+			       class="button button_mega button_shadow">{% blocktrans %}Find Communities{% endblocktrans %} &rsaquo;</a>
                         </p>
                     </div>
                 </div>
@@ -98,7 +102,8 @@
 			  {% endblocktrans %}
                         </p>
                         <p>
-                            <a href="{% url event-show %}" class="button button_mega button_shadow">{% blocktrans %}Find Events{% endblocktrans %} &rsaquo;</a>
+                            <a href="{% blocktrans %}home_slide_4_url{% endblocktrans %}"
+			       class="button button_mega button_shadow">{% blocktrans %}Find Events{% endblocktrans %} &rsaquo;</a>
                         </p>
 
                     </div>
