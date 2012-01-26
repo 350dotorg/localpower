@@ -283,16 +283,11 @@ def spreadsheet(request, event_id):
     writer = csv.writer(response)
     writer.writerow(["Name", "Email", "Phone", "Location", "Status"])
 
-    if g.contributor.geom:
-        formatted_address = g.contributor.geom.formatted_address
-    else:
-        formatted_address = ''
-
-    for g in Guest.objects.filter(event=event):
+    for g in Guest.objects.filter(event=event):        
         writer.writerow([g.contributor.name,
                          g.contributor.email,
                          g.contributor.phone, 
-                         formatted_address,
+                         g.contributor.geom.formatted_address if g.contributor.geom else ''
                          g.status()])
 
     return response
