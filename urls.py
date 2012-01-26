@@ -81,6 +81,7 @@ admin.site.add_action(admin_list_export, 'Export to CSV')
 
 urlpatterns = patterns('rah.views',
     url(r'^$', 'index', name='index'),
+    url(r'^admin/translations/reload/$', 'reload_i18n', name='reload_i18n'),                       
     url(r'^register/$', 'register', name='register'),
     url(r'^login/$', 'login', name='login'),
     url(r'^logout/$', 'logout', name='logout'),

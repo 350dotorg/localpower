@@ -45,6 +45,18 @@ from badges.models import user_badges
 from decorators import save_queued_POST
 from signals import logged_in
 
+def reload_i18n(request):
+    if not request.user.is_superuser:
+        return forbidden("must be a superuser to reload i18n")
+
+    import gettext
+    from django.utils.translation import trans_real
+    reload(gettext)
+    reload(trans_real)
+
+    messages.success(request, _("Translations are now up to date."))
+    return redirect("/")
+
 def redirect_to_blog(request):
     return redirect("http://www.350.org/about/blog/")
 
@@ -91,6 +103,7 @@ def index(request):
     """
     Home Page
     """
+
     section_class = "section_home"
     top_users = Profile.objects.filter(is_profile_private=False, geom__isnull=False).select_related("user").order_by("-user__date_joined")[:10]
     top_communities = Group.objects.filter(geom__isnull=False).order_by("-member_count")[:3]
