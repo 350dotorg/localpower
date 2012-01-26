@@ -287,7 +287,7 @@ def spreadsheet(request, event_id):
         writer.writerow([g.contributor.name,
                          g.contributor.email,
                          g.contributor.phone, 
-                         g.contributor.geom.formatted_address if g.contributor.geom else ''
+                         g.contributor.geom.formatted_address if g.contributor.geom else '',
                          g.status()])
 
     return response
