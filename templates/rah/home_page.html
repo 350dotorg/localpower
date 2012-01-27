@@ -3,6 +3,58 @@
 {% load i18n %}
 {% load humanize %}
 {% block rah_nav_select %}nav_home{% endblock %}
+{% block extrahead %}
+<style type="text/css">
+.button.grey{
+	background: #D8D8D8;
+	background: -moz-linear-gradient(top,  #D8D8D8 0%, #ACACAC 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D8D8D8), color-stop(100%,#ACACAC));
+	background: -webkit-linear-gradient(top,  #D8D8D8 0%,#ACACAC 100%);
+	background: -o-linear-gradient(top,  #D8D8D8 0%,#ACACAC 100%);
+	background: -ms-linear-gradient(top,  #D8D8D8 0%,#ACACAC 100%);
+	background: linear-gradient(top,  #D8D8D8 0%,#ACACAC 100%);
+	border:1px solid #98a2aa;
+	color:#313a42;}
+.button.grey:hover{
+	border:1px solid #768187;
+	color:#000;}
+#home_stat_bar .home_stat_wrap{
+	min-height:130px;
+	position:relative;}
+#home_stat_bar .button{
+	bottom:0;
+	left:20px;
+	margin-top:15px;
+	position:absolute;
+	width:170px;}
+#home_stat_bar .button:active{
+	bottom:-1px;
+	top:auto;}
+#home_stat_bar .home_stat{
+	font-size:21px;
+	line-height:1.2}
+#home_stat_bar .home_stat_block{
+	color:#fff;
+	text-align:left;
+	padding:}
+.home_stat_block .stat{
+	margin:15px 0;
+	height:30px;}
+.stat-number{
+	float:left;
+	font-weight:bold;
+	font-size:36px;}
+.stat-label{
+	font-size:16px;
+	display:inline-block;
+	width:90px;
+	margin-left:5px;}
+.stat-label.two-line{
+	position:relative;
+	top:-12px;	
+}
+</style>
+{% endblock %}
 {% block 12c_content %}
     {% include "_messages.html" %}
     <div class="grid_12 alpha omega" id="home_slide_nav">
@@ -117,32 +169,31 @@
     <div class="grid_1 omega">
         <a href="#" id="home_slide_nav_next" class="sprite_slide_nav_next"></a>
     </div>
-
+			
     <div class="grid_12 alpha omega" id="home_stat_bar">
-        <div class="home_stat_wrap">
-            <div class="home_stat">
-              {% blocktrans %}Total {{ SITE_NAME }} Trendsetters{% endblocktrans %}
-            </div>
-            <div class="home_stat_num home_stat_1">{{ total_trendsetters|intcomma }}</div>
-        </div>
-        <div class="home_stat_wrap">
-            <div class="home_stat">
-              {% blocktrans %}Total {{ SITE_NAME }} Communities{% endblocktrans %}
-            </div>
-            <div class="home_stat_num home_stat_2">{{ total_communities|intcomma }}</div>
-        </div>
-        <div class="home_stat_wrap">
-            <div class="home_stat">
-              {% blocktrans %}Pounds of Coal Saved by {{ SITE_NAME }}{% endblocktrans %}
-            </div>
-            <div class="home_stat_num home_stat_3">{{ total_points|intcomma }}</div>
-        </div>
-        <div class="home_stat_wrap home_stat_wrap_last">
-            <div class="home_stat">
-              {% blocktrans %}Actions Taken by {{ SITE_NAME }}{% endblocktrans %}
-            </div>
-            <div class="home_stat_num home_stat_4">{{ total_actions|intcomma }}</div> 
-        </div>
+      <div class="home_stat_wrap">
+	<div class="home_stat">Learn more about the 350 Local platform</div>
+	<a href="/about/" class="button grey">About 350 Local</a>
+      </div>
+      <div class="home_stat_wrap">
+	<div class="home_stat">Discover resources for organizers</div>
+	<a target="_blank" href="http://www.350.org/resources" class="button grey">Resources</a>
+      </div>
+      <div class="home_stat_wrap">
+	<div class="home_stat">Climate Leadership Workshops</div>
+	<a target="_blank" href="http://workshops.350.org" class="button grey">Workshops</a>
+      </div>
+      <div class="home_stat_wrap home_stat_wrap_last home_stat_block">
+	<div class="stat" id="groups-stat">
+	  <span class="stat-number">{{ total_communities|intcomma }}</span>&nbsp;<span class="stat-label">Groups</span>
+	</div>
+	<div class="stat" id="countries-stat">
+	  <span class="stat-number">{{ total_countries|intcomma }}</span>&nbsp;<span class="stat-label">Countries</span>
+	</div>
+	<div class="stat" id="projects-stat">
+	  <span class="stat-number">{{ total_actions|intcomma }}</span>&nbsp;<span class="stat-label two-line">Completed Projects</span>
+	</div>
+      </div>
     </div>
 
     <div class="grid_12 alpha omega">

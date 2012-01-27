@@ -73,6 +73,9 @@ def _total_actions():
     return (Record.objects.filter(void=False, activity=1).count() or 0) + \
         (Commitment.objects.filter(answer="D", action__isnull=False, contributor__user__isnull=True).count() or 0)
 
+def _total_countries():
+    return Profile.objects.all().distinct("geom__country").count()
+
 def _total_commitment_cards():
     return (ContributorSurvey.objects.all().count())
 
@@ -94,6 +97,7 @@ def _progress_stats():
         progress_stats['total_actions'] = _total_actions()
         progress_stats['total_commitment_cards'] = _total_commitment_cards()
         progress_stats['total_communities'] = _total_communities()
+        progress_stats['total_countries'] = _total_countries()
         progress_stats['total_events'] = _total_events()
         cache.set('progress_stats', progress_stats, 60 * 5)
         return progress_stats
