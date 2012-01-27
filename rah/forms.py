@@ -121,7 +121,8 @@ class FeedbackForm(forms.ModelForm):
     def send(self, request):
         template = loader.get_template('rah/feedback_email.html')
         context  = { 'feedback': self.cleaned_data, 'request': request, }
-        msg = EmailMessage('Feedback Form', template.render(Context(context)), None, ["SITE_FEEDBACK_EMAIL"])
+        msg = EmailMessage('Feedback Form', template.render(Context(context)), None, 
+                           [SITE_FEEDBACK_EMAIL])
         msg.content_subtype = "html"
         msg.send()
 
