@@ -1,7 +1,7 @@
 import facebook
 import hashlib
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, NoReverseMatch
 from django.conf import settings
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -41,9 +41,16 @@ def login(request):
             user = auth.authenticate(username=profile.user.email, is_facebook_connect=True)
             logged_in.send(sender=None, request=request, user=user, is_new_user=is_new_user)
             auth.login(request, user)
-            return redirect(next or settings.LOGIN_REDIRECT_URL)
+            next = next or settings.LOGIN_REDIRECT_URL
+            try:
+                return redirect(next)
+            except NoReverseMatch:
+                return redirect(settings.LOGIN_REDIRECT_URL)
     messages.error(request, "Facebook login credentials could not be verified, please try again.")
-    return redirect(next or "login")
+    try:
+        return redirect(next or "login")
+    except NoReverseMatch:
+        return redirect("login")
 
 @login_required
 def authorize(request):
