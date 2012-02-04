@@ -469,6 +469,20 @@ class GroupAssociationRequest(models.Model):
             'object': self.content_object, 
             'group': self.group}
 
+def remove_association_requests(sender, instance, **kwargs):
+    content_object = instance
+    content_type = ContentType.objects.get_for_model(content_object)
+    object_id = content_object.id
+    requests = GroupAssociationRequest.objects.filter(
+        content_type=content_type, object_id=object_id)
+    requests.delete()
+from events.models import Event
+from challenges.models import Challenge
+from actions.models import Action
+models.signals.post_delete.connect(remove_association_requests, sender=Event)
+models.signals.post_delete.connect(remove_association_requests, sender=Challenge)
+models.signals.post_delete.connect(remove_association_requests, sender=Action)
+
 """
 Signals!
 """
@@ -524,3 +538,4 @@ def notification_on_group_association_request(sender, instance, created, **kwarg
             content_object=instance, start=instance.created)
 models.signals.post_save.connect(notification_on_group_association_request,
                                  sender=GroupAssociationRequest)
+
