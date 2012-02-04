@@ -48,10 +48,6 @@ def unregister(model):
 unregister(Category)
 unregister(BlogRoll)
 unregister(TaggedItem)
-try:
-    admin.site.disable_action('delete_selected')
-except KeyError:
-    pass
 
 # Sitemaps
 from basic.blog.sitemap import BlogSitemap
