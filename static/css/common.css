@@ -559,6 +559,7 @@ a.twitter_button, a.twitter_button_rtl,
   text-decoration: none;
   outline: none;
   margin-right: 5px;
+  height: 31px;
 }
 
 .twitter_button a:hover,
@@ -598,4 +599,8 @@ a.twitter_button, a.twitter_button_rtl,
 .twitter_button,
 .facebook_button {
   cursor: pointer;
+}
+
+.content_description {
+    clear: both; font-size: 1.2em; background-color: #E0ECF3; border-radius: 5px; padding: 5px;
 }
