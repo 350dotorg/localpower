@@ -109,7 +109,7 @@ def index(request):
     """
 
     section_class = "section_home"
-    top_users = Profile.objects.filter(is_profile_private=False, geom__isnull=False).select_related("user").order_by("-user__date_joined")[:10]
+    top_users = Profile.objects.all().select_related("user").order_by("-user__date_joined")[:10]
     top_communities = Group.objects.filter(geom__isnull=False).order_by("-member_count")[:3]
     #top_projects = Action.objects.filter(is_group_project=True).order_by("-points")[:4]
     top_events = Event.objects.filter(
