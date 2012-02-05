@@ -89,7 +89,7 @@ def edit(request, challenge_id=None):
 @login_required
 def pdf_download(request, challenge_id=None):
     challenge = get_object_or_404(Challenge, id=challenge_id)
-    if request.user != challenge.creator:
+    if request.user != challenge.creator and not request.user.is_staff:
         return forbidden(request, _('You do not have permissions to download %(challenge)s'
                                     ) % {'challenge': challenge})
     supporters = Support.objects.filter(challenge=challenge).order_by("-pledged_at")
