@@ -13,6 +13,7 @@ require(["libs/jquery.ui", "libs/markerclusterer"],
             center: new google.maps.LatLng(RAH.map_center.lat || 37.000000, RAH.map_center.lng || -96.000000)
         };
         var gmap = new google.maps.Map(document.getElementById("events_map"), myOptions);
+	var geocoder = new google.maps.Geocoder();
         var infowindow = new google.maps.InfoWindow({ content: "" });
         var markers = [];
 	var latlngs = {};
@@ -56,5 +57,16 @@ require(["libs/jquery.ui", "libs/markerclusterer"],
             styles: style,
             maxZoom: 10
         });
-
+	function codeAddress() {
+	    var address = document.getElementById("search_widget_input").value;
+	    geocoder.geocode( { 'address': address}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+			gmap.setCenter(results[0].geometry.location);
+                        gmap.fitBounds(results[0].geometry.viewport);
+		    }
+		});
+	}
+        $("#map_search .search_widget").submit(function() {
+		codeAddress(); return false;
+	    });
     });

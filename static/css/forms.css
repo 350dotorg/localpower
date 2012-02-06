@@ -132,6 +132,9 @@
     *padding: 5px 0 4px 0; /*ie7 hack*/
 }
 
+#map_search .search_widget .search_button {
+    float: none;
+}
 
 /*Variation on form_6c with a dark blue background. Used for petition sign up*/
 .form_6c_dark {

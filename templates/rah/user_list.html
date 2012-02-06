@@ -14,6 +14,21 @@ Showing {{num_users}} users
 {% endblocktrans %}
 {% endblock %}
 {% block content %}
+<div id="map_search" style="padding: 5px; background-color: #f2f2f2; 
+			    border-radius: 5px;">
+  <form class="search_widget">
+    <div>
+      <div style="float: right; padding-bottom: 5px; padding-left: 10px;">
+	<input type="text" placeholder="{% blocktrans %}Address or region{% endblocktrans %}" 
+	       id="search_widget_input" style="width: 250px"
+	       class="search_value ui-autocomplete-input" role="textbox" />
+	<button class="search_button"><span class="sprite_search_mag"></button>
+      </div>
+      <label style="float:right; padding-top: 5px"
+	     for="map_search_place">{% blocktrans %}Search near:{% endblocktrans %}</label>
+    </div>
+  </form>
+</div>
 <div id="events_map_container">
     <div id="events_map"></div>
     <div id="events_map_shadow_top"></div>

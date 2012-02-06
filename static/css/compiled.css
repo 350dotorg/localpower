@@ -794,6 +794,10 @@ a.twitter_button, a.twitter_button_rtl,
     padding: 3px 0 2px 0;
     *padding: 5px 0 4px 0; 
 }
+#map_search .search_widget .search_button {
+    float: none;
+}
+
 .form_6c_dark {
     background: #313a42;
     padding: 32px 42px;
