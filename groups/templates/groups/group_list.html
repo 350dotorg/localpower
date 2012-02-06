@@ -19,6 +19,21 @@ Showing {{num_groups}} communities
 {% endblock %}
 
 {% block content %}
+<div id="map_search" style="padding: 5px; background-color: #f2f2f2; 
+			    border-radius: 5px;">
+  <form class="search_widget">
+    <div>
+      <div style="float: right; padding-bottom: 5px; padding-left: 10px;">
+	<input type="text" placeholder="{% blocktrans %}Address or region{% endblocktrans %}" 
+	       id="search_widget_input" style="width: 250px"
+	       class="search_value ui-autocomplete-input" role="textbox" />
+	<button class="search_button"><span class="sprite_search_mag"></button>
+      </div>
+      <label style="float:right; padding-top: 5px"
+	     for="map_search_place">{% blocktrans %}Search near:{% endblocktrans %}</label>
+    </div>
+  </form>
+</div>
 <div id="events_map_container">
     <div id="events_map"></div>
     <div id="events_map_shadow_top"></div>
@@ -27,10 +42,10 @@ Showing {{num_groups}} communities
     <div id="events_map_shadow_left"></div>
 </div>
 
-<div id="events_hosting">
+<div style="width: 675px" id="events_hosting">
     <img src="{% dated_static 'images/theme/event_example.jpg' %}" width="216" height="162" 
 	 alt="{% blocktrans %}People attending an event{% endblocktrans %}"/>
-    <div>
+    <div style="width: 400px; padding-top: 1em;">
       <h2>{% blocktrans %}Start a Community{% endblocktrans %}</h2>
       <a class="button" href="{% url group_create %}"><b>+</b>
 	  {% blocktrans %}Start a Community{% endblocktrans %}</a>
@@ -40,11 +55,6 @@ Showing {{num_groups}} communities
 	{% blocktrans %}(Just add my group to the map &mdash; we have a home on the web somewhere else){% endblocktrans %}</a>
       </p>
     </div>
-</div>
-<div id="events_search">
-<h2>{% blocktrans %}Search Communities{% endblocktrans %}</h2>
-{% load search_widget %}
-{% search_widget group_search %}
 </div>
 <br class="clear"/>
 
