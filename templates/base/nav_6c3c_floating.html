@@ -1,0 +1,32 @@
+{% extends "base/nav.html" %}
+{% load i18n %}
+{% block breadcrumbs_slot %}
+<div id="breadcrumbs">
+    {% block breadcrumbs %}
+    {% blocktrans %}breadcrumbs{% endblocktrans %}
+    {% endblock %}
+</div>
+{% endblock %}
+{% block content_9c %}
+<div id="title_bar">
+    {% block title_bar_floaters %}{% endblock %}
+    {% block title_bar_sub %}{% endblock %}
+    <h1>{% block title_bar %}{% endblock %}</h1>
+    <div id="title_bar_bottom_shadow"></div>
+</div>
+<div class="tabs">
+<ul id="tab_nav" class="plain_list">
+    {% block tab_nav %}{% endblock %}
+</ul>
+<div style="float:right; padding-left: 10px" class="grid_3 omega">
+    <div id="sidebar">
+    {% block sidebar %}{% endblock %}
+    </div>
+</div>
+<div>
+  <div id="content_6c">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+</div>
+{% endblock %}
