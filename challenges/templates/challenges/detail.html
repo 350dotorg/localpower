@@ -16,6 +16,16 @@
     <a href="{% url challenge_contact_admins challenge.id %}" class="button">
       Contact Campaign Organizers
     </a>
+
+    {% if has_manager_privileges and supporters|length %}
+    <a class="button"
+       href="{% url challenges_disc_create challenge.id %}">
+      Mail supporters
+    </a>
+    <a class="button" href="{{ download_url }}">
+      Download PDF
+    </a>
+    {% endif %}
   </p>
 {% endblock %}
 
@@ -95,7 +105,8 @@
         </ul>
 
 	{% if has_manager_privileges %}
-	<a href="{% url challenges_disc_create challenge.id %}">
+	<a class="button"
+	   href="{% url challenges_disc_create challenge.id %}">
 	  Mail supporters
 	</a>
 	{% endif %}
