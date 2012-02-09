@@ -96,6 +96,7 @@ Content Content Content Content Content Content Content Content Content Content 
     min-height: 500px;
     *border-left: 1px solid #ccc; /*give a little visual contrast in IE7 that don't support box shadow*/
 }
+#content_9c_outer,
 #content_9c{
     padding: 9px; 
 }
