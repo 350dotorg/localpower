@@ -27,9 +27,20 @@
 
     <p style="clear: both">
       <a href="{% url event_contact_admins event.id %}" class="button">
-	Contact Event Organizers
+	{% blocktrans %}Contact Event Organizers{% endblocktrans %}
       </a>
+
+      {% if manager %}
+      <a href="{% url event_disc_create event.id %}" class="button">
+	{% blocktrans %}Contact Event Attendees{% endblocktrans %}
+      </a>
+      <a class="guests_add_link button" 
+	 href="{% url event-guests-invite event.id %}">
+	{% blocktrans %}Send Invites{% endblocktrans %}
+      </a>
+      {% endif %}
     </p>
+
 {% endblock %}
 {% block sidebar %}
 {% endblock %}
@@ -97,12 +108,6 @@
             <a href="{% url event-spreadsheet event.id %}">{% blocktrans %}Guest List{% endblocktrans %}</a>
             <span class="file_icon excel_icon" title="{% blocktrans %}Excel guest list download{% endblocktrans %}"></span>
           </li>
-
-	  {% if manager %}
-	  <li>
-	    <a href="{% url event_disc_create event.id %}">Mail all participants</a>
-	  </li>
-	  {% endif %}
 
         </ul>
         {% include "events/_invitations.html" %}
