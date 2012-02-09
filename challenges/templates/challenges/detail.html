@@ -1,4 +1,4 @@
-{% extends "base/nav_6c3c.html" %}
+{% extends "base/nav_6c3c_header.html" %}
 {% load i18n %}
 {% load comments %}
 {% load humanize %}
@@ -7,8 +7,18 @@
     <a href="{% url challenges_list %}">{% blocktrans %}Challenges{% endblocktrans %}</a> &raquo;
     {{ challenge.title }}
 {% endblock %}
+
 {% block title_bar_sub %}{% blocktrans %}Petition Challenge{% endblocktrans %}{% endblock %}
 {% block title_bar %}<div class="title_bar_full_width_title">{{ challenge.title }}</div>{% endblock %}
+
+{% block header_content %}
+  <p style="clear: both">
+    <a href="{% url challenge_contact_admins challenge.id %}" class="button">
+      Contact Campaign Organizers
+    </a>
+  </p>
+{% endblock %}
+
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
     <li><a href="#supporters">{% blocktrans %}Supporters{% endblocktrans %}</a></li>
@@ -19,15 +29,9 @@
 	</a></span>
     {% endif %}
 {% endblock %}
+
 {% block content %}
 <div id="overview">
-  <p style="clear: both">
-    <a href="{% url challenge_contact_admins challenge.id %}" class="button">
-      Contact Campaign Organizers
-    </a>
-  </p>
-
-
   <p class="action_deck">
     {{ challenge.description }}
   </p>
