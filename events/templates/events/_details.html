@@ -1,6 +1,6 @@
 {% load i18n %}
 <div>
-    <h3>{% blocktrans %}When{% endblocktrans %}</h3>
+    <h2>{% blocktrans %}When{% endblocktrans %}</h2>
     <p>
       {% blocktrans with event.when|date:"LONG_DATE_FORMAT" as event_date and event.start|time as event_time %}
       {{ event_date }} at {{ event_time }}
@@ -8,7 +8,7 @@
     </p>
 </div>
 <div>
-    <h3>{% blocktrans %}Where{% endblocktrans %}</h3>
+    <h2>{% blocktrans %}Where{% endblocktrans %}</h2>
     <p>
         <span id="event_address">{{ event.geom.raw_address }}</span><br />
     </p>

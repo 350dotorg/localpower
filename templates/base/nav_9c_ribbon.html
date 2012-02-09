@@ -15,7 +15,7 @@
     <div id="title_bar_bottom_shadow"></div>
 </div>
 
-<div id="content_9c">
+<div id="content_9c_outer">
   <div id="title_bar_9c">
     {% block title_bar_copy %}{% endblock %}
   </div>
@@ -24,8 +24,10 @@
     <ul id="tab_nav" class="plain_list">
       {% block tab_nav %}{% endblock %}
     </ul>
-    <div>
-      {% block content %}{% endblock %}
+    <div class="grid_9c alpha omega">
+      <div id="content_9c">
+	{% block content %}{% endblock %}
+      </div>
     </div>
   </div>
 </div>

@@ -32,7 +32,6 @@
     </p>
 {% endblock %}
 {% block sidebar %}
-    Foo
 {% endblock %}
 
 {% block tab_nav %}
@@ -51,7 +50,7 @@
     <div id="overview">
       {% include "events/_details.html" %}
 
-      <h3>{% blocktrans %}RSVP{% endblocktrans %}</h3>
+      <h2>{% blocktrans %}RSVP{% endblocktrans %}</h2>
       {% if guest.rsvp_status and not request.GET.reset %}
       <p>
 	{% blocktrans with guest.get_rsvp_status_display as rsvp_status %}
@@ -71,21 +70,21 @@
 	  <span class="sprite_feed"></span> {% blocktrans %}Feed{% endblocktrans %}</a>
 	{% blocktrans %}Discussions{% endblocktrans %}
       </h3>
-        {% with event as object %}
-            {% render_comment_list for object %}
-            {% render_comment_form for object %}
-        {% endwith %}
+      {% with event as object %}
+      {% render_comment_list for object %}
+      {% render_comment_form for object %}
+      {% endwith %}
 
     </div>
 
     <div id="rsvps">
-        <h3>{% blocktrans %}Guest List{% endblocktrans %}</h3>
+        <h2>{% blocktrans %}Guest List{% endblocktrans %}</h2>
         {% include "events/_guest_list.html" %}
     </div>
 
     {% if has_manager_privileges %}
     <div id="host-tools">
-        <h3>{% blocktrans %}Host Tools{% endblocktrans %}</h3>
+        <h2>{% blocktrans %}Host Tools{% endblocktrans %}</h2>
         <ul class="plain_list">
           <li><a href="{% url event-edit event.id %}">{% blocktrans %}Edit Event Details{% endblocktrans %}</a></li>
           <li><a class="guests_add_link" href="{% url event-guests-add event.id %}">{% blocktrans %}Add Guest{% endblocktrans %}</a></li>
