@@ -83,7 +83,7 @@
 
     <p style="clear: both;">
       <a href="{% url group_contact_admins group.slug %}" class="button">
-	Contact Group Leaders
+	{% blocktrans %}Contact Group Leaders{% endblocktrans %}
       </a>
 
       {% if group.is_joinable %}
@@ -96,6 +96,11 @@
       <a class="button invite_friend_link" href="{% url invite-invite %}">
 	{% blocktrans %}Send Invite{% endblocktrans %}</a>
       {% endif %}
+      {% endif %}
+      {% if is_poster %}
+      <a class="button" href="{% url group_disc_create group.slug %}">
+	{% blocktrans %}New discussion{% endblocktrans %}
+      </a> 
       {% endif %}
     </p>
 
