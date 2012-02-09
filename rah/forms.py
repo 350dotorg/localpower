@@ -129,7 +129,7 @@ class FeedbackForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     IMAGE_FORMATS = {"PNG": "png", "JPEG": "jpeg", "GIF": "gif"}
 
-    about = forms.CharField(max_length=255, required=False, label=_("About you"), widget=forms.Textarea)
+    about = forms.CharField(required=False, label=_("About you"), widget=forms.Textarea)
     geom = GoogleLocationField(
         label=_("Location"),
         help_text=_("(Optional) Be as specific as you're comfortable sharing"),

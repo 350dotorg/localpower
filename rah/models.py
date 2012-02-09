@@ -144,7 +144,7 @@ class Profile(models.Model):
 
 
     building_type = models.CharField(_('building type'), null=True, max_length=1, choices=BUILDING_CHOICES, blank=True)
-    about = models.CharField(_('about'), null=True, blank=True, max_length=255)
+    about = models.TextField(_('about'), null=True, blank=True)
     is_profile_private = models.BooleanField(_('is profile private'), default=0)
     twitter_access_token = models.CharField(_('twitter access token'), 
                                             null=True, max_length=255, blank=True)
