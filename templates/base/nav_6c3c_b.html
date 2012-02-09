@@ -2,27 +2,27 @@
 {% load i18n %}
 {% block content_9c %}
 <div id="content_9c">
-    <div id="title_bar_9c" class="title_bar_9c_custom_img">
-        {% block title_bar_image %}{% endblock %}
-        <div>
-            <h1>{% block title_bar_title %}{% endblock %}</h1>
-            {% block title_bar_copy %}{% endblock %}
-        </div>
+  <div id="title_bar_9c" class="title_bar_9c_custom_img">
+    {% block title_bar_image %}{% endblock %}
+    <div>
+      <h1>{% block title_bar_title %}{% endblock %}</h1>
+      {% block title_bar_copy %}{% endblock %}
     </div>
+  </div>
 </div>
 <div class="tabs">
-<ul id="tab_nav" class="plain_list">
+  <ul id="tab_nav" class="plain_list">
     {% block tab_nav %}{% endblock %}
-</ul>
-<div class="grid_6 alpha">
+  </ul>
+  <div class="grid_6 alpha">
     <div id="content_6c">
-    {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
     </div>
-</div>
+  </div>
 </div>
 <div class="grid_3 omega">
-    <div id="sidebar">
+  <div id="sidebar">
     {% block sidebar %}{% endblock %}
-    </div>
+  </div>
 </div>
 {% endblock %}

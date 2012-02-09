@@ -19,10 +19,11 @@
         {% endif %}
         <span>{% blocktrans with user.date_joined|date:"M Y" as date_joined %}Joined {{ date_joined }}{% endblocktrans %}</span>
     </p>
-    {% if user.get_profile.about %}
-    {{ user.get_profile.about|linebreaksbr }}
-    {% endif %}
-    
+    <p class="content_description">
+      {% if user.get_profile.about %}
+      {{ user.get_profile.about|linebreaksbr }}
+      {% endif %}
+    </p>
 {% endblock %}
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
