@@ -266,7 +266,7 @@ def print_sheet(request, event_id):
             blank_rows += page_rows - (rows_after_first_page % page_rows)
 
     blank_rows = range(blank_rows)
-    return render_to_pdf("events/sign_in_sheet.html", "%s Sign In.pdf" % event, {
+    return render_to_pdf("events/sign_in_sheet.html", "%s_Sign_In.pdf" % event, {
         "event": event,
         "attendees": attendees,
         "blank_rows": blank_rows
@@ -278,7 +278,7 @@ def spreadsheet(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     response = HttpResponse(mimetype="text/csv")
     response["Content-Disposition"] = \
-        "attachment; filename=%s Guest List.csv" % event
+        "attachment; filename=%s_Guest_List.csv" % event
 
     writer = csv.writer(response)
     writer.writerow(["Name", "Email", "Phone", "Location", "Status"])
