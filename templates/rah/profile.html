@@ -24,6 +24,13 @@
       {{ user.get_profile.about|linebreaksbr }}
       {% endif %}
     </p>
+    <p style="clear: both">
+      <a href="{% url user_contact user.id %}" class="button">
+	{% blocktrans with user.get_full_name as user_full_name %}
+	Contact {{ user_full_name }}
+	{% endblocktrans %}
+      </a>
+    </p>
 {% endblock %}
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>

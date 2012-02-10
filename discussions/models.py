@@ -84,6 +84,14 @@ class Discussion(models.Model):
                 return group.managers() or [settings.DEFAULT_FROM_EMAIL]
             
             # @@TODO: implement
+
+        if self.content_type == ContentType.objects.get(
+            app_label="auth", model="user"):
+            user = self.content_object
+            if self.contact_admin:
+                return [user]
+
+            # @@TODO: implement
         
         return []
         

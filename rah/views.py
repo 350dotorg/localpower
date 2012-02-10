@@ -237,6 +237,45 @@ def login(request, template_name='registration/login.html',
         'nav_selected': nav_selected,
     }, context_instance=RequestContext(request))
 
+@login_required
+@csrf_protect
+def user_contact(request, user_id):
+    nav_selected = "users"
+    user = request.user if request.user.id is user_id else get_object_or_404(User, id=user_id)
+
+    if request.user <> user and user.get_profile().is_profile_private:
+        return forbidden(request,
+                         _("Sorry, but you do not have permissions to contact this user."))
+
+    from discussions.models import Discussion as GenericDiscussion
+    from groups.forms import DiscussionCreateForm
+
+    if request.method == "POST":
+        disc_form = DiscussionCreateForm(request.POST)
+        if disc_form.is_valid():
+            disc = GenericDiscussion.objects.create(
+                subject="Message from %s: %s" % (
+                    request.user.get_full_name(),
+                    disc_form.cleaned_data['subject']),
+                body=disc_form.cleaned_data['body'],
+                parent_id=None,
+                user=request.user, 
+                content_object=user,
+                is_public=False,
+                disallow_replies=True,
+                reply_count=0,
+                contact_admin=True,
+            )
+            messages.success(
+                request, "Your message has been sent to %s" % user.get_full_name())
+            return redirect(user)
+    else:
+        disc_form = DiscussionCreateForm()
+    return render_to_response("rah/user_contact.html",
+                              locals(), 
+                              context_instance=RequestContext(request)) 
+
+
 def profile(request, user_id):
     nav_selected = "users"
     user = request.user if request.user.id is user_id else get_object_or_404(User, id=user_id)

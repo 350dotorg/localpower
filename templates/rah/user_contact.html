@@ -1,0 +1,29 @@
+{% extends "base/nav_form.html" %}
+{% load i18n %}
+{% block title %}
+{% blocktrans with user.get_full_name as user_full_name %}Contact {{ user_full_name }}{% endblocktrans %}
+{% endblock %}
+{% block breadcrumbs %}
+<a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+<a href="{% url user_list %}">{% blocktrans %}Members{% endblocktrans %}</a> &rsaquo;
+<a href="{% url profile user.id %}">{{ user.get_full_name }}</a>
+&rsaquo;
+{% blocktrans with user.get_full_name as user_full_name %}Contact {{ user_full_name }}{% endblocktrans %}
+{% endblock %}
+{% block content %}
+<div class="grid_6 alpha">
+    <div class="box_two_top"></div>
+    <div class="box_two_middle">
+      <h1>
+	{% blocktrans with user.get_full_name as user_full_name %}
+	Contact {{ user_full_name }}
+	{% endblocktrans %}
+      </h1>
+      {% url user_contact user.id as disc_form_submit_to %}
+      {% include "groups/_group_disc_create_form.html" %}
+    </div>
+    <div class="box_two_bottom"></div>
+</div>
+{% endblock %}
+
+{% block js %}{% endblock %}
