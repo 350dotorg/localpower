@@ -15,7 +15,6 @@ def get_full_name_anonymized(self):
     full_name = u'%s %s' % (self.first_name, last_initial)
     return full_name.strip()
 User.get_full_name = get_full_name_anonymized
-User.__unicode__ = get_full_name_anonymized
 
 # Register apps with the admin interface
 from actions import admin as actions_admin
