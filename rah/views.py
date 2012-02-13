@@ -254,9 +254,7 @@ def user_contact(request, user_id):
         disc_form = DiscussionCreateForm(request.POST)
         if disc_form.is_valid():
             disc = GenericDiscussion.objects.create(
-                subject="Message from %s: %s" % (
-                    request.user.get_full_name(),
-                    disc_form.cleaned_data['subject']),
+                subject=disc_form.cleaned_data['subject']),
                 body=disc_form.cleaned_data['body'],
                 parent_id=None,
                 user=request.user, 
