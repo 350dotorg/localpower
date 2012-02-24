@@ -4,6 +4,8 @@ from utils import local_join
 
 sys.path.insert(0, local_join('lib'))
 
+PROJECT_DIR = os.path.dirname(__file__)
+
 ## Configure this in local_settings
 ## but note the GeoDjango ENGINE
 #DATABASES = {
@@ -245,3 +247,12 @@ try:
     from local_settings import *
 except ImportError:
     print 'local_settings could not be imported'
+else:
+    try:
+        INSTALLED_APPS += LOCAL_INSTALLED_APPS
+    except NameError:
+        pass
+    try:
+        MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE_CLASSES
+    except NameError:
+        pass
