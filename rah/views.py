@@ -145,7 +145,7 @@ def password_reset_complete(request):
     messages.success(request, _("Password reset successfully!"), extra_tags="sticky")
     return redirect("index")
 
-@csrf_protect
+@csrf_exempt
 def register(request, template_name="registration/register.html"):
     nav_selected = "users"
     redirect_to = request.REQUEST.get(REDIRECT_FIELD_NAME, '')
@@ -182,8 +182,8 @@ def register(request, template_name="registration/register.html"):
         REDIRECT_FIELD_NAME: redirect_to,
     }, context_instance=RequestContext(request))
 
-@csrf_exempt
 # TODO: Use an ajax request to login from the tongue because CSRF is not being used for this view
+@csrf_exempt
 def login(request, template_name='registration/login.html',
           redirect_field_name=REDIRECT_FIELD_NAME,
           authentication_form=AuthenticationForm):
