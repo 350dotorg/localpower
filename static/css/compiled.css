@@ -230,6 +230,10 @@ ul{ margin-left: 18px; margin-bottom: 18px;}
     width: 570px;
     margin-left: 9px;
 }
+#title_bar_9c div.content_description {
+    width: 98%;
+    margin-left: 0;
+}
 #title_bar_9c.title_bar_9c_custom_img img {
     padding: 9px;
     border: 1px solid #d6d6d6;

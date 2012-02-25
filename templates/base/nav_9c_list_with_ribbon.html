@@ -1,0 +1,30 @@
+{% extends "base/nav.html" %}
+
+{% block breadcrumbs_slot %}
+<div id="breadcrumbs">
+    {% block breadcrumbs %}
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block content_9c %}
+<div id="title_bar">
+    {% block title_bar_floaters %}{% endblock %}
+    {% block title_bar_sub %}{% endblock %}
+    <h1>{% block title_bar %}{% endblock %}</h1>
+    <div id="title_bar_bottom_shadow"></div>
+</div>
+
+<div id="content_9c">
+    <div id="title_bar_9c">
+      {% block title_bar_copy %}{% endblock %}
+    </div>
+    <div class="ribbon_large">
+        {% block ribbon_bar %}{% endblock %}
+        <div class="ribbon_large_wrap"></div>
+    </div>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
