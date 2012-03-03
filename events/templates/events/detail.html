@@ -22,7 +22,7 @@
 
 {% block title_bar_copy %}
     {% if event.details %}
-    <p class="content_description">{{ event.details }}</p>
+    <p class="content_description">{{ event.details|linebreaksbr }}</p>
     {% endif %}
 
     <p style="clear: both">
