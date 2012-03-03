@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-03 09:57-0500\n"
+"POT-Creation-Date: 2012-03-03 10:33-0500\n"
 "PO-Revision-Date: 2012-02-28 17:57+0000\n"
 "Last-Translator: alex350 <alex@350.org>\n"
 "Language-Team: English (http://www.transifex.net/projects/p/localpower/"
@@ -143,8 +143,8 @@ msgid ""
 "\t  "
 msgstr ""
 "\n"
-"          Don't see anything happening near you?  Sign up to host an event yourself!"
-"\t  "
+"          Don't see anything happening near you?  Sign up to host an event "
+"yourself!\t  "
 
 #: actionkit/templates/event_campaigns/detail.html:86
 #: actionkit/templates/event_campaigns/list.html:26
@@ -184,17 +184,17 @@ msgstr ""
 msgid "Manage RSVP"
 msgstr ""
 
-#: actionkit/templates/event_campaigns/detail.html:122
+#: actionkit/templates/event_campaigns/detail.html:123
 msgid ""
 "\n"
-"\t    Event Campaign Local Event: Link To Actionkit Signup Form\n"
-"\t    "
+"\t      Event Campaign Local Event: Signup Button: Link To Actionkit Signup "
+"Form\n"
+"\t      "
 msgstr ""
 "\n"
-"\t    Sign up!"
-"\t    "
+"\t    Sign up!\t    "
 
-#: actionkit/templates/event_campaigns/detail.html:153
+#: actionkit/templates/event_campaigns/detail.html:155
 msgid "Distributed Event: Local Event Map Bubble Link"
 msgstr ""
 
