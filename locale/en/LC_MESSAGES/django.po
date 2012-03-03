@@ -190,6 +190,9 @@ msgid ""
 "\t    Event Campaign Local Event: Link To Actionkit Signup Form\n"
 "\t    "
 msgstr ""
+"\n"
+"\t    Sign up!"
+"\t    "
 
 #: actionkit/templates/event_campaigns/detail.html:153
 msgid "Distributed Event: Local Event Map Bubble Link"
