@@ -22,7 +22,7 @@
        href="{% url challenges_disc_create challenge.id %}">
       Mail supporters
     </a>
-    <a class="button" href="{{ download_url }}">
+    <a class="button" href="{% url challenges_pdf challenge.id %}">
       Download PDF
     </a>
     {% endif %}

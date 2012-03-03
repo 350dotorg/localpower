@@ -173,9 +173,12 @@ class Profile(models.Model):
 
     def profile_picture(self, default_icon='identicon'):
         if self.image:
-            return settings.MEDIA_URL + getattr(
-                self.image, 'thumbnail_colorspace_80x80smartcrop')
-
+            try:
+                return settings.MEDIA_URL + getattr(
+                    self.image, 'thumbnail_colorspace_80x80smartcrop')
+            except:
+                self.image = None
+                self.save()
 
         key = "profile_picture_%s" % self.user.id
         cache_hit = cache.get(key)
@@ -196,8 +199,12 @@ class Profile(models.Model):
 
     def profile_picture_large(self, default_icon='identicon'):
         if self.image:
-            return settings.MEDIA_URL + getattr(
-                self.image, 'thumbnail_colorspace_160x160smartcrop')
+            try:
+                return settings.MEDIA_URL + getattr(
+                    self.image, 'thumbnail_colorspace_160x160smartcrop')
+            except:
+                self.image = None
+                self.save()
 
         facebook_picture = facebook_profile(self.user, "large")
         if facebook_picture:

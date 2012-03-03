@@ -284,11 +284,11 @@ def spreadsheet(request, event_id):
     writer.writerow(["Name", "Email", "Phone", "Location", "Status"])
 
     for g in Guest.objects.filter(event=event):        
-        writer.writerow([g.contributor.name,
-                         g.contributor.email,
-                         g.contributor.phone, 
-                         g.contributor.geom.formatted_address if g.contributor.geom else '',
-                         g.status()])
+        writer.writerow([g.contributor.name.encode("utf8"),
+                         g.contributor.email.encode("utf8"),
+                         g.contributor.phone.encode("utf8"), 
+                         g.contributor.geom.formatted_address.encode("utf8") if g.contributor.geom else u'',
+                         g.status().encode("utf8")])
 
     return response
 
