@@ -444,7 +444,7 @@ def receive_mail(request):
 @login_required
 @csrf_protect
 def group_contact_admins(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     from discussions.models import Discussion as GenericDiscussion
     if request.method == "POST":
         disc_form = DiscussionCreateForm(request.POST)
@@ -471,7 +471,7 @@ def group_contact_admins(request, group_slug):
 @login_required
 @csrf_protect
 def group_disc_create(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     if not group.is_poster(request.user):
         return forbidden(request)
     if request.method == "POST":
@@ -501,7 +501,8 @@ def group_disc_detail(request, group_slug, disc_id):
     # see https://github.com/350org/localpower/issues/139
 
     disc = get_object_or_404(Discussion, id=disc_id, parent=None, is_public=True)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+    
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
     approve_form = DiscussionApproveForm()
@@ -515,7 +516,8 @@ def group_disc_detail(request, group_slug, disc_id):
 @csrf_protect
 def group_disc_approve(request, group_slug, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+
     form = DiscussionApproveForm(request.POST, instance=disc)
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
         form.save()
@@ -528,7 +530,8 @@ def group_disc_approve(request, group_slug, disc_id):
 @csrf_protect
 def group_disc_remove(request, group_slug, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+
     form = DiscussionRemoveForm(request.POST, instance=disc)
 
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
@@ -542,7 +545,7 @@ def group_disc_remove(request, group_slug, disc_id):
     return redirect("group_disc_detail", group_slug=group_slug, disc_id=disc.id)
 
 def group_disc_list(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
 
