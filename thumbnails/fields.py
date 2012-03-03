@@ -37,7 +37,10 @@ class ImageAndThumbsFile(ImageFieldFile):
                 if not Thumbnail.objects.filter(raw=self.name, thumbnail=thumbnail_name).exists():
                     if not self.storage.exists(thumbnail_name):
                         options = [opt for opt in name.split("_")[1:] if opt]
-                        thumbnail = self._process_options(options, thumbnail_name)
+                        try:
+                            thumbnail = self._process_options(options, thumbnail_name)
+                        except:
+                            return ''
                         thumbnail_name = self.storage.save(thumbnail_name, thumbnail)
                     Thumbnail.objects.create(raw=self.name, thumbnail=thumbnail_name)
                 return thumbnail_name
