@@ -77,10 +77,10 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'rah.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
