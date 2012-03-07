@@ -41,6 +41,7 @@ from events.models import Event, Guest
 from messaging.models import Stream
 from messaging.forms import StreamNotificationsForm
 from badges.models import user_badges
+from rah_locale.models import TranslatedAction
 
 from decorators import save_queued_POST
 from signals import logged_in
@@ -290,6 +291,22 @@ def profile(request, user_id):
     events = Event.objects.filter(guest__contributor__user=user)
     records = Record.objects.user_records(user, 10)
     badges = user_badges(user)
+
+    _translated_actions = TranslatedAction.objects.filter(language=request.LANGUAGE_CODE)
+    _translation_map = {}
+    for action in _translated_actions:
+        _translation_map[action.action_id] = action
+    for row in commitment_list:
+        if row.action.id in _translation_map:
+            row.action.translated_action = _translation_map[row.action.id]
+        else:
+            row.action.translated_action = row.action
+    for row in completed:
+        if row.action.id in _translation_map:
+            row.action.translated_action = _translation_map[row.action.id]
+        else:
+            row.action.translated_action = row.action
+    
     #pledge_card_count = ContributorSurvey.objects.filter(entered_by=user).count()
 
     #locals().update(_progress_stats())
@@ -310,7 +327,7 @@ def profile(request, user_id):
         'completed': completed,
         #'profile': user.get_profile(),
         'is_others_profile': request.user <> user,
-        'commitment_list': UserActionProgress.objects.commitments_for_user(user),
+        'commitment_list': commitment_list,
         'events': events,
         'badges': badges,
         'communities': Group.objects.filter(users=user),

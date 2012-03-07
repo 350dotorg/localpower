@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'media_widget',
     'threadedcomments',
     'rah_comments',
+    'rah_locale',
     'brabeion',
     'badges',
     'challenges',

@@ -78,13 +78,13 @@ Projects
     {% endif %}
     </div>
     <h2>
-        <a href="{% url action_detail action.slug %}">{{ action.name }}</a>
+        <a href="{% url action_detail action.slug %}">{{ action.translated_action.name }}</a>
     </h2>
     <a href="{% url action_detail action.slug %}">
         <img src="{{ action.image_paths.small }}" width="60" height="60" 
-	     alt="{% blocktrans with action.name as action_name %}Image for {{action_name}}{% endblocktrans %}"/>
+	     alt="{% blocktrans with action.translated_action.name as action_name %}Image for {{action_name}}{% endblocktrans %}"/>
     </a>
-    <p>{{ action.teaser|safe }}</p>
+    <p>{{ action.translated_action.teaser|safe }}</p>
     </li>
     {% endfor %}
 </ul>

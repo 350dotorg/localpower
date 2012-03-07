@@ -30,6 +30,7 @@ from messaging.models import Stream
 from events.models import Event
 from group_links.forms import ExternalLinkForm
 from group_links.models import ExternalLink
+from rah_locale.models import TranslatedAction
 
 from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
 from forms import (GroupForm, 
@@ -573,6 +574,24 @@ def group_disc_list(request, group_slug):
 def _group_detail(request, group):
     nav_selected = "communities"
     popular_actions = list(group.completed_actions_by_user(5))
+    group_actions = group.action_set.all()
+
+    _translated_actions = TranslatedAction.objects.filter(language=request.LANGUAGE_CODE)
+    _translation_map = {}
+    for action in _translated_actions:
+        _translation_map[action.action_id] = action
+    for action in popular_actions:
+        if action.id in _translation_map:
+            action.translated_action = _translation_map[action.id]
+        else:
+            action.translated_action = action
+    for action in group_actions:
+        if action.id in _translation_map:
+            action.translated_action = _translation_map[action.id]
+        else:
+            action.translated_action = action
+
+
     top_members = group.members_ordered_by_points()
     group_records = group.group_records(10)
     is_member = group.is_member(request.user)

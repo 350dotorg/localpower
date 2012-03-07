@@ -110,19 +110,11 @@
             <h2>{% blocktrans %}Commitments{% endblocktrans %}</h2>
             <p>
             {% for row in commitment_list %}
-                <a href="{% url action_detail row.action.slug %}">{{row.action.name}}</a> 
+                <a href="{% url action_detail row.action.slug %}">
+		  {{row.action.translated_action.name}}</a> 
 		{% blocktrans with row.date_committed|date as action_date_committed %}
 		by {{action_date_committed}}
 		{% endblocktrans %}
-		<br/>
-            {% endfor %}
-            </p>
-        {% endif %}
-        {% if committed %}
-            <h2>{% blocktrans %}Committed Actions{% endblocktrans %}</h2>
-            <p>
-            {% for action in recommended %}
-                <a href="{% url action_detail action.slug %}">{{action.name}}</a>
 		<br/>
             {% endfor %}
             </p>
@@ -133,7 +125,7 @@
             <p>
             {% for row in completed %}
 	    {% with row.action as action %}
-            <a href="{% url action_detail action.slug %}">{{action.name}}</a>
+            <a href="{% url action_detail action.slug %}">{{action.translated_action.name}}</a>
 	    <br/>
 	    {% endwith %}
             {% endfor %}

@@ -2,26 +2,26 @@
 {% load comments %}
 {% load dated_static %}
 {% load i18n %}
-{% block meta_desc %}{{action.name}}: {{action.teaser}}{% endblock %}
+{% block meta_desc %}{{translated_action.name}}: {{translated_action.teaser}}{% endblock %}
 
 {% block extrahead %}
     <meta property="og:image" content="{{ action.get_detail_illustration }}" />
     <meta property="og:type" content="activity" />
-    <meta property="og:title" content="{{action.name}}" />
-    <meta property="og:description" content="{{action.teaser}}" />
+    <meta property="og:title" content="{{translated_action.name}}" />
+    <meta property="og:description" content="{{translated_action.teaser}}" />
     {% get_content_type_id for action as content_type_id %}
     <link rel="alternate" type="application/atom+xml" href="{% url comments_feed content_type_id,action.id %}" 
-          title="{{ action }} comments feed" />
+          title="{{ translated_action.name }} comments feed" />
 {% endblock %}
 
 {% block breadcrumbs %}
     <a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &raquo;
     <a href="{% url action_show %}">{% blocktrans %}Actions{% endblocktrans %}</a> &raquo;
-    {{action.name}}
+    {{translated_action.name}}
 {% endblock %}
 
 {% block title_bar %}
-    {{action.name}}
+    {{translated_action.name}}
 {% endblock %}
 {% block title_bar_sub %}
     {% blocktrans %}{{ SITE_NAME }} Action{% endblocktrans %}
@@ -43,7 +43,7 @@
     {% endcomment %}
 {% endblock %}
 
-{% block title %}{{action.name}}{% endblock %}
+{% block title %}{{translated_action.name}}{% endblock %}
 
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
@@ -55,7 +55,7 @@
 
 {% block content %}
     <div id="overview">
-      {% render_template_snippet action.content %}
+      {% render_template_snippet translated_action.content %}
       <div id="commit_widget">
         <p>{% blocktrans %}When do you think you'll complete this action?{% endblocktrans %}</p>
         <div class="commit_calendar"></div>
