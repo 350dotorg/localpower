@@ -103,6 +103,8 @@ urlpatterns += patterns('django.views.generic.simple',
 
 urlpatterns += patterns(
     '',
+    url(r'^set_language/$', 'rah_locale.views.set_language', name="set_language"),
+
     (r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^password_change/$', 'django.contrib.auth.views.password_change', { 'post_change_redirect': '/password_change_done/', 'password_change_form': PasswordChangeForm }, name='password_change'),
