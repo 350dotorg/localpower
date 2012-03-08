@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from actions.models import Action
+from messaging.models import Message
 
 class TranslatedFlatPage(models.Model):
     flatpage = models.ForeignKey(FlatPage)
@@ -30,3 +31,10 @@ class TranslatedAction(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class TranslatedMessage(models.Model):
+    message = models.ForeignKey(Message, verbose_name=_('message'))
+    language = models.CharField(max_length=10, choices=settings.LANGUAGES)
+
+    subject = models.CharField(max_length=100)
+    body = models.TextField()

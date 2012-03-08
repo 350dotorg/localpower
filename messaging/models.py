@@ -248,11 +248,36 @@ class Message(models.Model):
         extra_headers = self.extra_headers(content_object, user_object)
 
         context = template.Context(params)
+
+        # decide what language to try to use for localized emails
+        language = None
+        subject = self.subject
+        body = self.body
+
+        if user_object:
+            if hasattr(user_object, 'user') and user_object.user is not None:
+                _user = user_object.user
+            else:
+                _user = user_object
+            if _user and hasattr(_user, 'get_profile'):
+                _profile = _user.get_profile()
+                language = _profile.language
+        if language is not None:
+            from rah_locale.models import TranslatedMessage
+            try:
+                _localized = TranslatedMessage.objects.get(
+                    message=self, language=language)
+            except TranslatedMessage.DoesNotExist:
+                pass
+            else:
+                subject = _localized.subject
+                body = _localized.body
+
         # render the body and subject template with the given, template
-        subject = template.Template(self.subject).render(context)
+        subject = template.Template(subject).render(context)
         subject = html_unescape(subject)
 
-        body = template.Template(self.body).render(context)
+        body = template.Template(body).render(context)
         replacer = LinkReplacer(recipient_message=recipient_message)
         body = re.sub(URL_REGEX, replacer.replace_link, body)
         open_link = '<img src="http://%s%s"></img>' % (domain, reverse("message_open",
