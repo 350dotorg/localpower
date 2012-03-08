@@ -82,7 +82,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'rah_locale.flatpage_middleware.FlatpageFallbackMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'source_tracking.middleware.SourceTrackingMiddleware',
     'django.middleware.transaction.TransactionMiddleware',

@@ -1,10 +1,10 @@
 {% extends "base/nav_9c.html" %}
-{% block title %}{{ flatpage.title }}{% endblock %}
+{% block title %}{{ flatpage.translation.title }}{% endblock %}
 {% block breadcrumbs %}
     <a href="{% url index %}">Home</a> &raquo;
-    {{ flatpage.title }}
+    {{ flatpage.translation.title }}
 {% endblock %}
-{% block ribbon_bar %}{{ flatpage.title }}{% endblock %}
+{% block ribbon_bar %}{{ flatpage.translation.title }}{% endblock %}
 {% block content %}
-    {{ flatpage.content }}
+    {{ flatpage.translation.content }}
 {% endblock %}
