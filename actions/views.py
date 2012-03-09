@@ -20,6 +20,7 @@ from settings import GA_TRACK_PAGEVIEW
 from models import (Action, UserActionProgress, GroupActionProgress,
                     ActionForm, ActionFormData)
 from forms import ActionCommitForm, GroupActionCommitForm, ActionGroupLinkForm
+from rah_locale.models import TranslatedAction
 
 def redirect_stub(request, tag_slug=None, is_group_project=False):
     return redirect("action_show")
@@ -30,11 +31,22 @@ def action_show(request, tag_slug=None, is_group_project=False):
 
     if request.user.is_authenticated():
         if is_group_project:
-            actions = Action.objects.filter(is_group_project=is_group_project)            
+            actions = Action.objects.filter(is_group_project=is_group_project)
         else:
             actions = Action.objects.actions_by_status(request.user)
     else:
         actions = Action.objects.filter(is_group_project=is_group_project)
+
+    _translated_actions = TranslatedAction.objects.filter(action__in=actions,
+                                                          language=request.LANGUAGE_CODE)
+    _translation_map = {}
+    for action in _translated_actions:
+        _translation_map[action.action_id] = action
+    for action in actions:
+        if action.id in _translation_map:
+            action.translated_action = _translation_map[action.id]
+        else:
+            action.translated_action = action
 
     return render_to_response("actions/action_show.html", {
         'actions': actions,
@@ -50,6 +62,12 @@ def action_detail(request, action_slug):
     nav_selected = "group_actions" if action.is_group_project else "solo_actions"
     default_vars = _default_action_vars(action, request.user)
     default_vars.update(_build_action_form_vars(action, request.user))
+
+    try:
+        translated_action = TranslatedAction.objects.get(action=action, 
+                                                         language=request.LANGUAGE_CODE)
+    except TranslatedAction.DoesNotExist:
+        translated_action = action
 
     group_link_forms = []
     action_commit_form = None

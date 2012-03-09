@@ -5,6 +5,7 @@ from urlparse import urlparse
 from PIL.Image import open as pil_open
 
 from django import forms
+from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth.models import User
@@ -141,13 +142,13 @@ class ProfileEditForm(forms.ModelForm):
 
     phone = forms.CharField(max_length=12, required=False,
                             widget=forms.HiddenInput)
-    language = forms.CharField(max_length=10, required=False,
-                               widget=forms.HiddenInput)
+    language = forms.CharField(max_length=10, required=True,
+                               widget=forms.Select(choices=settings.LANGUAGES))
 
 
     class Meta:
         model = Profile
-        fields = ("about", "is_profile_private", "image", "phone", "language")
+        fields = ("language", "about", "is_profile_private", "image", "phone")
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)

@@ -418,9 +418,9 @@
 
       {% if group.action_set.count %}
       <h3>{% blocktrans %}Actions{% endblocktrans %}</h3>
-      {% for action in group.action_set.all %}
+      {% for action in group_actions %}
       <p>
-        <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
+        <a href="{% url action_detail action.slug %}">{{ action.translated_action.name }}</a><br/>
       </p>
       {% endfor %}      
       {% endif %}
@@ -429,7 +429,7 @@
       <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
       {% for action in popular_actions %}
       <p>
-        <a href="{% url action_detail action.slug %}">{{ action }}</a><br/>
+        <a href="{% url action_detail action.slug %}">{{ action.translated_action.name }}</a><br/>
         <span class="smaller">
 	  {% blocktrans count action.completes_in_group as num_completions %}
 	  {{ num_completions }} member

@@ -30,6 +30,7 @@ from messaging.models import Stream
 from events.models import Event
 from group_links.forms import ExternalLinkForm
 from group_links.models import ExternalLink
+from rah_locale.models import TranslatedAction
 
 from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
 from forms import (GroupForm, 
@@ -444,7 +445,7 @@ def receive_mail(request):
 @login_required
 @csrf_protect
 def group_contact_admins(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     from discussions.models import Discussion as GenericDiscussion
     if request.method == "POST":
         disc_form = DiscussionCreateForm(request.POST)
@@ -471,7 +472,7 @@ def group_contact_admins(request, group_slug):
 @login_required
 @csrf_protect
 def group_disc_create(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     if not group.is_poster(request.user):
         return forbidden(request)
     if request.method == "POST":
@@ -501,7 +502,8 @@ def group_disc_detail(request, group_slug, disc_id):
     # see https://github.com/350org/localpower/issues/139
 
     disc = get_object_or_404(Discussion, id=disc_id, parent=None, is_public=True)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+    
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
     approve_form = DiscussionApproveForm()
@@ -515,7 +517,8 @@ def group_disc_detail(request, group_slug, disc_id):
 @csrf_protect
 def group_disc_approve(request, group_slug, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+
     form = DiscussionApproveForm(request.POST, instance=disc)
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
         form.save()
@@ -528,7 +531,8 @@ def group_disc_approve(request, group_slug, disc_id):
 @csrf_protect
 def group_disc_remove(request, group_slug, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id)
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
+
     form = DiscussionRemoveForm(request.POST, instance=disc)
 
     if request.method == "POST" and form.is_valid() and group.is_user_manager(request.user):
@@ -542,7 +546,7 @@ def group_disc_remove(request, group_slug, disc_id):
     return redirect("group_disc_detail", group_slug=group_slug, disc_id=disc.id)
 
 def group_disc_list(request, group_slug):
-    group = Group.objects.get(slug=group_slug)
+    group = get_object_or_404(Group, slug=group_slug)
     is_poster = group.is_poster(request.user)
     is_manager = group.is_user_manager(request.user)
 
@@ -570,6 +574,24 @@ def group_disc_list(request, group_slug):
 def _group_detail(request, group):
     nav_selected = "communities"
     popular_actions = list(group.completed_actions_by_user(5))
+    group_actions = group.action_set.all()
+
+    _translated_actions = TranslatedAction.objects.filter(language=request.LANGUAGE_CODE)
+    _translation_map = {}
+    for action in _translated_actions:
+        _translation_map[action.action_id] = action
+    for action in popular_actions:
+        if action.id in _translation_map:
+            action.translated_action = _translation_map[action.id]
+        else:
+            action.translated_action = action
+    for action in group_actions:
+        if action.id in _translation_map:
+            action.translated_action = _translation_map[action.id]
+        else:
+            action.translated_action = action
+
+
     top_members = group.members_ordered_by_points()
     group_records = group.group_records(10)
     is_member = group.is_member(request.user)
