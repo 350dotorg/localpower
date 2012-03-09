@@ -79,6 +79,9 @@
                         {{ SITE_NAME }}
                     </a>
                     <div id="header_links">
+		      {% if EXTRA_HEADER_LINKS %}
+		      {{ EXTRA_HEADER_LINKS|safe }}
+		      {% endif %}
 			<a href="http://www.350.org" class="not_last">{% blocktrans %}350.org{% endblocktrans %}</a>
                         <a href="http://www.350.org/about/blog/" class="not_last">{% blocktrans %}Blog{% endblocktrans %}</a>
                         <a href="/about/" class="not_last" id="header_about">{% blocktrans %}About{% endblocktrans %}</a>

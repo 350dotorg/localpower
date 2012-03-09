@@ -70,6 +70,9 @@
                 <a href="{% url user_list %}"><span class="sprite_nav_communities"></span> {% blocktrans %}Users{% endblocktrans %}</a>
                 <div class="nav_pointer_wrap"></div>
             </li>
+	    {% if EXTRA_SIDEBAR_LINKS %}
+	    {{ EXTRA_SIDEBAR_LINKS|safe }}
+	    {% endif %}
         </ul>
         {% if request.user.is_authenticated %}        
             <ul id="nav_secondary" class="plain_list">
