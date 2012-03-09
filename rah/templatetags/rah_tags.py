@@ -160,3 +160,7 @@ def linkify(parser, token):
     """
     expr, varname = LinkifyNode.parse(parser, token)
     return LinkifyNode(expr, varname)
+
+@register.filter
+def startswith(a, b):
+    return a.startswith(b)
