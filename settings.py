@@ -256,3 +256,7 @@ else:
         MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE_CLASSES
     except NameError:
         pass
+    try:
+        TEMPLATE_CONTEXT_PROCESSORS += LOCAL_TEMPLATE_CONTEXT_PROCESSORS
+    except NameError:
+        pass
