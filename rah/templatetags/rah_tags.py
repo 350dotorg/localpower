@@ -164,3 +164,7 @@ def linkify(parser, token):
 @register.filter
 def startswith(a, b):
     return a.startswith(b)
+
+@register.filter
+def getitem(a, b):
+    return a.get(b)
