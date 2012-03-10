@@ -11,7 +11,7 @@
             <span class="smaller event_host" title="{% blocktrans with guest.contributor.name as guest_name %}{{guest_name}} is a host{% endblocktrans %}">
 	      {% blocktrans %}Host{% endblocktrans %}</span>
 	    {% endif %}
-	    <span class="smaller">&mdash; {{ guest.status }}
+	    <span class="smaller">&mdash; {{ guest.status }}</span>
 
         {% if guest.comments %}
             <span class="ui-icon ui-icon-comment tooltip guest_icon" title="{{ guest.comments }}"></span>

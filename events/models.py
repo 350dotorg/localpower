@@ -353,7 +353,8 @@ class Guest(models.Model):
         return self.contributor.email
 
     def __unicode__(self):
-        return unicode(self.contributor)
+        if self.contributor:
+            return unicode(self.contributor)
 
 # 
 # Signals!!!
