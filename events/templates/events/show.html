@@ -85,7 +85,7 @@ host your own.
     {% endwith %}
     {% for event in map_events %}
         var info = "<b>{{ event.title|escape|escapejs }}</b><br/> {{ event.geom.raw_address|escape|escapejs }}<br/>";
-            info += "<a href='{% url event-detail event.id %}'>View event</a>";
+            info += "<a href='{{ event.get_absolute_url }}'>View event</a>";
         RAH.event_locations.push({
             lat: "{{ event.geom.latlng.y }}",
             lon: "{{ event.geom.latlng.x }}",
