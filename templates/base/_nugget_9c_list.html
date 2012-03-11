@@ -1,20 +1,22 @@
 {% load i18n %}
 <li>
-    <a href="{% url event-detail event.id %}">
-        <img src="http://maps.google.com/maps/api/staticmap?center={{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;zoom=10&amp;size=80x80&amp;markers=size:small%7C{{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;sensor=false" 
-            alt="{% blocktrans %}Map of the event{% endblocktrans %}" width="80" height="80"/>
-    </a>
-    <div class="nugget_9c_list_name">
-        <a href="{% url event-detail event.id %}">{{ event }}</a>
-        <div>
-            <span>{% blocktrans %}When:{% endblocktrans %}</span> {{ event.when|date }}<br/>
-            <span>{% blocktrans %}Where:{% endblocktrans %}</span> {{ event.geom.raw_address }}
-        </div>
+  <a href="{{ event.get_absolute_url }}">
+    <img src="http://maps.google.com/maps/api/staticmap?center={{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;zoom=10&amp;size=80x80&amp;markers=size:small%7C{{event.geom.latlng.y}},{{event.geom.latlng.x}}&amp;sensor=false" 
+         alt="{% blocktrans %}Map of the event{% endblocktrans %}" width="80" height="80"/>
+  </a>
+  <div class="nugget_9c_list_name">
+    <a href="{{ event.get_absolute_url }}">{{ event }}</a>
+    <div>
+      <span>{% blocktrans %}When:{% endblocktrans %}</span> {{ event.when|date }}<br/>
+      <span>{% blocktrans %}Where:{% endblocktrans %}</span> {{ event.geom.raw_address }}
     </div>
-    <div class="nugget_9c_list_desc">
-        {{ event.details|truncatewords_html:16 }}
-        <div>
-            <a href="{% url event-detail event.id %}">{% blocktrans %}View Event Page{% endblocktrans %}</a>
-        </div>
+  </div>
+  <div class="nugget_9c_list_desc">
+    {{ event.details|truncatewords_html:16 }}
+    <div>
+      <a href="{{ event.get_absolute_url }}">
+	{% blocktrans %}View Event Page{% endblocktrans %}
+      </a>
     </div>
+  </div>
 </li>
