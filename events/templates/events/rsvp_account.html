@@ -10,7 +10,7 @@
                 <form action="{% url event-rsvp-account event.id %}" method="post">
                     {% include "events/_form.html" %}
                     {% csrf_token %}
-                    <input type="submit" value="{% blocktrans %}Create Account{% endblocktrans %}" /> |
+                    <input type="submit" value="{% blocktrans %}events_rsvp_register_button{% endblocktrans %}" /> |
                     <a href="{{ event.get_absolute_url }}">{% blocktrans %}No Thanks{% endblocktrans %}</a>
                 </form>
         </div>
