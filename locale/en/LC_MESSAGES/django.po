@@ -1937,9 +1937,20 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: events/templates/events/rsvp_account.html:8 templates/base/nav.html:31
-#: templates/rah/home_page.html:64 templates/rah/home_page.html.py:91
-msgid "Create an Account"
+#: events/templates/events/rsvp_account.html:8 
+msgid "events_rsvp_register_button"
+msgstr "Create an Account"
+
+#: templates/base/nav.html:31
+msgid "sidebar_logged_out_register_button"
+msgstr "Create an Account"
+
+#: templates/rah/home_page.html:91
+msgid "homepage_first_tab_logged_out_button"
+msgstr "Create an Account"
+
+#: templates/rah/home_page.html:64
+msgid "homepage_final_slide_title"
 msgstr "Share a Story"
 
 #: events/templates/events/rsvp_account.html:13

@@ -61,7 +61,7 @@
         <a href="#1" id="home_slide_nav_1" class="home_slide_nav_selected">{% blocktrans %}Welcome{% endblocktrans %}</a>
         <a href="#2" id="home_slide_nav_2">{% blocktrans %}Empower your Home{% endblocktrans %}</a>
         <a href="#3" id="home_slide_nav_3">{% blocktrans %}Empower your Community{% endblocktrans %}</a>
-        <a href="#4" id="home_slide_nav_4">{% blocktrans %}Create an Account{% endblocktrans %}</a>
+        <a href="#4" id="home_slide_nav_4">{% blocktrans %}homepage_final_slide_title{% endblocktrans %}</a>
     </div>
     <div class="grid_1 alpha center">
         <a href="#" id="home_slide_nav_prev" class="sprite_slide_nav_prev"></a>
@@ -88,7 +88,7 @@
                         </p>
                         <p>
                             <a href="{% blocktrans %}home_slide_1_logged_out_url{% endblocktrans %}"
-			       class="button button_mega button_shadow">{% blocktrans %}Create an Account{% endblocktrans %} &rsaquo;</a>
+			       class="button button_mega button_shadow">{% blocktrans %}homepage_first_tab_logged_out_button{% endblocktrans %} &rsaquo;</a>
                         </p>
 			{% else %}
                         <h1>{% blocktrans with request.user.first_name as user_name %}Welcome back, {{user_name}}!{% endblocktrans %}</h1>
