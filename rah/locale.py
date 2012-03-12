@@ -34,6 +34,8 @@ class LocaleMiddleware(object):
                 profile.language = language
                 profile.save()
         request.LANGUAGE_CODE = translation.get_language()
+        request.LANGUAGE_VERBOSE_NAME = dict(settings.LANGUAGES)[
+            request.LANGUAGE_CODE]
 
     def process_response(self, request, response):
         patch_vary_headers(response, ('Accept-Language',))
