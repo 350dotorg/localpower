@@ -31,4 +31,16 @@ require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/m
 
         messages.setup();
         facebook.setup();
+
+	$("#language_dropdown").dialog({
+		modal: true,
+		autoOpen: false,
+		resizable: true, draggable: true,
+		width: 360,
+	});
+	$("#header_language").click(function() {
+	    $("#language_dropdown").dialog('open');
+	    return false;
+	});
+
     });

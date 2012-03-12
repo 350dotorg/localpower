@@ -48,26 +48,7 @@
         </script>
 	<style type="text/css">
 	  #language_dropdown {
-	    display: inline;
-	  }
-	  #language_dropdown ul {
 	    display: none;
-  	    list-style-type: none;
-	    position: absolute;
-	    left: 491px;
-	    z-index: 99;
-	    background-color: #1F6F90;
-	    padding-right: 10px;
-	    padding-bottom: 5px;
-	    border: 1px solid black;
-	    border-top: 0px;
-	    margin-top: 15px;
-	  }
-	  #language_dropdown li {
-	    list-style-type: none;
-	  }
-	  #language_dropdown.active ul {
-	    display: block;
 	  }
 	</style>
     </head>
@@ -82,27 +63,29 @@
 			<a href="http://www.350.org" class="not_last">{% blocktrans %}350.org{% endblocktrans %}</a>
                         <a href="http://www.350.org/about/blog/" class="not_last">{% blocktrans %}Blog{% endblocktrans %}</a>
                         <a href="/about/" class="not_last" id="header_about">{% blocktrans %}About{% endblocktrans %}</a>
-                        <a href="{% url group_list %}" class="not_last" id="header_about">{% blocktrans %}Groups{% endblocktrans %}</a>
-                        <a href="{% url event-show %}" class="not_last" id="header_about">{% blocktrans %}Events{% endblocktrans %}</a>
-                        <a href="{% url action_show %}" class="not_last" id="header_about">{% blocktrans %}Projects{% endblocktrans %}</a>
-                        <a href="{% url challenges_list %}" class="not_last" id="header_about">{% blocktrans %}Campaigns{% endblocktrans %}</a>
-			<div id="language_dropdown">
-			  <a href="">
-			    Language
-			  </a>
-			  <ul id="language_nav">
-			    {% for language in settings.LANGUAGES %}
-			    <li><a href="{% url set_language %}?language={{language.0}}">
-				{{language.1}}</a></li>
-			    {% endfor %}
-			  </ul>
-			</div>
-                         {% if request.user.is_authenticated %}
-                            <a href="{% url logout %}" class="button button_small button_blue">{% blocktrans %}Log Out{% endblocktrans %}</a>
-                         {% else %}
-                            <a href="{% url login %}" class="button button_small">{% blocktrans %}Log In{% endblocktrans %}</a>
-                         {% endif %}
+                        <a href="{% url group_list %}" class="not_last" id="header_groups">{% blocktrans %}Groups{% endblocktrans %}</a>
+                        <a href="{% url event-show %}" class="not_last" id="header_events">{% blocktrans %}Events{% endblocktrans %}</a>
+                        <a href="{% url action_show %}" class="not_last" id="header_projects">{% blocktrans %}Projects{% endblocktrans %}</a>
+                        <a href="{% url challenges_list %}" class="not_last" id="header_campaigns">{% blocktrans %}Campaigns{% endblocktrans %}</a>
+			<a href="" id="header_language">
+			  {{ request.LANGUAGE_VERBOSE_NAME }}
+			</a>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url logout %}" class="button button_small button_blue">{% blocktrans %}Log Out{% endblocktrans %}</a>
+                        {% else %}
+                        <a href="{% url login %}" class="button button_small">{% blocktrans %}Log In{% endblocktrans %}</a>
+                        {% endif %}
                     </div>
+		    <div id="language_dropdown"
+			 title="{% blocktrans %}Select your preferred language{% endblocktrans %}">
+		      <ul id="language_nav">
+			{% for language in settings.LANGUAGES %}
+			<li><a href="{% url set_language %}?language={{language.0}}">
+			    {{language.1}}</a></li>
+			{% endfor %}
+		      </ul>
+		    </div>
+
                 </div>
             </div>
         </div>
@@ -221,11 +204,5 @@
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
             })();
         </script>
-	<script type="text/javascript">
-	  $("#language_dropdown>a").click(function() {
-	    $(this).parent("#language_dropdown").toggleClass("active");
-	    return false;
-	  });
-	</script>
     </body>
 </html>
