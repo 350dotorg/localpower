@@ -2004,7 +2004,7 @@ msgstr "\nPlease use our  <a href=\"http://www.350.org/resources\">resources</a>
 
 #: events/templates/events/show.html:59 templates/rah/home_page.html:202
 msgid "Recent Events"
-msgstr ""
+msgstr "Upcoming events"
 
 #: events/templates/events/show.html:61
 msgid "Can't find what you're looking for?"
@@ -2195,7 +2195,7 @@ msgstr "Parent ID is corrupted"
 
 #: groups/forms.py:273
 msgid "You need to be a member of a community first"
-msgstr "You need to be a member of a group first"
+msgstr "Once you join a group you can associate events and petitions with that group."
 
 #: groups/models.py:50
 msgid "Yes, a manager must approve all discussions"
@@ -3551,7 +3551,7 @@ msgstr "Start Organizing!"
 
 #: templates/rah/home_page.html:81
 msgid "Be an Energy Trendsetter!"
-msgstr "Join 350 Local"
+msgstr "Search the map to see if there's a group near you."
 
 #: templates/rah/home_page.html:83
 #, python-format
@@ -3636,7 +3636,7 @@ msgstr "See All Projects"
 
 #: templates/rah/home_page.html:150
 msgid "Host and attend local climate events"
-msgstr "See what 350 Local is all about"
+msgstr "Spread the Stories of the Movement"
 
 #: templates/rah/home_page.html:152
 msgid ""
@@ -3651,7 +3651,7 @@ msgstr "/stories/"
 
 #: templates/rah/home_page.html:158
 msgid "Find Events"
-msgstr "More Info"
+msgstr "Share a Story"
 
 #: templates/rah/home_page.html:224
 msgid "Find Events Near You"
