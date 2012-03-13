@@ -61,7 +61,7 @@ ul{ margin-left: 18px; margin-bottom: 18px;}
 	background:#1f6f90;
     background: rgba(0,15,30,0.2); }
 #header{ position:relative; width: 90%; }
-#header .grid12 { width: 90%; }
+#header .grid_12 { width: 90%; }
 #header_logo {
 	position:absolute;
 	left: 0px;
