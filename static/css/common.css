@@ -48,7 +48,8 @@ Header Header Header Header Header Header Header Header Header Header Header Hea
     height: 64px;
     position:relative;
     background-color: #103665; }
-#header{ position:relative; }
+#header{ position:relative; width: 90%; }
+#header .grid12 { width: 90%; }
 #header_logo { position:absolute; left: 0px; top:9px; color: #fff; }
 .logo_text {font-family:ff-din-round-web-pro-1, ff-din-round-web-pro-2, Tahoma, sans-serif; font-size: 44px; line-height: 46px;}
 .logo_text:hover { text-decoration: none;}
