@@ -2086,10 +2086,6 @@ msgstr "Create an Account"
 msgid "sidebar_logged_out_register_button"
 msgstr "Create an Account"
 
-#: templates/rah/home_page.html:91
-msgid "homepage_first_tab_logged_out_button"
-msgstr "Create an Account"
-
 #: templates/rah/home_page.html:64
 msgid "homepage_final_slide_title"
 msgstr "Share a Story"
@@ -3755,10 +3751,6 @@ msgstr ""
 msgid "Opt out successful!"
 msgstr ""
 
-#: templates/rah/home_page.html:61
-msgid "Welcome"
-msgstr ""
-
 #: templates/rah/home_page.html:62
 msgid "Empower your Home"
 msgstr "Find a Group Near You"
@@ -3766,60 +3758,6 @@ msgstr "Find a Group Near You"
 #: templates/rah/home_page.html:63
 msgid "Empower your Community"
 msgstr "Start Organizing!"
-
-#: templates/rah/home_page.html:81
-msgid "Be an Energy Trendsetter!"
-msgstr "Search the map to see if there's a group near you."
-
-#: templates/rah/home_page.html:83
-#, python-format
-msgid ""
-"\n"
-"                            %(SITE_NAME)s makes energy efficiency easy, fun "
-"and\n"
-"                            social. Across the country, our members are "
-"working to\n"
-"                            transform the way their homes and communities "
-"use energy.\n"
-"\t\t\t  "
-msgstr ""
-"\n"
-"From Afghanistan to Zimbabwe, people in nearly every country on the planet "
-"are mobilizing their communities for just solutions to the climate crisis. "
-"%(SITE_NAME)s is designed to make it simple to connect with other climate "
-"activists where we live, build powerful local movements to transform our "
-"communities, and stand in solidarity with one another globally to stop "
-"climate change.  Let’s build this movement together!"
-
-#: templates/rah/home_page.html:90
-msgid "home_slide_1_logged_out_url"
-msgstr "/register/"
-
-#: templates/rah/home_page.html:94
-#, python-format
-msgid "Welcome back, %(user_name)s!"
-msgstr ""
-
-#: templates/rah/home_page.html:96
-#, python-format
-msgid ""
-"\n"
-"\t\t\t  Welcome back to %(SITE_NAME)s!\n"
-"\t\t\t  "
-msgstr ""
-"\n"
-"Welcome back to %(SITE_NAME)s! Since you've already got an account, you can "
-"dive right in by finding <a href=\"/groups\">groups</a>, checking out <a "
-"href=\"/projects\">projects</a>, and getting involved with <a href=\"/events"
-"\">local events.&nbsp;</a>"
-
-#: templates/rah/home_page.html:101
-msgid "home_slide_1_logged_in_url"
-msgstr "/user/"
-
-#: templates/rah/home_page.html:102
-msgid "My Account"
-msgstr ""
 
 #: templates/rah/home_page.html:109
 msgid "You have the power <br/>to save energy"
