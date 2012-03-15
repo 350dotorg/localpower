@@ -3,13 +3,13 @@
 require([], function () {
     var hash = window.location.hash,
         current_slide = 1,
-        total_slides = 4,
-        slide_width = $("#home_slide_" + current_slide).width();
+        total_slides = $("#home_slide_nav a").length,
+        slide_width = $($("#home_slide_holder .home_slide")[current_slide-1]).width();
 
     // num is a positive int representing the slide to go to (1-indexed)
     function go_to_slide(num) {
-        $("#home_slide_nav_" + current_slide).removeClass("home_slide_nav_selected");
-        $("#home_slide_nav_" + num).addClass("home_slide_nav_selected");
+        $($("#home_slide_nav a")[current_slide-1]).removeClass("home_slide_nav_selected");
+        $($("#home_slide_nav a")[num-1]).addClass("home_slide_nav_selected");
         $("#home_slide_holder").animate({
             left: (num - 1) * slide_width * -1
         });
@@ -18,17 +18,18 @@ require([], function () {
     }
 
     // See if there is a location hash and select the right slide nav if there is
-    if (hash === "#1" || hash === "#2" || hash === "#3" || hash === "#4") {
+    if( /^#(\d+)$/.exec(hash) ) {
         go_to_slide(parseInt(hash.substring(1), 10));
     }
     //Bind action to slide nav click
     $("#home_slide_nav a").live("click", function () {
-        // Pull the slide we're about to move to from the href (e.g. "#3" --> 3)
-        var requested_slide = parseInt($(this).attr("href").substring(1), 10);
+        // Pull the slide we're about to move to from the anchor's position relative to its parent
+        var requested_slide = $(this).index() + 1;
         if (requested_slide === current_slide) {
             return false;
         } else {
             go_to_slide(requested_slide);
+	    return false;
         }
     });
     
