@@ -39,7 +39,7 @@ msgstr ""
 
 #: actionkit/templates/event_campaigns/_signup_form.html:13
 msgid "event-campaign-local-event-signup-button-direct-to-actionkit"
-msgstr ""
+msgstr "Sign up for this event"
 
 #: actionkit/templates/event_campaigns/detail.html:8
 #: actionkit/templates/event_campaigns/event.html:8
@@ -92,14 +92,14 @@ msgstr ""
 #: actionkit/templates/event_campaigns/detail.html:10
 #: actionkit/templates/event_campaigns/event.html:10
 msgid "event-campaigns-list-breadcrumb"
-msgstr ""
+msgstr "Collective Actions"
 
 #: actionkit/templates/event_campaigns/detail.html:15
 #: actionkit/templates/event_campaigns/event.html:18
 #: actionkit/templates/event_campaigns/list.html:7
 #: actionkit/templates/event_campaigns/list.html:9
 msgid "event-campaigns-title"
-msgstr ""
+msgstr "Collective Actions"
 
 #: actionkit/templates/event_campaigns/detail.html:23
 #: actionkit/templates/event_campaigns/event.html:26
@@ -108,11 +108,13 @@ msgid ""
 "\n"
 "event-campaign %(SITE_NAME)s Event Campaign\n"
 msgstr ""
+"\n"
+"%(SITE_NAME)s Collective Actions\n"
 
 #: actionkit/templates/event_campaigns/detail.html:36
 #, python-format
 msgid "event-campaign Showing %(num_events)s local events"
-msgstr ""
+msgstr "Showing %(num_events)s local action(s)"
 
 #: actionkit/templates/event_campaigns/detail.html:43
 #: events/templates/events/show.html:25
@@ -128,11 +130,11 @@ msgstr ""
 
 #: actionkit/templates/event_campaigns/detail.html:62
 msgid "event-campaign host-local-event image-alt-text"
-msgstr ""
+msgstr "Register your local event here"
 
 #: actionkit/templates/event_campaigns/detail.html:64
 msgid "event-campaign host-local-event header"
-msgstr ""
+msgstr "Create a local event"
 
 #: actionkit/templates/event_campaigns/detail.html:66
 msgid ""
@@ -140,6 +142,9 @@ msgid ""
 "\t  event-campaign host-local-event button\n"
 "\t  "
 msgstr ""
+"\n"
+"\t  Register your event\n"
+"\t  "
 
 #: actionkit/templates/event_campaigns/detail.html:72
 msgid ""
@@ -147,14 +152,17 @@ msgid ""
 "          event-campaign host-local-event detail-blurb\n"
 "\t  "
 msgstr ""
+"\n"
+"          Put your local event on the map as part of this collective day of action. After you confirm the event it will appear on the map above."
+"\t  "
 
 #: actionkit/templates/event_campaigns/detail.html:79
 msgid "event-campaign list-header"
-msgstr ""
+msgstr "Upcoming events"
 
 #: actionkit/templates/event_campaigns/detail.html:87
 msgid "event-campaign local-event creator:"
-msgstr ""
+msgstr "Event host:"
 
 #: actionkit/templates/event_campaigns/detail.html:94
 #: actionkit/templates/event_campaigns/list.html:34
@@ -169,19 +177,19 @@ msgstr ""
 
 #: actionkit/templates/event_campaigns/detail.html:102
 msgid "event-campaign local-event You are a host"
-msgstr ""
+msgstr "You are a host for this event"
 
 #: actionkit/templates/event_campaigns/detail.html:104
 msgid "event-campaign local-event Access Host Tools"
-msgstr ""
+msgstr "Access host tools for your event"
 
 #: actionkit/templates/event_campaigns/detail.html:107
 msgid "event-campaign local-event You are attending"
-msgstr ""
+msgstr "You are attending this event"
 
 #: actionkit/templates/event_campaigns/detail.html:109
 msgid "event-campaign local-event Manage RSVP"
-msgstr ""
+msgstr "Change your attendance"
 
 #: actionkit/templates/event_campaigns/detail.html:119
 msgid ""
@@ -190,30 +198,33 @@ msgid ""
 "Form\n"
 "\t    "
 msgstr ""
+"\n"
+"\t    Sign up for this event\n"
+"\t    "
 
 #: actionkit/templates/event_campaigns/detail.html:150
 msgid "event-campaign local-event Map Bubble Link"
-msgstr ""
+msgstr "See event details"
 
 #: actionkit/templates/event_campaigns/event.html:41
 msgid "event-campaign viewing-event-as-host Access Host Tools"
-msgstr ""
+msgstr "Manage your event and invites"
 
 #: actionkit/templates/event_campaigns/event.html:47
 msgid "event-campaign viewing-event-as-attendee Manage RSVP"
-msgstr ""
+msgstr "Get more info or change your attendance"
 
 #: actionkit/templates/event_campaigns/event.html:57
 msgid "event-campaign event-detail-tab Overview"
-msgstr ""
+msgstr "Event details"
 
 #: actionkit/templates/event_campaigns/event.html:58
 msgid "event-campaign event-detail-tab RSVPs"
-msgstr ""
+msgstr "Guest list"
 
 #: actionkit/templates/event_campaigns/event.html:63
 msgid "event-campaign event-detail Edit Event Details"
-msgstr ""
+msgstr "Edit event details"
 
 #: actionkit/templates/event_campaigns/event.html:72 events/admin.py:36
 #: events/templates/events/_details.html:3
@@ -270,19 +281,17 @@ msgid ""
 "Event campaigns are coordinated, distributed events that occur \n"
 "at the same time in a lot of different places around the world.\n"
 msgstr ""
+"\n"
+"Collective days of action allow people all over their region, or the world, to take action together even when far apart. These coordinated actions are some of the best displays of how global the climate movement is. Create an event and be a part of a movement-wide event.\n"
 
 #: actionkit/templates/event_campaigns/list.html:17
 #, python-format
 msgid "event-campaign Showing %(num_events)s event campaigns"
-msgstr ""
-
-#: actionkit/templates/event_campaigns/list.html:20
-msgid "event-campaign header Event Campaigns"
-msgstr ""
+msgstr "Showing %(num_events)s local action(s)"
 
 #: actionkit/templates/event_campaigns/list.html:41
 msgid "event-campaign-list View Event Campaign"
-msgstr ""
+msgstr "Join or start an event for this campaign"
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
 #: events/filterspec.py:14
