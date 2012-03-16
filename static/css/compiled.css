@@ -366,7 +366,7 @@ ul{ margin-left: 18px; margin-bottom: 18px;}
     width:204px;
     display: inline-block;
     border-top: 1px solid #CCC;
-    padding:8px 0px 8px 0;
+    padding:3px 0px 3px 0;
 }
 #nav_primary li:first-child a {
     border-top: 0px;
@@ -567,6 +567,21 @@ a.twitter_button, a.twitter_button_rtl,
 .twitter_button,
 .facebook_button {
   cursor: pointer;
+}
+#nav #nav_primary li {
+  line-height: 19px;
+  height: auto;
+}
+#nav #nav_primary .sprite_nav {
+  float: left;
+  display: inline;
+  margin-top: 4px;
+}
+#nav #nav_primary .sprite_nav_title {
+  float: left;
+  max-width: 164px;
+  padding-top: 5px;
+  padding-left: 3px;
 }
 .sprite_nav_actions,
 .sprite_nav_communities,

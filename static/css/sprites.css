@@ -1,5 +1,20 @@
 /*Nav icons*/
 
+#nav #nav_primary li {
+  height: auto;
+  line-height: 19px;
+}
+#nav #nav_primary .sprite_nav {
+  float: left;
+  display: inline;
+  margin-top: 4px;
+}
+#nav #nav_primary .sprite_nav_title {
+  float: left;
+  max-width: 164px;
+  padding-top: 5px;
+  padding-left: 3px;
+}
 .sprite_nav_actions,
 .sprite_nav_communities,
 .sprite_nav_challenges,

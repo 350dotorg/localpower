@@ -375,7 +375,7 @@ Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav Nav 
     width:204px;
     display: inline-block;
     border-top: 1px solid #CCC;
-    padding:8px 0px 8px 0;
+    padding:3px 0px 3px 0;
 }
 #nav_primary li:first-child a {
     border-top: 0px;

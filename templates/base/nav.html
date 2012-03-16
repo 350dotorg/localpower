@@ -41,33 +41,33 @@
         {% endif %}
         <ul id="nav_primary" class="plain_list">
             <li class="{% ifequal nav_selected "communities" %}nav_selected{% endifequal %}">
-                <a href="{% url group_list %}"><span class="sprite_nav_communities"></span> {% blocktrans %}Communities{% endblocktrans %}</a>
+                <a href="{% url group_list %}"><span class="sprite_nav sprite_nav_communities"></span> <span class="sprite_nav_title">{% blocktrans %}Communities{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
             <li class="{% ifequal nav_selected "events" %}nav_selected{% endifequal %}">
-                <a href="{% url event-show %}"><span class="sprite_nav_events"></span> {% blocktrans %}Events{% endblocktrans %}</a>
+                <a href="{% url event-show %}"><span class="sprite_nav sprite_nav_events"></span> <span class="sprite_nav_title">{% blocktrans %}Events{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
 
             <li class="{% ifequal nav_selected "solo_actions" %}nav_selected{% endifequal %}">
-                <a href="{% url solo_action_show %}"><span class="sprite_nav_actions"></span> {% blocktrans %}Projects{% endblocktrans %}</a>
+                <a href="{% url solo_action_show %}"><span class="sprite_nav sprite_nav_actions"></span> <span class="sprite_nav_title">{% blocktrans %}Projects{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
 
             <li class="{% ifequal nav_selected "challenges" %}nav_selected{% endifequal %}">
-                <a href="{% url challenges_list %}"><span class="sprite_nav_challenges"></span> {% blocktrans %}Challenges{% endblocktrans %}</a>
+                <a href="{% url challenges_list %}"><span class="sprite_nav sprite_nav_challenges"></span> <span class="sprite_nav_title">{% blocktrans %}Challenges{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
 
 	    {% comment %}
             <li class="{% ifequal nav_selected "badges" %}nav_selected{% endifequal %}">
-                <a href="{% url badge_list %}"><span class="sprite_nav_badges"></span> {% blocktrans %}Badges{% endblocktrans %}</a>
+                <a href="{% url badge_list %}"><span class="sprite_nav sprite_nav_badges"></span> <span class="sprite_nav_title">{% blocktrans %}Badges{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
 	    {% endcomment %}
 
             <li class="{% ifequal nav_selected "users" %}nav_selected{% endifequal %}">
-                <a href="{% url user_list %}"><span class="sprite_nav_communities"></span> {% blocktrans %}Users{% endblocktrans %}</a>
+                <a href="{% url user_list %}"><span class="sprite_nav sprite_nav_communities"></span> <span class="sprite_nav_title">{% blocktrans %}Users{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
             </li>
 	    {% if EXTRA_SIDEBAR_LINKS %}
