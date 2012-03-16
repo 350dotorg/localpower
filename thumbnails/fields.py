@@ -33,7 +33,7 @@ class ImageAndThumbsFile(ImageFieldFile):
             return super(ImageAndThumbsFile, self).__getattribute__(name)
         except AttributeError:
             if name.startswith("thumbnail"):
-                thumbnail_name = self._generate_thumbnail_name(name)
+                original_thumbnail_name = thumbnail_name = self._generate_thumbnail_name(name)
                 if not Thumbnail.objects.filter(raw=self.name, thumbnail=thumbnail_name).exists():
                     if not self.storage.exists(thumbnail_name):
                         options = [opt for opt in name.split("_")[1:] if opt]
@@ -42,7 +42,10 @@ class ImageAndThumbsFile(ImageFieldFile):
                         except:
                             return ''
                         thumbnail_name = self.storage.save(thumbnail_name, thumbnail)
-                    Thumbnail.objects.create(raw=self.name, thumbnail=thumbnail_name)
+                    try:
+                        Thumbnail.objects.create(raw=self.name, thumbnail=thumbnail_name)
+                    except IntegrityError:
+                        return original_thumbnail_name
                 return thumbnail_name
             raise
 
