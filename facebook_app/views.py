@@ -24,15 +24,16 @@ def login(request):
         facebook_user = graph.get_object("me")
         email = facebook_user["email"]
         if graph:
+            is_new_user = False
+            username = hashlib.md5(email).hexdigest()[:30]
             try:
-                user = User.objects.get(email=email)
+                user = User.objects.get(username=username)
             except User.DoesNotExist:
-                username = hashlib.md5(email).hexdigest()[:30]
+                is_new_user = True
                 user = User.objects.create_user(username, email, "")
                 user.first_name = facebook_user["first_name"]
                 user.last_name = facebook_user["last_name"]
                 user.save()
-            is_new_user = "username" in locals()
             profile = user.get_profile()
             profile.facebook_access_token = access_token
             if is_new_user:
