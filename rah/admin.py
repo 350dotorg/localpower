@@ -48,6 +48,8 @@ class UserAdmin(BaseUserAdmin):
     geom.short_description = _("Location")
 
 class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("user__email", "geom", "is_profile_private", "facebook_connect_only", "language", "phone")
+    search_fields = ("email",)
     form = ProfileEditForm
 
 admin.site.unregister(User)
