@@ -49,7 +49,7 @@ class UserAdmin(BaseUserAdmin):
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "geom", "is_profile_private", "facebook_connect_only", "language", "phone")
-    search_fields = ("email",)
+    search_fields = ("user__email",)
     form = ProfileEditForm
 
 admin.site.unregister(User)
