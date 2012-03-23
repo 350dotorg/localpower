@@ -9,15 +9,20 @@ from models import Location, Point
 
 GOOGLE_GEOCODE_URL = 'http://maps.googleapis.com/maps/api/geocode/json?sensor=false'
 
+class BadStatusException(Exception):
+    def __init__(self, url, res):
+        self.url = url
+        self.res = res
+
 class GoogleGeoField(forms.CharField):
     @classmethod
-    def _google_geocode(cls, url, data=None):
+    def _google_geocode(cls, url, data=None, catch=True):
         if not data:
             data = {}
         try:
             res = load(urlopen(url))
             if res['status'] != 'OK':
-                raise Exception
+                raise BadStatusException(url, res)
             ## TODO: we are just always taking the top result
             results = res['results'][0]
             location = results['geometry']['location']
@@ -29,7 +34,9 @@ class GoogleGeoField(forms.CharField):
                 data['longitude'] = location['lng']
             data['google_top_result'] = results
             return data
-        except:
+        except Exception, e:
+            if not catch:
+                raise
             raise ValidationError('Could not locate this address')
 
     def clean(self, value):
@@ -41,7 +48,13 @@ class GoogleGeoField(forms.CharField):
 
             url = '%s&latlng=%s,%s' % (GOOGLE_GEOCODE_URL, 
                                        data['latitude'], data['longitude'])
-            result = GoogleGeoField._google_geocode(url, data)
+            try:
+                result = GoogleGeoField._google_geocode(url, data, catch=False)
+            except BadStatusException, e:
+                if 'address' in data and 'latitude' in data and 'longitude' in data and 'google_top_result' in data:
+                    data['user_input'] = value
+                    return data
+                raise
             result['user_input'] = value
             return result
         return value if (value and value.strip()) else None
