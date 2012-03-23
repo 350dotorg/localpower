@@ -27,5 +27,10 @@ class GroupAdmin(admin.ModelAdmin):
         return sum([m.actions_completed for m in obj.members_ordered_by_points() if m.actions_completed])
 
 admin.site.register(Group, GroupAdmin)
-admin.site.register(GroupUsers)
+
+class GroupUsersAdmin(admin.ModelAdmin):
+    list_display = ("user", "group", "is_manager", "created", "updated")
+    list_filter = ("user", "group")
+
+admin.site.register(GroupUsers, GroupUsersAdmin)
 admin.site.register(GroupAssociationRequest)

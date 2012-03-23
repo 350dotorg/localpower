@@ -28,7 +28,10 @@ def admin_list_export(modeladmin, request, queryset):
                 try:
                     val = getattr(admin.site._registry[model], field)
                     if callable(val):
-                        val = val(obj)
+                        try:
+                            val = val(obj)
+                        except TypeError:
+                            val = val()
                 except AttributeError:
                     val = getattr(obj, field)
                     if callable(val):
