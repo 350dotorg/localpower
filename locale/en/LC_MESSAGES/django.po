@@ -3616,6 +3616,9 @@ msgid ""
 "our communities. Every point you earn means one less pound of coal needs to "
 "be burned."
 msgstr ""
+"It's happening everywhere: people all over the world are coming together "
+"to launch climate campaigns, collaborate on projects, and build a clean "
+"energy future. Join us at 350 Local to help build this global movement."
 
 #: templates/base/base.html:25
 msgid "energy efficiency; home energy; climate change;"
