@@ -92,14 +92,14 @@ msgstr ""
 #: actionkit/templates/event_campaigns/detail.html:10
 #: actionkit/templates/event_campaigns/event.html:10
 msgid "event-campaigns-list-breadcrumb"
-msgstr "Collective Actions"
+msgstr "Days of Action"
 
 #: actionkit/templates/event_campaigns/detail.html:15
 #: actionkit/templates/event_campaigns/event.html:18
 #: actionkit/templates/event_campaigns/list.html:7
 #: actionkit/templates/event_campaigns/list.html:9
 msgid "event-campaigns-title"
-msgstr "Collective Actions"
+msgstr "Days of Action"
 
 #: actionkit/templates/event_campaigns/detail.html:23
 #: actionkit/templates/event_campaigns/event.html:26
@@ -109,12 +109,12 @@ msgid ""
 "event-campaign %(SITE_NAME)s Event Campaign\n"
 msgstr ""
 "\n"
-"%(SITE_NAME)s Collective Actions\n"
+"%(SITE_NAME)s Days of Action\n"
 
 #: actionkit/templates/event_campaigns/detail.html:36
 #, python-format
 msgid "event-campaign Showing %(num_events)s local events"
-msgstr "Showing %(num_events)s local action(s)"
+msgstr "Showing %(num_events)s local event(s)"
 
 #: actionkit/templates/event_campaigns/detail.html:43
 #: events/templates/events/show.html:25
@@ -282,16 +282,16 @@ msgid ""
 "at the same time in a lot of different places around the world.\n"
 msgstr ""
 "\n"
-"Collective days of action allow people all over their region, or the world, to take action together even when far apart. These coordinated actions are some of the best displays of how global the climate movement is. Create an event and be a part of a movement-wide event.\n"
+"A \"Day of Action\" allows people all over their region, or the world, to take action together. By taking action on the same day, for the same reasons, wherever we are, these coordinated actions are some of the best displays of how global the climate movement is.\n"
 
 #: actionkit/templates/event_campaigns/list.html:17
 #, python-format
 msgid "event-campaign Showing %(num_events)s event campaigns"
-msgstr "Showing %(num_events)s local action(s)"
+msgstr "Showing %(num_events)s day(s) of action"
 
 #: actionkit/templates/event_campaigns/list.html:41
 msgid "event-campaign-list View Event Campaign"
-msgstr "Join or start an event for this campaign"
+msgstr "Start or Join an event to join a movement-wide mobilization."
 
 #: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
 #: events/filterspec.py:14
