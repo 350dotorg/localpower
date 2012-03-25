@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from messaging.models import Stream
 from utils import hash_val
+import json
 
 class DiscussionManager(models.Manager):
     def get_query_set(self):
@@ -15,8 +16,16 @@ class DiscussionManager(models.Manager):
 class Discussion(models.Model):
     subject = models.CharField(_('subject'), max_length=255)
     body = models.TextField(_('body'))
-    user = models.ForeignKey(User, verbose_name=_('user'),
+
+    user = models.ForeignKey(User, verbose_name=_('user'), null=True,
                              related_name='discussions')
+    mock_user = models.TextField(null=True, blank=True)
+
+    def discussion_sender(self):
+        if self.user:
+            return self.user
+        assert self.mock_user
+        return json.loads(self.mock_user)
 
     content_type = models.ForeignKey(ContentType, 
                                      verbose_name=_('content type'))
@@ -105,7 +114,12 @@ class Discussion(models.Model):
         if self.disallow_replies:
             # If we're not allowing replies, then the sender
             # should receive email replies out of the system.
-            return {'Reply-To': self.user.email}
+            if self.user:
+                return {'Reply-To': self.user.email}
+            assert self.mock_user
+            mock_user = json.loads(self.mock_user)
+            assert 'email' in mock_user
+            return {'Reply-To': mock_user['email']}
         return None
 
 
