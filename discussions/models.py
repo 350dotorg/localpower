@@ -22,6 +22,7 @@ class Discussion(models.Model):
                                      verbose_name=_('content type'))
     object_id = models.PositiveIntegerField(_('object id'))
     content_object = generic.GenericForeignKey('content_type', 'object_id')
+    extra_disambiguator = models.CharField(max_length=100, null=True, blank=True)
 
     created = models.DateTimeField(_('created'), auto_now_add=True)
     updated = models.DateTimeField(_('updated'), auto_now=True)
@@ -92,7 +93,7 @@ class Discussion(models.Model):
                 return [user]
 
             # @@TODO: implement
-        
+
         return []
         
     def email_extra_headers(self, user_object):
