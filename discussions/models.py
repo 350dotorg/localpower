@@ -94,6 +94,11 @@ class Discussion(models.Model):
 
             # @@TODO: implement
 
+        if hasattr(self.content_object, 'discussion_email_recipients'):
+            recipients = self.content_object.discussion_email_recipients(self)
+            if recipients is not None:
+                return recipients
+
         return []
         
     def email_extra_headers(self, user_object):
