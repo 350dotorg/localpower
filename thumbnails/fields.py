@@ -5,7 +5,7 @@ import tempfile
 
 from django.conf import settings
 from django.core.files.base import ContentFile
-from django.db import models
+from django.db import models, IntegrityError
 from django.db.models.fields.files import ImageFieldFile
 from django.utils.importlib import import_module
 
