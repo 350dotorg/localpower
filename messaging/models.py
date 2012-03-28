@@ -72,7 +72,7 @@ class Message(models.Model):
     TIMING_CODES = [t[0] for t in TIMING_TYPES]
 
     name = models.CharField(max_length=50, unique=True, db_index=True)
-    subject = models.CharField(max_length=100)
+    subject = models.CharField(max_length=300)
     body = models.TextField()
     sends = models.PositiveIntegerField(default=0)
     message_timing = models.CharField(max_length=20, choices=TIMING_TYPES, help_text="This option\
