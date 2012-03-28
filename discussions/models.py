@@ -114,7 +114,7 @@ class Discussion(models.Model):
         headers = {}
         if hasattr(self.content_object, 'discussion_email_sender'):
             sender = self.content_object.discussion_email_sender(self)
-            if sender if not None:
+            if sender is not None:
                 headers['From'] = sender
 
         if self.disallow_replies:
