@@ -111,16 +111,24 @@ class Discussion(models.Model):
         return []
         
     def email_extra_headers(self, user_object):
+        headers = {}
+        if hasattr(self.content_object, 'discussion_email_sender'):
+            sender = self.content_object.discussion_email_sender(self)
+            if sender if not None:
+                headers['From'] = sender
+
         if self.disallow_replies:
             # If we're not allowing replies, then the sender
             # should receive email replies out of the system.
             if self.user:
-                return {'Reply-To': self.user.email}
+                headers['Reply-To'] = self.user.email
+                return headers
             assert self.mock_user
             mock_user = json.loads(self.mock_user)
             assert 'email' in mock_user
-            return {'Reply-To': mock_user['email']}
-        return None
+            headers['Reply-To'] = mock_user['email']
+            return headers
+        return headers or None
 
 
 def alert_users_of_discussion(sender, instance, **kwargs):

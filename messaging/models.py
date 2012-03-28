@@ -246,7 +246,10 @@ class Message(models.Model):
             params.update(extra_params)
 
         extra_headers = self.extra_headers(content_object, user_object)
-
+        from_email = None
+        if extra_headers:
+            from_email = extra_headers.pop('From', None)
+        
         context = template.Context(params)
 
         # decide what language to try to use for localized emails
@@ -284,7 +287,7 @@ class Message(models.Model):
             args=[recipient_message.token]))
         # insert an open tracking image into the body
         body += open_link
-        msg = EmailMessage(subject, body, from_email=None, to=[email],
+        msg = EmailMessage(subject, body, from_email=from_email, to=[email],
                            headers=extra_headers)
         msg.content_subtype = "html"
         return msg
