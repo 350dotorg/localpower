@@ -283,9 +283,10 @@ def spreadsheet(request, event_id):
     writer = csv.writer(response)
     writer.writerow(["Name", "Email", "Phone", "Location", "Status"])
 
-    for g in Guest.objects.filter(event=event):        
+    for g in Guest.objects.filter(event=event):
+        email = g.contributor.email or u''
         writer.writerow([g.contributor.name.encode("utf8"),
-                         g.contributor.email.encode("utf8"),
+                         email.encode("utf8"),
                          g.contributor.phone.encode("utf8"), 
                          g.contributor.geom.formatted_address.encode("utf8") if g.contributor.geom else u'',
                          g.status().encode("utf8")])
