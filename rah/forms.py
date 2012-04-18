@@ -28,8 +28,8 @@ class RegistrationForm(forms.ModelForm):
     A form that creates a user, with no privileges, from the given email and password.
     """
     email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'id':'email_register'}))
-    first_name = forms.CharField(min_length=2, widget=forms.TextInput(attrs={'class':'form_row_half'}))
-    last_name = forms.CharField(required=False, min_length=2, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
+    first_name = forms.CharField(min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half'}))
+    last_name = forms.CharField(required=False, min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
 
     password1 = forms.CharField(label=_('Password'), min_length=5, widget=forms.PasswordInput)
     honeypot = Honeypot()
@@ -140,7 +140,7 @@ class ProfileEditForm(forms.ModelForm):
                             help_text=_("(Optional) You can upload png, jpg or gif files up to 512K"),
                             required=False)
 
-    phone = forms.CharField(max_length=12, required=False,
+    phone = forms.CharField(max_length=30, required=False,
                             widget=forms.HiddenInput)
     language = forms.CharField(max_length=10, required=True,
                                widget=forms.Select(choices=settings.LANGUAGES))

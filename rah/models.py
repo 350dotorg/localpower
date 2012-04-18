@@ -160,7 +160,7 @@ class Profile(models.Model):
                                 null=True)
 
     language = models.CharField(null=True, blank=True, max_length=10)
-    phone = models.CharField(null=True, blank=True, max_length=12)
+    phone = models.CharField(null=True, blank=True, max_length=30)
 
     objects = ProfileManager()
 
