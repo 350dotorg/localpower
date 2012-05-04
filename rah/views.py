@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.comments.views import comments
 from django.contrib.sites.models import Site, RequestSite
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.cache import cache
@@ -27,7 +28,7 @@ from brabeion.models import BadgeAward
 from basic.blog.models import Post
 from tagging.models import Tag
 from actions.models import Action, UserActionProgress
-from rah.models import Profile, StickerRecipient
+from rah.models import Profile, StickerRecipient, GeoUser
 from records.models import Record
 from rah.forms import RegistrationForm, RegistrationProfileForm, AuthenticationForm, \
     AccountForm, ProfileEditForm, GroupNotificationsForm, FeedbackForm, StickerRecipientForm
@@ -125,8 +126,9 @@ def index(request):
 def user_list(request):
     """This page of links allows google CSE to find user profile pages"""
     nav_selected = "users"
-    users = User.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'id').select_related("profile")
+    users = GeoUser.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'email', 'id').select_related("profile", "profile__geom")
     map_users = users.filter(profile__geom__isnull=False)
+
     return render_to_response("rah/user_list.html", locals(), context_instance=RequestContext(request))
 
 def logout(request):

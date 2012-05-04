@@ -21,6 +21,12 @@ from thumbnails.fields import ImageAndThumbsField
 def yestarday():
     return datetime.datetime.today() - datetime.timedelta(days=1)
 
+class GeoUser(User):
+    objects = GeoManager()
+
+    class Meta:
+        proxy = True
+
 class Feedback(models.Model):
     user = models.ForeignKey(User, null=True, verbose_name=_('user'))
     url = models.CharField(_('url'), max_length=255, default='')
@@ -137,7 +143,7 @@ class Profile(models.Model):
         ('O', _('Other')),
     )
 
-    user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    user = models.ForeignKey(User, unique=True, verbose_name=_('user'), related_name="profile")
 
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))
