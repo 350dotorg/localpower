@@ -3429,7 +3429,7 @@ msgstr "Acerca de"
 
 #: templates/base/base.html:69
 msgid "Groups"
-msgstr "ndo funci"
+msgstr "Grupos"
 
 #: templates/base/base.html:71 templates/base/nav.html:53
 msgid "Projects"
