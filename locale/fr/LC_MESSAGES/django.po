@@ -1,0 +1,4083 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+#   <gennzirik@gmail.com>, 2012.
+#   <landry@350.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Local Power\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-14 23:17-0400\n"
+"PO-Revision-Date: 2012-05-14 20:49+0000\n"
+"Last-Translator: landry <landry@350.org>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/localpower/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
+msgid ""
+"You need to create an account first. Don't worry -- it only takes 15 "
+"seconds!"
+msgstr "Vous devez d'abord créer un compte.Ne vous en faites pas-cela prend moins d'une minute!"
+
+#: actionkit/models.py:50
+msgid "translated event campaign"
+msgstr "Campagne d'événement traduite"
+
+#: actionkit/models.py:51
+msgid "translated event campaigns"
+msgstr "Campagnes d'événement traduites"
+
+#: actionkit/templates/event_campaigns/_signup_form.html:13
+msgid "event-campaign-local-event-signup-button-direct-to-actionkit"
+msgstr "Enregistrez-vous pour cet événement"
+
+#: actionkit/templates/event_campaigns/detail.html:8
+#: actionkit/templates/event_campaigns/event.html:8
+#: actions/templates/actions/action_detail.html:18
+#: challenges/templates/challenges/challenge_disc_contact_admins.html:5
+#: challenges/templates/challenges/challenge_disc_create.html:5
+#: challenges/templates/challenges/detail.html:6
+#: challenges/templates/challenges/edit.html:12
+#: events/templates/events/_search_listing.html:6
+#: events/templates/events/create.html:6
+#: events/templates/events/detail.html:12 events/templates/events/edit.html:6
+#: events/templates/events/event_disc_contact_admins.html:5
+#: events/templates/events/event_disc_create.html:5
+#: events/templates/events/guests_add.html:6
+#: events/templates/events/guests_invite.html:5
+#: events/templates/events/hosts.html:5 events/templates/events/message.html:6
+#: group_links/templates/group_links/form.html:6
+#: groups/templates/groups/_search_listing.html:6
+#: groups/templates/groups/group_create.html:6
+#: groups/templates/groups/group_disc_contact_admins.html:5
+#: groups/templates/groups/group_disc_create.html:5
+#: groups/templates/groups/group_disc_detail.html:5
+#: groups/templates/groups/group_disc_list.html:5
+#: groups/templates/groups/group_edit.html:6
+#: groups/templates/groups/group_external_link_only_edit.html:6
+#: templates/admin/base.html:55 templates/rah/feedback.html:6
+#: templates/rah/ga_opt_out.html:5 templates/rah/user_contact.html:7
+#: templates/registration/login.html:6 templates/registration/register.html:6
+msgid "Home"
+msgstr "Accueil"
+
+#: actionkit/templates/event_campaigns/detail.html:9
+#: actionkit/templates/event_campaigns/event.html:9
+#: events/templates/events/_search_listing.html:7
+#: events/templates/events/create.html:7
+#: events/templates/events/detail.html:13 events/templates/events/edit.html:7
+#: events/templates/events/event_disc_contact_admins.html:6
+#: events/templates/events/event_disc_create.html:6
+#: events/templates/events/guests_add.html:7
+#: events/templates/events/guests_invite.html:6
+#: events/templates/events/hosts.html:6 events/templates/events/message.html:7
+#: events/templates/events/show.html:7 events/templates/events/show.html:9
+#: groups/templates/groups/group_detail.html:111
+#: groups/templates/groups/group_detail.html:210 templates/base/base.html:70
+#: templates/base/nav.html:48 templates/rah/profile.html:40
+#: templates/rah/profile.html.py:162 templates/rah/profile.html:213
+msgid "Events"
+msgstr "Evénements"
+
+#: actionkit/templates/event_campaigns/detail.html:10
+#: actionkit/templates/event_campaigns/event.html:10
+msgid "event-campaigns-list-breadcrumb"
+msgstr "Journées d'action"
+
+#: actionkit/templates/event_campaigns/detail.html:15
+#: actionkit/templates/event_campaigns/event.html:18
+#: actionkit/templates/event_campaigns/list.html:7
+#: actionkit/templates/event_campaigns/list.html:9
+msgid "event-campaigns-title"
+msgstr "Journées d'action"
+
+#: actionkit/templates/event_campaigns/detail.html:23
+#: actionkit/templates/event_campaigns/event.html:26
+#, python-format
+msgid ""
+"\n"
+"event-campaign %(SITE_NAME)s Event Campaign\n"
+msgstr "\n%(SITE_NAME)s Journées d'Action\n"
+
+#: actionkit/templates/event_campaigns/detail.html:36
+#, python-format
+msgid "event-campaign Showing %(num_events)s local events"
+msgstr "Montrant %(num_events)s événement(s) local(aux)"
+
+#: actionkit/templates/event_campaigns/detail.html:43
+#: events/templates/events/show.html:25
+#: groups/templates/groups/group_list.html:27 templates/rah/user_list.html:22
+msgid "Address or region"
+msgstr "Adresse ou région"
+
+#: actionkit/templates/event_campaigns/detail.html:49
+#: events/templates/events/show.html:31
+#: groups/templates/groups/group_list.html:33 templates/rah/user_list.html:28
+msgid "Search near:"
+msgstr "Cherchez près de:"
+
+#: actionkit/templates/event_campaigns/detail.html:62
+msgid "event-campaign host-local-event image-alt-text"
+msgstr "Enregistrer votre événement local ici"
+
+#: actionkit/templates/event_campaigns/detail.html:64
+msgid "event-campaign host-local-event header"
+msgstr "Créer un mouvement local"
+
+#: actionkit/templates/event_campaigns/detail.html:66
+msgid ""
+"\n"
+"\t  event-campaign host-local-event button\n"
+"\t  "
+msgstr "\nEnregistrez votre événement"
+
+#: actionkit/templates/event_campaigns/detail.html:72
+msgid ""
+"\n"
+"          event-campaign host-local-event detail-blurb\n"
+"\t  "
+msgstr "\nMettez votre votre événement local sur la carte comme faisant partie de cette journée collective d'action.Après avoir confirmé un événement,il apparaîtra sur la carte ci-haut."
+
+#: actionkit/templates/event_campaigns/detail.html:79
+msgid "event-campaign list-header"
+msgstr "Evénements à venir"
+
+#: actionkit/templates/event_campaigns/detail.html:87
+msgid "event-campaign local-event creator:"
+msgstr "Organisateur de l'événement:"
+
+#: actionkit/templates/event_campaigns/detail.html:94
+#: actionkit/templates/event_campaigns/list.html:34
+#: templates/base/_nugget_9c_list.html:10
+msgid "When:"
+msgstr "Quand:"
+
+#: actionkit/templates/event_campaigns/detail.html:95
+#: templates/base/_nugget_9c_list.html:11
+msgid "Where:"
+msgstr "Où:"
+
+#: actionkit/templates/event_campaigns/detail.html:102
+msgid "event-campaign local-event You are a host"
+msgstr "Vous êtes un organisateur pour cet événement"
+
+#: actionkit/templates/event_campaigns/detail.html:104
+msgid "event-campaign local-event Access Host Tools"
+msgstr "Accéder aux outils d'organisateur pour votre événement"
+
+#: actionkit/templates/event_campaigns/detail.html:107
+msgid "event-campaign local-event You are attending"
+msgstr "Vous participez à cet événement"
+
+#: actionkit/templates/event_campaigns/detail.html:109
+msgid "event-campaign local-event Manage RSVP"
+msgstr "Changer votre participation"
+
+#: actionkit/templates/event_campaigns/detail.html:119
+msgid ""
+"\n"
+"\t    event-campaign local-event Signup Button: Link To Actionkit Signup Form\n"
+"\t    "
+msgstr "\nInscrivez-vous pour cet événement"
+
+#: actionkit/templates/event_campaigns/detail.html:150
+msgid "event-campaign local-event Map Bubble Link"
+msgstr "Voir les détails de l'événement "
+
+#: actionkit/templates/event_campaigns/event.html:41
+msgid "event-campaign viewing-event-as-host Access Host Tools"
+msgstr "Gérez votre événement et invitations"
+
+#: actionkit/templates/event_campaigns/event.html:47
+msgid "event-campaign viewing-event-as-attendee Manage RSVP"
+msgstr "Cherchez plus d'info ou changez votre participation"
+
+#: actionkit/templates/event_campaigns/event.html:57
+msgid "event-campaign event-detail-tab Overview"
+msgstr "Détails de l'événement"
+
+#: actionkit/templates/event_campaigns/event.html:58
+msgid "event-campaign event-detail-tab RSVPs"
+msgstr "Liste d'invités"
+
+#: actionkit/templates/event_campaigns/event.html:63
+msgid "event-campaign event-detail Edit Event Details"
+msgstr "Editer les détails de l'événement"
+
+#: actionkit/templates/event_campaigns/event.html:72 events/admin.py:36
+#: events/templates/events/_details.html:3
+msgid "When"
+msgstr "Quand"
+
+#: actionkit/templates/event_campaigns/event.html:74
+#: events/templates/events/_details.html:5
+#, python-format
+msgid ""
+"\n"
+"      %(event_date)s at %(event_time)s\n"
+"      "
+msgstr "\n      %(event_date)s à %(event_time)s\n      "
+
+#: actionkit/templates/event_campaigns/event.html:80
+#: events/templates/events/_details.html:11
+msgid "Where"
+msgstr "où"
+
+#: actionkit/templates/event_campaigns/event.html:90
+#: events/templates/events/_details.html:16
+msgid "Click to view a larger map"
+msgstr "Cliquez pour voir un plan plus large"
+
+#: actionkit/templates/event_campaigns/event.html:92
+#: actionkit/templates/event_campaigns/list.html:27
+#: events/templates/events/_details.html:18
+#: templates/base/_nugget_9c_list.html:5
+msgid "Map of the event"
+msgstr "Plan de l'événement"
+
+#: actionkit/templates/event_campaigns/event.html:102
+#: events/templates/events/detail.html:92
+#: events/templates/events/detail.html:108
+msgid "Guest List"
+msgstr "Liste d'invités"
+
+#: actionkit/templates/event_campaigns/event.html:115
+#: events/templates/events/_guest.html:11
+#, python-format
+msgid "%(guest_name)s is a host"
+msgstr "%(guest_name)s est un organisateur"
+
+#: actionkit/templates/event_campaigns/event.html:116
+#: events/templates/events/_guest.html:12
+msgid "Host"
+msgstr "Organisateur"
+
+#: actionkit/templates/event_campaigns/list.html:11
+msgid ""
+"\n"
+"event-campaigns blurb description\n"
+"Event campaigns are coordinated, distributed events that occur \n"
+"at the same time in a lot of different places around the world.\n"
+msgstr "\nUne «Journée d'Action» permet aux gens partout dans leur région ou dans le monde d'agir ensemble. En agissant ensemble le même jour,pour les mêmes raisons,partout où nous sommes,ces actions coordonnées sont parmi les meilleurs manifestations montrant comment le mouvement climatique est un mouvement mondial.\n"
+
+#: actionkit/templates/event_campaigns/list.html:17
+#, python-format
+msgid "event-campaign Showing %(num_events)s event campaigns"
+msgstr "Montrant %(num_events)s journée(s) d'action"
+
+#: actionkit/templates/event_campaigns/list.html:41
+msgid "event-campaign-list View Event Campaign"
+msgstr "Commencer ou rejoindre un événement pour adhérer à un grand mouvement de mobilisation."
+
+#: actions/action_forms.py:7 actions/templates/actions/action_cancel.html:7
+#: events/filterspec.py:14
+msgid "Yes"
+msgstr "Oui"
+
+#: actions/action_forms.py:8 actions/templates/actions/action_cancel.html:8
+#: events/filterspec.py:16
+msgid "No"
+msgstr "Non"
+
+#: actions/action_forms.py:9
+msgid "Not sure"
+msgstr "Pas sûr"
+
+#: actions/action_forms.py:31
+msgid "Computer Monitor"
+msgstr "Moniteur d'ordinateur"
+
+#: actions/action_forms.py:34
+msgid "DVD/VCR Players"
+msgstr "Lecteurs DVD/VCR"
+
+#: actions/action_forms.py:35
+msgid "Cable Box/DVR"
+msgstr " Boîte à câble/DVR"
+
+#: actions/action_forms.py:36
+msgid "Video game Systems"
+msgstr "Systèmes de jeu vidéo"
+
+#: actions/forms.py:22 actions/forms.py:48
+msgid "Commit date"
+msgstr ""
+
+#: actions/forms.py:93
+msgid "The specific group does not exist."
+msgstr "Le groupe spécifique n'existe pas"
+
+#: actions/forms.py:95
+msgid "You must be a member of the group."
+msgstr "Vous devez être un membre du groupe "
+
+#: actions/models.py:77 actions/models.py:291 actions/models.py:329
+#: actions/models.py:359 rah_locale/models.py:21
+msgid "action"
+msgstr "Projet"
+
+#: actions/models.py:78
+msgid "actions"
+msgstr "Projets"
+
+#: actions/models.py:80 groups/models.py:62 rah_locale/models.py:24
+#: rateable/models.py:37
+msgid "name"
+msgstr "Nom"
+
+#: actions/models.py:81 basic/blog/models.py:17 basic/blog/models.py:40
+#: groups/models.py:63
+msgid "slug"
+msgstr ""
+
+#: actions/models.py:82 rah_locale/models.py:25
+msgid "teaser"
+msgstr "Annonce"
+
+#: actions/models.py:83 rah_locale/models.py:14 rah_locale/models.py:26
+msgid "content"
+msgstr "Contenu"
+
+#: actions/models.py:84
+msgid "points"
+msgstr "Points"
+
+#: actions/models.py:85
+msgid "users completed"
+msgstr "membres ayant terminé"
+
+#: actions/models.py:86
+msgid "users committed"
+msgstr "membres engagés"
+
+#: actions/models.py:88 groups/models.py:82
+msgid "users"
+msgstr "membres"
+
+#: actions/models.py:89 actions/models.py:294 actions/models.py:332
+#: actions/models.py:362 actions/models.py:384 basic/blog/models.py:47
+#: challenges/models.py:32 discussions/models.py:26 events/models.py:64
+#: events/models.py:330 groups/models.py:89 groups/models.py:273
+#: groups/models.py:288 groups/models.py:306 groups/models.py:326
+#: groups/models.py:458 rah/models.py:29 rah/models.py:263
+msgid "created"
+msgstr "créé"
+
+#: actions/models.py:90 actions/models.py:295 actions/models.py:333
+#: actions/models.py:363 actions/models.py:385 challenges/models.py:33
+#: discussions/models.py:27 events/models.py:65 events/models.py:331
+#: groups/models.py:92 groups/models.py:274 groups/models.py:327
+#: groups/models.py:459 rah/models.py:30 rah/models.py:264
+msgid "updated"
+msgstr "mis à jour"
+
+#: actions/models.py:95 actions/templates/actions/action_detail.html:52
+#: actions/templates/actions/action_detail.html:80 events/models.py:50
+#: group_links/templates/group_links/form.html:7
+#: groups/templates/groups/_search_listing.html:4
+#: groups/templates/groups/_search_listing.html:7
+#: groups/templates/groups/group_disc_contact_admins.html:6
+#: groups/templates/groups/group_disc_create.html:6
+#: groups/templates/groups/group_disc_detail.html:6
+#: groups/templates/groups/group_disc_list.html:6
+#: groups/templates/groups/group_edit.html:7
+#: groups/templates/groups/group_external_link_only_edit.html:7
+#: groups/templates/groups/group_list.html:4
+#: groups/templates/groups/group_list.html:6 templates/base/nav.html:44
+#: templates/rah/profile.html:38 templates/rah/profile.html.py:47
+msgid "Communities"
+msgstr "Groupes"
+
+#: actions/models.py:290 actions/models.py:381 discussions/models.py:18
+#: groups/models.py:270 groups/models.py:286 groups/models.py:304
+#: groups/models.py:324 rah/models.py:25 rah/models.py:140 rah/models.py:262
+msgid "user"
+msgstr "membre"
+
+#: actions/models.py:292 actions/models.py:330
+msgid "is completed"
+msgstr "est terminé"
+
+#: actions/models.py:293 actions/models.py:331
+msgid "date completed"
+msgstr "date de fin"
+
+#: actions/models.py:300 actions/models.py:301
+msgid "user action progress"
+msgstr "Avancement de l'utilisateur du projet"
+
+#: actions/models.py:311
+#, python-format
+msgid "%(user)s is working on %(action)s"
+msgstr "%(user)s travaille sur %(action)s"
+
+#: actions/models.py:328 group_links/models.py:11 groups/models.py:271
+#: groups/models.py:287 groups/models.py:305 groups/models.py:325
+#: groups/models.py:456
+msgid "group"
+msgstr "groupe"
+
+#: actions/models.py:338 actions/models.py:339
+msgid "group action progress"
+msgstr "avancement de l'action du groupe"
+
+#: actions/models.py:350
+#, python-format
+msgid "%(group)s is working on %(action)s"
+msgstr "%(group)s travaille sur %(action)s"
+
+#: actions/models.py:360
+msgid "form name"
+msgstr ""
+
+#: actions/models.py:361
+msgid "var name"
+msgstr " "
+
+#: actions/models.py:367 actions/models.py:380
+msgid "action form"
+msgstr ""
+
+#: actions/models.py:368
+msgid "action forms"
+msgstr ""
+
+#: actions/models.py:371
+#, python-format
+msgid "%(action)s is using form %(form_name)s"
+msgstr "%(action)s utilise le formulaire%(form_name)s"
+
+#: actions/models.py:382
+msgid "data"
+msgstr ""
+
+#: actions/models.py:393
+#, python-format
+msgid "%(user)s is working on %(action_form)s"
+msgstr "%(user)s travaille sur %(action_form)s"
+
+#: actions/models.py:410
+#, python-format
+msgid ""
+"%(num_actions)s actions were applied to your account from a commitment card"
+msgstr "%(num_actions)s projets ont été portés à votre compte à partir d'une carte d'engagement"
+
+#: actions/views.py:103
+msgid "Thanks for taking on this project with your group."
+msgstr "Merci d'avoir pris part à ce projet avec votre groupe"
+
+#: actions/views.py:130
+msgid ""
+"Nice work! We've updated your profile, so all your friends can see your "
+"progress "
+msgstr "Bon travail!Nous avons mis à jour votre profil,désormais tous vos amis peuvent voir votre avancement"
+
+#: actions/views.py:153
+msgid ""
+"No worries. We've updated the record. Let us know when you're finished with "
+"this action."
+msgstr "Pas d'inquiétude. Mise à jour réussie. Faites-nous savoir quand vous avez terminé ce projet."
+
+#: actions/views.py:176
+msgid "Thanks for making a commitment."
+msgstr "Merci de vous engager."
+
+#: actions/views.py:201
+msgid ""
+"We cancelled your commitment. If you're having trouble completing an action,"
+" try asking a question. Other members will be happy to help!"
+msgstr "Nous avons annulé votre engagement.Si vous avez des difficultés à terminer un projet,essayez de poser une question. D'autres membres seront heureux de vous aider!"
+
+#: actions/templates/actions/_action_form.html:13
+msgid "Make a commitment to do this action in the future."
+msgstr "Engagez­­-vous à faire ce projet dans l'avenir.­­ "
+
+#: actions/templates/actions/_action_form.html:26
+#, python-format
+msgid ""
+"\n"
+"\t\t  %(days_till_commitment)s day remaining\n"
+"\t\t  "
+msgid_plural ""
+"\n"
+"\t\t  %(days_till_commitment)s days remaining\n"
+"\t\t  "
+msgstr[0] "\n\t\t  %(days_till_commitment)s jour restant\n\t\t  "
+msgstr[1] "\n\t\t  %(days_till_commitment)s jours restant\n\t\t  "
+
+#: actions/templates/actions/_action_form.html:33
+#, python-format
+msgid ""
+"\n"
+"                    You committed to complete<br />\n"
+"                    this plan by %(date_committed)s<br />\n"
+"\t\t  "
+msgstr "\n                    Vous vous êtes engagés à terminer<br />\n                    ce plan d'ici %(date_committed)s<br />\n\t\t  "
+
+#: actions/templates/actions/_action_form.html:38
+#: actions/templates/actions/action_detail.html:131
+#: tmp/_action_detail_progress.html:13
+#: tmp/_action_detail_your_commitment.html:13
+#: tmp/action_detail_progress.html:13
+msgid "change date"
+msgstr "Changer la date"
+
+#: actions/templates/actions/_action_form.html:41
+#: actions/templates/actions/action_detail.html:134
+#: events/templates/events/_guests_add.html:6
+#: events/templates/events/_guests_invite.html:6
+#: events/templates/events/_hosts.html:8 events/templates/events/edit.html:17
+#: events/templates/events/message.html:24
+#: events/templates/events/rsvp_confirm.html:17
+#: group_links/templates/group_links/_form.html:12
+#: tmp/_action_detail_progress.html:16
+#: tmp/_action_detail_your_commitment.html:16
+#: tmp/action_detail_progress.html:16
+msgid "cancel"
+msgstr "Annuler"
+
+#: actions/templates/actions/_action_form.html:55
+msgid ""
+"Claim your points if you’re already doing, or just completed, this action"
+msgstr "Informer la communauté 350 que vous faites déjà ou avez récemment terminé cette action.Soyez une inspiration ou même une ressource pour les autres!"
+
+#: actions/templates/actions/_action_form.html:62
+msgid "You've done this action!"
+msgstr "Vous avez fait ce projet!"
+
+#: actions/templates/actions/_action_form.html:63
+msgid "Find more actions"
+msgstr "Trouvez plus de projets"
+
+#: actions/templates/actions/_action_form.html:65
+msgid "If this was a mistake, <a href=\"#\" class=\"undo_trigger\">click to undo</a>."
+msgstr "Si ceci était une erreur, <a href=\"#\" class=\"undo_trigger\">click to undo</a>."
+
+#: actions/templates/actions/_group_action_form.html:4
+msgid ""
+"\n"
+"    Take on this project\n"
+"    "
+msgstr "\nExécutez ce projet"
+
+#: actions/templates/actions/_group_action_form.html:13
+#, python-format
+msgid ""
+"\n"
+"  You're not yet a member of any groups.  \n"
+"  You can  <a href=\"%(group_list_url)s\">look for\n"
+"    a group near you</a> to join, or\n"
+"  <a href=\"%(group_create_url)s\"> start your own \n"
+"    group</a> to take on this project.\n"
+"  "
+msgstr "\n  \n  Vous n'êtes pas encore membre d'un groupe.\n   Vous pouvez <a href=\"%(group_list_url)s\">chercher \n     un groupe près de chez vous </ a> pour vous y joindre, ou\n  <a href=\"%(group_create_url)s\">  commencer votre propre\n     groupe </ a> pour faire ce projet."
+
+#: actions/templates/actions/_group_action_form.html:23
+msgid ""
+"\n"
+"  Select a group:\n"
+"  "
+msgstr "\nSéléctionner un groupe:"
+
+#: actions/templates/actions/action_cancel.html:6
+msgid "Are you sure you want to cancel your commitment?"
+msgstr "Êtes-vous sûr de vouloir annuler votre engagement ?"
+
+#: actions/templates/actions/action_detail.html:19
+#: groups/templates/groups/group_detail.html:113
+#: groups/templates/groups/group_detail.html:420 templates/rah/profile.html:37
+#: templates/rah/profile.html.py:92
+msgid "Actions"
+msgstr "Projets"
+
+#: actions/templates/actions/action_detail.html:27
+#, python-format
+msgid "%(SITE_NAME)s Action"
+msgstr "%(SITE_NAME)s Projet"
+
+#: actions/templates/actions/action_detail.html:32
+#: templates/rah/profile.html:65
+msgid "Points"
+msgstr "Points"
+
+#: actions/templates/actions/action_detail.html:36
+msgid "Badge"
+msgstr ""
+
+#: actions/templates/actions/action_detail.html:49
+#: challenges/templates/challenges/detail.html:33
+#: events/templates/events/detail.html:49 templates/rah/profile.html:36
+msgid "Overview"
+msgstr "Aperçu"
+
+#: actions/templates/actions/action_detail.html:50
+#: actions/templates/actions/action_detail.html:71
+#: challenges/templates/challenges/detail.html:89 discussions/models.py:39
+#: events/templates/events/detail.html:82 groups/models.py:343
+#: groups/templates/groups/group_detail.html:115
+#: groups/templates/groups/group_detail.html:177
+#: groups/templates/groups/group_disc_detail.html:8
+#: groups/templates/groups/group_disc_list.html:8
+#: groups/templates/groups/group_disc_list.html:14
+#: groups/templates/groups/group_edit.html:18
+msgid "Discussions"
+msgstr "Discussions"
+
+#: actions/templates/actions/action_detail.html:60
+msgid "When do you think you'll complete this action?"
+msgstr "Quand pensez-­vous terminer ce projet ?"
+
+#: actions/templates/actions/action_detail.html:70
+#: challenges/templates/challenges/detail.html:87
+#: events/templates/events/detail.html:81
+#: groups/templates/groups/group_detail.html:200
+msgid "Feed"
+msgstr "Flux"
+
+#: actions/templates/actions/action_detail.html:101
+msgid "Your Group Commitments"
+msgstr "Vos engagements de groupe"
+
+#: actions/templates/actions/action_detail.html:123
+#: tmp/_action_detail_progress.html:5
+#: tmp/_action_detail_your_commitment.html:5 tmp/action_detail_progress.html:5
+msgid "Your Commitment"
+msgstr "Votre engagement"
+
+#: actions/templates/actions/action_detail.html:127
+#: tmp/_action_detail_progress.html:9
+#: tmp/_action_detail_your_commitment.html:9 tmp/action_detail_progress.html:9
+#, python-format
+msgid ""
+"\n"
+"\t  You committed to complete this action by %(commitment_date)s. \n"
+"\t  "
+msgstr "\n\t  Vous vous êtes engagés à terminer ce projet d'ici   %(commitment_date)s. \n\t  "
+
+#: actions/templates/actions/action_detail.html:132
+#: groups/templates/groups/group_detail.html:306
+#: groups/templates/groups/group_detail.html:329
+#: groups/templates/groups/group_detail.html:353
+#: groups/templates/groups/group_detail.html:387
+#: groups/templates/groups/group_edit.html:64
+#: tmp/_action_detail_progress.html:14
+#: tmp/_action_detail_your_commitment.html:14
+#: tmp/action_detail_progress.html:14
+msgid "or"
+msgstr "ou"
+
+#: actions/templates/actions/action_detail.html:139
+msgid "Your Groups"
+msgstr "Vos groupes"
+
+#: actions/templates/actions/action_detail.html:148
+#, python-format
+msgid ""
+"\n"
+"\t    You're not yet a member of any communities.  \n"
+"\t    Why don't you <a href=\"%(group_list_url)s\">\n"
+"\t      look for some communities to join?</a>\n"
+"\t    "
+msgstr "\n\t    Vous n'êtes pas encore membre d'une communauté.  \n\t    Pourquoi ne <a href=\"%(group_list_url)s\">\n\t     chercheriez-vous pas quelques communautés pour vous y joindre?</a>\n\t    "
+
+#: actions/templates/actions/action_detail.html:160
+msgid "Link this project to your groups"
+msgstr "Associez ce projet à vos groupes"
+
+#: actions/templates/actions/action_detail.html:169
+#, python-format
+msgid ""
+"\n"
+"\t    Completed (%(users_completed)s)\n"
+"\t    "
+msgstr "\n\t    Terminé (%(users_completed)s)\n\t    "
+
+#: actions/templates/actions/action_detail.html:189
+msgid "Image Gallery"
+msgstr "Galérie d'images"
+
+#: actions/templates/actions/action_detail.html:194
+msgid "Links and Downloads"
+msgstr "Liens et Téléchargements"
+
+#: actions/templates/actions/action_show.html:8
+#: actions/templates/actions/action_show.html:22
+msgid ""
+"\n"
+"Group Projects\n"
+msgstr "\nProjets de groupe\n"
+
+#: actions/templates/actions/action_show.html:12
+#: actions/templates/actions/action_show.html:26
+msgid ""
+"\n"
+"Projects\n"
+msgstr "\nProjets\n"
+
+#: actions/templates/actions/action_show.html:35
+msgid ""
+"\n"
+"    The actions you’ll find here will cut energy waste, lower your monthly bills\n"
+"    and put your home on the leading edge of the energy efficiency revolution.\n"
+"  "
+msgstr "\nVous pouvez choisir n'importe lequel de ces projets pour l'exécuter avec votre groupe. Que vous soyiez entrain d'éduquer votre communauté, membre une campagne de pression pour adopter une politique favorable au climat ou de mettre en place des solutions climatiques locales, <a href=\"http://www.350.org/resources\">vous pouvez trouver des ressources pour vos projets ici</a>.\n<br /><br />\n<strong>Icon Key</strong><br />\n<table>\n\t<tr>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/theme/default_group__thumbnail_colorspace_60x60smartcrop.png\" alt=\"Movement Building\" title=\"Movement Building\" /><br />Movement Building</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/lightbulb-exchange-action-badge-0-small.png\" alt=\"Solutions\" title=\"Solutions\" /><br />Solutions</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/run-a-candidate-action-badge-0-small.png\" alt=\"Campaigns\" title=\"Campaigns\" /><br />Campaigns</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/educate-presentation-action-badge-0-small.png\" alt=\"Education\" title=\"Education\" /><br />Education</td>\n\t\t</tr>\n\t</table>\n  "
+
+#: actions/templates/actions/action_show.html:42
+msgid ""
+"\n"
+"    The projects you’ll find here will cut energy waste, lower your monthly bills\n"
+"    and put your home on the leading edge of the energy efficiency revolution.\n"
+"  "
+msgstr "\nVous pouvez choisir n'importe lequel de ces projets pour l'exécuter avec votre groupe. Que vous soyiez entrain d'éduquer votre communauté, de mener une campagne de pression pour adopter une politique favorable au climat ou de mettre en place des solutions climatiques locales,\n<a href=\"http://www.350.org/resources\">you can find resources for your projects here</a>.\n<br /><br />\n<strong>Icon Key</strong><br />\n<table>\n\t<tr>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/theme/default_group__thumbnail_colorspace_60x60smartcrop.png\" alt=\"Movement Building\" title=\"Movement Building\" /><br />Movement Building</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/lightbulb-exchange-action-badge-0-small.png\" alt=\"Solutions\" title=\"Solutions\" /><br />Solutions</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/run-a-candidate-action-badge-0-small.png\" alt=\"Campaigns\" title=\"Campaigns\" /><br />Campaigns</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/educate-presentation-action-badge-0-small.png\" alt=\"Education\" title=\"Education\" /><br />Education</td>\n\t\t</tr>\n\t</table>\n  "
+
+#: actions/templates/actions/action_show.html:50
+#, python-format
+msgid ""
+"\n"
+"    Showing %(num_actions)s action\n"
+"  "
+msgid_plural ""
+"\n"
+"    Showing %(num_actions)s actions\n"
+"  "
+msgstr[0] "\n    Montrant %(num_actions)s projet\n  "
+msgstr[1] "\n    Montrant %(num_actions)s projets\n  "
+
+#: actions/templates/actions/action_show.html:63
+#: challenges/templates/challenges/list.html:30
+#: groups/templates/groups/group_detail.html:260
+msgid "COMPLETED"
+msgstr "TERMINE"
+
+#: actions/templates/actions/action_show.html:67
+#, python-format
+msgid ""
+"\n"
+"\t    COMMITTED: %(commitment_date)s\n"
+"\t    "
+msgstr "\n\t    ENGAGE: %(commitment_date)s\n\t    "
+
+#: actions/templates/actions/action_show.html:73
+#, python-format
+msgid ""
+"\n"
+"            %(action_points)s Points\n"
+"\t    "
+msgstr "\n            %(action_points)s Points\n\t    "
+
+#: actions/templates/actions/action_show.html:85
+#, python-format
+msgid "Image for %(action_name)s"
+msgstr "Image pour %(action_name)s"
+
+#: actions/templatetags/actions.py:21
+msgid "My group already did this!"
+msgstr "Mon groupe l'a déjà fait"
+
+#: actions/templatetags/actions.py:22
+msgid "My group will do this"
+msgstr "Mon groupe le fera"
+
+#: actions/templatetags/actions.py:23
+msgid "Wait - my group is still working on this action."
+msgstr "Attendez­-mon groupe travaille toujours sur cette action."
+
+#: actions/templatetags/actions.py:25
+msgid "I did this!"
+msgstr "J'ai déjà fait ce projet"
+
+#: actions/templatetags/actions.py:26
+msgid "Make a commitment"
+msgstr "Faites un engagement "
+
+#: actions/templatetags/actions.py:27
+msgid "Wait - I'm still working on this action."
+msgstr "Attendez-je travaille toujours sur ce projet"
+
+#: basic/blog/models.py:16 basic/blog/models.py:39 challenges/models.py:23
+#: events/models.py:25 rah_locale/models.py:13
+msgid "title"
+msgstr "titre"
+
+#: basic/blog/models.py:20
+msgid "category"
+msgstr "catégorie"
+
+#: basic/blog/models.py:21
+msgid "categories"
+msgstr "catégories"
+
+#: basic/blog/models.py:36
+msgid "Draft"
+msgstr "Brouillon"
+
+#: basic/blog/models.py:37
+msgid "Public"
+msgstr "Public"
+
+#: basic/blog/models.py:42 discussions/models.py:17 groups/models.py:323
+msgid "body"
+msgstr "corps"
+
+#: basic/blog/models.py:43
+msgid "tease"
+msgstr "annonce"
+
+#: basic/blog/models.py:43
+msgid "Concise text suggested. Does not appear in RSS feed."
+msgstr "On suggère un texte concis. N'apparaît pas dans le flux RSS."
+
+#: basic/blog/models.py:44
+msgid "status"
+msgstr "statut"
+
+#: basic/blog/models.py:45
+msgid "allow comments"
+msgstr "autoriser les commentaires"
+
+#: basic/blog/models.py:46
+msgid "publish"
+msgstr "publiez"
+
+#: basic/blog/models.py:48
+msgid "modified"
+msgstr "modifié"
+
+#: basic/blog/models.py:54
+msgid "post"
+msgstr "post"
+
+#: basic/blog/models.py:55
+msgid "posts"
+msgstr "posts"
+
+#: basic/blog/models.py:87 basic/blog/models.py:88
+msgid "blog roll"
+msgstr "défileur"
+
+#: basic/blog/templates/blog/category_detail.html:5
+#: basic/blog/templates/blog/category_detail.html:11
+#: basic/blog/templates/blog/tag_detail.html:5
+#: basic/blog/templates/blog/tag_detail.html:11
+msgid "Posts for"
+msgstr "posts pour"
+
+#: basic/blog/templates/blog/category_detail.html:19
+#: basic/blog/templates/blog/post_archive_day.html:18
+#: basic/blog/templates/blog/post_archive_month.html:18
+#: basic/blog/templates/blog/post_list.html:18
+#: basic/blog/templates/blog/post_search.html:30
+#: basic/blog/templates/blog/tag_detail.html:19
+msgid "View this post"
+msgstr "Voir ce post"
+
+#: basic/blog/templates/blog/category_list.html:5
+#: basic/blog/templates/blog/category_list.html:10
+msgid "Post categories"
+msgstr "Catégories de post"
+
+#: basic/blog/templates/blog/category_list.html:17
+msgid "View posts in this category"
+msgstr "Voir les posts dans cette catégorie"
+
+#: basic/blog/templates/blog/post_archive_day.html:5
+#: basic/blog/templates/blog/post_archive_day.html:10
+#: basic/blog/templates/blog/post_archive_month.html:5
+#: basic/blog/templates/blog/post_archive_month.html:10
+#: basic/blog/templates/blog/post_archive_year.html:5
+#: basic/blog/templates/blog/post_archive_year.html:10
+msgid "Post archive for"
+msgstr "Message d'archive pour"
+
+#: basic/blog/templates/blog/post_archive_year.html:17
+msgid "View items posted this month"
+msgstr "Voir les articles publiés ce mois"
+
+#: basic/blog/templates/blog/post_detail.html:14
+msgid "View previous post"
+msgstr "Voir le post précédent"
+
+#: basic/blog/templates/blog/post_detail.html:17
+msgid "View next post"
+msgstr "Voir le post suivant"
+
+#: basic/blog/templates/blog/post_detail.html:34
+msgid "Related tags"
+msgstr "Tags associés"
+
+#: basic/blog/templates/blog/post_detail.html:45
+msgid "Comments"
+msgstr "Commentaires"
+
+#: basic/blog/templates/blog/post_detail.html:50
+msgid "Permalink to"
+msgstr "Lien permanent vers"
+
+#: basic/blog/templates/blog/post_detail.html:50
+#: basic/blog/templates/blog/post_detail.html:51
+#, python-format
+msgid "%(user_name)s's"
+msgstr "%(user_name)s's"
+
+#: basic/blog/templates/blog/post_detail.html:50 rah/models.py:27
+msgid "comment"
+msgstr "Commentaire"
+
+#: basic/blog/templates/blog/post_detail.html:51
+msgid "View"
+msgstr "Voir"
+
+#: basic/blog/templates/blog/post_detail.html:51
+msgid "website"
+msgstr "Site web"
+
+#: basic/blog/templates/blog/post_detail.html:51
+msgid "says"
+msgstr "dit"
+
+#: basic/blog/templates/blog/post_detail.html:54
+msgid "Posted at"
+msgstr "posté à"
+
+#: basic/blog/templates/blog/post_detail.html:54
+msgid "on"
+msgstr "le"
+
+#: basic/blog/templates/blog/post_detail.html:64
+msgid "Comments are closed"
+msgstr "Les commentaires sont fermés"
+
+#: basic/blog/templates/blog/post_detail.html:65
+msgid "Comments have been closed for this post"
+msgstr "Les commentaires ont été fermés pour ce post"
+
+#: basic/blog/templates/blog/post_list.html:5
+#: basic/blog/templates/blog/post_list.html:10
+msgid "Post archive"
+msgstr "Poster une archive"
+
+#: basic/blog/templates/blog/post_list.html:28
+msgid "View older posts"
+msgstr "Voir les anciens posts"
+
+#: basic/blog/templates/blog/post_list.html:28
+msgid "Older"
+msgstr "Ancien"
+
+#: basic/blog/templates/blog/post_list.html:32
+msgid "View newer posts"
+msgstr "Voir les posts récents"
+
+#: basic/blog/templates/blog/post_list.html:32
+msgid "Newer"
+msgstr "Récent"
+
+#: basic/blog/templates/blog/post_search.html:5
+msgid "Post search"
+msgstr "Rechercher un post"
+
+#: basic/blog/templates/blog/post_search.html:10
+#: basic/blog/templates/blog/post_search.html:18
+msgid "Search"
+msgstr "Recherche"
+
+#: basic/blog/templates/blog/post_search.html:33
+#, python-format
+msgid "comment%(pluralize)s"
+msgstr "commentaire%(pluralize)s"
+
+#: basic/blog/templates/blog/tag_list.html:5
+#: basic/blog/templates/blog/tag_list.html:10
+msgid "Post tags"
+msgstr "Poster les tags"
+
+#: basic/blog/templates/blog/tag_list.html:17
+msgid "View posts tagged"
+msgstr "Voir les post tagués"
+
+#: challenges/forms.py:13
+msgid "How many signatures do you want to collect?"
+msgstr "Combien de signatures voulez-vous récolter?"
+
+#: challenges/forms.py:15
+msgid "Who do you want to petition?"
+msgstr "Qui voulez-vous pétitionner?"
+
+#: challenges/forms.py:17
+msgid "What do you want them to do?"
+msgstr "Que voulez-vous qu'ils fassent?"
+
+#: challenges/forms.py:20
+msgid "Why is this important?"
+msgstr "Pourquoi ceci est-il important?"
+
+#: challenges/models.py:20 challenges/models.py:73
+msgid "challenge"
+msgstr "Campagne de pétition"
+
+#: challenges/models.py:21
+msgid "challenges"
+msgstr "campagnes de pétition"
+
+#: challenges/models.py:24 groups/models.py:64
+msgid "description"
+msgstr "description"
+
+#: challenges/models.py:25
+msgid ""
+"Tell people what this challenge is about, why you're involved, and what you "
+"want to accomplish."
+msgstr "Dites aux gens en quoi consiste la campagne,pourquoi vous êtes  impliqués et ce que vous voulez accomplir."
+
+#: challenges/models.py:27
+msgid "goal"
+msgstr "objectif"
+
+#: challenges/models.py:28 events/models.py:22
+msgid "creator"
+msgstr "créateur"
+
+#: challenges/models.py:31
+msgid "supporters"
+msgstr "supporters"
+
+#: challenges/models.py:37 groups/models.py:106
+msgid "communities"
+msgstr "groupes"
+
+#: challenges/models.py:74 events/models.py:322
+msgid "contributor"
+msgstr "participant"
+
+#: challenges/models.py:75
+msgid "send updates"
+msgstr "envoyer les mises à jour"
+
+#: challenges/models.py:76
+msgid "pledged at"
+msgstr "se sont engagés à"
+
+#: challenges/models.py:84
+msgid "support"
+msgstr "soutien"
+
+#: challenges/models.py:85
+msgid "supports"
+msgstr "soutiens"
+
+#: challenges/views.py:63
+msgid "Thanks for your support"
+msgstr "Merci de votre soutien"
+
+#: challenges/views.py:85
+#, python-format
+msgid "You do not have permissions to edit %(challenge)s"
+msgstr "Vous n'êtes pas autorisé à éditer %(challenge)s"
+
+#: challenges/views.py:93
+#, python-format
+msgid "You do not have permissions to download %(challenge)s"
+msgstr " Vous n'êtes pas autorisé à télécharger %(challenge)s"
+
+#: challenges/views.py:97
+msgid "No one has signed this petition yet."
+msgstr "Personne n'a encore signé cette pétition "
+
+#: challenges/views.py:110
+msgid "You do not have permissions"
+msgstr "vous n'avez pas d'autorisations"
+
+#: challenges/templates/challenges/_progress_bar.html:4
+msgid "Petitions signed:"
+msgstr "signatures de pétition"
+
+#: challenges/templates/challenges/_progress_bar.html:8
+#, python-format
+msgid ""
+"\n"
+"\t  %(number_of_supporters)s of <div>%(challenge_goal)s</div>\n"
+"\t  "
+msgstr "\n\t  %(number_of_supporters)s de <div>%(challenge_goal)s</div>\n\t  "
+
+#: challenges/templates/challenges/challenge_disc_contact_admins.html:3
+#: challenges/templates/challenges/challenge_disc_contact_admins.html:9
+#: challenges/templates/challenges/challenge_disc_contact_admins.html:15
+msgid "Contact Campaign Organizers"
+msgstr "Contactez les organisateurs de la campagne"
+
+#: challenges/templates/challenges/challenge_disc_contact_admins.html:6
+#: challenges/templates/challenges/challenge_disc_create.html:6
+#: challenges/templates/challenges/detail.html:7
+#: challenges/templates/challenges/edit.html:13
+#: challenges/templates/challenges/list.html:4
+#: challenges/templates/challenges/list.html:6
+#: groups/templates/groups/group_detail.html:112
+#: groups/templates/groups/group_detail.html:236 templates/base/nav.html:58
+#: templates/rah/profile.html:39
+msgid "Challenges"
+msgstr "Campagnes de pétition"
+
+#: challenges/templates/challenges/challenge_disc_create.html:3
+#: challenges/templates/challenges/challenge_disc_create.html:9
+#: challenges/templates/challenges/challenge_disc_create.html:15
+#: events/templates/events/event_disc_create.html:3
+#: events/templates/events/event_disc_create.html:9
+#: events/templates/events/event_disc_create.html:15
+msgid "New Message"
+msgstr "Nouveau message"
+
+#: challenges/templates/challenges/detail.html:11
+#: challenges/templates/challenges/list.html:32
+#: groups/templates/groups/group_detail.html:262
+msgid "Petition Challenge"
+msgstr "Campagne de pétition"
+
+#: challenges/templates/challenges/detail.html:34
+msgid "Supporters"
+msgstr "Supporters"
+
+#: challenges/templates/challenges/detail.html:36
+msgid "Download"
+msgstr "Téléchargez"
+
+#: challenges/templates/challenges/detail.html:38
+msgid "Edit this Challenge"
+msgstr "Editer cette campagne"
+
+#: challenges/templates/challenges/detail.html:77
+msgid "Sign the Petition"
+msgstr "Signer la pétition"
+
+#: challenges/templates/challenges/detail.html:100
+msgid "Latest Supporters"
+msgstr "Derniers Supporters"
+
+#: challenges/templates/challenges/detail.html:119
+msgid "Download Signatures"
+msgstr "Télécharger les signatures"
+
+#: challenges/templates/challenges/detail.html:122
+#, python-format
+msgid ""
+"\n"
+"  You have collected %(num_signatures)s signatures.\n"
+"  <a class=\"button\" href=\"%(download_url)s\">\n"
+"    Download PDF\n"
+"  </a>\n"
+"  "
+msgstr "\n  Vous avez collecté %(num_signatures)s signatures.\n  <a class=\"button\" href=\"%(download_url)s\">\n    Télécharger PDF\n  </a>\n  "
+
+#: challenges/templates/challenges/detail.html:129
+msgid ""
+"\n"
+"  You have not yet collected any signatures.\n"
+"  "
+msgstr "\n  Vous n'avez encore collecté aucune signature.\n  "
+
+#: challenges/templates/challenges/detail.html:139
+msgid "Share"
+msgstr "Partager"
+
+#: challenges/templates/challenges/detail.html:146
+msgid "Petitions signed"
+msgstr "Signatures de pétition"
+
+#: challenges/templates/challenges/edit.html:6
+msgid "Create a Challenge"
+msgstr "Créer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:8
+msgid "Edit a Challenge"
+msgstr "Editer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:19
+msgid "Create challenge"
+msgstr "Créer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:21
+msgid "Edit challenge"
+msgstr "Editer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:27
+#: challenges/templates/challenges/edit.html:40
+msgid "Create Challenge"
+msgstr "Créer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:29
+msgid "Edit Challenge"
+msgstr "Editer une campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:36
+#: challenges/templates/challenges/edit.html:39
+#: events/templates/events/create.html:24
+#: groups/templates/groups/group_create.html:30
+msgid "Cancel"
+msgstr "Annuler"
+
+#: challenges/templates/challenges/edit.html:37
+msgid "Save Challenge"
+msgstr "Sauvegarder la campagne de pétition"
+
+#: challenges/templates/challenges/edit.html:51
+msgid "Use this form to create or edit a challenge"
+msgstr "Utiliser ce formulaire pour créer ou éditer une campagne de pétition"
+
+#: challenges/templates/challenges/list.html:8
+msgid ""
+"\n"
+"Together we can achieve big things. Join a challenge to help your community\n"
+"reach a new goal and take the world one step closer to a clean energy\n"
+"transformation.\n"
+msgstr "\nEnsemble nous pouvons réaliser de grandes choses.Rejoignez ou commencez une campagne de pétition pour inciter une action positive dans votre communauté pour conduire le monde vers un climat sain pour tous. <a href=\"http://local.350.org/campaigns/guide/\">\nLisez le guide de pétition pour vous aider à faire plus d'efforts.</a>\n"
+
+#: challenges/templates/challenges/list.html:15
+msgid "<b>+</b> Create a Challenge"
+msgstr "<b>+</b> Créez une campagne de pétition"
+
+#: challenges/templates/challenges/list.html:19
+#, python-format
+msgid ""
+"\n"
+"Showing %(num_challenges)s challenges\n"
+msgstr "\nMontrant %(num_challenges)s campagnes\n"
+
+#: challenges/templates/challenges/list.html:40
+msgid "Created by:"
+msgstr "Créé par"
+
+#: challenges/templates/challenges/list.html:42
+#, python-format
+msgid ""
+"\n"
+"\t    Goal: %(challenge_goal)s supporters\n"
+"\t    "
+msgstr "\n\t    Objectif: %(challenge_goal)s supporters\n\t    "
+
+#: commitments/forms.py:13 events/forms.py:118 events/forms.py:218
+#: events/forms.py:332 groups/forms.py:32 rah/admin.py:48 rah/forms.py:57
+#: rah/forms.py:135
+msgid "Location"
+msgstr "Lieu"
+
+#: commitments/forms.py:14 events/forms.py:333 rah/forms.py:58
+#: rah/forms.py:136
+msgid "(Optional) Be as specific as you're comfortable sharing"
+msgstr "(facultatif)Votre ville,région,et/ou pays"
+
+#: commitments/templates/commitments/show.html:4
+msgid "My commitments"
+msgstr "Mes engagements"
+
+#: commitments/templates/commitments/show.html:10
+msgid "Collect Pledge Cards"
+msgstr "Collecter les Pledge Cards"
+
+#: commitments/templates/commitments/show.html:12
+msgid ""
+"\n"
+"            Pledge Cards are a great way to start a conversation about saving energy. The card invites the recipient to take\n"
+"            the Trendsetter Pledge, and get started on that pledge by committing to energy actions. You can download the\n"
+"            Pledge Card and print out as many copies as you need.\n"
+"\t  "
+msgstr "\n           Les Pledge Cards sont une excellente façon de commencer une conversation sur l'économie d'énergie. La carte invite le destinataire à prendre l'engagement Trendsetter, et commencer par cet engagement pour adhérer aux actions d'énergie. Vous pouvez télécharger la Pledge Card et imprimer autant de copies dont vous aurez besoin.\n\t  "
+
+#: commitments/templates/commitments/show.html:19
+msgid "Step 1:"
+msgstr "Etape 1"
+
+#: commitments/templates/commitments/show.html:21
+msgid "Download the Pledge Card"
+msgstr "Télécharger la Pledge Card"
+
+#: commitments/templates/commitments/show.html:21
+#: events/templates/events/detail.html:105
+msgid "PDF sign in sheet download"
+msgstr "Télécharger la feuille d'inscription PDF"
+
+#: commitments/templates/commitments/show.html:25
+msgid "Step 2:"
+msgstr "Etape 2"
+
+#: commitments/templates/commitments/show.html:26
+msgid "Enter pledge cards"
+msgstr "Entrer les pledge cards"
+
+#: commitments/templates/commitments/show.html:29
+msgid "Pick your place"
+msgstr "Choisissez votre endroit"
+
+#: commitments/templates/commitments/show.html:30
+msgid ""
+"\n"
+"        <p>\n"
+"            In your community, there are tons of opportunities for you to get creative, meet new people and help others\n"
+"            start saving energy. Here are a few ideas for good recruitment venues:\n"
+"        </p>\n"
+"        <ul class=\"spaced_list\">\n"
+"            <li>\n"
+"                <b>In your child’s school:</b> Engage parents by bringing Pledge Cards to PTA meetings or green fairs at\n"
+"                your school.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your college or high school:</b> Work with your environmental club to collect Trendsetter Pledges\n"
+"                in places like the dining hall and other venues around campus.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>In your office:</b> Hold a “lunch n’ learn” about energy efficiency and hand out Pledge Cards. You\n"
+"                can invite a member of the facilities staff to give a brief presentation about how energy is used in\n"
+"                your office building. You may want to consider using the Energy Meeting tool for this kind of event.\n"
+"            </li>\n"
+"            <li>\n"
+"                <b>At your place of worship:</b> Hand out Pledge Cards during a potluck or field day. \n"
+"            </li>\n"
+"            <li>\n"
+"                <b>Around your neighborhood:</b> Set up a table at your block party. Organize a group of your neighbors\n"
+"                to get together and knock on doors with a Pledge Card in hand. This is a great way to meet your\n"
+"                neighbors!\n"
+"            </li>\n"
+"        </ul>\n"
+"\t"
+msgstr "\n        <p>\n           Dans votre communauté,il y a des tonnes de possibilités qui vous sont offertes pour faire preuve de créativité,rencontrer des gens et aider les autres\n            Commencer à économiser l'énergie.Voici quelques idées pour de bons sites de recruitement:\n        </p>\n        <ul class=\"spaced_list\">\n            <li>\n                <b>Dans l'école de votre enfant:</b> Faites participer les parents en apportant des pledge cards aux réunions PTA ou foires verts à votre école.\n            </li>\n            <li>\n                <b>A votre collège ou lycée:</b> Travailler avec votre club environnement pour collecter les engagements Trendsetter\n               dans des endroits comme la cantine et d'autres endroits autour du campus.\n            <li>\n                <b>Dans votre bureau:</b> Tenir un “apprendre en déjeunant” sur l'efficacité énergétique et distribuer des Pledge Cards. Vous\n                pouvez inviter un membre du personnel technique pour donner une présentation sur la façon dont l'énergie est utilisée dans \n               \n l'immeuble de votre bureau. Vous voudrez peu­t­­-être envisager d'utiliser l'outil de réunion énergétique pour un événement pareil.\n            </li>\n            <li>\n                <b>Dans votre lieu de culte:</b> Distribuer des Pledge Cards  lors d'un repas de partage ou d'une journée de terrain. \n            </li>\n            <li>\n                <b>Autour de votre voisinage:</b> Installez une table lors de votre fête de quartier. Organiser ensemble un groupe de voisins \n                et frapper aux portes avec une Pledge Card dans la main. C'est une excellente façon de rencontrer vos voisins!\n            </li>\n        </ul>\n\t"
+
+#: commitments/templates/commitments/show.html:59
+msgid "Level up"
+msgstr ""
+
+#: commitments/templates/commitments/show.html:62
+#, python-format
+msgid ""
+"\n"
+"            Set a recruitment goal for yourself or <a href=\"%(group_list_url)s\">your community</a>. Challenge a friend to\n"
+"            see who can recruit the most Trendsetters. A little friendly competition can go a long way towards inspiring\n"
+"            people to keep at it.\n"
+"\t  "
+msgstr "\nFixez-vous un objectif de recrutement ou <a href=\"%(group_list_url)s\">à votre groupe</a>. Défiez un ami pour voir qui peut recruter le plus de nouveaux activistes. Une petite compétition amicale peut beaucoup inspirer les gens à s'y attacher."
+
+#: commitments/templates/commitments/show.html:69
+msgid "Your collected Pledge Cards"
+msgstr "Vos pledge cards collectées"
+
+#: commitments/templates/commitments/show.html:134
+msgid "to enter pledge cards."
+msgstr "pour entrer les pledge cards."
+
+#: commitments/templates/commitments/show.html:144
+msgid "Collected pledges"
+msgstr "Promesses recueillies"
+
+#: commitments/templates/commitments/show.html:146
+#, python-format
+msgid ""
+"\n"
+"            You've collected <b>%(pledge_card_count)s</b> pledge cards.\n"
+"            See all your <a href=\"#managecards\">collected Pledge Cards</a>.\n"
+"\t  "
+msgstr "\n            vous avez collecté <b>%(pledge_card_count)s</b> pledge cards\n            Voir tous vos <a href=\"#managecards\">pledge cards collectées</a>.\n\t  "
+
+#: discussions/models.py:16 groups/models.py:322
+msgid "subject"
+msgstr "objet"
+
+#: discussions/models.py:22 groups/models.py:452 rateable/models.py:34
+msgid "content type"
+msgstr ""
+
+#: discussions/models.py:23 groups/models.py:453
+msgid "object id"
+msgstr ""
+
+#: discussions/models.py:28 groups/models.py:328
+msgid "parent"
+msgstr "parent"
+
+#: discussions/models.py:29 groups/models.py:329
+msgid "is public"
+msgstr "est public"
+
+#: discussions/models.py:30 groups/models.py:330
+msgid "is removed"
+msgstr "est retiré"
+
+#: discussions/models.py:31 groups/models.py:331
+msgid "reply count"
+msgstr "compte réponse"
+
+#: discussions/models.py:34 groups/models.py:334
+msgid "disallow replies"
+msgstr "interdire les réponses"
+
+#: discussions/models.py:35
+msgid "contact admin"
+msgstr "contactez l'administrateur"
+
+#: discussions/models.py:38 groups/models.py:342
+msgid "Discussion"
+msgstr "Discussion"
+
+#: events/admin.py:52 events/forms.py:248 events/templates/events/hosts.html:8
+msgid "Hosts"
+msgstr "Organisateurs"
+
+#: events/decorators.py:16
+msgid "You must be an event manager"
+msgstr "vous devez être un responsable d'événement"
+
+#: events/decorators.py:24
+msgid "You are not a registered guest"
+msgstr "vous n'êtes pas enregistré comme invité "
+
+#: events/decorators.py:35
+msgid "You need an invitation for this event"
+msgstr "Vous devez avoir une invitation pour cet événement"
+
+#: events/decorators.py:37
+msgid "Invitation code is not valid for this event"
+msgstr "le code de l'invitation n'est pas valide pour cet événement"
+
+#: events/filterspec.py:13
+msgid "Any"
+msgstr "tout"
+
+#: events/filterspec.py:21
+msgid "Has Happened"
+msgstr "S'est passé"
+
+#: events/forms.py:45
+msgid "Street address"
+msgstr "Adresse de rue"
+
+#: events/forms.py:46
+msgid "Include the city, state and country"
+msgstr "Inclure la ville,état/région,code postal et pays"
+
+#: events/forms.py:85 invite/forms.py:18
+msgid "Email addresses"
+msgstr "Adresses email"
+
+#: events/forms.py:87
+msgid "For multiple email addresses, seperate them with a comma"
+msgstr "Séparer les adresses email multiples avec une virgule"
+
+#: events/forms.py:89 invite/forms.py:22
+msgid "Personal note (optional)"
+msgstr "Note personnelle (facultative)"
+
+#: events/forms.py:92
+msgid "Email me when people RSVP"
+msgstr "Envoyez-moi un email quand les gens RSVP"
+
+#: events/forms.py:94
+msgid "Send me a copy of the invitation"
+msgstr "Envoyez-moi la copie de l'invitation"
+
+#: events/forms.py:119 events/forms.py:219
+msgid "Where does this guest live?"
+msgstr "Où vit cette personne?"
+
+#: events/forms.py:121
+msgid "Is this person planning on attending?"
+msgstr "Cette personne envisage­-t-elle de participer?"
+
+#: events/forms.py:170
+msgid "Send Announcement Email"
+msgstr "Envoyer un email d'annonce"
+
+#: events/forms.py:171
+msgid "Send Invitation Email"
+msgstr "Envoyer un email d'invitation"
+
+#: events/forms.py:172
+msgid "Send Reminder Email"
+msgstr "Envoyer un email de rappel"
+
+#: events/forms.py:175
+msgid "Remove from guest list"
+msgstr "Supprimer de la liste des invités"
+
+#: events/forms.py:176
+msgid "Make a guest a host"
+msgstr "Faites d'un invité un organisateur"
+
+#: events/forms.py:177
+msgid "Remove host privileges"
+msgstr "Supprimer les privilèges d'un organisateur"
+
+#: events/forms.py:181
+msgid "- Select One -"
+msgstr "- Sélectionner Un -"
+
+#: events/forms.py:200
+msgid "All guests must have an email address"
+msgstr "Tous les invités doivent avoir une adresse email"
+
+#: events/forms.py:206
+msgid "You must leave at least one host for the event"
+msgstr "Vous devez laisser au moins un organisateur pour l'événement"
+
+#: events/forms.py:228
+msgid "A Guest with this email address already exists."
+msgstr "Un invité avec cette adresse email existe déjà"
+
+#: events/forms.py:277
+msgid "Invalid token"
+msgstr "Symbole invalide"
+
+#: events/forms.py:335 rah/forms.py:34 rah/forms.py:73
+msgid "Password"
+msgstr "Mot de passe"
+
+#: events/forms.py:336
+msgid "Confirm Password"
+msgstr "Confirmer le mot de passe"
+
+#: events/forms.py:346
+msgid "The two password fields didn't match."
+msgstr "Les deux champs de mot de passe ne correspondent pas"
+
+#: events/forms.py:348
+msgid "Your password must contain at least 5 characters."
+msgstr "Votre mot de passe doit contenir au moins 5 caractères"
+
+#: events/forms.py:373
+msgid "Personal Note"
+msgstr "Note personnelle"
+
+#: events/forms.py:374
+msgid "Enter a brief note that will be included in your email"
+msgstr "Entrer une brève note qui figurera dans votre email "
+
+#: events/forms.py:395
+#, python-format
+msgid "Unknown message type: %(type)s"
+msgstr "Type de message inconnu: %(type)s"
+
+#: events/models.py:24
+msgid "default survey"
+msgstr "enquête par défaut"
+
+#: events/models.py:26
+msgid "What do you want to call this shindig?"
+msgstr "Que voulez-vous en convoquant votre rassemblement?"
+
+#: events/models.py:29 groups/models.py:70 rah/models.py:143
+msgid "location"
+msgstr "lieu"
+
+#: events/models.py:31
+msgid "when"
+msgstr "quand"
+
+#: events/models.py:33
+msgid "start time"
+msgstr "heure de début"
+
+#: events/models.py:36
+msgid "duration"
+msgstr "durée"
+
+#: events/models.py:41
+msgid "details"
+msgstr "détails"
+
+#: events/models.py:42
+msgid ""
+"For example, where should people park, what's the nearest subway, do people "
+"need to be buzzed in, etc."
+msgstr "Par exemple:où pourront se garer les gens,l'arrêt de train ou bus le plus proche,si les invités doivent appeler pour entrer dans l'immeuble,etc."
+
+#: events/models.py:52
+msgid "is private"
+msgstr "Cet événement est privé"
+
+#: events/models.py:54
+msgid ""
+"If your event is kept private, only individuals who receive an invite email "
+"will be able to RSVP."
+msgstr "Si votre événement est gardé privé,seuls les individus qui recevront un email d'invitation seront capables de RSVP."
+
+#: events/models.py:58
+msgid "limit"
+msgstr "limite"
+
+#: events/models.py:59
+msgid ""
+"Adding a limit sets a cap on the number of guests that can RSVP. If the "
+"limit is reached, potential guests will need to contact you first."
+msgstr "Ajouter une limite fixe un plafond sur le nombre d'invités qui peuvent RSVP.Si la limite est atteinte,les invités potentiels vous contacteront en premier."
+
+#: events/models.py:316
+msgid "Attending"
+msgstr "Participera"
+
+#: events/models.py:317
+msgid "Maybe Attending"
+msgstr "Participera peut-­être"
+
+#: events/models.py:318
+msgid "Not Attending"
+msgstr "Ne participera pas"
+
+#: events/models.py:320
+msgid "Event"
+msgstr "Evénement"
+
+#: events/models.py:323
+msgid "invited"
+msgstr "invités"
+
+#: events/models.py:324
+msgid "added"
+msgstr "ajouté"
+
+#: events/models.py:325
+msgid "rsvp status"
+msgstr "Statut RSVP"
+
+#: events/models.py:327
+msgid "comments"
+msgstr "commentaires"
+
+#: events/models.py:328
+msgid "notify on rsvp"
+msgstr "Notifiez sur RSVP"
+
+#: events/models.py:329
+msgid "is host"
+msgstr "est organisateur"
+
+#: events/models.py:346
+#, python-format
+msgid "Invited %(date)s"
+msgstr "Invité %(date)s"
+
+#: events/models.py:348
+#, python-format
+msgid "Added %(date)s"
+msgstr "Ajouté %(date)s"
+
+#: events/templates/events/_energy_commitment_card.html:2
+msgid "Name:"
+msgstr "Nom:"
+
+#: events/templates/events/_energy_commitment_card.html:3
+msgid "Email:"
+msgstr "Email:"
+
+#: events/templates/events/_energy_commitment_card.html:4
+msgid "Phone:"
+msgstr "Téléphone:"
+
+#: events/templates/events/_energy_commitment_card.html:7
+#: events/templates/events/_pilot_commitment_card.html:7
+msgid "Empower Your Home"
+msgstr "Renforcez votre Page d'accueil"
+
+#: events/templates/events/_energy_commitment_card.html:12
+#: events/templates/events/_pilot_commitment_card.html:12
+msgid "I've Done this"
+msgstr "Je l'ai fait"
+
+#: events/templates/events/_energy_commitment_card.html:13
+#: events/templates/events/_pilot_commitment_card.html:13
+msgid "I pledge to do this"
+msgstr "Je m'engage à le faire"
+
+#: events/templates/events/_energy_commitment_card.html:27
+msgid "Magnify Your Impact"
+msgstr "Amplifiez votre Impact"
+
+#: events/templates/events/_energy_commitment_card.html:32
+msgid "Commit to Do"
+msgstr "S'engager à faire"
+
+#: events/templates/events/_energy_commitment_card.html:47
+#: events/templates/events/_hosts.html:8
+#: events/templates/events/_pilot_commitment_card.html:28
+#: events/templates/events/_volunteer_form.html:25
+msgid "Save"
+msgstr "Enregistrer"
+
+#: events/templates/events/_event_nugget_list.html:9
+#, python-format
+msgid ""
+"\n"
+"\t\t  %(event_date)s @ %(event_time)s\n"
+"\t\t  "
+msgstr "\n\t\t  %(event_date)s @ %(event_time)s\n\t\t  "
+
+#: events/templates/events/_event_nugget_list.html:17
+msgid "Subscribe to feed"
+msgstr "S'abonner au flux"
+
+#: events/templates/events/_event_nugget_list.html:19
+#: templates/rah/profile.html:140
+msgid "atom feed"
+msgstr "flux atome "
+
+#: events/templates/events/_guests_add.html:3
+#: events/templates/events/detail.html:101
+#: events/templates/events/guests_add.html:9
+msgid "Add Guest"
+msgstr "Ajouter un participant"
+
+#: events/templates/events/_guests_add.html:6
+#: group_links/templates/group_links/_form.html:12
+#: templates/admin/index.html:29
+msgid "Add"
+msgstr "Ajouter"
+
+#: events/templates/events/_guests_invite.html:3
+#: events/templates/events/guests_invite.html:8
+msgid "Invite Guests"
+msgstr "Inviter les Participants"
+
+#: events/templates/events/_guests_invite.html:6
+#: events/templates/events/message.html:23
+msgid "Send"
+msgstr "Envoyer"
+
+#: events/templates/events/_hosts.html:3
+#: events/templates/events/detail.html:102
+msgid "Select Hosts"
+msgstr "Sélectionner les organisateurs"
+
+#: events/templates/events/_invitations.html:3
+msgid "Invitations"
+msgstr "Invitations"
+
+#: events/templates/events/_invitations.html:6
+#, python-format
+msgid ""
+"\n"
+"            %(num_confirmed)s confirmed\n"
+"\t"
+msgstr "\n            %(num_confirmed)s confirmé\n\t"
+
+#: events/templates/events/_invitations.html:12
+#, python-format
+msgid ""
+"\n"
+"            %(num_maybes)s maybe\n"
+"\t"
+msgid_plural ""
+"\n"
+"            %(num_maybes)s maybes\n"
+"\t"
+msgstr[0] "\n            %(num_maybes)s peut-être\n\t"
+msgstr[1] "\n            %(num_maybes)s peut-être\n\t"
+
+#: events/templates/events/_invitations.html:20
+#, python-format
+msgid ""
+"\n"
+"            %(num_not_attending)s can't attend\n"
+"\t"
+msgstr "\n            %(num_not_attending)s ne peut pas participer\n\t"
+
+#: events/templates/events/_invitations.html:26
+#, python-format
+msgid ""
+"\n"
+"            %(num_invitations)s outstanding invitation\n"
+"\t"
+msgid_plural ""
+"\n"
+"            %(num_invitations)s outstanding invitations\n"
+"\t"
+msgstr[0] "\n            %(num_invitations)s invitation exceptionnelle\n\t"
+msgstr[1] "\n            %(num_invitations)s invitations exceptionnelles\n\t"
+
+#: events/templates/events/_pilot_commitment_card.html:2
+#: events/templates/events/_volunteer_form.html:2
+#: events/templates/events/sign_in_sheet.html:36
+msgid "Name"
+msgstr "Nom"
+
+#: events/templates/events/_pilot_commitment_card.html:3
+#: events/templates/events/_volunteer_form.html:3
+#: events/templates/events/sign_in_sheet.html:37 rah/forms.py:72
+msgid "Email"
+msgstr "Email"
+
+#: events/templates/events/_pilot_commitment_card.html:4
+#: events/templates/events/_volunteer_form.html:4
+#: events/templates/events/sign_in_sheet.html:38
+msgid "Phone"
+msgstr "Téléphone"
+
+#: events/templates/events/_rsvp_form.html:33
+#: groups/templates/groups/_group_disc_create_form.html:19
+#: groups/templates/groups/_membership_form.html:7
+msgid "Submit"
+msgstr "Soumettre"
+
+#: events/templates/events/_search_listing.html:4
+msgid "Event Search"
+msgstr "Chercher un événement"
+
+#: events/templates/events/_search_listing.html:8
+#: groups/templates/groups/_search_listing.html:8
+#: groups/templates/groups/_search_listing.html:10
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: events/templates/events/_search_listing.html:10
+msgid "Event Search Results"
+msgstr "Résultats de recherche de l'événement"
+
+#: events/templates/events/_search_listing.html:11
+#: groups/templates/groups/_search_listing.html:11
+msgid "The results of your search are below"
+msgstr "Les résultats de votre recherche sont en bas"
+
+#: events/templates/events/_search_listing.html:12
+#: groups/templates/groups/_search_listing.html:12
+#, python-format
+msgid "Showing %(num_results)s results"
+msgstr "Montrant %(num_results)s résultats"
+
+#: events/templates/events/_search_listing.html:22
+msgid "More results"
+msgstr "Plus de résultats"
+
+#: events/templates/events/_volunteer_form.html:8
+msgid "Commit to take action in your own home"
+msgstr "S'engager à agir chez vous"
+
+#: events/templates/events/_volunteer_form.html:15
+msgid "What type of community will you start"
+msgstr "Quel genre de communauté mettrez-vous en place"
+
+#: events/templates/events/archive.html:4
+msgid "Events Archive"
+msgstr "Archive des événements"
+
+#: events/templates/events/archive.html:6
+msgid "Event Archive"
+msgstr "Archive d'événement"
+
+#: events/templates/events/archive.html:7
+msgid "This is an archive of all events past and future."
+msgstr "Une liste complète de rassemblements,passés et futurs."
+
+#: events/templates/events/archive.html:8 events/templates/events/show.html:18
+#, python-format
+msgid "Showing %(num_events)s events"
+msgstr "Montrant %(num_events)s événements"
+
+#: events/templates/events/create.html:4 events/templates/events/create.html:8
+#: events/templates/events/create.html:20 events/templates/events/show.html:48
+msgid "Create an Event"
+msgstr "Créer un Evénement"
+
+#: events/templates/events/create.html:11
+msgid ""
+"\n"
+"No special experience is needed to organize an energy meet up, just a passion\n"
+"for saving energy and a few friends and neighbors. Our <a href=\"/hosting/\">host materials</a> provide\n"
+"step by step instructions for executing a great event and lots of fun\n"
+"activities and materials to give to guests.\n"
+msgstr "\nVous n'avez pas besoin d'une expérience particulière pour organiser une réunion locale--juste de la passion, une volonté de collaborer avec vos voisins et un engagement à aller jusqu'au bout. Nos  <a href=\"http://www.350.org/resources\">ressources pour organisateur</a> fournissent des guides pour l'exécution d'un grand événement, beaucoup d'idées d'action amusantes, et des matériaux à donner aux participants.\n"
+
+#: events/templates/events/create.html:25
+msgid "Create Event"
+msgstr "Créer un Evénement"
+
+#: events/templates/events/detail.html:9
+#, python-format
+msgid "%(event)s comments feed"
+msgstr "%(event)s flux de commentaires"
+
+#: events/templates/events/detail.html:20
+#, python-format
+msgid "%(SITE_NAME)s Event"
+msgstr "%(SITE_NAME)s Evénement"
+
+#: events/templates/events/detail.html:30
+#: events/templates/events/event_disc_contact_admins.html:3
+#: events/templates/events/event_disc_contact_admins.html:9
+#: events/templates/events/event_disc_contact_admins.html:15
+msgid "Contact Event Organizers"
+msgstr "Contacter les Organisateurs de l'Evénement"
+
+#: events/templates/events/detail.html:35
+msgid "Contact Event Attendees"
+msgstr "Contacter les Participants de l'Evénement"
+
+#: events/templates/events/detail.html:39
+msgid "Send Invites"
+msgstr "Envoyer les Invitations"
+
+#: events/templates/events/detail.html:50
+msgid "RSVPs"
+msgstr "RSVPs"
+
+#: events/templates/events/detail.html:53
+#: events/templates/events/detail.html:98
+msgid "Host Tools"
+msgstr "Outils de l' Organisateur"
+
+#: events/templates/events/detail.html:57
+#: events/templates/events/detail.html:100
+msgid "Edit Event Details"
+msgstr "Editer les Détails de l'Evénement"
+
+#: events/templates/events/detail.html:64
+msgid "RSVP"
+msgstr "RSVP"
+
+#: events/templates/events/detail.html:67
+#, python-format
+msgid ""
+"\n"
+"        You are: <span>%(rsvp_status)s</span><br />\n"
+"\t"
+msgstr "\nVous êtes:<span>%(rsvp_status)s</span><br />"
+
+#: events/templates/events/detail.html:70
+msgid "change"
+msgstr "changer"
+
+#: events/templates/events/detail.html:104
+#: events/templates/events/sign_in_sheet.html:5
+#: events/templates/events/sign_in_sheet.html:29
+msgid "Sign In Sheet"
+msgstr "Feuille d'inscription"
+
+#: events/templates/events/detail.html:109
+msgid "Excel guest list download"
+msgstr "Télécharger la liste excel des invités"
+
+#: events/templates/events/edit.html:4
+#, python-format
+msgid "Edit %(event)s"
+msgstr "Editer %(event)s"
+
+#: events/templates/events/edit.html:9
+msgid "Edit Event"
+msgstr "Editer l'événement"
+
+#: events/templates/events/edit.html:16
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: events/templates/events/message.html:4
+#, python-format
+msgid "%(event)s Message"
+msgstr "%(event)s Message"
+
+#: events/templates/events/message.html:9
+#: events/templates/events/message.html:15
+msgid "Message"
+msgstr "Message"
+
+#: events/templates/events/message.html:17
+msgid "Subject"
+msgstr "Objet"
+
+#: events/templates/events/rsvp_account.html:8
+msgid "Create an Account"
+msgstr "Créer un compte"
+
+#: events/templates/events/rsvp_account.html:13
+msgid "events_rsvp_register_button"
+msgstr "Créer un compte"
+
+#: events/templates/events/rsvp_account.html:14
+msgid "No Thanks"
+msgstr "Non merci"
+
+#: events/templates/events/rsvp_confirm.html:8
+msgid "Thanks for the RSVP"
+msgstr "Merci pour la RSVP"
+
+#: events/templates/events/rsvp_confirm.html:10
+#, python-format
+msgid ""
+"\n"
+"\t      We'll put you down as <span>%(rsvp_status)s</span>\n"
+"\t      "
+msgstr "\nNous vous inscrirons en tant que <span>%(rsvp_status)s</span>"
+
+#: events/templates/events/rsvp_confirm.html:16
+msgid "Confirm RSVP"
+msgstr "Confirmer RSVP"
+
+#: events/templates/events/show.html:11
+msgid ""
+"\n"
+"Come together with friends and neighbors to share tips and tricks for saving\n"
+"energy at home. Meet ups are also a great place to share information about\n"
+"energy efforts in the community and how to get involved. Find one near you or\n"
+"host your own.\n"
+msgstr "\nSe réunir hors ligne est crucial pour le renforcement du pouvoir local et la création d'un mouvement.Rencontrez-vous pour apprendre à vous connaître, discutez des plans d'action ou organiser des événements communautaires. Il existe peu de limites aux bons événements climatiques. Trouvez-en un près de chez vous ou organisez le vôtre.\n"
+
+#: events/templates/events/show.html:45
+#: groups/templates/groups/group_list.html:47
+msgid "People attending an event"
+msgstr "Personnes présentes à l'événement"
+
+#: events/templates/events/show.html:47
+msgid "Hosting a Meetup is fun and easy"
+msgstr "Mettez votre événement sur la carte"
+
+#: events/templates/events/show.html:51
+msgid ""
+"\n"
+"            We have all the <a href=\"/hosting/\">materials</a> you need to host an energy meet up. \n"
+"\t  "
+msgstr "\nS'il vous plaît utiliser nos      <a href=\"http://www.350.org/resources\">ressources</a> pour vous aider à organiser votre rencontre ou action."
+
+#: events/templates/events/show.html:59 templates/rah/home_page.html:166
+msgid "Recent Events"
+msgstr "Evénements à venir"
+
+#: events/templates/events/show.html:61
+msgid "Can't find what you're looking for?"
+msgstr "Vous ne trouvez pas ce que vous recherchiez?"
+
+#: events/templates/events/show.html:62
+msgid "Browse past events"
+msgstr "Parcourez les événements passés"
+
+#: events/templates/events/sign_in_sheet.html:30
+msgid ""
+"Check off your name and fill in any missing details. If you're not on the "
+"list, just add yourself."
+msgstr "Cochez votre nom et complétez tous les détails qui manquent.Si vous ne figurez pas sur la liste,ajoutez-vous vous mêmes."
+
+#: events/templates/events/sign_in_sheet.html:39
+msgid "Zipcode"
+msgstr "Code postal ou code zip"
+
+#: events/templates/events/sign_in_sheet.html:65
+#, python-format
+msgid "Page %(page_number)s"
+msgstr "Page %(page_number)s"
+
+#: export/views.py:204
+msgid "Your password has been set, and you are now logged in.  Welcome!"
+msgstr "Votre mot de passe a été réglé, et vous êtes connecté. Bienvenue!"
+
+#: export/templates/export/claim_account_password_reset_confirm.html:18
+msgid ""
+"\n"
+"\t  To claim your account on 350 Local and log in, choose a password for your account.\n"
+"\t  "
+msgstr "\nPour solliciter votre compte sur 350 Local et vous connecter,choisissez un mot de passe pour votre compte."
+
+#: geo/filterspec.py:33
+msgid "All"
+msgstr "Tout"
+
+#: geo/filterspec.py:56
+msgid "Country"
+msgstr "Pays"
+
+#: geo/filterspec.py:66
+msgid "State"
+msgstr "Etat ou région"
+
+#: geo/filterspec.py:76
+msgid "City"
+msgstr "Ville"
+
+#: geo/filterspec.py:86
+msgid "Region"
+msgstr "Région"
+
+#: group_links/models.py:8
+msgid "external link"
+msgstr "Lien externe"
+
+#: group_links/models.py:9
+msgid "external links"
+msgstr "Liens externes"
+
+#: group_links/models.py:13
+msgid "URL"
+msgstr "Le lien du site web de votre groupe"
+
+#: group_links/templates/group_links/_form.html:9
+#: group_links/templates/group_links/form.html:9
+msgid "Add External Link"
+msgstr "Ajouter un lien externe"
+
+#: groups/admin.py:21
+msgid "Managers"
+msgstr "Responsables"
+
+#: groups/feeds.py:18
+#, python-format
+msgid "%(group)s Activity Stream"
+msgstr "%(group)s Flux d'activité"
+
+#: groups/feeds.py:27
+#, python-format
+msgid "All of the activity going on for %(group)s"
+msgstr "Tous les activités en cours pour %(group)s"
+
+#: groups/forms.py:23
+msgid "Community name"
+msgstr "Nom du groupe"
+
+#: groups/forms.py:24
+msgid "Enter a name for your new community"
+msgstr "Entrer un nom de votre nouveau groupe"
+
+#: groups/forms.py:25 groups/forms.py:99
+msgid "Community address"
+msgstr "Adresse du groupe"
+
+#: groups/forms.py:26 groups/forms.py:100
+msgid "This will be your community's web address"
+msgstr "Ceci sera l'adresse web de votre groupe"
+
+#: groups/forms.py:27
+msgid "Community description"
+msgstr "Description du groupe"
+
+#: groups/forms.py:28
+msgid "What is the community all about?"
+msgstr "En quoi consiste votre groupe?"
+
+#: groups/forms.py:33
+msgid "Include at least city, state and country"
+msgstr "Inclure au moins la ville,l'Etat et le Pays"
+
+#: groups/forms.py:35
+msgid "Upload a community image"
+msgstr "Téléchargez une image du groupe"
+
+#: groups/forms.py:36 rah/forms.py:140
+msgid "(Optional) You can upload png, jpg or gif files up to 512K"
+msgstr "(facultatif)Vous pouvez télécharger des fichiers png,jpg ou gif allant jusqu'à 512K"
+
+#: groups/forms.py:56
+msgid "Community images cannot be larger than 512K"
+msgstr "Les images du groupe ne doivent pas dépasser 512K"
+
+#: groups/forms.py:59 rah/forms.py:178
+#, python-format
+msgid "Images cannot be of type %(type)s"
+msgstr "Les images ne peuvent pas être du type %(type)s"
+
+#: groups/forms.py:69 groups/forms.py:71 groups/forms.py:82
+msgid "This community address is not available."
+msgstr "L'adresse de ce groupe n'est pas disponible."
+
+#: groups/forms.py:78
+msgid "Another group is already using this address."
+msgstr "Un autre groupe utilise déjà cette adresse."
+
+#: groups/forms.py:122
+msgid "This field is required."
+msgstr "Ce champ est requis."
+
+#: groups/forms.py:125
+msgid "You must include at least one letter or number in your group's name."
+msgstr "Vous devez inclure au moins une lettre ou un chiffre"
+
+#: groups/forms.py:149
+msgid "--Set Membership Role--"
+msgstr "--Définir le rôle des membres--"
+
+#: groups/forms.py:150 groups/templates/groups/_membership_form.html:28
+msgid "Manager"
+msgstr "Responsable"
+
+#: groups/forms.py:151 groups/templates/groups/_membership_form.html:28
+msgid "Regular Member"
+msgstr "Membre régulier"
+
+#: groups/forms.py:152
+msgid "Remove from Community"
+msgstr "Supprimer du groupe"
+
+#: groups/forms.py:156
+msgid "You must select a membership action."
+msgstr "Vous devez séléctionner une action d'adhésion"
+
+#: groups/forms.py:160
+msgid "You must select at least one member from the community."
+msgstr "Vous devez séléctionner au moins un membre de votre groupe"
+
+#: groups/forms.py:173
+msgid "You must leave at least one manager in the community."
+msgstr "Vous devez laisser au moins un responsable dans le groupe"
+
+#: groups/forms.py:187
+#, python-format
+msgid "Role option %(role)s does not exist"
+msgstr "L'option de rôle %(role)s n'existe pas"
+
+#: groups/forms.py:200
+msgid "Comment"
+msgstr "Commentaire"
+
+#: groups/forms.py:217
+msgid "Parent ID is currupted"
+msgstr "L' Identité parent est endommagée"
+
+#: groups/forms.py:273
+msgid "You need to be a member of a community first"
+msgstr "Une fois que vous avez rejoint un groupe,vous pouvez y associer des événements et des pétitions."
+
+#: groups/models.py:50
+msgid "Yes, a manager must approve all discussions"
+msgstr "Oui,un responsable doit approuver toutes les discussions"
+
+#: groups/models.py:51
+msgid "No, members can post discussions directly"
+msgstr "Non,les membres peuvent directement poster des discussions"
+
+#: groups/models.py:54
+msgid "Members and managers"
+msgstr "Membres et responsables"
+
+#: groups/models.py:55
+msgid "Only managers"
+msgstr "Responsables seulement"
+
+#: groups/models.py:58
+msgid "Open membership"
+msgstr "Adhésion ouverte"
+
+#: groups/models.py:59
+msgid "Closed membership"
+msgstr "Adhésion fermée"
+
+#: groups/models.py:65 rah/models.py:159
+msgid "image"
+msgstr "image"
+
+#: groups/models.py:67
+msgid "is featured"
+msgstr "est en vedette"
+
+#: groups/models.py:72
+msgid "membership type"
+msgstr "type d'adhésion"
+
+#: groups/models.py:75
+msgid "is external link only"
+msgstr "est un lien externe seulement"
+
+#: groups/models.py:79
+msgid "sample location"
+msgstr "échantillon d'emplacement"
+
+#: groups/models.py:85
+msgid "requesters"
+msgstr "demandeurs"
+
+#: groups/models.py:88
+msgid "email blacklisted"
+msgstr "Liste noire d'email"
+
+#: groups/models.py:97
+msgid "Moderate discussions?"
+msgstr "Modérer les discussions?"
+
+#: groups/models.py:101
+msgid "Who can post discussions?"
+msgstr "Qui peut poster les discussions?"
+
+#: groups/models.py:105
+msgid "community"
+msgstr "groupe"
+
+#: groups/models.py:272
+msgid "is manager"
+msgstr "est responsable"
+
+#: groups/models.py:278
+msgid "member"
+msgstr "membre"
+
+#: groups/models.py:279
+msgid "members"
+msgstr "membres"
+
+#: groups/models.py:282
+#, python-format
+msgid "%(user)s belongs to community %(group)s"
+msgstr "%(user)s appartient au groupe %(group)s"
+
+#: groups/models.py:292
+msgid "group membership request"
+msgstr "demande d'adhésion au groupe"
+
+#: groups/models.py:293
+msgid "group membership requests"
+msgstr "demandes d'adhésion au groupe"
+
+#: groups/models.py:296
+#, python-format
+msgid "%(user)s request to join %(group)s on %(date)s"
+msgstr "%(user)s demande à joindre %(group)s au %(date)s"
+
+#: groups/models.py:310
+msgid "group discussion blacklist entry"
+msgstr "entrée de la liste noire du groupe de discussion"
+
+#: groups/models.py:311
+msgid "group discussion blacklist entries"
+msgstr "entrées de la liste noire du groupe de discussion"
+
+#: groups/models.py:314
+#, python-format
+msgid "%(user)s will not recieve emails for %(group)s discussions"
+msgstr "%(user)s ne recevra d'emails pour %(group)s discussions"
+
+#: groups/models.py:457
+msgid "approved"
+msgstr "approuvé"
+
+#: groups/models.py:463
+msgid "group association request"
+msgstr "demande d'association au groupe"
+
+#: groups/models.py:464
+msgid "group association requests"
+msgstr "demandes d'association au groupe"
+
+#: groups/models.py:467
+#, python-format
+msgid "%(user)s would like to link %(object)s to %(group)s"
+msgstr "%(user)s voudrait lier %(object)s à %(group)s"
+
+#: groups/views.py:60 groups/views.py:94
+#, python-format
+msgid "%(group)s has been created."
+msgstr "%(group)s a été créé."
+
+#: groups/views.py:114
+#, python-format
+msgid "You have been removed from community %(group)s"
+msgstr "Vous avez été supprimé du groupe %(group)s"
+
+#: groups/views.py:118
+msgid ""
+"You cannot leave the community, until you've assigned someone else to be "
+"manager."
+msgstr "Vous ne pouvez quitter le groupe avant que n'ayez assigné quelqu'un d'autre à être  responsable."
+
+#: groups/views.py:122
+msgid "You cannot leave a community your not a member of"
+msgstr "Vous ne pouvez pas quitter un groupe dont vous n'êtes pas membre"
+
+#: groups/views.py:129
+#, python-format
+msgid "You are already a member of %(group)s"
+msgstr "Vous êtes déjà membre de %(group)s"
+
+#: groups/views.py:133
+#, python-format
+msgid "Your membership in %(group)s is currently pending"
+msgstr "Votre adhésion à %(group)s est actuellement en attente"
+
+#: groups/views.py:137
+#, python-format
+msgid "You have successfully joined community %(group)s"
+msgstr "Vous avez réussi à rejoindre un groupe %(group)s"
+
+#: groups/views.py:144
+#, python-format
+msgid ""
+"You have made a request to join %(group)s, a managershould grant or deny "
+"your membership shortly."
+msgstr "Vous avez fait une demande à rejoindre %(group)s, un responsable devrait accorder ou refuser votre adhésion sous peu."
+
+#: groups/views.py:165
+#, python-format
+msgid "%(user)s has been added to the community"
+msgstr "%(user)s a été ajouté au groupe"
+
+#: groups/views.py:171
+#, python-format
+msgid "%(user)s has been denied access to the community"
+msgstr "%(user)s a été refusé l'accès au groupe"
+
+#: groups/views.py:174
+#, python-format
+msgid "%(user)s has already been added to this community"
+msgstr "%(user)s a déjà été ajouté au groupe"
+
+#: groups/views.py:177
+#, python-format
+msgid "%(user)s has already been denied access to this community"
+msgstr "%(user)s a été refusé l'accès au groupe"
+
+#: groups/views.py:200
+#, python-format
+msgid "Your community has been linked with %(object)s"
+msgstr "Votre groupe a été lié à %(object)s"
+
+#: groups/views.py:208
+#, python-format
+msgid "Your community will not be linked with %(object)s"
+msgstr "Votre groupe ne sera pas lié à %(object)s"
+
+#: groups/views.py:212
+#, python-format
+msgid "%(object)s has already been linked with your community"
+msgstr "%(object)s a déjà été lié à votre groupe"
+
+#: groups/views.py:216
+#, python-format
+msgid "%(object)s has not been linked with your community"
+msgstr "%(object)s n'a pas été lié à votre groupe"
+
+#: groups/views.py:251 groups/views.py:314 groups/views.py:323
+#, python-format
+msgid "%(group)s has been updated."
+msgstr "%(group)s a été mis à jour."
+
+#: groups/views.py:256
+#, python-format
+msgid "%(group)s has been upgraded."
+msgstr "%(group)s a été amélioré."
+
+#: groups/views.py:260 groups/views.py:330
+#, python-format
+msgid "%(group)s has been deleted."
+msgstr "%(group)s a été supprimé."
+
+#: groups/views.py:337
+#, python-format
+msgid "%(group)s's memberships have been updated."
+msgstr "%(group)s's adhésions ont été mises à jour."
+
+#: groups/views.py:343
+#, python-format
+msgid "You no longer have permissions to edit %(group)s"
+msgstr "Vous n'êtes plus autorisé à éditer %(group)s"
+
+#: groups/views.py:350 rah/views.py:376
+msgid "No action specified."
+msgstr "Aucune action spécifiée."
+
+#: groups/views.py:464
+msgid "Your message has been sent to the group leaders"
+msgstr "Votre message a été envoyé aux leaders du groupe"
+
+#: groups/views.py:490
+msgid "Discussion posted"
+msgstr "Discussion postée"
+
+#: groups/views.py:525
+msgid "Discussion approved"
+msgstr "Discussion approuvée"
+
+#: groups/views.py:540
+msgid "Discussion removed"
+msgstr "Discussion supprimée"
+
+#: groups/templates/groups/_group_disc_list.html:8
+#, python-format
+msgid ""
+"\n"
+"\t      %(num_replies)s reply\n"
+"\t      "
+msgid_plural ""
+"\n"
+"\t      %(num_replies)s replies\n"
+"\t      "
+msgstr[0] "\n\t      %(num_replies)s réponse\n\t      "
+msgstr[1] "\n\t      %(num_replies)s réponses\n\t      "
+
+#: groups/templates/groups/_group_disc_list.html:18
+#, python-format
+msgid ""
+"\n"
+"\t  Posted by %(user_link)s at %(post_time)s on %(post_date)s\n"
+"\t  "
+msgstr "\n\t  Posté par %(user_link)s à %(post_time)s le %(post_date)s\n\t  "
+
+#: groups/templates/groups/_group_disc_nugget.html:21
+#: groups/templates/groups/group_detail.html:305
+#: groups/templates/groups/group_detail.html:328
+#: groups/templates/groups/group_detail.html:352
+#: groups/templates/groups/group_detail.html:383
+#: groups/templates/groups/group_edit.html:63
+msgid "Approve"
+msgstr "Approuver"
+
+#: groups/templates/groups/_group_disc_nugget.html:28
+msgid "Remove"
+msgstr "Supprimer"
+
+#: groups/templates/groups/_group_disc_nugget.html:36
+msgid "user gravatar"
+msgstr "utilisateur du gravatar"
+
+#: groups/templates/groups/_group_nugget_list.html:6
+#: groups/templates/groups/_group_search_result.html:2
+#: groups/templates/groups/group_detail.html:16
+msgid "group image"
+msgstr "Image du groupe"
+
+#: groups/templates/groups/_group_nugget_list.html:12
+#, python-format
+msgid ""
+"\n"
+"                  %(num_members)s member\n"
+"\t\t  "
+msgid_plural ""
+"\n"
+"\t\t  %(num_members)s members\n"
+"\t\t  "
+msgstr[0] "\n                  %(num_members)s membre\n\t\t  "
+msgstr[1] "\n\t\t  %(num_members)s membres\n\t\t  "
+
+#: groups/templates/groups/_membership_form.html:17
+msgid "Member"
+msgstr "Membre"
+
+#: groups/templates/groups/_membership_form.html:18
+msgid "Date Joined"
+msgstr "Date d'inscription"
+
+#: groups/templates/groups/_membership_form.html:19
+msgid "Role"
+msgstr "Rôle"
+
+#: groups/templates/groups/_search_listing.html:19
+#: search_widget/templates/search_widget/_search_listing.html:13
+msgid "more"
+msgstr "plus"
+
+#: groups/templates/groups/group_create.html:4
+#: groups/templates/groups/group_create.html:22
+msgid "Create a Community"
+msgstr "Créer un groupe"
+
+#: groups/templates/groups/group_create.html:7
+#: groups/templates/groups/group_edit.html:15
+msgid "Community"
+msgstr "Groupe"
+
+#: groups/templates/groups/group_create.html:8
+#: groups/templates/groups/group_create.html:31
+msgid "Create Community"
+msgstr "Créer un groupe"
+
+#: groups/templates/groups/group_create.html:12
+msgid "info for adding group to map should go here"
+msgstr "En ajoutant le site web externe de votre groupe sur la carte,les gens seront capables de vous reconnaître et vous rejoindre.Et si jamais vous décidez d'utiliser ce site web pour gérer votre groupe,vous serez en mesure d' \"améliorer\" facilement votre liste de groupe afin d'avoir accès à toutes les fonctionalités de ce siteweb."
+
+#: groups/templates/groups/group_create.html:14
+msgid "info for group creation should go here"
+msgstr "Prêt à commencer un groupe?Super!Commencer par remplir le formulaire sur cette page. Vous pourrez toujours faire des modifications plus tard,et mandater les autres responsables de groupe à vous aider."
+
+#: groups/templates/groups/group_create.html:20
+msgid "Add My Group to the Map"
+msgstr "Ajouter mon groupe sur la carte"
+
+#: groups/templates/groups/group_detail.html:12
+#, python-format
+msgid "%(SITE_NAME)s Community Activity"
+msgstr "%(SITE_NAME)s Flux d'activité du groupe"
+
+#: groups/templates/groups/group_detail.html:26
+#, python-format
+msgid ""
+"\n"
+"    Created %(date_created)s\n"
+"    "
+msgstr "\n    Créé %(date_created)s\n    "
+
+#: groups/templates/groups/group_detail.html:40 templates/base/base.html:124
+msgid "Find us on Facebook"
+msgstr "Trouvez-nous sur Facebook"
+
+#: groups/templates/groups/group_detail.html:48 templates/base/base.html:126
+msgid "Follow us on Twitter"
+msgstr "Suivez-nous sur Twitter"
+
+#: groups/templates/groups/group_detail.html:58
+msgid "Edit Facebook Group"
+msgstr "Editer le groupe Facebook"
+
+#: groups/templates/groups/group_detail.html:60
+msgid "Add Facebook Group"
+msgstr "Ajouter un groupe Facebook"
+
+#: groups/templates/groups/group_detail.html:65
+msgid "Edit Twitter Account"
+msgstr "Editer le compte Twitter"
+
+#: groups/templates/groups/group_detail.html:67
+msgid "Add Twitter Account"
+msgstr "Ajouter un compte Twitter"
+
+#: groups/templates/groups/group_detail.html:86
+#: groups/templates/groups/group_disc_contact_admins.html:8
+#: groups/templates/groups/group_disc_contact_admins.html:14
+msgid "Contact Group Leaders"
+msgstr "Contacter les leaders du groupe"
+
+#: groups/templates/groups/group_detail.html:92
+#: groups/templates/groups/group_disc_list.html:36
+msgid "Join Community"
+msgstr "Rejoignez le groupe"
+
+#: groups/templates/groups/group_detail.html:97
+msgid "Send Invite"
+msgstr "Envoyer une invitation"
+
+#: groups/templates/groups/group_detail.html:102
+#: groups/templates/groups/group_detail.html:180
+#: groups/templates/groups/group_disc_list.html:29
+msgid "New discussion"
+msgstr "Nouvelle discussion"
+
+#: groups/templates/groups/group_detail.html:110
+msgid "Activity"
+msgstr "Flux d'activité"
+
+#: groups/templates/groups/group_detail.html:114
+#: groups/templates/groups/group_edit.html:16 templates/rah/profile.html:60
+#: templates/rah/user_contact.html:8
+msgid "Members"
+msgstr "Membres"
+
+#: groups/templates/groups/group_detail.html:118
+msgid "Requests and Notifications"
+msgstr "Demandes et notifications"
+
+#: groups/templates/groups/group_detail.html:122
+msgid "Edit community"
+msgstr "Editer le groupe"
+
+#: groups/templates/groups/group_detail.html:143
+#, python-format
+msgid ""
+"\n"
+"            Total members: %(num_members)s<br />\n"
+"\t  "
+msgstr "\n            Total des membres: %(num_members)s<br />\n\t  "
+
+#: groups/templates/groups/group_detail.html:150
+msgid "Leave Community"
+msgstr "Quitter le groupe"
+
+#: groups/templates/groups/group_detail.html:156
+msgid "Your membership status is currently <b>pending</b>."
+msgstr "Votre adhésion est actuellement <b>en attente</b>."
+
+#: groups/templates/groups/group_detail.html:162
+msgid "Community Invitations"
+msgstr "Invitations du groupe"
+
+#: groups/templates/groups/group_detail.html:164
+#, python-format
+msgid ""
+"\n"
+"\t  Invites sent: %(num_invites)s\n"
+"\t  "
+msgstr "\n\t  Invitations envoyées: %(num_invites)s\n\t  "
+
+#: groups/templates/groups/group_detail.html:186
+msgid "Archive"
+msgstr "Archive"
+
+#: groups/templates/groups/group_detail.html:192
+msgid "No discussions yet."
+msgstr "Pas encore de discussions."
+
+#: groups/templates/groups/group_detail.html:198
+msgid "Community Activity"
+msgstr "Flux d'activité du Groupe"
+
+#: groups/templates/groups/group_detail.html:216
+#, python-format
+msgid ""
+"\n"
+"\tYour group hasn't created any events. Why don't you \n"
+"\t<a href=\"%(event_create_url)s?groups=%(group_id)s\">create a new event</a> or\n"
+"\t<a href=\"%(event_list_url)s\">look for a nearby event</a> \n"
+"\tfor your group to participate in?\n"
+"\t"
+msgstr "\n\tVotre groupe n'a encore créé aucun événement. Pourquoi ne\n\t<a href=\"%(event_create_url)s?groups=%(group_id)s\">créiez-vous pas un nouveau événement</a> ou\n\t<a href=\"%(event_list_url)s\">chercher un événement</a> pour y faire participer votre groupe?\n\t"
+
+#: groups/templates/groups/group_detail.html:243
+#, python-format
+msgid ""
+"\n"
+"\tYour group hasn't created any campaigns. Why don't you \n"
+"\t<a href=\"%(campaign_create_url)s?groups=%(group_id)s\">create a new campaign</a> or\n"
+"\t<a href=\"%(campaign_list_url)s\">look for an existing campaign</a>\n"
+"\tfor your group to participate in?\n"
+"\t"
+msgstr "\nVotre groupe n'a encore créé aucune pétition. Y at-il une initiative sur laquelle vous travaillez et pour laquelle vous voudriez lancer une pétition? <a href=\"%(campaign_create_url)s?groups=%(group_id)s\">  Cliquez ici pour lancer votre propre pétition </ a> sur 350 local. <a href=\"%(campaign_list_url)s\"> Consultez la liste </ a>  de campagnes que d'autres ont commencé pour avoir des idées."
+
+#: groups/templates/groups/group_detail.html:271
+#, python-format
+msgid ""
+"\n"
+"            Created by: %(user_link)s\n"
+"\t    <br/>\n"
+"            Goal: %(num_supporters)s supporters\n"
+"\t    "
+msgstr "\n            Créé par: %(user_link)s\n\t    <br/>\n            But: %(num_supporters)s supporters\n\t    "
+
+#: groups/templates/groups/group_detail.html:289
+msgid ""
+"\n"
+"\tThere are currently no membership or association requests awaiting approval.\n"
+"\t"
+msgstr "\nIl n'y a pas de demande d'adhésion ou d'association en attente d'approbation pour le moment."
+
+#: groups/templates/groups/group_detail.html:294
+#: groups/templates/groups/group_edit.html:53
+msgid "Membership Requests"
+msgstr "Demandes d'adhésion"
+
+#: groups/templates/groups/group_detail.html:299
+#, python-format
+msgid ""
+"\n"
+"                  %(user_link)s would like to join\n"
+"\t\t  "
+msgstr "\n                  %(user_link)s voudrait participer\n\t\t  "
+
+#: groups/templates/groups/group_detail.html:308
+#: groups/templates/groups/group_detail.html:331
+#: groups/templates/groups/group_detail.html:355
+#: groups/templates/groups/group_detail.html:390
+#: groups/templates/groups/group_edit.html:66
+msgid "Deny"
+msgstr "Nier"
+
+#: groups/templates/groups/group_detail.html:316
+msgid "Event Link Requests"
+msgstr "Demandes de lien d'événement"
+
+#: groups/templates/groups/group_detail.html:323
+#: groups/templates/groups/group_detail.html:347
+#, python-format
+msgid ""
+"\n"
+"            %(user_link)s has requested to link this community to %(object_link)s\n"
+"\t    "
+msgstr "\n            %(user_link)s a demandé de lier ce groupe à %(object_link)s\n\t    "
+
+#: groups/templates/groups/group_detail.html:340
+msgid "Challenge Link Requests"
+msgstr "Demandes de liens de la campagne"
+
+#: groups/templates/groups/group_detail.html:364
+msgid "Action Link Requests"
+msgstr "Demandes de lien d'action"
+
+#: groups/templates/groups/group_detail.html:372
+#, python-format
+msgid ""
+"\n"
+"            One of your members has indicated that your group has completed the project %(object_link)s.\n"
+"\t    "
+msgstr "\n            Un de vos membres a indiqué que votre groupe a fini le projet\n %(object_link)s.\n\t    "
+
+#: groups/templates/groups/group_detail.html:381
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: groups/templates/groups/group_detail.html:392
+msgid "Reject"
+msgstr "Rejeter"
+
+#: groups/templates/groups/group_detail.html:407
+msgid "Projects and Actions"
+msgstr "Projets et actions"
+
+#: groups/templates/groups/group_detail.html:429
+msgid "Popular Actions"
+msgstr "Projets populaires"
+
+#: groups/templates/groups/group_detail.html:434
+#, python-format
+msgid ""
+"\n"
+"\t  %(num_completions)s member\n"
+"\t  "
+msgid_plural ""
+"\n"
+"\t  %(num_completions)s members\n"
+"\t  "
+msgstr[0] "\n\t  %(num_completions)s membre\n\t  "
+msgstr[1] "\n\t  %(num_completions)s membres\n\t  "
+
+#: groups/templates/groups/group_disc_contact_admins.html:3
+#: groups/templates/groups/group_disc_create.html:3
+#: groups/templates/groups/group_disc_create.html:8
+msgid "Create Discussion"
+msgstr "Créer une discussion"
+
+#: groups/templates/groups/group_disc_create.html:14
+msgid "New Discussion"
+msgstr "Nouvelle discussion"
+
+#: groups/templates/groups/group_disc_detail.html:20
+msgid "Post a new response"
+msgstr "Poster une nouvelle réponse"
+
+#: groups/templates/groups/group_disc_list.html:3
+#, python-format
+msgid "%(group)s discussions"
+msgstr "%(group)s discussions"
+
+#: groups/templates/groups/group_disc_list.html:32
+msgid ""
+"\n"
+"\t    You must be a member of this community to post discussions.\n"
+"\t    "
+msgstr "\nVous devez être un membre de ce groupe pour poster des discussions."
+
+#: groups/templates/groups/group_edit.html:4
+#: groups/templates/groups/group_external_link_only_edit.html:4
+#, python-format
+msgid "Edit %(group)s settings"
+msgstr "Editer %(group)s paramètres"
+
+#: groups/templates/groups/group_edit.html:9
+#: groups/templates/groups/group_edit.html:12
+#: groups/templates/groups/group_external_link_only_edit.html:9
+#: groups/templates/groups/group_external_link_only_edit.html:13
+msgid "Edit Community"
+msgstr "Editer le groupe"
+
+#: groups/templates/groups/group_edit.html:28
+#: groups/templates/groups/group_external_link_only_edit.html:23
+msgid "Save Settings"
+msgstr "Enregistrer les paramètres"
+
+#: groups/templates/groups/group_edit.html:33
+#: groups/templates/groups/group_edit.html:39
+#: groups/templates/groups/group_external_link_only_edit.html:44
+#: groups/templates/groups/group_external_link_only_edit.html:52
+msgid "Delete Community"
+msgstr "Supprimer le groupe"
+
+#: groups/templates/groups/group_edit.html:35
+msgid ""
+"\n"
+"\t\t\t  Deleting a community will immediately remove it from our system.<br/>Communities cannot be undeleted.\n"
+"\t\t\t  "
+msgstr "\n\t\tLa suppression d'un groupe le retire immédiatement de notre système. <br/> Les Groupes ne peuvent pas être récupérés.\t  \n\t\t\t  "
+
+#: groups/templates/groups/group_edit.html:44
+msgid "Member Roles"
+msgstr "Rôles de membre"
+
+#: groups/templates/groups/group_edit.html:58
+#, python-format
+msgid ""
+"\n"
+"                            %(user_link)s would like to join\n"
+"\t\t\t  "
+msgstr "\n                            %(user_link)s voudrait joindre\n\t\t\t  "
+
+#: groups/templates/groups/group_edit.html:79
+msgid "Save Discussion Settings"
+msgstr "Enregistrer les paramètres de discussion"
+
+#: groups/templates/groups/group_external_link_only_edit.html:29
+msgid "Add Features"
+msgstr "Ajouter des fonctionnalités"
+
+#: groups/templates/groups/group_external_link_only_edit.html:31
+msgid ""
+"\n"
+"\tBy converting to a full-fledged group in our system, you will have access\n"
+"\tto more of the site's features including group invitations and\n"
+"\tmembers; email-based discussions with or without moderation;\n"
+"\tand associated events, campaigns, and projects.\n"
+"\t"
+msgstr "\n\tEn devenat un groupe à part entière dans notre système, vous aurez l' accès\nà plus de fonctionnalités du site y compris les invitations de groupe et\nmembres; discussions à base d' e-mails avec ou sans modération;\net les événements associés, des campagnes et des projets.\n\t"
+
+#: groups/templates/groups/group_external_link_only_edit.html:39
+msgid "Upgrade Group"
+msgstr "Améliorer le groupe"
+
+#: groups/templates/groups/group_external_link_only_edit.html:46
+msgid ""
+"\n"
+"\tDeleting a community will immediately remove it from our system.\n"
+"\t<br/>\n"
+"\tCommunities cannot be undeleted.\n"
+"\t"
+msgstr "\n\tLa suppression d'une communauté la retire immédiatement  de notre système.\n<br/>\n  Les communautés ne peuvent ne pas être récupérées.\n\t"
+
+#: groups/templates/groups/group_list.html:8
+msgid ""
+"\n"
+"Starting a community is a great way to help your neighborhood, church, school,\n"
+"or local group become more energy savvy. As a community leader, you can use\n"
+"your community to organize meetings, encourage action, and track progress\n"
+"towards your community's goals.\n"
+msgstr "\n\nCommencer un groupe pour aider votre communauté, votre école ou lieu de culte à se réunir pour aider à créer un mouvement puissant . En tant que chef de groupe, vous pouvez utiliser ce site pour vous aider à organiser des réunions, planifier des projets locaux, suivre les progrès, publier des mises à jour, et lancer des campagnes. <a href=\"http://local.350.org/groups/info/\">  S'il vous plaît, lisez à propos des groupes 350  ici avant de commencer le vôtre . </ a>\n"
+
+#: groups/templates/groups/group_list.html:16
+#, python-format
+msgid ""
+"\n"
+"Showing %(num_groups)s communities\n"
+msgstr "\nMontrant %(num_groups)s groupes\n"
+
+#: groups/templates/groups/group_list.html:49
+#: groups/templates/groups/group_list.html:51
+msgid "Start a Community"
+msgstr "Commencer un groupe"
+
+#: groups/templates/groups/group_list.html:55
+msgid ""
+"(Just add my group to the map &mdash; we have a home on the web somewhere "
+"else)"
+msgstr "<strong> Avez-vous déjà un groupe 350 en ligne que vous préférez utiliser? </ strong> Créez une note de celui-ci dans le formulaire et nous ferons en sorte qu'il soit accessible à partir de la carte."
+
+#: groups/templates/groups/group_list.html:62
+msgid "Join a Community"
+msgstr "Rejoindre le groupe"
+
+#: groups/templates/groups/group_list.html:64
+msgid ""
+"\n"
+"              People across the country are working together to make their homes and their communities better than ever before. As\n"
+"              part of a community, you can brainstorm ideas for improving your community, share local tips about energy efficiency, and\n"
+"              meet people who are interested in building a cleaner tomorrow.\n"
+"\t      "
+msgstr "\nPartout au monde,les gens collaborent pour construire un mouvement climatique à la hauteur de notre défi. En tant que membre d'un groupe, vous pouvez rencontrer d'autres personnes engagées pour un avenir meilleur, réfléchir ensemble sur des projets et des campagnes dans votre communauté, et ensuite agir ensemble!"
+
+#: groups/templates/groups/group_list.html:74
+msgid "Your Communities"
+msgstr "Vos groupes"
+
+#: groups/templates/groups/group_list.html:80
+msgid "You're not a member of any communities yet!"
+msgstr "Vous n' êtes encore membre d'aucun groupe"
+
+#: groups/templates/groups/group_list.html:103
+#: templates/rah/home_page.html:251
+msgid "Go to group website"
+msgstr "Aller sur le site web du groupe"
+
+#: groups/templates/groups/group_list.html:105
+#: templates/rah/home_page.html:253
+msgid "View group"
+msgstr "Voir le groupe"
+
+#: groups/templates/groups/group_list.html:107
+msgid "Contact group leaders"
+msgstr "Contacter les leaders du groupe"
+
+#: invite/forms.py:20
+msgid "Separate multiple email addresses with a comma."
+msgstr "Séparer les emails multiples par une virgule."
+
+#: invite/forms.py:48
+#, python-format
+msgid "No object found matching %(object_pk)s)"
+msgstr "Aucun objet correspondant trouvé %(object_pk)s)"
+
+#: invite/forms.py:50
+#, python-format
+msgid "Invalid parameters %(content_type)s, %(object_pk)s"
+msgstr "Paramètres invalides%(content_type)s, %(object_pk)s"
+
+#: invite/forms.py:52
+msgid "Signature has been corrupted"
+msgstr "La signature a été corrompue"
+
+#: rah/admin.py:67
+msgid "Parent"
+msgstr "Parent"
+
+#: rah/admin.py:72
+msgid "Likes"
+msgstr "Aiment"
+
+#: rah/admin.py:77
+msgid "Dislikes"
+msgstr "N'aiment pas"
+
+#: rah/feeds.py:19
+#, python-format
+msgid "%(user)s Activity Stream"
+msgstr "%(user)s Flux d'activité"
+
+#: rah/feeds.py:28
+#, python-format
+msgid "%(user)s's recent activity"
+msgstr "%(user)s's activité récente"
+
+#: rah/feeds.py:53
+#, python-format
+msgid "%(content_object)s Comment Stream"
+msgstr "%(content_object)s Flot de commentaire"
+
+#: rah/feeds.py:66
+#, python-format
+msgid "%(content_object)s comment"
+msgstr "%(content_object)s commentaire"
+
+#: rah/fields.py:7
+msgid "Don't use or else your submission will be flagged as spam"
+msgstr "Ne pas utiliser, sinon votre soumission sera marquée comme spam"
+
+#: rah/forms.py:53
+msgid ""
+"This email address has already been registered in our system. If you have "
+"forgotten your password, please use the password reset link."
+msgstr "Cette adresse e-mail a déjà été enregistrée dans notre système. Si vous avez oublié votre mot de passe, s'il vous plaît utilisez le lien de réinitialisation de mot de passe."
+
+#: rah/forms.py:93
+msgid ""
+"Please enter a correct email and password. Note that your password is case-"
+"sensitive."
+msgstr "S'il vous plaît entrer une adresse électronique correcte et un mot de passe. Notez que votre mot de passe est sensible à la case."
+
+#: rah/forms.py:95
+msgid "This account is inactive."
+msgstr "Ce compte est inactif"
+
+#: rah/forms.py:99
+msgid ""
+"Your Web browser doesn't appear to have cookies enabled. Cookies are "
+"required for logging in."
+msgstr "Votre navigateur Web ne semble pas avoir activé les cookies. Les cookies sont nécessaires pour vous connecter."
+
+#: rah/forms.py:117
+msgid "Your Comments"
+msgstr "Vos commentaires"
+
+#: rah/forms.py:118
+msgid ""
+"Check here if you would like to be a partof our alpha group and receive "
+"informationon new features before they launch."
+msgstr "Vérifiez ici si vous souhaitez faire partie de notre groupe alpha et recevoir des informations sur les nouvelles fonctionnalités avant qu'elle ne soient lancées."
+
+#: rah/forms.py:133
+msgid "About you"
+msgstr "A propos de vous"
+
+#: rah/forms.py:138
+msgid "Make Profile Private"
+msgstr "Rendre le Profil Privé"
+
+#: rah/forms.py:139
+msgid "Upload a profile image"
+msgstr "Télécharger une image de profil"
+
+#: rah/forms.py:175
+msgid "Profile images cannot be larger than 512K"
+msgstr "Les images du profil ne doivent pas dépasser 512K"
+
+#: rah/forms.py:217
+msgid "Email cannot be blank"
+msgstr "L'Email ne peut pas être vide"
+
+#: rah/forms.py:222
+msgid "This email address has already been registered in our system."
+msgstr "Cette adresse email a déjà été enregistré dans notre système."
+
+#: rah/forms.py:225 rah/forms.py:234
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: rah/forms.py:226 rah/forms.py:235
+msgid "New password confirmation"
+msgstr "Nouvelle confirmation de mot de passe"
+
+#: rah/forms.py:245
+msgid ""
+"By selecting a community, you have elected to recieve emails for each thread"
+" posted to the discussion board."
+msgstr "En sélectionnant une communauté,vous avez opté de recevoir des emails pour chaque fil posté sur le forum de discussion."
+
+#: rah/forms.py:247
+msgid "Community email notifications"
+msgstr "Email de notifications à la communauté"
+
+#: rah/models.py:26
+msgid "url"
+msgstr "url"
+
+#: rah/models.py:28
+msgid "beta group"
+msgstr " groupe beta"
+
+#: rah/models.py:33
+msgid "feedback"
+msgstr "réaction"
+
+#: rah/models.py:34
+msgid "feedbacks"
+msgstr "réactions"
+
+#: rah/models.py:134
+msgid "House"
+msgstr "Maison "
+
+#: rah/models.py:135
+msgid "Apartment"
+msgstr "Appartement"
+
+#: rah/models.py:136
+msgid "Condo"
+msgstr "Condo"
+
+#: rah/models.py:137
+msgid "Other"
+msgstr "Autre"
+
+#: rah/models.py:146
+msgid "building type"
+msgstr "type de bâtiment"
+
+#: rah/models.py:147
+msgid "about"
+msgstr "à propos"
+
+#: rah/models.py:148
+msgid "is profile private"
+msgstr "est un profile privé"
+
+#: rah/models.py:149
+msgid "twitter access token"
+msgstr "jeton d'accès twitter "
+
+#: rah/models.py:151
+msgid "twitter share"
+msgstr "partage sur twitter"
+
+#: rah/models.py:152
+msgid "facebook access token"
+msgstr "jeton d'accès facebook"
+
+#: rah/models.py:154
+msgid "facebook connect only"
+msgstr "Connection Facebook seulement"
+
+#: rah/models.py:155
+msgid "facebook share"
+msgstr "Partage sur Facebook"
+
+#: rah/models.py:156
+msgid "ask to share"
+msgstr "demander de partager"
+
+#: rah/models.py:157
+msgid "total points"
+msgstr "total des points"
+
+#: rah/models.py:168
+msgid "profile"
+msgstr "Profil"
+
+#: rah/models.py:169
+msgid "profiles"
+msgstr "Profiles"
+
+#: rah/models.py:254
+msgid "first name"
+msgstr "prénom"
+
+#: rah/models.py:255
+msgid "last name"
+msgstr "nom"
+
+#: rah/models.py:256
+msgid "email"
+msgstr "email"
+
+#: rah/models.py:257
+msgid "address"
+msgstr "adresse"
+
+#: rah/models.py:258
+msgid "city"
+msgstr "ville"
+
+#: rah/models.py:259
+msgid "state"
+msgstr "état ou région"
+
+#: rah/models.py:260
+msgid "zipcode"
+msgstr "code postal ou code zip"
+
+#: rah/models.py:267
+msgid "sticker recipient"
+msgstr "destinataire de l'autocollant"
+
+#: rah/models.py:268
+msgid "sticker recipients"
+msgstr "destinataires de l'autocollant"
+
+#: rah/views.py:58
+msgid "Translations are now up to date."
+msgstr "Les traductions sont maintenant mises à jour"
+
+#: rah/views.py:134
+msgid "You have successfully logged out."
+msgstr "Vous vous êtes déconnecté avec succès"
+
+#: rah/views.py:138
+msgid "Your password was changed successfully."
+msgstr "Votre mot de passe a été changé avec succès"
+
+#: rah/views.py:142
+msgid ""
+"We just sent you an email with instructions for resetting your password."
+msgstr "Nous vous avons envoyé un email avec les instructions pour réinitialiser votre mot de passe."
+
+#: rah/views.py:146
+msgid "Password reset successfully!"
+msgstr "Mot de passe réinitialisé avec succès!"
+
+#: rah/views.py:249
+msgid "Sorry, but you do not have permissions to contact this user."
+msgstr "Désolé, vous n'êtes pas autorisé à contacter cette personne"
+
+#: rah/views.py:285
+msgid "Sorry, but you do not have permissions to view this profile."
+msgstr "Désolé,vous n' êtes pas autorisé à voir ce profil"
+
+#: rah/views.py:347
+msgid "Sorry, but you do not have permissions to edit this profile."
+msgstr "Désolé,vous n'avez pas la permission d'éditer ce profil"
+
+#: rah/views.py:364
+msgid "Your profile has been updated."
+msgstr "Votre profil a été mis à jour"
+
+#: rah/views.py:373
+msgid "Your notifications have been updated."
+msgstr "Vos notifications ont été mises à jour"
+
+#: rah/views.py:395
+msgid "Thank you for the feedback."
+msgstr "Merci pour la réaction"
+
+#: rah/views.py:427
+msgid "Thanks for the comment."
+msgstr "Merci pour le commentaire"
+
+#: rah/views.py:431
+msgid "You do not have permissions."
+msgstr "Vous n'avez pas d'autorisations"
+
+#: rah/views.py:437
+msgid "Thanks for registering."
+msgstr "Merci de vous enregistrer."
+
+#: rah/templatetags/rah_tags.py:31
+msgid "You"
+msgstr "Vous"
+
+#: rah_locale/models.py:17
+msgid "translated flat page"
+msgstr " page modèle traduite"
+
+#: rah_locale/models.py:18
+msgid "translated flat pages"
+msgstr "pages modèles traduites "
+
+#: rah_locale/models.py:29
+msgid "translated project"
+msgstr "Projet traduit"
+
+#: rah_locale/models.py:30
+msgid "translated projects"
+msgstr "Projets traduits"
+
+#: rah_locale/models.py:36
+msgid "message"
+msgstr "Message"
+
+#: rateable/models.py:35
+msgid "object ID"
+msgstr ""
+
+#: rateable/models.py:39
+msgid "date/time submitted"
+msgstr "date/heure de soumission"
+
+#: rateable/models.py:46
+msgid "rating"
+msgstr "classement"
+
+#: rateable/models.py:47
+msgid "ratings"
+msgstr "classements"
+
+#: search_widget/templates/search_widget/_search_widget.html:4
+msgid "Search..."
+msgstr "Rechercher..."
+
+#: templates/404.html:3 templates/404.html.py:6
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: templates/404.html:7
+msgid "Sorry, but the requested page could not be found."
+msgstr "Nous sommes désolé,la page que vous avez demandée est introuvable"
+
+#: templates/admin/base.html:28
+msgid "Welcome,"
+msgstr "Bienvenue,"
+
+#: templates/admin/base.html:33
+msgid "Documentation"
+msgstr "Documentation"
+
+#: templates/admin/base.html:41
+msgid "Change password"
+msgstr "Changez le mot de passe"
+
+#: templates/admin/base.html:48
+msgid "Log out"
+msgstr "Déconnection"
+
+#: templates/admin/index.html:18
+#, python-format
+msgid "Models available in the %(name)s application."
+msgstr "Modèles disponibles dans%(name)s application."
+
+#: templates/admin/index.html:19
+#, python-format
+msgid "%(name)s"
+msgstr "%(name)s"
+
+#: templates/admin/index.html:35
+msgid "Change"
+msgstr "Changer"
+
+#: templates/admin/index.html:45
+msgid "You don't have permission to edit anything."
+msgstr "Vous n'êtes pas autorisé à éditer quoi que ce soit."
+
+#: templates/admin/index.html:63
+msgid "Recent Actions"
+msgstr "Projets récents"
+
+#: templates/admin/index.html:64
+msgid "My Actions"
+msgstr "Mes projets"
+
+#: templates/admin/index.html:68
+msgid "None available"
+msgstr "Rien n'est disponible"
+
+#: templates/admin/index.html:82
+msgid "Unknown content"
+msgstr "Contenu inconnu"
+
+#: templates/base/_nugget_2c_list_supporter.html:7
+#: templates/base/_nugget_2c_list_supporter.html:10
+msgid "supporter avatar"
+msgstr "avatar du supporter"
+
+#: templates/base/_nugget_9c_list.html:18
+msgid "View Event Page"
+msgstr "Consultez la page de l'événement"
+
+#: templates/base/_nugget_share.html:7
+msgid "Tweet"
+msgstr "Tweet"
+
+#: templates/base/base.html:8
+msgid "Save energy at home and organize your community"
+msgstr "Créer un pouvoir local en construisant un mouvement global."
+
+#: templates/base/base.html:21
+#, python-format
+msgid "energy efficiency, home energy, climate change, %(SITE_NAME)s"
+msgstr "efficacité énergétique,énergie domestique,changement climatique, %(SITE_NAME)s"
+
+#: templates/base/base.html:22 templates/base/base.html.py:26
+msgid ""
+"We can take action to keep millions of pounds of dirty coal from polluting "
+"our communities. Every point you earn means one less pound of coal needs to "
+"be burned."
+msgstr "Ca se passe partout :les gens partout sur la planète se réunissent pour lancer des campagnes en faveur du climat, collaborer sur des projets, et construire une avenir énergétique propre. Rejoignez-nous à 350 Local pour aider à créer ce mouvement mondial."
+
+#: templates/base/base.html:25
+msgid "energy efficiency; home energy; climate change;"
+msgstr "efficacité énergétique,énergie domestique,changement climatique;"
+
+#: templates/base/base.html:36 templates/base/base.html.py:67
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/base/base.html:66
+msgid "350.org"
+msgstr "350.org"
+
+#: templates/base/base.html:68
+msgid "About"
+msgstr "À propos"
+
+#: templates/base/base.html:69
+msgid "Groups"
+msgstr "Groupes"
+
+#: templates/base/base.html:71 templates/base/nav.html:53
+msgid "Projects"
+msgstr "Projets"
+
+#: templates/base/base.html:72
+msgid "Campaigns"
+msgstr "Campagnes"
+
+#: templates/base/base.html:77 templates/base/nav.html:102
+msgid "Log Out"
+msgstr "Déconnection"
+
+#: templates/base/base.html:79
+msgid "Log In"
+msgstr "Connection"
+
+#: templates/base/base.html:83
+msgid "Select your preferred language"
+msgstr "Séléctionner votre langue préférée"
+
+#: templates/base/base.html:111
+msgid "Who are we? Listen up."
+msgstr "Voulez-vous en savoir plus?"
+
+#: templates/base/base.html:113
+msgid ""
+"\n"
+"                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\n"
+"                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim \n"
+"                        ad minim veniam, quis nostrud exercitation ullamco.\n"
+"\t\t      "
+msgstr "\nCe site web a été créé pour mettre en contact les gens pour une action climatique audacieuse.Nous l'améliorons encore et ajoutons des fonctionnalités tout le temps."
+
+#: templates/base/base.html:118
+msgid "Learn More"
+msgstr "Apprenez plus"
+
+#: templates/base/base.html:122
+msgid "Follow Us"
+msgstr "Suivez-nous"
+
+#: templates/base/base.html:128
+msgid "Watch us on YouTube"
+msgstr "Regardez-nous sur You Tube"
+
+#: templates/base/base.html:130
+msgid "Subscribe to our blog"
+msgstr "Inscrivez-vous sur notre blog"
+
+#: templates/base/base.html:135
+msgid "Privacy Policy"
+msgstr "Protection des données personnelles"
+
+#: templates/base/base.html:136
+msgid "About Us"
+msgstr "A propos de nous"
+
+#: templates/base/base.html:137
+msgid ""
+"\n"
+"\t\t    350 Local by <a href=\"http://350.org\">350.org</a> is licensed under a\n"
+"\t\t    <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\">\n"
+"\t\t      Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.\n"
+"\t\t    "
+msgstr "\n\t\t    350 Local par <a href=\"http://350.org\">350.org</a> est distribué sous la licence\n\t\t    <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\">\n\t\t      Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.\n\t\t    "
+
+#: templates/base/nav.html:7 templates/base/nav.html.py:11
+msgid "View your profile"
+msgstr "Voir votre profil"
+
+#: templates/base/nav.html:8
+msgid "Your profile picture"
+msgstr "Votre photo de profil"
+
+#: templates/base/nav.html:21
+#, python-format
+msgid "%(total_points)s points"
+msgstr "%(total_points)s points"
+
+#: templates/base/nav.html:22
+msgid "8 badges"
+msgstr "8 badges"
+
+#: templates/base/nav.html:28
+msgid "Join Us Today"
+msgstr "Rejoignez-nous aujourd'hui"
+
+#: templates/base/nav.html:29
+msgid ""
+"Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut "
+"dictum velit nec est."
+msgstr "Inscrivez-vous pour entrer en contact localement et vous impliquer davantage dans une communauté grandissante d'activistes climatiques qui sont entrain de créer un mouvement pour arrêter le changement climatique."
+
+#: templates/base/nav.html:31
+msgid "sidebar_logged_out_register_button"
+msgstr "Créer un compte"
+
+#: templates/base/nav.html:36 templates/registration/register.html:20
+msgid "Join with Facebook"
+msgstr "Rejoignez-nous avec Facebook"
+
+#: templates/base/nav.html:64 templates/rah/profile.html:245
+msgid "Badges"
+msgstr ""
+
+#: templates/base/nav.html:70
+msgid "Users"
+msgstr "Membres"
+
+#: templates/base/nav.html:81
+msgid "My Calendar"
+msgstr "Mon calendrier"
+
+#: templates/base/nav.html:86
+msgid "My Profile / Settings"
+msgstr "Mon Profil / Paramètres"
+
+#: templates/base/nav.html:91
+msgid "Invite Friends"
+msgstr "Inviter les amis"
+
+#: templates/base/nav.html:97
+msgid "Enter Commitment Cards"
+msgstr "Entrez les cartes d'engagement"
+
+#: templates/base/nav_6c3c.html:6 templates/base/nav_6c3c_floating.html:6
+#: templates/base/nav_6c3c_header.html:6 templates/base/nav_9c_ribbon.html:6
+msgid "breadcrumbs"
+msgstr "traces de navigation"
+
+#: templates/rah/feedback.html:3 templates/rah/feedback.html.py:7
+msgid "Feedback"
+msgstr "Donnez-nous votre réaction"
+
+#: templates/rah/feedback.html:10
+msgid ""
+"\n"
+"    Your feedback is extremely valuable to us. Use this form to let us \n"
+"    know what you think about this page or the site in general. Thanks!\n"
+"    "
+msgstr "\n    Vos commentaires sont extrêmement précieux pour nous. Utilisez ce formulaire pour nous faire\n     savoir ce que vous pensez de cette page ou le site en général. Merci!\n    "
+
+#: templates/rah/feedback.html:17
+msgid "Give us Feedback"
+msgstr "Donnez-nous votre réaction"
+
+#: templates/rah/feedback.html:22
+msgid "Submit feedback"
+msgstr "Envoyer des commentaires"
+
+#: templates/rah/ga_opt_out.html:3 templates/rah/ga_opt_out.html.py:6
+msgid "Google Analytics Opt Out"
+msgstr "Retrait de Google Analytics"
+
+#: templates/rah/ga_opt_out.html:9
+msgid ""
+"\n"
+"    Click the button below to opt out of our Google Analytics tracking. A cookie will be set for this browser\n"
+"    only. You need to opt out with every browser you don't want tracked. If you delete your cookies, tracking\n"
+"    will resume.\n"
+"    "
+msgstr "\n   Cliquez sur le bouton ci-dessous pour se retirer de notre suivi sur Google Analytics. Un cookie sera fixé pour ce navigateur\n     seulement. Vous devez vous retirer de tous les navigateurs que vous ne voulez pas qu'ils soient suivis. Si vous supprimez vos cookies, le suivi\n     reprendra.\n    "
+
+#: templates/rah/ga_opt_out.html:17
+msgid "Opt out of Google Analytics"
+msgstr "Se retirer de Google Analytics"
+
+#: templates/rah/ga_opt_out.html:19
+msgid "Opt Out"
+msgstr "Se retirer"
+
+#: templates/rah/ga_opt_out.html:27
+msgid "Opt out successful!"
+msgstr "Retrait avec succès!"
+
+#: templates/rah/home_page.html:61
+msgid "Empower your Home"
+msgstr "Trouver un groupe près de chez vous"
+
+#: templates/rah/home_page.html:62
+msgid "Empower your Community"
+msgstr "Commencer à organiser!"
+
+#: templates/rah/home_page.html:63
+msgid "homepage_final_slide_title"
+msgstr "Partager une histoire"
+
+#: templates/rah/home_page.html:73
+msgid "You have the power <br/>to save energy"
+msgstr "Rechercher sur la carte pour voir s'il y a un groupe près de chez vous."
+
+#: templates/rah/home_page.html:75
+msgid ""
+"\n"
+"                            Our energy actions give you the necessary know-how to save\n"
+"                            energy, lower your bills and improve our environment by\n"
+"                            reducing greenhouse gas pollution. The more actions you\n"
+"                            complete, the more badges and points you earn for your\n"
+"                            progress. \n"
+"\t\t\t  "
+msgstr "\nIl ya beaucoup de choses que nous pouvons tous faire au niveau local pour lutter contre le changement climatique,créer un mouvement, et transformer nos communautés de la base au sommet. Consultez les projets sur ce site pour des idées sur la construction de votre équipe, sensibiliser votre communauté, et plaider pour des solutions dans votre communauté."
+
+#: templates/rah/home_page.html:84
+msgid "home_slide_2_url"
+msgstr "/groupes/"
+
+#: templates/rah/home_page.html:85
+msgid "See All Actions"
+msgstr "Chercher la carte"
+
+#: templates/rah/home_page.html:97
+msgid "Support energy efficiency in your community"
+msgstr "commencer un projet pour créer votre mouvement local"
+
+#: templates/rah/home_page.html:99
+#, python-format
+msgid ""
+"\n"
+"                            Stay up-to-date on energy efficiency efforts in your\n"
+"                            neighborhood, school, workplace or other group by joining a\n"
+"                            %(SITE_NAME)s community. Communities make it easy to\n"
+"                            share tips and stories with Trendsetters like you.\n"
+"\t\t\t  "
+msgstr "\nIl ya beaucoup de choses que nous pouvons tous faire au niveau local pour lutter contre le changement climatique,créer un mouvement, et transformer nos communautés de la base au sommet. Consultez les projets sur ce site pour des idées sur la construction de votre équipe, sensibiliser votre communauté, et plaider pour des solutions dans votre communauté.<!-- %(SITE_NAME)s -->"
+
+#: templates/rah/home_page.html:107
+msgid "home_slide_3_url"
+msgstr "/projets/"
+
+#: templates/rah/home_page.html:108
+msgid "Find Communities"
+msgstr "Voir tous les projets"
+
+#: templates/rah/home_page.html:114
+msgid "Host and attend local climate events"
+msgstr "Répandez les Histoires du Mouvement"
+
+#: templates/rah/home_page.html:116
+msgid ""
+"\n"
+"                          Find local events taking place near you, or host your own event using our organizational tools and event materials.  After the event, start a group to keep the momentum going and stay in touch with other attendees.\n"
+"\t\t\t  "
+msgstr "\nRaconter les histoires des gens, des événements, et des actions du mouvement est l'un des meilleurs moyens d'étendre notre impact. Si vous avez une histoire de votre travail sur le changement climatique,partagez-la afin que d'autres puissent apprendre de votre expérience. Les histoires seront présentées sur notre blog et sur ​​les médias sociaux."
+
+#: templates/rah/home_page.html:121
+msgid "home_slide_4_url"
+msgstr "/histoires/"
+
+#: templates/rah/home_page.html:122
+msgid "Find Events"
+msgstr "Partager une Histoire"
+
+#: templates/rah/home_page.html:188
+msgid "Find Events Near You"
+msgstr "Trouver des Evénements près de chez vous"
+
+#: templates/rah/home_page.html:193
+msgid "Featured Communities"
+msgstr "Groupes en vedette"
+
+#: templates/rah/home_page.html:206
+#, python-format
+msgid ""
+"\n"
+"\t\t    %(num_members)s members \n"
+"\t\t    "
+msgstr "\n\t\t    %(num_members)s membres \n\t\t    "
+
+#: templates/rah/home_page.html:216
+msgid "Browse Communities"
+msgstr "Parcourir les groupes"
+
+#: templates/rah/home_page.html:221
+msgid "Featured Users"
+msgstr "Nouveaux Membres"
+
+#: templates/rah/home_page.html:229
+msgid "Browse Users"
+msgstr "Trouver les autres membres locaux de 350 avec la carte ci-dessous."
+
+#: templates/rah/profile.html:6
+#, python-format
+msgid "%(user_full_name)s's profile"
+msgstr "%(user_full_name)s profil"
+
+#: templates/rah/profile.html:8
+#, python-format
+msgid "%(SITE_NAME)s User Activity"
+msgstr "%(SITE_NAME)s Activité de l'utilisateur"
+
+#: templates/rah/profile.html:12 templates/rah/user_list.html:46
+msgid "Profile image"
+msgstr "Image de profil"
+
+#: templates/rah/profile.html:20
+#, python-format
+msgid "Joined %(date_joined)s"
+msgstr "Inscrit%(date_joined)s"
+
+#: templates/rah/profile.html:29 templates/rah/user_contact.html:18
+#, python-format
+msgid ""
+"\n"
+"\tContact %(user_full_name)s\n"
+"\t"
+msgstr "\n\tContactez%(user_full_name)s"
+
+#: templates/rah/profile.html:42
+msgid "Edit your profile"
+msgstr "Editer votre profil"
+
+#: templates/rah/profile.html:75
+#, python-format
+msgid ""
+"\n"
+"\t    %(user_full_name)s has not yet joined any groups.\n"
+"\t    "
+msgstr "\n\t  %(user_full_name)s n'a encore rejoint aucun groupe.\n\t    "
+
+#: templates/rah/profile.html:81
+#, python-format
+msgid ""
+"\n"
+"\t    You aren't yet a member of any groups.\n"
+"\t    You can <a href=\"%(group_list_url)s\">look \n"
+"\t      for a local group to join</a>, or <a href=\"%(group_create_url)s\">\n"
+"\t      create a new group</a> if there aren't yet any near you.\n"
+"\t    "
+msgstr "\nVous n'êtes encore membre d'aucun groupe. Vous pouvez href=\"%(group_list_url)s\"> chercher un groupe local pour vous y joindre </ a>, ou si vous êtes prêt, <a href=\"%(group_create_url)s\"> postuler pour créer un nouveau groupe </ a> s'il n'y en a pas encore tout près de chez vous .S'il n'ya pas encore de groupe local, consultez la page des projets pour des idées sur comment organiser une réunion pour lancer votre groupe local."
+
+#: templates/rah/profile.html:94
+#, python-format
+msgid ""
+"\n"
+"\t  %(user_full_name)s hasn't gotten involved with any projects yet.\n"
+"\t  "
+msgstr "\n\t %(user_full_name)s ne s'est encore impliqué dans aucun projet.\n\t  "
+
+#: templates/rah/profile.html:100
+#, python-format
+msgid ""
+"\n"
+"\t  You haven't taken on any projects yet.  You can \n"
+"\t  <a href=\"%(project_list_url)s\">look for a project</a> to\n"
+"\t  get involved with with a group, or <a href=\"%(solo_project_list_url)s\">\n"
+"\t    browse the list of solo actions</a> that you can commit to do on your own.\n"
+"\t  "
+msgstr "\nVous n'avez pas encore exécuté aucun projet. Vous pouvez <a href=\"%(project_list_url)s\">  Commencez avec l'un de ces projets </ a> pour créer un groupe local et sensibiliser votre communauté. <a href=\"%(solo_project_list_url)s\"> </ a>"
+
+#: templates/rah/profile.html:110
+msgid "Commitments"
+msgstr "Engagements"
+
+#: templates/rah/profile.html:115
+#, python-format
+msgid ""
+"\n"
+"\t\tby %(action_date_committed)s\n"
+"\t\t"
+msgstr "\n\t\tau %(action_date_committed)s\n\t\t"
+
+#: templates/rah/profile.html:124
+msgid "Completed Actions"
+msgstr "Projets Terminés"
+
+#: templates/rah/profile.html:138
+msgid "Recent Activity"
+msgstr "Activité récente"
+
+#: templates/rah/profile.html:148
+#, python-format
+msgid ""
+"\n"
+"\t    %(user_full_name)s has no recent activity.\n"
+"\t    "
+msgstr "\n\t    %(user_full_name)s n'as pas d'activité récente.\n\t    "
+
+#: templates/rah/profile.html:153
+#, python-format
+msgid ""
+"\n"
+"\t    You haven't yet taken any actions on the site.\n"
+"\t    To start out, why don't you <a href=\"%(group_list_url)s\">look \n"
+"\t      for a local group to join</a>?\n"
+"\t    "
+msgstr "\nVous n'avez pas encore entrepris aucune action sur le site. Voici quelques endroits pour commencer: <br />\n1.<a href=\"%(group_list_url)s\"> Recherchez un groupe local près de chez vous. </ a> <br />\n2.<a href=\"http://local.350.org/user/list\"> Pas de groupes locaux? essayez de voir s'il ya d'autres membres de 350  à proximité </ a> pour entrer en contact afin de commencer quelque chose. <br />\n3. Réunissez-vous avec un groupe local, des amis, ou collègues organisateurs pour commencer un projet ou une campagne de pétition pour commencer ou développer votre mouvement climatique local!"
+
+#: templates/rah/profile.html:179
+#, python-format
+msgid ""
+"\n"
+"\t    %(user_full_name)s is not participating in any events.\n"
+"\t    "
+msgstr "\n\t    %(user_full_name)s ne participe à aucun événement.\n\t    "
+
+#: templates/rah/profile.html:184
+#, python-format
+msgid ""
+"\n"
+"\t    You have not signed up for any events.  Why don't you \n"
+"\t    <a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
+"\t    "
+msgstr "\nVous n'êtes pas inscrits pour aucun événement. Pourquoi ne pas  <a href=\"%(event_list_url)s\"> chercher un événement auquel participer près de chez vous </ a>? Vous pourriez aussi envisager la planification d'un événement local vous-même!"
+
+#: templates/rah/profile.html:198
+msgid "Vital Stats"
+msgstr "Statistiques vitaux"
+
+#: templates/rah/profile.html:202
+msgid "Actions Completed"
+msgstr "Projets terminés"
+
+#: templates/rah/profile.html:204
+msgid "Actions Committed"
+msgstr "Projets Engagés"
+
+#: templates/rah/profile.html:206
+msgid "Groups Joined"
+msgstr "Groupes ayant rejoint"
+
+#: templates/rah/profile.html:208
+msgid "Challenges Completed"
+msgstr "Campagnes de pétition terminées"
+
+#: templates/rah/profile.html:230
+#, python-format
+msgid ""
+"\n"
+"\t%(user_full_name)s is not participating in any events.\n"
+"\t"
+msgstr "\n\t%(user_full_name)s ne participe à aucun événement.\n\t"
+
+#: templates/rah/profile.html:235
+#, python-format
+msgid ""
+"\n"
+"\tYou have not signed up for any events.  Why don't you \n"
+"\t<a href=\"%(event_list_url)s\">look for an event to attend near you</a>?\n"
+"\t"
+msgstr "\nVous n'êtes pas inscrits pour aucun événement. Pourquoi ne cherchez-vous pas  <a href=\"%(event_list_url)s\"> un événement auquel participer près de chez vous </ a>? Vous pourriez aussi envisager la planification d'un événement local vous-même!"
+
+#: templates/rah/profile.html:253
+#, python-format
+msgid "Badge for %(badge_name)s"
+msgstr "Badge pour %(badge_name)s"
+
+#: templates/rah/profile.html:262
+msgid "Committed Actions"
+msgstr " Projets Engagés"
+
+#: templates/rah/profile.html:269
+#, python-format
+msgid ""
+"\n"
+"\tby %(action_date_committed)s\n"
+"\t"
+msgstr "\n\td'ici %(action_date_committed)s\n\t"
+
+#: templates/rah/profile_edit.html:6
+msgid "Edit your Profile"
+msgstr "Editer votre profil"
+
+#: templates/rah/profile_edit.html:9
+msgid "Account"
+msgstr "Compte"
+
+#: templates/rah/profile_edit.html:10
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/rah/profile_edit.html:11
+msgid "Social Networks"
+msgstr "Réseaux sociaux"
+
+#: templates/rah/profile_edit.html:12
+msgid "Settings"
+msgstr "Paramètres"
+
+#: templates/rah/profile_edit.html:17
+msgid "Change your avatar on gravatar.com"
+msgstr "Changer votre avatar sur gravatar.com"
+
+#: templates/rah/profile_edit.html:20
+msgid "Change your password"
+msgstr "Changer votre mot de passe"
+
+#: templates/rah/profile_edit.html:36
+msgid "Save profile"
+msgstr "Enregistrer le profil"
+
+#: templates/rah/profile_edit.html:51
+#, python-format
+msgid ""
+"\n"
+"\t\t  You're not yet a member of any communities.  \n"
+"\t\t  Why don't you <a href=\"%(group_list_url)s\">\n"
+"\t\t    look for some communities to join?</a>\n"
+"\t\t  "
+msgstr "\n\t\t  Vous n'êtes pas encore membre d'un groupe.  \n\t\t  Pourquoi vous n'en <a href=\"%(group_list_url)s\">\n\t\t    chercheriez pas un à rejoindre ?</a>\n\t\t  "
+
+#: templates/rah/profile_edit.html:59 templates/rah/profile_edit.html.py:83
+msgid "Select All"
+msgstr "Séléctionner tout"
+
+#: templates/rah/profile_edit.html:60 templates/rah/profile_edit.html.py:84
+msgid "Deselect All"
+msgstr "Annuler toute la séléction"
+
+#: templates/rah/profile_edit.html:99
+msgid "Save notifications"
+msgstr "Enregistrer les notifications"
+
+#: templates/rah/profile_edit.html:105
+#, python-format
+msgid ""
+"\n"
+"              Share the good times by linking to your online networks. \n"
+"\t      After you link up, you can publish your\n"
+"              %(SITE_NAME)s activity to your Facebook or Twitter steams.\n"
+"\t      "
+msgstr "\n             Partagez votre bon travail en vous connectant sur vos réseaux en ligne.\nAprès vous avoir connecté, vous pouvez publier votre\n               %(SITE_NAME)s à votre activité sur Facebook ou Twitter ."
+
+#: templates/rah/profile_edit.html:113
+msgid "Facebook icon"
+msgstr "Icône facebook"
+
+#: templates/rah/profile_edit.html:114 templates/rah/profile_edit.html:117
+msgid "Facebook"
+msgstr "Facebook"
+
+#: templates/rah/profile_edit.html:120 templates/rah/profile_edit.html:146
+msgid "Disable automatic sharing"
+msgstr "Désactiver le partage automatique"
+
+#: templates/rah/profile_edit.html:122 templates/rah/profile_edit.html:148
+msgid "Enable automatic sharing"
+msgstr "Activer le partage automatique"
+
+#: templates/rah/profile_edit.html:126
+msgid ""
+"\n"
+"                      You cannot unlink your facebook account, since you are currently logged in with facebook\n"
+"\t\t      "
+msgstr "\n                     Vous ne pouvez pas dissocier votre compte facebook, puisque vous êtes actuellement connecté avec facebook \n\t\t      "
+
+#: templates/rah/profile_edit.html:131
+msgid "Unlink your Facebook account"
+msgstr "Dissocier votre compte Facebook"
+
+#: templates/rah/profile_edit.html:133
+msgid "Link your Facebook account"
+msgstr "Associez votre compte Facebook"
+
+#: templates/rah/profile_edit.html:139
+msgid "Twitter icon"
+msgstr "Icône Twitter "
+
+#: templates/rah/profile_edit.html:140 templates/rah/profile_edit.html:143
+msgid "Twitter"
+msgstr "Twitter"
+
+#: templates/rah/profile_edit.html:153
+msgid "Unlink your Twitter account"
+msgstr "Dissociez votre compte Twitter"
+
+#: templates/rah/profile_edit.html:155
+msgid "Link your Twitter account"
+msgstr "Associez votre compte Twitter"
+
+#: templates/rah/search.html:3
+#, python-format
+msgid "Results for '%(search_query)s'"
+msgstr "Résultats pour '%(search_query)s'"
+
+#: templates/rah/search.html:5
+#, python-format
+msgid "Search %(SITE_NAME)s"
+msgstr "Recherche %(SITE_NAME)s"
+
+#: templates/rah/user_contact.html:4 templates/rah/user_contact.html.py:11
+#, python-format
+msgid "Contact %(user_full_name)s"
+msgstr "Contact %(user_full_name)s"
+
+#: templates/rah/user_list.html:4 templates/rah/user_list.html.py:5
+msgid "User List"
+msgstr "Liste des membres"
+
+#: templates/rah/user_list.html:7
+msgid ""
+"\n"
+"Browse users\n"
+msgstr "\nCherchez-vous à former une équipe ou démarrer une initiative? Rechercher dans cette carte pour voir s'il y a d'autres membres de 350  près de chez vous. Personne encore? Ne vous inquiétez pas!<a href=\"http://local.350.org/projects/\">  Consultez la page des projets </ a> pour des idées sur comment commencer à organiser et entre en contact localement.\n"
+
+#: templates/rah/user_list.html:12
+#, python-format
+msgid ""
+"\n"
+"Showing %(num_users)s users\n"
+msgstr "\nMontrer %(num_users)s membres\n"
+
+#: templates/rah/user_list.html:87
+msgid "View profile"
+msgstr "Voir le Profil"
+
+#: templates/registration/login.html:4 templates/registration/login.html:7
+#: templates/registration/login.html:33
+msgid "Log in"
+msgstr "Connection"
+
+#: templates/registration/login.html:10
+msgid "Need a little help?"
+msgstr "Besoin d'un peu d'aide?"
+
+#: templates/registration/login.html:13
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: templates/registration/login.html:16
+msgid "Recover your password"
+msgstr "Restaurer votre mot de passe"
+
+#: templates/registration/login.html:21
+msgid "Log in with Facebook"
+msgstr "Connectez vous à partir de Facebook"
+
+#: templates/registration/register.html:4
+#: templates/registration/register.html:7
+msgid "Sign up"
+msgstr "Inscription"
+
+#: templates/registration/register.html:10
+msgid "A clean energy future starts with us."
+msgstr " Rejoignez une communauté grandissante d'activistes climatiques."
+
+#: templates/registration/register.html:12
+msgid ""
+"\n"
+"    Across the country, Trendsetters are working to transform the way our homes and\n"
+"    communities use energy. Join us! Become a Trendsetter by creating an account\n"
+"    and pledging to save energy.\n"
+msgstr "\n"
+
+#: templates/registration/register.html:32
+msgid "Sign Up Now"
+msgstr "Inscrivez-vous maintenant"
+
+#: templates/registration/register.html:39
+msgid "Sign Up"
+msgstr "Inscription"

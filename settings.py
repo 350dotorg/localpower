@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys, os
 
 from utils import local_join
@@ -36,7 +38,12 @@ TIME_ZONE = 'America/New_York'
 
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
-LANGUAGES = (('en', "English"),)
+LANGUAGES = (('de', "Deutsch"),
+             ('en', "English"),
+             ('es', "Español"),
+             ('fr', "Français"),
+             ('pt', "Português"),
+             )
 
 SITE_ID = 1
 
