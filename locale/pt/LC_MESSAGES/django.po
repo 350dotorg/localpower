@@ -3797,6 +3797,10 @@ msgstr "\n\t\tpor %(action_date_committed)s\n\t\t"
 msgid "Completed Actions"
 msgstr "Projetos concluídos"
 
+#: templates/rah/home_page.html:158
+msgid "Completed Projects"
+msgstr "Projetos concluídos"
+
 #: templates/rah/profile.html:138
 msgid "Recent Activity"
 msgstr "Atividades recentes"

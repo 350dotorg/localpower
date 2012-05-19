@@ -3958,6 +3958,39 @@ msgstr "New Members"
 msgid "Browse Users"
 msgstr "Find fellow 350 Local members with the map below."
 
+#: templates/rah/home_page.html:139
+msgid "Learn more about the 350 Local platform"
+msgstr ""
+
+#: templates/rah/home_page.html:140
+msgid "About 350 Local"
+msgstr ""
+
+#: templates/rah/home_page.html:143
+msgid "Discover resources for organizers"
+msgstr ""
+
+#: templates/rah/home_page.html:144
+msgid "Resources"
+msgstr ""
+
+#: templates/rah/home_page.html:147
+msgid "Climate Leadership Workshops"
+msgstr ""
+
+#: templates/rah/home_page.html:148
+msgid "Workshops"
+msgstr ""
+
+#: templates/rah/home_page.html:155
+msgid "Countries"
+msgstr ""
+
+#: templates/rah/home_page.html:158
+#, fuzzy
+msgid "Completed Projects"
+msgstr "Completed Projects"
+
 #: templates/rah/profile.html:6
 #, python-format
 msgid "%(user_full_name)s's profile"

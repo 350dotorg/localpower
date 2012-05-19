@@ -136,26 +136,26 @@
 			
     <div class="grid_12 alpha omega" id="home_stat_bar">
       <div class="home_stat_wrap">
-	<div class="home_stat">Learn more about the 350 Local platform</div>
-	<a href="/about/" class="button grey">About 350 Local</a>
+	<div class="home_stat">{% blocktrans %}Learn more about the 350 Local platform{% endblocktrans %}</div>
+	<a href="/about/" class="button grey">{% blocktrans %}About 350 Local{% endblocktrans %}</a>
       </div>
       <div class="home_stat_wrap">
-	<div class="home_stat">Discover resources for organizers</div>
-	<a target="_blank" href="http://www.350.org/resources" class="button grey">Resources</a>
+	<div class="home_stat">{% blocktrans %}Discover resources for organizers{% endblocktrans %}</div>
+	<a target="_blank" href="http://www.350.org/resources" class="button grey">{% blocktrans %}Resources{% endblocktrans %}</a>
       </div>
       <div class="home_stat_wrap">
-	<div class="home_stat">Climate Leadership Workshops</div>
-	<a target="_blank" href="http://workshops.350.org" class="button grey">Workshops</a>
+	<div class="home_stat">{% blocktrans %}Climate Leadership Workshops{% endblocktrans %}</div>
+	<a target="_blank" href="http://workshops.350.org" class="button grey">{% blocktrans %}Workshops{% endblocktrans %}</a>
       </div>
       <div class="home_stat_wrap home_stat_wrap_last home_stat_block">
 	<div class="stat" id="groups-stat">
-	  <span class="stat-number">{{ total_communities|intcomma }}</span>&nbsp;<span class="stat-label">Groups</span>
+	  <span class="stat-number">{{ total_communities|intcomma }}</span>&nbsp;<span class="stat-label">{% blocktrans %}Groups{% endblocktrans %}</span>
 	</div>
 	<div class="stat" id="countries-stat">
-	  <span class="stat-number">{{ total_countries|intcomma }}</span>&nbsp;<span class="stat-label">Countries</span>
+	  <span class="stat-number">{{ total_countries|intcomma }}</span>&nbsp;<span class="stat-label">{% blocktrans %}Countries{% endblocktrans %}</span>
 	</div>
 	<div class="stat" id="projects-stat">
-	  <span class="stat-number">{{ total_actions|intcomma }}</span>&nbsp;<span class="stat-label two-line">Completed Projects</span>
+	  <span class="stat-number">{{ total_actions|intcomma }}</span>&nbsp;<span class="stat-label two-line">{% blocktrans %}Completed Projects{% endblocktrans %}</span>
 	</div>
       </div>
     </div>
