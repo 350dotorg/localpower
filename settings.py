@@ -40,9 +40,9 @@ TIME_ZONE = 'America/New_York'
 LANGUAGE_CODE = 'en'
 LANGUAGES = (('de', "Deutsch"),
              ('en', "English"),
-             ('es', "Español"),
-             ('fr', "Français"),
-             ('pt', "Português"),
+             ('es', "Espanol"),
+             ('fr', "Francais"),
+             ('pt', "Portugues"),
              )
 
 SITE_ID = 1
