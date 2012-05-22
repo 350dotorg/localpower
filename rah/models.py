@@ -43,6 +43,10 @@ class Feedback(models.Model):
         return u'%s...' % (self.comment[:15])
 
 class ProfileManager(GeoManager):
+
+    def get_query_set(self):
+        return GeoManager.get_query_set(self).select_related("geom")
+
     def user_engagement(self, users=None, date_start=None, date_end=None):
         from django.db import connection, transaction
 

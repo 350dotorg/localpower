@@ -111,14 +111,14 @@ def index(request):
     """
 
     section_class = "section_home"
-    top_users = Profile.objects.all().select_related("user").order_by("-user__date_joined")[:10]
-    top_communities = Group.objects.filter(geom__isnull=False).order_by("-member_count")[:3]
+    top_users = Profile.objects.all().select_related("user", "geom").order_by("-user__date_joined")[:10]
+    top_communities = Group.objects.filter(geom__isnull=False).select_related("geom").order_by("-member_count")[:3]
     #top_projects = Action.objects.filter(is_group_project=True).order_by("-points")[:4]
     top_events = Event.objects.filter(
         is_private=False, when__lte=datetime.now()
-        ).order_by("-when")[:4]
+        ).select_related("geom").order_by("-when")[:4]
 
-    map_groups = Group.objects.filter(geom__isnull=False)
+    map_groups = Group.objects.filter(geom__isnull=False).select_related("geom")
     locals().update(_progress_stats())
 
     return render_to_response("rah/home_page.html", locals(), context_instance=RequestContext(request))

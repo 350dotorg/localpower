@@ -27,7 +27,7 @@ from utils import hash_val
 
 class GroupManager(GeoManager):
     def groups_with_memberships(self, user, limit=None):
-        groups = self.all().order_by("name")
+        groups = self.all().select_related("geom").order_by("name")
         groups = groups.extra(
                     select_params = (user.id,),
                     select = { 'is_member': 'SELECT groups_groupusers.created \

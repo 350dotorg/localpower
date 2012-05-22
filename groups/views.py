@@ -231,8 +231,8 @@ def group_list(request):
     nav_selected = "communities"
     groups = Group.objects.groups_with_memberships(request.user)
     if request.user.is_authenticated():
-        my_groups = Group.objects.filter(users=request.user)
-    map_groups = Group.objects.filter(geom__isnull=False)
+        my_groups = Group.objects.filter(users=request.user).select_related("geom")
+    map_groups = Group.objects.filter(geom__isnull=False).select_related("geom")
     return render_to_response("groups/group_list.html", locals(), 
                               context_instance=RequestContext(request))
 
