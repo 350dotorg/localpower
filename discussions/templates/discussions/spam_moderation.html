@@ -30,6 +30,27 @@ Current moderation status: {{ spam_status }}
 {% endblocktrans %}
       </h3>
 
+      <p>
+	<form style="display: inline" method="POST"
+	      action="{% url staff_review_discussions user_id %}">
+	  {% csrf_token %}
+	  <input type="submit" class="button" 
+		 value="{% blocktrans %}Mark as unreviewed{% endblocktrans %}" />
+	</form>
+	<form style="display: inline" method="POST"
+	      action="{% url staff_review_discussions_mark_ham user_id %}">
+	  {% csrf_token %}
+	  <input type="submit" class="button" 
+		 value="{% blocktrans %}Not spam{% endblocktrans %}" />
+	</form>
+	<form style="display: inline" method="POST"
+	      action="{% url staff_review_discussions_mark_spam user_id %}">
+	  {% csrf_token %}
+	  <input type="submit" class="button" 
+		 value="{% blocktrans %}Flag as spam{% endblocktrans %}" />
+	</form>
+      </p>
+
       {% for message in discussions %}
       {% with message.content_object as recipient %}
       <div>
