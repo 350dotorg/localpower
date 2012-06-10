@@ -2,7 +2,7 @@ from django.conf import settings
 from json import load
 from urllib2 import quote, urlopen
 
-GEOCODE_URL = 'http://where.yahooapis.com/geocode?flags=J&q='
+GEOCODE_URL = 'http://where.yahooapis.com/geocode?flags=J&appid=%s&q=' % settings.YAHOO_APP_ID
 
 class Geocoder(object):
     @classmethod
@@ -18,13 +18,23 @@ class Geocoder(object):
             
             data['top_result'] = results
             return data
-        except:
-            raise ValueError('Could not locate this address')
+        except Exception, e:
+            raise ValueError('Could not locate this address, %s -- %s' % (
+                    url, str(e)))
 
     @classmethod
     def geocode(cls, value):
         value = value.encode("utf8")
         url = '%s%s' % (GEOCODE_URL, quote(value))
-        data = cls._geocode(url)
+        tries = 0
+        while True:
+            try:
+                data = cls._geocode(url)
+            except ValueError:
+                tries += 1
+                if tries > 4:
+                    raise
+            else:
+                break
         
         return data['latitude'], data['longitude'], data
