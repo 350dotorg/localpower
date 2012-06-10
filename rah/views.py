@@ -251,10 +251,10 @@ def user_contact(request, user_id):
                          _("Sorry, but you do not have permissions to contact this user."))
 
     from discussions.models import Discussion as GenericDiscussion
-    from groups.forms import DiscussionCreateForm
+    from discussions.forms import DiscussionCreateForm
 
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = DiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
             disc = GenericDiscussion.objects.create(
                 subject=disc_form.cleaned_data['subject'],
@@ -271,7 +271,7 @@ def user_contact(request, user_id):
                 request, "Your message has been sent to %s" % user.get_full_name())
             return redirect(user)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = DiscussionCreateForm(request.user)
     return render_to_response("rah/user_contact.html",
                               locals(), 
                               context_instance=RequestContext(request)) 

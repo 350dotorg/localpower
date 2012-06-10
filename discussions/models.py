@@ -130,6 +130,9 @@ class Discussion(models.Model):
             return headers
         return headers or None
 
+class SpamFlag(models.Model):
+    user = models.OneToOneField(User)
+    moderation_status = models.CharField(max_length=10)
 
 def alert_users_of_discussion(sender, instance, **kwargs):
     if instance.is_removed:

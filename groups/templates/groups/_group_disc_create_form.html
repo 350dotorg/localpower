@@ -1,6 +1,11 @@
 {% load i18n %}
 <form action="{{ disc_form_submit_to }}" 
       method="post" accept-charset="utf-8">
+
+  {% for error in disc_form.non_field_errors %}
+  <div class="form_error">{{ error }}</div>
+  {% endfor %}
+
     {% for field in disc_form %}
         {% if field.is_hidden %}
             {{ field }}
