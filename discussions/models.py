@@ -134,6 +134,14 @@ class SpamFlag(models.Model):
     user = models.OneToOneField(User)
     moderation_status = models.CharField(max_length=10)
 
+    def status_str(self):
+        if self.moderation_status == "unreviewed":
+            return _("Unreviewed")
+        if self.moderation_status == "not_spam":
+            return _("Reviewed, not spam")
+        if self.moderation_status == "spam":
+            return _("Reviewed, spam")
+
 def alert_users_of_discussion(sender, instance, **kwargs):
     if instance.is_removed:
         return True

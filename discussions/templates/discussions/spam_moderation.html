@@ -1,0 +1,54 @@
+{% extends "base/nav_form.html" %}
+{% load i18n %}
+{% block title %}
+{% blocktrans with user.get_full_name as user_full_name %}
+Review messages from {{ user_full_name }}
+{% endblocktrans %}
+{% endblock %}
+{% block breadcrumbs %}
+<a href="{% url index %}">{% blocktrans %}Home{% endblocktrans %}</a> &rsaquo;
+<a href="{% url user_list %}">{% blocktrans %}Members{% endblocktrans %}</a> &rsaquo;
+<a href="{% url profile user.id %}">{{ user.get_full_name }}</a>
+&rsaquo;
+{% blocktrans with user.get_full_name as user_full_name %}
+Review messages from {{ user_full_name }}
+{% endblocktrans %}
+{% endblock %}
+{% block content %}
+<div class="grid_6 alpha">
+    <div class="box_two_top"></div>
+    <div class="box_two_middle">
+      <h1>
+{% blocktrans with user.get_full_name as user_full_name %}
+Review messages from {{ user_full_name }}
+{% endblocktrans %}
+      </h1>
+
+      <h3>
+{% blocktrans with spam_flag.status_str as spam_status %}
+Current moderation status: {{ spam_status }}
+{% endblocktrans %}
+      </h3>
+
+      {% for message in discussions %}
+      {% with message.content_object as recipient %}
+      <div>
+	<strong>{{ message.subject }}</strong> &mdash; {{ message.created }}
+	<br />
+	<strong>{% blocktrans %}To:{% endblocktrans %}</strong>
+	<a target="_blank" href="{{ recipient.get_absolute_url }}">{{ recipient }}</a>
+	<br />
+	{{ message.body }}
+      </div>
+      <hr />
+      {% endwith %}
+      {% empty %}
+{% blocktrans with user.get_full_name as user_full_name %}
+No message history exists for {{ user_full_name }}.
+{% endblocktrans %}
+      {% endfor %}
+	  
+    </div>
+    <div class="box_two_bottom"></div>
+</div>
+{% endblock %}
