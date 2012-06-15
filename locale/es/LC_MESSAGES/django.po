@@ -3711,6 +3711,34 @@ msgstr "Nuevos miembros"
 msgid "Browse Users"
 msgstr "Encuentra a otros miembros de 350 Local con el mapa de más abajo."
 
+#: templates/rah/home_page.html:139
+msgid "Learn more about the 350 Local platform"
+msgstr "Aprende más sobre la plataforma de 350 Local"
+
+#: templates/rah/home_page.html:140
+msgid "About 350 Local"
+msgstr "Acerca de 350 Local"
+
+#: templates/rah/home_page.html:143
+msgid "Discover resources for organizers"
+msgstr "Descubre recursos para organizadores"
+
+#: templates/rah/home_page.html:144
+msgid "Resources"
+msgstr "Recursos"
+
+#: templates/rah/home_page.html:147
+msgid "Climate Leadership Workshops"
+msgstr "Talleres de liderazgo climático"
+
+#: templates/rah/home_page.html:148
+msgid "Workshops"
+msgstr "Talleres de liderazgo climático"
+
+#: templates/rah/home_page.html:155
+msgid "Countries"
+msgstr "Países"
+
 #: templates/rah/profile.html:6
 #, python-format
 msgid "%(user_full_name)s's profile"
