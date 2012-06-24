@@ -109,13 +109,13 @@ def challenges_disc_create(request, challenge_id):
     if not challenge.has_manager_privileges(request.user):
         return forbidden(request, _('You do not have permissions'))
         
-    from groups.forms import DiscussionCreateForm
-    from discussions.models import Discussion
+    from discussions.models import Discussion as GenericDiscussion
+    from discussions.forms import DiscussionCreateForm
 
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = DiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
-            disc = Discussion.objects.create(
+            disc = GenericDiscussion.objects.create(
                 subject=disc_form.cleaned_data['subject'],
                 body=disc_form.cleaned_data['body'],
                 parent_id=None,
@@ -127,7 +127,7 @@ def challenges_disc_create(request, challenge_id):
             messages.success(request, "Your message has been sent to the campaign's supporters.")
             return redirect(challenge)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = DiscussionCreateForm(request.user)
 
     return render_to_response("challenges/challenge_disc_create.html", 
                               locals(), 
@@ -138,10 +138,10 @@ def challenges_disc_create(request, challenge_id):
 def challenge_contact_admins(request, challenge_id):
     challenge = get_object_or_404(Challenge, id=challenge_id)
     from discussions.models import Discussion as GenericDiscussion
-    from groups.forms import DiscussionCreateForm
+    from discussions.forms import DiscussionCreateForm
 
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = DiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
             disc = GenericDiscussion.objects.create(
                 subject="Message to campaign organizers: %s" % disc_form.cleaned_data['subject'],
@@ -157,7 +157,7 @@ def challenge_contact_admins(request, challenge_id):
             messages.success(request, "Your message has been sent to the campaign organizers")
             return redirect(challenge)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = DiscussionCreateForm(request.user)
     return render_to_response("challenges/challenge_disc_contact_admins.html",
                               locals(), 
                               context_instance=RequestContext(request)) 

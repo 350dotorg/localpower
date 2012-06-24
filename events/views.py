@@ -84,16 +84,16 @@ def event_disc_create(request, event_id):
     nav_selected = "events"
     event = get_object_or_404(Event, id=event_id)
 
-    from groups.forms import DiscussionCreateForm
-    from discussions.models import Discussion
+    from discussions.models import Discussion as GenericDiscussion
+    from discussions.forms import DiscussionCreateForm
 
     if not event.has_manager_privileges(request.user):
         return redirect(event)
 
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = DiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
-            disc = Discussion.objects.create(
+            disc = GenericDiscussion.objects.create(
                 subject=disc_form.cleaned_data['subject'],
                 body=disc_form.cleaned_data['body'],
                 parent_id=None,
@@ -105,7 +105,7 @@ def event_disc_create(request, event_id):
             messages.success(request, "Your message has been sent to the event's participants.")
             return redirect(event)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = DiscussionCreateForm(request.user)
 
     return render_to_response("events/event_disc_create.html", locals(), 
                               context_instance=RequestContext(request)) 
@@ -311,10 +311,10 @@ def message(request, event_id, type):
 def event_contact_admins(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     from discussions.models import Discussion as GenericDiscussion
-    from groups.forms import DiscussionCreateForm
+    from discussions.forms import DiscussionCreateForm
 
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = DiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
             disc = GenericDiscussion.objects.create(
                 subject="Message to event organizers: %s" % disc_form.cleaned_data['subject'],
@@ -330,7 +330,7 @@ def event_contact_admins(request, event_id):
             messages.success(request, "Your message has been sent to the event organizers")
             return redirect(event)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = DiscussionCreateForm(request.user)
     return render_to_response("events/event_disc_contact_admins.html",
                               locals(), 
                               context_instance=RequestContext(request)) 

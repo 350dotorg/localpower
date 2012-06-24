@@ -447,8 +447,9 @@ def receive_mail(request):
 def group_contact_admins(request, group_slug):
     group = get_object_or_404(Group, slug=group_slug)
     from discussions.models import Discussion as GenericDiscussion
+    from discussions.forms import DiscussionCreateForm as GenericDiscussionCreateForm
     if request.method == "POST":
-        disc_form = DiscussionCreateForm(request.POST)
+        disc_form = GenericDiscussionCreateForm(request.user, request.POST)
         if disc_form.is_valid():
             disc = GenericDiscussion.objects.create(
                 subject="Message to group leaders: %s" % disc_form.cleaned_data['subject'],
@@ -464,7 +465,7 @@ def group_contact_admins(request, group_slug):
             messages.success(request, _("Your message has been sent to the group leaders"))
             return redirect(group)
     else:
-        disc_form = DiscussionCreateForm()
+        disc_form = GenericDiscussionCreateForm(request.user)
     return render_to_response("groups/group_disc_contact_admins.html",
                               locals(), 
                               context_instance=RequestContext(request)) 
