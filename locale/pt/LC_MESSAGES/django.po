@@ -728,7 +728,7 @@ msgid ""
 "    The actions you’ll find here will cut energy waste, lower your monthly bills\n"
 "    and put your home on the leading edge of the energy efficiency revolution.\n"
 "  "
-msgstr "\nVocê pode escolher qualquer um destes projetos para realizar com seu grupo. Se você for educar sua comunidade, executar uma campanha para exercer pressão para aprovar uma política climática ou implementar soluções climáticas locais, <a href=\"http://www.350.org/resources\">você vai encontrar recursos para seu projeto aqui</a>.\n<br /><br />\n<strong>Icon Key</strong><br />\n<table>\n\t<tr>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/theme/default_group__thumbnail_colorspace_60x60smartcrop.png\" alt=\"Movement Building\" title=\"Movement Building\" /><br />Movement Building</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/lightbulb-exchange-action-badge-0-small.png\" alt=\"Solutions\" title=\"Solutions\" /><br />Solutions</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/run-a-candidate-action-badge-0-small.png\" alt=\"Campaigns\" title=\"Campaigns\" /><br />Campaigns</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/educate-presentation-action-badge-0-small.png\" alt=\"Education\" title=\"Education\" /><br />Education</td>\n\t\t</tr>\n\t</table>\n  "
+msgstr "\nVocê pode escolher qualquer um destes projetos para realizar com seu grupo. Se você for educar sua comunidade, executar uma campanha para exercer pressão para aprovar uma política climática ou implementar soluções climáticas locais, <a href=\"http://www.350.org/resources\">você vai encontrar recursos para seu projeto aqui</a>."
 
 #: actions/templates/actions/action_show.html:42
 msgid ""
@@ -736,7 +736,7 @@ msgid ""
 "    The projects you’ll find here will cut energy waste, lower your monthly bills\n"
 "    and put your home on the leading edge of the energy efficiency revolution.\n"
 "  "
-msgstr "\nVocê pode escolher qualquer um destes projetos para realizar com seu grupo. Se você for educar sua comunidade, executar uma campanha para exercer pressão para aprovar uma política climática ou implementar soluções climáticas locais, <a href=\"http://www.350.org/resources\">você vai encontrar recursos aqui</a>.\n<br /><br />\n<strong>Icon Key</strong><br />\n<table>\n\t<tr>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/theme/default_group__thumbnail_colorspace_60x60smartcrop.png\" alt=\"Movement Building\" title=\"Movement Building\" /><br />Movement Building</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/lightbulb-exchange-action-badge-0-small.png\" alt=\"Solutions\" title=\"Solutions\" /><br />Solutions</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/run-a-candidate-action-badge-0-small.png\" alt=\"Campaigns\" title=\"Campaigns\" /><br />Campaigns</td>\n\t\t<td style=\"padding-right:10px;text-align:center;width:80px;\">\n\t\t<img style=\"margin-left:auto;margin-right:auto;\" src=\"http://static.local.350.org/images/badges/educate-presentation-action-badge-0-small.png\" alt=\"Education\" title=\"Education\" /><br />Education</td>\n\t\t</tr>\n\t</table>\n  "
+msgstr "\nVocê pode escolher qualquer um destes projetos para realizar com seu grupo. Se você for educar sua comunidade, executar uma campanha para exercer pressão para aprovar uma política climática ou implementar soluções climáticas locais, <a href=\"http://www.350.org/resources\">você vai encontrar recursos aqui</a>."
 
 #: actions/templates/actions/action_show.html:50
 #, python-format
@@ -3711,6 +3711,34 @@ msgstr "Novos membros"
 #: templates/rah/home_page.html:229
 msgid "Browse Users"
 msgstr "Encontre outros membros da 350 Local no mapa abaixo."
+
+#: templates/rah/home_page.html:139
+msgid "Learn more about the 350 Local platform"
+msgstr "Saiba mais sobre a plataforma 350 Local"
+
+#: templates/rah/home_page.html:140
+msgid "About 350 Local"
+msgstr "Sobre 350 Local"
+
+#: templates/rah/home_page.html:143
+msgid "Discover resources for organizers"
+msgstr "Descubra recursos para organizadores"
+
+#: templates/rah/home_page.html:144
+msgid "Resources"
+msgstr "Recursos"
+
+#: templates/rah/home_page.html:147
+msgid "Climate Leadership Workshops"
+msgstr "Oficinas de Liderança para o Clima"
+
+#: templates/rah/home_page.html:148
+msgid "Workshops"
+msgstr "Oficinas"
+
+#: templates/rah/home_page.html:155
+msgid "Countries"
+msgstr "Países"
 
 #: templates/rah/profile.html:6
 #, python-format

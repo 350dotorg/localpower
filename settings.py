@@ -38,11 +38,11 @@ TIME_ZONE = 'America/New_York'
 
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
-LANGUAGES = (('de', "Deutsch"),
-             ('en', "English"),
-             ('es', "Espanol"),
-             ('fr', "Francais"),
-             ('pt', "Portugues"),
+LANGUAGES = (('de', u"Deutsch"),
+             ('en', u"English"),
+             ('es', u"Español"),
+             ('fr', u"Français"),
+             ('pt', u"Português"),
              )
 
 SITE_ID = 1
