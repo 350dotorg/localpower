@@ -219,6 +219,8 @@ class Message(models.Model):
             func_or_attr = getattr(content_object, self.recipient_function)
             recipients = func_or_attr() if inspect.ismethod(func_or_attr) else func_or_attr
         if not hasattr(recipients, "__iter__"):
+            if recipients is None:
+                return None
             recipients = [recipients]
         return [(r.email, r) if hasattr(r, "email") else (r, None) for r in recipients]
 
@@ -296,7 +298,11 @@ class Message(models.Model):
         sent = []
         if not blacklisted_emails:
             blacklisted_emails = []
-        for email, user_object in self.recipients(content_object):
+        recipients = self.recipients(content_object)
+        if recipients is None:
+            return sent
+
+        for email, user_object in recipients:
             if not email or email in blacklisted_emails:
                 continue # email has been blacklisted, don't send to this recipient
             # for each recipient, create a Recipient message to keep track of opens
