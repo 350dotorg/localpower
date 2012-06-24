@@ -1,5 +1,6 @@
 import datetime
 from django import forms
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from discussions.models import Discussion, SpamFlag
@@ -30,7 +31,6 @@ class DiscussionCreateForm(forms.Form):
         return parent_id
 
     def clean(self):
-        recently = datetime.datetime.now() - datetime.timedelta(1)
         try:
             user_spamflag = SpamFlag.objects.get(user=self.sender)
         except SpamFlag.DoesNotExist:
@@ -41,7 +41,9 @@ class DiscussionCreateForm(forms.Form):
             return forms.Form.clean(self)
         if spam_status == "spam":
             raise forms.ValidationError(_("Your message was rejected because your account has been flagged as a spammer. If this was an error, contact the site staff for help."))
+        
+        recently = datetime.datetime.now() - datetime.timedelta(1)
         discussions = Discussion.objects.filter(user=self.sender, created__gt=recently)
-        if discussions.count() > 1:
-            raise forms.ValidationError(_("Your message was rejected because you have already exceeded the daily message quota for your account. To increase your rate limit, contact the site staff for a review."))
+        if discussions.count() > settings.DISCUSSIONS_UNREVIEWED_USER_QUOTA:
+            raise forms.ValidationError(_("Your message was rejected because you have already exceeded the message quota for your account. To increase your rate limit, contact the site staff for a review."))
         return forms.Form.clean(self)
