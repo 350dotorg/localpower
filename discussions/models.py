@@ -1,3 +1,4 @@
+import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
@@ -61,6 +62,24 @@ class Discussion(models.Model):
     def container(self):
         return self.content_object
 
+    def email_staff_for_moderation(self):
+        try:
+            user_spamflag = SpamFlag.objects.get(user=self.user)
+        except SpamFlag.DoesNotExist:
+            spam_status = "unreviewed"
+        else:
+            spam_status = user_spamflag.moderation_status
+        if spam_status == "not_spam":
+            return None
+        if spam_status == "spam":
+            ## TODO
+            return None
+        recently = datetime.datetime.now() - datetime.timedelta(1)
+        discussions = Discussion.objects.filter(user=self.user, created__gt=recently)
+        if discussions.count() > 1:
+            return "group-notifications@350.org"
+        return None
+        
     def email_recipients(self):
         if self.content_type == ContentType.objects.get(
             app_label="events", model="event"):
