@@ -40,7 +40,7 @@ class DiscussionCreateForm(forms.Form):
         if spam_status == "not_spam":
             return forms.Form.clean(self)
         if spam_status == "spam":
-            raise forms.ValidationError(_("Your message was rejected because your account has been flagged as a spammer. If this was an error, contact the site staff for help."))
+            raise forms.ValidationError(_("Your message was rejected because your account has been flagged for sending inappropriate messages. Contact the site staff for help."))
         
         recently = datetime.datetime.now() - datetime.timedelta(1)
         discussions = Discussion.objects.filter(user=self.sender, created__gt=recently)
