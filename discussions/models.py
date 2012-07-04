@@ -77,7 +77,7 @@ class Discussion(models.Model):
         recently = datetime.datetime.now() - datetime.timedelta(1)
         discussions = Discussion.objects.filter(user=self.user, created__gt=recently)
         if discussions.count() > 1:
-            return "group-notifications@350.org"
+            return "local-alerts@350.org"
         return None
         
     def email_recipients(self):
