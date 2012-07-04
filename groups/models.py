@@ -378,6 +378,8 @@ class Discussion(models.Model):
         self.attached_to = None
         self.save()
         
+    def email_staff_for_moderation(self):
+        return None
 
     def email_recipients(self):
         if self.attached_to is None:
