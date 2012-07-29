@@ -42,7 +42,7 @@ Showing {{num_users}} users
   {% with user.get_profile as profile %}
   <li>
     <a href="{{user.get_absolute_url}}">
-      <img src="{{profile.profile_picture_large}}" 
+      <img src="{% url user_profile_picture user.id %}" 
 	   alt="{% blocktrans %}Profile image{% endblocktrans %}"
 	   height="38" width="45" />
     </a>

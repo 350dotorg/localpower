@@ -240,6 +240,11 @@ def login(request, template_name='registration/login.html',
         'nav_selected': nav_selected,
     }, context_instance=RequestContext(request))
 
+
+def user_profile_picture(request, user_id):
+    user = request.user if request.user.id is user_id else get_object_or_404(User, id=user_id)
+    return redirect(user.get_profile().profile_picture_large())
+
 @login_required
 @csrf_protect
 def user_contact(request, user_id):
