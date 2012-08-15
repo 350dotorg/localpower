@@ -50,7 +50,7 @@ SITE_ID = 1
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_L10N_FALLBACKS = True
 
 # Absolute path to the directory that holds media.
