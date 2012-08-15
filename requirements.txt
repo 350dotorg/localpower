@@ -28,3 +28,4 @@ django-celery
 django-kombu
 django-supervisor
 django-celery-email
+django-debug-toolbar
