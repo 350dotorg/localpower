@@ -139,13 +139,16 @@ class Discussion(models.Model):
         if self.disallow_replies:
             # If we're not allowing replies, then the sender
             # should receive email replies out of the system.
+            # We'll set both the From and the Reply-To so that
+            # the recipient is definitely able to respond to
+            # the sender.
             if self.user:
-                headers['Reply-To'] = self.user.email
+                headers['Reply-To'] = headers['From'] = self.user.email
                 return headers
             assert self.mock_user
             mock_user = json.loads(self.mock_user)
             assert 'email' in mock_user
-            headers['Reply-To'] = mock_user['email']
+            headers['Reply-To'] = headers['From'] = mock_user['email']
             return headers
         return headers or None
 
