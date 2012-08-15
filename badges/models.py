@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.db.utils import DatabaseError
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 
@@ -18,7 +19,10 @@ from brabeion.models import BadgeAward
 # registered with the brabeion badge cache before any code tries to
 # award a badge out of the cache. Otherwise we get semi-unreproducible
 # KeyErrors in brabeion internals when calling `possibly_award_badge`
-import badges
+try:
+    import badges
+except DatabaseError:
+    pass
 
 def all_badges(user=None):
     import badges
