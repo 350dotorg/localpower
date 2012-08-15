@@ -70,7 +70,6 @@
                         <a href="{% url group_list %}" class="not_last" id="header_groups">{% blocktrans %}Groups{% endblocktrans %}</a>
                         <a href="{% url event-show %}" class="not_last" id="header_events">{% blocktrans %}Events{% endblocktrans %}</a>
                         <a href="{% url action_show %}" class="not_last" id="header_projects">{% blocktrans %}Projects{% endblocktrans %}</a>
-                        <a href="{% url challenges_list %}" class="not_last" id="header_campaigns">{% blocktrans %}Campaigns{% endblocktrans %}</a>
 			<a href="" id="header_language" {% if settings.LANGUAGES|length == 1 %}style="display:none"{% endif %}>
 			  {{ request.LANGUAGE_VERBOSE_NAME }}
 			</a>

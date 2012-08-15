@@ -54,18 +54,6 @@
                 <div class="nav_pointer_wrap"></div>
             </li>
 
-            <li class="{% ifequal nav_selected "challenges" %}nav_selected{% endifequal %}">
-                <a href="{% url challenges_list %}"><span class="sprite_nav sprite_nav_challenges"></span> <span class="sprite_nav_title">{% blocktrans %}Challenges{% endblocktrans %}</span></a>
-                <div class="nav_pointer_wrap"></div>
-            </li>
-
-	    {% comment %}
-            <li class="{% ifequal nav_selected "badges" %}nav_selected{% endifequal %}">
-                <a href="{% url badge_list %}"><span class="sprite_nav sprite_nav_badges"></span> <span class="sprite_nav_title">{% blocktrans %}Badges{% endblocktrans %}</span></a>
-                <div class="nav_pointer_wrap"></div>
-            </li>
-	    {% endcomment %}
-
             <li class="{% ifequal nav_selected "users" %}nav_selected{% endifequal %}">
                 <a href="{% url user_list %}"><span class="sprite_nav sprite_nav_communities"></span> <span class="sprite_nav_title">{% blocktrans %}Users{% endblocktrans %}</span></a>
                 <div class="nav_pointer_wrap"></div>
