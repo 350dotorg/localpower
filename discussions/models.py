@@ -144,6 +144,8 @@ class Discussion(models.Model):
             # the sender.
             if self.user:
                 headers['Reply-To'] = self.user.email
+                headers['From'] = "%s <%s>" % (
+                    self.user.get_full_name(), settings.RAW_DEFAULT_FROM_EMAIL)
                 return headers
             assert self.mock_user
             mock_user = json.loads(self.mock_user)
