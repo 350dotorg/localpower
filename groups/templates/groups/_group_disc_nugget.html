@@ -7,7 +7,7 @@
                 {% if first_comment %}
                     <h1>{{disc.subject}}</h1>
                 {% endif %}
-                {{disc.body|linebreaks}}
+                {{disc.body|safe|linebreaks}}
             </div>
             <div class="box_two_bottom"></div>
             <span class="point"></span>
