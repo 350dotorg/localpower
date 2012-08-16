@@ -143,12 +143,12 @@ class Discussion(models.Model):
             # the recipient is definitely able to respond to
             # the sender.
             if self.user:
-                headers['Reply-To'] = headers['From'] = self.user.email
+                headers['Reply-To'] = self.user.email
                 return headers
             assert self.mock_user
             mock_user = json.loads(self.mock_user)
             assert 'email' in mock_user
-            headers['Reply-To'] = headers['From'] = mock_user['email']
+            headers['Reply-To'] = mock_user['email']
             return headers
         return headers or None
 
