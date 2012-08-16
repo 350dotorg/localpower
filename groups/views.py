@@ -402,11 +402,11 @@ def receive_mail(request):
     for part in msg.walk():
         if part.get_content_maintype() == 'multipart':
             continue
-        if part.get_content_type() == 'text/plain':
+        if best_choice is None and part.get_content_type() == 'text/plain':
+            best_choice = part
+        if part.get_content_type() == 'text/html':
             best_choice = part
             break
-        if best_choice is None and part.get_content_type() == 'text/html':
-            best_choice = part
     if best_choice is None:
         # No text/plain or text/html message was found in the email
         # so we'll just reject it for now.
