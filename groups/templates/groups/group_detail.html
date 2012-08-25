@@ -232,57 +232,6 @@
 	{% endwith %}
     </div>
 
-    <div id="challenges">
-	<h2>{% blocktrans %}Challenges{% endblocktrans %}</h2>
-	{% with group.challenge_set.all as group_challenges %}
-
-	{% if not group_challenges %}
-	{% if is_member %}
-	{% url challenges_create as campaign_create_url %}
-	{% url challenges_list as campaign_list_url %}
-	{% blocktrans with group.id as group_id %}
-	Your group hasn't created any campaigns. Why don't you 
-	<a href="{{ campaign_create_url }}?groups={{group_id}}">create a new campaign</a> or
-	<a href="{{ campaign_list_url }}">look for an existing campaign</a>
-	for your group to participate in?
-	{% endblocktrans %}
-	{% else %}
-	This group hasn't created any campaigns.
-	{% endif %}
-
-	{% else %}
-	<ul class='plain_list nugget_3c'>
-	{% for challenge in group_challenges %}
-        <li class="nugget_3c_tall {% if challenge.status %}nugget_3c_completed{% endif %}">
-            <div class="nugget_3c_status">
-                {% if challenge.status %}
-                    <span class="sprite_check_white_small"></span>
-                    {% blocktrans %}COMPLETED{% endblocktrans %}
-                {% else %}
-                    {% blocktrans %}Petition Challenge{% endblocktrans %}
-                {% endif %}
-            </div>
-
-            <h2>
-                <a href="{% url challenges_detail challenge.id %}">{{ challenge.title }} </a>
-            </h2>
-            <p>
-            {% safe_user_link challenge.creator as user_link %}
-	    {% blocktrans with challenge.goal|intcomma as num_supporters %}
-            Created by: {{user_link}}
-	    <br/>
-            Goal: {{ num_supporters }} supporters
-	    {% endblocktrans %}
-            </p>
-            
-            {% include "challenges/_progress_bar.html" %}
-        </li>
-	{% endfor %}
-	</ul>
-	{% endif %}
-	{% endwith %}
-    </div>
-
     {% if is_manager %}
     <div id="requests">
         {% if not requesters and not event_requests and not challenge_requests and not action_requests %}
