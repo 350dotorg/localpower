@@ -2,6 +2,8 @@
 /*global $: false, RAH: false, FB: false, jQuery: false, window: false, google: false, require: false, define: false */
 require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/messages", "mods/facebook"],
     function (ui, form, validation, messages, facebook) {
+        var LANG = $("meta[http-equiv='content-language']").attr("content");
+        $.getScript("/static/js/i18n/jquery.ui.datepicker-" + LANG + ".js");
 
         // Setup datepicker
 	$("input.datepicker").datepicker();
