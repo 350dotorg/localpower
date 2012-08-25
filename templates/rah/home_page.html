@@ -39,7 +39,14 @@
 	padding:}
 .home_stat_block .stat{
 	margin:15px 0;
-	height:30px;}
+	height:30px;
+}
+#home_stat_bar .home_stat_wrap_last {
+        margin-bottom: -1em;
+}
+#home_stat_bar .home_stat_wrap_last .home_stat {
+        text-align: center;
+}
 .stat-number{
 	float:left;
 	font-weight:bold;
@@ -148,14 +155,12 @@
 	<a target="_blank" href="http://workshops.350.org" class="button grey">{% blocktrans %}Workshops{% endblocktrans %}</a>
       </div>
       <div class="home_stat_wrap home_stat_wrap_last home_stat_block">
+	<div class="home_stat">{% blocktrans %}Currently on 350&nbsp;Local{% endblocktrans %}</div>
 	<div class="stat" id="groups-stat">
 	  <span class="stat-number">{{ total_communities|intcomma }}</span>&nbsp;<span class="stat-label">{% blocktrans %}Groups{% endblocktrans %}</span>
 	</div>
 	<div class="stat" id="countries-stat">
 	  <span class="stat-number">{{ total_countries|intcomma }}</span>&nbsp;<span class="stat-label">{% blocktrans %}Countries{% endblocktrans %}</span>
-	</div>
-	<div class="stat" id="projects-stat">
-	  <span class="stat-number">{{ total_actions|intcomma }}</span>&nbsp;<span class="stat-label two-line">{% blocktrans %}Completed Projects{% endblocktrans %}</span>
 	</div>
       </div>
     </div>
