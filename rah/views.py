@@ -76,7 +76,8 @@ def _total_actions():
         (Commitment.objects.filter(answer="D", action__isnull=False, contributor__user__isnull=True).count() or 0)
 
 def _total_countries():
-    return Profile.objects.all().values_list("geom__country").distinct().count()
+    return Profile.objects.filter(user__groupusers__isnull=False).values_list(
+        "geom__country").distinct().count()
 
 def _total_commitment_cards():
     return (ContributorSurvey.objects.all().count())
