@@ -3,7 +3,14 @@
 require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/messages", "mods/facebook"],
     function (ui, form, validation, messages, facebook) {
         var LANG = $("meta[http-equiv='content-language']").attr("content");
-        $.getScript("/static/js/i18n/jquery.ui.datepicker-" + LANG + ".js");
+
+	jQuery.ajax({
+		    async: false,
+		    type: "GET",
+		    url: "/static/js/i18n/jquery.ui.datepicker-" + LANG + ".js",
+		    data: null,
+		    dataType: 'script'
+		    });
 
         // Setup datepicker
 	$("input.datepicker").datepicker();
