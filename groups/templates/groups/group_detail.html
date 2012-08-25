@@ -139,9 +139,7 @@
       </ul>
 
         <p>
-	  {% blocktrans with group.total_members as num_members %}
-            Total members: {{ num_members }}<br />
-	  {% endblocktrans %}
+	  <em>{% blocktrans %}There might be more members of this group that aren't listed, as they haven't yet registered on 350 Local.{% endblocktrans %}</em>
         </p>
         <p>
           {% if group.is_joinable and is_member %}

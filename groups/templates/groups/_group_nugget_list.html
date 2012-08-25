@@ -9,11 +9,6 @@
                 <a href="{{ group.get_absolute_url }}">{{ group.name }}</a>
                 <div class="smaller">
                   {% if group.geom %}<span>{{ group.geom }}</span><br/>{% endif %}
-		  {% blocktrans count group.member_count as num_members %}
-                  {{ num_members }} member
-		  {% plural %}
-		  {{ num_members }} members
-		  {% endblocktrans %}
                 </div>
             </div>
         </li>
