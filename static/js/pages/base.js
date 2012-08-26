@@ -38,7 +38,7 @@ require(["libs/jquery.ui", "libs/jquery.form", "libs/jquery.validation", "mods/m
 		modal: true,
 		autoOpen: false,
 		resizable: true, draggable: true,
-		width: 360,
+		width: 360
 	});
 	$("#header_language").click(function() {
 	    $("#language_dropdown").dialog('open');
