@@ -109,7 +109,6 @@
     {% if not group.is_external_link_only %}
     <li><a href="#activity">{% blocktrans %}Activity{% endblocktrans %}</a></li>
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
-    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
     <li><a href="#overview">{% blocktrans %}Members{% endblocktrans %}</a></li>
     <li><a href="#discussions">{% blocktrans %}Discussions{% endblocktrans %}</a></li>
 
@@ -349,44 +348,6 @@
     </div>
     {% endif %}
 
-    <div id="actions">
-      <h2>{% blocktrans %}Projects and Actions{% endblocktrans %}</h2>
-      {% if not group.action_set.count and not popular_actions %}
-      {% if is_member %}
-      {% url action_show as project_list_url %}
-      Your group hasn't taken on any projects.  Why don't you 
-      <a href="{{ project_list_url }}">look for a project</a> to
-      take on with your group?
-      {% else %}
-      This group hasn't taken on any projects.
-      {% endif %}
-      {% endif %}
-
-      {% if group.action_set.count %}
-      <h3>{% blocktrans %}Actions{% endblocktrans %}</h3>
-      {% for action in group_actions %}
-      <p>
-        <a href="{% url action_detail action.slug %}">{{ action.translated_action.name }}</a><br/>
-      </p>
-      {% endfor %}      
-      {% endif %}
-
-      {% if popular_actions %}
-      <h3>{% blocktrans %}Popular Actions{% endblocktrans %}</h3>
-      {% for action in popular_actions %}
-      <p>
-        <a href="{% url action_detail action.slug %}">{{ action.translated_action.name }}</a><br/>
-        <span class="smaller">
-	  {% blocktrans count action.completes_in_group as num_completions %}
-	  {{ num_completions }} member
-	  {% plural %}
-	  {{ num_completions }} members
-	  {% endblocktrans %}
-	</span>
-      </p>
-      {% endfor %}
-      {% endif %}
-    </div>
 
     {% endif %}
 <script>

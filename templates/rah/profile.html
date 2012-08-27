@@ -34,7 +34,6 @@
 {% endblock %}
 {% block tab_nav %}
     <li><a href="#overview">{% blocktrans %}Overview{% endblocktrans %}</a></li>
-    <li><a href="#actions">{% blocktrans %}Actions{% endblocktrans %}</a></li>
     <li><a href="#communities">{% blocktrans %}Communities{% endblocktrans %}</a></li>
     <li><a href="#events">{% blocktrans %}Events{% endblocktrans %}</a></li>
     {% if not is_others_profile %}
@@ -86,52 +85,7 @@
 	    {% endif %}
         {% endif %}
 	</div>
-	<div id="actions">
-	  {% if not commitment_list and not committed and not completed %}
-	  <h2>{% blocktrans %}Actions{% endblocktrans %}</h2>
-	  {% if is_others_profile %}
-	  {% blocktrans with user.get_full_name as user_full_name %}
-	  {{ user_full_name }} hasn't gotten involved with any projects yet.
-	  {% endblocktrans %}
-	  {% else %}
-	  {% url action_show as project_list_url %}
-	  {% url solo_action_show as solo_project_list_url %}
-	  {% blocktrans %}
-	  You haven't taken on any projects yet.  You can 
-	  <a href="{{ project_list_url }}">look for a project</a> to
-	  get involved with with a group, or <a href="{{ solo_project_list_url }}">
-	    browse the list of solo actions</a> that you can commit to do on your own.
-	  {% endblocktrans %}
-	  {% endif %}
-	  {% endif %}
 
-        {% if commitment_list %}
-            <h2>{% blocktrans %}Commitments{% endblocktrans %}</h2>
-            <p>
-            {% for row in commitment_list %}
-                <a href="{% url action_detail row.action.slug %}">
-		  {{row.action.translated_action.name}}</a> 
-		{% blocktrans with row.date_committed|date as action_date_committed %}
-		by {{action_date_committed}}
-		{% endblocktrans %}
-		<br/>
-            {% endfor %}
-            </p>
-        {% endif %}
-
-        {% if completed %}
-            <h2>{% blocktrans %}Completed Actions{% endblocktrans %}</h2>
-            <p>
-            {% for row in completed %}
-	    {% with row.action as action %}
-            <a href="{% url action_detail action.slug %}">{{action.translated_action.name}}</a>
-	    <br/>
-	    {% endwith %}
-            {% endfor %}
-            </p>
-        {% endif %}
-
-	</div>
 	<div id="overview">
         {% if records %}
             <h2>{% blocktrans %}Recent Activity{% endblocktrans %}
