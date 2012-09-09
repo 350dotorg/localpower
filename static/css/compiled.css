@@ -99,6 +99,7 @@ ul{ margin-left: 18px; margin-bottom: 18px;}
 }
 #content_container.section_home{
     background: #F2F2F2 url(../images/theme/bg.jpg) center top repeat-x;
+    background-size: 925px;
 }
 #content_9c_container {
     background-color: #FFF;
@@ -1590,7 +1591,7 @@ li.messages a.dismiss {
 #home_slide_container {
     overflow: hidden;
     position: relative;
-    height:315px;
+    height:400px;
 }
 #home_slide_holder {
     position: absolute;

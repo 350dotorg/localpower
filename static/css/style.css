@@ -36,7 +36,7 @@ Home Page Home Page Home Page Home Page Home Page Home Page Home Page Home Page 
 #home_slide_container {
     overflow: hidden;
     position: relative;
-    height:315px;
+    height:400px;
 }
 #home_slide_holder {
     position: absolute;
