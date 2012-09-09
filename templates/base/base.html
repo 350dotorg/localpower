@@ -46,6 +46,9 @@
             _gaq.push(['_setAccount', 'UA-11623269-1']);
             _gaq.push(['_trackPageview']);
         </script>
+	<script type="text/javascript">
+	  window.base_static_path = "{% dated_static '' %}";
+	</script>
 	<style type="text/css">
 	  #language_dropdown {
 	    display: none;
@@ -69,7 +72,6 @@
                         <a href="/about/" class="not_last" id="header_about">{% blocktrans %}About{% endblocktrans %}</a>
                         <a href="{% url group_list %}" class="not_last" id="header_groups">{% blocktrans %}Groups{% endblocktrans %}</a>
                         <a href="{% url event-show %}" class="not_last" id="header_events">{% blocktrans %}Events{% endblocktrans %}</a>
-                        <a href="{% url action_show %}" class="not_last" id="header_projects">{% blocktrans %}Projects{% endblocktrans %}</a>
 			<a href="" id="header_language" {% if settings.LANGUAGES|length == 1 %}style="display:none"{% endif %}>
 			  {{ request.LANGUAGE_VERBOSE_NAME }}
 			</a>
