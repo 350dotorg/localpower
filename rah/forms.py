@@ -142,7 +142,7 @@ class ProfileEditForm(forms.ModelForm):
 
     phone = forms.CharField(max_length=30, required=False,
                             widget=forms.HiddenInput)
-    language = forms.CharField(max_length=10, required=True,
+    language = forms.CharField(max_length=10, required=True, label=_("Language"),
                                widget=forms.Select(choices=settings.LANGUAGES))
 
 
