@@ -3849,15 +3849,12 @@ msgid ""
 "\t\t\t  "
 msgstr ""
 "\n"
-"There's plenty we can all do at the local level to fight climate change, "
-"build a movement, and transform our communities from the ground up. Check "
-"out the projects on this website for ideas to build your team, educate your "
-"community, and advocate for solutions in your community.<!-- %(SITE_NAME)s --"
-">"
+"There's plenty we can all do at the local level to fight climate change, build a movement, and transform our communities from the ground up. Check out the organizing guides and projects ideas on 350.org for ways to build your team, educate your community, and advocate for solutions. <!-- %(SITE_NAME)s -->"
+
 
 #: templates/rah/home_page.html:107
 msgid "home_slide_3_url"
-msgstr "/projects/"
+msgstr "http://www.350.org/en/organizing-guides-project-ideas"
 
 #: templates/rah/home_page.html:108
 msgid "Find Communities"
@@ -3928,7 +3925,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:143
 msgid "Discover resources for organizers"
-msgstr ""
+msgstr "Explore project ideas and resources for organizers"
 
 #: templates/rah/home_page.html:144
 msgid "Resources"
@@ -3936,7 +3933,7 @@ msgstr ""
 
 #: templates/rah/home_page.html:147
 msgid "Climate Leadership Workshops"
-msgstr ""
+msgstr "Host a climate leadership workshop"
 
 #: templates/rah/home_page.html:148
 msgid "Workshops"
