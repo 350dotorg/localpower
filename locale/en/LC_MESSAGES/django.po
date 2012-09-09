@@ -22,6 +22,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
+msgid "Language"
+msgstr "Language"
+
+msgid "Language: %(LANG_NAME)s"
+msgstr "Language: %(LANG_NAME)s"
+
 #: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
 msgid ""
 "You need to create an account first. Don't worry -- it only takes 15 seconds!"
