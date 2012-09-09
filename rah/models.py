@@ -198,7 +198,7 @@ class Profile(models.Model):
             try:
                 profile_picture = facebook_profile(self.user, "square")
             except:
-                pass
+                profile_picture = None
 
             if not profile_picture:
                 profile_picture = 'http://www.gravatar.com/avatar/%s?r=g&d=%s&s=52' % (self._email_hash(), default_icon)
