@@ -31,7 +31,10 @@
                 <a href="{% url register %}" class="button">{% blocktrans %}sidebar_logged_out_register_button{% endblocktrans %}</a>
             </div>
             <div id="nav_logged_out_fb" class="center">
-	      {% if not login_form %}
+	      {% url login as login_view_url %}
+	      {% url password_reset as password_reset_view_url %}
+	      {% url register as register_view_url %}
+	      {% if request.path != login_view_url and request.path != password_reset_view_url and request.path != register_view_url %}
               <div class="fb_button">
                 <a href="#" class="fb_button fb_button_medium">
                   <span id="fb_login_text" class="fb_button_text">{% blocktrans %}Join with Facebook{% endblocktrans %}</span>
