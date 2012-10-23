@@ -31,7 +31,9 @@ class RegistrationForm(forms.ModelForm):
     first_name = forms.CharField(min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half'}))
     last_name = forms.CharField(required=False, min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
 
-    password1 = forms.CharField(label=_('Password'), min_length=5, widget=forms.PasswordInput)
+    password1 = forms.CharField(
+        label=_('Password'), min_length=5, widget=forms.PasswordInput,
+        help_text=_("Your password must be at least five digits"),)
     honeypot = Honeypot()
 
     class Meta:
