@@ -4112,6 +4112,7 @@ msgid ""
 "    communities use energy. Join us! Become a Trendsetter by creating an account\n"
 "    and pledging to save energy.\n"
 msgstr ""
+"\n"
 
 #: templates/registration/register.html:32
 msgid "Sign Up Now"
