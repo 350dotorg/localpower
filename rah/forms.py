@@ -27,9 +27,9 @@ class RegistrationForm(forms.ModelForm):
     """
     A form that creates a user, with no privileges, from the given email and password.
     """
-    email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'id':'email_register'}))
-    first_name = forms.CharField(min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half'}))
-    last_name = forms.CharField(required=False, min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
+    email = forms.EmailField(label=_('Email address'), widget=forms.TextInput(attrs={'id':'email_register'}))
+    first_name = forms.CharField(label=_("First Name"), min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half'}))
+    last_name = forms.CharField(label=_("Last Name"), required=False, min_length=1, widget=forms.TextInput(attrs={'class':'form_row_half form_row_half_last'}))
 
     password1 = forms.CharField(
         label=_('Password'), min_length=5, widget=forms.PasswordInput,
