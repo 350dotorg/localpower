@@ -3202,6 +3202,14 @@ msgstr "prénom"
 msgid "last name"
 msgstr "nom"
 
+#: rah/models.py:254
+msgid "First Name"
+msgstr "Prénom"
+
+#: rah/models.py:255
+msgid "Last Name"
+msgstr "Nom"
+
 #: rah/models.py:256
 msgid "email"
 msgstr "email"

@@ -3040,6 +3040,14 @@ msgstr "%(content_object)s Kommentar"
 msgid "Don't use or else your submission will be flagged as spam"
 msgstr "Nicht verwenden ansonsten wird deine Eingabe als Spam markiert"
 
+#: rah/forms:31
+msgid "First Name"
+msgstr "Vorname"
+
+#: rah/forms: 32
+msgid "Last Name"
+msgstr "Familienname"
+
 #: rah/forms.py:53
 msgid ""
 "This email address has already been registered in our system. If you have "

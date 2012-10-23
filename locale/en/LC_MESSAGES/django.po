@@ -3197,6 +3197,18 @@ msgstr ""
 msgid "Don't use or else your submission will be flagged as spam"
 msgstr ""
 
+#: rah/forms:31
+msgid "First Name"
+msgstr ""
+
+#: rah/forms: 32
+msgid "Last Name"
+msgstr ""
+
+#: rah/forms: 36
+msgid "Your password must be at least five digits"
+msgstr ""
+
 #: rah/forms.py:53
 msgid ""
 "This email address has already been registered in our system. If you have "
@@ -4319,6 +4331,18 @@ msgstr ""
 
 #: templates/rah/user_list.html:87
 msgid "View profile"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:3
+msgid "Reset your password"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:6
+msgid "Reset Password"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:9
+msgid "Need to be someplace else?"
 msgstr ""
 
 #: templates/registration/login.html:4 templates/registration/login.html:7

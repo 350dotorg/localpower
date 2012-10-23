@@ -3202,6 +3202,14 @@ msgstr "nombre"
 msgid "last name"
 msgstr "apellidos"
 
+#: rah/forms:31
+msgid "First Name"
+msgstr "Nombre"
+
+#: rah/forms: 32
+msgid "Last Name"
+msgstr "Apellidos"
+
 #: rah/models.py:256
 msgid "email"
 msgstr "correo electrónico"
