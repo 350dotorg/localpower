@@ -12,14 +12,20 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 23:17-0400\n"
-"PO-Revision-Date: 2012-08-07 22:07+0000\n"
-"Last-Translator: Hannah Shultz <hannah@350.org>\n"
+"PO-Revision-Date: 2012-09-13 16:32+0000\n"
+"Last-Translator: Sabine Lingl <sabine.lingl@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/localpower/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Language: %(LANG_NAME)s"
+msgstr "Sprache: %(LANG_NAME)s"
 
 #: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
 msgid ""
@@ -3632,7 +3638,7 @@ msgid ""
 "                            complete, the more badges and points you earn for your\n"
 "                            progress. \n"
 "\t\t\t  "
-msgstr "\nEs gibt vieles, was jeder von uns vor Ort tun kann, um gegen den Klimawandel zu kämpfen, eine Bewegung aufzubauen und unsere Gemeinden von Grund auf zu verändern. Unter den Projekten auf dieser Website findest du Ideen für den Aufbau deines Teams, Aufklärungsarbeit und Lösungsfindung in deiner Gemeinde."
+msgstr "\nVon Afghanistan bis Zimbabwe arbeiten Menschen in beinahe jedem Land der Welt daran, ihre Gemeinden für gerechte Lösungen der Klimakrise zu mobilisieren. Diese Website soll es euch erleichtern, mit anderen Klimaaktivisten in eurer Region Kontakt aufzunehmen, tatkräftige Bewegungen vor Ort aufzubauen um eure Gemeinden von Grund auf zu verändern und weltweit solidarisch gegen den Klimawandel anzugehen. Lasst uns diese Bewegung gemeinsam aufbauen! "
 
 #: templates/rah/home_page.html:84
 msgid "home_slide_2_url"
@@ -3655,7 +3661,7 @@ msgid ""
 "                            %(SITE_NAME)s community. Communities make it easy to\n"
 "                            share tips and stories with Trendsetters like you.\n"
 "\t\t\t  "
-msgstr "\nEs gibt vieles was jeder von uns vor Ort tun kann um gegen den Klimawandel zu kämpfen, eine Bewegung aufzubauen, und unsere Gemeinden von Grund auf zu verändern. Unter den Projekten auf dieser Website findest du Ideen für den Aufbau deines Teams, Aufklärungsarbeit und Lösungsfindung in deiner Gemeinde.<!-- %(SITE_NAME)s -->"
+msgstr "\nEs gibt vieles was jeder von uns vor Ort tun kann um gegen den Klimawandel zu kämpfen, eine Bewegung aufzubauen, und unsere Gemeinden von Grund auf zu verändern. Bei 350.org findest du Leitfäden für Aktivisten und Projektideen für den Aufbau deines Teams, Aufklärungsarbeit und Lösungsfindung in deiner Gemeinde.<!-- %(SITE_NAME)s -->"
 
 #: templates/rah/home_page.html:107
 msgid "home_slide_3_url"
@@ -3722,7 +3728,7 @@ msgstr "Über 350 vor Ort"
 
 #: templates/rah/home_page.html:143
 msgid "Discover resources for organizers"
-msgstr "Finde Materialien für Organisatoren"
+msgstr "Finde Projektideen und Ressourcen für Organisatoren"
 
 #: templates/rah/home_page.html:144
 msgid "Resources"
@@ -3730,7 +3736,7 @@ msgstr "Ressourcen"
 
 #: templates/rah/home_page.html:147
 msgid "Climate Leadership Workshops"
-msgstr "Klima Workshop"
+msgstr "Veranstalte einen Klima-Workshop"
 
 #: templates/rah/home_page.html:148
 msgid "Workshops"

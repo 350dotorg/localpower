@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 23:17-0400\n"
-"PO-Revision-Date: 2012-06-15 14:11+0000\n"
+"PO-Revision-Date: 2012-09-12 13:48+0000\n"
 "Last-Translator: ejucovy <ethan.jucovy@gmail.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/projects/p/localpower/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Language"
+msgstr ""
+
+msgid "Language: %(LANG_NAME)s"
+msgstr ""
 
 #: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
 msgid ""

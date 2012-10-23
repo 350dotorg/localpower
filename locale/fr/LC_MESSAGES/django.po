@@ -12,14 +12,20 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 23:17-0400\n"
-"PO-Revision-Date: 2012-07-24 17:23+0000\n"
-"Last-Translator: Hannah Shultz <hannah@350.org>\n"
+"PO-Revision-Date: 2012-09-13 16:11+0000\n"
+"Last-Translator: landry <landry@350.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/localpower/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Language: %(LANG_NAME)s"
+msgstr "Langue: %(LANG_NAME)s"
 
 #: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
 msgid ""
@@ -3295,15 +3301,15 @@ msgstr "pages modèles traduites "
 
 #: rah_locale/models.py:29
 msgid "translated project"
-msgstr "Projet traduit"
+msgstr "projet traduit"
 
 #: rah_locale/models.py:30
 msgid "translated projects"
-msgstr "Projets traduits"
+msgstr "projets traduits"
 
 #: rah_locale/models.py:36
 msgid "message"
-msgstr "Message"
+msgstr "message"
 
 #: rateable/models.py:35
 msgid "object ID"
@@ -3632,7 +3638,7 @@ msgid ""
 "                            complete, the more badges and points you earn for your\n"
 "                            progress. \n"
 "\t\t\t  "
-msgstr "\nIl ya beaucoup de choses que nous pouvons tous faire au niveau local pour lutter contre le changement climatique,créer un mouvement, et transformer nos communautés de la base au sommet. Consultez les projets sur ce site pour des idées sur la construction de votre équipe, sensibiliser votre communauté, et plaider pour des solutions dans votre communauté."
+msgstr "\nDe l'Afghanistan au Zimbabwe, les gens dans presque chaque pays de la planète mobilisent leurs communautés pour des solutions justes à la crise climatique. Ce site web est destiné à faciliter les échanges avec les autres activistes climatiques près de chez nous, bâtir de puissants mouvements locaux pour transformer nos communautés et manifester la solidarité mutuelle au niveau mondial pour arrêter le changement climatique. Bâtissons ensemble ce mouvement!"
 
 #: templates/rah/home_page.html:84
 msgid "home_slide_2_url"
@@ -3655,7 +3661,7 @@ msgid ""
 "                            %(SITE_NAME)s community. Communities make it easy to\n"
 "                            share tips and stories with Trendsetters like you.\n"
 "\t\t\t  "
-msgstr "\nIl ya beaucoup de choses que nous pouvons tous faire au niveau local pour lutter contre le changement climatique,créer un mouvement, et transformer nos communautés de la base au sommet. Consultez les projets sur ce site pour des idées sur la construction de votre équipe, sensibiliser votre communauté, et plaider pour des solutions dans votre communauté.<!-- %(SITE_NAME)s -->"
+msgstr "\nIl y a beaucoup de choses que nous pouvons tous faire au niveau local pour lutter contre le changement climatique, bâtir un mouvement et transformer nos communautés de la base au sommet. Consultez les guides d'organisation et idées de projet sur 350.org pour des voies de bâtir votre équipe, sensibiliser votre communauté, et plaider pour des solutions.<!-- %(SITE_NAME)s -->"
 
 #: templates/rah/home_page.html:107
 msgid "home_slide_3_url"
@@ -3722,7 +3728,7 @@ msgstr "A propos de 350 Local"
 
 #: templates/rah/home_page.html:143
 msgid "Discover resources for organizers"
-msgstr "Découvrir les ressources pour les organisateurs"
+msgstr "Explorer les idées de projet et ressources pour les organisateurs"
 
 #: templates/rah/home_page.html:144
 msgid "Resources"
@@ -3730,11 +3736,11 @@ msgstr "Ressources"
 
 #: templates/rah/home_page.html:147
 msgid "Climate Leadership Workshops"
-msgstr "Ateliers de leadership climatique"
+msgstr "Organiser un atelier sur le leadership climatique"
 
 #: templates/rah/home_page.html:148
 msgid "Workshops"
-msgstr "Ateliers de Leadership Climatique"
+msgstr "Ateliers"
 
 #: templates/rah/home_page.html:155
 msgid "Countries"

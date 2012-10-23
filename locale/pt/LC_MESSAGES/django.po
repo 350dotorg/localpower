@@ -13,14 +13,20 @@ msgstr ""
 "Project-Id-Version: Local Power\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 23:17-0400\n"
-"PO-Revision-Date: 2012-08-07 19:27+0000\n"
-"Last-Translator: Hannah Shultz <hannah@350.org>\n"
+"PO-Revision-Date: 2012-09-13 21:20+0000\n"
+"Last-Translator: Isis Silva <portu.isis@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/localpower/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Language: %(LANG_NAME)s"
+msgstr "Idioma: %(LANG_NAME)s"
 
 #: utils.py:77 rah/decorators.py:18 rah/decorators.py:52
 msgid ""
@@ -3633,7 +3639,7 @@ msgid ""
 "                            complete, the more badges and points you earn for your\n"
 "                            progress. \n"
 "\t\t\t  "
-msgstr "\nExiste muito que pode ser feito localmente para combater as mudanças climáticas e transformar nossas comunidades a partir da base. Confira os projetos neste site para ter ideias de como organizar sua equipe, educar sua comunidade e defender soluções em sua comunidade."
+msgstr "\nDo Afeganistão ao Zimbábue, pessoas em quase todos os países do planeta estão mobilizando suas comunidades para encontrar soluções justas para a crise climática. Este site foi projetado para tornar mais fácil o contato com outros ativistas climáticos da nossa região, construir movimentos locais poderosos para transformar nossas comunidades e sermos solidários uns com os outros globalmente para assim determos as mudanças climáticas. Vamos construir esse movimento juntos!"
 
 #: templates/rah/home_page.html:84
 msgid "home_slide_2_url"
@@ -3656,7 +3662,7 @@ msgid ""
 "                            %(SITE_NAME)s community. Communities make it easy to\n"
 "                            share tips and stories with Trendsetters like you.\n"
 "\t\t\t  "
-msgstr "\nExistem muitas coisas que podem ser feitas localmente para combater as mudanças climáticas e transformar nossas comunidades a partir da base. Confira os projetos neste site para ter ideias de como organizar sua equipe, educar sua comunidade e defender soluções em sua comunidade.<!-- %(SITE_NAME)s -->"
+msgstr "\nExistem muitas coisas que podem ser feitas em nível local para combater as mudanças climáticas, construir um movimento e transformar nossas comunidades a partir da base. Confira os guias de organização e ideias de projetos na página da 350.org para ter ideias de como organizar sua equipe, educar sua comunidade e defender soluções.<!-- %(SITE_NAME)s -->"
 
 #: templates/rah/home_page.html:107
 msgid "home_slide_3_url"
@@ -3723,7 +3729,7 @@ msgstr "Sobre 350 Local"
 
 #: templates/rah/home_page.html:143
 msgid "Discover resources for organizers"
-msgstr "Descubra recursos para organizadores"
+msgstr "Explore ideias e recursos para organizadores"
 
 #: templates/rah/home_page.html:144
 msgid "Resources"
@@ -3731,7 +3737,7 @@ msgstr "Recursos"
 
 #: templates/rah/home_page.html:147
 msgid "Climate Leadership Workshops"
-msgstr "Oficinas de Liderança para o Clima"
+msgstr "Organize uma oficina de liderança climática"
 
 #: templates/rah/home_page.html:148
 msgid "Workshops"
