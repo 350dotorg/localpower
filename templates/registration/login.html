@@ -8,14 +8,11 @@
 {% endblock %}
 {% block form_info %}
 <h3>{% blocktrans %}Need a little help?{% endblocktrans %}</h3>
-<ul>
-    <li>
-        <a href="{% url register %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">{% blocktrans %}Create an account{% endblocktrans %}</a><br/>
-    </li>
-    <li>
-        <a href="{% url password_reset %}">{% blocktrans %}Recover your password{% endblocktrans %}</a>
-    </li>
-</ul>
+<hr /><br />
+<div>
+  <a style="width: 78%" class="button button_small" href="{% url password_reset %}">{% blocktrans %}Recover your password{% endblocktrans %}</a>
+</div>
+<br />
 <div class="fb_button">
     <a href="#" class="fb_button fb_button_large">
         <span id="fb_login_text" class="fb_button_text">{% blocktrans %}Log in with Facebook{% endblocktrans %}</span>
