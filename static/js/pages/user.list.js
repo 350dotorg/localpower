@@ -10,39 +10,14 @@ require(["libs/jquery.ui", "libs/markerclusterer"],
             zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
             panControl: false, 
             scrollwheel: false,
-            center: new google.maps.LatLng(RAH.map_center.lat || 37.000000, RAH.map_center.lng || -96.000000)
+            center: new google.maps.LatLng(RAH.map_center.lat || 37.000000,
+                                           RAH.map_center.lng || -96.000000)
         };
         var gmap = new google.maps.Map(document.getElementById("events_map"), myOptions);
-	var geocoder = new google.maps.Geocoder();
-        var infowindow = new google.maps.InfoWindow({ content: "" });
-        var markers = [];
-	var latlngs = {};
-	var newImage = new google.maps.MarkerImage(RAH.sprite_url, new google.maps.Size(41, 48), new google.maps.Point(232, 104) );
-        for (var i = RAH.event_locations.length - 1; i >= 0; i = i - 1) {
-            var latlng = [RAH.event_locations[i].lat, RAH.event_locations[i].lon];
-            if( latlngs[latlng] ) {
-		var marker = latlngs[latlng];
-                marker.info += "<hr/>" + RAH.event_locations[i].info;
-		marker.setIcon(newImage);
-            } else {
-              var marker = new google.maps.Marker({
-                  position: new google.maps.LatLng(RAH.event_locations[i].lat,
-						   RAH.event_locations[i].lon),
-                  map: gmap,
-                  info: RAH.event_locations[i].info
-              });
-            }
-            latlngs[latlng] = marker;
-            markers.push(marker);
-        }
-	for( var i = RAH.event_locations.length - 1; i >= 0; i = i - 1 ) {
-            var marker = markers[i];
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent(this.info);
-                infowindow.open(gmap, this);
-            });
-        }
-	delete latlngs;
+        var geocoder = new google.maps.Geocoder();
+        var infowindow = new google.maps.InfoWindow({content: "" });
+        var newImage = new google.maps.MarkerImage(RAH.sprite_url, new google.maps.Size(41, 48), new google.maps.Point(232, 104) );
+
         var style = [{
             url: RAH.sprite_url,
             height: 41,
@@ -52,21 +27,82 @@ require(["libs/jquery.ui", "libs/markerclusterer"],
             textSize: 12,
             backgroundPosition: "-232px -104px"
         }];
-        var markerCluster = new MarkerClusterer(gmap, markers, {
+        var markerCluster = new MarkerClusterer(gmap, [], {
             gridSize: 60, 
             styles: style,
             maxZoom: 10
         });
-	function codeAddress() {
-	    var address = document.getElementById("search_widget_input").value;
-	    geocoder.geocode( { 'address': address}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-			gmap.setCenter(results[0].geometry.location);
-                        gmap.fitBounds(results[0].geometry.viewport);
-		    }
-		});
-	}
+
+        // store a mapping of latlng -> marker
+        // on collisions, we combine the popup html and modify the icon
+        var latlngs = {};
+
+        function addUserToMap(geom) {
+          var latlng = [geom.lat, geom.lng],
+              marker;
+
+          if (latlngs[latlng]) {
+            // if the marker already exists,
+            // update the icon and append html
+            marker = latlngs[latlng];
+            marker.info += '<hr />' + geom.info_html;
+            marker.setIcon(newImage);
+          } else {
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(geom.lat, geom.lng),
+              map: gmap,
+              info: geom.info_html,
+            });
+            latlngs[latlng] = marker;
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(this.info);
+                infowindow.open(gmap, this);
+            });
+            markerCluster.addMarker(marker, true);
+          }
+        }
+
+        // geocode behavior
         $("#map_search .search_widget").submit(function() {
-		codeAddress(); return false;
-	    });
+          var address = document.getElementById("search_widget_input").value;
+          geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              gmap.setCenter(results[0].geometry.location);
+                    gmap.fitBounds(results[0].geometry.viewport);
+            }
+          });
+          return false;
+        });
+
+        // fetch user data in background
+        function fetchBatch(start) {
+          jQuery.getJSON(RAH.user_list_url, {start: start}, function(json) {
+            if (json.length > 0) {
+
+              jQuery.each(json, function(i, user) {
+                // populate list item
+                var li = document.createElement('li');
+                li.innerHTML = user.list_html;
+                RAH.user_list.appendChild(li);
+
+                // add to map
+                if (user.geom) {
+                  addUserToMap(user.geom);
+                }
+              });
+
+              // redraw all the clusters at once instead of per user
+              markerCluster.redraw();
+
+              fetchBatch(start + RAH.user_list_batch_size);
+            } else {
+              // we're done loading users at this point
+              // free up some memory we're no longer using
+              delete latlngs;
+            }
+          });
+        }
+
+        // start async loading of users
+        fetchBatch(0);
     });
