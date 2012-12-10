@@ -147,7 +147,7 @@ class Profile(models.Model):
         ('O', _('Other')),
     )
 
-    user = models.ForeignKey(User, unique=True, verbose_name=_('user'), related_name="profile")
+    user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name="profile")
 
     geom = models.ForeignKey('geo.Point', blank=True, null=True,
                              verbose_name=_('location'))
