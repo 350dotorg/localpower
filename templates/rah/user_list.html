@@ -9,8 +9,8 @@ Browse users
 {% endblocktrans %}
 {% endblock %}
 {% block ribbon_bar %}
-{% blocktrans with users|length as num_users %}
-Showing {{num_users}} users
+{% blocktrans %}
+Showing {{ num_users }} users
 {% endblocktrans %}
 {% endblock %}
 {% block content %}
@@ -37,33 +37,7 @@ Showing {{num_users}} users
     <div id="events_map_shadow_left"></div>
 </div>
 
-<ul class="plain_list nugget_9c_list">
-  {% for user in users %}
-  {% with user.get_profile as profile %}
-  <li>
-    <a href="{{user.get_absolute_url}}">
-      <img src="{% url user_profile_picture user.id %}" 
-	   alt="{% blocktrans %}Profile image{% endblocktrans %}"
-	   height="38" width="45" />
-    </a>
-    <div>
-      <a href="{{user.get_absolute_url}}">
-	{{user.get_full_name}}
-      </a>
-      {% if profile.geom %}
-      <div class="smaller">
-	{{ profile.geom }}
-      </div>
-      {% endif %}
-      {% if profile.about %}
-      <div class="smaller">
-	{{profile.about}}
-      </div>
-      {% endif %}
-    </div>
-  </li>
-  {% endwith %}
-  {% endfor %}
+<ul id="user_list" class="plain_list nugget_9c_list">
 </ul>
 
 <script type="text/javascript" charset="utf-8">
@@ -72,8 +46,12 @@ Showing {{num_users}} users
     RAH.pagescripts = RAH.pagescripts || [];
     RAH.pagescripts.push("{% dated_static 'js/pages/user.list.js' %}");
     RAH.sprite_url = "{% dated_static 'images/theme/sprite.png' %}";
-    // Add locations for plotting on the map
-    RAH.event_locations = [];
+
+    RAH.user_list = document.getElementById('user_list');
+    RAH.user_list_url = '{% url user_list_batch %}';
+    RAH.user_list_batch_size = {{ batch_size }};
+
+    // center map on requesting user's location if available
     RAH.map_center = {};
     {% with request.user.get_profile.geom as geom %}
     {% if geom %}
@@ -81,17 +59,6 @@ Showing {{num_users}} users
     RAH.map_center.lng = {{geom.latlng.x}};
     {% endif %}
     {% endwith %}
-    {% for user in map_users %}
-        {% with user.get_profile.geom as geom %}
-        var info = "<b>{{ user.get_full_name|escape|escapejs }}</b><br/> {{ geom|escape|escapejs }}<br/>";
-            info += "<a href='{% url profile user.id %}'>{% blocktrans %}View profile{% endblocktrans %}</a>";
-        RAH.event_locations.push({
-            lat: "{{ geom.latlng.y }}",
-            lon: "{{ geom.latlng.x }}",
-            "info": info
-        });
-        {% endwith %}
-    {% endfor %}
     //]]>
 </script>
 {% endblock %}

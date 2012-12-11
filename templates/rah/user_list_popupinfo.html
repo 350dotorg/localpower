@@ -1,0 +1,4 @@
+{% load i18n %}
+<b>{{ user.get_full_name|escape|escapejs }}</b><br/>
+{{ geom|escape|escapejs }}<br/>
+<a href='{% url profile user.id %}'>{% blocktrans %}View profile{% endblocktrans %}</a>

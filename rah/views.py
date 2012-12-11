@@ -14,6 +14,7 @@ from django.contrib.sites.models import Site, RequestSite
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.db.models import Sum, Count
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -126,11 +127,56 @@ def index(request):
 
 def user_list(request):
     """This page of links allows google CSE to find user profile pages"""
-    nav_selected = "users"
-    users = GeoUser.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'email', 'id').select_related("profile", "profile__geom")
-    map_users = users.filter(profile__geom__isnull=False)
+    num_users = GeoUser.objects.filter(profile__is_profile_private=False).count()
+    return render_to_response("rah/user_list.html",
+                              dict(nav_selected='users',
+                                   batch_size=100,
+                                   num_users=num_users),
+                              context_instance=RequestContext(request))
 
-    return render_to_response("rah/user_list.html", locals(), context_instance=RequestContext(request))
+def user_list_batch(request):
+    """respond to ajax queries to support auto pagination on the user_list page"""
+    start = request.GET.get('start', 0)
+    try:
+        start = int(start)
+    except ValueError:
+        start = 0
+    limit = 100
+
+    users = GeoUser.objects.filter(profile__is_profile_private=False).only('first_name', 'last_name', 'email', 'id').select_related("profile", "profile__geom").order_by('id')[start:start+limit]
+
+    users_model = []
+    for user in users:
+        profile = user.profile
+        geom = profile.geom
+
+        user_model = dict(
+            url = user.get_absolute_url(),
+            profile_img = reverse('user_profile_picture', args=(user.id,)),
+            full_name = user.get_full_name(),
+            about = profile.about or '',
+            )
+
+        if geom:
+            info_html = loader.render_to_string(
+                'rah/user_list_popupinfo.html',
+                dict(user=user, geom=geom))
+            geom_model = dict(
+                name = str(geom),
+                lat = geom.latlng.y,
+                lng = geom.latlng.x,
+                info_html = info_html.strip(),
+                )
+            user_model['geom'] = geom_model
+
+        list_html = loader.render_to_string('rah/user_list_item.html',
+                                            user_model)
+        user_model['list_html'] = list_html.strip()
+
+        users_model.append(user_model)
+
+    users_json = json.dumps(users_model)
+    return HttpResponse(users_json, mimetype='application/json')
 
 def logout(request):
     auth.logout(request)
