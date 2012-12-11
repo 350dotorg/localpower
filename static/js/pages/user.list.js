@@ -51,7 +51,7 @@ require(["libs/jquery.ui", "libs/markerclusterer"],
             marker = new google.maps.Marker({
               position: new google.maps.LatLng(geom.lat, geom.lng),
               map: gmap,
-              info: geom.info_html,
+              info: geom.info_html
             });
             latlngs[latlng] = marker;
             google.maps.event.addListener(marker, 'click', function() {
