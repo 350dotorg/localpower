@@ -1,0 +1,15 @@
+{% load i18n %}
+<a href="{{ url }}">
+<img src="{{ profile_img }}"
+ alt="{% blocktrans %}Profile image{% endblocktrans %}"
+ height="38" width="45" />
+</a>
+<div>
+  <a href="{{ url }}">{{ full_name }}</a>
+  {% if geom %}
+  <div class="smaller">{{ geom.name }}</div>
+  {% endif %}
+  {% if about %}
+  <div class="smaller">{{about}}</div>
+  {% endif %}
+</div>
