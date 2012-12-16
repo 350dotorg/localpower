@@ -117,8 +117,8 @@ def index(request):
     top_communities = Group.objects.filter(geom__isnull=False).select_related("geom").order_by("-member_count")[:3]
     #top_projects = Action.objects.filter(is_group_project=True).order_by("-points")[:4]
     top_events = Event.objects.filter(
-        is_private=False, when__lte=datetime.now()
-        ).select_related("geom").order_by("-when")[:4]
+        is_private=False, when__gte=datetime.now()
+        ).select_related("geom").order_by("when")[:4]
 
     map_groups = Group.objects.filter(geom__isnull=False).select_related("geom")
     locals().update(_progress_stats())
