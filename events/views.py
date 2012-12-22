@@ -195,6 +195,9 @@ def hosts(request, event_id):
 @require_POST
 @user_is_guest_or_has_token
 def rsvp(request, event_id):
+    if not request.user.is_authenticated():
+        return redirect("/")
+
     event = get_object_or_404(Event, id=event_id)
     guest = event.current_guest(request=request, token=request.POST.get("token", None))
     rsvp_form = RsvpForm(instance=guest, data=request.POST)
@@ -214,6 +217,9 @@ def rsvp(request, event_id):
 
 @user_is_guest
 def rsvp_confirm(request, event_id):
+    if not request.user.is_authenticated():
+        return redirect("/")
+
     event = get_object_or_404(Event, id=event_id)
     guest = event.current_guest(request)
     form = RsvpConfirmForm(instance=guest, data=(request.POST or None))
@@ -226,6 +232,9 @@ def rsvp_confirm(request, event_id):
 
 @user_is_guest
 def rsvp_account(request, event_id):
+    if not request.user.is_authenticated():
+        return redirect("/")
+
     event = get_object_or_404(Event, id=event_id)
     guest = event.current_guest(request)
     form = RsvpAccountForm(instance=guest, data=(request.POST or None))
@@ -238,6 +247,9 @@ def rsvp_account(request, event_id):
     return render_to_response("events/rsvp_account.html", locals(), context_instance=RequestContext(request))
 
 def rsvp_cancel(request, event_id):
+    if not request.user.is_authenticated():
+        return redirect("/")
+
     event = get_object_or_404(Event, id=event_id)
     event.delete_guest_in_session(request)
     return redirect(event)
