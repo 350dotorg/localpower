@@ -15,6 +15,7 @@ from django.core.urlresolvers import resolve, Resolver404
 from django.forms.widgets import CheckboxSelectMultiple
 from django.template import Context, loader
 from django.utils.translation import ugettext_lazy as _
+import time
 
 from settings import SITE_FEEDBACK_EMAIL
 from rah.models import Profile, Feedback, StickerRecipient
@@ -41,7 +42,10 @@ class RegistrationForm(forms.ModelForm):
         fields = ("first_name", "last_name", "email",)
 
     def clean(self):
-        self.instance.username = hashlib.md5(self.cleaned_data.get("email", "")).hexdigest()[:30]
+        user_hash = hashlib.md5("%s\0%s" % (
+                self.cleaned_data.get("email", ""),
+                time.time())).hexdigest()
+        self.instance.username = user_hash[:30]
         self.instance.set_password(self.cleaned_data.get("password1", auth.models.UNUSABLE_PASSWORD))
         super(RegistrationForm, self).clean()
         return self.cleaned_data
