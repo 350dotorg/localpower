@@ -26,10 +26,10 @@ class UserNode(template.Node):
         user = self.user_expr.resolve(context)
         current_user = context["request"].user
         if user.id != current_user.id and user.get_profile().is_profile_private:
-            result = str(user.get_full_name())
+            result = unicode(user.get_full_name())
         else:
             name = _("You") if user.id == current_user.id else user.get_full_name()
-            result = "<a href='%s'>%s</a>" % (reverse("profile", args=[user.id]), name)
+            result = u"<a href='%s'>%s</a>" % (reverse("profile", args=[user.id]), name)
         if self.varname is not None:
             context[self.varname] = mark_safe(result)
             return ''
