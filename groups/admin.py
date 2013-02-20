@@ -32,6 +32,15 @@ class GroupUsersAdmin(admin.ModelAdmin):
     list_display = ("user", "group", "is_manager", "created", "updated")
     list_filter = ("group", "user")
     search_fields = ("group__slug", "user__email", "user__first_name", "user__last_name")
+    csv_export_fields = list_display + (
+        "user__email", "user__first_name", "user__last_name",
+        "user__profile__phone", 
+        "user__profile__geom__city",
+        "user__profile__geom__state",
+        "user__profile__geom__country",
+        "user__profile__geom__postal",
+        )
+    list_select_related = True
 
 admin.site.register(GroupUsers, GroupUsersAdmin)
 admin.site.register(GroupAssociationRequest)
