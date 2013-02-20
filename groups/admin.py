@@ -30,7 +30,8 @@ admin.site.register(Group, GroupAdmin)
 
 class GroupUsersAdmin(admin.ModelAdmin):
     list_display = ("user", "group", "is_manager", "created", "updated")
-    list_filter = ("user", "group")
+    list_filter = ("group", "user")
+    search_fields = ("group__slug", "user__email", "user__first_name", "user__last_name")
 
 admin.site.register(GroupUsers, GroupUsersAdmin)
 admin.site.register(GroupAssociationRequest)
