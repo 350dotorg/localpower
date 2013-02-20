@@ -11,10 +11,14 @@ def admin_list_export(modeladmin, request, queryset):
     response['Content-Disposition'] = 'attachment; filename=%s.csv' % slugify(model.__name__)
     writer = csv.writer(response)
     model_admin = admin.site._registry[model]
-    list_display = model_admin.list_display
+    list_display = getattr(model_admin, 'csv_export_fields', None) or \
+        model_admin.list_display
     # Write headers to CSV file
     if list_display and len(list_display) > 0:
-        headers = list_display[1:]
+        if list_display[0] == "action_checkbox":
+            headers = list_display[1:]
+        else:
+            headers = list_display
     else:
         headers = []
         for field in model._meta.fields:
@@ -33,10 +37,16 @@ def admin_list_export(modeladmin, request, queryset):
                         except TypeError:
                             val = val()
                 except AttributeError:
-                    val = getattr(obj, field)
+                    if "__" in field:
+                        vals = field.split("__")
+                        val = obj
+                        while vals:
+                            val = getattr(val, vals.pop(0))
+                    else:
+                        val = getattr(obj, field)
                     if callable(val):
                         val = val()
-                row.append(smart_str(val))
+                row.append(smart_str(val or ''))
         writer.writerow(row)
     # Return CSV file to browser as download
     return response
