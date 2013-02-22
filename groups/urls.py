@@ -38,6 +38,12 @@ urlpatterns = patterns(
     url(r'^(?P<group_slug>[a-z0-9-]+)/edit/$', 'group_edit', name='group_edit'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/feed/$', GroupActivityFeed(), name='group_activity_feed'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/$', 'group_disc_list', name='group_disc_list'),
+
+    url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/subscribe/$', 'group_disc_subscribe', 
+        name='group_disc_subscribe'),
+    url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/unsubscribe/$', 'group_disc_unsubscribe',
+        name='group_disc_unsubscribe'),
+
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/create/$', 'group_disc_create', name='group_disc_create'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/$', 'group_disc_detail', name='group_disc_detail'),
     url(r'^(?P<group_slug>[a-z0-9-]+)/discussions/(?P<disc_id>\d+)/remove/$', 'group_disc_remove', name='group_disc_remove'),

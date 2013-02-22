@@ -214,6 +214,11 @@ class Group(models.Model):
             return True
         return False
 
+    def is_subscribed(self, user):
+        if not user.is_authenticated():
+            return False
+        return not DiscussionBlacklist.objects.filter(group=self, user=user).exists()
+
     def moderate_disc(self, user):
         """True if disc needs to be moderated"""
         if self.disc_moderation == 0 and self.is_member(user) or self.is_user_manager(user):

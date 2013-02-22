@@ -32,7 +32,7 @@ from group_links.forms import ExternalLinkForm
 from group_links.models import ExternalLink
 from rah_locale.models import TranslatedAction
 
-from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest
+from models import Group, GroupUsers, MembershipRequests, Discussion, GroupAssociationRequest, DiscussionBlacklist
 from forms import (GroupForm, 
                    GroupExternalLinkOnlyForm,
                    MembershipForm,
@@ -471,6 +471,35 @@ def group_contact_admins(request, group_slug):
                               context_instance=RequestContext(request)) 
 
 @login_required
+def group_disc_subscribe(request, group_slug):
+    group = get_object_or_404(Group, slug=group_slug)
+    if not GroupUsers.objects.filter(group=group, user=request.user).exists():
+        messages.error(request, _("You cannot subscribe to a group's discussions unless you are a group member"))
+        return redirect("group_detail", group_slug=group.slug)
+
+    try:
+        blacklist = DiscussionBlacklist.objects.get(user=request.user, group=group)
+    except DiscussionBlacklist.DoesNotExist:
+        messages.error(request, _("You are already subscribed to this group's discussions."))
+    else:
+        blacklist.delete()
+
+    return redirect("group_detail", group_slug=group.slug)
+
+@login_required
+def group_disc_unsubscribe(request, group_slug):
+    group = get_object_or_404(Group, slug=group_slug)
+    if not GroupUsers.objects.filter(group=group, user=request.user).exists():
+        messages.error(request, _("You cannot unsubscribe from a group's discussions unless you are a group member"))
+        return redirect("group_detail", group_slug=group.slug)
+
+    blacklist, created = DiscussionBlacklist.objects.get_or_create(user=request.user, group=group)
+    if not created:
+        messages.error(request, _("You are already unsubscribed from this group's discussions."))
+
+    return redirect("group_detail", group_slug=group.slug)
+
+@login_required
 @csrf_protect
 def group_disc_create(request, group_slug):
     group = get_object_or_404(Group, slug=group_slug)
@@ -598,6 +627,8 @@ def _group_detail(request, group):
     is_member = group.is_member(request.user)
     is_manager = group.is_user_manager(request.user)
     is_poster = group.is_poster(request.user)
+    is_subscribed = group.is_subscribed(request.user)
+
     membership_pending = group.has_pending_membership(request.user)
     requesters = group.requesters_to_grant_or_deny(request.user)
 

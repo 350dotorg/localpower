@@ -97,10 +97,25 @@
 	{% blocktrans %}Send Invite{% endblocktrans %}</a>
       {% endif %}
       {% endif %}
+    </p>
+
+    <p>
       {% if is_poster %}
       <a class="button" href="{% url group_disc_create group.slug %}">
 	{% blocktrans %}New discussion{% endblocktrans %}
       </a> 
+      {% endif %}
+
+      {% if is_member %}
+      {% if is_subscribed %}
+      <a class="button" href="{% url group_disc_unsubscribe group.slug %}">
+	{% blocktrans %}Unsubscribe from discussions{% endblocktrans %}
+      </a>
+      {% else %}
+      <a class="button" href="{% url group_disc_subscribe group.slug %}">
+	{% blocktrans %}Subscribe to discussions{% endblocktrans %}
+      </a>
+      {% endif %}
       {% endif %}
     </p>
 
