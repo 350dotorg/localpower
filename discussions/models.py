@@ -130,7 +130,11 @@ class Discussion(models.Model):
         return []
         
     def email_extra_headers(self, user_object):
-        headers = {}
+        headers = {
+            "To": (settings.PLUS_ADDRESSED_TO_EMAIL % self.content_object.slug
+                   if hasattr(self.content_object, 'slug')
+                   else settings.DEFAULT_FROM_EMAIL)
+            }
         if hasattr(self.content_object, 'discussion_email_sender'):
             sender = self.content_object.discussion_email_sender(self)
             if sender is not None:

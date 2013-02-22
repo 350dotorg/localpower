@@ -251,6 +251,7 @@ TINYMCE_DEFAULT_CONFIG = {
 GROUP_CREATION_FORM = "/groups/new/"
 
 DISCUSSIONS_UNREVIEWED_USER_QUOTA = 3
+PLUS_ADDRESSED_TO_EMAIL = "localpower+%s@example.com"
 
 try:
     from local_settings import *

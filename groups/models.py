@@ -438,18 +438,21 @@ class Discussion(models.Model):
         will need to trust the inbound email as coming from the
         user it claims to be coming from.
         """
+        headers = {
+            "To": settings.PLUS_ADDRESSED_TO_EMAIL % self.group.slug
+            }
         if self.disallow_replies:
             # If we're not allowing replies, just use the system defaults
             # and don't build a magic reply-to header.
-            return None
+            return headers
 
         value = json.dumps(dict(parent_id=self.thread_id,
                                 user=user_object.email,
                                 group=self.group.slug))
         value = "%s\0%s" % (value, hash_val(value))
         value = base64.b64encode(value)
-        return {"Reply-To": "%s@%s" %
-                (value, settings.SMTP_HTTP_RELAY_DOMAIN)}
+        headers["Reply-To"] = "%s@%s" % (value, settings.SMTP_HTTP_RELAY_DOMAIN)
+        return headers
 
 class GroupAssociationRequest(models.Model):
     content_type = models.ForeignKey(ContentType, verbose_name=_('content type'))
