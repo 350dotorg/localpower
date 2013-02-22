@@ -271,7 +271,7 @@ class Action(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ("action_detail", [str(self.slug)])
-tagging.register(Action)
+#tagging.register(Action)
 
 class UserActionProgressManager(models.Manager):
     def commitments_for_user(self, user):

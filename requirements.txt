@@ -1,5 +1,5 @@
 BeautifulSoup
-Django==1.2.4
+git+http://github.com/350dotorg/Django.git#egg=Django
 Markdown==2.0.3
 MySQL-python==1.2.3
 PIL==1.1.7
