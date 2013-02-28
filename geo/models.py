@@ -36,10 +36,18 @@ class Point(models.Model):
         data = self.geocode()
         self.raw_data = dumps(data)
         r = data[2]['top_result']
-        self.city = r.get('city') or None
-        self.state = r.get('state') or None
-        self.country = r.get('country') or None
-        self.postal = r.get('postal') or r.get('zip') or None
+
+        def get_component(type):
+            components = r.get("address_components", [])
+            for component in components:
+                if type not in component['types']:
+                    continue
+                return component['long_name']
+
+        self.city = get_component('locality')
+        self.state = get_component('administrative_area_level_1')
+        self.country = get_component('country')
+        self.postal = get_component('postal_code')
         self.region = REGION_MAP.get(self.country) or None
         self.save()
 
