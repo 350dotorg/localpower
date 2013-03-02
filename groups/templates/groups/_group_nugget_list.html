@@ -2,11 +2,11 @@
 <ul class="group_list plain_list nugget_9c_list">
     {% for group in groups %}
         <li>
-            <a href="{{ group.get_absolute_url }}" class="group_list_thumb">
+            <a href="{{ group.get_public_url }}" class="group_list_thumb">
                 <img src="{{ MEDIA_URL }}{{ group.image.thumbnail_colorspace_45x38smartcrop }}" alt="{% blocktrans %}group image{% endblocktrans %}" height="38" width="45" />
             </a>
             <div>
-                <a href="{{ group.get_absolute_url }}">{{ group.name }}</a>
+                <a href="{{ group.get_public_url }}">{{ group.name }}</a>
                 <div class="smaller">
                   {% if group.geom %}<span>{{ group.geom }}</span><br/>{% endif %}
                 </div>

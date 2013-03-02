@@ -225,6 +225,11 @@ class Group(models.Model):
             return False
         return True
 
+    def get_public_url(self):
+        if self.is_external_link_only:
+            return self.external_link()
+        return self.get_absolute_url()
+
     @models.permalink
     def get_absolute_url(self):
         return ("group_detail", [str(self.slug)])
