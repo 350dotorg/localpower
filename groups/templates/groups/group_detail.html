@@ -81,6 +81,7 @@
       {{ group.description|linebreaksbr }}
     </p>
 
+{% if not group.is_external_link_only %}
     <p style="clear: both;">
       <a href="{% url group_contact_admins group.slug %}" class="button">
 	{% blocktrans %}Contact Group Leaders{% endblocktrans %}
@@ -117,7 +118,9 @@
       </a>
       {% endif %}
       {% endif %}
+
     </p>
+{% endif %}
 
 {% endblock %}
 {% block tab_nav %}
