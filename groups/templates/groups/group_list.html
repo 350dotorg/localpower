@@ -100,7 +100,7 @@ Showing {{num_groups}} communities
         var info = "<b>{{ group.name|escape|escapejs }}</b><br/> {{ group.geom.raw_address|escape|escapejs }}";
         info += "<ul style='margin-bottom: 0;'><li>";
        {% if group.is_external_link_only %}
-            info += "<a ref='nofollow' href='{{group.external_link}}'>{% blocktrans %}Go to group website{% endblocktrans %}</a>";
+            info += "<a href='{{group.external_link}}'>{% blocktrans %}Go to group website{% endblocktrans %}</a>";
        {% else %}
             info += "<a href='{% url group_detail group.slug %}'>{% blocktrans %}View group{% endblocktrans %}</a>";
        {% endif %}
